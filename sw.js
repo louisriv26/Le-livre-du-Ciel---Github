@@ -1,13 +1,46 @@
-/* Stage 6K— evidence integrity and stale-reference cleanup — prototype-96
-   No app-shell cache. Network-first only. This file exists only to replace old cached service workers safely. */
-const CACHE_NAME = 'luisa-24h-prototype-96';
-self.addEventListener('install', event => { self.skipWaiting(); });
-self.addEventListener('activate', event => {
-  event.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(key => key.startsWith('luisa-24h-')).map(key => caches.delete(key)))).then(() => self.clients.claim()));
+const VERSION = 'ldc-v1.0.0';
+const SHELL = [
+  './', './index.html', './corpus/manifest.json',
+];
+
+self.addEventListener('install', e => {
+  e.waitUntil(
+    caches.open(VERSION).then(c => c.addAll(SHELL))
+  );
+  self.skipWaiting();
 });
-self.addEventListener('message', event => { if (event.data && event.data.type === 'SKIP_WAITING') self.skipWaiting(); });
-self.addEventListener('fetch', event => {
-  const req = event.request;
-  if (req.method !== 'GET') return;
-  event.respondWith(fetch(req, { cache: 'no-store' }).catch(() => new Response('', { status: 503, statusText: 'Offline: network required for Stage 6K— evidence integrity and stale-reference cleanup recovery build' })));
+
+self.addEventListener('activate', e => {
+  e.waitUntil(
+    caches.keys().then(keys =>
+      Promise.all(keys.filter(k => k !== VERSION).map(k => caches.delete(k)))
+    )
+  );
+  self.clients.claim();
+});
+
+self.addEventListener('fetch', e => {
+  const url = new URL(e.request.url);
+  // Corpus files: cache-first, then network
+  if (url.pathname.includes('/corpus/')) {
+    e.respondWith(
+      caches.match(e.request).then(cached => {
+        if (cached) return cached;
+        return fetch(e.request).then(res => {
+          const clone = res.clone();
+          caches.open(VERSION).then(c => c.put(e.request, clone));
+          return res;
+        });
+      })
+    );
+    return;
+  }
+  // Shell: network-first with cache fallback
+  e.respondWith(
+    fetch(e.request).then(res => {
+      const clone = res.clone();
+      caches.open(VERSION).then(c => c.put(e.request, clone));
+      return res;
+    }).catch(() => caches.match(e.request))
+  );
 });
