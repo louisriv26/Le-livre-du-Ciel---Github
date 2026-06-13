@@ -340,6 +340,36 @@ mark.hl-blue{background:rgba(80,140,220,.25);color:inherit;}
 .st-low{opacity:.65;border:0.5px dashed var(--border);}
 
 
+
+/* ═══ HELP SCREEN ═══ */
+.help-section{padding:16px 18px 4px;}
+.help-section-head{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
+.help-section-icon{width:30px;height:30px;border-radius:8px;display:flex;
+  align-items:center;justify-content:center;flex-shrink:0;font-size:16px;}
+.hsi-amber{background:#FAEEDA;color:#854F0B;}
+.hsi-blue {background:#E6F1FB;color:#185FA5;}
+.hsi-teal {background:#E1F5EE;color:#0F6E56;}
+.hsi-purple{background:#EEEDFE;color:#3C3489;}
+.hsi-coral{background:#FAECE7;color:#993C1D;}
+.hsi-gold {background:var(--gold-pale);color:#7A5A20;}
+.help-section-title{font-family:var(--serif);font-size:15px;color:var(--night);}
+.help-card{background:var(--white);border:0.5px solid var(--border);
+  border-radius:10px;padding:12px 14px;margin-bottom:8px;}
+.help-row{display:flex;gap:10px;align-items:flex-start;margin-bottom:8px;}
+.help-row:last-child{margin-bottom:0;}
+.help-chip{display:inline-flex;align-items:center;gap:4px;background:var(--night);
+  color:var(--gold);border-radius:6px;padding:3px 9px;font-size:11px;
+  font-family:var(--body);flex-shrink:0;margin-top:1px;white-space:nowrap;}
+.help-chip.light{background:var(--gold-pale);color:#7A5A20;}
+.help-chip.outline{background:none;color:var(--muted);border:0.5px solid var(--border);}
+.help-text{font-size:13px;color:var(--ink);line-height:1.65;}
+.help-text b{color:var(--night);font-weight:600;}
+.help-divider{height:0.5px;background:var(--border);margin:4px 0 12px;}
+.help-tip{background:var(--gold-pale);border-radius:8px;padding:8px 12px;
+  font-size:12px;color:#7A5A20;line-height:1.6;margin-bottom:8px;font-style:italic;}
+.help-version{text-align:center;font-size:11px;color:var(--muted);
+  padding:16px;font-family:var(--body);}
+
 /* ═══ AUTOUR DE CE PASSAGE PANEL ═══ */
 #autour-overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);
   z-index:120;display:none;align-items:flex-end;}
@@ -527,9 +557,14 @@ mark.hl-blue{background:rgba(80,140,220,.25);color:inherit;}
 <div class="screen active" id="screen-home">
   <div class="top-bar">
     <span class="top-bar-title">Livre du Ciel</span>
-    <button class="btn-icon" onclick="showSizeSheet()" title="Réglages">
-      <i class="ti ti-settings"></i>
-    </button>
+    <div style="display:flex;gap:2px;">
+      <button class="btn-icon" onclick="openHelp()" title="Aide">
+        <i class="ti ti-help-circle"></i>
+      </button>
+      <button class="btn-icon" onclick="showSizeSheet()" title="Taille du texte">
+        <i class="ti ti-letter-a"></i>
+      </button>
+    </div>
   </div>
   <!-- First-time -->
   <div id="home-first" class="scroll" style="display:none;">
@@ -710,6 +745,254 @@ mark.hl-blue{background:rgba(80,140,220,.25);color:inherit;}
   <div class="espace-panel scroll" id="ep-highlights"></div>
   <div class="espace-panel scroll" id="ep-favorites"></div>
   <div class="espace-panel scroll" id="ep-collections"></div>
+</div>
+
+
+<!-- HELP -->
+<div class="screen" id="screen-help">
+  <div class="top-bar">
+    <button class="btn-back" onclick="closeHelp()">
+      <i class="ti ti-arrow-left"></i> Retour
+    </button>
+    <span class="top-bar-title">Aide</span>
+    <span style="width:32px;"></span>
+  </div>
+  <div class="scroll">
+
+    <!-- ── LECTURE ── -->
+    <div class="help-section">
+      <div class="help-section-head">
+        <div class="help-section-icon hsi-amber"><i class="ti ti-book-2"></i></div>
+        <span class="help-section-title">Lire le texte</span>
+      </div>
+      <div class="help-card">
+        <div class="help-row">
+          <span class="help-chip">Mode Lire</span>
+          <span class="help-text">Texte seul, sans codes. Idéal pour la lecture spirituelle quotidienne. C'est le mode par défaut.</span>
+        </div>
+        <div class="help-divider"></div>
+        <div class="help-row">
+          <span class="help-chip">Mode Étudier</span>
+          <span class="help-text">Affiche la <b>référence stable</b> (ex. LDC.T01.SEC001.P012), l'édition source, les pages, le statut de validation et le locuteur avec son niveau de confiance. Pour la recherche et la citation.</span>
+        </div>
+        <div class="help-divider"></div>
+        <div class="help-row">
+          <span class="help-chip light">Aa</span>
+          <span class="help-text">Ajuste la taille du texte. La préférence est mémorisée pour toutes vos sessions.</span>
+        </div>
+        <div class="help-divider"></div>
+        <div class="help-row">
+          <span class="help-chip light">◂ ▸</span>
+          <span class="help-text">Naviguer entre les entrées sans revenir à la liste. En bas du lecteur.</span>
+        </div>
+      </div>
+      <div class="help-tip">
+        L'application mémorise votre position exacte — au paragraphe près, pas à la position d'écran. Elle retrouve votre place même après un redémarrage.
+      </div>
+    </div>
+
+    <!-- ── SURLIGNAGE ── -->
+    <div class="help-section">
+      <div class="help-section-head">
+        <div class="help-section-icon hsi-gold"><i class="ti ti-highlight"></i></div>
+        <span class="help-section-title">Surligner et annoter</span>
+      </div>
+      <div class="help-card">
+        <div class="help-row">
+          <span class="help-chip light">Appui long</span>
+          <span class="help-text">Sur un mot dans le lecteur. La sélection de texte s'active. Étendez-la à la phrase souhaitée, puis choisissez <b>Surligner</b>, <b>Note</b>, ou <b>＋ Collection</b>.</span>
+        </div>
+        <div class="help-divider"></div>
+        <div class="help-row">
+          <span class="help-chip light">Surlignage</span>
+          <span class="help-text">Ancré au paragraphe — pas à une position d'écran. Il restera au bon endroit même si le corpus est mis à jour.</span>
+        </div>
+        <div class="help-divider"></div>
+        <div class="help-row">
+          <span class="help-chip light">Note ✎</span>
+          <span class="help-text">Écrivez une note personnelle sur l'entrée. Retrouvez toutes vos notes dans <b>Mon Espace → Notes</b>. Appuyez sur une note pour revenir au passage.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── COLLECTIONS ── -->
+    <div class="help-section">
+      <div class="help-section-head">
+        <div class="help-section-icon hsi-teal"><i class="ti ti-bookmark"></i></div>
+        <span class="help-section-title">Collections — préparer un cénacle</span>
+      </div>
+      <div class="help-card">
+        <div class="help-row">
+          <span class="help-chip">＋ Collection</span>
+          <span class="help-text">Dans la barre du lecteur. Choisissez une collection existante ou créez-en une nouvelle en tapant son nom. Un seul geste depuis n'importe quel passage.</span>
+        </div>
+        <div class="help-divider"></div>
+        <div class="help-row">
+          <span class="help-chip light">Réordonner</span>
+          <span class="help-text">Dans <b>Mon Espace → Collections</b>, glissez-déposez les passages pour changer l'ordre, ou utilisez les flèches <b>▲ ▼</b>.</span>
+        </div>
+        <div class="help-divider"></div>
+        <div class="help-row">
+          <span class="help-chip light">Note par passage</span>
+          <span class="help-text">Appuyez sur <b>+ Note</b> sur un passage de collection pour ajouter une annotation privée — idéale pour noter un commentaire à présenter au cénacle.</span>
+        </div>
+        <div class="help-divider"></div>
+        <div class="help-row">
+          <span class="help-chip light">Exporter</span>
+          <span class="help-text">Copie le texte propre avec références dans le presse-papier. Sans logo ni mise en forme commerciale. Collez directement dans un e-mail ou document.</span>
+        </div>
+      </div>
+      <div class="help-tip">
+        Conseil cénacle : créez une collection par réunion. Ajoutez les passages au fil de votre préparation, réordonnez-les dans l'ordre de présentation, puis exportez pour partager avec les participants.
+      </div>
+    </div>
+
+    <!-- ── RECHERCHE ── -->
+    <div class="help-section">
+      <div class="help-section-head">
+        <div class="help-section-icon hsi-blue"><i class="ti ti-search"></i></div>
+        <span class="help-section-title">Recherche</span>
+      </div>
+      <div class="help-card">
+        <div class="help-row">
+          <span class="help-chip light" style="min-width:72px;">Tapez librement</span>
+          <span class="help-text">Entrez un mot, une idée ou une phrase. L'application détecte l'intention — pas besoin de choisir un mode avant de taper.</span>
+        </div>
+        <div class="help-divider"></div>
+        <div class="help-row">
+          <span class="help-chip outline">Phrase exacte</span>
+          <span class="help-text">La formulation a été trouvée mot pour mot dans le corpus.</span>
+        </div>
+        <div class="help-row">
+          <span class="help-chip outline">Idée proche</span>
+          <span class="help-text">Vos mots ne correspondent pas exactement mais l'idée est présente. <b>Vérifiez toujours le texte source avant de citer.</b></span>
+        </div>
+        <div class="help-row">
+          <span class="help-chip outline">Thème lié</span>
+          <span class="help-text">Le passage appartient à la même famille spirituelle — lumière, filet, feu, mer, croix, amour-propre… — même sans mots communs avec votre requête.</span>
+        </div>
+        <div class="help-divider"></div>
+        <div class="help-row">
+          <span class="help-chip light">Filtres T1–T6</span>
+          <span class="help-text">Limitez la recherche à un tome spécifique via les chips sous la barre.</span>
+        </div>
+      </div>
+      <div class="help-tip">
+        Si vous cherchez un passage vaguement mémorisé, tapez l'idée avec vos propres mots. Le badge « Idée proche » ou « Thème lié » indique que l'application a cherché au-delà des mots exacts.
+      </div>
+    </div>
+
+    <!-- ── AUTOUR ── -->
+    <div class="help-section">
+      <div class="help-section-head">
+        <div class="help-section-icon hsi-purple"><i class="ti ti-circles-relation"></i></div>
+        <span class="help-section-title">Autour de ce passage</span>
+      </div>
+      <div class="help-card">
+        <div class="help-row">
+          <span class="help-chip">Autour</span>
+          <span class="help-text">Bouton dans la barre du lecteur. Ouvre un panneau avec jusqu'à quatre sections de passages liés, sans avoir à retourner à la recherche.</span>
+        </div>
+        <div class="help-divider"></div>
+        <div class="help-row">
+          <span class="help-chip light">Même tome</span>
+          <span class="help-text">Les entrées les plus proches dans le même tome — utile pour suivre le fil d'une période.</span>
+        </div>
+        <div class="help-row">
+          <span class="help-chip light">Thème proche</span>
+          <span class="help-text">Passages d'autres tomes partageant des idées et mots clés avec l'entrée en cours.</span>
+        </div>
+        <div class="help-row">
+          <span class="help-chip light">Même image</span>
+          <span class="help-text">Passages de la même famille d'images spirituelles — filet, voile, lumière, feu, mer, croix…</span>
+        </div>
+        <div class="help-row">
+          <span class="help-chip light">Même locuteur</span>
+          <span class="help-text">Autres entrées du même tome attribuées au même locuteur avec haute confiance.</span>
+        </div>
+      </div>
+      <div class="help-tip">
+        Autour charge les résultats depuis les tomes déjà ouverts pendant votre session. Plus vous lisez, plus les suggestions s'enrichissent.
+      </div>
+    </div>
+
+    <!-- ── LOCUTEUR ── -->
+    <div class="help-section">
+      <div class="help-section-head">
+        <div class="help-section-icon hsi-coral"><i class="ti ti-user"></i></div>
+        <span class="help-section-title">Tags de locuteur</span>
+      </div>
+      <div class="help-card">
+        <div class="help-row">
+          <span class="help-chip" style="background:#E6F1FB;color:#185FA5;">Jésus parle</span>
+          <span class="help-text">Attribution à haute confiance. Le discours est identifié comme direct dans la source.</span>
+        </div>
+        <div class="help-row">
+          <span class="help-chip" style="background:#F0EAF8;color:#5B3A8C;">Marie parle</span>
+          <span class="help-text">Attribution à haute confiance.</span>
+        </div>
+        <div class="help-row">
+          <span class="help-chip light">Luisa écrit</span>
+          <span class="help-text">Texte narratif de Luisa elle-même.</span>
+        </div>
+        <div class="help-divider"></div>
+        <div class="help-row">
+          <span class="help-chip outline">(probable)</span>
+          <span class="help-text">Confiance moyenne — l'attribution est probable mais pas certaine. Visible uniquement en <b>Mode Étudier</b> avec un niveau de confiance détaillé.</span>
+        </div>
+      </div>
+      <div class="help-tip">
+        Les attributions à confiance basse ne sont jamais affichées — même en Mode Étudier. L'application ne présente jamais une attribution incertaine comme un fait établi.
+      </div>
+    </div>
+
+    <!-- ── MON ESPACE ── -->
+    <div class="help-section">
+      <div class="help-section-head">
+        <div class="help-section-icon hsi-teal"><i class="ti ti-bookmark"></i></div>
+        <span class="help-section-title">Mon Espace</span>
+      </div>
+      <div class="help-card">
+        <div class="help-row">
+          <span class="help-chip light">Notes</span>
+          <span class="help-text">Toutes vos notes, triées de la plus récente. Appuyez pour revenir au passage.</span>
+        </div>
+        <div class="help-row">
+          <span class="help-chip light">Surlignages</span>
+          <span class="help-text">Tous vos surlignages avec référence et texte. Appuyez pour naviguer vers le passage.</span>
+        </div>
+        <div class="help-row">
+          <span class="help-chip light">Favoris</span>
+          <span class="help-text">Entrées ajoutées via ♥ dans le lecteur.</span>
+        </div>
+        <div class="help-row">
+          <span class="help-chip light">Collections</span>
+          <span class="help-text">Vos collections de passages pour le cénacle et l'étude.</span>
+        </div>
+        <div class="help-divider"></div>
+        <div class="help-row">
+          <span class="help-chip light">↓ Sauvegarder</span>
+          <span class="help-text">L'icône en haut de Mon Espace exporte toutes vos données en fichier JSON sur votre appareil. Conservez ce fichier comme sauvegarde.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── OFFLINE ── -->
+    <div class="help-section">
+      <div class="help-section-head">
+        <div class="help-section-icon hsi-amber"><i class="ti ti-wifi-off"></i></div>
+        <span class="help-section-title">Utilisation hors ligne</span>
+      </div>
+      <div class="help-card">
+        <div class="help-text" style="padding:2px 0;">
+          Une fois installée sur votre écran d'accueil, l'application fonctionne <b>entièrement sans connexion internet</b>. Vos notes, surlignages et collections sont également disponibles hors ligne. Aucune donnée n'est envoyée à un serveur.
+        </div>
+      </div>
+    </div>
+
+    <div class="help-version">Livre du Ciel PWA · v1.2.0 · Tomes 1–6</div>
+
+  </div><!-- end scroll -->
 </div>
 
 <!-- BOTTOM NAV -->
@@ -2125,6 +2408,18 @@ async function searchBySpeaker(speaker, vol, excludeEntryId, limit) {
                  e.speakers && e.speakers.includes(speaker) &&
                  e.speaker_confidence === 'high')
     .slice(0, limit);
+}
+
+
+/* ═══════════════════════════════════════════════════════
+   HELP SCREEN
+═══════════════════════════════════════════════════════ */
+function openHelp() {
+  showScreen('help');
+}
+function closeHelp() {
+  // Return to whichever screen was active before
+  goHome();
 }
 
 /* ═══════════════════════════════════════════════════════
