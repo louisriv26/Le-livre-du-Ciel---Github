@@ -36,6 +36,33 @@ html[data-theme="dark"]{
   --ivory:#1A1612;--night:#E8D9C4;--gold:#D4A843;--gold-light:#5A4520;
   --gold-pale:#2A2010;--ink:#D4C8BC;--muted:#8A7E72;--border:#2E2820;--white:#201C18;
 }
+
+/* Dark mode surface corrections */
+@media(prefers-color-scheme:dark){
+  .resume-card{background:#1E2D48 !important;}
+  .rc-ref{color:#E8D9C4 !important;}
+  .help-card{background:#1C1814 !important;}
+  .autour-card{background:#1C1814 !important;}
+  .search-bar{background:#1C1814 !important;}
+  .vol-card{background:#1C1814 !important;}
+  .entry-door{background:#1C1814 !important;}
+  .ha-btn{background:#1C1814 !important;}
+  .result-card:hover{background:#2A2010 !important;}
+  .col-item{background:#111009 !important;}
+  .espace-item:hover{background:#2A2010 !important;}
+}
+html[data-theme="dark"]{
+  .resume-card{background:#1E2D48 !important;}
+  .rc-ref{color:#E8D9C4 !important;}
+  .help-card{background:#1C1814 !important;}
+  .autour-card{background:#1C1814 !important;}
+  .search-bar{background:#1C1814 !important;}
+  .vol-card{background:#1C1814 !important;}
+  .entry-door{background:#1C1814 !important;}
+  .ha-btn{background:#1C1814 !important;}
+  .col-item{background:#111009 !important;}
+}
+
 html[data-theme="light"]{
   --ivory:#F9F6F0;--night:#1A2A4A;--gold:#C9A84C;--gold-light:#E8D5A3;
   --gold-pale:#F5EDD8;--ink:#2C1810;--muted:#7A6E62;--border:#E2D9CC;--white:#FFFFFF;
@@ -341,6 +368,14 @@ mark.hl-blue{background:rgba(80,140,220,.25);color:inherit;}
 
 
 
+
+/* ═══ VERSION BADGE ═══ */
+#version-badge{position:fixed;bottom:calc(58px + var(--sat-bot) + 6px);right:10px;
+  background:var(--night);color:var(--gold);font-size:10px;font-family:var(--body);
+  padding:3px 9px;border-radius:10px;opacity:0;pointer-events:none;
+  transition:opacity .3s;z-index:50;letter-spacing:.04em;}
+#version-badge.show{opacity:1;pointer-events:auto;}
+
 /* ═══ HELP SCREEN ═══ */
 .help-section{padding:16px 18px 4px;}
 .help-section-head{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
@@ -560,6 +595,9 @@ mark.hl-blue{background:rgba(80,140,220,.25);color:inherit;}
     <div style="display:flex;gap:2px;">
       <button class="btn-icon" onclick="openHelp()" title="Aide">
         <i class="ti ti-help-circle"></i>
+      </button>
+      <button class="btn-icon" onclick="toggleTheme()" title="Mode jour/nuit" id="theme-btn">
+        <i class="ti ti-moon"></i>
       </button>
       <button class="btn-icon" onclick="showSizeSheet()" title="Taille du texte">
         <i class="ti ti-letter-a"></i>
@@ -906,10 +944,7 @@ mark.hl-blue{background:rgba(80,140,220,.25);color:inherit;}
           <span class="help-chip light">Même image</span>
           <span class="help-text">Passages de la même famille d'images spirituelles — filet, voile, lumière, feu, mer, croix…</span>
         </div>
-        <div class="help-row">
-          <span class="help-chip light">Même locuteur</span>
-          <span class="help-text">Autres entrées du même tome attribuées au même locuteur avec haute confiance.</span>
-        </div>
+
       </div>
       <div class="help-tip">
         Autour charge les résultats depuis les tomes déjà ouverts pendant votre session. Plus vous lisez, plus les suggestions s'enrichissent.
@@ -990,7 +1025,7 @@ mark.hl-blue{background:rgba(80,140,220,.25);color:inherit;}
       </div>
     </div>
 
-    <div class="help-version">Livre du Ciel PWA · v1.2.0 · Tomes 1–6</div>
+    <div class="help-version" id="help-version-footer"></div>
 
   </div><!-- end scroll -->
 </div>
@@ -1011,7 +1046,17 @@ mark.hl-blue{background:rgba(80,140,220,.25);color:inherit;}
   </button>
 </nav>
 
+<!-- Version badge (tap settings to reveal) -->
+<div id="version-badge"></div>
+
 <script>
+/* ═══════════════════════════════════════════════════════
+   VERSION — single source of truth
+   Update this string on every release.
+═══════════════════════════════════════════════════════ */
+const APP_VERSION = 'v1.3.1';
+const APP_BUILD   = '2026-06-13';
+
 /* ═══════════════════════════════════════════════════════
    STATE
 ═══════════════════════════════════════════════════════ */
@@ -1028,7 +1073,8 @@ const speakerCache= {};   // { vol: [] } — speaker segments
 // Reader state
 let currentEntry   = null;
 let currentVolume  = null;
-let readerBack     = 'entries'; // 'entries' | 'search' | 'tomes'
+let readerBack     = 'entries'; // 'entries' | 'search' | 'tomes' | 'autour'
+let autourOrigin   = null;  // { vol, entryId } — set when navigating from Autour
 let studyMode      = false;
 let pendingParaId  = null;  // anchor to restore
 let selectionRange = null;
@@ -1368,10 +1414,20 @@ async function openEntry(vol, entryId, backDest) {
 }
 
 function backFromReader() {
-  if      (readerBack === 'entries') showScreen('entries');
-  else if (readerBack === 'search')  showScreen('search');
-  else if (readerBack === 'home')    goHome();
-  else                               goTomes();
+  if (readerBack === 'autour' && autourOrigin) {
+    // Return to the entry we were reading before opening Autour
+    const orig = autourOrigin;
+    autourOrigin = null;
+    openEntry(orig.vol, orig.entryId, orig.prevBack);
+  } else if (readerBack === 'entries') {
+    showScreen('entries');
+  } else if (readerBack === 'search') {
+    showScreen('search');
+  } else if (readerBack === 'home') {
+    goHome();
+  } else {
+    goTomes();
+  }
 }
 
 async function navEntry(dir) {
@@ -1423,27 +1479,61 @@ function toggleMode() {
 /* ═══ PARAGRAPH INTERACTION (highlight/note) ═══ */
 function onParaClick(e) {
   if (e.target.classList.contains('hl')) {
-    // Tapped existing highlight — could offer delete
     showToast('Surlignage enregistré');
     return;
   }
-  const sel = window.getSelection();
-  if (sel && sel.toString().trim().length > 3) {
-    const text = sel.toString().trim();
-    const para = e.currentTarget;
-    selectionParaId = para.dataset.paraId;
-    selectionRange  = { text };
-    // Position popup near selection
-    const rect = sel.getRangeAt(0).getBoundingClientRect();
-    const popup = document.getElementById('hl-popup');
-    popup.style.top  = (rect.top - 50 + window.scrollY) + 'px';
-    popup.style.left = Math.max(4, rect.left) + 'px';
-    popup.classList.add('show');
-    e.stopPropagation();
-  }
+  // On touch devices the selection may not be ready on click —
+  // handled by selectionchange listener below.
+  // For mouse (desktop), check immediately.
+  checkAndShowHighlightPopup(e.currentTarget);
 }
 
-document.addEventListener('click', e => {
+// iOS/iPad: use selectionchange to detect when user finishes selecting
+document.addEventListener('selectionchange', () => {
+  const sel = window.getSelection();
+  if (!sel || sel.toString().trim().length <= 3) return;
+  // Find which paragraph the selection is in
+  const anchor = sel.anchorNode;
+  if (!anchor) return;
+  const para = anchor.parentElement
+    ? anchor.parentElement.closest('.dp')
+    : null;
+  if (!para) return;
+  checkAndShowHighlightPopup(para);
+});
+
+function checkAndShowHighlightPopup(paraEl) {
+  const sel = window.getSelection();
+  if (!sel || sel.toString().trim().length <= 3) return;
+  const text = sel.toString().trim();
+  if (!paraEl || !paraEl.dataset) return;
+  selectionParaId = paraEl.dataset.paraId;
+  selectionRange  = { text };
+  // Use getBoundingClientRect for fixed positioning (works in scroll containers)
+  try {
+    const range = sel.getRangeAt(0);
+    const rect  = range.getBoundingClientRect();
+    const popup = document.getElementById('hl-popup');
+    // Position above selection, clamped to viewport
+    const top  = Math.max(8, rect.top - 54);
+    const left = Math.max(4, Math.min(rect.left, window.innerWidth - 240));
+    popup.style.top  = top  + 'px';
+    popup.style.left = left + 'px';
+    popup.classList.add('show');
+  } catch(err) { /* selection may have changed */ }
+}
+
+document.addEventListener('touchend', e => {
+  // Small delay to let iOS commit the selection before we check
+  if (!e.target.closest('#hl-popup')) {
+    setTimeout(() => {
+      const sel = window.getSelection();
+      if (!sel || sel.toString().trim().length <= 3) hideHlPopup();
+    }, 300);
+  }
+});
+
+document.addEventListener('mousedown', e => {
   if (!e.target.closest('#hl-popup')) hideHlPopup();
 });
 
@@ -2285,23 +2375,6 @@ async function buildAutourContent(container) {
     );
   }
 
-  // ── Section 5: Même locuteur ──
-  if (entry.speakers && entry.speakers.length && entry.speaker_confidence === 'high') {
-    const spk = entry.speakers[0];
-    const spkResults = await searchBySpeaker(spk, vol, entry.id, 4);
-    const spkLabel = { JESUS:'Jésus parle', MARIE:'Marie parle', LUISA:'Luisa écrit' }[spk] || spk;
-    renderAutourSection(container, 'Même locuteur — ' + spkLabel,
-      'ti-user', 'same-vol', spkResults.map(e => ({
-        ref:      e.stable_ref,
-        vol:      vol,
-        entry_id: e.id,
-        para_id:  null,
-        text:     e.title || '',
-        tag:      spkLabel,
-        tagCls:   'same-vol',
-      }))
-    );
-  }
 
   if (!container.querySelector('.autour-card')) {
     container.innerHTML = '<div class="autour-empty" style="padding:24px 20px;text-align:center;">' +
@@ -2326,8 +2399,14 @@ function renderAutourSection(container, label, icon, type, items) {
       <span class="autour-card-tag ${item.tagCls}">${item.tag}</span>`;
     card.onclick = () => {
       closeAutour();
+      // Remember where we were so back returns here
+      autourOrigin = {
+        vol:      currentVolume,
+        entryId:  currentEntry ? currentEntry.id : null,
+        prevBack: readerBack
+      };
       if (item.para_id) pendingParaId = item.para_id;
-      openEntry(item.vol, item.entry_id, 'reader');
+      openEntry(item.vol, item.entry_id, 'autour');
     };
     section.appendChild(card);
   });
@@ -2401,21 +2480,44 @@ async function searchImageFamily(terms, excludeEntryId, limit) {
   return results;
 }
 
-async function searchBySpeaker(speaker, vol, excludeEntryId, limit) {
-  await loadVolumeData(vol);
-  return corpusCache[vol].entries
-    .filter(e => e.id !== excludeEntryId &&
-                 e.speakers && e.speakers.includes(speaker) &&
-                 e.speaker_confidence === 'high')
-    .slice(0, limit);
+
+
+
+
+/* ═══════════════════════════════════════════════════════
+   THEME TOGGLE
+═══════════════════════════════════════════════════════ */
+async function toggleTheme() {
+  const html = document.documentElement;
+  const current = html.getAttribute('data-theme');
+  // Determine effective current theme
+  const isDark = current === 'dark' ||
+    (current === 'system' && window.matchMedia('(prefers-color-scheme:dark)').matches) ||
+    (!current && window.matchMedia('(prefers-color-scheme:dark)').matches);
+  const next = isDark ? 'light' : 'dark';
+  html.setAttribute('data-theme', next);
+  await dbPut('settings', { key:'theme', val: next });
+  updateThemeBtn(next);
+  showToast(next === 'dark' ? 'Mode nuit' : 'Mode jour');
 }
 
+function updateThemeBtn(theme) {
+  const btn = document.getElementById('theme-btn');
+  if (!btn) return;
+  const isDark = theme === 'dark' ||
+    (theme === 'system' && window.matchMedia('(prefers-color-scheme:dark)').matches);
+  btn.querySelector('i').className = isDark ? 'ti ti-sun' : 'ti ti-moon';
+}
 
 /* ═══════════════════════════════════════════════════════
    HELP SCREEN
 ═══════════════════════════════════════════════════════ */
 function openHelp() {
   showScreen('help');
+  // Show version badge briefly
+  const badge = document.getElementById('version-badge');
+  badge.classList.add('show');
+  setTimeout(() => badge.classList.remove('show'), 3000);
 }
 function closeHelp() {
   // Return to whichever screen was active before
@@ -2467,8 +2569,20 @@ async function boot() {
   const szSetting = await dbGet('settings','textSize');
   if (szSetting) document.documentElement.style.setProperty('--reader-size', szSetting.val + 'px');
 
+  // Restore theme
+  const themeSetting = await dbGet('settings','theme');
+  const savedTheme = themeSetting ? themeSetting.val : 'system';
+  document.documentElement.setAttribute('data-theme', savedTheme);
+  updateThemeBtn(savedTheme);
+
   // Preload vol 1 in background
   loadVolumeData(1).catch(()=>{});
+
+  // Set version strings
+  const vb = document.getElementById('version-badge');
+  if (vb) vb.textContent = APP_VERSION + ' · ' + APP_BUILD;
+  const vf = document.getElementById('help-version-footer');
+  if (vf) vf.textContent = 'Livre du Ciel PWA · ' + APP_VERSION + ' · ' + APP_BUILD + ' · Tomes 1–6';
 
   renderVolFilterRow();
   await renderHome();
