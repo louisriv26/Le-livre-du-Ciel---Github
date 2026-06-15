@@ -1,11 +1,11 @@
 {
-  "version": "v7",
+  "version": "v8",
   "corpus": "livre_du_ciel",
-  "generated": "2026-06-14",
+  "generated": "2026-06-15",
   "total_paragraphs": 74476,
   "total_entries": 2307,
-  "total_corrections": 20552,
-  "correction_ledger": "combined_correction_ledger_v7.csv",
+  "total_corrections": 20554,
+  "correction_ledger": "combined_correction_ledger_v8.csv (external)",
   "volumes_available": [
     1,
     2,
@@ -45,7 +45,7 @@
     36
   ],
   "volumes_total": 36,
-  "status": "validated_v7",
+  "status": "validated_v8",
   "speech_resynced": true,
-  "notes": "74,476 paragraphs. 20,552 corrections. Full text scan complete. 1 flag for human review."
+  "notes": "74,476 paragraphs. 20,554 corrections. Full scan complete. 1 flag for human review."
 }

@@ -351,7 +351,7 @@ mark.hl-blue{background:rgba(80,140,220,.25);color:inherit;}
   background:var(--gold-pale);color:#7A5A20;border-radius:10px;
   padding:2px 8px;font-size:11px;margin-left:6px;}
 
-.result-card{padding:14px 16px;border-bottom:0.5px solid var(--border);
+.result-card{padding:14px 16px;border-bottom:0.5px solid var(--border);width:100%;text-align:left;background:none;
   cursor:pointer;transition:background .1s;}
 .result-card:hover{background:var(--gold-pale);}
 .rc-stable{font-size:10px;letter-spacing:.06em;color:var(--gold);
@@ -467,6 +467,75 @@ mark.hl-blue{background:rgba(80,140,220,.25);color:inherit;}
   padding:3px 9px;border-radius:10px;opacity:0;pointer-events:none;
   transition:opacity .3s;z-index:50;letter-spacing:.04em;}
 #version-badge.show{opacity:1;pointer-events:auto;}
+
+
+/* ═══ INLINE SPEECH RENDERING ═══ */
+/* Jesus speech: visually set apart, quotation style */
+.speech-jesus {
+  display: block;
+  margin: 0.4em 0 0.4em 0;
+  padding: 2px 0 2px 14px;
+  border-left: 2.5px solid var(--gold);
+  color: var(--ink);
+  font-style: inherit;
+}
+/* Luisa narrative: normal */
+.speech-luisa { display: inline; }
+/* Marie speech: purple-tinted left border */
+.speech-marie {
+  display: block;
+  margin: 0.4em 0 0.4em 0;
+  padding: 2px 0 2px 14px;
+  border-left: 2.5px solid #7B5EA7;
+  color: var(--ink);
+}
+/* Inline speaker attribution label (small, above the block) */
+.speech-label {
+  display: block;
+  font-size: 10px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+  margin-left: 14px;
+  opacity: .7;
+  font-family: var(--body);
+}
+.speech-label.lbl-jesus { color: #185FA5; }
+.speech-label.lbl-marie { color: #5B3A8C; }
+/* In study mode show confidence */
+.speech-conf {
+  display: none;
+  font-size: 10px;
+  color: var(--muted);
+  font-style: italic;
+  margin-left: 14px;
+}
+.study-mode .speech-conf { display: block; }
+
+/* Update banner */
+#update-banner {
+  display: none;
+  background: var(--night);
+  color: var(--gold);
+  text-align: center;
+  padding: 10px 16px;
+  font-size: 13px;
+  font-family: var(--body);
+  flex-shrink: 0;
+  cursor: pointer;
+}
+#update-banner.show { display: block; }
+
+/* Version pill — always visible in top bar */
+.version-pill {
+  font-size: 10px;
+  color: var(--muted);
+  font-family: var(--body);
+  padding: 2px 7px;
+  border: 0.5px solid var(--border);
+  border-radius: 8px;
+  white-space: nowrap;
+}
 
 /* ═══ HELP SCREEN ═══ */
 .help-section{padding:16px 18px 4px;}
@@ -682,9 +751,13 @@ mark.hl-blue{background:rgba(80,140,220,.25);color:inherit;}
 
 <!-- HOME -->
 <div class="screen active" id="screen-home">
+  <div id="update-banner" onclick="reloadForUpdate()">
+    Nouvelle version disponible — appuyez pour mettre à jour
+  </div>
   <div class="top-bar">
     <span class="top-bar-title">Livre du Ciel</span>
-    <div style="display:flex;gap:2px;">
+    <div style="display:flex;gap:4px;align-items:center;">
+      <span class="version-pill" id="version-pill-home"></span>
       <button class="btn-icon" onclick="openHelp()" title="Aide">
         <i class="ti ti-help-circle"></i>
       </button>
@@ -1021,7 +1094,7 @@ mark.hl-blue{background:rgba(80,140,220,.25);color:inherit;}
       <div class="help-card">
         <div class="help-row">
           <span class="help-chip">Autour</span>
-          <span class="help-text">Bouton dans la barre du lecteur. Ouvre un panneau avec jusqu'à quatre sections de passages liés, sans avoir à retourner à la recherche.</span>
+          <span class="help-text">Bouton dans la barre du lecteur. Ouvre un panneau avec jusqu'à trois sections de passages liés, sans avoir à retourner à la recherche.</span>
         </div>
         <div class="help-divider"></div>
         <div class="help-row">
@@ -1039,7 +1112,7 @@ mark.hl-blue{background:rgba(80,140,220,.25);color:inherit;}
 
       </div>
       <div class="help-tip">
-        Autour charge les résultats depuis les tomes déjà ouverts pendant votre session. Plus vous lisez, plus les suggestions s'enrichissent.
+        Autour charge les résultats depuis les tomes déjà ouverts pendant la session. Plus vous lisez, plus les suggestions s'enrichissent. Le quatrième section (même locuteur) a été retirée — trop homogène dans ce corpus.
       </div>
     </div>
 
@@ -1112,7 +1185,7 @@ mark.hl-blue{background:rgba(80,140,220,.25);color:inherit;}
       </div>
       <div class="help-card">
         <div class="help-text" style="padding:2px 0;">
-          Une fois installée sur votre écran d'accueil, l'application fonctionne <b>entièrement sans connexion internet</b>. Vos notes, surlignages et collections sont également disponibles hors ligne. Aucune donnée n'est envoyée à un serveur.
+          Une fois installée et les tomes ouverts une première fois, l'application fonctionne <b>sans connexion internet</b>. Chaque tome est mis en cache lors de sa première ouverture. Vos notes, surlignages et collections sont disponibles hors ligne. Aucune donnée n'est envoyée à un serveur.
         </div>
       </div>
     </div>
@@ -1124,17 +1197,17 @@ mark.hl-blue{background:rgba(80,140,220,.25);color:inherit;}
 
 <!-- BOTTOM NAV -->
 <nav id="nav">
-  <button class="nav-item active" onclick="goHome()" id="nav-home">
-    <i class="ti ti-home"></i><span>Accueil</span>
+  <button class="nav-item active" onclick="goHome()" id="nav-home" aria-label="Accueil">
+    <i class="ti ti-home" aria-hidden="true"></i><span>Accueil</span>
   </button>
-  <button class="nav-item" onclick="goTomes()" id="nav-tomes">
-    <i class="ti ti-books"></i><span>Tomes</span>
+  <button class="nav-item" onclick="goTomes()" id="nav-tomes" aria-label="Bibliothèque">
+    <i class="ti ti-books" aria-hidden="true"></i><span>Tomes</span>
   </button>
-  <button class="nav-item" onclick="goSearch()" id="nav-search">
-    <i class="ti ti-search"></i><span>Chercher</span>
+  <button class="nav-item" onclick="goSearch()" id="nav-search" aria-label="Chercher">
+    <i class="ti ti-search" aria-hidden="true"></i><span>Chercher</span>
   </button>
-  <button class="nav-item" onclick="goEspace()" id="nav-espace">
-    <i class="ti ti-bookmark"></i><span>Mon Espace</span>
+  <button class="nav-item" onclick="goEspace()" id="nav-espace" aria-label="Mon Espace">
+    <i class="ti ti-bookmark" aria-hidden="true"></i><span>Mon Espace</span>
   </button>
 </nav>
 
@@ -1146,7 +1219,7 @@ mark.hl-blue{background:rgba(80,140,220,.25);color:inherit;}
    VERSION — single source of truth
    Update this string on every release.
 ═══════════════════════════════════════════════════════ */
-const APP_VERSION = 'v2.2.0';
+const APP_VERSION = 'v2.4.0';
 const APP_BUILD   = '2026-06-15';
 
 /* ═══════════════════════════════════════════════════════
@@ -1168,6 +1241,7 @@ let currentEntry   = null;
 let currentVolume  = null;
 let readerBack     = 'entries'; // 'entries' | 'search' | 'tomes' | 'autour'
 let autourOrigin   = null;  // { vol, entryId } — set when navigating from Autour
+let previousScreen = 'home'; // screen before Help was opened
 let studyMode      = false;
 let pendingParaId  = null;  // anchor to restore
 let selectionRange = null;
@@ -1432,30 +1506,37 @@ async function openEntry(vol, entryId, backDest) {
   const allHl = await dbGetAll('highlights');
   const entryHl = allHl.filter(h => h.entry_id === entryId);
 
-  // Speaker segments for this entry
-  const spkSegs = (speakerCache[vol]||[]).filter(s => s.entry_id === entryId);
+  // Load speech segments for this entry (offset-based inline rendering)
+  const allSpkSegs = (speakerCache[vol] || []).filter(s => s.entry_id === entryId);
+  // Index by paragraph_id for fast lookup
+  const segsByPara = {};
+  for (const s of allSpkSegs) {
+    const pid = s.paragraph_id;
+    if (!segsByPara[pid]) segsByPara[pid] = [];
+    segsByPara[pid].push(s);
+  }
 
   paras.forEach((p, pidx) => {
-    // Speaker tag — show before first paragraph of an entry with high-confidence speaker
-    if (pidx === 0 && currentEntry.has_speech && currentEntry.speakers && currentEntry.speakers.length) {
-      const spk = currentEntry.speakers[0];
-      const conf = currentEntry.speaker_confidence || 'high';
-      const tag = buildSpeakerTag(spk, conf);
-      if (tag) body.appendChild(tag);
-    }
     const div = document.createElement('div');
     div.className = 'dp';
     div.id = 'p_' + p.id;
     div.dataset.paraId = p.id;
     div.dataset.stableRef = p.stable_ref;
 
-    let text = escapeHtml(p.text);
-    // Apply stored highlights
-    entryHl.filter(h=>h.para_id===p.id).forEach(h => {
-      text = text.replace(escapeHtml(h.text),
-        `<mark class="hl hl-${h.color}" data-hl-id="${h.id}">${escapeHtml(h.text)}</mark>`);
-    });
-    div.innerHTML = text;
+    const paraSegs = segsByPara[p.id] || [];
+    const hasSpeech = paraSegs.length > 0;
+
+    if (hasSpeech) {
+      // Build inline speech rendering from offsets
+      div.innerHTML = buildSpeechHTML(p.text, paraSegs, entryHl.filter(h=>h.para_id===p.id));
+    } else {
+      let text = escapeHtml(p.text);
+      entryHl.filter(h=>h.para_id===p.id).forEach(h => {
+        text = text.replace(escapeHtml(h.text),
+          `<mark class="hl hl-${h.color}" data-hl-id="${h.id}">${escapeHtml(h.text)}</mark>`);
+      });
+      div.innerHTML = text;
+    }
     div.addEventListener('click', onParaClick);
     body.appendChild(div);
   });
@@ -1552,11 +1633,13 @@ async function saveReadingPos(vol, entryId, paraId, label, excerpt) {
 /* ═══ MODE TOGGLE ═══ */
 function toggleMode() {
   studyMode = !studyMode;
-  const btn  = document.getElementById('mode-toggle');
-  const prov = document.getElementById('provenance');
+  const btn    = document.getElementById('mode-toggle');
+  const prov   = document.getElementById('provenance');
+  const scroll = document.getElementById('reader-scroll');
   btn.textContent = studyMode ? 'Lire' : 'Étudier';
   btn.classList.toggle('study', studyMode);
   prov.classList.toggle('show', studyMode);
+  scroll.classList.toggle('study-mode', studyMode);
 }
 
 /* ═══ PARAGRAPH INTERACTION (highlight/note) ═══ */
@@ -1635,7 +1718,8 @@ async function applyHighlight(color) {
     color,
     ts: Date.now(),
   });
-  // Re-render paragraphs
+  // Re-render paragraphs — preserve paragraph anchor
+  pendingParaId = selectionParaId;
   await openEntry(currentVolume, currentEntry.id, readerBack);
   showToast('Surlignage enregistré');
 }
@@ -1763,6 +1847,119 @@ async function shareCitation() {
   } catch(e) {
     showToast('Référence copiée');
   }
+}
+
+
+/* ═══════════════════════════════════════════════════════
+   INLINE SPEECH RENDERING
+   Splits paragraph text into styled spans by speaker offset.
+   Jesus speech → gold left border block.
+   Marie speech → purple left border block.
+   Luisa/narrative → normal inline text.
+═══════════════════════════════════════════════════════ */
+function buildSpeechHTML(text, segments, highlights) {
+  if (!segments || !segments.length) return applyHighlights(escapeHtml(text), highlights);
+
+  // Resolve overlaps: where segments overlap, use the more specific (shorter) one
+  // Sort by start, then by length descending (longer = outer context)
+  const sorted = [...segments]
+    .filter(s => {
+      const start = parseInt(s.start_char || 0);
+      const end   = parseInt(s.end_char   || 0);
+      return end > start; // skip zero-length
+    })
+    .sort((a, b) => parseInt(a.start_char) - parseInt(b.start_char));
+
+  // Remove overlapping outer segments (keep inner/more-specific)
+  const resolved = [];
+  for (const seg of sorted) {
+    const start = parseInt(seg.start_char);
+    const end   = parseInt(seg.end_char);
+    // If this segment is contained within the last resolved, skip outer
+    if (resolved.length > 0) {
+      const prev = resolved[resolved.length - 1];
+      const prevStart = parseInt(prev.start_char);
+      const prevEnd   = parseInt(prev.end_char);
+      if (start >= prevStart && end <= prevEnd) {
+        // This seg is inside prev — replace prev with this (more specific)
+        resolved[resolved.length - 1] = seg;
+        continue;
+      }
+      if (start < prevEnd) {
+        // Partial overlap — trim previous to avoid overlap
+        prev._end_override = start;
+      }
+    }
+    resolved.push({ ...seg });
+  }
+
+  // Build spans: walk through text, emit spans for each region
+  const spans = [];
+  let pos = 0;
+  const tlen = text.length;
+
+  for (const seg of resolved) {
+    const start = parseInt(seg.start_char);
+    const end   = Math.min(parseInt(seg._end_override || seg.end_char), tlen);
+    const spk   = seg.speaker || 'LUISA';
+    const conf  = seg.confidence || 'low';
+
+    // Text before this segment (Luisa narrative)
+    if (pos < start && start <= tlen) {
+      const before = text.slice(pos, start);
+      if (before.trim()) spans.push({ type: 'narrative', text: before });
+    }
+
+    // Speech segment
+    if (start < end) {
+      const speechText = text.slice(start, end);
+      spans.push({ type: 'speech', speaker: spk, confidence: conf, text: speechText });
+    }
+    pos = end;
+  }
+
+  // Remaining narrative after last segment
+  if (pos < tlen) {
+    const after = text.slice(pos);
+    if (after.trim()) spans.push({ type: 'narrative', text: after });
+  }
+
+  // Render spans to HTML
+  let html = '';
+  for (const span of spans) {
+    if (span.type === 'narrative') {
+      html += applyHighlights(escapeHtml(span.text), highlights);
+    } else {
+      const spk = span.speaker;
+      const conf = span.confidence;
+      // Only render high/medium confidence (hide low)
+      if (conf === 'low') {
+        html += applyHighlights(escapeHtml(span.text), highlights);
+        continue;
+      }
+      const cls   = spk === 'JESUS' ? 'speech-jesus' : spk === 'MARIE' ? 'speech-marie' : '';
+      const lbl   = spk === 'JESUS' ? 'Jésus' : spk === 'MARIE' ? 'Marie' : '';
+      const lblCls= spk === 'JESUS' ? 'lbl-jesus' : 'lbl-marie';
+      const confLabel = conf === 'medium' ? ' <em>(probable)</em>' : '';
+      if (cls) {
+        html += `<span class="speech-label ${lblCls}">${lbl}${confLabel}</span>`;
+        html += `<span class="${cls}">${applyHighlights(escapeHtml(span.text), highlights)}</span>`;
+      } else {
+        html += applyHighlights(escapeHtml(span.text), highlights);
+      }
+    }
+  }
+  return html || applyHighlights(escapeHtml(text), highlights);
+}
+
+function applyHighlights(escapedText, highlights) {
+  if (!highlights || !highlights.length) return escapedText;
+  let t = escapedText;
+  highlights.forEach(h => {
+    t = t.replace(escapeHtml(h.text),
+      `<mark class="hl hl-${h.color}" data-hl-id="${h.id}">${escapeHtml(h.text)}</mark>`);
+  });
+  return t;
 }
 
 function buildSpeakerTag(speaker, confidence) {
@@ -1958,6 +2155,14 @@ function normalise(s) {
 async function runSearch() {
   const raw = document.getElementById('search-input').value.trim();
   if (!raw) return;
+  // Require at least 3 normalised characters to avoid noisy broad results
+  const normCheck = normalise(raw).replace(/\s+/g,'');
+  if (normCheck.length < 3) {
+    document.getElementById('search-meta').style.display = 'block';
+    document.getElementById('search-meta').textContent = 'Saisissez au moins 3 caractères.';
+    document.getElementById('search-results').innerHTML = '';
+    return;
+  }
 
   const norm = normalise(raw);
   const words = norm.split(/\s+/).filter(w=>w.length>2);
@@ -2047,8 +2252,9 @@ async function runSearch() {
   }
 
   results.forEach(r => {
-    const card = document.createElement('div');
+    const card = document.createElement('button');
     card.className = 'result-card';
+    card.type = 'button';
     const tagClass = { exact:'exact', words:'exact', partial:'approximate', weak:'thematic', thematic:'thematic' }[r.matchType] || 'thematic';
     const tagLabel = { exact:'Phrase exacte', words:'Mots exacts', partial:'Idée proche', weak:'Thème approché', thematic:'Thème lié' }[r.matchType] || '';
     const excerpt = r.text.slice(0, 220) + (r.text.length > 220 ? '…' : '');
@@ -2604,15 +2810,22 @@ function updateThemeBtn(theme) {
    HELP SCREEN
 ═══════════════════════════════════════════════════════ */
 function openHelp() {
+  // Remember current screen to restore on close
+  const current = document.querySelector('.screen.active');
+  if (current) previousScreen = current.id.replace('screen-','');
   showScreen('help');
-  // Show version badge briefly
-  const badge = document.getElementById('version-badge');
-  badge.classList.add('show');
-  setTimeout(() => badge.classList.remove('show'), 3000);
 }
 function closeHelp() {
-  // Return to whichever screen was active before
-  goHome();
+  // Return to screen that was active before Help was opened
+  const map = {
+    home:'home', tomes:'tomes', entries:'entries',
+    reader:'reader', search:'search', espace:'espace'
+  };
+  if (previousScreen && map[previousScreen]) {
+    showScreen(previousScreen);
+  } else {
+    goHome();
+  }
 }
 
 /* ═══════════════════════════════════════════════════════
@@ -2711,6 +2924,8 @@ async function boot() {
   if (vb) vb.textContent = APP_VERSION + ' · ' + APP_BUILD;
   const vf = document.getElementById('help-version-footer');
   if (vf) vf.textContent = 'Livre du Ciel PWA · ' + APP_VERSION + ' · ' + APP_BUILD + ' · 36 tomes';
+  const vp = document.getElementById('version-pill-home');
+  if (vp) vp.textContent = APP_VERSION;
 
   renderVolFilterRow();
   await renderHome();
@@ -2723,8 +2938,36 @@ async function boot() {
   }
 
   // Background preload of search indexes and volume metadata
-  // Runs silently after UI is shown — does not block boot
   setTimeout(() => preloadSearchIndexes().catch(()=>{}), 500);
+
+  // Check for service worker update
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.ready.then(reg => {
+      reg.addEventListener('updatefound', () => {
+        const newWorker = reg.installing;
+        if (!newWorker) return;
+        newWorker.addEventListener('statechange', () => {
+          if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+            // New version cached and ready
+            document.getElementById('update-banner').classList.add('show');
+          }
+        });
+      });
+      // Trigger immediate check
+      reg.update().catch(()=>{});
+    });
+  }
+}
+
+function reloadForUpdate() {
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.ready.then(reg => {
+      if (reg.waiting) {
+        reg.waiting.postMessage({ type: 'SKIP_WAITING' });
+      }
+    });
+  }
+  window.location.reload();
 }
 
 boot();
