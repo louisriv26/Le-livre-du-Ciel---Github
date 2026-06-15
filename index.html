@@ -37,31 +37,120 @@ html[data-theme="dark"]{
   --gold-pale:#2A2010;--ink:#D4C8BC;--muted:#8A7E72;--border:#2E2820;--white:#201C18;
 }
 
-/* Dark mode surface corrections */
+
+/* ══ DARK MODE SURFACE FIXES ══
+   Applied when system is dark OR user toggled dark manually.
+   Keeps surfaces readable without blown-out contrast. */
 @media(prefers-color-scheme:dark){
-  .resume-card{background:#1E2D48 !important;}
-  .rc-ref{color:#E8D9C4 !important;}
-  .help-card{background:#1C1814 !important;}
-  .autour-card{background:#1C1814 !important;}
-  .search-bar{background:#1C1814 !important;}
-  .vol-card{background:#1C1814 !important;}
-  .entry-door{background:#1C1814 !important;}
-  .ha-btn{background:#1C1814 !important;}
-  .result-card:hover{background:#2A2010 !important;}
-  .col-item{background:#111009 !important;}
-  .espace-item:hover{background:#2A2010 !important;}
+  :root:not([data-theme="light"]) .resume-card,
+  html[data-theme="dark"] .resume-card
+  { background:#1A2540 !important; }
+
+  :root:not([data-theme="light"]) .rc-ref,
+  html[data-theme="dark"] .rc-ref
+  { color:#D4C8BC !important; }
+
+  :root:not([data-theme="light"]) .rc-excerpt,
+  html[data-theme="dark"] .rc-excerpt
+  { color:rgba(212,200,188,.6) !important; }
+
+  :root:not([data-theme="light"]) .rc-btn,
+  html[data-theme="dark"] .rc-btn
+  { background:#C9A84C !important; color:#1A1612 !important; }
+
+  /* Card surfaces — mid dark, not pitch black */
+  :root:not([data-theme="light"]) .help-card,
+  :root:not([data-theme="light"]) .autour-card,
+  :root:not([data-theme="light"]) .vol-card,
+  :root:not([data-theme="light"]) .entry-door,
+  :root:not([data-theme="light"]) .ha-btn,
+  :root:not([data-theme="light"]) .result-card,
+  html[data-theme="dark"] .help-card,
+  html[data-theme="dark"] .autour-card,
+  html[data-theme="dark"] .vol-card,
+  html[data-theme="dark"] .entry-door,
+  html[data-theme="dark"] .ha-btn,
+  html[data-theme="dark"] .result-card
+  { background:#242018 !important; }
+
+  /* Search bar */
+  :root:not([data-theme="light"]) .search-bar,
+  html[data-theme="dark"] .search-bar
+  { background:#242018 !important; }
+
+  /* Collection items */
+  :root:not([data-theme="light"]) .col-item,
+  html[data-theme="dark"] .col-item
+  { background:#1A1612 !important; }
+
+  /* Sheet overlays — slightly lighter than page bg */
+  :root:not([data-theme="light"]) .sheet,
+  :root:not([data-theme="light"]) #autour-sheet,
+  html[data-theme="dark"] .sheet,
+  html[data-theme="dark"] #autour-sheet
+  { background:#201C18 !important; }
+
+  /* Primary button (Créer et ajouter, Enregistrer, Reprendre) */
+  :root:not([data-theme="light"]) .btn-primary,
+  html[data-theme="dark"] .btn-primary
+  { background:#C9A84C !important; color:#1A1612 !important; }
+
+  /* Secondary button */
+  :root:not([data-theme="light"]) .btn-secondary,
+  html[data-theme="dark"] .btn-secondary
+  { background:#2A2418 !important; color:#8A7E72 !important;
+    border-color:#3A3020 !important; }
+
+  /* Highlight popup */
+  :root:not([data-theme="light"]) #hl-popup,
+  html[data-theme="dark"] #hl-popup
+  { background:#2A2418 !important; border:0.5px solid #3A3020; }
+
+  :root:not([data-theme="light"]) .hl-opt,
+  html[data-theme="dark"] .hl-opt
+  { color:#C9A84C !important; }
+
+  /* Collection picker items */
+  :root:not([data-theme="light"]) .col-pick-item:hover,
+  html[data-theme="dark"] .col-pick-item:hover
+  { background:#2A2418 !important; }
+
+  /* New collection input */
+  :root:not([data-theme="light"]) .col-new-input,
+  :root:not([data-theme="light"]) .note-textarea,
+  html[data-theme="dark"] .col-new-input,
+  html[data-theme="dark"] .note-textarea
+  { background:#2A2418 !important; color:#D4C8BC !important;
+    border-color:#3A3020 !important; }
+
+  /* Size overlay slider area */
+  :root:not([data-theme="light"]) #size-overlay .sheet,
+  html[data-theme="dark"] #size-overlay .sheet
+  { background:#201C18 !important; }
+
+  /* Espace items */
+  :root:not([data-theme="light"]) .espace-item:hover,
+  html[data-theme="dark"] .espace-item:hover
+  { background:#2A2418 !important; }
 }
-html[data-theme="dark"]{
-  .resume-card{background:#1E2D48 !important;}
-  .rc-ref{color:#E8D9C4 !important;}
-  .help-card{background:#1C1814 !important;}
-  .autour-card{background:#1C1814 !important;}
-  .search-bar{background:#1C1814 !important;}
-  .vol-card{background:#1C1814 !important;}
-  .entry-door{background:#1C1814 !important;}
-  .ha-btn{background:#1C1814 !important;}
-  .col-item{background:#111009 !important;}
-}
+/* Repeat key rules for explicit data-theme=dark (manual toggle) */
+html[data-theme="dark"] .resume-card { background:#1A2540 !important; }
+html[data-theme="dark"] .btn-primary  { background:#C9A84C !important; color:#1A1612 !important; }
+html[data-theme="dark"] .btn-secondary{ background:#2A2418 !important; color:#8A7E72 !important; border-color:#3A3020 !important; }
+html[data-theme="dark"] #hl-popup    { background:#2A2418 !important; border:0.5px solid #3A3020; }
+html[data-theme="dark"] .hl-opt      { color:#C9A84C !important; }
+html[data-theme="dark"] .sheet       { background:#201C18 !important; }
+html[data-theme="dark"] #autour-sheet{ background:#201C18 !important; }
+html[data-theme="dark"] .col-new-input{ background:#2A2418 !important; color:#D4C8BC !important; border-color:#3A3020 !important; }
+html[data-theme="dark"] .note-textarea{ background:#2A2418 !important; color:#D4C8BC !important; border-color:#3A3020 !important; }
+html[data-theme="dark"] .search-bar  { background:#242018 !important; }
+html[data-theme="dark"] .help-card   { background:#242018 !important; }
+html[data-theme="dark"] .autour-card { background:#242018 !important; }
+html[data-theme="dark"] .vol-card    { background:#242018 !important; }
+html[data-theme="dark"] .entry-door  { background:#242018 !important; }
+html[data-theme="dark"] .ha-btn      { background:#242018 !important; }
+html[data-theme="dark"] .result-card { background:#242018 !important; }
+
 
 html[data-theme="light"]{
   --ivory:#F9F6F0;--night:#1A2A4A;--gold:#C9A84C;--gold-light:#E8D5A3;
@@ -201,7 +290,10 @@ body{overflow:hidden;display:flex;flex-direction:column;}
 
 .reader-body{padding:0 22px 20px;}
 .dp{font-family:var(--body);font-size:var(--reader-size);line-height:1.85;
-  color:var(--ink);margin-bottom:1.4em;scroll-margin-top:16px;}
+  color:var(--ink);margin-bottom:1.4em;scroll-margin-top:16px;
+  -webkit-user-select:text;user-select:text;}
+/* Suppress iOS callout (native Copy/Translate menu) on reader text */
+#reader-body{-webkit-touch-callout:none;}
 .dp.target{background:rgba(201,168,76,.08);border-radius:4px;padding:4px 6px;margin:-4px -6px;}
 
 /* Study mode provenance */
@@ -1054,8 +1146,8 @@ mark.hl-blue{background:rgba(80,140,220,.25);color:inherit;}
    VERSION — single source of truth
    Update this string on every release.
 ═══════════════════════════════════════════════════════ */
-const APP_VERSION = 'v1.3.1';
-const APP_BUILD   = '2026-06-13';
+const APP_VERSION = 'v2.2.0';
+const APP_BUILD   = '2026-06-15';
 
 /* ═══════════════════════════════════════════════════════
    STATE
@@ -1069,6 +1161,7 @@ const corpusCache = {};   // { vol: { entries:[], byId:{} } }
 const parasCache  = {};   // { vol: [] }
 const searchCache = {};   // { vol: [] }
 const speakerCache= {};   // { vol: [] } — speaker segments
+const volumeMeta  = {};   // { vol: { entry_count, para_count } } — lightweight metadata
 
 // Reader state
 let currentEntry   = null;
@@ -1228,63 +1321,53 @@ async function resumeReading() {
    TOMES
 ═══════════════════════════════════════════════════════ */
 const VOLUME_DEFS = [
-  ...Array.from({length:6}, (_,i) => ({ v: i+1, status:'validated' })),
-  ...Array.from({length:4}, (_,i) => ({ v: i+7, status:'review' })),
-  ...Array.from({length:26},(_,i) => ({ v: i+11, status:'soon' })),
+  ...Array.from({length:36}, (_,i) => ({ v: i+1, status:'validated' })),
 ];
 
 async function renderTomes() {
   const pos = await dbGet('reading_pos','main');
   const list = document.getElementById('tomes-list');
   list.innerHTML = '';
-  document.getElementById('tomes-count').textContent = '6 / 36 disponibles';
+  document.getElementById('tomes-count').textContent = '36 tomes';
 
   const validated = VOLUME_DEFS.filter(v=>v.status==='validated');
   const review    = VOLUME_DEFS.filter(v=>v.status==='review');
   const soon      = VOLUME_DEFS.filter(v=>v.status==='soon');
 
-  async function renderGroup(label, vols) {
-    const sec = document.createElement('div');
-    sec.className = 'vol-grid';
-    if (label) {
-      const l = document.createElement('div');
-      l.className = 'vol-section-label';
-      l.textContent = label;
-      sec.appendChild(l);
-    }
-    for (const vd of vols) {
-      let entries = [], paraCount = 0;
-      if (vd.status === 'validated') {
-        try {
-          await loadVolumeData(vd.v);
-          entries   = corpusCache[vd.v].entries;
-          paraCount = parasCache[vd.v].length;
-        } catch(e) {}
-      }
-      const btn = document.createElement('button');
-      btn.className = 'vol-card' +
-        (vd.status === 'soon' ? ' locked' : '') +
-        (pos && pos.vol === vd.v ? ' current' : '');
-      const statDot = { validated:'vs-ok', review:'vs-rev', soon:'vs-soon' }[vd.status];
-      const statLbl = { validated:'Validé', review:'En révision', soon:'Bientôt' }[vd.status];
-      btn.innerHTML = `
-        <span class="vc-num">T${vd.v}</span>
-        <div class="vc-body">
-          <div class="vc-title">Tome ${vd.v}</div>
-          <div class="vc-sub">${entries.length ? entries.length + ' entrées · ' + paraCount + ' paragraphes' : statLbl}</div>
-        </div>
-        <span class="vc-status ${statDot}" title="${statLbl}"></span>`;
-      if (vd.status !== 'soon') {
-        btn.onclick = () => openTome(vd.v);
-      }
-      sec.appendChild(btn);
-    }
-    list.appendChild(sec);
-  }
+  // Load volume manifests for all tomes (uses cached data if available)
+  // Pre-populated counts from manifest — no need to fully load each tome
+  const manifestData = {};
+  try {
+    const m = await fetch('corpus/manifest.json').then(r=>r.json());
+    // Counts are stored per tome in volume_NN.json — load lazily on demand
+  } catch(e) {}
 
-  await renderGroup('', validated);
-  if (review.length)  await renderGroup('En révision', review);
-  if (soon.length)    await renderGroup('Bientôt disponibles', soon);
+  const grid = document.createElement('div');
+  grid.className = 'vol-grid';
+
+  for (const vd of validated) {
+    // Use cached data if available, otherwise show from corpus metadata
+    let entryCount = 0, paraCount = 0;
+    if (corpusCache[vd.v]) {
+      entryCount = corpusCache[vd.v].entries.length;
+      paraCount  = parasCache[vd.v] ? parasCache[vd.v].length : 0;
+    } else if (volumeMeta[vd.v]) {
+      entryCount = volumeMeta[vd.v].entry_count;
+      paraCount  = volumeMeta[vd.v].para_count;
+    }
+    const btn = document.createElement('button');
+    btn.className = 'vol-card' + (pos && pos.vol === vd.v ? ' current' : '');
+    btn.innerHTML = `
+      <span class="vc-num">T${vd.v}</span>
+      <div class="vc-body">
+        <div class="vc-title">Tome ${vd.v}</div>
+        <div class="vc-sub" id="vol-sub-${vd.v}">${entryCount ? entryCount + ' entrées · ' + paraCount + ' paragraphes' : 'Tome ' + vd.v}</div>
+      </div>
+      <span class="vc-status vs-ok" title="Validé"></span>`;
+    btn.onclick = () => openTome(vd.v);
+    grid.appendChild(btn);
+  }
+  list.appendChild(grid);
 }
 
 async function openTome(vol) {
@@ -1712,7 +1795,7 @@ function renderVolFilterRow() {
   all.textContent = 'Tous';
   all.onclick = () => { searchVolFilter=0; renderVolFilterRow(); if(document.getElementById('search-input').value) runSearch(); };
   row.appendChild(all);
-  for (let v=1;v<=6;v++) {
+  for (let v=1;v<=36;v++) {
     const c = document.createElement('button');
     c.className = 'chip' + (searchVolFilter===v?' active':'');
     c.textContent = `T${v}`;
@@ -1879,10 +1962,18 @@ async function runSearch() {
   const norm = normalise(raw);
   const words = norm.split(/\s+/).filter(w=>w.length>2);
 
-  // Load volumes to search
-  const vols = searchVolFilter ? [searchVolFilter] : [1,2,3,4,5,6];
+  // Search across all loaded volumes (background preload fills searchCache)
+  // For unloaded volumes, load search index on demand
+  const vols = searchVolFilter
+    ? [searchVolFilter]
+    : Array.from({length:36}, (_,i) => i+1);
   for (const v of vols) {
-    try { await loadVolumeData(v); } catch(e) {}
+    if (!searchCache[v]) {
+      try {
+        const sData = await fetch(`corpus/search_${String(v).padStart(2,'0')}.json`).then(r=>r.json());
+        searchCache[v] = sData;
+      } catch(e) {}
+    }
   }
 
   let allItems = [];
@@ -2562,6 +2653,43 @@ function showToast(msg) {
 /* ═══════════════════════════════════════════════════════
    BOOT
 ═══════════════════════════════════════════════════════ */
+
+/* ═══════════════════════════════════════════════════════
+   BACKGROUND SEARCH INDEX PRELOAD
+   Loads all 36 search indexes silently after boot so
+   that search works across the full corpus immediately.
+   Each search_NN.json is ~200KB; 36 total ~7MB.
+   Loaded in batches of 4 to avoid saturating the network.
+═══════════════════════════════════════════════════════ */
+async function preloadSearchIndexes() {
+  const BATCH = 4;
+  const vols  = Array.from({length:36}, (_,i) => i+1)
+                     .filter(v => !searchCache[v]);
+  for (let i = 0; i < vols.length; i += BATCH) {
+    const batch = vols.slice(i, i + BATCH);
+    await Promise.all(batch.map(async v => {
+      try {
+        const pad = String(v).padStart(2,'0');
+        // Load lightweight volume metadata (entry/para counts for tomes screen)
+        if (!volumeMeta[v]) {
+          const vData = await fetch(`corpus/volume_${pad}.json`).then(r=>r.json());
+          volumeMeta[v] = { entry_count: vData.entry_count, para_count: vData.para_count };
+          // Update tomes screen sub-label if visible
+          const el = document.getElementById(`vol-sub-${v}`);
+          if (el && !corpusCache[v]) {
+            el.textContent = vData.entry_count + ' entrées · ' + vData.para_count + ' paragraphes';
+          }
+        }
+        // Load search index
+        if (!searchCache[v]) {
+          const sData = await fetch(`corpus/search_${pad}.json`).then(r=>r.json());
+          searchCache[v] = sData;
+        }
+      } catch(e) { /* best-effort — offline or not yet cached */ }
+    }));
+  }
+}
+
 async function boot() {
   await openDB();
 
@@ -2582,7 +2710,7 @@ async function boot() {
   const vb = document.getElementById('version-badge');
   if (vb) vb.textContent = APP_VERSION + ' · ' + APP_BUILD;
   const vf = document.getElementById('help-version-footer');
-  if (vf) vf.textContent = 'Livre du Ciel PWA · ' + APP_VERSION + ' · ' + APP_BUILD + ' · Tomes 1–6';
+  if (vf) vf.textContent = 'Livre du Ciel PWA · ' + APP_VERSION + ' · ' + APP_BUILD + ' · 36 tomes';
 
   renderVolFilterRow();
   await renderHome();
@@ -2593,6 +2721,10 @@ async function boot() {
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('./sw.js').catch(()=>{});
   }
+
+  // Background preload of search indexes and volume metadata
+  // Runs silently after UI is shown — does not block boot
+  setTimeout(() => preloadSearchIndexes().catch(()=>{}), 500);
 }
 
 boot();
