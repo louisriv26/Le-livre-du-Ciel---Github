@@ -9,11 +9,9 @@
 <meta name="apple-mobile-web-app-title" content="Livre du Ciel">
 <title>Livre du Ciel — Luisa Piccarreta</title>
 <link rel="manifest" href="manifest.json">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
-<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.2/Sortable.min.js"></script>
+<link rel="stylesheet" href="assets/icons/tabler-icons.min.css">
+<link rel="stylesheet" href="assets/fonts/fonts.css">
+<script src="assets/js/sortable.min.js"></script>
 <style>
 /* ═══════════════════════════════════════════
    TOKENS
@@ -477,7 +475,7 @@ mark.hl-blue{background:rgba(80,140,220,.25);color:inherit;}
   padding: 2px 0 2px 14px;
   border-left: 2.5px solid var(--gold);
   border-radius: 0;
-  color: var(--ink);
+  color: #5C3A10;
   font-style: italic;
 }
 /* Luisa narrative: normal prose */
@@ -489,9 +487,16 @@ mark.hl-blue{background:rgba(80,140,220,.25);color:inherit;}
   padding: 2px 0 2px 14px;
   border-left: 2.5px solid #7B5EA7;
   border-radius: 0;
-  color: var(--ink);
+  color: #3D1F5C;
   font-style: italic;
 }
+/* Dark mode: lighten speech colours so they remain readable on dark bg */
+@media(prefers-color-scheme:dark){
+  :root:not([data-theme="light"]) .speech-jesus { color:#D4A060; }
+  :root:not([data-theme="light"]) .speech-marie { color:#B899D4; }
+}
+html[data-theme="dark"] .speech-jesus { color:#D4A060; }
+html[data-theme="dark"] .speech-marie { color:#B899D4; }
 /* Speaker attribution label — shown in Étudier mode only */
 .speech-label {
   display: none;
@@ -1281,7 +1286,7 @@ mark.hl-blue{background:rgba(80,140,220,.25);color:inherit;}
    VERSION — single source of truth
    Update this string on every release.
 ═══════════════════════════════════════════════════════ */
-const APP_VERSION = 'v2.5.8';
+const APP_VERSION = 'v2.5.9';
 const APP_BUILD   = '2026-06-16';
 
 /* ═══════════════════════════════════════════════════════
