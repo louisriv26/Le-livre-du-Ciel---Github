@@ -1286,7 +1286,7 @@ html[data-theme="dark"] .speech-marie { color:#B899D4; }
    VERSION — single source of truth
    Update this string on every release.
 ═══════════════════════════════════════════════════════ */
-const APP_VERSION = 'v2.5.9';
+const APP_VERSION = 'v2.5.10';
 const APP_BUILD   = '2026-06-16';
 
 /* ═══════════════════════════════════════════════════════
@@ -2153,16 +2153,25 @@ function buildSpeechHTML(text, segments, highlights) {
   }
 
   // Render spans to HTML
+  // Rule: after a rendered Jesus/Marie speech span, if the next span is narrative,
+  // insert a paragraph break so Luisa's narration always starts on a new paragraph.
   let html = '';
+  let lastWasSpeech = false; // tracks whether previous rendered span was Jesus/Marie high/medium
   for (const span of spans) {
     if (span.type === 'narrative') {
+      // If narrative follows a speech span, open a new paragraph
+      if (lastWasSpeech && span.text.trim()) {
+        html += '<br><br>';
+      }
       html += applyHighlights(escapeHtml(span.text), highlights);
+      lastWasSpeech = false;
     } else {
       const spk = span.speaker;
       const conf = span.confidence;
       // Only render high/medium confidence (hide low)
       if (conf === 'low') {
         html += applyHighlights(escapeHtml(span.text), highlights);
+        lastWasSpeech = false;
         continue;
       }
       const isMarie = spk === 'MARIE' || spk === 'MARY';
@@ -2173,8 +2182,10 @@ function buildSpeechHTML(text, segments, highlights) {
       if (cls) {
         html += `<span class="speech-label ${lblCls}">${lbl}${confLabel}</span>`;
         html += `<span class="${cls}">${applyHighlights(escapeHtml(span.text), highlights)}</span>`;
+        lastWasSpeech = true;
       } else {
         html += applyHighlights(escapeHtml(span.text), highlights);
+        lastWasSpeech = false;
       }
     }
   }
