@@ -470,38 +470,43 @@ mark.hl-blue{background:rgba(80,140,220,.25);color:inherit;}
 
 
 /* ═══ INLINE SPEECH RENDERING ═══ */
-/* Jesus speech: visually set apart, quotation style */
+/* Jesus speech: gold left border + italic (Option B) */
 .speech-jesus {
   display: block;
   margin: 0.3em 0 0.3em 0;
   padding: 2px 0 2px 14px;
   border-left: 2.5px solid var(--gold);
+  border-radius: 0;
   color: var(--ink);
-  font-style: inherit;
+  font-style: italic;
 }
-/* Luisa narrative: normal */
+/* Luisa narrative: normal prose */
 .speech-luisa { display: inline; }
-/* Marie speech: purple-tinted left border */
+/* Marie speech: purple left border + italic */
 .speech-marie {
   display: block;
   margin: 0.4em 0 0.4em 0;
   padding: 2px 0 2px 14px;
   border-left: 2.5px solid #7B5EA7;
+  border-radius: 0;
   color: var(--ink);
+  font-style: italic;
 }
-/* Inline speaker attribution label (small, above the block) */
+/* Speaker attribution label — shown in Étudier mode only */
 .speech-label {
-  display: block;
+  display: none;
   font-size: 10px;
   letter-spacing: .08em;
   text-transform: uppercase;
   margin-bottom: 2px;
   margin-left: 14px;
-  opacity: .7;
+  opacity: .85;
   font-family: var(--body);
 }
-.speech-label.lbl-jesus { color: #185FA5; }
-.speech-label.lbl-marie { color: #5B3A8C; }
+/* Show labels in study mode */
+.study-mode .speech-label { display: block; }
+.speech-label.lbl-jesus { color: var(--gold); }
+.speech-label.lbl-marie { color: #7B5EA7; }
 /* In study mode show confidence */
 .speech-conf {
   display: none;
@@ -539,16 +544,62 @@ mark.hl-blue{background:rgba(80,140,220,.25);color:inherit;}
 
 
 /* ═══ DASH-LIST READING RHYTHM ═══
-   Applied only to consecutive dash-item clusters.
-   Lone dash paragraphs keep normal spacing.
+   Four patterns handled:
+   1. Mid-sentence dashes — no class, normal prose rendering (unchanged)
+   2. Enumeration clusters (2+ consecutive dash paragraphs) — tight spacing + hanging indent
+   3. Long wrapped items — hanging indent aligns wrapped lines under first word
+   4. Continuation paragraphs — no dash but belongs to preceding dash item (faded border)
    Applied in reader only — not search, Mon Espace, Autour cards. */
-.dp-list-first  { margin-bottom:0.38em; padding-left:14px; }
-.dp-list-middle { margin-bottom:0.38em; padding-left:14px; }
-.dp-list-last   { margin-bottom:0.9em;  padding-left:14px; }
-/* Extra gap before the first list item when preceded by narrative */
-.dp + .dp-list-first { margin-top:0.15em; }
 
-/* ═══ HELP SCREEN ═══ */
+/* Cluster items: visibly tighter than narrative paragraphs */
+.dp-list-first,
+.dp-list-middle { margin-bottom:0.1em; padding-left:14px; line-height:1.55; }
+
+/* Last item in cluster: restore normal gap before next narrative block */
+.dp-list-last   { margin-bottom:0.9em; padding-left:14px; line-height:1.55; }
+
+/* Hanging indent: wrapped lines align under the first word after the dash */
+.dp-list-first,
+.dp-list-middle,
+.dp-list-last   { padding-left:calc(14px + 1.1em); text-indent:-1.1em; }
+
+/* Extra gap before the first list item when preceded by narrative */
+.dp + .dp-list-first { margin-top:0.2em; }
+
+/* Continuation paragraph: no dash but visually belongs to preceding list item.
+   Faded gold border signals connection without asserting a new dash item. */
+.dp-list-cont {
+  margin-bottom:0.1em;
+  padding-left:calc(14px + 1.1em);
+  border-left:2.5px solid rgba(201,168,76,0.3);
+  line-height:1.55;
+}
+/* Last continuation before a new narrative block */
+.dp-list-cont.dp-list-cont-last {
+  margin-bottom:0.9em;
+}
+
+/* Embedded enumeration: lead-in + split items within a single paragraph */
+.dp-embedded-leadin {
+  display: block;
+  margin-bottom: 0.2em;
+}
+.dp-embedded-item {
+  display: block;
+  padding-left: calc(14px + 1.1em);
+  text-indent: -1.1em;
+  border-left: 2.5px solid var(--gold);
+  line-height: 1.55;
+  margin-bottom: 0.1em;
+}
+.dp-embedded-last,
+.dp-embedded-only {
+  margin-bottom: 0;
+}
+.dp.dp-has-embedded-list {
+  margin-bottom: 0.9em;
+  padding-left: 0;
+}
 .help-section{padding:16px 18px 4px;}
 .help-section-head{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
 .help-section-icon{width:30px;height:30px;border-radius:8px;display:flex;
@@ -1230,8 +1281,8 @@ mark.hl-blue{background:rgba(80,140,220,.25);color:inherit;}
    VERSION — single source of truth
    Update this string on every release.
 ═══════════════════════════════════════════════════════ */
-const APP_VERSION = 'v2.5.3';
-const APP_BUILD   = '2026-06-15';
+const APP_VERSION = 'v2.5.8';
+const APP_BUILD   = '2026-06-16';
 
 /* ═══════════════════════════════════════════════════════
    STATE
@@ -1533,7 +1584,7 @@ async function openEntry(vol, entryId, backDest) {
     div.id = 'p_' + p.id;
     div.dataset.paraId = p.id;
     div.dataset.stableRef = p.stable_ref;
-    div.dataset.rawText = p.text.slice(0, 6); // first 6 chars for list detection
+    div.dataset.rawText = p.text.slice(0, 12); // first 12 chars for list detection
 
     const paraSegs = segsByPara[p.id] || [];
     const hasSpeech = paraSegs.length > 0;
@@ -1553,17 +1604,44 @@ async function openEntry(vol, entryId, backDest) {
     body.appendChild(div);
   });
 
-  // Neighbour-aware dash-list classification
-  // Detects consecutive dash-item clusters and applies position classes.
-  // Lone dash paragraphs keep normal spacing — only clusters of 2+ are classified.
+  // ── Dash-list classification (R33) ──────────────────────────────────────
+  // Handles four patterns:
+  //   1. Mid-sentence dashes  → no class (prose, unchanged)
+  //   2. Enumeration cluster  → dp-list-first / dp-list-middle / dp-list-last
+  //   3. Embedded enumeration → paragraph text split at ", –" boundaries, re-rendered
+  //   4. Continuation para    → dp-list-cont [dp-list-cont-last]
   (function classifyLists() {
     const dps = Array.from(body.querySelectorAll('.dp'));
-    const isDash = el => /^\s*[-–—]\s/.test(el.dataset.rawText || '');
+
+    // ── Helper: does a .dp element start with a dash character? ──
+    // rawText stores only first 6 chars; re-check actual text node for accuracy.
+    function startsWithDash(el) {
+      const raw = (el.dataset.rawText || '') + (el.textContent || '');
+      return /^\s*[-–—]\s/.test(raw.slice(0, 10));
+    }
+
+    // ── Helper: is a paragraph a continuation candidate?
+    // Conservative: previous element is a dash-list item, current has no dash,
+    // and the previous item's visible text does not end with a sentence terminator.
+    function isContinuation(el, prevEl) {
+      if (!prevEl) return false;
+      if (startsWithDash(el)) return false;
+      const prevInList = prevEl.classList.contains('dp-list-first') ||
+                         prevEl.classList.contains('dp-list-middle') ||
+                         prevEl.classList.contains('dp-list-last') ||
+                         prevEl.classList.contains('dp-list-cont');
+      if (!prevInList) return false;
+      // Previous item must not end with a full stop, exclamation, or question mark
+      const prevText = (prevEl.textContent || '').trimEnd();
+      return !/[.!?»]$/.test(prevText);
+    }
+
+    // ── Pass 1: classify enumeration clusters ──
     let i = 0;
     while (i < dps.length) {
-      if (isDash(dps[i])) {
+      if (startsWithDash(dps[i])) {
         let j = i;
-        while (j < dps.length && isDash(dps[j])) j++;
+        while (j < dps.length && startsWithDash(dps[j])) j++;
         const run = dps.slice(i, j);
         if (run.length >= 2) {
           run.forEach((el, idx) => {
@@ -1577,6 +1655,64 @@ async function openEntry(vol, entryId, backDest) {
         i++;
       }
     }
+
+    // ── Pass 2: classify continuation paragraphs ──
+    for (let k = 1; k < dps.length; k++) {
+      if (isContinuation(dps[k], dps[k - 1])) {
+        dps[k].classList.add('dp-list-cont');
+        // Check whether the next element is also a continuation or list item
+        const next = dps[k + 1];
+        const nextIsListOrCont = next && (
+          startsWithDash(next) ||
+          next.classList.contains('dp-list-cont')
+        );
+        if (!nextIsListOrCont) {
+          dps[k].classList.add('dp-list-cont-last');
+        }
+      }
+    }
+
+    // ── Pass 3: embedded enumeration (high-confidence only) ──
+    // Fires only when ALL conditions are met — validated against corpus:
+    //   1. Paragraph does not start with a dash (Pass 1 territory)
+    //   2. At least 3 dash items — 2-item cases are structurally ambiguous
+    //   3. Every item is ≤65 chars — longer items are prose clauses with own subject
+    //   4. Every item starts with a preposition/article (de, du, à, en, dans, …)
+    //      or is a very short phrase (≤2 words) — rules out finite verb clauses
+    //   5. No speech spans — those require separate corpus-level handling
+    // Paragraph IDs and raw corpus text are never modified — display only.
+    const prepStartRe = /^(de |du |d'|des |en |au |aux |par |pour |sur |sous |dans |avec |à |l'|la |le |les |un |une |ma |mon |mes |ta |ton |tes |sa |son |ses |notre |votre |leur |leurs |même |plus |moins |ni |soit |tant |autant |toute |toutes |tout |tous )/i;
+    function isPhrase(s) {
+      const core = s.replace(/[.,;:!?»]+$/, '');
+      if (prepStartRe.test(core)) return true;
+      const words = core.trim().split(/\s+/);
+      return words.length <= 2 && words.every(w => w.length <= 15);
+    }
+    dps.forEach(el => {
+      if (el.classList.contains('dp-list-first') ||
+          el.classList.contains('dp-list-middle') ||
+          el.classList.contains('dp-list-last')) return;
+      if (el.querySelector('.speech-jesus, .speech-marie')) return;
+
+      const fullText = el.textContent || '';
+      const parts = fullText.split(/\s[-–—]\s/);
+      if (parts.length < 4) return; // need lead-in + 3+ items
+
+      const leadIn = parts[0].trimEnd();
+      const items  = parts.slice(1).map(s => s.trim());
+
+      if (!items.every(it => it.length <= 65)) return;
+      if (!items.every(it => isPhrase(it))) return;
+
+      let html = `<span class="dp-embedded-leadin">${escapeHtml(leadIn)}</span>`;
+      items.forEach((item, idx) => {
+        const isLast = idx === items.length - 1;
+        const cls = isLast ? 'dp-embedded-item dp-embedded-last' : 'dp-embedded-item';
+        html += `<span class="${cls}">– ${escapeHtml(item)}</span>`;
+      });
+      el.innerHTML = html;
+      el.classList.add('dp-has-embedded-list');
+    });
   })();
 
   // Prev / next
@@ -1748,11 +1884,47 @@ function hideHlPopup() {
 async function applyHighlight(color) {
   if (!selectionRange || !selectionParaId || !currentEntry) return;
   hideHlPopup();
+
+  // Stage D: store offset-based anchoring in addition to text
+  // so highlights survive repeated occurrences and minor corpus updates.
+  let startChar = null, endChar = null, occurrenceIndex = 0, paraFingerprint = '';
+  try {
+    const sel = window.getSelection();
+    if (sel && sel.rangeCount > 0) {
+      const range = sel.getRangeAt(0);
+      const paraEl = document.getElementById('p_' + selectionParaId);
+      if (paraEl) {
+        // Walk text nodes to compute char offset within paragraph
+        const preRange = document.createRange();
+        preRange.selectNodeContents(paraEl);
+        preRange.setEnd(range.startContainer, range.startOffset);
+        startChar = preRange.toString().length;
+        endChar   = startChar + range.toString().length;
+        // Count how many times this text appears before this offset
+        const paraText = paraEl.textContent || '';
+        paraFingerprint = paraText.slice(0, 32);
+        const searchText = selectionRange.text;
+        let pos = 0, occ = 0;
+        while (pos < startChar) {
+          const found = paraText.indexOf(searchText, pos);
+          if (found < 0 || found >= startChar) break;
+          occ++;
+          pos = found + 1;
+        }
+        occurrenceIndex = occ;
+      }
+    }
+  } catch(err) { /* selection may have changed — fall back to text-only */ }
+
   await dbPut('highlights', {
-    entry_id:  currentEntry.id,
-    para_id:   selectionParaId,
-    stable_ref: currentEntry.stable_ref,
-    text:      selectionRange.text,
+    entry_id:        currentEntry.id,
+    para_id:         selectionParaId,
+    stable_ref:      currentEntry.stable_ref,
+    text:            selectionRange.text,
+    start_char:      startChar,
+    end_char:        endChar,
+    occurrence_index: occurrenceIndex,
+    para_fingerprint: paraFingerprint,
     color,
     ts: Date.now(),
   });
@@ -1780,10 +1952,23 @@ function closeNoteSheet() {
 async function saveNote() {
   const text = document.getElementById('note-input').value.trim();
   if (!text) { closeNoteSheet(); return; }
+
+  // Stage E: store complete navigation metadata so notes can reopen
+  // the exact paragraph after restart and after lazy-loading.
+  let paraFingerprint = '';
+  if (selectionParaId) {
+    const paraEl = document.getElementById('p_' + selectionParaId);
+    if (paraEl) paraFingerprint = (paraEl.textContent || '').slice(0, 32);
+  }
+
   await dbPut('notes', {
-    entry_id:   currentEntry ? currentEntry.id : '',
-    para_id:    selectionParaId || '',
-    stable_ref: currentEntry ? currentEntry.stable_ref : '',
+    entry_id:        currentEntry ? currentEntry.id   : '',
+    para_id:         selectionParaId || '',
+    stable_ref:      currentEntry ? currentEntry.stable_ref : '',
+    volume:          currentVolume || null,
+    entry_title:     currentEntry ? (currentEntry.title || '') : '',
+    entry_date:      currentEntry ? (currentEntry.date_display || '') : '',
+    para_fingerprint: paraFingerprint,
     text,
     ts: Date.now(),
   });
@@ -1975,8 +2160,9 @@ function buildSpeechHTML(text, segments, highlights) {
         html += applyHighlights(escapeHtml(span.text), highlights);
         continue;
       }
-      const cls   = spk === 'JESUS' ? 'speech-jesus' : spk === 'MARIE' ? 'speech-marie' : '';
-      const lbl   = spk === 'JESUS' ? 'Jésus' : spk === 'MARIE' ? 'Marie' : '';
+      const isMarie = spk === 'MARIE' || spk === 'MARY';
+      const cls   = spk === 'JESUS' ? 'speech-jesus' : isMarie ? 'speech-marie' : '';
+      const lbl   = spk === 'JESUS' ? 'Jésus' : isMarie ? 'Marie' : '';
       const lblCls= spk === 'JESUS' ? 'lbl-jesus' : 'lbl-marie';
       const confLabel = conf === 'medium' ? ' <em>(probable)</em>' : '';
       if (cls) {
@@ -2004,6 +2190,7 @@ function buildSpeakerTag(speaker, confidence) {
   const map = {
     'JESUS':  { label:'Jésus parle', cls:'st-jesus', icon:'ti-user' },
     'MARIE':  { label:'Marie parle', cls:'st-marie', icon:'ti-user' },
+    'MARY':   { label:'Marie parle', cls:'st-marie', icon:'ti-user' },
     'LUISA':  { label:'Luisa écrit', cls:'st-luisa', icon:'ti-pencil' },
   };
   const def = map[speaker.toUpperCase()];
@@ -2204,6 +2391,16 @@ async function runSearch() {
 
   const norm = normalise(raw);
   const words = norm.split(/\s+/).filter(w=>w.length>2);
+
+  // Stage C: guard against stopword-only queries (e.g. "à la", "de la", "je tu")
+  // After filtering tokens ≤2 chars, if nothing remains AND the raw query is short,
+  // it means the user typed only stopwords — return a helpful message, not all 74k items.
+  if (words.length === 0 && norm.replace(/\s+/g,'').length < 8) {
+    document.getElementById('search-meta').style.display = 'block';
+    document.getElementById('search-meta').textContent = 'Recherche trop courte. Ajoutez un mot plus spécifique.';
+    document.getElementById('search-results').innerHTML = '';
+    return;
+  }
 
   // Search across all loaded volumes (background preload fills searchCache)
   // For unloaded volumes, load search index on demand

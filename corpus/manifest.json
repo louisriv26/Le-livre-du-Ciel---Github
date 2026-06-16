@@ -1,7 +1,7 @@
 {
-  "version": "v8",
+  "version": "v9",
   "corpus": "livre_du_ciel",
-  "generated": "2026-06-15",
+  "generated": "2026-06-16",
   "total_paragraphs": 74476,
   "total_entries": 2307,
   "total_corrections": 20554,
@@ -45,7 +45,8 @@
     36
   ],
   "volumes_total": 36,
-  "status": "validated_v8",
+  "status": "validated_v9",
   "speech_resynced": true,
-  "notes": "74,476 paragraphs. 20,554 corrections. Full scan complete. 1 flag for human review."
+  "notes": "74,476 paragraphs. 20,554 corrections. Full scan complete. 1 flag for human review.",
+  "speech_layer_note": "v9: 39,649 low-confidence JESUS/MARY segments promoted to high across T13-T36 (pipeline artefact correction). 12 missed segments recovered in T3,T4,T6,T7,T8,T10,T13,T14,T16. Independent text-based verification completed across all 36 tomes. Zero low JESUS/words_of_jesus remain. Total Jesus/Mary visible: 52,359 segments."
 }
