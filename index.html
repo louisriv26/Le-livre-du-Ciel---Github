@@ -2153,39 +2153,70 @@ function buildSpeechHTML(text, segments, highlights) {
   }
 
   // Render spans to HTML
-  // Rule: after a rendered Jesus/Marie speech span, if the next span is narrative,
-  // insert a paragraph break so Luisa's narration always starts on a new paragraph.
+  //
+  // Paragraph-break rule: insert <br><br> after a Jesus/Marie speech span when
+  // narrative resumes — but suppress the break in two cases:
+  //
+  //   Case 1 — Short attribution: "me dit-Il", "ajouta-t-Elle", "continua Jésus"
+  //            Detected by ATTRIBUTION_RE + length ≤ 120 chars.
+  //
+  //   Case 2 — Embedded mid-sentence speech: Jésus me dit : « … », et je sentis…
+  //            If any narrative preceded the speech in this paragraph, the speech
+  //            is grammatically embedded and what follows is a sentence continuation.
+  //            Detected by speechWasFirstSpan = false.
+  //
+  // Break is only inserted when speech opens the paragraph (speechWasFirstSpan = true)
+  // AND the following narrative is not a bare attribution.
+
+  const ATTRIBUTION_RE = /^[\s,;—–-]*(me\s+dit|dit[\s-]?(il|elle|notre[\s-]seigneur|jesus|marie)|ajouta|continua|reprit|répondit|repondit|s['\u2019]écria|s['\u2019]ecria|murmura|souffla|poursuivit|acheva|conclut|me\s+(répondit|repondit|répliqua|repliqua)|ajouta[\s-]t[\s-](il|elle)|continua[\s-]t[\s-](il|elle)|reprit[\s-]t[\s-](il|elle)|répondit[\s-]t[\s-](il|elle)|s['\u2019]exprima)/i;
+
+  function isAttribution(text) {
+    const t = text.trim();
+    return t.length <= 120 && ATTRIBUTION_RE.test(t);
+  }
+
   let html = '';
-  let lastWasSpeech = false; // tracks whether previous rendered span was Jesus/Marie high/medium
+  let lastWasSpeech     = false; // previous rendered span was Jesus/Marie high/medium
+  let speechWasFirst    = false; // that speech span had no narrative before it in this paragraph
+  let narrativeSeenYet  = false; // any narrative span rendered before the current speech
+
   for (const span of spans) {
     if (span.type === 'narrative') {
-      // If narrative follows a speech span, open a new paragraph
-      if (lastWasSpeech && span.text.trim()) {
+      // Insert paragraph break after speech — suppressed for attributions and
+      // for narrative that continues an embedding sentence (speechWasFirst = false)
+      if (lastWasSpeech && speechWasFirst && span.text.trim() && !isAttribution(span.text)) {
         html += '<br><br>';
       }
       html += applyHighlights(escapeHtml(span.text), highlights);
-      lastWasSpeech = false;
+      narrativeSeenYet = true;
+      lastWasSpeech    = false;
+      speechWasFirst   = false;
     } else {
-      const spk = span.speaker;
+      const spk  = span.speaker;
       const conf = span.confidence;
-      // Only render high/medium confidence (hide low)
+      // Low confidence: render as plain narrative, no speech styling
       if (conf === 'low') {
         html += applyHighlights(escapeHtml(span.text), highlights);
-        lastWasSpeech = false;
+        narrativeSeenYet = true;
+        lastWasSpeech    = false;
+        speechWasFirst   = false;
         continue;
       }
       const isMarie = spk === 'MARIE' || spk === 'MARY';
-      const cls   = spk === 'JESUS' ? 'speech-jesus' : isMarie ? 'speech-marie' : '';
-      const lbl   = spk === 'JESUS' ? 'Jésus' : isMarie ? 'Marie' : '';
-      const lblCls= spk === 'JESUS' ? 'lbl-jesus' : 'lbl-marie';
+      const cls     = spk === 'JESUS' ? 'speech-jesus' : isMarie ? 'speech-marie' : '';
+      const lbl     = spk === 'JESUS' ? 'Jésus' : isMarie ? 'Marie' : '';
+      const lblCls  = spk === 'JESUS' ? 'lbl-jesus' : 'lbl-marie';
       const confLabel = conf === 'medium' ? ' <em>(probable)</em>' : '';
       if (cls) {
         html += `<span class="speech-label ${lblCls}">${lbl}${confLabel}</span>`;
         html += `<span class="${cls}">${applyHighlights(escapeHtml(span.text), highlights)}</span>`;
-        lastWasSpeech = true;
+        lastWasSpeech  = true;
+        speechWasFirst = !narrativeSeenYet; // true only if no narrative came before this speech
       } else {
         html += applyHighlights(escapeHtml(span.text), highlights);
-        lastWasSpeech = false;
+        narrativeSeenYet = true;
+        lastWasSpeech    = false;
+        speechWasFirst   = false;
       }
     }
   }
