@@ -522,11 +522,11 @@ html[data-theme="dark"] .speech-marie { color:#B899D4; }
 }
 .study-mode .speech-conf { display: block; }
 
-/* Update banner */
+/* Update banner — hardcoded dark navy to avoid --night flipping to cream in dark mode */
 #update-banner {
   display: none;
-  background: var(--night);
-  color: var(--gold);
+  background: #1A2A4A;
+  color: #C9A84C;
   text-align: center;
   padding: 10px 16px;
   font-size: 13px;
@@ -534,6 +534,10 @@ html[data-theme="dark"] .speech-marie { color:#B899D4; }
   flex-shrink: 0;
   cursor: pointer;
 }
+@media(prefers-color-scheme:dark) {
+  #update-banner { background: #0F1A2E; color: #D4A843; }
+}
+html[data-theme="dark"] #update-banner { background: #0F1A2E; color: #D4A843; }
 #update-banner.show { display: block; }
 
 /* Version pill — always visible in top bar */
@@ -1286,7 +1290,7 @@ html[data-theme="dark"] .speech-marie { color:#B899D4; }
    VERSION — single source of truth
    Update this string on every release.
 ═══════════════════════════════════════════════════════ */
-const APP_VERSION = 'v2.5.10';
+const APP_VERSION = 'v2.5.11';
 const APP_BUILD   = '2026-06-16';
 
 /* ═══════════════════════════════════════════════════════
@@ -2151,6 +2155,58 @@ function buildSpeechHTML(text, segments, highlights) {
     const after = text.slice(pos);
     if (after.trim()) spans.push({ type: 'narrative', text: after });
   }
+
+  // ── Guillemet normalisation ──────────────────────────────────────────────
+  // The corpus stores « and » in the surrounding narrative spans, not inside
+  // the speech offsets. This produces orphaned guillemets rendered separately
+  // from the styled speech block. Strip them from narrative spans that are
+  // immediately adjacent to a high/medium speech span.
+  //
+  // Rules:
+  //   • Narrative span immediately BEFORE a speech span:
+  //     strip trailing «  (and any whitespace / colon-space before it)
+  //   • Narrative span immediately AFTER a speech span:
+  //     strip leading »  (and any trailing whitespace / punctuation run)
+  //
+  // We only strip when the narrative span's remaining content after stripping
+  // is either empty or still meaningful — never strip from non-adjacent spans.
+  // We do NOT strip guillemets from narrative spans that are not adjacent to
+  // a speech span (e.g. Luisa quoting herself stays untouched).
+
+  for (let i = 0; i < spans.length; i++) {
+    const span = spans[i];
+    if (span.type !== 'narrative') continue;
+
+    const nextIsSpeech = i + 1 < spans.length &&
+                         spans[i + 1].type === 'speech' &&
+                         (spans[i + 1].confidence === 'high' || spans[i + 1].confidence === 'medium');
+    const prevIsSpeech = i > 0 &&
+                         spans[i - 1].type === 'speech' &&
+                         (spans[i - 1].confidence === 'high' || spans[i - 1].confidence === 'medium');
+
+    let t = span.text;
+
+    if (nextIsSpeech) {
+      // Strip trailing opening guillemet and the colon/space run before it
+      // e.g. "Il me dit: «" → "Il me dit:"   or  "Plus tard: «" → "Plus tard:"
+      // Also handles «\n, « , «\u00A0
+      t = t.replace(/[\s\u00A0]*«[\s\u00A0]*$/, '');
+    }
+
+    if (prevIsSpeech) {
+      // Strip leading closing guillemet and any immediately following punctuation/space
+      // e.g. "» Il me répéta" → " Il me répéta"
+      // e.g. "»" alone → "" (will be dropped below)
+      t = t.replace(/^[\s\u00A0]*»[\s\u00A0]*/, '');
+    }
+
+    span.text = t;
+  }
+
+  // Drop any narrative spans that are now empty after guillemet stripping
+  const cleanSpans = spans.filter(s => s.type !== 'narrative' || s.text.trim());
+  spans.length = 0;
+  cleanSpans.forEach(s => spans.push(s));
 
   // Render spans to HTML
   //
