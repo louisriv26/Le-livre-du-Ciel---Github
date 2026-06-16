@@ -290,14 +290,8 @@ body{overflow:hidden;display:flex;flex-direction:column;}
 
 .reader-body{padding:0 22px 20px;}
 .dp{font-family:var(--body);font-size:var(--reader-size);line-height:1.85;
-  color:var(--ink);margin-bottom:1.4em;scroll-margin-top:16px;
+  color:var(--ink);margin-bottom:0.9em;scroll-margin-top:16px;
   -webkit-user-select:text;user-select:text;}
-/* Paragraph type variants — tighter spacing for list items and short utterances */
-.dp.dp-list{margin-bottom:0.35em;padding-left:4px;}
-.dp.dp-list + .dp:not(.dp-list){margin-top:0.6em;}
-.dp:not(.dp-list) + .dp.dp-list{margin-top:0.2em;}
-.dp.dp-short{margin-bottom:0.65em;}
-.dp.dp-speech-only{margin-bottom:0.5em;}
 /* Suppress iOS callout (native Copy/Translate menu) on reader text */
 #reader-body{-webkit-touch-callout:none;}
 .dp.target{background:rgba(201,168,76,.08);border-radius:4px;padding:4px 6px;margin:-4px -6px;}
@@ -485,7 +479,6 @@ mark.hl-blue{background:rgba(80,140,220,.25);color:inherit;}
   color: var(--ink);
   font-style: inherit;
 }
-.dp-list .speech-jesus { margin: 0.15em 0; }
 /* Luisa narrative: normal */
 .speech-luisa { display: inline; }
 /* Marie speech: purple-tinted left border */
@@ -543,6 +536,17 @@ mark.hl-blue{background:rgba(80,140,220,.25);color:inherit;}
   border-radius: 8px;
   white-space: nowrap;
 }
+
+
+/* ═══ DASH-LIST READING RHYTHM ═══
+   Applied only to consecutive dash-item clusters.
+   Lone dash paragraphs keep normal spacing.
+   Applied in reader only — not search, Mon Espace, Autour cards. */
+.dp-list-first  { margin-bottom:0.38em; padding-left:14px; }
+.dp-list-middle { margin-bottom:0.38em; padding-left:14px; }
+.dp-list-last   { margin-bottom:0.9em;  padding-left:14px; }
+/* Extra gap before the first list item when preceded by narrative */
+.dp + .dp-list-first { margin-top:0.15em; }
 
 /* ═══ HELP SCREEN ═══ */
 .help-section{padding:16px 18px 4px;}
@@ -1226,7 +1230,7 @@ mark.hl-blue{background:rgba(80,140,220,.25);color:inherit;}
    VERSION — single source of truth
    Update this string on every release.
 ═══════════════════════════════════════════════════════ */
-const APP_VERSION = 'v2.5.0';
+const APP_VERSION = 'v2.5.3';
 const APP_BUILD   = '2026-06-15';
 
 /* ═══════════════════════════════════════════════════════
@@ -1525,18 +1529,11 @@ async function openEntry(vol, entryId, backDest) {
 
   paras.forEach((p, pidx) => {
     const div = document.createElement('div');
-    // Detect paragraph type for spacing
-    const _pt = p.text;
-    const _isDashList  = /^[–—-]\s/.test(_pt);  // starts with - – —
-    const _isShort     = _pt.length < 70 && !_isDashList;
-    const _isSpeechOnly= /^[«“]/.test(_pt) && _pt.length < 120;
-    div.className = 'dp' +
-      (_isDashList   ? ' dp-list'        : '') +
-      (_isSpeechOnly ? ' dp-speech-only' : '') +
-      (_isShort && !_isSpeechOnly ? ' dp-short' : '');
+    div.className = 'dp';
     div.id = 'p_' + p.id;
     div.dataset.paraId = p.id;
     div.dataset.stableRef = p.stable_ref;
+    div.dataset.rawText = p.text.slice(0, 6); // first 6 chars for list detection
 
     const paraSegs = segsByPara[p.id] || [];
     const hasSpeech = paraSegs.length > 0;
@@ -1555,6 +1552,32 @@ async function openEntry(vol, entryId, backDest) {
     div.addEventListener('click', onParaClick);
     body.appendChild(div);
   });
+
+  // Neighbour-aware dash-list classification
+  // Detects consecutive dash-item clusters and applies position classes.
+  // Lone dash paragraphs keep normal spacing — only clusters of 2+ are classified.
+  (function classifyLists() {
+    const dps = Array.from(body.querySelectorAll('.dp'));
+    const isDash = el => /^\s*[-–—]\s/.test(el.dataset.rawText || '');
+    let i = 0;
+    while (i < dps.length) {
+      if (isDash(dps[i])) {
+        let j = i;
+        while (j < dps.length && isDash(dps[j])) j++;
+        const run = dps.slice(i, j);
+        if (run.length >= 2) {
+          run.forEach((el, idx) => {
+            if (idx === 0)                 el.classList.add('dp-list-first');
+            else if (idx === run.length-1) el.classList.add('dp-list-last');
+            else                           el.classList.add('dp-list-middle');
+          });
+        }
+        i = j;
+      } else {
+        i++;
+      }
+    }
+  })();
 
   // Prev / next
   const entries = corpusCache[vol].entries;
