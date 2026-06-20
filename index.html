@@ -471,7 +471,7 @@ mark.hl-blue{background:rgba(80,140,220,.25);color:inherit;}
 /* Jesus speech: gold left border + italic (Option B) */
 .speech-jesus {
   display: block;
-  margin: 0.3em 0 0.3em 0;
+  margin: 0.3em 0 0.1em 0;
   padding: 2px 0 2px 14px;
   border-left: 2.5px solid var(--gold);
   border-radius: 0;
@@ -483,7 +483,7 @@ mark.hl-blue{background:rgba(80,140,220,.25);color:inherit;}
 /* Marie speech: purple left border + italic */
 .speech-marie {
   display: block;
-  margin: 0.4em 0 0.4em 0;
+  margin: 0.4em 0 0.1em 0;
   padding: 2px 0 2px 14px;
   border-left: 2.5px solid #7B5EA7;
   border-radius: 0;
@@ -1290,7 +1290,7 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; color: #D4A843; }
    VERSION — single source of truth
    Update this string on every release.
 ═══════════════════════════════════════════════════════ */
-const APP_VERSION = 'v2.5.11';
+const APP_VERSION = 'v2.5.24';
 const APP_BUILD   = '2026-06-16';
 
 /* ═══════════════════════════════════════════════════════
@@ -2156,23 +2156,102 @@ function buildSpeechHTML(text, segments, highlights) {
     if (after.trim()) spans.push({ type: 'narrative', text: after });
   }
 
-  // ── Guillemet normalisation ──────────────────────────────────────────────
-  // The corpus stores « and » in the surrounding narrative spans, not inside
-  // the speech offsets. This produces orphaned guillemets rendered separately
-  // from the styled speech block. Strip them from narrative spans that are
-  // immediately adjacent to a high/medium speech span.
+  // ── v2.5.12 Span correction passes ──────────────────────────────────────
   //
-  // Rules:
-  //   • Narrative span immediately BEFORE a speech span:
-  //     strip trailing «  (and any whitespace / colon-space before it)
-  //   • Narrative span immediately AFTER a speech span:
-  //     strip leading »  (and any trailing whitespace / punctuation run)
-  //
-  // We only strip when the narrative span's remaining content after stripping
-  // is either empty or still meaningful — never strip from non-adjacent spans.
-  // We do NOT strip guillemets from narrative spans that are not adjacent to
-  // a speech span (e.g. Luisa quoting herself stays untouched).
+  // PASS 1 — start_char word-boundary fix
+  // The corpus start_char offset sometimes lands mid-word (e.g. «Ma fille» where
+  // start_char points to 'a', leaving '«M' in the preceding narrative span).
+  // Fix: walk back into the preceding narrative to recover the orphaned word-prefix.
+  // The recovered prefix is prepended to the speech span; the narrative is trimmed.
+  for (let i = 1; i < spans.length; i++) {
+    const sp = spans[i];
+    if (sp.type !== 'speech') continue;
+    if (sp.confidence === 'low') continue;
+    const prev = spans[i - 1];
+    if (!prev || prev.type !== 'narrative') continue;
 
+    const nt = prev.text;
+    // Check if narrative ends with a letter (mid-word boundary)
+    if (!nt || !/[a-zA-ZÀ-ÿ]$/.test(nt)) continue;
+
+    // Walk back through the narrative to find the start of the orphaned word
+    let cut = nt.length;
+    while (cut > 0 && /[a-zA-ZÀ-ÿ]/.test(nt[cut - 1])) cut--;
+
+    const orphan = nt.slice(cut);    // word fragment stranded in narrative
+    const newNarr = nt.slice(0, cut); // narrative text before the orphan
+
+    // Move the orphan prefix to the speech span
+    sp.text = orphan + sp.text;
+    prev.text = newNarr;
+  }
+
+  // PASS 2 — end_char overshoot fix (» split)
+  // The corpus end_char consistently overshoots past the closing » of Jesus/Marie
+  // speech into Luisa's narration. Corpus-wide: 723 overshoot segments confirmed.
+  // Fix: split the speech span at the first » found inside it.
+  //
+  // Exception: do NOT split if the text between the first » and the next «
+  // is fewer than 3 non-space characters — that indicates an internal quotation
+  // within the speech (e.g. «Dominus tecum» («le Seigneur est avec toi»)),
+  // not an overshoot. Confirmed: only 15 such cases across 36 tomes.
+  const correctedSpans = [];
+  for (const sp of spans) {
+    if (sp.type !== 'speech' || sp.confidence === 'low') {
+      correctedSpans.push(sp);
+      continue;
+    }
+    const t = sp.text;
+    const closePos = t.indexOf('\u00BB'); // »
+
+    if (closePos === -1) {
+      // No » at all — clean segment, keep as-is
+      correctedSpans.push(sp);
+      continue;
+    }
+
+    if (closePos >= t.length - 2) {
+      // » is the last character (trailing ») — strip it, keep speech
+      correctedSpans.push({ ...sp, text: t.slice(0, closePos).trimEnd() });
+      continue;
+    }
+
+    // » is mid-segment — check for internal-quotation exception
+    const afterClose = t.slice(closePos + 1);
+    const nextOpen = afterClose.indexOf('\u00AB'); // «
+    // Tightened: gap must be truly empty (≤1 non-space char, no attribution verbs)
+    // A single space «» gap is NOT an internal quotation — it's an overshoot
+    const _gapText = afterClose.slice(0, nextOpen);
+    const _isInternal = nextOpen !== -1 &&
+      _gapText.trim().length < 2 &&
+      !/\b(dit|dis|répondis|ajouta|reprit|répondit)\b/i.test(_gapText);
+    if (_isInternal) {
+      // Internal quotation — do not split, but still strip trailing »
+      // (the segment ends correctly, trailing » will be cleaned below)
+      correctedSpans.push(sp);
+      continue;
+    }
+
+    // Genuine overshoot — split at first »
+    const speechPart    = t.slice(0, closePos).trimEnd();
+    const narrativePart = afterClose.trimStart();
+
+    if (speechPart) {
+      correctedSpans.push({ ...sp, text: speechPart });
+    }
+    if (narrativePart) {
+      correctedSpans.push({ type: 'narrative', text: narrativePart });
+    }
+  }
+
+  // Replace spans with corrected set
+  spans.length = 0;
+  correctedSpans.forEach(s => spans.push(s));
+
+  // PASS 3 — Adjacent narrative guillemet normalisation
+  // After the overshoot fix, narrative spans adjacent to speech may still carry
+  // orphaned « (before speech) or » (after speech — from trailing cases now in
+  // narrative). Strip these from narrative spans only, not from within speech.
   for (let i = 0; i < spans.length; i++) {
     const span = spans[i];
     if (span.type !== 'narrative') continue;
@@ -2185,26 +2264,21 @@ function buildSpeechHTML(text, segments, highlights) {
                          (spans[i - 1].confidence === 'high' || spans[i - 1].confidence === 'medium');
 
     let t = span.text;
-
-    if (nextIsSpeech) {
-      // Strip trailing opening guillemet and the colon/space run before it
-      // e.g. "Il me dit: «" → "Il me dit:"   or  "Plus tard: «" → "Plus tard:"
-      // Also handles «\n, « , «\u00A0
-      t = t.replace(/[\s\u00A0]*«[\s\u00A0]*$/, '');
-    }
-
-    if (prevIsSpeech) {
-      // Strip leading closing guillemet and any immediately following punctuation/space
-      // e.g. "» Il me répéta" → " Il me répéta"
-      // e.g. "»" alone → "" (will be dropped below)
-      t = t.replace(/^[\s\u00A0]*»[\s\u00A0]*/, '');
-    }
-
+    if (nextIsSpeech) t = t.replace(/[\s\u00A0]*\u00AB[\s\u00A0]*$/, '');
+    if (prevIsSpeech) t = t.replace(/^[\s\u00A0]*\u00BB[\s\u00A0]*/, '');
     span.text = t;
   }
 
-  // Drop any narrative spans that are now empty after guillemet stripping
-  const cleanSpans = spans.filter(s => s.type !== 'narrative' || s.text.trim());
+  // PASS 4 — Drop empty or punctuation-only narrative spans
+  // After passes 1–3, some narrative spans may be empty, whitespace-only,
+  // or contain only a stray punctuation character (lone '.', ',', etc.)
+  // These are corpus boundary artifacts — drop them.
+  const PUNCT_ONLY = /^[\s\u00A0.,;:!?…\-–—«»"']+$/;
+  const cleanSpans = spans.filter(s => {
+    if (s.type !== 'narrative') return true;
+    const t = s.text.trim();
+    return t.length > 0 && !PUNCT_ONLY.test(t);
+  });
   spans.length = 0;
   cleanSpans.forEach(s => spans.push(s));
 
@@ -2241,7 +2315,7 @@ function buildSpeechHTML(text, segments, highlights) {
       // Insert paragraph break after speech — suppressed for attributions and
       // for narrative that continues an embedding sentence (speechWasFirst = false)
       if (lastWasSpeech && speechWasFirst && span.text.trim() && !isAttribution(span.text)) {
-        html += '<br><br>';
+        html += '<br>';
       }
       html += applyHighlights(escapeHtml(span.text), highlights);
       narrativeSeenYet = true;
