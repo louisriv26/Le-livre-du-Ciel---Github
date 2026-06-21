@@ -1554,7 +1554,7 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; color: #D4A843; }
    VERSION — single source of truth
    Update this string on every release.
 ═══════════════════════════════════════════════════════ */
-const APP_VERSION = 'v2.5.28';
+const APP_VERSION = 'v2.5.29';
 const APP_BUILD   = '2026-06-21';
 
 /* ═══════════════════════════════════════════════════════
@@ -4304,20 +4304,23 @@ async function boot() {
   // Background preload of search indexes and volume metadata
   setTimeout(() => preloadSearchIndexes().catch(()=>{}), 500);
 
-  // Check for service worker update
+  // Service worker update detection
   if ('serviceWorker' in navigator) {
+    // controllerchange fires reliably when new SW takes over (skipWaiting already called in SW)
+    navigator.serviceWorker.addEventListener('controllerchange', () => {
+      window.location.reload();
+    });
     navigator.serviceWorker.ready.then(reg => {
+      // Fallback: show banner if new worker somehow ends up waiting
       reg.addEventListener('updatefound', () => {
         const newWorker = reg.installing;
         if (!newWorker) return;
         newWorker.addEventListener('statechange', () => {
           if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-            // New version cached and ready
             document.getElementById('update-banner').classList.add('show');
           }
         });
       });
-      // Trigger immediate check
       reg.update().catch(()=>{});
     });
   }
