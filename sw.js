@@ -24,6 +24,7 @@ const SHELL = [
   // Corpus manifest
   './corpus/manifest.json',
   './corpus/semantic_index.json',
+  './embeddings_ldc_ids.json',   // embedding ID map (~1.6 MB) — bin (54 MB) cached on demand
 
   // T1–T8 pre-cached for immediate offline reading
   // (remaining tomes load on demand and are cached on first access)

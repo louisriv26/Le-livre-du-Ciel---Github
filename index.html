@@ -1681,8 +1681,10 @@ function goSearch() {
   renderSpeakerFilterRow();
   renderVolFilterRow();
   document.getElementById('search-input').focus();
-  // Preload semantic index in background so first query is instant
+  // Preload indexes in background so first query is instant
   loadSemanticIndex().catch(()=>{});
+  loadEmbModel().catch(()=>{});
+  loadEmbCorpus().catch(()=>{});
 }
 function goEspace() { showScreen('espace'); renderEspace(); }
 function goTomes()  { showScreen('tomes'); renderTomes(); }
@@ -2930,6 +2932,20 @@ let searchVolFilterMax = 0; // max of group (0 = all)
 let searchSpeakerFilter = false; // false = all, true = Jesus speech only
 let semanticIndex = null;        // loaded lazily on first semantic query
 let semanticIndexLoading = false;
+// True embedding search state
+let embModel = null, embModelLoading = false;
+let embCorpus = null, embIds = null, embDim = 384, embCorpusLoading = false;
+let lastSemMode = 'bm25'; // 'embedding' | 'bm25' — set by runSemanticSearch
+// Float16 lookup table (256 KB, built once at startup)
+const F16 = new Float32Array(65536);
+(function(){
+  for(let i=0;i<65536;i++){
+    const s=i>>>15, e=(i>>>10)&31, m=i&1023;
+    F16[i] = e===31 ? (m?NaN:(s?-Infinity:Infinity))
+            : e===0  ? (s?-1:1)*m*5.96046448e-8
+            :          (s?-1:1)*Math.pow(2,e-15)*(1+m/1024);
+  }
+})();
 
 function renderSpeakerFilterRow() {
   const row = document.getElementById('speaker-filter-row');
@@ -3124,10 +3140,51 @@ function normalise(s) {
 }
 
 /* ═══════════════════════════════════════════════════════
-   SEMANTIC SEARCH (BM25 + synonym expansion)
+   SEMANTIC SEARCH — true embeddings (primary) + BM25 (fallback)
 ═══════════════════════════════════════════════════════ */
 
-// Load semantic index lazily
+// ── Embedding model loader (Transformers.js via CDN) ──
+async function loadEmbModel() {
+  if (embModel) return embModel;
+  if (embModelLoading) { while(embModelLoading) await new Promise(r=>setTimeout(r,100)); return embModel; }
+  embModelLoading = true;
+  try {
+    const {pipeline, env} = await import('https://cdn.jsdelivr.net/npm/@xenova/transformers@2.17.2');
+    env.allowLocalModels = false;
+    embModel = await pipeline('feature-extraction','Xenova/paraphrase-multilingual-MiniLM-L12-v2');
+  } catch(e) { console.warn('LDC: embedding model unavailable',e); }
+  embModelLoading = false;
+  return embModel;
+}
+
+// ── Corpus embeddings loader ──
+async function loadEmbCorpus() {
+  if (embCorpus) return true;
+  if (embCorpusLoading) { while(embCorpusLoading) await new Promise(r=>setTimeout(r,100)); return !!embCorpus; }
+  embCorpusLoading = true;
+  try {
+    const [meta, buf] = await Promise.all([
+      fetch('embeddings_ldc_ids.json').then(r=>r.json()),
+      fetch('embeddings_ldc.bin').then(r=>r.arrayBuffer())
+    ]);
+    embDim = meta.dim;
+    embIds = new Map();
+    meta.ids.forEach((id,i) => embIds.set(id,i));
+    embCorpus = new Uint16Array(buf);
+  } catch(e) { console.warn('LDC: corpus embeddings unavailable',e); }
+  embCorpusLoading = false;
+  return !!embCorpus;
+}
+
+// ── Cosine similarity: query float32 vec vs pre-normalised float16 corpus row ──
+function cosineSim(qVec, paraIdx) {
+  const base = paraIdx * embDim;
+  let dot = 0;
+  for(let d=0;d<embDim;d++) dot += qVec[d] * F16[embCorpus[base+d]];
+  return dot;
+}
+
+// Load semantic index lazily (BM25 fallback)
 async function loadSemanticIndex() {
   if (semanticIndex) return semanticIndex;
   if (semanticIndexLoading) {
@@ -3194,52 +3251,67 @@ function needsSemantic(raw, currentResults) {
   return currentResults.length === 0;
 }
 
-// Run BM25 semantic search across loaded search data
-// Chunked to avoid blocking UI thread on mobile
-async function runSemanticSearch(raw, vols, speakerFilter) {
-  const idx = await loadSemanticIndex();
-  if (!idx) return [];
-
-  const baseTokens = semTokenise(raw);
-  if (baseTokens.length === 0) return [];
-  const queryTokens = expandTokens(baseTokens, idx.synonyms);
-
-  // Flatten all items from loaded vols
+// Build candidate item list from loaded vols + speaker filter
+function buildCandidateItems(vols, speakerFilter) {
   let allItems = [];
   for (const v of vols) {
     if (!searchCache[v]) continue;
     if (speakerFilter) {
-      const vSegs = speakerCache[v] || [];
       const speechIds = new Set(
-        vSegs.filter(s => s.speaker === 'JESUS' && s.confidence === 'high').map(s => s.paragraph_id)
+        (speakerCache[v]||[]).filter(s=>s.speaker==='JESUS'&&s.confidence==='high').map(s=>s.paragraph_id)
       );
-      allItems = allItems.concat(searchCache[v].filter(item => speechIds.has(item.id)));
+      allItems = allItems.concat(searchCache[v].filter(item=>speechIds.has(item.id)));
     } else {
       allItems = allItems.concat(searchCache[v]);
     }
   }
+  return allItems;
+}
 
+// Semantic search: true embeddings (primary) → BM25 (fallback)
+async function runSemanticSearch(raw, vols, speakerFilter) {
+  const allItems = buildCandidateItems(vols, speakerFilter);
   if (allItems.length === 0) return [];
-
-  // Score in chunks of 3000, yielding to UI between chunks
   const CHUNK = 3000;
-  const results = [];
 
-  for (let i = 0; i < allItems.length; i += CHUNK) {
-    // Yield to UI thread every chunk
-    if (i > 0) await new Promise(r => setTimeout(r, 0));
-
-    const chunk = allItems.slice(i, i + CHUNK);
-    for (const item of chunk) {
-      const score = bm25Score(queryTokens, item.norm || item.text || '', idx.idf, idx.avgdl);
-      if (score > 1.0) {
-        results.push({ ...item, _semScore: score });
+  // ── Primary: true cosine similarity ──
+  if (embModel && embCorpus) {
+    try {
+      const out = await embModel(raw, {pooling:'mean', normalize:true});
+      const qVec = new Float32Array(out.data);
+      const results = [];
+      for (let i=0; i<allItems.length; i+=CHUNK) {
+        if (i>0) await new Promise(r=>setTimeout(r,0));
+        for (const item of allItems.slice(i,i+CHUNK)) {
+          const idx = embIds.get(item.id);
+          if (idx===undefined) continue;
+          const sim = cosineSim(qVec, idx);
+          if (sim > 0.25) results.push({...item, _semScore:sim});
+        }
       }
-    }
+      results.sort((a,b)=>b._semScore-a._semScore);
+      lastSemMode = 'embedding';
+      return results.slice(0,25);
+    } catch(e) { console.warn('LDC: embedding search error',e); }
   }
 
-  results.sort((a, b) => b._semScore - a._semScore);
-  return results.slice(0, 25);
+  // ── Fallback: BM25 + synonym expansion ──
+  const idx = await loadSemanticIndex();
+  if (!idx) return [];
+  const baseTokens = semTokenise(raw);
+  if (baseTokens.length === 0) return [];
+  const queryTokens = expandTokens(baseTokens, idx.synonyms);
+  const results = [];
+  for (let i=0; i<allItems.length; i+=CHUNK) {
+    if (i>0) await new Promise(r=>setTimeout(r,0));
+    for (const item of allItems.slice(i,i+CHUNK)) {
+      const score = bm25Score(queryTokens, item.norm||item.text||'', idx.idf, idx.avgdl);
+      if (score > 1.0) results.push({...item, _semScore:score});
+    }
+  }
+  results.sort((a,b)=>b._semScore-a._semScore);
+  lastSemMode = 'bm25';
+  return results.slice(0,25);
 }
 
 async function runSearch() {
@@ -3418,7 +3490,10 @@ async function runSearch() {
   if (semResults.length > 0) {
     const divider = document.createElement('div');
     divider.className = 'sem-divider';
-    divider.innerHTML = `<span><i class="ti ti-sparkles"></i> Résultats par similarité sémantique</span>`;
+    const semLabel = lastSemMode === 'embedding'
+      ? '<i class="ti ti-vector"></i> Résultats par recherche vectorielle'
+      : '<i class="ti ti-sparkles"></i> Résultats par similarité sémantique';
+    divider.innerHTML = `<span>${semLabel}</span>`;
     container.appendChild(divider);
 
     semResults.forEach(r => {
@@ -3437,7 +3512,7 @@ async function runSearch() {
         <div class="rc-stable">${escapeHtml(r.stable_ref || r.entry_id || r.id)} · Tome ${r.volume}</div>
         <div class="rc-body-text">${escapeHtml(excerpt)}</div>
         <div class="rc-tags">
-          <span class="rc-tag" style="background:rgba(99,102,241,.1);color:#4F46E5;border-color:rgba(99,102,241,.2);">Sémantique</span>
+          <span class="rc-tag" style="background:rgba(99,102,241,.1);color:#4F46E5;border-color:rgba(99,102,241,.2);">${lastSemMode==='embedding'?'Vectoriel':'Sémantique'}</span>
           ${speechTag}
           ${r.date_display ? `<span class="rc-tag">${escapeHtml(r.date_display)}</span>` : ''}
         </div>`;
