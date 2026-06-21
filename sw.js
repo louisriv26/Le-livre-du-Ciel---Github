@@ -1,4 +1,4 @@
-const VERSION = 'ldc-v2.5.29';
+const VERSION = 'ldc-v2.5.30';
 const SHELL = [
   './', './index.html', './manifest.json', './sw.js',
 
@@ -27,7 +27,6 @@ const SHELL = [
   './embeddings_ldc_ids.json',   // embedding ID map (~1.6 MB) — bin (54 MB) cached on demand
 
   // T1–T8 pre-cached for immediate offline reading
-  // (remaining tomes load on demand and are cached on first access)
   './corpus/volume_01.json', './corpus/paragraphs_01.json', './corpus/search_01.json', './corpus/speakers_01.json',
   './corpus/volume_02.json', './corpus/paragraphs_02.json', './corpus/search_02.json', './corpus/speakers_02.json',
   './corpus/volume_03.json', './corpus/paragraphs_03.json', './corpus/search_03.json', './corpus/speakers_03.json',
@@ -36,6 +35,14 @@ const SHELL = [
   './corpus/volume_06.json', './corpus/paragraphs_06.json', './corpus/search_06.json', './corpus/speakers_06.json',
   './corpus/volume_07.json', './corpus/paragraphs_07.json', './corpus/search_07.json', './corpus/speakers_07.json',
   './corpus/volume_08.json', './corpus/paragraphs_08.json', './corpus/search_08.json', './corpus/speakers_08.json',
+
+  // T31–T36 volume metadata pre-cached to guarantee fresh titles after corpus patch
+  './corpus/volume_31.json',
+  './corpus/volume_32.json',
+  './corpus/volume_33.json',
+  './corpus/volume_34.json',
+  './corpus/volume_35.json',
+  './corpus/volume_36.json',
 ];
 
 self.addEventListener('message', e => {
@@ -44,35 +51,32 @@ self.addEventListener('message', e => {
 
 self.addEventListener('install', e => {
   e.waitUntil(
-    caches.open(VERSION).then(c => c.addAll(SHELL))
+    caches.open(VERSION).then(c => c.addAll(SHELL)).then(() => self.skipWaiting())
   );
-  self.skipWaiting();
 });
 
 self.addEventListener('activate', e => {
   e.waitUntil(
-    caches.keys().then(keys =>
-      Promise.all(keys.filter(k => k !== VERSION).map(k => caches.delete(k)))
-    )
+    caches.keys()
+      .then(keys => Promise.all(keys.filter(k => k !== VERSION).map(k => caches.delete(k))))
+      .then(() => self.clients.claim())
   );
-  self.clients.claim();
 });
 
 self.addEventListener('fetch', e => {
   const url = new URL(e.request.url);
-  // Corpus files: cache-first, then network
-  if (url.pathname.includes('/corpus/')) {
+  // Corpus files: cache-first (keyed to VERSION so stale data is evicted on SW update)
+  if (url.pathname.includes('/corpus/') || url.pathname.includes('/embeddings_ldc')) {
     e.respondWith(
-      caches.match(e.request).then(cached => {
-        if (cached) return cached;
-        return fetch(e.request).then(res => {
-          if (res && res.ok) {
-            const clone = res.clone();
-            caches.open(VERSION).then(c => c.put(e.request, clone));
-          }
-          return res;
-        });
-      })
+      caches.open(VERSION).then(cache =>
+        cache.match(e.request).then(cached => {
+          if (cached) return cached;
+          return fetch(e.request).then(res => {
+            if (res && res.ok) cache.put(e.request, res.clone());
+            return res;
+          });
+        })
+      )
     );
     return;
   }
