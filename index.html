@@ -1223,6 +1223,11 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; color: #D4A843; }
           <span class="help-chip light">◂ ▸</span>
           <span class="help-text">Naviguer entre les entrées sans revenir à la liste. En bas du lecteur.</span>
         </div>
+        <div class="help-divider"></div>
+        <div class="help-row">
+          <span class="help-chip light">☾ / ☀</span>
+          <span class="help-text">Mode jour / mode nuit. Bascule l'apparence de toute l'application. La préférence est mémorisée.</span>
+        </div>
       </div>
       <div class="help-tip">
         L'application mémorise votre position exacte — au paragraphe près, pas à la position d'écran. Elle retrouve votre place même après un redémarrage.
@@ -1306,6 +1311,14 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; color: #D4A843; }
           <span class="help-text">Vos mots ne correspondent pas exactement mais l'idée est présente. <b>Vérifiez toujours le texte source avant de citer.</b></span>
         </div>
         <div class="help-row">
+          <span class="help-chip outline">Vectoriel</span>
+          <span class="help-text">Résultat par <b>recherche vectorielle</b> — l'application compare le sens de votre requête à 74 476 paragraphes via un modèle d'embeddings. Se charge en arrière-plan lors de la première session.</span>
+        </div>
+        <div class="help-row">
+          <span class="help-chip outline">Sémantique</span>
+          <span class="help-text">Résultat par similarité sémantique (BM25 + synonymes) — actif avant le chargement du modèle vectoriel ou hors ligne.</span>
+        </div>
+        <div class="help-row">
           <span class="help-chip outline">Thème lié</span>
           <span class="help-text">Le passage appartient à la même famille spirituelle — lumière, filet, feu, mer, croix, amour-propre… — même sans mots communs avec votre requête.</span>
         </div>
@@ -1347,7 +1360,7 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; color: #D4A843; }
 
       </div>
       <div class="help-tip">
-        Autour charge les résultats depuis les tomes déjà ouverts pendant la session. Plus vous lisez, plus les suggestions s'enrichissent. Le quatrième section (même locuteur) a été retirée — trop homogène dans ce corpus.
+        Autour charge les résultats depuis les tomes déjà ouverts pendant la session. Plus vous lisez, plus les suggestions s'enrichissent.
       </div>
     </div>
 
@@ -1403,6 +1416,10 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; color: #D4A843; }
         <div class="help-row">
           <span class="help-chip light">Collections</span>
           <span class="help-text">Vos collections de passages pour le cénacle et l'étude.</span>
+        </div>
+        <div class="help-row">
+          <span class="help-chip light">Statistiques</span>
+          <span class="help-text">Résumé de votre lecture : entrées lues par tome, notes et surlignages créés, progression globale.</span>
         </div>
         <div class="help-divider"></div>
         <div class="help-row">
