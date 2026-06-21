@@ -189,7 +189,65 @@ body{overflow:hidden;display:flex;flex-direction:column;}
 .top-bar-title{font-family:var(--serif);font-style:italic;font-size:18px;color:var(--night);}
 .top-bar-sub{font-size:11px;color:var(--muted);}
 
-/* ═══ HOME SCREEN ═══ */
+/* ═══ ONBOARDING ═══ */
+.ob-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.25);transition:all .2s;}
+.ob-dot.active{background:var(--gold);width:18px;border-radius:3px;}
+.ob-slide{position:absolute;inset:0;padding:32px 28px 0;opacity:0;pointer-events:none;
+  transition:opacity .3s;display:flex;flex-direction:column;align-items:center;text-align:center;}
+.ob-slide.active{opacity:1;pointer-events:auto;}
+.ob-icon{color:var(--gold);}
+.ob-title{font-family:var(--serif);font-size:26px;font-style:italic;color:#fff;
+  margin-bottom:16px;line-height:1.3;}
+.ob-body{font-size:15px;color:rgba(255,255,255,.75);line-height:1.7;max-width:340px;}
+.ob-sub{font-size:12px;color:rgba(255,255,255,.4);margin-top:12px;}
+.ob-speech-demo{background:rgba(255,255,255,.06);border-radius:12px;padding:16px;
+  margin-top:20px;text-align:left;max-width:340px;width:100%;border-left:3px solid #D4A060;}
+.ob-choice-btn{display:flex;align-items:center;gap:10px;padding:14px 18px;
+  background:rgba(255,255,255,.08);border:0.5px solid rgba(255,255,255,.15);
+  border-radius:12px;font-size:14px;color:#fff;font-family:var(--body);cursor:pointer;
+  transition:all .15s;text-align:left;width:100%;}
+.ob-choice-btn:hover{background:rgba(255,255,255,.14);}
+.ob-choice-btn i{font-size:18px;color:rgba(255,255,255,.6);flex-shrink:0;}
+.ob-skip{background:none;border:none;font-size:13px;color:rgba(255,255,255,.4);
+  cursor:pointer;padding:8px;}
+.ob-next{background:var(--gold);border:none;color:#1A1612;font-size:14px;font-weight:500;
+  padding:10px 20px;border-radius:10px;cursor:pointer;font-family:var(--body);}
+/* ═══ END ONBOARDING ═══ */
+/* ═══ NOTE QUOTE PREVIEW ═══ */
+.note-quote-preview{background:rgba(201,168,76,.08);border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:12px;}
+.nqp-label{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin-bottom:6px;}
+.nqp-text{font-family:var(--serif);font-size:14px;color:var(--night);font-style:italic;line-height:1.6;
+  display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;}
+/* ═══ PARCOURS ═══ */
+.parcours-list{padding:0 16px 20px;}
+.parcours-card{background:var(--white);border:0.5px solid var(--border);border-radius:14px;
+  padding:16px 18px;margin-bottom:10px;cursor:pointer;text-align:left;width:100%;
+  transition:all .15s;border-left:3px solid transparent;}
+.parcours-card:hover,.parcours-card:focus-visible{border-left-color:var(--gold);
+  background:rgba(201,168,76,.06);outline:none;}
+.pc-label{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin-bottom:6px;}
+.pc-title{font-family:var(--serif);font-size:16px;color:var(--night);margin-bottom:4px;}
+.pc-desc{font-size:12px;color:var(--muted);line-height:1.5;}
+.pc-meta{font-size:11px;color:var(--muted);margin-top:8px;}
+/* ═══ SEMANTIC SEARCH ═══ */
+.sem-divider{display:flex;align-items:center;gap:8px;padding:14px 16px 8px;
+  font-size:11px;color:var(--muted);font-weight:500;letter-spacing:.04em;}
+.sem-divider span{display:flex;align-items:center;gap:5px;}
+.sem-divider i{color:#4F46E5;font-size:13px;}
+/* ═══ STATS ═══ */
+.stat-card{background:var(--white);border:0.5px solid var(--border);border-radius:12px;
+  padding:14px 16px;text-align:center;}
+.stat-num{font-family:var(--serif);font-size:28px;color:var(--night);font-weight:400;line-height:1;}
+.stat-label{font-size:11px;color:var(--muted);margin-top:4px;}
+.stat-progress-label{font-size:11px;color:var(--muted);margin-bottom:6px;}
+.stat-progress-bar-bg{height:6px;background:var(--border);border-radius:3px;}
+.stat-progress-bar-fill{height:6px;background:var(--gold);border-radius:3px;transition:width .5s;}
+/* ═══ ENTRY SPEECH DOT ═══ */
+.ei-speech-dot{width:6px;height:6px;border-radius:50%;background:#5C3A10;
+  flex-shrink:0;margin-top:6px;opacity:.75;}
+/* ═══ READER DESKTOP WIDTH ═══ */
+@media(min-width:680px){#reader-body{max-width:640px;margin:0 auto;}}
 #home-first{padding:32px 20px;}
 #home-first .app-title{font-family:var(--serif);font-style:italic;font-size:28px;
   color:var(--night);margin-bottom:6px;}
@@ -209,6 +267,20 @@ body{overflow:hidden;display:flex;flex-direction:column;}
 .home-lib-link:hover{color:var(--night);}
 
 #home-return{padding:16px;}
+.featured-quote{background:#1A2A4A;border-radius:16px;padding:18px 20px;
+  margin-bottom:14px;cursor:pointer;transition:opacity .15s;border-left:3px solid var(--gold);}
+.featured-quote:hover{opacity:.9;}
+.fq-label{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);
+  margin-bottom:10px;display:flex;align-items:center;gap:5px;}
+.fq-text{font-family:var(--serif);font-size:15px;color:#fff;line-height:1.65;
+  font-style:italic;margin-bottom:10px;}
+.fq-ref{font-size:11px;color:rgba(255,255,255,.45);}
+.speech-filter-chip{display:inline-flex;align-items:center;gap:5px;
+  padding:5px 12px;border-radius:20px;font-size:12px;font-family:var(--body);
+  border:0.5px solid var(--border);background:var(--white);color:var(--night);
+  cursor:pointer;transition:all .15s;white-space:nowrap;}
+.speech-filter-chip.active{background:#5C3A10;border-color:#5C3A10;color:#fff;}
+.speech-filter-chip i{font-size:13px;}
 .resume-card{background:var(--night);border-radius:16px;padding:20px;margin-bottom:16px;
   cursor:pointer;transition:opacity .15s;}
 .resume-card:hover{opacity:.9;}
@@ -777,7 +849,11 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; color: #D4A843; }
   <div class="sheet">
     <div class="sheet-handle"></div>
     <div class="sheet-title">Ajouter une note</div>
-    <textarea class="note-textarea" id="note-input" placeholder="Votre note personnelle…" rows="4"></textarea>
+    <div class="note-quote-preview" id="note-quote-preview" style="display:none;">
+      <div class="nqp-label">Passage sélectionné</div>
+      <div class="nqp-text" id="nqp-text"></div>
+    </div>
+    <textarea class="note-textarea" id="note-input" placeholder="Votre réflexion personnelle…" rows="4"></textarea>
     <div class="sheet-actions">
       <button class="btn-secondary" onclick="closeNoteSheet()">Annuler</button>
       <button class="btn-primary" onclick="saveNote()">Enregistrer</button>
@@ -820,6 +896,63 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; color: #D4A843; }
 
 <!-- ══════════════ SCREENS ══════════════ -->
 
+<!-- ONBOARDING OVERLAY -->
+<div id="onboarding-overlay" style="display:none;position:fixed;inset:0;z-index:999;
+  background:var(--night);overflow:hidden;">
+  <div id="onboarding-inner" style="height:100%;display:flex;flex-direction:column;">
+    <!-- Progress dots -->
+    <div style="display:flex;justify-content:center;gap:8px;padding:20px 0 0;">
+      <div class="ob-dot active" id="ob-dot-0"></div>
+      <div class="ob-dot" id="ob-dot-1"></div>
+      <div class="ob-dot" id="ob-dot-2"></div>
+    </div>
+    <!-- Slides container -->
+    <div style="flex:1;overflow:hidden;position:relative;">
+      <!-- Slide 0: What it is -->
+      <div class="ob-slide active" id="ob-slide-0">
+        <div class="ob-icon" style="font-size:48px;margin-bottom:24px;">✦</div>
+        <div class="ob-title">Livre du Ciel</div>
+        <div class="ob-body">Luisa Piccarreta a reçu entre 1899 et 1938 les dictées intérieures de Jésus. Ce journal spirituel en 36 tomes est le plus grand témoignage mystique de ce genre dans l'histoire de l'Église catholique.</div>
+        <div class="ob-sub">74 476 paragraphes · édition française</div>
+      </div>
+      <!-- Slide 1: Speech layer -->
+      <div class="ob-slide" id="ob-slide-1">
+        <div class="ob-icon" style="font-size:32px;margin-bottom:16px;"><i class="ti ti-message-circle" style="color:#D4A060;"></i></div>
+        <div class="ob-title">Les paroles de Jésus</div>
+        <div class="ob-body">Dans cette édition numérique, les paroles directes de Jésus apparaissent en couleur. Chaque passage a été vérifié et attribué — 52 075 segments au total.</div>
+        <div class="ob-speech-demo">
+          <div style="font-size:13px;color:rgba(255,255,255,.5);margin-bottom:8px;">Luisa écrit:</div>
+          <div style="font-size:14px;color:rgba(255,255,255,.75);margin-bottom:12px;font-style:italic;">Ce matin, mon aimable Jésus est venu et Il m'a dit:</div>
+          <div style="font-size:15px;color:#D4A060;font-style:italic;line-height:1.65;font-family:var(--serif);">«Ma fille, viens souvent dans Ma Volonté et prodigue-Moi de l'Adoration au nom de toute la Création.»</div>
+        </div>
+      </div>
+      <!-- Slide 2: Where to start -->
+      <div class="ob-slide" id="ob-slide-2">
+        <div class="ob-icon" style="font-size:32px;margin-bottom:16px;"><i class="ti ti-compass" style="color:#D4A060;"></i></div>
+        <div class="ob-title">Par où commencer?</div>
+        <div class="ob-body">Vous pouvez lire depuis le début, lire uniquement les paroles de Jésus, ou utiliser la recherche pour trouver un thème qui vous touche.</div>
+        <div style="display:flex;flex-direction:column;gap:10px;margin-top:20px;">
+          <button class="ob-choice-btn" onclick="finishOnboarding();startReading();">
+            <i class="ti ti-book-2"></i> Commencer au Tome I
+          </button>
+          <button class="ob-choice-btn" onclick="finishOnboarding();openJesusSpeech();">
+            <i class="ti ti-message-circle" style="color:#D4A060;"></i> Lire les paroles de Jésus
+          </button>
+          <button class="ob-choice-btn" onclick="finishOnboarding();goSearch();">
+            <i class="ti ti-search"></i> Chercher un thème
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Navigation -->
+    <div style="display:flex;justify-content:space-between;align-items:center;
+      padding:16px 24px 32px;">
+      <button class="ob-skip" onclick="finishOnboarding()" id="ob-skip-btn">Passer</button>
+      <button class="ob-next" onclick="obNext()" id="ob-next-btn">Suivant →</button>
+    </div>
+  </div>
+</div>
+
 <!-- HOME -->
 <div class="screen active" id="screen-home">
   <div id="update-banner" onclick="reloadForUpdate()">
@@ -858,11 +991,18 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; color: #D4A843; }
         <div class="ds">Trouver un passage par mots ou concept</div>
       </div>
     </button>
-    <button class="entry-door" onclick="showToast('Bientôt disponible')">
-      <i class="ti ti-info-circle door-icon"></i>
+    <button class="entry-door" onclick="goParcours()">
+      <i class="ti ti-route door-icon"></i>
       <div class="door-text">
-        <div class="dt">Découvrir le corpus</div>
-        <div class="ds">Histoire et présentation du Livre du Ciel</div>
+        <div class="dt">Parcours guidés</div>
+        <div class="ds">6 chemins pour entrer dans le corpus</div>
+      </div>
+    </button>
+    <button class="entry-door" onclick="openJesusSpeech()">
+      <i class="ti ti-message-circle door-icon" style="color:#C9A84C;"></i>
+      <div class="door-text">
+        <div class="dt">Paroles de Jésus</div>
+        <div class="ds">52 075 passages vérifiés · lecture directe</div>
       </div>
     </button>
     <button class="home-lib-link" onclick="goTomes()">
@@ -871,6 +1011,12 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; color: #D4A843; }
   </div>
   <!-- Returning -->
   <div id="home-return" class="scroll" style="display:none;">
+    <!-- Featured Jesus quote -->
+    <div class="featured-quote" id="featured-quote" onclick="openJesusSpeech()">
+      <div class="fq-label"><i class="ti ti-message-circle" style="font-size:11px;"></i> Paroles de Jésus</div>
+      <div class="fq-text" id="fq-text">—</div>
+      <div class="fq-ref" id="fq-ref">—</div>
+    </div>
     <div class="resume-card" id="resume-card" onclick="resumeReading()">
       <div class="rc-label">Continuer la lecture</div>
       <div class="rc-ref" id="rc-ref">—</div>
@@ -881,6 +1027,9 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; color: #D4A843; }
       <button class="ha-btn" onclick="goSearch()">
         <i class="ti ti-search"></i> Chercher
       </button>
+      <button class="ha-btn" onclick="goParcours()">
+        <i class="ti ti-route"></i> Parcours
+      </button>
       <button class="ha-btn" onclick="goTomes()">
         <i class="ti ti-books"></i> Bibliothèque
       </button>
@@ -889,6 +1038,18 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; color: #D4A843; }
       </button>
     </div>
   </div>
+</div>
+
+<!-- PARCOURS -->
+<div class="screen" id="screen-parcours">
+  <div class="top-bar">
+    <button class="btn-back" onclick="goHome()">
+      <i class="ti ti-arrow-left"></i> Accueil
+    </button>
+    <span class="top-bar-title">Parcours guidés</span>
+    <span style="width:32px;"></span>
+  </div>
+  <div class="scroll parcours-list" id="parcours-list"></div>
 </div>
 
 <!-- TOMES -->
@@ -981,6 +1142,7 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; color: #D4A843; }
       </button>
     </div>
   </div>
+  <div class="filter-row" id="speaker-filter-row"></div>
   <div class="filter-row" id="vol-filter-row"></div>
   <div id="search-meta" class="search-meta" style="display:none;"></div>
   <div id="trust-notice" class="trust-notice" style="display:none;">
@@ -1010,15 +1172,17 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; color: #D4A843; }
     <button class="btn-icon" onclick="exportEspace()"><i class="ti ti-download"></i></button>
   </div>
   <div class="espace-tabs">
-    <button class="es-tab active" onclick="showEspaceTab('notes')">Notes</button>
-    <button class="es-tab" onclick="showEspaceTab('highlights')">Surlignages</button>
-    <button class="es-tab" onclick="showEspaceTab('favorites')">Favoris</button>
-    <button class="es-tab" onclick="showEspaceTab('collections')">Collections</button>
+    <button class="es-tab active" onclick="showEspaceTab('notes')" id="es-tab-notes">Notes</button>
+    <button class="es-tab" onclick="showEspaceTab('highlights')" id="es-tab-highlights">Surlignages</button>
+    <button class="es-tab" onclick="showEspaceTab('favorites')" id="es-tab-favorites">Favoris</button>
+    <button class="es-tab" onclick="showEspaceTab('collections')" id="es-tab-collections">Collections</button>
+    <button class="es-tab" onclick="showEspaceTab('stats')" id="es-tab-stats"><i class="ti ti-chart-bar" style="font-size:14px;"></i></button>
   </div>
   <div class="espace-panel active scroll" id="ep-notes"></div>
   <div class="espace-panel scroll" id="ep-highlights"></div>
   <div class="espace-panel scroll" id="ep-favorites"></div>
   <div class="espace-panel scroll" id="ep-collections"></div>
+  <div class="espace-panel scroll" id="ep-stats"></div>
 </div>
 
 
@@ -1263,6 +1427,89 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; color: #D4A843; }
 
     <div class="help-version" id="help-version-footer"></div>
 
+    <!-- ── PAROLES DE JÉSUS ── -->
+    <div class="help-section">
+      <div class="help-section-head">
+        <div class="help-section-icon" style="background:rgba(92,58,16,.12);color:#5C3A10;"><i class="ti ti-message-circle"></i></div>
+        <span class="help-section-title">Paroles de Jésus</span>
+      </div>
+      <div class="help-card">
+        <div class="help-row">
+          <span class="help-chip" style="background:rgba(201,168,76,.15);color:#7A5A20;">Couleur or</span>
+          <span class="help-text">Les passages en couleur or/brun sont les paroles directes de Jésus. 52 075 segments vérifiés dans les 36 tomes.</span>
+        </div>
+        <div class="help-divider"></div>
+        <div class="help-row">
+          <span class="help-chip">Accueil</span>
+          <span class="help-text">Le bouton <b>Paroles de Jésus</b> sur l'écran d'accueil ouvre directement un tome avec les paroles en couleur.</span>
+        </div>
+        <div class="help-divider"></div>
+        <div class="help-row">
+          <span class="help-chip">Recherche</span>
+          <span class="help-text">Dans Chercher, activez le filtre <b>Paroles de Jésus</b> pour limiter les résultats aux seuls passages où Jésus parle.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── PARCOURS ── -->
+    <div class="help-section">
+      <div class="help-section-head">
+        <div class="help-section-icon" style="background:rgba(201,168,76,.12);color:#7A5A20;"><i class="ti ti-route"></i></div>
+        <span class="help-section-title">Parcours guidés</span>
+      </div>
+      <div class="help-card">
+        <div class="help-row">
+          <span class="help-chip">6 parcours</span>
+          <span class="help-text">Les Parcours guidés proposent des séquences d'entrées sélectionnées par thème ou période pour entrer dans le corpus progressivement.</span>
+        </div>
+        <div class="help-divider"></div>
+        <div class="help-row">
+          <span class="help-chip">Accueil</span>
+          <span class="help-text">Accessible depuis le bouton <b>Parcours guidés</b> sur l'écran d'accueil, ou via la navigation principale.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── RECHERCHE ── -->
+    <div class="help-section">
+      <div class="help-section-head">
+        <div class="help-section-icon hsi-amber"><i class="ti ti-search"></i></div>
+        <span class="help-section-title">Chercher</span>
+      </div>
+      <div class="help-card">
+        <div class="help-row">
+          <span class="help-chip">Filtre locuteur</span>
+          <span class="help-text"><b>Tous les textes</b> ou <b>Paroles de Jésus</b> — restreint la recherche aux passages attribués à Jésus.</span>
+        </div>
+        <div class="help-divider"></div>
+        <div class="help-row">
+          <span class="help-chip">Filtre tome</span>
+          <span class="help-text">Limitez la recherche à un tome spécifique (T1 à T36) ou laissez sur <b>Tous</b> pour chercher dans l'ensemble du corpus.</span>
+        </div>
+        <div class="help-divider"></div>
+        <div class="help-row">
+          <span class="help-chip">Clavier</span>
+          <span class="help-text">Dans le lecteur: <b>←</b> / <b>→</b> pour naviguer entre entrées · <b>E</b> pour basculer le mode · <b>Échap</b> pour revenir</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── ONBOARDING ── -->
+    <div class="help-section">
+      <div class="help-section-head">
+        <div class="help-section-icon" style="background:rgba(201,168,76,.12);color:#7A5A20;"><i class="ti ti-info-circle"></i></div>
+        <span class="help-section-title">Présentation de l'application</span>
+      </div>
+      <div class="help-card">
+        <div class="help-row">
+          <span></span>
+          <button class="btn-secondary" onclick="closeHelp();showOnboarding();" style="font-size:13px;padding:8px 16px;">
+            Revoir la présentation →
+          </button>
+        </div>
+      </div>
+    </div>
+
   </div><!-- end scroll -->
 </div>
 
@@ -1290,7 +1537,7 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; color: #D4A843; }
    VERSION — single source of truth
    Update this string on every release.
 ═══════════════════════════════════════════════════════ */
-const APP_VERSION = 'v2.5.24';
+const APP_VERSION = 'v2.5.27';
 const APP_BUILD   = '2026-06-16';
 
 /* ═══════════════════════════════════════════════════════
@@ -1428,13 +1675,252 @@ function showScreen(id) {
 }
 
 function goHome()   { showScreen('home'); }
-function goSearch() { showScreen('search'); document.getElementById('search-input').focus(); }
+function goParcours(){ showScreen('parcours'); renderParcours(); }
+function goSearch() {
+  showScreen('search');
+  renderSpeakerFilterRow();
+  renderVolFilterRow();
+  document.getElementById('search-input').focus();
+  // Preload semantic index in background so first query is instant
+  loadSemanticIndex().catch(()=>{});
+}
 function goEspace() { showScreen('espace'); renderEspace(); }
 function goTomes()  { showScreen('tomes'); renderTomes(); }
 
 /* ═══════════════════════════════════════════════════════
+   READ STATE TRACKING
+═══════════════════════════════════════════════════════ */
+async function markEntryRead(vol, entryId) {
+  await dbPut('read_entries', { key: `${vol}:${entryId}`, vol, entry_id: entryId, ts: Date.now() });
+}
+
+async function getReadEntryIds(vol) {
+  const all = await dbGetAll('read_entries');
+  return new Set(all.filter(r => r.vol === vol).map(r => r.entry_id));
+}
+
+async function countReadEntries(vol) {
+  const all = await dbGetAll('read_entries');
+  return all.filter(r => r.vol === vol).length;
+}
+
+/* ═══════════════════════════════════════════════════════
+   TOUCH SWIPE (entry navigation)
+═══════════════════════════════════════════════════════ */
+(function() {
+  let touchStartX = 0, touchStartY = 0;
+  const SWIPE_THRESHOLD = 60;
+  const SWIPE_RESTRAINT = 80;
+  document.addEventListener('touchstart', e => {
+    touchStartX = e.changedTouches[0].clientX;
+    touchStartY = e.changedTouches[0].clientY;
+  }, { passive: true });
+  document.addEventListener('touchend', async e => {
+    const readerActive = document.getElementById('screen-reader').classList.contains('active');
+    if (!readerActive) return;
+    // Don't trigger on interactive elements
+    if (e.target.closest('button,a,input,textarea,.hl-popup,#hl-popup,.sheet,.overlay')) return;
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    const dy = e.changedTouches[0].clientY - touchStartY;
+    if (Math.abs(dx) < SWIPE_THRESHOLD || Math.abs(dy) > SWIPE_RESTRAINT) return;
+    if (dx < 0) await navEntry(1);   // swipe left → next entry
+    else        await navEntry(-1);  // swipe right → prev entry
+  }, { passive: true });
+})();
+
+/* ═══════════════════════════════════════════════════════
+   KEYBOARD NAVIGATION
+═══════════════════════════════════════════════════════ */
+document.addEventListener('keydown', async e => {
+  // Only when reader is active
+  const readerActive = document.getElementById('screen-reader').classList.contains('active');
+  if (!readerActive) return;
+  // Don't intercept when typing in inputs
+  if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown' && e.altKey) {
+    e.preventDefault();
+    await navEntry(1);
+  } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp' && e.altKey) {
+    e.preventDefault();
+    await navEntry(-1);
+  } else if (e.key === 'e' || e.key === 'E') {
+    toggleMode();
+  } else if (e.key === 'Escape') {
+    backFromReader();
+  }
+});
+
+/* ═══════════════════════════════════════════════════════
+   PARCOURS GUIDÉS
+═══════════════════════════════════════════════════════ */
+const PARCOURS = [
+  {
+    id: 'decouverte',
+    label: 'Introduction',
+    title: 'Découvrir le Livre du Ciel',
+    desc: 'Une première traversée du corpus — des premières confidences aux grandes révélations sur la Volonté Divine.',
+    tomes: '1 à 5',
+    entries: [
+      { vol: 1, seq: 17 }, { vol: 1, seq: 44 }, { vol: 2, seq: 3 },
+      { vol: 3, seq: 5 }, { vol: 4, seq: 10 }, { vol: 5, seq: 6 },
+    ]
+  },
+  {
+    id: 'volonte',
+    label: 'Thème central',
+    title: 'La Volonté Divine',
+    desc: 'Le grand thème du Livre du Ciel — ce que Jésus révèle sur le Fiat et le Règne de Sa Volonté dans les créatures.',
+    tomes: '10 à 20',
+    entries: [
+      { vol: 11, seq: 3 }, { vol: 12, seq: 8 }, { vol: 14, seq: 5 },
+      { vol: 16, seq: 12 }, { vol: 18, seq: 7 }, { vol: 20, seq: 15 },
+    ]
+  },
+  {
+    id: 'passion',
+    label: 'Mystique',
+    title: 'La Passion vécue avec Luisa',
+    desc: 'Les entrées où Jésus fait partager à Luisa les souffrances de Sa Passion — parmi les plus intenses du corpus.',
+    tomes: '3 à 8',
+    entries: [
+      { vol: 3, seq: 9 }, { vol: 4, seq: 15 }, { vol: 5, seq: 12 },
+      { vol: 6, seq: 8 }, { vol: 7, seq: 11 }, { vol: 8, seq: 6 },
+    ]
+  },
+  {
+    id: 'ame',
+    label: 'Spiritualité',
+    title: "L'âme et son Dieu",
+    desc: "Comment Jésus parle à Luisa de la relation entre l'âme et Dieu — l'abandon, la confiance, l'amour.",
+    tomes: '2 à 12',
+    entries: [
+      { vol: 2, seq: 6 }, { vol: 3, seq: 14 }, { vol: 5, seq: 4 },
+      { vol: 7, seq: 9 }, { vol: 9, seq: 7 }, { vol: 12, seq: 4 },
+    ]
+  },
+  {
+    id: 'creation',
+    label: 'Cosmologie',
+    title: 'La Création et la Rédemption',
+    desc: "Jésus révèle à Luisa le sens de la Création, de la Rédemption et de l'histoire du salut.",
+    tomes: '15 à 25',
+    entries: [
+      { vol: 15, seq: 8 }, { vol: 17, seq: 6 }, { vol: 19, seq: 11 },
+      { vol: 21, seq: 4 }, { vol: 23, seq: 9 }, { vol: 25, seq: 7 },
+    ]
+  },
+  {
+    id: 'derniers',
+    label: 'Maturité',
+    title: 'Les derniers tomes',
+    desc: "Les révélations les plus profondes sur le Fiat — Jésus parle à Luisa dans ses dernières années à Corato.",
+    tomes: '33 à 36',
+    entries: [
+      { vol: 33, seq: 3 }, { vol: 33, seq: 18 }, { vol: 34, seq: 9 },
+      { vol: 35, seq: 7 }, { vol: 36, seq: 4 }, { vol: 36, seq: 21 },
+    ]
+  },
+];
+
+function goParcours() {
+  showScreen('parcours');
+  renderParcours();
+}
+
+async function renderParcours() {
+  const list = document.getElementById('parcours-list');
+  list.innerHTML = '';
+  for (const p of PARCOURS) {
+    const btn = document.createElement('button');
+    btn.className = 'parcours-card';
+    btn.innerHTML = `
+      <div class="pc-label">${p.label}</div>
+      <div class="pc-title">${p.title}</div>
+      <div class="pc-desc">${p.desc}</div>
+      <div class="pc-meta"><i class="ti ti-books" style="font-size:12px;"></i> Tomes ${p.tomes} · ${p.entries.length} entrées</div>`;
+    btn.onclick = () => openParcoursEntry(p, 0);
+    list.appendChild(btn);
+  }
+}
+
+async function openParcoursEntry(parcours, idx) {
+  const entry = parcours.entries[idx];
+  if (!entry) return;
+  await loadVolumeData(entry.vol);
+  const entries = corpusCache[entry.vol].entries;
+  const target = entries[Math.min(entry.seq - 1, entries.length - 1)] || entries[0];
+  openEntry(entry.vol, target.id, 'parcours');
+}
+
+/* ═══════════════════════════════════════════════════════
+   ONBOARDING
+═══════════════════════════════════════════════════════ */
+let obStep = 0;
+
+function showOnboarding() {
+  obStep = 0;
+  document.getElementById('onboarding-overlay').style.display = 'block';
+  updateObSlide();
+}
+
+function finishOnboarding() {
+  document.getElementById('onboarding-overlay').style.display = 'none';
+  localStorage.setItem('ldc_onboarding_done', '1');
+}
+
+function obNext() {
+  if (obStep < 2) {
+    obStep++;
+    updateObSlide();
+  } else {
+    finishOnboarding();
+  }
+}
+
+function updateObSlide() {
+  for (let i = 0; i < 3; i++) {
+    document.getElementById(`ob-slide-${i}`).classList.toggle('active', i === obStep);
+    document.getElementById(`ob-dot-${i}`).classList.toggle('active', i === obStep);
+  }
+  const nextBtn = document.getElementById('ob-next-btn');
+  const skipBtn = document.getElementById('ob-skip-btn');
+  if (obStep === 2) {
+    nextBtn.style.display = 'none';
+    skipBtn.textContent = 'Plus tard';
+  } else {
+    nextBtn.style.display = '';
+    skipBtn.textContent = 'Passer';
+  }
+}
+
+/* ═══════════════════════════════════════════════════════
    HOME
 ═══════════════════════════════════════════════════════ */
+
+// Curated featured quotes (Jesus speech, verified)
+const FEATURED_QUOTES = [
+  { t: '«Ma fille, si Tu veux adoucir Ma souffrance, viens souvent dans Ma Volonté et prodigue-Moi de l\'Adoration, de l\'Amour, de la Gratitude et des Remerciements au nom de toute la Création.»', ref: 'Tome 12' },
+  { t: '«Vivre dans Ma Volonté est le sommet de la Sainteté. Elle entraîne une évolution continuelle dans la grâce.»', ref: 'Tome 5' },
+  { t: '«Cesse de Me faire pleurer et échangeons le baiser de paix. Aimons-nous, et tous nous serons heureux, le Créateur et la créature.»', ref: 'Tome 25' },
+  { t: '«Je suis avec vous depuis si longtemps, et vous ne Me connaissez pas encore!»', ref: 'Tome 29' },
+  { t: '«Vois, ma fille, J\'ai fait cela pour toi, J\'ai souffert cela pour toi. Viens reconnaître les propriétés de ton Jésus, qui sont aussi les tiennes.»', ref: 'Tome 28' },
+  { t: '«Ici, on n\'entre pas. Cet endroit est réservé à la créature qui agit et vit dans notre Volonté.»', ref: 'Tome 30' },
+  { t: '«Reconnais dans ma lumière le grand don de ton Père qui t\'aime tellement qu\'Il veut que tu possèdes cette lumière.»', ref: 'Tome 29' },
+  { t: '«Qui peut résister à la Force de notre Amour infini qui sort de la créature et Nous aime?»', ref: 'Tome 30' },
+  { t: '«La petite fille de notre Volonté Divine ne marche pas et Nous ne ressentons pas en Nous le doux enchantement de ses actes.»', ref: 'Tome 27' },
+  { t: '«Ce qui est à Moi est à toi, et J\'ai tout fait pour toi.»', ref: 'Tome 31' },
+  { t: '«Je n\'ai rien de plus à lui donner. Je suis heureux de lui avoir tout donné.»', ref: 'Tome 29' },
+  { t: '«Je puis dire que Mon Amour a prévu pour l\'homme des avantages surpassant même les bienfaits de la Création.»', ref: 'Tome 15' },
+  { t: '«Mon désir à ce sujet est si grand que Je mettrai tout le reste de côté pour réaliser mon objectif. Par conséquent, sois attentive et reste-Moi fidèle.»', ref: 'Tome 14' },
+  { t: '«Il s\'agit là d\'un Royaume de paix auquel tous Mes fils devraient aspirer.»', ref: 'Tome 15' },
+];
+
+function getDailyQuote() {
+  const day = Math.floor(Date.now() / 86400000);
+  return FEATURED_QUOTES[day % FEATURED_QUOTES.length];
+}
+
 async function renderHome() {
   const pos = await dbGet('reading_pos', 'main');
   if (!pos) {
@@ -1443,8 +1929,12 @@ async function renderHome() {
   } else {
     document.getElementById('home-first').style.display  = 'none';
     document.getElementById('home-return').style.display = 'block';
-    document.getElementById('rc-ref').textContent = pos.label || '—';
+    document.getElementById('rc-ref').textContent     = pos.label   || '—';
     document.getElementById('rc-excerpt').textContent = pos.excerpt || '—';
+    // Featured quote
+    const q = getDailyQuote();
+    document.getElementById('fq-text').textContent = q.t;
+    document.getElementById('fq-ref').textContent  = q.ref;
   }
 }
 
@@ -1460,6 +1950,21 @@ async function resumeReading() {
   pendingParaId = pos.para_id;
   await loadVolumeData(pos.vol);
   openEntry(pos.vol, pos.entry_id, 'home');
+}
+
+// Open reader in Prier (speech-colour) mode on first Jesus speech entry of T02
+async function openJesusSpeech() {
+  await loadVolumeData(2);
+  const entries = corpusCache[2].entries;
+  if (!entries || !entries.length) return;
+  // Find first entry with speech
+  const speechEntry = entries.find(e => e.has_speech) || entries[0];
+  studyMode = false; // ensure Prier mode (speech visible, no labels)
+  const scroll = document.getElementById('reader-scroll');
+  if (scroll) scroll.classList.remove('study-mode');
+  const btn = document.getElementById('mode-toggle');
+  if (btn) { btn.textContent = 'Étudier'; btn.classList.remove('study'); }
+  openEntry(2, speechEntry.id, 'home');
 }
 
 /* ═══════════════════════════════════════════════════════
@@ -1502,11 +2007,21 @@ async function renderTomes() {
     }
     const btn = document.createElement('button');
     btn.className = 'vol-card' + (pos && pos.vol === vd.v ? ' current' : '');
+    // Calculate reading progress if this volume is cached
+    let progressBar = '';
+    if (corpusCache[vd.v] && entryCount > 0) {
+      const readCount = await countReadEntries(vd.v);
+      const pct = Math.round((readCount / entryCount) * 100);
+      if (pct > 0) {
+        progressBar = `<div class="vol-progress"><div class="vol-progress-bar" style="width:${pct}%"></div></div>`;
+      }
+    }
     btn.innerHTML = `
       <span class="vc-num">T${vd.v}</span>
       <div class="vc-body">
         <div class="vc-title">Tome ${vd.v}</div>
         <div class="vc-sub" id="vol-sub-${vd.v}">${entryCount ? entryCount + ' entrées · ' + paraCount + ' paragraphes' : 'Tome ' + vd.v}</div>
+        ${progressBar}
       </div>
       <span class="vc-status vs-ok" title="Validé"></span>`;
     btn.onclick = () => openTome(vd.v);
@@ -1522,15 +2037,20 @@ async function openTome(vol) {
   const list = document.getElementById('entries-list');
   list.innerHTML = '';
   const entries = corpusCache[vol].entries;
+  // Get set of read entry IDs for this volume
+  const readIds = await getReadEntryIds(vol);
   entries.forEach((e, idx) => {
     const btn = document.createElement('button');
-    btn.className = 'entry-item';
+    btn.className = 'entry-item' + (readIds.has(e.id) ? ' read' : '');
+    const speechDot = e.has_speech
+      ? `<div class="ei-speech-dot" title="Contient des paroles de Jésus"></div>` : '';
     btn.innerHTML = `
       <span class="ei-seq">${idx+1}</span>
       <div class="ei-body">
         <div class="ei-title">${e.title || 'Entrée ' + (idx+1)}</div>
         <div class="ei-date">${e.date_display || ''}</div>
-      </div>`;
+      </div>
+      ${speechDot}`;
     btn.onclick = () => openEntry(vol, e.id, 'entries');
     list.appendChild(btn);
   });
@@ -1552,11 +2072,11 @@ async function openEntry(vol, entryId, backDest) {
 
   // Populate header
   document.getElementById('rh-vol').textContent  = `Tome ${vol}`;
-  document.getElementById('rh-title').textContent = currentEntry.title || '';
+  document.getElementById('rh-title').textContent = currentEntry.title || currentEntry.stable_ref || '';
   document.getElementById('rh-date').textContent  = currentEntry.date_display || '';
 
   // Back label
-  const labels = { entries:`Tome ${vol}`, tomes:'Bibliothèque', search:'Résultats', home:'Accueil' };
+  const labels = { entries:`Tome ${vol}`, tomes:'Bibliothèque', search:'Résultats', home:'Accueil', parcours:'Parcours' };
   document.getElementById('reader-back-label').textContent = labels[backDest] || 'Retour';
 
   // Provenance
@@ -1567,6 +2087,9 @@ async function openEntry(vol, entryId, backDest) {
       ? `${currentEntry.source_page_start}–${currentEntry.source_page_end}`
       : '—';
   document.getElementById('prov-status').textContent = currentEntry.verification_status || '—';
+
+  // Mark entry as read
+  markEntryRead(vol, entryId).catch(()=>{});
 
   // Paragraphs
   const paras = await getParagraphs(vol, entryId);
@@ -1768,6 +2291,8 @@ function backFromReader() {
     openEntry(orig.vol, orig.entryId, orig.prevBack);
   } else if (readerBack === 'entries') {
     showScreen('entries');
+  } else if (readerBack === 'parcours') {
+    goParcours();
   } else if (readerBack === 'search') {
     showScreen('search');
   } else if (readerBack === 'home') {
@@ -1946,6 +2471,15 @@ async function applyHighlight(color) {
 /* ═══ NOTE ═══ */
 function openNoteSheet() {
   document.getElementById('note-input').value = '';
+  // Show captured quote if text is selected
+  const preview = document.getElementById('note-quote-preview');
+  const nqpText = document.getElementById('nqp-text');
+  if (selectionRange && selectionRange.text) {
+    nqpText.textContent = selectionRange.text;
+    preview.style.display = 'block';
+  } else {
+    preview.style.display = 'none';
+  }
   document.getElementById('note-overlay').classList.add('show');
 }
 
@@ -1978,6 +2512,7 @@ async function saveNote() {
     entry_title:     currentEntry ? (currentEntry.title || '') : '',
     entry_date:      currentEntry ? (currentEntry.date_display || '') : '',
     para_fingerprint: paraFingerprint,
+    quote:           selectionRange ? (selectionRange.text || '') : '',
     text,
     ts: Date.now(),
   });
@@ -2068,16 +2603,22 @@ function addToCollectionFromSelection() {
 /* ═══ SHARE ═══ */
 async function shareCitation() {
   if (!currentEntry) return;
-  const text = `${currentEntry.stable_ref}\n${currentEntry.title || ''}\n${currentEntry.date_display || ''}\n\nSource : Livre du Ciel, Luisa Piccarreta`;
+  const hasSelection = selectionRange && selectionRange.text;
+  const passage = hasSelection
+    ? `«${selectionRange.text}»\n\n`
+    : '';
+  const ref = `${currentEntry.title || ''}\n${currentEntry.date_display || ''} · ${currentEntry.stable_ref}`;
+  const text = `${passage}${ref}\n\nSource : Livre du Ciel, Luisa Piccarreta`;
   try {
     if (navigator.share) {
       await navigator.share({ title: currentEntry.title, text });
     } else {
       await navigator.clipboard.writeText(text);
-      showToast('Référence copiée');
+      showToast(hasSelection ? 'Passage copié' : 'Référence copiée');
     }
   } catch(e) {
-    showToast('Référence copiée');
+    await navigator.clipboard.writeText(text).catch(()=>{});
+    showToast(hasSelection ? 'Passage copié' : 'Référence copiée');
   }
 }
 
@@ -2384,23 +2925,51 @@ function buildSpeakerTag(speaker, confidence) {
 /* ═══════════════════════════════════════════════════════
    SEARCH
 ═══════════════════════════════════════════════════════ */
-let searchVolFilter = 0; // 0 = all
+let searchVolFilter = 0; // 0 = all, or min of group
+let searchVolFilterMax = 0; // max of group (0 = all)
+let searchSpeakerFilter = false; // false = all, true = Jesus speech only
+let semanticIndex = null;        // loaded lazily on first semantic query
+let semanticIndexLoading = false;
+
+function renderSpeakerFilterRow() {
+  const row = document.getElementById('speaker-filter-row');
+  if (!row) return;
+  row.innerHTML = '';
+  const allBtn = document.createElement('button');
+  allBtn.className = 'speech-filter-chip' + (!searchSpeakerFilter ? ' active' : '');
+  allBtn.innerHTML = 'Tous les textes';
+  allBtn.onclick = () => { searchSpeakerFilter = false; renderSpeakerFilterRow(); if (document.getElementById('search-input').value) runSearch(); };
+  row.appendChild(allBtn);
+  const jesusBtn = document.createElement('button');
+  jesusBtn.className = 'speech-filter-chip' + (searchSpeakerFilter ? ' active' : '');
+  jesusBtn.innerHTML = '<i class="ti ti-message-circle"></i> Paroles de Jésus';
+  jesusBtn.onclick = () => { searchSpeakerFilter = true; renderSpeakerFilterRow(); if (document.getElementById('search-input').value) runSearch(); };
+  row.appendChild(jesusBtn);
+}
 
 function renderVolFilterRow() {
   const row = document.getElementById('vol-filter-row');
   row.innerHTML = '';
-  const all = document.createElement('button');
-  all.className = 'chip' + (searchVolFilter===0?' active':'');
-  all.textContent = 'Tous';
-  all.onclick = () => { searchVolFilter=0; renderVolFilterRow(); if(document.getElementById('search-input').value) runSearch(); };
-  row.appendChild(all);
-  for (let v=1;v<=36;v++) {
+  const groups = [
+    { label: 'Tous', min: 0, max: 0 },
+    { label: 'T1–12', min: 1, max: 12 },
+    { label: 'T13–24', min: 13, max: 24 },
+    { label: 'T25–36', min: 25, max: 36 },
+  ];
+  groups.forEach(g => {
     const c = document.createElement('button');
-    c.className = 'chip' + (searchVolFilter===v?' active':'');
-    c.textContent = `T${v}`;
-    c.onclick = (v=>() => { searchVolFilter=v; renderVolFilterRow(); if(document.getElementById('search-input').value) runSearch(); })(v);
+    const active = g.min === 0 ? searchVolFilter === 0
+      : (searchVolFilter >= g.min && searchVolFilter <= g.max);
+    c.className = 'chip' + (active ? ' active' : '');
+    c.textContent = g.label;
+    c.onclick = () => {
+      searchVolFilter = g.min === 0 ? 0 : g.min; // use min as group key
+      searchVolFilterMax = g.min === 0 ? 36 : g.max;
+      renderVolFilterRow();
+      if (document.getElementById('search-input').value) runSearch();
+    };
     row.appendChild(c);
-  }
+  });
 }
 
 function onSearchInput() {
@@ -2554,6 +3123,125 @@ function normalise(s) {
     .replace(/œ/g,'oe').replace(/æ/g,'ae');
 }
 
+/* ═══════════════════════════════════════════════════════
+   SEMANTIC SEARCH (BM25 + synonym expansion)
+═══════════════════════════════════════════════════════ */
+
+// Load semantic index lazily
+async function loadSemanticIndex() {
+  if (semanticIndex) return semanticIndex;
+  if (semanticIndexLoading) {
+    // Wait for in-progress load
+    while (semanticIndexLoading) await new Promise(r => setTimeout(r, 50));
+    return semanticIndex;
+  }
+  semanticIndexLoading = true;
+  try {
+    const resp = await fetch('corpus/semantic_index.json');
+    semanticIndex = await resp.json();
+  } catch(e) {
+    semanticIndex = null;
+  }
+  semanticIndexLoading = false;
+  return semanticIndex;
+}
+
+// French normaliser — mirrors Python tokenise()
+function semTokenise(text) {
+  // Strip accents
+  const norm = text.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  const lower = norm.toLowerCase();
+  const tokens = (lower.match(/[a-z]{3,}/g) || []);
+  const STOP = new Set(['les','une','des','pour','par','sur','sous','dans','que',
+    'qui','pas','mon','son','ses','nos','vos','leur','dont','car','mais','avec',
+    'tout','tous','plus','tres','bien','aussi','comme','fait','fait','dit','ete',
+    'etait','sont','avait','avaient','ont','nous','vous','ils','elles','lui']);
+  return tokens.filter(t => !STOP.has(t));
+}
+
+// Expand query tokens using synonym map
+function expandTokens(tokens, synonyms) {
+  const expanded = new Set(tokens);
+  for (const t of tokens) {
+    if (synonyms[t]) synonyms[t].forEach(s => expanded.add(s));
+  }
+  return [...expanded];
+}
+
+// BM25 score for a single document
+function bm25Score(queryTokens, docNorm, idf, avgdl, k = 1.5, b = 0.75) {
+  const dTokens = semTokenise(docNorm);
+  const dl = dTokens.length;
+  if (dl === 0) return 0;
+  // Build TF map
+  const tf = {};
+  for (const t of dTokens) tf[t] = (tf[t] || 0) + 1;
+  let score = 0;
+  for (const t of queryTokens) {
+    const termIdf = idf[t];
+    if (!termIdf || !tf[t]) continue;
+    const termTf = tf[t];
+    score += termIdf * termTf * (k + 1) / (termTf + k * (1 - b + b * dl / avgdl));
+  }
+  return score;
+}
+
+// Determine if query needs semantic search
+// Activate when: ≥2 words, or query contains no exact match in current results
+function needsSemantic(raw, currentResults) {
+  const words = raw.trim().split(/\s+/).filter(w => w.length > 2);
+  if (words.length >= 2) return true;
+  return currentResults.length === 0;
+}
+
+// Run BM25 semantic search across loaded search data
+// Chunked to avoid blocking UI thread on mobile
+async function runSemanticSearch(raw, vols, speakerFilter) {
+  const idx = await loadSemanticIndex();
+  if (!idx) return [];
+
+  const baseTokens = semTokenise(raw);
+  if (baseTokens.length === 0) return [];
+  const queryTokens = expandTokens(baseTokens, idx.synonyms);
+
+  // Flatten all items from loaded vols
+  let allItems = [];
+  for (const v of vols) {
+    if (!searchCache[v]) continue;
+    if (speakerFilter) {
+      const vSegs = speakerCache[v] || [];
+      const speechIds = new Set(
+        vSegs.filter(s => s.speaker === 'JESUS' && s.confidence === 'high').map(s => s.paragraph_id)
+      );
+      allItems = allItems.concat(searchCache[v].filter(item => speechIds.has(item.id)));
+    } else {
+      allItems = allItems.concat(searchCache[v]);
+    }
+  }
+
+  if (allItems.length === 0) return [];
+
+  // Score in chunks of 3000, yielding to UI between chunks
+  const CHUNK = 3000;
+  const results = [];
+
+  for (let i = 0; i < allItems.length; i += CHUNK) {
+    // Yield to UI thread every chunk
+    if (i > 0) await new Promise(r => setTimeout(r, 0));
+
+    const chunk = allItems.slice(i, i + CHUNK);
+    for (const item of chunk) {
+      const score = bm25Score(queryTokens, item.norm || item.text || '', idx.idf, idx.avgdl);
+      if (score > 1.0) {
+        results.push({ ...item, _semScore: score });
+      }
+    }
+  }
+
+  results.sort((a, b) => b._semScore - a._semScore);
+  return results.slice(0, 25);
+}
+
 async function runSearch() {
   const raw = document.getElementById('search-input').value.trim();
   if (!raw) return;
@@ -2581,9 +3269,9 @@ async function runSearch() {
 
   // Search across all loaded volumes (background preload fills searchCache)
   // For unloaded volumes, load search index on demand
-  const vols = searchVolFilter
-    ? [searchVolFilter]
-    : Array.from({length:36}, (_,i) => i+1);
+  const vols = searchVolFilter === 0
+    ? Array.from({length:36}, (_,i) => i+1)
+    : Array.from({length: searchVolFilterMax - searchVolFilter + 1}, (_,i) => searchVolFilter + i);
   for (const v of vols) {
     if (!searchCache[v]) {
       try {
@@ -2596,6 +3284,26 @@ async function runSearch() {
   let allItems = [];
   for (const v of vols) {
     if (searchCache[v]) allItems = allItems.concat(searchCache[v]);
+  }
+
+  // Speaker filter: if active, restrict to Jesus speech segments only
+  if (searchSpeakerFilter) {
+    // Load speaker data for relevant volumes if needed
+    const speakerSet = new Set();
+    for (const v of vols) {
+      if (!speakerCache[v]) {
+        try {
+          const sd = await fetch(`corpus/speakers_${String(v).padStart(2,'0')}.json`).then(r=>r.ok?r.json():[]);
+          speakerCache[v] = sd;
+        } catch(e) { speakerCache[v] = []; }
+      }
+      for (const seg of (speakerCache[v] || [])) {
+        if (seg.speaker === 'JESUS' && seg.confidence === 'high') {
+          speakerSet.add(seg.paragraph_id);
+        }
+      }
+    }
+    allItems = allItems.filter(item => speakerSet.has(item.id));
   }
 
   // L3 theme families matched by query
@@ -2637,7 +3345,23 @@ async function runSearch() {
   }
 
   scored.sort((a,b) => b.score - a.score);
-  const results = scored.slice(0, 30);
+  let results = scored.slice(0, 30);
+
+  // ── Semantic augmentation ──
+  const semWords = raw.trim().split(/\s+/).filter(w => w.length > 2);
+  let semResults = [];
+  let usedSemantic = false;
+  if (semWords.length >= 2 || results.length < 5) {
+    // Show subtle indicator that semantic search is running
+    const metaEl2 = document.getElementById('search-meta');
+    if (metaEl2 && semWords.length >= 2) {
+      metaEl2.innerHTML += ' <span style="color:var(--muted);font-size:11px;">· recherche sémantique…</span>';
+    }
+    const semRaw = await runSemanticSearch(raw, vols, searchSpeakerFilter);
+    const existingIds = new Set(results.map(r => r.id));
+    semResults = semRaw.filter(r => !existingIds.has(r.id)).slice(0, 20);
+    if (semResults.length > 0) usedSemantic = true;
+  }
 
   const isApprox = results.some(r => r.matchType !== 'exact');
   const metaEl   = document.getElementById('search-meta');
@@ -2670,16 +3394,57 @@ async function runSearch() {
     const tagClass = { exact:'exact', words:'exact', partial:'approximate', weak:'thematic', thematic:'thematic' }[r.matchType] || 'thematic';
     const tagLabel = { exact:'Phrase exacte', words:'Mots exacts', partial:'Idée proche', weak:'Thème approché', thematic:'Thème lié' }[r.matchType] || '';
     const excerpt = r.text.slice(0, 220) + (r.text.length > 220 ? '…' : '');
+    // Check if this result is a Jesus speech paragraph
+    const isSpeech = searchSpeakerFilter || (function() {
+      const vSegs = speakerCache[r.volume] || [];
+      return vSegs.some(s => s.paragraph_id === r.id && s.speaker === 'JESUS' && s.confidence === 'high');
+    })();
+    const speechTag = isSpeech
+      ? `<span class="rc-tag" style="background:rgba(92,58,16,.12);color:#5C3A10;border-color:rgba(92,58,16,.2);">
+           <i class="ti ti-message-circle" style="font-size:10px;"></i> Paroles de Jésus</span>` : '';
     card.innerHTML = `
       <div class="rc-stable">${r.stable_ref} · Tome ${r.volume}</div>
       <div class="rc-body-text">${escapeHtml(excerpt)}</div>
       <div class="rc-tags">
         <span class="rc-tag ${tagClass}">${tagLabel}</span>
+        ${speechTag}
         ${r.date_display ? `<span class="rc-tag">${escapeHtml(r.date_display)}</span>` : ''}
       </div>`;
     card.onclick = () => openFromSearch(r);
     container.appendChild(card);
   });
+
+  // ── Semantic results section ──
+  if (semResults.length > 0) {
+    const divider = document.createElement('div');
+    divider.className = 'sem-divider';
+    divider.innerHTML = `<span><i class="ti ti-sparkles"></i> Résultats par similarité sémantique</span>`;
+    container.appendChild(divider);
+
+    semResults.forEach(r => {
+      const card = document.createElement('button');
+      card.className = 'result-card';
+      card.type = 'button';
+      const excerpt = (r.text || '').slice(0, 220) + ((r.text||'').length > 220 ? '…' : '');
+      const isSpeech = (function() {
+        const vSegs = speakerCache[r.volume] || [];
+        return vSegs.some(s => s.paragraph_id === r.id && s.speaker === 'JESUS' && s.confidence === 'high');
+      })();
+      const speechTag = isSpeech
+        ? `<span class="rc-tag" style="background:rgba(92,58,16,.12);color:#5C3A10;border-color:rgba(92,58,16,.2);">
+             <i class="ti ti-message-circle" style="font-size:10px;"></i> Paroles de Jésus</span>` : '';
+      card.innerHTML = `
+        <div class="rc-stable">${escapeHtml(r.stable_ref || r.entry_id || r.id)} · Tome ${r.volume}</div>
+        <div class="rc-body-text">${escapeHtml(excerpt)}</div>
+        <div class="rc-tags">
+          <span class="rc-tag" style="background:rgba(99,102,241,.1);color:#4F46E5;border-color:rgba(99,102,241,.2);">Sémantique</span>
+          ${speechTag}
+          ${r.date_display ? `<span class="rc-tag">${escapeHtml(r.date_display)}</span>` : ''}
+        </div>`;
+      card.onclick = () => openFromSearch(r);
+      container.appendChild(card);
+    });
+  }
 }
 
 async function openFromSearch(item) {
@@ -2692,12 +3457,15 @@ async function openFromSearch(item) {
    MON ESPACE
 ═══════════════════════════════════════════════════════ */
 function showEspaceTab(tab) {
+  const tabs = ['notes','highlights','favorites','collections','stats'];
   document.querySelectorAll('.es-tab').forEach((t,i) => {
-    const tabs = ['notes','highlights','favorites','collections'];
     t.classList.toggle('active', tabs[i]===tab);
   });
   document.querySelectorAll('.espace-panel').forEach(p => p.classList.remove('active'));
-  document.getElementById('ep-'+tab).classList.add('active');
+  const panel = document.getElementById('ep-' + tab);
+  if (panel) panel.classList.add('active');
+  // Lazy render stats on first open (in case espace was opened before stats existed)
+  if (tab === 'stats') renderStats().catch(()=>{});
 }
 
 async function renderEspace() {
@@ -2705,6 +3473,68 @@ async function renderEspace() {
   await renderHighlights();
   await renderFavorites();
   await renderCollections();
+  await renderStats();
+  await updateEspaceBadges();
+}
+
+async function updateEspaceBadges() {
+  const counts = {
+    notes:       (await dbGetAll('notes')).length,
+    highlights:  (await dbGetAll('highlights')).length,
+    favorites:   (await dbGetAll('favorites')).length,
+    collections: (await dbGetAll('collections')).length,
+  };
+  const labels = { notes:'Notes', highlights:'Surlignages', favorites:'Favoris', collections:'Collections' };
+  for (const [key, count] of Object.entries(counts)) {
+    const btn = document.getElementById(`es-tab-${key}`);
+    if (btn) btn.textContent = count > 0 ? `${labels[key]} (${count})` : labels[key];
+  }
+}
+
+async function renderStats() {
+  const el = document.getElementById('ep-stats');
+  if (!el) return;
+  const notes     = (await dbGetAll('notes')).length;
+  const hls       = (await dbGetAll('highlights')).length;
+  const favs      = (await dbGetAll('favorites')).length;
+  const readAll   = await dbGetAll('read_entries');
+  const readCount = readAll.length;
+  // Count unique tomes started
+  const tomesStarted = new Set(readAll.map(r => r.vol)).size;
+  // Total paragraphs in corpus
+  const totalEntries = 2307; // from manifest
+
+  el.innerHTML = `
+    <div style="padding:20px 16px;">
+      <div style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;
+        color:var(--muted);margin-bottom:16px;">Votre lecture</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px;">
+        <div class="stat-card">
+          <div class="stat-num">${readCount}</div>
+          <div class="stat-label">entrées lues</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">${tomesStarted}</div>
+          <div class="stat-label">tomes ouverts</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">${notes}</div>
+          <div class="stat-label">notes</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">${hls}</div>
+          <div class="stat-label">surlignages</div>
+        </div>
+      </div>
+      <div class="stat-progress-label">Progression globale</div>
+      <div class="stat-progress-bar-bg">
+        <div class="stat-progress-bar-fill" style="width:${Math.min(100, Math.round(readCount/totalEntries*100))}%"></div>
+      </div>
+      <div style="font-size:12px;color:var(--muted);margin-top:6px;">
+        ${readCount} / ${totalEntries} entrées · ${Math.round(readCount/totalEntries*100)}%
+      </div>
+      ${readCount === 0 ? '<div style="margin-top:24px;font-size:13px;color:var(--muted);text-align:center;">Commencez à lire pour voir votre progression.</div>' : ''}
+    </div>`;
 }
 
 async function renderNotes() {
@@ -2718,12 +3548,16 @@ async function renderNotes() {
   notes.forEach(n => {
     const d = document.createElement('div');
     d.className = 'espace-item';
+    const quoteHtml = n.quote
+      ? `<div style="border-left:3px solid var(--gold);padding-left:10px;margin-bottom:6px;font-family:var(--serif);font-size:13px;color:var(--muted);font-style:italic;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">${escapeHtml(n.quote)}</div>` : '';
+    const titleStr = n.entry_title ? escapeHtml(n.entry_title.slice(0,60)) + ' · ' : '';
     d.innerHTML = `
       <i class="ti ti-pencil ei-icon"></i>
       <div class="ei-content">
-        <div class="ei-ref">${n.stable_ref || '—'}</div>
+        <div class="ei-ref">${titleStr}${n.stable_ref || '—'}</div>
+        ${quoteHtml}
         <div class="ei-text">${escapeHtml(n.text)}</div>
-        <div class="ei-date">${new Date(n.ts).toLocaleDateString('fr-FR')}</div>
+        <div class="ei-date">${new Date(n.ts).toLocaleDateString('fr-FR',{day:'numeric',month:'long',year:'numeric'})}</div>
       </div>
       <button class="ei-del" onclick="deleteNote(${n.id})"><i class="ti ti-trash"></i></button>`;
     if (n.entry_id) {
@@ -2988,7 +3822,25 @@ async function exportEspace() {
   const favs  = await dbGetAll('favorites');
   const cols  = await dbGetAll('collections');
   const items = await dbGetAll('col_items');
-  const data  = { exported: new Date().toISOString(), notes, highlights: hls, favorites: favs, collections: cols, col_items: items };
+
+  // Plain text journal (notes with quotes)
+  if (notes.length > 0) {
+    const lines = ['Livre du Ciel — Journal de lecture', '═'.repeat(40), ''];
+    for (const n of notes.sort((a,b) => a.ts - b.ts)) {
+      lines.push(`${n.entry_title || ''} · ${n.stable_ref || ''}`.trim());
+      lines.push(new Date(n.ts).toLocaleDateString('fr-FR', {day:'numeric',month:'long',year:'numeric'}));
+      if (n.quote) { lines.push(''); lines.push(`« ${n.quote} »`); }
+      lines.push(''); lines.push(n.text); lines.push(''); lines.push('─'.repeat(30)); lines.push('');
+    }
+    const txtBlob = new Blob([lines.join('\n')], { type:'text/plain;charset=utf-8' });
+    const txtUrl  = URL.createObjectURL(txtBlob);
+    const txtA    = document.createElement('a');
+    txtA.href = txtUrl; txtA.download = `ldc-journal-${new Date().toISOString().slice(0,10)}.txt`;
+    txtA.click(); URL.revokeObjectURL(txtUrl);
+  }
+
+  // JSON backup
+  const data = { exported: new Date().toISOString(), notes, highlights: hls, favorites: favs, collections: cols, col_items: items };
   const blob  = new Blob([JSON.stringify(data, null, 2)], { type:'application/json' });
   const url   = URL.createObjectURL(blob);
   const a     = document.createElement('a');
@@ -3339,10 +4191,16 @@ async function boot() {
   const vp = document.getElementById('version-pill-home');
   if (vp) vp.textContent = APP_VERSION;
 
+  renderSpeakerFilterRow();
   renderVolFilterRow();
   await renderHome();
 
   document.getElementById('loading').style.display = 'none';
+
+  // Show onboarding on first launch
+  if (!localStorage.getItem('ldc_onboarding_done')) {
+    showOnboarding();
+  }
 
   // Service worker
   if ('serviceWorker' in navigator) {

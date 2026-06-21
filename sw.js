@@ -1,4 +1,4 @@
-const VERSION = 'ldc-v2.5.24';
+const VERSION = 'ldc-v2.5.27';
 const SHELL = [
   './', './index.html', './manifest.json', './sw.js',
 
@@ -23,6 +23,7 @@ const SHELL = [
 
   // Corpus manifest
   './corpus/manifest.json',
+  './corpus/semantic_index.json',
 
   // T1–T8 pre-cached for immediate offline reading
   // (remaining tomes load on demand and are cached on first access)
