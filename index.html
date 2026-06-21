@@ -1544,7 +1544,7 @@ const APP_BUILD   = '2026-06-16';
    STATE
 ═══════════════════════════════════════════════════════ */
 const DB_NAME = 'ldc_user_v1';
-const DB_VER  = 1;
+const DB_VER  = 2;
 let db = null;
 
 // Corpus cache (loaded lazily per volume)
@@ -1587,6 +1587,8 @@ function openDB() {
         d.createObjectStore('col_items', { keyPath: 'id', autoIncrement: true });
       if (!d.objectStoreNames.contains('settings'))
         d.createObjectStore('settings', { keyPath: 'key' });
+      if (!d.objectStoreNames.contains('read_entries'))
+        d.createObjectStore('read_entries', { keyPath: 'key' });
     };
     req.onsuccess = e => { db = e.target.result; res(db); };
     req.onerror   = () => rej(req.error);
