@@ -2014,7 +2014,7 @@ async function renderTomes() {
     // Calculate reading progress if this volume is cached
     let progressBar = '';
     if (corpusCache[vd.v] && entryCount > 0) {
-      const readCount = await countReadEntries(vd.v);
+      const readCount = await countReadEntries(vd.v).catch(() => 0);
       const pct = Math.round((readCount / entryCount) * 100);
       if (pct > 0) {
         progressBar = `<div class="vol-progress"><div class="vol-progress-bar" style="width:${pct}%"></div></div>`;
