@@ -1,4 +1,4 @@
-const VERSION = 'ldc-v2.5.30';
+const VERSION = 'ldc-v2.5.31';
 const SHELL = [
   './', './index.html', './manifest.json', './sw.js',
 
@@ -21,12 +21,12 @@ const SHELL = [
   // SortableJS (local)
   './assets/js/sortable.min.js',
 
-  // Corpus manifest
+  // Corpus manifest and search index
   './corpus/manifest.json',
   './corpus/semantic_index.json',
-  './embeddings_ldc_ids.json',   // embedding ID map (~1.6 MB) — bin (54 MB) cached on demand
+  './embeddings_ldc_ids.json',
 
-  // T1–T8 pre-cached for immediate offline reading
+  // T1–T8 paragraphs/search/speakers pre-cached for immediate offline reading
   './corpus/volume_01.json', './corpus/paragraphs_01.json', './corpus/search_01.json', './corpus/speakers_01.json',
   './corpus/volume_02.json', './corpus/paragraphs_02.json', './corpus/search_02.json', './corpus/speakers_02.json',
   './corpus/volume_03.json', './corpus/paragraphs_03.json', './corpus/search_03.json', './corpus/speakers_03.json',
@@ -35,14 +35,6 @@ const SHELL = [
   './corpus/volume_06.json', './corpus/paragraphs_06.json', './corpus/search_06.json', './corpus/speakers_06.json',
   './corpus/volume_07.json', './corpus/paragraphs_07.json', './corpus/search_07.json', './corpus/speakers_07.json',
   './corpus/volume_08.json', './corpus/paragraphs_08.json', './corpus/search_08.json', './corpus/speakers_08.json',
-
-  // T31–T36 volume metadata pre-cached to guarantee fresh titles after corpus patch
-  './corpus/volume_31.json',
-  './corpus/volume_32.json',
-  './corpus/volume_33.json',
-  './corpus/volume_34.json',
-  './corpus/volume_35.json',
-  './corpus/volume_36.json',
 ];
 
 self.addEventListener('message', e => {
@@ -65,8 +57,24 @@ self.addEventListener('activate', e => {
 
 self.addEventListener('fetch', e => {
   const url = new URL(e.request.url);
-  // Corpus files: cache-first (keyed to VERSION so stale data is evicted on SW update)
-  if (url.pathname.includes('/corpus/') || url.pathname.includes('/embeddings_ldc')) {
+  const path = url.pathname;
+
+  // volume_NN.json — network-first (small metadata, must stay fresh)
+  if (/\/corpus\/volume_\d+\.json$/.test(path)) {
+    e.respondWith(
+      fetch(e.request).then(res => {
+        if (res && res.ok) {
+          const clone = res.clone();
+          caches.open(VERSION).then(c => c.put(e.request, clone));
+        }
+        return res;
+      }).catch(() => caches.open(VERSION).then(c => c.match(e.request)))
+    );
+    return;
+  }
+
+  // paragraphs/search/speakers — cache-first (large files, immutable once deployed)
+  if (path.includes('/corpus/') || path.includes('/embeddings_ldc')) {
     e.respondWith(
       caches.open(VERSION).then(cache =>
         cache.match(e.request).then(cached => {
@@ -80,7 +88,8 @@ self.addEventListener('fetch', e => {
     );
     return;
   }
-  // Shell: network-first with cache fallback
+
+  // Shell files — network-first with cache fallback
   e.respondWith(
     fetch(e.request).then(res => {
       if (res && res.ok) {
@@ -88,6 +97,6 @@ self.addEventListener('fetch', e => {
         caches.open(VERSION).then(c => c.put(e.request, clone));
       }
       return res;
-    }).catch(() => caches.match(e.request))
+    }).catch(() => caches.open(VERSION).then(c => c.match(e.request)))
   );
 });
