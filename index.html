@@ -651,7 +651,6 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; color: #D4A843; }
 .dp-list-cont {
   margin-bottom:0.1em;
   padding-left:calc(14px + 1.1em);
-  border-left:2.5px solid rgba(201,168,76,0.3);
   line-height:1.55;
 }
 /* Last continuation before a new narrative block */
@@ -672,7 +671,6 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; color: #D4A843; }
   display: block;
   padding-left: calc(14px + 1.1em);
   text-indent: -1.1em;
-  border-left: 2.5px solid var(--gold);
   line-height: 1.55;
   margin-bottom: 0.1em;
 }
@@ -1643,7 +1641,7 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; color: #D4A843; }
    VERSION — single source of truth
    Update this string on every release.
 ═══════════════════════════════════════════════════════ */
-const APP_VERSION = 'v2.5.44';
+const APP_VERSION = 'v2.5.45';
 const APP_BUILD   = '2026-06-22';
 
 /* ═══════════════════════════════════════════════════════
@@ -3024,8 +3022,10 @@ function buildSpeechHTML(text, segments, highlights) {
       const lblCls  = spk === 'JESUS' ? 'lbl-jesus' : 'lbl-marie';
       const confLabel = conf === 'medium' ? ' <em>(probable)</em>' : '';
       if (cls) {
+        // Strip opening/closing quote marks — colour+italic already signals speech boundaries
+        const spText = span.text.replace(/^["«“„]/, '').replace(/["»”]$/, '');
         html += `<span class="speech-label ${lblCls}">${lbl}${confLabel}</span>`;
-        html += `<span class="${cls}">${applyHighlights(escapeHtml(span.text), highlights)}</span>`;
+        html += `<span class="${cls}">${applyHighlights(escapeHtml(spText), highlights)}</span>`;
         lastWasSpeech  = true;
         speechWasFirst = !narrativeSeenYet; // true only if no narrative came before this speech
       } else {
@@ -3111,9 +3111,12 @@ function renderVolFilterRow() {
   row.innerHTML = '';
   const groups = [
     { label: 'Tous', min: 0, max: 0 },
-    { label: 'T1–12', min: 1, max: 12 },
-    { label: 'T13–24', min: 13, max: 24 },
-    { label: 'T25–36', min: 25, max: 36 },
+    { label: 'T1–6', min: 1, max: 6 },
+    { label: 'T7–12', min: 7, max: 12 },
+    { label: 'T13–18', min: 13, max: 18 },
+    { label: 'T19–24', min: 19, max: 24 },
+    { label: 'T25–30', min: 25, max: 30 },
+    { label: 'T31–36', min: 31, max: 36 },
   ];
   groups.forEach(g => {
     const c = document.createElement('button');
