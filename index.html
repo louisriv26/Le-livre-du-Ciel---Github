@@ -1643,7 +1643,7 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; color: #D4A843; }
    VERSION — single source of truth
    Update this string on every release.
 ═══════════════════════════════════════════════════════ */
-const APP_VERSION = 'v2.5.43';
+const APP_VERSION = 'v2.5.44';
 const APP_BUILD   = '2026-06-22';
 
 /* ═══════════════════════════════════════════════════════
@@ -2302,19 +2302,33 @@ async function openEntry(vol, entryId, backDest) {
       }
     }
 
-    // ── Pass 1.5: strip '- ' from isolated (non-cluster) dash paragraphs ──
+    // ── Pass 1.5: handle isolated (non-cluster) dash paragraphs ──
     // A single dash paragraph not adjacent to other dash items is a continuation
-    // clause, not a list item. Remove the visible dash so it reads as prose.
-    dps.forEach(el => {
+    // clause. Two cases:
+    //   A) Previous paragraph ends with , or : → merge inline (one sentence).
+    //   B) Otherwise → strip dash, indent (dp-isolated-dash).
+    dps.forEach((el, idx) => {
       if (!startsWithDash(el)) return;
       if (el.classList.contains('dp-list-first') ||
           el.classList.contains('dp-list-middle') ||
           el.classList.contains('dp-list-last')) return;
-      // Strip leading dash from the first text node
+
+      // Strip leading dash from the first text node to get the continuation text
       const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null, false);
       const first = walker.nextNode();
       if (first) first.textContent = first.textContent.replace(/^\s*[-–—]\s*/, '');
-      el.classList.add('dp-isolated-dash');
+
+      // Check if previous paragraph ends with , or : → merge
+      const prevEl = dps[idx - 1];
+      const prevText = prevEl ? (prevEl.textContent || '').trimEnd() : '';
+      if (prevEl && /[,:]$/.test(prevText)) {
+        // Append a space + this paragraph's content to the previous paragraph
+        prevEl.appendChild(document.createTextNode(' '));
+        while (el.firstChild) prevEl.appendChild(el.firstChild);
+        el.remove();
+      } else {
+        el.classList.add('dp-isolated-dash');
+      }
     });
 
     // ── Pass 2: classify continuation paragraphs ──
