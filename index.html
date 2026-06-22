@@ -1641,7 +1641,7 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; color: #D4A843; }
    VERSION — single source of truth
    Update this string on every release.
 ═══════════════════════════════════════════════════════ */
-const APP_VERSION = 'v2.5.46';
+const APP_VERSION = 'v2.5.47';
 const APP_BUILD   = '2026-06-22';
 
 /* ═══════════════════════════════════════════════════════
@@ -2230,17 +2230,18 @@ async function openEntry(vol, entryId, backDest) {
     div.dataset.stableRef = p.stable_ref;
     div.dataset.rawText = p.text.slice(0, 12); // first 12 chars for list detection
 
-    // Strip leading section numbers like (1), (2) — structural markers, not display text
-    const displayText = p.text.replace(/^\(\d+\)\s*/, '');
-
     const paraSegs = segsByPara[p.id] || [];
     const hasSpeech = paraSegs.length > 0;
 
     if (hasSpeech) {
-      // Build inline speech rendering from offsets
-      div.innerHTML = buildSpeechHTML(displayText, paraSegs, entryHl.filter(h=>h.para_id===p.id));
+      // Build inline speech rendering from offsets — use p.text so segment char offsets stay valid
+      // Strip leading section number (1), (2)… from the rendered HTML, not the raw text
+      let html = buildSpeechHTML(p.text, paraSegs, entryHl.filter(h=>h.para_id===p.id));
+      html = html.replace(/^\(\d+\)\s*/, '');
+      div.innerHTML = html;
     } else {
-      let text = escapeHtml(displayText);
+      // Strip leading section numbers — no offsets involved for plain paragraphs
+      let text = escapeHtml(p.text.replace(/^\(\d+\)\s*/, ''));
       entryHl.filter(h=>h.para_id===p.id).forEach(h => {
         text = text.replace(escapeHtml(h.text),
           `<mark class="hl hl-${h.color}" data-hl-id="${h.id}">${escapeHtml(h.text)}</mark>`);
