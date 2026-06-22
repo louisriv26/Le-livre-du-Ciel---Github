@@ -810,7 +810,8 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; color: #D4A843; }
 .date-nav-entry{display:flex;align-items:center;gap:10px;padding:10px 16px;
   border-top:1px solid var(--border);border-bottom:1px solid var(--border);
   background:var(--ivory);color:var(--ink);font-family:var(--body);font-size:14px;
-  cursor:pointer;width:100%;text-align:left;}
+  cursor:pointer;width:100%;text-align:left;box-sizing:border-box;
+  -webkit-appearance:none;min-width:0;}
 .date-nav-entry:active{background:var(--gold-pale);}
 
 /* ═══ DATE NAVIGATOR ═══ */
@@ -832,9 +833,7 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; color: #D4A843; }
 .dn-month-bar{height:3px;border-radius:2px;width:70%;min-width:0;}
 /* Day grid */
 .dn-day-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;}
-.dn-day-header{text-align:center;font-size:10px;color:var(--muted);padding:2px 0;
-  font-family:var(--body);}
-.dn-day-cell{aspect-ratio:1;border-radius:6px;border:1px solid transparent;
+.dn-day-cell{height:40px;max-height:44px;border-radius:6px;border:1px solid transparent;
   font-size:13px;font-family:var(--body);position:relative;
   display:flex;align-items:center;justify-content:center;cursor:pointer;}
 .dn-day-cell:disabled{cursor:default;}
@@ -1641,7 +1640,7 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; color: #D4A843; }
    VERSION — single source of truth
    Update this string on every release.
 ═══════════════════════════════════════════════════════ */
-const APP_VERSION = 'v2.5.39';
+const APP_VERSION = 'v2.5.40';
 const APP_BUILD   = '2026-06-22';
 
 /* ═══════════════════════════════════════════════════════
@@ -4573,7 +4572,7 @@ function renderDnDayGrid() {
   }
   const daysInMonth = new Date(dnYear, dnMonth, 0).getDate();
   const firstDow    = (new Date(dnYear, dnMonth - 1, 1).getDay() + 6) % 7;
-  let html = DN_DOW_LABELS.map(l => `<div class="dn-day-header">${l}</div>`).join('');
+  let html = '';
   for (let i = 0; i < firstDow; i++) html += '<div class="dn-day-cell dn-day-empty"></div>';
   for (let d = 1; d <= daysInMonth; d++) {
     const ymd     = `${dnYear}-${dnMonth}-${d}`;
