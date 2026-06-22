@@ -454,7 +454,7 @@ mark.hl-blue{background:rgba(80,140,220,.25);color:inherit;}
 .chip{flex-shrink:0;padding:5px 12px;border-radius:20px;font-size:12px;
   cursor:pointer;border:0.5px solid var(--border);background:var(--white);
   color:var(--muted);transition:all .15s;font-family:var(--body);}
-.chip.active{background:var(--night);color:var(--gold);border-color:var(--night);}
+.chip.active{background:#1A2A4A;color:#D4A060;border-color:#1A2A4A;}
 
 /* ═══ MON ESPACE ═══ */
 .espace-tabs{display:flex;border-bottom:0.5px solid var(--border);flex-shrink:0;}
@@ -1641,7 +1641,7 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; color: #D4A843; }
    VERSION — single source of truth
    Update this string on every release.
 ═══════════════════════════════════════════════════════ */
-const APP_VERSION = 'v2.5.45';
+const APP_VERSION = 'v2.5.46';
 const APP_BUILD   = '2026-06-22';
 
 /* ═══════════════════════════════════════════════════════
@@ -2230,14 +2230,17 @@ async function openEntry(vol, entryId, backDest) {
     div.dataset.stableRef = p.stable_ref;
     div.dataset.rawText = p.text.slice(0, 12); // first 12 chars for list detection
 
+    // Strip leading section numbers like (1), (2) — structural markers, not display text
+    const displayText = p.text.replace(/^\(\d+\)\s*/, '');
+
     const paraSegs = segsByPara[p.id] || [];
     const hasSpeech = paraSegs.length > 0;
 
     if (hasSpeech) {
       // Build inline speech rendering from offsets
-      div.innerHTML = buildSpeechHTML(p.text, paraSegs, entryHl.filter(h=>h.para_id===p.id));
+      div.innerHTML = buildSpeechHTML(displayText, paraSegs, entryHl.filter(h=>h.para_id===p.id));
     } else {
-      let text = escapeHtml(p.text);
+      let text = escapeHtml(displayText);
       entryHl.filter(h=>h.para_id===p.id).forEach(h => {
         text = text.replace(escapeHtml(h.text),
           `<mark class="hl hl-${h.color}" data-hl-id="${h.id}">${escapeHtml(h.text)}</mark>`);
