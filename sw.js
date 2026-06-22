@@ -1,4 +1,4 @@
-const VERSION = 'ldc-v2.5.40';
+const VERSION = 'ldc-v2.5.41';
 const SHELL = [
   './', './index.html', './manifest.json', './sw.js',
 
@@ -43,7 +43,9 @@ self.addEventListener('message', e => {
 
 self.addEventListener('install', e => {
   e.waitUntil(
-    caches.open(VERSION).then(c => c.addAll(SHELL)).then(() => self.skipWaiting())
+    caches.open(VERSION).then(c => c.addAll(SHELL))
+    // No skipWaiting here — new SW waits so the update banner can show.
+    // User taps banner → SKIP_WAITING message → SW activates → controllerchange → reload.
   );
 });
 

@@ -156,7 +156,8 @@ html[data-theme="light"]{
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html,body{height:100%;background:var(--ivory);font-family:var(--body);color:var(--ink);}
-body{overflow:hidden;display:flex;flex-direction:column;}
+html{overflow-x:hidden;max-width:100vw;}
+body{overflow:hidden;overflow-x:hidden;max-width:100vw;display:flex;flex-direction:column;}
 
 /* ═══ SCROLL ═══ */
 .scroll{flex:1;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;}
@@ -1640,7 +1641,7 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; color: #D4A843; }
    VERSION — single source of truth
    Update this string on every release.
 ═══════════════════════════════════════════════════════ */
-const APP_VERSION = 'v2.5.40';
+const APP_VERSION = 'v2.5.41';
 const APP_BUILD   = '2026-06-22';
 
 /* ═══════════════════════════════════════════════════════
@@ -4543,9 +4544,7 @@ function renderDnMonthGrid() {
     const isSel   = mo === dnMonth;
     let bg, textColor, barColor;
     if (isEmpty)       { bg = 'var(--border)'; textColor = 'var(--muted)'; barColor = 'transparent'; }
-    else if (ratio < 0.33) { bg = '#dde4f0'; textColor = '#1A2A4A';  barColor = '#8AABD4'; }
-    else if (ratio < 0.67) { bg = '#8AABD4'; textColor = '#ffffff';  barColor = '#1A2A4A'; }
-    else                   { bg = '#1A2A4A'; textColor = '#D4A060';  barColor = '#D4A060'; }
+    else               { bg = '#1A2A4A';      textColor = '#D4A060';  barColor = '#D4A060'; }
     const border  = isSel ? '1.5px solid #D4A060' : '1.5px solid transparent';
     const barW    = isEmpty ? 0 : Math.round(ratio * 100);
     html += `<button class="dn-month-cell" style="background:${bg};color:${textColor};border:${border};opacity:${isEmpty?0.3:1};"
