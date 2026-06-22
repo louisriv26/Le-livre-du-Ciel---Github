@@ -806,6 +806,13 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; color: #D4A843; }
   border-top-color:var(--gold);border-radius:50%;animation:spin .8s linear infinite;}
 @keyframes spin{to{transform:rotate(360deg);}}
 
+/* Date nav entry row in Search */
+.date-nav-entry{display:flex;align-items:center;gap:10px;padding:10px 16px;
+  border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+  background:var(--ivory);color:var(--ink);font-family:var(--body);font-size:14px;
+  cursor:pointer;width:100%;text-align:left;}
+.date-nav-entry:active{background:var(--gold-pale);}
+
 /* ═══ DATE NAVIGATOR ═══ */
 .dn-wrap{padding:12px 16px 32px;display:flex;flex-direction:column;gap:20px;}
 .dn-section-title{font-size:11px;text-transform:uppercase;letter-spacing:.06em;
@@ -1181,9 +1188,6 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; color: #D4A843; }
 <div class="screen" id="screen-search">
   <div class="top-bar">
     <span class="top-bar-title">Recherche</span>
-    <button class="btn-icon" onclick="openDateNav()" aria-label="Navigateur de dates" title="Navigateur de dates">
-      <i class="ti ti-calendar"></i>
-    </button>
   </div>
   <div class="search-bar-wrap">
     <div class="search-bar">
@@ -1197,6 +1201,11 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; color: #D4A843; }
   </div>
   <div class="filter-row" id="speaker-filter-row"></div>
   <div class="filter-row" id="vol-filter-row"></div>
+  <button class="date-nav-entry" onclick="openDateNav()">
+    <i class="ti ti-calendar" style="font-size:15px;"></i>
+    <span>Parcourir par date</span>
+    <i class="ti ti-arrow-right" style="font-size:13px;margin-left:auto;opacity:0.5;"></i>
+  </button>
   <div id="search-meta" class="search-meta" style="display:none;"></div>
   <div id="trust-notice" class="trust-notice" style="display:none;">
     Voici les passages les plus proches de votre idée. Vérifiez le texte source avant de citer.
@@ -1632,7 +1641,7 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; color: #D4A843; }
    VERSION — single source of truth
    Update this string on every release.
 ═══════════════════════════════════════════════════════ */
-const APP_VERSION = 'v2.5.35';
+const APP_VERSION = 'v2.5.36';
 const APP_BUILD   = '2026-06-22';
 
 /* ═══════════════════════════════════════════════════════
