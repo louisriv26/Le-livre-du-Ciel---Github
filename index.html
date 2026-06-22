@@ -1554,7 +1554,7 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; color: #D4A843; }
    VERSION — single source of truth
    Update this string on every release.
 ═══════════════════════════════════════════════════════ */
-const APP_VERSION = 'v2.5.32';
+const APP_VERSION = 'v2.5.33';
 const APP_BUILD   = '2026-06-22';
 
 /* ═══════════════════════════════════════════════════════
@@ -1651,12 +1651,15 @@ function dbGetAll(store) {
 /* ═══════════════════════════════════════════════════════
    CORPUS LOADING
 ═══════════════════════════════════════════════════════ */
+const CORPUS_CV = 'cv=10';
+
 async function loadVolumeData(vol) {
   if (corpusCache[vol]) return;
+  const pad = String(vol).padStart(2,'0');
   const [vData, pData, sData] = await Promise.all([
-    fetch(`corpus/volume_${String(vol).padStart(2,'0')}.json`).then(r=>r.json()),
-    fetch(`corpus/paragraphs_${String(vol).padStart(2,'0')}.json`).then(r=>r.json()),
-    fetch(`corpus/search_${String(vol).padStart(2,'0')}.json`).then(r=>r.json()),
+    fetch(`corpus/volume_${pad}.json?${CORPUS_CV}`).then(r=>r.json()),
+    fetch(`corpus/paragraphs_${pad}.json?${CORPUS_CV}`).then(r=>r.json()),
+    fetch(`corpus/search_${pad}.json?${CORPUS_CV}`).then(r=>r.json()),
   ]);
   const byId = {};
   vData.entries.forEach(e => { byId[e.id] = e; });
@@ -1665,7 +1668,7 @@ async function loadVolumeData(vol) {
   searchCache[vol] = sData;
   // Load speaker annotations (best-effort — may not exist for all vols yet)
   try {
-    const spkData = await fetch(`corpus/speakers_${String(vol).padStart(2,'0')}.json`).then(r=>r.ok?r.json():[]);
+    const spkData = await fetch(`corpus/speakers_${pad}.json?${CORPUS_CV}`).then(r=>r.ok?r.json():[]);
     speakerCache[vol] = spkData;
   } catch(e) { speakerCache[vol] = []; }
 }
@@ -4243,7 +4246,7 @@ async function preloadSearchIndexes() {
         const pad = String(v).padStart(2,'0');
         // Load lightweight volume metadata (entry/para counts for tomes screen)
         if (!volumeMeta[v]) {
-          const vData = await fetch(`corpus/volume_${pad}.json`).then(r=>r.json());
+          const vData = await fetch(`corpus/volume_${pad}.json?${CORPUS_CV}`).then(r=>r.json());
           volumeMeta[v] = { entry_count: vData.entry_count, para_count: vData.para_count };
           // Update tomes screen sub-label if visible
           const el = document.getElementById(`vol-sub-${v}`);
