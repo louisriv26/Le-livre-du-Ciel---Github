@@ -541,13 +541,11 @@ mark.hl-blue{background:rgba(80,140,220,.25);color:inherit;}
 
 
 /* ═══ INLINE SPEECH RENDERING ═══ */
-/* Jesus speech: gold left border + italic (Option B) */
+/* Jesus speech: italic + colour only — no left border */
 .speech-jesus {
   display: block;
   margin: 0.3em 0 0.1em 0;
-  padding: 2px 0 2px 14px;
-  border-left: 2.5px solid var(--gold);
-  border-radius: 0;
+  padding: 2px 0;
   color: #5C3A10;
   font-style: italic;
 }
@@ -583,7 +581,7 @@ html[data-theme="dark"] .speech-marie { color:#B899D4; }
 }
 /* Show labels in study mode */
 .study-mode .speech-label { display: block; }
-.speech-label.lbl-jesus { color: var(--gold); }
+.speech-label.lbl-jesus { color: var(--gold); margin-left: 0; }
 .speech-label.lbl-marie { color: #7B5EA7; }
 /* In study mode show confidence */
 .speech-conf {
@@ -660,6 +658,10 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; color: #D4A843; }
 .dp-list-cont.dp-list-cont-last {
   margin-bottom:0.9em;
 }
+
+/* Isolated dash paragraph: single '- ' not part of a cluster — rendered as
+   indented continuation prose, dash prefix stripped in JS. */
+.dp-isolated-dash { padding-left:14px; }
 
 /* Embedded enumeration: lead-in + split items within a single paragraph */
 .dp-embedded-leadin {
@@ -1641,7 +1643,7 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; color: #D4A843; }
    VERSION — single source of truth
    Update this string on every release.
 ═══════════════════════════════════════════════════════ */
-const APP_VERSION = 'v2.5.42';
+const APP_VERSION = 'v2.5.43';
 const APP_BUILD   = '2026-06-22';
 
 /* ═══════════════════════════════════════════════════════
@@ -2299,6 +2301,21 @@ async function openEntry(vol, entryId, backDest) {
         i++;
       }
     }
+
+    // ── Pass 1.5: strip '- ' from isolated (non-cluster) dash paragraphs ──
+    // A single dash paragraph not adjacent to other dash items is a continuation
+    // clause, not a list item. Remove the visible dash so it reads as prose.
+    dps.forEach(el => {
+      if (!startsWithDash(el)) return;
+      if (el.classList.contains('dp-list-first') ||
+          el.classList.contains('dp-list-middle') ||
+          el.classList.contains('dp-list-last')) return;
+      // Strip leading dash from the first text node
+      const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null, false);
+      const first = walker.nextNode();
+      if (first) first.textContent = first.textContent.replace(/^\s*[-–—]\s*/, '');
+      el.classList.add('dp-isolated-dash');
+    });
 
     // ── Pass 2: classify continuation paragraphs ──
     for (let k = 1; k < dps.length; k++) {
