@@ -1641,7 +1641,7 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; color: #D4A843; }
    VERSION — single source of truth
    Update this string on every release.
 ═══════════════════════════════════════════════════════ */
-const APP_VERSION = 'v2.5.37';
+const APP_VERSION = 'v2.5.38';
 const APP_BUILD   = '2026-06-22';
 
 /* ═══════════════════════════════════════════════════════
@@ -4484,11 +4484,18 @@ async function openDateNav() {
   document.getElementById('dn-result').innerHTML = '';
   await buildDateIndex();
   if (!dnYear) {
-    let maxY = 1899, maxC = 0;
-    for (const [y, c] of Object.entries(DN_YEAR_COUNTS)) {
-      if (c > maxC) { maxC = c; maxY = +y; }
-    }
-    dnYear = maxY; dnMonth = null; dnDay = null;
+    let defaultYear = 1899;
+    try {
+      const pos = await dbGet('reading_pos', 'main');
+      if (pos && pos.entry_id) {
+        for (const [ymd, entries] of Object.entries(DN_BY_YMD)) {
+          if (entries.some(e => e.entry_id === pos.entry_id)) {
+            defaultYear = parseInt(ymd); break;
+          }
+        }
+      }
+    } catch(e) {}
+    dnYear = defaultYear; dnMonth = null; dnDay = null;
   }
   renderDnYearStrip();
   renderDnMonthGrid();
