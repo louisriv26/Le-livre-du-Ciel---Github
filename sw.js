@@ -1,4 +1,4 @@
-const VERSION = 'ldc-v2.5.31';
+const VERSION = 'ldc-v2.5.32';
 const SHELL = [
   './', './index.html', './manifest.json', './sw.js',
 
@@ -59,10 +59,10 @@ self.addEventListener('fetch', e => {
   const url = new URL(e.request.url);
   const path = url.pathname;
 
-  // volume_NN.json — network-first (small metadata, must stay fresh)
+  // volume_NN.json — network-first, bypass HTTP cache so iOS never serves stale empty-title data
   if (/\/corpus\/volume_\d+\.json$/.test(path)) {
     e.respondWith(
-      fetch(e.request).then(res => {
+      fetch(new Request(e.request, {cache: 'reload'})).then(res => {
         if (res && res.ok) {
           const clone = res.clone();
           caches.open(VERSION).then(c => c.put(e.request, clone));
