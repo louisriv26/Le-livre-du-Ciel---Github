@@ -976,7 +976,7 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; color: #D4A843; }
       <div class="ob-slide" id="ob-slide-1">
         <div class="ob-icon" style="font-size:32px;margin-bottom:16px;"><i class="ti ti-message-circle" style="color:#D4A060;"></i></div>
         <div class="ob-title">Les paroles de Jésus</div>
-        <div class="ob-body">Dans cette édition numérique, les paroles directes de Jésus apparaissent en couleur. Chaque passage a été vérifié et attribué — 52 075 segments au total.</div>
+        <div class="ob-body">Dans cette édition numérique, les paroles directes de Jésus apparaissent en couleur. Chaque passage a été vérifié et attribué — 52 186 segments au total.</div>
         <div class="ob-speech-demo">
           <div style="font-size:13px;color:rgba(255,255,255,.5);margin-bottom:8px;">Luisa écrit:</div>
           <div style="font-size:14px;color:rgba(255,255,255,.75);margin-bottom:12px;font-style:italic;">Ce matin, mon aimable Jésus est venu et Il m'a dit:</div>
@@ -1059,7 +1059,7 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; color: #D4A843; }
       <i class="ti ti-message-circle door-icon" style="color:#C9A84C;"></i>
       <div class="door-text">
         <div class="dt">Paroles de Jésus</div>
-        <div class="ds">52 075 passages vérifiés · lecture directe</div>
+        <div class="ds">52 186 passages vérifiés · lecture directe</div>
       </div>
     </button>
     <button class="home-lib-link" onclick="goTomes()">
@@ -1519,7 +1519,7 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; color: #D4A843; }
       <div class="help-card">
         <div class="help-row">
           <span class="help-chip" style="background:rgba(201,168,76,.15);color:#7A5A20;">Couleur or</span>
-          <span class="help-text">Les passages en couleur or/brun sont les paroles directes de Jésus. 52 075 segments vérifiés dans les 36 tomes.</span>
+          <span class="help-text">Les passages en couleur or/brun sont les paroles directes de Jésus. 52 186 segments vérifiés dans les 36 tomes.</span>
         </div>
         <div class="help-divider"></div>
         <div class="help-row">
@@ -4442,7 +4442,7 @@ async function boot() {
 
   // Service worker update detection
   if ('serviceWorker' in navigator) {
-    // Auto-reload when new SW takes control (skipWaiting fires during install)
+    // Auto-reload when user taps the update banner → banner sends SKIP_WAITING → SW activates → controllerchange fires here
     navigator.serviceWorker.addEventListener('controllerchange', () => {
       window.location.reload();
     });
