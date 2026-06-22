@@ -1374,24 +1374,28 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; color: #D4A843; }
         </div>
         <div class="help-row">
           <span class="help-chip outline">Vectoriel</span>
-          <span class="help-text">Résultat par <b>recherche vectorielle</b> — l'application compare le sens de votre requête à 74 476 paragraphes via un modèle d'embeddings. Se charge en arrière-plan lors de la première session.</span>
+          <span class="help-text">Résultat par <b>recherche vectorielle</b> — chaque paragraphe du corpus a été converti en une liste de nombres représentant son sens profond (un « embedding »). Votre requête est convertie de la même façon, et l'application trouve les passages dont le sens est <b>mathématiquement le plus proche</b>, même si aucun mot ne correspond. Exemple : chercher <i>« abandon entre les mains de Dieu »</i> peut retrouver des passages sur la confiance et la docilité sans ces mots exacts.</span>
         </div>
         <div class="help-row">
           <span class="help-chip outline">Sémantique</span>
-          <span class="help-text">Résultat par similarité sémantique (BM25 + synonymes) — actif avant le chargement du modèle vectoriel ou hors ligne.</span>
+          <span class="help-text">Résultat par mots-clés et synonymes (BM25) — actif avant le chargement du modèle vectoriel ou hors ligne. Moins puissant que le vectoriel, mais instantané.</span>
+        </div>
+        <div class="help-row">
+          <span class="help-chip outline">Idée proche</span>
+          <span class="help-text">Vos mots ne correspondent pas exactement mais l'idée est présente dans le passage. <b>Vérifiez toujours le texte avant de citer.</b></span>
         </div>
         <div class="help-row">
           <span class="help-chip outline">Thème lié</span>
-          <span class="help-text">Le passage appartient à la même famille spirituelle — lumière, filet, feu, mer, croix, amour-propre… — même sans mots communs avec votre requête.</span>
+          <span class="help-text">Le passage appartient à la même famille d'images spirituelles — lumière, filet, feu, mer, croix, amour-propre… — même sans mots communs avec votre requête.</span>
         </div>
         <div class="help-divider"></div>
         <div class="help-row">
-          <span class="help-chip light">Filtres T1–T6</span>
-          <span class="help-text">Limitez la recherche à un tome spécifique via les chips sous la barre.</span>
+          <span class="help-chip light">T1–6 · T7–12…</span>
+          <span class="help-text">Limitez la recherche à un groupe de tomes via les chips sous la barre de recherche. Utile pour cibler une période de la vie de Luisa.</span>
         </div>
       </div>
       <div class="help-tip">
-        Si vous cherchez un passage vaguement mémorisé, tapez l'idée avec vos propres mots. Le badge « Idée proche » ou « Thème lié » indique que l'application a cherché au-delà des mots exacts.
+        Conseil : pour retrouver un passage vaguement mémorisé, tapez l'idée avec vos propres mots — pas la citation exacte. Le badge « Vectoriel » ou « Idée proche » signifie que l'application a cherché par sens, pas par mots.
       </div>
     </div>
 
