@@ -1554,7 +1554,7 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; color: #D4A843; }
    VERSION — single source of truth
    Update this string on every release.
 ═══════════════════════════════════════════════════════ */
-const APP_VERSION = 'v2.5.33';
+const APP_VERSION = 'v2.5.34';
 const APP_BUILD   = '2026-06-22';
 
 /* ═══════════════════════════════════════════════════════
@@ -4309,12 +4309,12 @@ async function boot() {
 
   // Service worker update detection
   if ('serviceWorker' in navigator) {
-    // controllerchange fires reliably when new SW takes over (skipWaiting already called in SW)
+    // Auto-reload when new SW takes control (skipWaiting fires during install)
     navigator.serviceWorker.addEventListener('controllerchange', () => {
       window.location.reload();
     });
     navigator.serviceWorker.ready.then(reg => {
-      // Fallback: show banner if new worker somehow ends up waiting
+      // Fallback banner if new worker somehow waits (shouldn't happen with skipWaiting)
       reg.addEventListener('updatefound', () => {
         const newWorker = reg.installing;
         if (!newWorker) return;
@@ -4324,7 +4324,12 @@ async function boot() {
           }
         });
       });
+      // Check for updates at boot
       reg.update().catch(()=>{});
+      // Re-check every time app comes to foreground (critical for iOS where background SW checks are throttled)
+      document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'visible') reg.update().catch(()=>{});
+      });
     });
   }
 }
