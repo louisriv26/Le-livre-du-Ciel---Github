@@ -1641,7 +1641,7 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; color: #D4A843; }
    VERSION — single source of truth
    Update this string on every release.
 ═══════════════════════════════════════════════════════ */
-const APP_VERSION = 'v2.5.36';
+const APP_VERSION = 'v2.5.37';
 const APP_BUILD   = '2026-06-22';
 
 /* ═══════════════════════════════════════════════════════
@@ -2407,6 +2407,8 @@ function backFromReader() {
     goParcours();
   } else if (readerBack === 'search') {
     showScreen('search');
+  } else if (readerBack === 'date-nav') {
+    showScreen('date-nav');
   } else if (readerBack === 'home') {
     goHome();
   } else {
@@ -3101,6 +3103,7 @@ function renderVolFilterRow() {
 function onSearchInput() {
   const val = document.getElementById('search-input').value;
   document.getElementById('search-clear').style.display = val ? '' : 'none';
+  document.querySelector('.date-nav-entry').style.display = val ? 'none' : '';
   if (!val) {
     clearSearch();
   }
