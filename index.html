@@ -805,6 +805,56 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; color: #D4A843; }
 .spinner{width:28px;height:28px;border:2px solid var(--border);
   border-top-color:var(--gold);border-radius:50%;animation:spin .8s linear infinite;}
 @keyframes spin{to{transform:rotate(360deg);}}
+
+/* ═══ DATE NAVIGATOR ═══ */
+.dn-wrap{padding:12px 16px 32px;display:flex;flex-direction:column;gap:20px;}
+.dn-section-title{font-size:11px;text-transform:uppercase;letter-spacing:.06em;
+  color:var(--muted);margin-bottom:6px;}
+/* Year strip */
+.dn-year-strip{display:flex;gap:6px;overflow-x:auto;padding:4px 2px;scrollbar-width:none;}
+.dn-year-strip::-webkit-scrollbar{display:none;}
+.dn-year-pill{flex-shrink:0;padding:5px 10px;border-radius:20px;font-size:13px;
+  font-family:var(--body);white-space:nowrap;cursor:pointer;line-height:1;}
+/* Month grid */
+.dn-month-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;}
+.dn-month-cell{display:flex;flex-direction:column;align-items:center;padding:8px 4px 6px;
+  border-radius:8px;font-family:var(--body);font-size:12px;gap:4px;cursor:pointer;
+  box-sizing:border-box;}
+.dn-month-cell:disabled{cursor:default;}
+.dn-month-name{font-weight:600;font-size:11px;}
+.dn-month-bar{height:3px;border-radius:2px;width:70%;min-width:0;}
+/* Day grid */
+.dn-day-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;}
+.dn-day-header{text-align:center;font-size:10px;color:var(--muted);padding:2px 0;
+  font-family:var(--body);}
+.dn-day-cell{aspect-ratio:1;border-radius:6px;border:1px solid transparent;
+  font-size:13px;font-family:var(--body);position:relative;
+  display:flex;align-items:center;justify-content:center;cursor:pointer;}
+.dn-day-cell:disabled{cursor:default;}
+.dn-day-empty{opacity:0;}
+.dn-multi-dot{position:absolute;top:3px;right:4px;width:5px;height:5px;
+  border-radius:50%;background:#D4A060;pointer-events:none;}
+.dn-day-placeholder{grid-column:1/-1;text-align:center;font-style:italic;
+  color:var(--muted);font-size:13px;padding:16px 0;font-family:var(--body);}
+/* Result card */
+.dn-result-empty{text-align:center;font-style:italic;color:var(--muted);
+  font-size:13px;padding:16px 0;font-family:var(--body);}
+.dn-result-card{border-radius:12px;overflow:hidden;
+  box-shadow:0 2px 12px rgba(0,0,0,.10);}
+.dn-result-header{background:#1A2A4A;padding:12px 16px;display:flex;
+  align-items:baseline;justify-content:space-between;}
+.dn-result-date{color:#D4A060;font-size:14px;font-family:var(--serif);}
+.dn-result-count{color:#8AABD4;font-size:12px;font-family:var(--body);}
+.dn-result-body{background:var(--ivory);border:1px solid var(--border);
+  border-top:none;border-radius:0 0 12px 12px;}
+.dn-entry-sep{height:1px;background:var(--border);margin:0 16px;}
+.dn-entry-row{display:flex;align-items:center;gap:12px;padding:12px 16px;}
+.dn-entry-info{flex:1;min-width:0;}
+.dn-entry-title{font-size:13px;font-weight:600;color:var(--ink);line-height:1.3;
+  overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;}
+.dn-entry-sub{font-size:11px;color:var(--muted);margin-top:2px;font-family:var(--body);}
+.dn-open-btn{flex-shrink:0;padding:5px 12px;border-radius:16px;background:#1A2A4A;
+  color:#D4A060;font-size:12px;white-space:nowrap;cursor:pointer;font-family:var(--body);}
 </style>
 </head>
 <body>
@@ -1131,6 +1181,9 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; color: #D4A843; }
 <div class="screen" id="screen-search">
   <div class="top-bar">
     <span class="top-bar-title">Recherche</span>
+    <button class="btn-icon" onclick="openDateNav()" aria-label="Navigateur de dates" title="Navigateur de dates">
+      <i class="ti ti-calendar"></i>
+    </button>
   </div>
   <div class="search-bar-wrap">
     <div class="search-bar">
@@ -1530,6 +1583,31 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; color: #D4A843; }
   </div><!-- end scroll -->
 </div>
 
+<!-- DATE NAVIGATOR -->
+<div class="screen" id="screen-date-nav">
+  <div class="top-bar">
+    <button class="btn-icon" onclick="goSearch()" aria-label="Retour">
+      <i class="ti ti-arrow-left"></i>
+    </button>
+    <span class="top-bar-title">Navigateur de dates</span>
+  </div>
+  <div class="scroll dn-wrap">
+    <div>
+      <div class="dn-section-title">Année</div>
+      <div class="dn-year-strip" id="dn-year-strip"></div>
+    </div>
+    <div>
+      <div class="dn-section-title">Mois</div>
+      <div class="dn-month-grid" id="dn-month-grid"></div>
+    </div>
+    <div>
+      <div class="dn-section-title">Jour</div>
+      <div class="dn-day-grid" id="dn-day-grid"></div>
+    </div>
+    <div id="dn-result"></div>
+  </div>
+</div>
+
 <!-- BOTTOM NAV -->
 <nav id="nav">
   <button class="nav-item active" onclick="goHome()" id="nav-home" aria-label="Accueil">
@@ -1554,7 +1632,7 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; color: #D4A843; }
    VERSION — single source of truth
    Update this string on every release.
 ═══════════════════════════════════════════════════════ */
-const APP_VERSION = 'v2.5.34';
+const APP_VERSION = 'v2.5.35';
 const APP_BUILD   = '2026-06-22';
 
 /* ═══════════════════════════════════════════════════════
@@ -1691,7 +1769,8 @@ function showScreen(id) {
   document.getElementById('screen-' + id).classList.add('active');
   document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
   const navMap = { home:'nav-home', tomes:'nav-tomes', entries:'nav-tomes',
-                   reader:'nav-tomes', search:'nav-search', espace:'nav-espace' };
+                   reader:'nav-tomes', search:'nav-search', espace:'nav-espace',
+                   'date-nav':'nav-search' };
   const ni = document.getElementById(navMap[id]);
   if (ni) ni.classList.add('active');
 }
@@ -4332,6 +4411,206 @@ async function boot() {
       });
     });
   }
+}
+
+/* ═══════════════════════════════════════════════════════
+   DATE NAVIGATOR
+═══════════════════════════════════════════════════════ */
+
+let DN_BY_YMD = {};
+let DN_YEAR_COUNTS = {};
+let DN_MONTH_COUNTS = {};
+let dnBuilt = false;
+let dnYear = null, dnMonth = null, dnDay = null;
+
+function parseEntryDate(entry) {
+  const s = entry.date_iso || entry.date_display || '';
+  let m = s.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if (m) return [+m[1], +m[2], +m[3]];
+  const MO = {janvier:1,février:2,mars:3,avril:4,mai:5,juin:6,
+               juillet:7,août:8,septembre:9,octobre:10,novembre:11,décembre:12};
+  m = s.match(/^(\d{1,2})\s+(\w+)\s+(\d{4})$/i);
+  if (m) { const mo = MO[m[2].toLowerCase()]; if (mo) return [+m[3], mo, +m[1]]; }
+  return null;
+}
+
+async function buildDateIndex() {
+  if (dnBuilt) return;
+  const pad = n => String(n).padStart(2,'0');
+  for (let v = 1; v <= 36; v++) {
+    let entries;
+    if (corpusCache[v]) {
+      entries = corpusCache[v].entries;
+    } else {
+      try {
+        const vData = await fetch(`corpus/volume_${pad(v)}.json?${CORPUS_CV}`).then(r => r.json());
+        entries = vData.entries;
+      } catch(e) { continue; }
+    }
+    for (const entry of entries) {
+      const parsed = parseEntryDate(entry);
+      if (!parsed) continue;
+      const [y, mo, d] = parsed;
+      const ymd = `${y}-${mo}-${d}`;
+      const ym  = `${y}-${mo}`;
+      if (!DN_BY_YMD[ymd]) DN_BY_YMD[ymd] = [];
+      DN_BY_YMD[ymd].push({ vol: v, seq: entry.seq, entry_id: entry.id,
+        title: entry.title || entry.stable_ref || '', date_display: entry.date_display || '' });
+      DN_YEAR_COUNTS[y]  = (DN_YEAR_COUNTS[y]  || 0) + 1;
+      DN_MONTH_COUNTS[ym] = (DN_MONTH_COUNTS[ym] || 0) + 1;
+    }
+  }
+  dnBuilt = true;
+}
+
+async function openDateNav() {
+  showScreen('date-nav');
+  document.getElementById('dn-year-strip').innerHTML =
+    '<div style="padding:8px 0;color:var(--muted);font-size:13px;font-style:italic">Chargement…</div>';
+  document.getElementById('dn-month-grid').innerHTML = '';
+  document.getElementById('dn-day-grid').innerHTML = '';
+  document.getElementById('dn-result').innerHTML = '';
+  await buildDateIndex();
+  if (!dnYear) {
+    let maxY = 1899, maxC = 0;
+    for (const [y, c] of Object.entries(DN_YEAR_COUNTS)) {
+      if (c > maxC) { maxC = c; maxY = +y; }
+    }
+    dnYear = maxY; dnMonth = null; dnDay = null;
+  }
+  renderDnYearStrip();
+  renderDnMonthGrid();
+  renderDnDayGrid();
+  renderDnResultCard();
+}
+
+function renderDnYearStrip() {
+  const strip = document.getElementById('dn-year-strip');
+  const maxCount = Math.max(...Object.values(DN_YEAR_COUNTS), 1);
+  let html = '';
+  for (let y = 1899; y <= 1938; y++) {
+    const count = DN_YEAR_COUNTS[y] || 0;
+    const opacity = count === 0 ? 0.2 : (0.3 + (count / maxCount) * 0.7).toFixed(2);
+    const sel = y === dnYear;
+    const bg    = sel ? '#1A2A4A' : 'transparent';
+    const color = sel ? '#D4A060' : 'var(--ink)';
+    const border = sel ? 'none' : '1px solid var(--border)';
+    html += `<button class="dn-year-pill" style="opacity:${opacity};background:${bg};color:${color};border:${border};"
+      onclick="dnSelectYear(${y})" data-year="${y}">${y}</button>`;
+  }
+  strip.innerHTML = html;
+  requestAnimationFrame(() => {
+    const sel = strip.querySelector(`[data-year="${dnYear}"]`);
+    if (sel) sel.scrollIntoView({ inline:'center', block:'nearest', behavior:'smooth' });
+  });
+}
+
+function dnSelectYear(y) {
+  dnYear = y; dnMonth = null; dnDay = null;
+  renderDnYearStrip(); renderDnMonthGrid(); renderDnDayGrid(); renderDnResultCard();
+}
+
+const DN_MONTH_NAMES = ['Janv','Févr','Mars','Avr','Mai','Juin','Juil','Août','Sept','Oct','Nov','Déc'];
+
+function renderDnMonthGrid() {
+  const grid = document.getElementById('dn-month-grid');
+  if (!dnYear) { grid.innerHTML = ''; return; }
+  const yearCounts = Array.from({length:12}, (_, i) => DN_MONTH_COUNTS[`${dnYear}-${i+1}`] || 0);
+  const peak = Math.max(...yearCounts, 1);
+  let html = '';
+  for (let mo = 1; mo <= 12; mo++) {
+    const count = yearCounts[mo - 1];
+    const ratio = count / peak;
+    const isEmpty = count === 0;
+    const isSel   = mo === dnMonth;
+    let bg, textColor, barColor;
+    if (isEmpty)       { bg = 'var(--border)'; textColor = 'var(--muted)'; barColor = 'transparent'; }
+    else if (ratio < 0.33) { bg = '#dde4f0'; textColor = '#1A2A4A';  barColor = '#8AABD4'; }
+    else if (ratio < 0.67) { bg = '#8AABD4'; textColor = '#ffffff';  barColor = '#1A2A4A'; }
+    else                   { bg = '#1A2A4A'; textColor = '#D4A060';  barColor = '#D4A060'; }
+    const border  = isSel ? '1.5px solid #D4A060' : '1.5px solid transparent';
+    const barW    = isEmpty ? 0 : Math.round(ratio * 100);
+    html += `<button class="dn-month-cell" style="background:${bg};color:${textColor};border:${border};opacity:${isEmpty?0.3:1};"
+      ${isEmpty ? 'disabled' : `onclick="dnSelectMonth(${mo})"`}>
+      <span class="dn-month-name">${DN_MONTH_NAMES[mo-1]}</span>
+      <div class="dn-month-bar" style="background:${barColor};width:${barW}%;opacity:0.6;"></div>
+    </button>`;
+  }
+  grid.innerHTML = html;
+}
+
+function dnSelectMonth(mo) {
+  dnMonth = mo; dnDay = null;
+  renderDnMonthGrid(); renderDnDayGrid(); renderDnResultCard();
+}
+
+const DN_DOW_LABELS = ['L','M','M','J','V','S','D'];
+
+function renderDnDayGrid() {
+  const grid = document.getElementById('dn-day-grid');
+  if (!dnMonth) {
+    grid.innerHTML = '<div class="dn-day-placeholder">Sélectionnez un mois</div>';
+    return;
+  }
+  const daysInMonth = new Date(dnYear, dnMonth, 0).getDate();
+  const firstDow    = (new Date(dnYear, dnMonth - 1, 1).getDay() + 6) % 7;
+  let html = DN_DOW_LABELS.map(l => `<div class="dn-day-header">${l}</div>`).join('');
+  for (let i = 0; i < firstDow; i++) html += '<div class="dn-day-cell dn-day-empty"></div>';
+  for (let d = 1; d <= daysInMonth; d++) {
+    const ymd     = `${dnYear}-${dnMonth}-${d}`;
+    const entries = DN_BY_YMD[ymd] || [];
+    const has     = entries.length > 0;
+    const isSel   = d === dnDay;
+    const multi   = entries.length > 1;
+    let style;
+    if (!has)      style = 'color:var(--muted);border-color:var(--border);cursor:default;opacity:0.4;';
+    else if (isSel) style = 'background:#1A2A4A;color:#D4A060;border-color:#1A2A4A;';
+    else            style = 'border-color:#1A2A4A;background:rgba(26,42,74,0.07);color:var(--ink);';
+    html += `<button class="dn-day-cell" style="${style}" ${has ? `onclick="dnSelectDay(${d})"` : 'disabled'}>
+      ${multi ? '<span class="dn-multi-dot"></span>' : ''}
+      <span>${d}</span>
+    </button>`;
+  }
+  grid.innerHTML = html;
+}
+
+function dnSelectDay(d) {
+  dnDay = d;
+  renderDnDayGrid(); renderDnResultCard();
+}
+
+const DN_MONTH_LONG = ['janvier','février','mars','avril','mai','juin',
+  'juillet','août','septembre','octobre','novembre','décembre'];
+
+function renderDnResultCard() {
+  const el = document.getElementById('dn-result');
+  if (!dnDay || !dnMonth || !dnYear) {
+    el.innerHTML = '<div class="dn-result-empty">Sélectionnez une date pour voir les entrées</div>';
+    return;
+  }
+  const entries = DN_BY_YMD[`${dnYear}-${dnMonth}-${dnDay}`] || [];
+  if (!entries.length) {
+    el.innerHTML = '<div class="dn-result-empty">Aucune entrée ce jour</div>';
+    return;
+  }
+  const dateLabel  = `${dnDay} ${DN_MONTH_LONG[dnMonth-1]} ${dnYear}`;
+  const countLabel = entries.length === 1 ? '1 entrée' : `${entries.length} entrées`;
+  const rows = entries.map((e, i) => `
+    ${i > 0 ? '<div class="dn-entry-sep"></div>' : ''}
+    <div class="dn-entry-row">
+      <div class="dn-entry-info">
+        <div class="dn-entry-title">${escapeHtml(e.title)}</div>
+        <div class="dn-entry-sub">Tome ${e.vol} · entrée ${e.seq}</div>
+      </div>
+      <button class="dn-open-btn" onclick="openEntry(${e.vol},'${escapeHtml(e.entry_id)}','date-nav')">Ouvrir ↗</button>
+    </div>`).join('');
+  el.innerHTML = `<div class="dn-result-card">
+    <div class="dn-result-header">
+      <span class="dn-result-date">${dateLabel}</span>
+      <span class="dn-result-count">${countLabel}</span>
+    </div>
+    <div class="dn-result-body">${rows}</div>
+  </div>`;
 }
 
 function reloadForUpdate() {
