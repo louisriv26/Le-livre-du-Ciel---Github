@@ -1641,7 +1641,7 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; color: #D4A843; }
    VERSION — single source of truth
    Update this string on every release.
 ═══════════════════════════════════════════════════════ */
-const APP_VERSION = 'v2.5.38';
+const APP_VERSION = 'v2.5.39';
 const APP_BUILD   = '2026-06-22';
 
 /* ═══════════════════════════════════════════════════════
@@ -4441,7 +4441,7 @@ function parseEntryDate(entry) {
   if (m) return [+m[1], +m[2], +m[3]];
   const MO = {janvier:1,février:2,mars:3,avril:4,mai:5,juin:6,
                juillet:7,août:8,septembre:9,octobre:10,novembre:11,décembre:12};
-  m = s.match(/^(\d{1,2})\s+(\w+)\s+(\d{4})$/i);
+  m = s.match(/^(\d{1,2})\s+(\S+)\s+(\d{4})$/i);
   if (m) { const mo = MO[m[2].toLowerCase()]; if (mo) return [+m[3], mo, +m[1]]; }
   return null;
 }
