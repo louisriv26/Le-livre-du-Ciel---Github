@@ -1,14 +1,14 @@
-# Livre du Ciel — PWA v2.5.35
+# Livre du Ciel — PWA v2.5.49
 
 Application de lecture et d'étude du Livre du Ciel de Luisa Piccarreta.
 
 ## Corpus
 - **36 tomes complets** · 74 476 paragraphes · 2 307 entrées
-- **20 554 corrections** appliquées (v3→v8)
-- Parole de Jésus rendue inline — 52 205 segments visibles dans les 36 tomes
+- **20 885 corrections** appliquées (v3→v10)
+- Parole de Jésus rendue inline — 52 186 segments visibles dans les 36 tomes
 - Parole de Marie rendue inline — 154 segments visibles
-- Corpus version : v9 (16 juin 2026)
-- Couche parole auditée : 0 segment invalide · 0 chevauchement
+- Corpus version : v10 (22 juin 2026)
+- Couche parole : 11 offsets hors-limites · 4 chevauchements (réparation runtime)
 
 ## Fonctionnalités
 - Mode Prier : parole de Jésus en italique brun foncé + bordure or · sans label
@@ -33,19 +33,19 @@ Application de lecture et d'étude du Livre du Ciel de Luisa Piccarreta.
 ## Architecture
 ```
 index.html              — app shell
-sw.js                   — service worker (cache key: ldc-v2.5.24)
+sw.js                   — service worker (cache key: ldc-v2.5.49)
 manifest.json           — PWA manifest (#1A2A4A theme)
-corpus/manifest.json    — version v9, 36 tomes
+corpus/manifest.json    — version v10, 36 tomes
 corpus/volume_NN.json   — entrées (métadonnées)
 corpus/paragraphs_NN.json — texte d'affichage
 corpus/search_NN.json   — index de recherche normalisé
-corpus/speakers_NN.json — segments de parole audités v9
+corpus/speakers_NN.json — segments de parole audités v10
 icons/                  — 512px, 192px, 32px, apple-touch-icon
 .github/workflows/deploy.yml — GitHub Actions → GitHub Pages
 ```
 
 ## Vérifier la version déployée
-La version est visible en permanence dans la barre d'accueil (ex. `v2.5.24`).
+La version est visible en permanence dans la barre d'accueil (ex. `v2.5.49`).
 Le bouton **?** affiche le badge version complet.
 
 ## Mise à jour

@@ -2312,40 +2312,18 @@ async function openEntry(vol, entryId, backDest) {
       }
     }
 
-    // ── Pass 1.5: handle isolated (non-cluster) dash paragraphs ──
-    // A single dash paragraph not adjacent to other dash items is always a
-    // continuation clause — merge it into the previous paragraph (strip the dash).
-    // Only fall back to dp-isolated-dash when there is no previous paragraph.
+    // ── Pass 1.5: classify isolated (non-cluster) dash paragraphs ──
+    // Blanket merge disabled: the heuristic incorrectly merged 4,103 paragraphs
+    // including 45+ cases where the previous paragraph ends with a terminal sentence.
+    // Merging also removed DOM nodes, breaking search anchors (p_<id> targets).
+    // All isolated dash paragraphs now receive dp-isolated-dash and stay in the DOM.
+    // Source-backed per-paragraph classification will be added in a future ledger pass.
     dps.forEach((el, idx) => {
       if (!startsWithDash(el)) return;
       if (el.classList.contains('dp-list-first') ||
           el.classList.contains('dp-list-middle') ||
           el.classList.contains('dp-list-last')) return;
-
-      // Strip leading dash — skip speech-label text nodes (they hold "Jésus parle", not content)
-      const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null, false);
-      let tn;
-      while ((tn = walker.nextNode())) {
-        if (tn.parentElement && tn.parentElement.closest('.speech-label')) continue;
-        if (/^\s*[-–—]/.test(tn.textContent)) {
-          tn.textContent = tn.textContent.replace(/^\s*[-–—]\s*/, '');
-          break;
-        }
-      }
-
-      const prevEl = dps[idx - 1];
-      if (prevEl) {
-        prevEl.appendChild(document.createTextNode(' '));
-        // When merging a speech paragraph, skip its speech-label span to avoid
-        // duplicating "Jésus parle" inside the previous paragraph.
-        const speechLabel = el.querySelector('.speech-label');
-        Array.from(el.childNodes).forEach(child => {
-          if (child !== speechLabel) prevEl.appendChild(child);
-        });
-        el.remove();
-      } else {
-        el.classList.add('dp-isolated-dash');
-      }
+      el.classList.add('dp-isolated-dash');
     });
 
     // ── Pass 2: classify continuation paragraphs ──
