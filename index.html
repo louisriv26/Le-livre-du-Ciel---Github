@@ -2312,18 +2312,48 @@ async function openEntry(vol, entryId, backDest) {
       }
     }
 
-    // ── Pass 1.5: classify isolated (non-cluster) dash paragraphs ──
-    // Blanket merge disabled: the heuristic incorrectly merged 4,103 paragraphs
-    // including 45+ cases where the previous paragraph ends with a terminal sentence.
-    // Merging also removed DOM nodes, breaking search anchors (p_<id> targets).
-    // All isolated dash paragraphs now receive dp-isolated-dash and stay in the DOM.
-    // Source-backed per-paragraph classification will be added in a future ledger pass.
+    // ── Pass 1.5: handle isolated (non-cluster) dash paragraphs ──
+    // Merge into previous paragraph UNLESS the previous paragraph ends with terminal
+    // punctuation (. ! ? »), which means the dash starts a new independent clause.
+    // This guards the ~45 audit-confirmed false-positive cases while keeping the
+    // correct merge behaviour for the remaining ~4,058 continuation clauses.
+    // The merged paragraph's DOM node is removed but its p_<id> anchor is copied
+    // to the previous element so search/highlight targets remain reachable.
+    const TERMINAL_RE = /[.!?»]\s*$/;
     dps.forEach((el, idx) => {
       if (!startsWithDash(el)) return;
       if (el.classList.contains('dp-list-first') ||
           el.classList.contains('dp-list-middle') ||
           el.classList.contains('dp-list-last')) return;
-      el.classList.add('dp-isolated-dash');
+
+      const prevEl = dps[idx - 1];
+
+      // If previous paragraph ends with terminal punctuation → keep as isolated dash
+      if (!prevEl || TERMINAL_RE.test(prevEl.textContent.trim())) {
+        el.classList.add('dp-isolated-dash');
+        return;
+      }
+
+      // Strip leading dash from the continuation clause
+      const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null, false);
+      let tn;
+      while ((tn = walker.nextNode())) {
+        if (tn.parentElement && tn.parentElement.closest('.speech-label')) continue;
+        if (/^\s*[-–—]/.test(tn.textContent)) {
+          tn.textContent = tn.textContent.replace(/^\s*[-–—]\s*/, '');
+          break;
+        }
+      }
+
+      // Preserve anchor: if el has an id, add it to prevEl so p_<id> links still work
+      if (el.id) prevEl.dataset.mergedAnchor = (prevEl.dataset.mergedAnchor || '') + ' ' + el.id;
+
+      prevEl.appendChild(document.createTextNode(' '));
+      const speechLabel = el.querySelector('.speech-label');
+      Array.from(el.childNodes).forEach(child => {
+        if (child !== speechLabel) prevEl.appendChild(child);
+      });
+      el.remove();
     });
 
     // ── Pass 2: classify continuation paragraphs ──
