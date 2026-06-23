@@ -1645,7 +1645,7 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; color: #D4A843; }
    VERSION — single source of truth
    Update this string on every release.
 ═══════════════════════════════════════════════════════ */
-const APP_VERSION = 'v2.5.47';
+const APP_VERSION = 'v2.5.49';
 const APP_BUILD   = '2026-06-22';
 
 /* ═══════════════════════════════════════════════════════
@@ -2239,9 +2239,13 @@ async function openEntry(vol, entryId, backDest) {
 
     if (hasSpeech) {
       // Build inline speech rendering from offsets — use p.text so segment char offsets stay valid
-      // Strip leading section number (1), (2)… from the rendered HTML, not the raw text
+      // Strip leading section number (1), (2)… from the rendered HTML, not the raw text.
+      // Two cases: (N) before any speech span (plain text prefix), or (N) inside first speech span.
       let html = buildSpeechHTML(p.text, paraSegs, entryHl.filter(h=>h.para_id===p.id));
       html = html.replace(/^\(\d+\)\s*/, '');
+      html = html.replace(/(<span[^>]*class="speech-[^"]*"[^>]*>)\(\d+\)\s*/, '$1');
+      // Strip opening quote exposed after section-number removal (e.g. span started with '(2) “')
+      html = html.replace(new RegExp('(<span[^>]*class=\"speech-[^\"]*\"[^>]*>)["«“„]\\s*'), '$1');
       div.innerHTML = html;
     } else {
       // Strip leading section numbers — no offsets involved for plain paragraphs
@@ -2309,28 +2313,35 @@ async function openEntry(vol, entryId, backDest) {
     }
 
     // ── Pass 1.5: handle isolated (non-cluster) dash paragraphs ──
-    // A single dash paragraph not adjacent to other dash items is a continuation
-    // clause. Two cases:
-    //   A) Previous paragraph ends with , or : → merge inline (one sentence).
-    //   B) Otherwise → strip dash, indent (dp-isolated-dash).
+    // A single dash paragraph not adjacent to other dash items is always a
+    // continuation clause — merge it into the previous paragraph (strip the dash).
+    // Only fall back to dp-isolated-dash when there is no previous paragraph.
     dps.forEach((el, idx) => {
       if (!startsWithDash(el)) return;
       if (el.classList.contains('dp-list-first') ||
           el.classList.contains('dp-list-middle') ||
           el.classList.contains('dp-list-last')) return;
 
-      // Strip leading dash from the first text node to get the continuation text
+      // Strip leading dash — skip speech-label text nodes (they hold "Jésus parle", not content)
       const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null, false);
-      const first = walker.nextNode();
-      if (first) first.textContent = first.textContent.replace(/^\s*[-–—]\s*/, '');
+      let tn;
+      while ((tn = walker.nextNode())) {
+        if (tn.parentElement && tn.parentElement.closest('.speech-label')) continue;
+        if (/^\s*[-–—]/.test(tn.textContent)) {
+          tn.textContent = tn.textContent.replace(/^\s*[-–—]\s*/, '');
+          break;
+        }
+      }
 
-      // Check if previous paragraph ends with , or : → merge
       const prevEl = dps[idx - 1];
-      const prevText = prevEl ? (prevEl.textContent || '').trimEnd() : '';
-      if (prevEl && /[,:]$/.test(prevText)) {
-        // Append a space + this paragraph's content to the previous paragraph
+      if (prevEl) {
         prevEl.appendChild(document.createTextNode(' '));
-        while (el.firstChild) prevEl.appendChild(el.firstChild);
+        // When merging a speech paragraph, skip its speech-label span to avoid
+        // duplicating "Jésus parle" inside the previous paragraph.
+        const speechLabel = el.querySelector('.speech-label');
+        Array.from(el.childNodes).forEach(child => {
+          if (child !== speechLabel) prevEl.appendChild(child);
+        });
         el.remove();
       } else {
         el.classList.add('dp-isolated-dash');
@@ -3031,7 +3042,8 @@ function buildSpeechHTML(text, segments, highlights) {
       const confLabel = conf === 'medium' ? ' <em>(probable)</em>' : '';
       if (cls) {
         // Strip opening/closing quote marks — colour+italic already signals speech boundaries
-        const spText = span.text.replace(/^["«“„]/, '').replace(/["»”]$/, '');
+        // Strip leading section number then opening/closing quotes; safe — spText is display-only, p.text offsets unchanged
+        const spText = span.text.replace(/^\(\d+\)\s*/, '').replace(/^["«“„]/, '').replace(/["»”]$/, '');
         html += `<span class="speech-label ${lblCls}">${lbl}${confLabel}</span>`;
         html += `<span class="${cls}">${applyHighlights(escapeHtml(spText), highlights)}</span>`;
         lastWasSpeech  = true;
