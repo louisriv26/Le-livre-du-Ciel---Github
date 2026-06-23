@@ -8,7 +8,7 @@ Application de lecture et d'étude du Livre du Ciel de Luisa Piccarreta.
 - Parole de Jésus rendue inline — 52 186 segments visibles dans les 36 tomes
 - Parole de Marie rendue inline — 154 segments visibles
 - Corpus version : v10 (22 juin 2026)
-- Couche parole : 11 offsets hors-limites · 4 chevauchements (réparation runtime)
+- Couche parole : 0 offset hors-limites · 0 chevauchement
 
 ## Fonctionnalités
 - Mode Prier : parole de Jésus en italique brun foncé + bordure or · sans label
@@ -28,7 +28,7 @@ Application de lecture et d'étude du Livre du Ciel de Luisa Piccarreta.
 ## Statut des tests
 - ⚠ Tests Samsung et iPhone **pas encore effectués** — bloquants pour distribution publique
 - ✓ Tests navigateur desktop : validés
-- ✓ Couche parole corpus v9 : auditée et validée
+- ✓ Couche parole corpus v10 : auditée et validée
 
 ## Architecture
 ```
