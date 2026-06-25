@@ -1,4 +1,4 @@
-const VERSION = 'ldc-v2.5.52';
+const VERSION = 'ldc-v2.5.53';
 const SHELL = [
   './', './index.html', './manifest.json', './sw.js',
 
