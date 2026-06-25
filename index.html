@@ -1643,8 +1643,8 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; color: #D4A843; }
    VERSION — single source of truth
    Update this string on every release.
 ═══════════════════════════════════════════════════════ */
-const APP_VERSION = 'v2.5.49';
-const APP_BUILD   = '2026-06-22';
+const APP_VERSION = 'v2.5.50';
+const APP_BUILD   = '2026-06-25';
 
 /* ═══════════════════════════════════════════════════════
    STATE
@@ -3048,12 +3048,14 @@ function buildSpeechHTML(text, segments, highlights) {
       const confLabel = conf === 'medium' ? ' <em>(probable)</em>' : '';
       if (cls) {
         // Strip opening/closing quote marks — colour+italic already signals speech boundaries
-        // Strip leading section number, attribution prefix (“Jésus me dit: «”), opening quote, and leading dash
-        // Safe — spText is display-only, p.text offsets are unchanged
+        // Strip leading section number, short attribution prefix, opening quote, and leading dash.
+        // Safe — spText is display-only, p.text offsets are unchanged.
+        // Only strip prefix if ≤65 chars before the first «: longer prefixes are speech
+        // content that happens to contain an internal quotation, not an attribution phrase.
         const spText = span.text
-          .replace(/^\(\d+\)\s*/, '')          // (1) section number
-          .replace(/^[^«”„”]*[«”„”]/, '')       // attribution + opening quote (“Il me dit: «”)
-          .replace(/^[“«”„]/, '')               // bare opening quote if no attribution
+          .replace(/^\(\d+\)\s*/, '')           // (1) section number
+          .replace(/^[^«”„”]{0,65}[«”„”]/, '') // short attribution prefix + opening quote
+          .replace(/^[“«”„]/, '')               // bare opening quote with no prefix
           .replace(/^\s*[-–—]\s*/, '')          // leading dash (continuation clause)
           .replace(/[“»”]$/, '');               // trailing closing quote
         html += `<span class="speech-label ${lblCls}">${lbl}${confLabel}</span>`;
