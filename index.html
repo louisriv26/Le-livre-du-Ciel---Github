@@ -660,6 +660,10 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; color: #D4A843; }
    indented continuation prose, dash prefix stripped in JS. */
 .dp-isolated-dash { padding-left:14px; }
 
+/* Hidden anchor span injected when a merged paragraph is removed from the DOM.
+   Preserves the original p_<id> so getElementById / scrollIntoView still work. */
+.merged-anchor { position:absolute; visibility:hidden; pointer-events:none; }
+
 /* Embedded enumeration: lead-in + split items within a single paragraph */
 .dp-embedded-leadin {
   display: block;
@@ -1643,7 +1647,7 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; color: #D4A843; }
    VERSION — single source of truth
    Update this string on every release.
 ═══════════════════════════════════════════════════════ */
-const APP_VERSION = 'v2.5.50';
+const APP_VERSION = 'v2.5.51';
 const APP_BUILD   = '2026-06-25';
 
 /* ═══════════════════════════════════════════════════════
@@ -2343,14 +2347,21 @@ async function openEntry(vol, entryId, backDest) {
         }
       }
 
-      // Preserve anchor: if el has an id, add it to prevEl so p_<id> links still work
-      if (el.id) prevEl.dataset.mergedAnchor = (prevEl.dataset.mergedAnchor || '') + ' ' + el.id;
-
       prevEl.appendChild(document.createTextNode(' '));
       const speechLabel = el.querySelector('.speech-label');
       Array.from(el.childNodes).forEach(child => {
         if (child !== speechLabel) prevEl.appendChild(child);
       });
+
+      // Preserve anchor: add a hidden span with el's ID inside prevEl so that
+      // getElementById('p_' + id) still resolves and scrollIntoView works.
+      if (el.id) {
+        const anchor = document.createElement('span');
+        anchor.id = el.id;
+        anchor.className = 'merged-anchor';
+        prevEl.appendChild(anchor);
+        el.removeAttribute('id');
+      }
       el.remove();
     });
 
@@ -3048,15 +3059,15 @@ function buildSpeechHTML(text, segments, highlights) {
       const confLabel = conf === 'medium' ? ' <em>(probable)</em>' : '';
       if (cls) {
         // Strip opening/closing quote marks — colour+italic already signals speech boundaries
-        // Strip leading section number, short attribution prefix, opening quote, and leading dash.
+        // Strip leading section number, attribution prefix, opening quote, and leading em-dash.
         // Safe — spText is display-only, p.text offsets are unchanged.
-        // Only strip prefix if ≤65 chars before the first «: longer prefixes are speech
-        // content that happens to contain an internal quotation, not an attribution phrase.
+        // Attribution strip requires [:;] before «: only genuine “X me dit: «” patterns qualify.
+        // Regular hyphen (-) is NOT stripped — it is a list-item marker and must remain visible.
         const spText = span.text
           .replace(/^\(\d+\)\s*/, '')           // (1) section number
-          .replace(/^[^«”„”]{0,65}[«”„”]/, '') // short attribution prefix + opening quote
+          .replace(/^[^«”„”]*[;:]\s*[«”„”]\s*/, '') // attribution ending in : or ; + opening quote + space
           .replace(/^[“«”„]/, '')               // bare opening quote with no prefix
-          .replace(/^\s*[-–—]\s*/, '')          // leading dash (continuation clause)
+          .replace(/^\s*[–—]\s*/, '')           // leading em/en-dash only (not list hyphen)
           .replace(/[“»”]$/, '');               // trailing closing quote
         html += `<span class="speech-label ${lblCls}">${lbl}${confLabel}</span>`;
         html += `<span class="${cls}">${applyHighlights(escapeHtml(spText), highlights)}</span>`;
