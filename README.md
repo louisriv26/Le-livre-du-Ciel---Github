@@ -1,4 +1,4 @@
-# Livre du Ciel — PWA v2.5.51
+# Livre du Ciel — PWA v2.5.52
 
 Application de lecture et d'étude du Livre du Ciel de Luisa Piccarreta.
 
@@ -33,7 +33,7 @@ Application de lecture et d'étude du Livre du Ciel de Luisa Piccarreta.
 ## Architecture
 ```
 index.html              — app shell
-sw.js                   — service worker (cache key: ldc-v2.5.51)
+sw.js                   — service worker (cache key: ldc-v2.5.52)
 manifest.json           — PWA manifest (#1A2A4A theme)
 corpus/manifest.json    — version v10, 36 tomes
 corpus/volume_NN.json   — entrées (métadonnées)
@@ -45,7 +45,7 @@ icons/                  — 512px, 192px, 32px, apple-touch-icon
 ```
 
 ## Vérifier la version déployée
-La version est visible en permanence dans la barre d'accueil (ex. `v2.5.51`).
+La version est visible en permanence dans la barre d'accueil (ex. `v2.5.52`).
 Le bouton **?** affiche le badge version complet.
 
 ## Mise à jour

@@ -1647,7 +1647,7 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; color: #D4A843; }
    VERSION — single source of truth
    Update this string on every release.
 ═══════════════════════════════════════════════════════ */
-const APP_VERSION = 'v2.5.51';
+const APP_VERSION = 'v2.5.52';
 const APP_BUILD   = '2026-06-25';
 
 /* ═══════════════════════════════════════════════════════
@@ -2594,12 +2594,36 @@ function hideHlPopup() {
   document.getElementById('hl-popup').classList.remove('show');
 }
 
+// Walk text nodes of paraEl, skipping .speech-label spans, to get canonical text
+// and to compute char offsets that match canonical p.text (not the DOM display text).
+function canonicalParaText(paraEl) {
+  const walker = document.createTreeWalker(paraEl, NodeFilter.SHOW_TEXT);
+  let text = '', tn;
+  while ((tn = walker.nextNode())) {
+    if (tn.parentElement && tn.parentElement.closest('.speech-label')) continue;
+    text += tn.textContent;
+  }
+  return text;
+}
+
+function canonicalOffset(paraEl, targetNode, targetOffset) {
+  const walker = document.createTreeWalker(paraEl, NodeFilter.SHOW_TEXT);
+  let len = 0, tn;
+  while ((tn = walker.nextNode())) {
+    if (tn.parentElement && tn.parentElement.closest('.speech-label')) continue;
+    if (tn === targetNode) return len + targetOffset;
+    len += tn.length;
+  }
+  return len;
+}
+
 async function applyHighlight(color) {
   if (!selectionRange || !selectionParaId || !currentEntry) return;
   hideHlPopup();
 
-  // Stage D: store offset-based anchoring in addition to text
-  // so highlights survive repeated occurrences and minor corpus updates.
+  // Store offset-based anchoring so highlights survive repeated occurrences
+  // and minor corpus updates. Offsets exclude injected speech-label text so
+  // they align with canonical paragraph text (p.text in the corpus).
   let startChar = null, endChar = null, occurrenceIndex = 0, paraFingerprint = '';
   try {
     const sel = window.getSelection();
@@ -2607,14 +2631,11 @@ async function applyHighlight(color) {
       const range = sel.getRangeAt(0);
       const paraEl = document.getElementById('p_' + selectionParaId);
       if (paraEl) {
-        // Walk text nodes to compute char offset within paragraph
-        const preRange = document.createRange();
-        preRange.selectNodeContents(paraEl);
-        preRange.setEnd(range.startContainer, range.startOffset);
-        startChar = preRange.toString().length;
+        // Compute offsets excluding speech-label spans
+        startChar = canonicalOffset(paraEl, range.startContainer, range.startOffset);
         endChar   = startChar + range.toString().length;
-        // Count how many times this text appears before this offset
-        const paraText = paraEl.textContent || '';
+        // Count prior occurrences using canonical (label-free) text
+        const paraText = canonicalParaText(paraEl);
         paraFingerprint = paraText.slice(0, 32);
         const searchText = selectionRange.text;
         let pos = 0, occ = 0;
