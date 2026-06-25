@@ -551,13 +551,11 @@ mark.hl-blue{background:rgba(80,140,220,.25);color:inherit;}
 }
 /* Luisa narrative: normal prose */
 .speech-luisa { display: inline; }
-/* Marie speech: purple left border + italic */
+/* Marie speech: purple italic (no border) */
 .speech-marie {
   display: block;
   margin: 0.4em 0 0.1em 0;
-  padding: 2px 0 2px 14px;
-  border-left: 2.5px solid #7B5EA7;
-  border-radius: 0;
+  padding: 2px 0;
   color: #3D1F5C;
   font-style: italic;
 }
@@ -3050,8 +3048,14 @@ function buildSpeechHTML(text, segments, highlights) {
       const confLabel = conf === 'medium' ? ' <em>(probable)</em>' : '';
       if (cls) {
         // Strip opening/closing quote marks — colour+italic already signals speech boundaries
-        // Strip leading section number then opening/closing quotes; safe — spText is display-only, p.text offsets unchanged
-        const spText = span.text.replace(/^\(\d+\)\s*/, '').replace(/^["«“„]/, '').replace(/["»”]$/, '');
+        // Strip leading section number, attribution prefix (“Jésus me dit: «”), opening quote, and leading dash
+        // Safe — spText is display-only, p.text offsets are unchanged
+        const spText = span.text
+          .replace(/^\(\d+\)\s*/, '')          // (1) section number
+          .replace(/^[^«”„”]*[«”„”]/, '')       // attribution + opening quote (“Il me dit: «”)
+          .replace(/^[“«”„]/, '')               // bare opening quote if no attribution
+          .replace(/^\s*[-–—]\s*/, '')          // leading dash (continuation clause)
+          .replace(/[“»”]$/, '');               // trailing closing quote
         html += `<span class="speech-label ${lblCls}">${lbl}${confLabel}</span>`;
         html += `<span class="${cls}">${applyHighlights(escapeHtml(spText), highlights)}</span>`;
         lastWasSpeech  = true;
