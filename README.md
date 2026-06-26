@@ -1,4 +1,4 @@
-# Livre du Ciel — PWA v2.5.53
+# Livre du Ciel — PWA v2.5.54
 
 Application de lecture et d'étude du Livre du Ciel de Luisa Piccarreta.
 
@@ -33,7 +33,7 @@ Application de lecture et d'étude du Livre du Ciel de Luisa Piccarreta.
 ## Architecture
 ```
 index.html              — app shell
-sw.js                   — service worker (cache key: ldc-v2.5.53)
+sw.js                   — service worker (cache key: ldc-v2.5.54)
 manifest.json           — PWA manifest (#1A2A4A theme)
 corpus/manifest.json    — version v10, 36 tomes
 corpus/volume_NN.json   — entrées (métadonnées)
