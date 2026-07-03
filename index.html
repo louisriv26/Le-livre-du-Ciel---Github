@@ -442,11 +442,19 @@ mark.hl-blue{background:rgba(80,140,220,.25);color:inherit;}
 
 .search-suggestions{padding:12px 16px;}
 .sugg-label{font-size:11px;color:var(--muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:.08em;}
-.sugg-chips{display:flex;flex-wrap:wrap;gap:6px;}
+.sugg-label-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;}
+.sugg-label-row .sugg-label{margin-bottom:0;}
+.sugg-clear{background:none;border:0;font-size:11px;color:var(--muted);cursor:pointer;
+  text-decoration:underline;padding:0;}
+.sugg-clear:hover{color:var(--night);}
+.sugg-chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px;}
+.sugg-chips:last-child{margin-bottom:0;}
 .sugg-chip{background:none;border:0.5px solid var(--border);border-radius:20px;
   padding:5px 12px;font-size:12px;color:var(--night);font-family:var(--body);
-  cursor:pointer;transition:all .15s;}
+  cursor:pointer;transition:all .15s;display:inline-flex;align-items:center;gap:4px;}
 .sugg-chip:hover{background:var(--gold-pale);border-color:var(--gold-light);}
+.sugg-chip-recent{color:var(--muted);}
+mark.search-hl{background:rgba(201,168,76,.35);color:inherit;border-radius:2px;padding:0 1px;}
 
 /* Vol filter chips */
 .filter-row{display:flex;gap:6px;padding:6px 12px 8px;overflow-x:auto;
@@ -1619,7 +1627,7 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; color: #D4A843; }
    VERSION — single source of truth
    Update this string on every release.
 ═══════════════════════════════════════════════════════ */
-const APP_VERSION = 'v2.5.70';
+const APP_VERSION = 'v2.5.71';
 const APP_BUILD   = '2026-06-25';
 
 /* ═══════════════════════════════════════════════════════
@@ -1769,6 +1777,7 @@ function goSearch() {
   renderSpeakerFilterRow();
   renderVolFilterRow();
   document.getElementById('search-input').focus();
+  if (!document.getElementById('search-input').value) refreshSearchSuggestions().catch(()=>{});
   // Preload indexes in background so first query is instant
   loadSemanticIndex().catch(()=>{});
   loadEmbModel().catch(()=>{});
@@ -3181,29 +3190,67 @@ function onSearchInput() {
   }
 }
 
-function clearSearch() {
+async function clearSearch() {
   document.getElementById('search-input').value = '';
   document.getElementById('search-clear').style.display = 'none';
-  document.getElementById('search-results').innerHTML = '';
-  document.getElementById('search-results').appendChild(
-    document.getElementById('search-results').firstChild ||
-    (() => { const s = createSuggestionsEl(); return s; })()
-  );
+  document.querySelector('.date-nav-entry').style.display = '';
   document.getElementById('search-meta').style.display = 'none';
   document.getElementById('trust-notice').style.display = 'none';
-  renderSearchSuggestions();
+  const container = document.getElementById('search-results');
+  container.innerHTML = '';
+  const el = document.createElement('div');
+  el.className = 'search-suggestions';
+  el.id = 'search-suggestions';
+  container.appendChild(el);
+  await refreshSearchSuggestions();
 }
 
-function renderSearchSuggestions() {
+async function refreshSearchSuggestions() {
   const el = document.getElementById('search-suggestions');
-  if (el) el.style.display = 'block';
+  if (!el) return;
+  el.style.display = 'block';
+  el.innerHTML = await buildSuggestionsHTML();
 }
 
-function createSuggestionsEl() {
-  const d = document.createElement('div');
-  d.className = 'search-suggestions';
-  d.id = 'search-suggestions';
-  d.innerHTML = `<div class="sugg-label">Thèmes fréquents</div>
+const RECENT_SEARCHES_KEY = 'recent_searches';
+const RECENT_SEARCHES_MAX = 8;
+
+async function getRecentSearches() {
+  try {
+    const rec = await dbGet('settings', RECENT_SEARCHES_KEY);
+    return (rec && Array.isArray(rec.queries)) ? rec.queries : [];
+  } catch (e) { return []; }
+}
+
+async function saveRecentSearch(query) {
+  const q = query.trim();
+  if (!q) return;
+  let list = await getRecentSearches();
+  list = list.filter(x => x.toLowerCase() !== q.toLowerCase());
+  list.unshift(q);
+  list = list.slice(0, RECENT_SEARCHES_MAX);
+  await dbPut('settings', { key: RECENT_SEARCHES_KEY, queries: list });
+}
+
+async function clearRecentSearches() {
+  await dbPut('settings', { key: RECENT_SEARCHES_KEY, queries: [] });
+  await refreshSearchSuggestions();
+}
+
+async function buildSuggestionsHTML() {
+  const recents = await getRecentSearches();
+  let html = '';
+  if (recents.length) {
+    html += `<div class="sugg-label-row">
+      <div class="sugg-label">Recherches récentes</div>
+      <button class="sugg-clear" onclick="clearRecentSearches()">Effacer</button>
+    </div>
+    <div class="sugg-chips">
+      ${recents.map(q => `<button class="sugg-chip sugg-chip-recent" data-q="${escapeHtml(q)}" onclick="searchFor(this.dataset.q)">
+        <i class="ti ti-history" style="font-size:12px;"></i> ${escapeHtml(q)}</button>`).join('')}
+    </div>`;
+  }
+  html += `<div class="sugg-label">Thèmes fréquents</div>
     <div class="sugg-chips">
       <button class="sugg-chip" onclick="searchFor('Divine Volonté')">Divine Volonté</button>
       <button class="sugg-chip" onclick="searchFor('souffrance')">Souffrance</button>
@@ -3214,7 +3261,37 @@ function createSuggestionsEl() {
       <button class="sugg-chip" onclick="searchFor('Jésus')">Jésus</button>
       <button class="sugg-chip" onclick="searchFor('prière')">Prière</button>
     </div>`;
-  return d;
+  return html;
+}
+
+function excerptAround(text, rawQuery, windowSize=220) {
+  const words = rawQuery.trim().split(/\s+/).filter(w => w.length > 2);
+  let idx = -1;
+  const lower = text.toLowerCase();
+  for (const w of words) {
+    const i = lower.indexOf(w.toLowerCase());
+    if (i !== -1 && (idx === -1 || i < idx)) idx = i;
+  }
+  if (idx === -1) {
+    return text.slice(0, windowSize) + (text.length > windowSize ? '…' : '');
+  }
+  const half = Math.floor(windowSize / 2);
+  let start = Math.max(0, idx - half);
+  let end = Math.min(text.length, start + windowSize);
+  start = Math.max(0, end - windowSize);
+  let excerpt = text.slice(start, end);
+  if (start > 0) excerpt = '…' + excerpt;
+  if (end < text.length) excerpt = excerpt + '…';
+  return excerpt;
+}
+
+function highlightMatches(text, rawQuery) {
+  const escaped = escapeHtml(text);
+  const words = rawQuery.trim().split(/\s+/).filter(w => w.length > 2)
+    .map(w => w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
+  if (!words.length) return escaped;
+  const pattern = new RegExp('(' + words.join('|') + ')', 'gi');
+  return escaped.replace(pattern, '<mark class="search-hl">$1</mark>');
 }
 
 function searchFor(term) {
@@ -3526,6 +3603,8 @@ async function runSearch() {
     return;
   }
 
+  saveRecentSearch(raw).catch(()=>{});
+
   // Search across all loaded volumes (background preload fills searchCache)
   // For unloaded volumes, load search index on demand
   const vols = searchVolFilter === 0
@@ -3652,7 +3731,7 @@ async function runSearch() {
     card.type = 'button';
     const tagClass = { exact:'exact', words:'exact', partial:'approximate', weak:'thematic', thematic:'thematic' }[r.matchType] || 'thematic';
     const tagLabel = { exact:'Phrase exacte', words:'Mots exacts', partial:'Idée proche', weak:'Thème approché', thematic:'Thème lié' }[r.matchType] || '';
-    const excerpt = r.text.slice(0, 220) + (r.text.length > 220 ? '…' : '');
+    const excerpt = excerptAround(r.text, raw);
     // Check if this result is a Jesus speech paragraph
     const isSpeech = searchSpeakerFilter || (function() {
       const vSegs = speakerCache[r.volume] || [];
@@ -3663,7 +3742,7 @@ async function runSearch() {
            <i class="ti ti-message-circle" style="font-size:10px;"></i> Paroles de Jésus</span>` : '';
     card.innerHTML = `
       <div class="rc-stable">${r.stable_ref} · Tome ${r.volume}</div>
-      <div class="rc-body-text">${escapeHtml(excerpt)}</div>
+      <div class="rc-body-text">${highlightMatches(excerpt, raw)}</div>
       <div class="rc-tags">
         <span class="rc-tag ${tagClass}">${tagLabel}</span>
         ${speechTag}
@@ -3687,7 +3766,7 @@ async function runSearch() {
       const card = document.createElement('button');
       card.className = 'result-card';
       card.type = 'button';
-      const excerpt = (r.text || '').slice(0, 220) + ((r.text||'').length > 220 ? '…' : '');
+      const excerpt = excerptAround(r.text || '', raw);
       const isSpeech = (function() {
         const vSegs = speakerCache[r.volume] || [];
         return vSegs.some(s => s.paragraph_id === r.id && s.speaker === 'JESUS' && s.confidence === 'high');
@@ -3697,7 +3776,7 @@ async function runSearch() {
              <i class="ti ti-message-circle" style="font-size:10px;"></i> Paroles de Jésus</span>` : '';
       card.innerHTML = `
         <div class="rc-stable">${escapeHtml(r.stable_ref || r.entry_id || r.id)} · Tome ${r.volume}</div>
-        <div class="rc-body-text">${escapeHtml(excerpt)}</div>
+        <div class="rc-body-text">${highlightMatches(excerpt, raw)}</div>
         <div class="rc-tags">
           <span class="rc-tag" style="background:rgba(99,102,241,.1);color:#4F46E5;border-color:rgba(99,102,241,.2);">${lastSemMode==='embedding'?'Vectoriel':'Sémantique'}</span>
           ${speechTag}
