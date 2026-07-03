@@ -981,13 +981,13 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; color: #D4A843; }
         <div class="ob-icon" style="font-size:48px;margin-bottom:24px;">✦</div>
         <div class="ob-title">Livre du Ciel</div>
         <div class="ob-body">Luisa Piccarreta a reçu entre 1899 et 1938 les dictées intérieures de Jésus. Ce journal spirituel en 36 tomes est le plus grand témoignage mystique de ce genre dans l'histoire de l'Église catholique.</div>
-        <div class="ob-sub">74 476 paragraphes · édition française</div>
+        <div class="ob-sub">74 331 paragraphes · édition française</div>
       </div>
       <!-- Slide 1: Speech layer -->
       <div class="ob-slide" id="ob-slide-1">
         <div class="ob-icon" style="font-size:32px;margin-bottom:16px;"><i class="ti ti-message-circle" style="color:#D4A060;"></i></div>
         <div class="ob-title">Les paroles de Jésus</div>
-        <div class="ob-body">Dans cette édition numérique, les paroles directes de Jésus apparaissent en couleur. Chaque passage a été vérifié et attribué — 52 186 segments au total.</div>
+        <div class="ob-body">Dans cette édition numérique, les paroles directes de Jésus apparaissent en couleur. Chaque passage a été vérifié et attribué — 53 922 segments au total.</div>
         <div class="ob-speech-demo">
           <div style="font-size:13px;color:rgba(255,255,255,.5);margin-bottom:8px;">Luisa écrit:</div>
           <div style="font-size:14px;color:rgba(255,255,255,.75);margin-bottom:12px;font-style:italic;">Ce matin, mon aimable Jésus est venu et Il m'a dit:</div>
@@ -1063,7 +1063,7 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; color: #D4A843; }
       <i class="ti ti-message-circle door-icon" style="color:#C9A84C;"></i>
       <div class="door-text">
         <div class="dt">Paroles de Jésus</div>
-        <div class="ds">52 186 passages vérifiés · lecture directe</div>
+        <div class="ds">53 922 passages vérifiés · lecture directe</div>
       </div>
     </button>
     <button class="home-lib-link" onclick="goTomes()">
@@ -1520,7 +1520,7 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; color: #D4A843; }
       <div class="help-card">
         <div class="help-row">
           <span class="help-chip" style="background:rgba(201,168,76,.15);color:#7A5A20;">Couleur or</span>
-          <span class="help-text">Les passages en couleur or/brun sont les paroles directes de Jésus. 52 186 segments vérifiés dans les 36 tomes.</span>
+          <span class="help-text">Les passages en couleur or/brun sont les paroles directes de Jésus. 53 922 segments vérifiés dans les 36 tomes.</span>
         </div>
         <div class="help-divider"></div>
         <div class="help-row">
@@ -1627,7 +1627,7 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; color: #D4A843; }
    VERSION — single source of truth
    Update this string on every release.
 ═══════════════════════════════════════════════════════ */
-const APP_VERSION = 'v2.5.71';
+const APP_VERSION = 'v2.6.0';
 const APP_BUILD   = '2026-06-25';
 
 /* ═══════════════════════════════════════════════════════
@@ -1724,7 +1724,7 @@ function dbGetAll(store) {
 /* ═══════════════════════════════════════════════════════
    CORPUS LOADING
 ═══════════════════════════════════════════════════════ */
-const CORPUS_CV = 'cv=10';
+const CORPUS_CV = 'cv=27';
 
 async function loadVolumeData(vol) {
   if (corpusCache[vol]) return;
