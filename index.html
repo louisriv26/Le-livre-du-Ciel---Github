@@ -1051,13 +1051,6 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; color: #D4A843; }
         <div class="ds">Trouver un passage par mots ou concept</div>
       </div>
     </button>
-    <button class="entry-door" onclick="goParcours()">
-      <i class="ti ti-route door-icon"></i>
-      <div class="door-text">
-        <div class="dt">Parcours guidés</div>
-        <div class="ds">6 chemins pour entrer dans le corpus</div>
-      </div>
-    </button>
     <button class="entry-door" onclick="openJesusSpeech()">
       <i class="ti ti-message-circle door-icon" style="color:#C9A84C;"></i>
       <div class="door-text">
@@ -1086,9 +1079,6 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; color: #D4A843; }
     <div class="home-actions">
       <button class="ha-btn" onclick="goSearch()">
         <i class="ti ti-search"></i> Chercher
-      </button>
-      <button class="ha-btn" onclick="goParcours()">
-        <i class="ti ti-route"></i> Parcours
       </button>
       <button class="ha-btn" onclick="goTomes()">
         <i class="ti ti-books"></i> Bibliothèque
@@ -1537,25 +1527,6 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; color: #D4A843; }
       </div>
     </div>
 
-    <!-- ── PARCOURS ── -->
-    <div class="help-section">
-      <div class="help-section-head">
-        <div class="help-section-icon" style="background:rgba(201,168,76,.12);color:#7A5A20;"><i class="ti ti-route"></i></div>
-        <span class="help-section-title">Parcours guidés</span>
-      </div>
-      <div class="help-card">
-        <div class="help-row">
-          <span class="help-chip">6 parcours</span>
-          <span class="help-text">Les Parcours guidés proposent des séquences d'entrées sélectionnées par thème ou période pour entrer dans le corpus progressivement.</span>
-        </div>
-        <div class="help-divider"></div>
-        <div class="help-row">
-          <span class="help-chip">Accueil</span>
-          <span class="help-text">Accessible depuis le bouton <b>Parcours guidés</b> sur l'écran d'accueil, ou via la navigation principale.</span>
-        </div>
-      </div>
-    </div>
-
     <!-- ── RECHERCHE ── -->
     <div class="help-section">
       <div class="help-section-head">
@@ -1648,7 +1619,7 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; color: #D4A843; }
    VERSION — single source of truth
    Update this string on every release.
 ═══════════════════════════════════════════════════════ */
-const APP_VERSION = 'v2.5.66';
+const APP_VERSION = 'v2.5.70';
 const APP_BUILD   = '2026-06-25';
 
 /* ═══════════════════════════════════════════════════════
