@@ -146,12 +146,12 @@
       "status": "applied_v2.6.0"
     },
     {
-      "id": "quote_balance_campaign_v2.6.6",
+      "id": "quote_balance_campaign_v2.6.6_to_v2.6.7",
       "type": "batch_program",
-      "description": "Guillemet-balance repair across 531 unbalanced entries (of 2,301). 249 entries fixed with 255 single-character operations: (a) appended missing closing guillemet at end of speech runs that open « and run unclosed to entry end (validated against speech-annotation layer); (b) inserted missing opening guillemet after attribution colons (\"Il me dit: \", \"Je répondis: \", \"proclama: \", etc.) for speech that closes » but never opens; (c) 19 hand-adjudicated cases (speech starting at entry start, laments shifting to direct address, editorial extract, entry-boundary quote splits); (d) 5 leading ASCII double-quotes replaced with «. All offsets migrated, fingerprints/search/norm resynced. 3 placement errors found by self-audit during the pass (T14.E0056, T28.E0003, T30.E0008 — « initially landed on list-items due to non-sequential paragraph IDs / list-colon false matches) and corrected before deploy.",
+      "description": "Guillemet-balance repair across 531 unbalanced entries (of 2,301). 249 entries fixed with 255 single-character operations: (a) appended missing closing guillemet at end of speech runs that open « and run unclosed to entry end (validated against speech-annotation layer); (b) inserted missing opening guillemet after attribution colons (\"Il me dit: \", \"Je répondis: \", \"proclama: \", etc.) for speech that closes » but never opens; (c) 19 hand-adjudicated cases (speech starting at entry start, laments shifting to direct address, editorial extract, entry-boundary quote splits); (d) 5 leading ASCII double-quotes replaced with «. All offsets migrated, fingerprints/search/norm resynced. 3 placement errors found by self-audit during the pass (T14.E0056, T28.E0003, T30.E0008 — « initially landed on list-items due to non-sequential paragraph IDs / list-colon false matches) and corrected before deploy. ROUND 3 (v2.6.7): 17 more entries / 25 operations — closing guillemets placed at verified speech-segment end offsets, opens after paragraph-final attribution colons, one curly-quote pair normalized. All 33 machine proposals individually read; 7 rejected (speech continued past the proposed close).",
       "adjudication_basis": "Balance of probabilities per Louis 2026-07-04 instruction: source PDF contains formatting/quote/grammar mistakes; interpret the text and make it coherent rather than mirror the source.",
-      "not_fixed": "62 entries left as-is: legitimate French continuation-guillemet convention (quote paragraphs re-open « and close once at the end). 220 entries deferred to manual review (complex multi-imbalance or ambiguous quote extents) — see quote_balance_review_v2.6.6.json in the Claude Code working directory.",
-      "status": "applied_v2.6.6"
+      "not_fixed": "64 entries legitimate French continuation-guillemet convention; 201 entries remaining for manual reading — see quote_balance_review_v2.6.6.json. Campaign total: 266 of 531 fixed.",
+      "status": "applied_v2.6.6_and_v2.6.7"
     },
     {
       "id": "lowercase_boundary_review_v2.6.6",
