@@ -914,7 +914,7 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; color: #D4A843; }
         <div class="autour-title">Autour de ce passage</div>
         <div class="autour-ref" id="autour-ref"></div>
       </div>
-      <button class="btn-icon" onclick="closeAutour()">
+      <button class="btn-icon" onclick="closeAutour()" aria-label="Fermer">
         <i class="ti ti-x"></i>
       </button>
     </div>
@@ -1150,7 +1150,7 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; color: #D4A843; }
     </button>
     <div class="reader-tools">
       <button class="mode-pill" id="mode-toggle" onclick="toggleMode()">Étudier</button>
-      <button class="btn-icon" onclick="showSizeSheet()"><i class="ti ti-letter-a"></i></button>
+      <button class="btn-icon" onclick="showSizeSheet()" aria-label="Taille du texte"><i class="ti ti-letter-a"></i></button>
     </div>
   </div>
   <div class="scroll" id="reader-scroll" onscroll="onReaderScroll()">
@@ -1205,7 +1205,7 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; color: #D4A843; }
       <i class="ti ti-search"></i>
       <input type="search" id="search-input" placeholder="Idée, thème, citation…"
         oninput="onSearchInput()" onkeydown="if(event.key==='Enter')runSearch()">
-      <button class="btn-icon" onclick="clearSearch()" id="search-clear" style="display:none;">
+      <button class="btn-icon" onclick="clearSearch()" id="search-clear" style="display:none;" aria-label="Effacer la recherche">
         <i class="ti ti-x" style="font-size:14px;"></i>
       </button>
     </div>
@@ -1251,14 +1251,14 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; color: #D4A843; }
 <div class="screen" id="screen-espace">
   <div class="top-bar">
     <span class="top-bar-title">Mon Espace</span>
-    <button class="btn-icon" onclick="exportEspace()"><i class="ti ti-download"></i></button>
+    <button class="btn-icon" onclick="exportEspace()" aria-label="Exporter Mon Espace"><i class="ti ti-download"></i></button>
   </div>
   <div class="espace-tabs">
     <button class="es-tab active" onclick="showEspaceTab('notes')" id="es-tab-notes">Notes</button>
     <button class="es-tab" onclick="showEspaceTab('highlights')" id="es-tab-highlights">Surlignages</button>
     <button class="es-tab" onclick="showEspaceTab('favorites')" id="es-tab-favorites">Favoris</button>
     <button class="es-tab" onclick="showEspaceTab('collections')" id="es-tab-collections">Collections</button>
-    <button class="es-tab" onclick="showEspaceTab('stats')" id="es-tab-stats"><i class="ti ti-chart-bar" style="font-size:14px;"></i></button>
+    <button class="es-tab" onclick="showEspaceTab('stats')" id="es-tab-stats" aria-label="Statistiques"><i class="ti ti-chart-bar" style="font-size:14px;"></i></button>
   </div>
   <div class="espace-panel active scroll" id="ep-notes"></div>
   <div class="espace-panel scroll" id="ep-highlights"></div>
@@ -1653,7 +1653,7 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; color: #D4A843; }
    VERSION — single source of truth
    Update this string on every release.
 ═══════════════════════════════════════════════════════ */
-const APP_VERSION = 'v2.6.4';
+const APP_VERSION = 'v2.6.5';
 const APP_BUILD   = '2026-06-25';
 
 /* ═══════════════════════════════════════════════════════
@@ -3954,7 +3954,7 @@ async function renderNotes() {
         <div class="ei-text">${escapeHtml(n.text)}</div>
         <div class="ei-date">${new Date(n.ts).toLocaleDateString('fr-FR',{day:'numeric',month:'long',year:'numeric'})}</div>
       </div>
-      <button class="ei-del" onclick="deleteNote(${n.id})"><i class="ti ti-trash"></i></button>`;
+      <button class="ei-del" onclick="deleteNote(${n.id})" aria-label="Supprimer la note"><i class="ti ti-trash"></i></button>`;
     if (n.entry_id) {
       d.style.cursor = 'pointer';
       d.onclick = e => { if (!e.target.closest('.ei-del')) goToEntry(n.volume||currentVolume, n.entry_id, n.para_id); };
@@ -3987,7 +3987,7 @@ async function renderHighlights() {
         <div class="ei-text">${escapeHtml(h.text)}</div>
         <div class="ei-date">${new Date(h.ts).toLocaleDateString('fr-FR')}</div>
       </div>
-      <button class="ei-del" onclick="deleteHighlight(${h.id})"><i class="ti ti-trash"></i></button>`;
+      <button class="ei-del" onclick="deleteHighlight(${h.id})" aria-label="Supprimer le surlignage"><i class="ti ti-trash"></i></button>`;
     el.appendChild(d);
   });
 }
@@ -4017,7 +4017,7 @@ async function renderFavorites() {
         <div class="ei-text">${escapeHtml(f.title || '')}</div>
         <div class="ei-date">${f.date_display || ''}</div>
       </div>
-      <button class="ei-del" onclick="deleteFav('${f.entry_id}')"><i class="ti ti-trash"></i></button>`;
+      <button class="ei-del" onclick="deleteFav('${f.entry_id}')" aria-label="Retirer des favoris"><i class="ti ti-trash"></i></button>`;
     d.onclick = e => {
       if (!e.target.closest('.ei-del'))
         goToEntry(f.volume, f.entry_id, null);
