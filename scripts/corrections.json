@@ -171,6 +171,12 @@
       "type": "speaker_correction",
       "description": "Task A increment 2 — 7 missing JESUS segments added across T4/T10/T11/T12/T13, all in Jesus-monologue entries, each individually read + confirmed as Jesus direct speech (2 partial spans split at the closing guillemet before Luisa narration: T11.1915-04-24.P002, T11.1916-10-30.P005). Deferred T27.E0031.P052 (ambiguous \"Nous le voulons\") and skipped T32.E0030.P013 (Luisa thought + narration lead-in). Method: mono-M candidates containing literal guillemets, read case-by-case.",
       "status": "applied_v2.6.9"
+    },
+    {
+      "id": "speaker_attribution_v2.6.10_increment3",
+      "type": "speaker_correction",
+      "description": "Task A increment 3 — 13 more missing JESUS segments (T3/T11/T25/T26/T29/T30x2/T31/T33/T34x2/T35x2), the divine-voice subset of mono-entry candidates (contain \"Nous/notre Vouloir/Ma Volonté/Ma fille\"), each read individually. Deferred 2 exclamatory-apostrophe cases (T31.E0023.P012, T36.E0025.P020 — ambiguous speaker); skipped 3 narration/lead-in false-positives (T19.E0021.P052, T31.E0012.P009, T36.E0010.P046).",
+      "status": "applied_v2.6.10"
     }
   ],
   "known_gaps": [
