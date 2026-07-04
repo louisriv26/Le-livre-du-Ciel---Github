@@ -195,6 +195,12 @@
       "type": "speaker_correction",
       "description": "Task A increment 6 — FIRST dialogue-entry batch. 29 segments across 27 paragraphs (T2/T10/T11/T12x4/T16/T17x3/T18x2/T19/T20x2/T21/T23x3/T24x5/T25), the divine-first-person/divine-we subset of the 104 dialogue-M DIVINE-marker candidates (first 52 read). Two multi-turn paragraphs split correctly: T2.1899-10-07.P004 (Jesus[0:290]+trailing Luisa narration left unstyled); T11.1912-07-23.P010 (Jesus/Luisa/Jesus 3-turn dialogue in one paragraph). Skipped narration, Luisa prayers/questions, creation-voice nested quotes (T2.1899-03-13.P008), and apostrophe-to-the-Will forms (deferred). Reading method same as mono tier.",
       "status": "applied_v2.6.13"
+    },
+    {
+      "id": "speaker_attribution_v2.6.14_increment7",
+      "type": "speaker_correction",
+      "description": "Task A increment 7 — 37 JESUS segments, completing the dialogue-M DIVINE bucket (indices 52-103). Divine-we/first-person voice across T25-T36. Skipped creature-voice quotes (\"Nous voulons la Volonté Divine\"=souls; \"je Vous donne tout\"=Luisa to God), narration, and feminine/Mary-ambiguous cases (deferred: T34.E0023.P026, T34.E0027.P020, T32.E0016.P020, etc.). Dialogue DIVINE bucket now done: 66 of 104 applied across inc6+7.",
+      "status": "applied_v2.6.14"
     }
   ],
   "known_gaps": [
