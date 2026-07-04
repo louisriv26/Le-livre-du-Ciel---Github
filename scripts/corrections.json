@@ -1,0 +1,89 @@
+{
+  "schema": "LDC manual correction ledger v1 — every hand-approved text/offset correction, independent of source-extraction lineage. On any future corpus rebuild or lineage swap, re-check this list against the new corpus and reapply anything missing.",
+  "corrections": [
+    {
+      "id": "T02.1899-10-28.P007.essuyes",
+      "paragraph_id": "ldc_t02_1899_10_28_e001_p007",
+      "type": "word_choice",
+      "old": "séchés",
+      "new": "essuyés",
+      "reason": "Louis's explicit translation/wording judgment call",
+      "approved_by": "Louis",
+      "date": "2026-06-2x (exact date not recorded)",
+      "status": "applied_v2.6.1"
+    },
+    {
+      "id": "mechanical_v2.5.63_accents_and_typography",
+      "type": "batch_rule_set",
+      "description": "101 mechanical/typography fixes across 98 paragraphs: missing accented capitals (É/À/Ê/Ô on Éternité, Éternel(le), À mesure/peine/Toi, Ô mon, Être), duplicate semicolons (;; -> ;), semicolon/comma collisions (;, -> ;), comma/period collisions (, . and ,. -> .), OCR fixes (ln fine -> In fine, superscript-2 duplication before Viens/viens), one-off typos (missing initial T in 'Tout le reste...', 'appararences' -> 'apparence', missing space after ellipsis in T32.E0024.P021), s'unie -> s'unit conjugation fix.",
+      "source": "Originally from LDC_v2.5.50_Corrected_Text_Deep_Audit_Evidence.zip (124-item ledger, audit1) + LDC_v2.5.50_Text_Quality_Fourth_Deep_Audit_Evidence.zip (47-item punctuation ledger, audit4). Audit1 zip is no longer available locally as of 2026-07-04 — rule set reconstructed by exact-string pattern re-scan against the corpus instead of the original paragraph-id list.",
+      "rules": [
+        {"old": "Eternité", "new": "Éternité"},
+        {"old": "Eternelle", "new": "Éternelle"},
+        {"old": "Eternel", "new": "Éternel"},
+        {"old": "A mesure", "new": "À mesure"},
+        {"old": "A peine", "new": "À peine"},
+        {"old": "A Toi", "new": "À Toi"},
+        {"old": "O mon", "new": "Ô mon"},
+        {"old": "Etre", "new": "Être"},
+        {"old": "s’unie", "new": "s’unit"},
+        {"old": "s'unie", "new": "s'unit"},
+        {"old": "ln fine", "new": "In fine"},
+        {"old": ";;", "new": ";"},
+        {"old": ";,", "new": ";"},
+        {"old": ", .", "new": "."},
+        {"old": ",.", "new": "."},
+        {"old": "out le reste est fini", "new": "Tout le reste est fini", "note": "one-off, LDC.T21.E0021.P011 — regex re-check will always match substring of the fix itself; not a real remaining defect"},
+        {"old": "en appararences", "new": "en apparence", "note": "one-off, LDC.T36.E0039.P013"},
+        {"old": "….f", "new": "…. f", "note": "one-off, LDC.T32.E0024.P021"},
+        {"old": "²²Viens", "new": "Viens", "note": "one-off OCR superscript, LDC.T14.E0072.P050"},
+        {"old": "²²viens", "new": "viens", "note": "one-off OCR superscript"}
+      ],
+      "status": "applied_v2.5.63_original_lineage; reapplied_v2.6.2_EB21_lineage"
+    },
+    {
+      "id": "elision_apostrophe_space_49",
+      "type": "batch_pattern_fix",
+      "description": "49 genuine elision-apostrophe defects: a stray space after an elision apostrophe following a known elision word (qu', jusqu', lorsqu', puisqu', quoiqu', presqu', entr', aujourd', n', d', l', m', t', s', c', j'). E.g. 'qu’ à' -> 'qu’à'.",
+      "excluded": "132 similar-looking apostrophe+space patterns were deliberately NOT touched because they are legitimate scare-quotes (e.g. 'prendre', 'fiat', 'cattiva') rather than elision errors. Only fix when the apostrophe immediately follows one of the known elision words above.",
+      "status": "applied_v2.6.2_EB21_lineage"
+    },
+    {
+      "id": "T04.1901-10-08.P011.narrative_bleed",
+      "paragraph_id": "ldc_t04_1901_10_08_e001_p011",
+      "segment_id": "LDC.T04.1901-10-08.E001.P011.S01",
+      "type": "speech_offset",
+      "old_end_char": 399,
+      "new_end_char": 109,
+      "reason": "Jesus-speech segment incorrectly extended into Luisa's first-person narrative ('Pendant qu'Il disait cela, je voyais...') that follows the actual quoted words in the same paragraph. Speech should end at 'pervertit.' (position 109), not run to the paragraph end (399).",
+      "status": "applied_v2.5.66_original_lineage; reapplied_v2.6.0_EB21_lineage"
+    },
+    {
+      "id": "T02.1899-10-28.P007.essuyes_offset_regression",
+      "paragraph_id": "ldc_t02_1899_10_28_e001_p007",
+      "segment_id": "LDC.T02.1899-10-28.E001.P007.S01",
+      "type": "speech_offset",
+      "old_end_char": 223,
+      "new_end_char": 225,
+      "reason": "Self-inflicted regression: the essuyés word-length change (+1 char vs séchés) shifted the paragraph length but the speech segment end_char wasn't migrated at the same time. Caught by the mechanical-fixes re-scan pass and corrected to tlen (225) — no closing guillemet present, segment runs to end of paragraph.",
+      "status": "applied_v2.6.2_EB21_lineage"
+    },
+    {
+      "id": "boundary_repair_program_v2.5.52_to_v2.5.65",
+      "type": "batch_program",
+      "description": "Full-corpus speech segment boundary repair, applied to the ORIGINAL corpus lineage (pre-EB21) across multiple sessions: 723 start_char mid-word offsets (scan-back to word boundary), 5,368 end_char short errors (3,505 closing-quote orphans, 1,106 mid-word truncations, 759 large-tail closing-quote inclusions), 38 additional end_char boundary fixes (21 over-tlen clamped, 17 mid-word snapped to nearest closing guillemet or tlen), 13 sc/ec boundary fixes. Result: 0 defects across all 8 boundary-defect categories (over-tlen, sc>ec, sc mid-word, sc past guillemet, sc 2-past-guillemet+space, short article before guillemet, ec mid-word, overlapping segments).",
+      "status": "applied_to_original_lineage_only — NOT applicable to EB-21 lineage, which required its own independent boundary repair (see boundary_repair_program_v2.6.0 below) since it was an independent rebuild with its own offset bugs"
+    },
+    {
+      "id": "boundary_repair_program_v2.6.0_EB21",
+      "type": "batch_program",
+      "description": "Full-corpus speech segment boundary repair applied to the EB-21 lineage after migration (v2.6.0): 2,437 defects found and fixed (723 mid-word start_char snapped to nearest preceding guillemet/colon/word-boundary, 1,082 end-of-paragraph end_char extended to tlen, 108 guillemet-overshoot end_char snapped back to nearest closing guillemet). Result: 0 defects across all boundary categories, 53,922 speech segments preserved.",
+      "status": "applied_v2.6.0"
+    }
+  ],
+  "known_gaps": [
+    "The original audit1 ledger zip (LDC_v2.5.50_Corrected_Text_Deep_Audit_Evidence.zip, 124-item list) is missing from Downloads as of 2026-07-04. The mechanical_v2.5.63 rule set above was reconstructed by exact-string pattern scan rather than the original paragraph-id list. If that zip resurfaces, diff it against this ledger to confirm nothing else was missed.",
+    "27 source-matched title quotation-balance candidates logged by the EB-18 audit were deliberately NOT corrected (no text altered on that basis alone) — see EB-18 evidence if this needs revisiting.",
+    "6 dash-prefix speech segments (T25.E0030.P023/P028, T26.E0010.P030, T28.E0001.P074/E0023.P032, T29.E0028.P027) start with a list-marker dash. Renderer already strips it before display, so left as-is — not a defect, just noted for completeness."
+  ]
+}
