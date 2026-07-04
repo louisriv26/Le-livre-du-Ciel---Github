@@ -18,26 +18,91 @@
       "description": "101 mechanical/typography fixes across 98 paragraphs: missing accented capitals (É/À/Ê/Ô on Éternité, Éternel(le), À mesure/peine/Toi, Ô mon, Être), duplicate semicolons (;; -> ;), semicolon/comma collisions (;, -> ;), comma/period collisions (, . and ,. -> .), OCR fixes (ln fine -> In fine, superscript-2 duplication before Viens/viens), one-off typos (missing initial T in 'Tout le reste...', 'appararences' -> 'apparence', missing space after ellipsis in T32.E0024.P021), s'unie -> s'unit conjugation fix.",
       "source": "Originally from LDC_v2.5.50_Corrected_Text_Deep_Audit_Evidence.zip (124-item ledger, audit1) + LDC_v2.5.50_Text_Quality_Fourth_Deep_Audit_Evidence.zip (47-item punctuation ledger, audit4). Audit1 zip is no longer available locally as of 2026-07-04 — rule set reconstructed by exact-string pattern re-scan against the corpus instead of the original paragraph-id list.",
       "rules": [
-        {"old": "Eternité", "new": "Éternité"},
-        {"old": "Eternelle", "new": "Éternelle"},
-        {"old": "Eternel", "new": "Éternel"},
-        {"old": "A mesure", "new": "À mesure"},
-        {"old": "A peine", "new": "À peine"},
-        {"old": "A Toi", "new": "À Toi"},
-        {"old": "O mon", "new": "Ô mon"},
-        {"old": "Etre", "new": "Être"},
-        {"old": "s’unie", "new": "s’unit"},
-        {"old": "s'unie", "new": "s'unit"},
-        {"old": "ln fine", "new": "In fine"},
-        {"old": ";;", "new": ";"},
-        {"old": ";,", "new": ";"},
-        {"old": ", .", "new": "."},
-        {"old": ",.", "new": "."},
-        {"old": "out le reste est fini", "new": "Tout le reste est fini", "note": "one-off, LDC.T21.E0021.P011 — regex re-check will always match substring of the fix itself; not a real remaining defect"},
-        {"old": "en appararences", "new": "en apparence", "note": "one-off, LDC.T36.E0039.P013"},
-        {"old": "….f", "new": "…. f", "note": "one-off, LDC.T32.E0024.P021"},
-        {"old": "²²Viens", "new": "Viens", "note": "one-off OCR superscript, LDC.T14.E0072.P050"},
-        {"old": "²²viens", "new": "viens", "note": "one-off OCR superscript"}
+        {
+          "old": "Eternité",
+          "new": "Éternité"
+        },
+        {
+          "old": "Eternelle",
+          "new": "Éternelle"
+        },
+        {
+          "old": "Eternel",
+          "new": "Éternel"
+        },
+        {
+          "old": "A mesure",
+          "new": "À mesure"
+        },
+        {
+          "old": "A peine",
+          "new": "À peine"
+        },
+        {
+          "old": "A Toi",
+          "new": "À Toi"
+        },
+        {
+          "old": "O mon",
+          "new": "Ô mon"
+        },
+        {
+          "old": "Etre",
+          "new": "Être"
+        },
+        {
+          "old": "s’unie",
+          "new": "s’unit"
+        },
+        {
+          "old": "s'unie",
+          "new": "s'unit"
+        },
+        {
+          "old": "ln fine",
+          "new": "In fine"
+        },
+        {
+          "old": ";;",
+          "new": ";"
+        },
+        {
+          "old": ";,",
+          "new": ";"
+        },
+        {
+          "old": ", .",
+          "new": "."
+        },
+        {
+          "old": ",.",
+          "new": "."
+        },
+        {
+          "old": "out le reste est fini",
+          "new": "Tout le reste est fini",
+          "note": "one-off, LDC.T21.E0021.P011 — regex re-check will always match substring of the fix itself; not a real remaining defect"
+        },
+        {
+          "old": "en appararences",
+          "new": "en apparence",
+          "note": "one-off, LDC.T36.E0039.P013"
+        },
+        {
+          "old": "….f",
+          "new": "…. f",
+          "note": "one-off, LDC.T32.E0024.P021"
+        },
+        {
+          "old": "²²Viens",
+          "new": "Viens",
+          "note": "one-off OCR superscript, LDC.T14.E0072.P050"
+        },
+        {
+          "old": "²²viens",
+          "new": "viens",
+          "note": "one-off OCR superscript"
+        }
       ],
       "status": "applied_v2.5.63_original_lineage; reapplied_v2.6.2_EB21_lineage"
     },
@@ -79,6 +144,20 @@
       "type": "batch_program",
       "description": "Full-corpus speech segment boundary repair applied to the EB-21 lineage after migration (v2.6.0): 2,437 defects found and fixed (723 mid-word start_char snapped to nearest preceding guillemet/colon/word-boundary, 1,082 end-of-paragraph end_char extended to tlen, 108 guillemet-overshoot end_char snapped back to nearest closing guillemet). Result: 0 defects across all boundary categories, 53,922 speech segments preserved.",
       "status": "applied_v2.6.0"
+    },
+    {
+      "id": "quote_balance_campaign_v2.6.6",
+      "type": "batch_program",
+      "description": "Guillemet-balance repair across 531 unbalanced entries (of 2,301). 249 entries fixed with 255 single-character operations: (a) appended missing closing guillemet at end of speech runs that open « and run unclosed to entry end (validated against speech-annotation layer); (b) inserted missing opening guillemet after attribution colons (\"Il me dit: \", \"Je répondis: \", \"proclama: \", etc.) for speech that closes » but never opens; (c) 19 hand-adjudicated cases (speech starting at entry start, laments shifting to direct address, editorial extract, entry-boundary quote splits); (d) 5 leading ASCII double-quotes replaced with «. All offsets migrated, fingerprints/search/norm resynced. 3 placement errors found by self-audit during the pass (T14.E0056, T28.E0003, T30.E0008 — « initially landed on list-items due to non-sequential paragraph IDs / list-colon false matches) and corrected before deploy.",
+      "adjudication_basis": "Balance of probabilities per Louis 2026-07-04 instruction: source PDF contains formatting/quote/grammar mistakes; interpret the text and make it coherent rather than mirror the source.",
+      "not_fixed": "62 entries left as-is: legitimate French continuation-guillemet convention (quote paragraphs re-open « and close once at the end). 220 entries deferred to manual review (complex multi-imbalance or ambiguous quote extents) — see quote_balance_review_v2.6.6.json in the Claude Code working directory.",
+      "status": "applied_v2.6.6"
+    },
+    {
+      "id": "lowercase_boundary_review_v2.6.6",
+      "type": "review_dismissal",
+      "description": "125 cross-paragraph lowercase-boundary candidates (paragraph ends without terminal punctuation, next begins lowercase) reviewed and dismissed: they are mid-sentence paragraph splits inherited from the source PDF line layout. The text reads correctly in sequence. Merging paragraphs would break stable IDs, search records and speech offsets for no reader benefit.",
+      "status": "no_change_v2.6.6"
     }
   ],
   "known_gaps": [
