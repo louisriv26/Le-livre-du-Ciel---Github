@@ -826,6 +826,16 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; color: #D4A843; }
   -webkit-appearance:none;min-width:0;}
 .date-nav-entry:active{background:var(--gold-pale);}
 
+/* Vector search opt-in banner */
+.vector-opt-in{padding:12px 16px;background:var(--gold-pale);
+  border-bottom:1px solid var(--border);}
+.voi-text{font-size:12.5px;color:var(--night);line-height:1.5;margin-bottom:8px;}
+.voi-actions{display:flex;gap:8px;}
+.voi-btn{border:0.5px solid var(--border);border-radius:20px;background:var(--white);
+  padding:6px 14px;font-size:12px;font-family:var(--body);color:var(--ink);
+  cursor:pointer;-webkit-appearance:none;}
+.voi-btn-primary{background:var(--night);color:var(--white);border-color:var(--night);}
+
 /* ═══ DATE NAVIGATOR ═══ */
 .dn-wrap{padding:12px 16px 32px;display:flex;flex-direction:column;gap:20px;}
 .dn-section-title{font-size:11px;text-transform:uppercase;letter-spacing:.06em;
@@ -1207,6 +1217,15 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; color: #D4A843; }
     <span>Parcourir par date</span>
     <i class="ti ti-arrow-right" style="font-size:13px;margin-left:auto;opacity:0.5;"></i>
   </button>
+  <div id="vector-opt-in" class="vector-opt-in" style="display:none;">
+    <div class="voi-text">
+      <b>Recherche vectorielle</b> — trouve les passages par sens plutôt que par mots exacts (~90 Mo, recommandé en Wi-Fi).
+    </div>
+    <div class="voi-actions">
+      <button class="voi-btn voi-btn-primary" onclick="enableVectorSearch()">Activer</button>
+      <button class="voi-btn" onclick="dismissVectorOptIn()">Plus tard</button>
+    </div>
+  </div>
   <div id="search-meta" class="search-meta" style="display:none;"></div>
   <div id="trust-notice" class="trust-notice" style="display:none;">
     Voici les passages les plus proches de votre idée. Vérifiez le texte source avant de citer.
@@ -1388,6 +1407,13 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; color: #D4A843; }
         <div class="help-row">
           <span class="help-chip outline">Thème lié</span>
           <span class="help-text">Le passage appartient à la même famille d'images spirituelles — lumière, filet, feu, mer, croix, amour-propre… — même sans mots communs avec votre requête.</span>
+        </div>
+        <div class="help-divider"></div>
+        <div class="help-row" id="vector-toggle-row">
+          <span class="help-chip light" style="min-width:72px;">Vectoriel</span>
+          <span class="help-text">Télécharge un modèle et un index (~90 Mo) pour activer la recherche par sens.
+            <button class="voi-btn" id="vector-toggle-btn" style="margin-top:6px;" onclick="toggleVectorSearchSetting()">…</button>
+          </span>
         </div>
         <div class="help-divider"></div>
         <div class="help-row">
@@ -1627,7 +1653,7 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; color: #D4A843; }
    VERSION — single source of truth
    Update this string on every release.
 ═══════════════════════════════════════════════════════ */
-const APP_VERSION = 'v2.6.3';
+const APP_VERSION = 'v2.6.4';
 const APP_BUILD   = '2026-06-25';
 
 /* ═══════════════════════════════════════════════════════
@@ -1778,10 +1804,38 @@ function goSearch() {
   renderVolFilterRow();
   document.getElementById('search-input').focus();
   if (!document.getElementById('search-input').value) refreshSearchSuggestions().catch(()=>{});
-  // Preload indexes in background so first query is instant
+  // BM25 semantic index is small (~500KB) and always safe to preload
   loadSemanticIndex().catch(()=>{});
+  // True vector search (model + 90MB corpus) only loads if the user has opted in
+  refreshVectorOptIn().catch(()=>{});
+}
+
+async function refreshVectorOptIn() {
+  const banner = document.getElementById('vector-opt-in');
+  const setting = await dbGet('settings', 'vector_search_enabled');
+  if (setting === undefined) {
+    if (banner) banner.style.display = 'block';
+    return;
+  }
+  if (banner) banner.style.display = 'none';
+  if (setting && setting.val === true) {
+    loadEmbModel().catch(()=>{});
+    loadEmbCorpus().catch(()=>{});
+  }
+}
+
+async function enableVectorSearch() {
+  await dbPut('settings', { key: 'vector_search_enabled', val: true });
+  const banner = document.getElementById('vector-opt-in');
+  if (banner) banner.style.display = 'none';
   loadEmbModel().catch(()=>{});
   loadEmbCorpus().catch(()=>{});
+}
+
+async function dismissVectorOptIn() {
+  await dbPut('settings', { key: 'vector_search_enabled', val: false });
+  const banner = document.getElementById('vector-opt-in');
+  if (banner) banner.style.display = 'none';
 }
 function goEspace() { showScreen('espace'); renderEspace(); }
 function goTomes()  { showScreen('tomes'); renderTomes(); }
@@ -4419,6 +4473,31 @@ function openHelp() {
   const current = document.querySelector('.screen.active');
   if (current) previousScreen = current.id.replace('screen-','');
   showScreen('help');
+  refreshVectorToggleLabel().catch(()=>{});
+}
+
+async function refreshVectorToggleLabel() {
+  const btn = document.getElementById('vector-toggle-btn');
+  if (!btn) return;
+  const setting = await dbGet('settings', 'vector_search_enabled');
+  const enabled = !!(setting && setting.val === true);
+  btn.textContent = enabled ? 'Désactiver' : 'Activer';
+}
+
+async function toggleVectorSearchSetting() {
+  const setting = await dbGet('settings', 'vector_search_enabled');
+  const currentlyEnabled = !!(setting && setting.val === true);
+  await dbPut('settings', { key: 'vector_search_enabled', val: !currentlyEnabled });
+  await refreshVectorToggleLabel();
+  if (!currentlyEnabled) {
+    loadEmbModel().catch(()=>{});
+    loadEmbCorpus().catch(()=>{});
+  } else {
+    embModel = null;
+    embCorpus = null;
+  }
+  const banner = document.getElementById('vector-opt-in');
+  if (banner) banner.style.display = 'none';
 }
 function closeHelp() {
   // Return to screen that was active before Help was opened
