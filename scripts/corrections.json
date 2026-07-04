@@ -189,6 +189,12 @@
       "type": "speaker_correction",
       "description": "Task A increment 5 — 13 more JESUS segments (T19x4/T21/T24/T26/T29x3/T30/T36x2), completing the mono-entry UNSURE bucket read-through. Applied only unambiguous divine first-person / self-reference (\"Ton Jésus\", \"Tu Me sens\", \"Je/Moi/Mes\"). Skipped narration lead-ins (\"Jésus ajouta:\"), fragments (\"Oh!\", \"Et\"), and general exclamations without a speaker marker (\"Oh! si tous savaient\") which need English alignment.",
       "status": "applied_v2.6.12"
+    },
+    {
+      "id": "speaker_attribution_v2.6.13_increment6",
+      "type": "speaker_correction",
+      "description": "Task A increment 6 — FIRST dialogue-entry batch. 29 segments across 27 paragraphs (T2/T10/T11/T12x4/T16/T17x3/T18x2/T19/T20x2/T21/T23x3/T24x5/T25), the divine-first-person/divine-we subset of the 104 dialogue-M DIVINE-marker candidates (first 52 read). Two multi-turn paragraphs split correctly: T2.1899-10-07.P004 (Jesus[0:290]+trailing Luisa narration left unstyled); T11.1912-07-23.P010 (Jesus/Luisa/Jesus 3-turn dialogue in one paragraph). Skipped narration, Luisa prayers/questions, creation-voice nested quotes (T2.1899-03-13.P008), and apostrophe-to-the-Will forms (deferred). Reading method same as mono tier.",
+      "status": "applied_v2.6.13"
     }
   ],
   "known_gaps": [
