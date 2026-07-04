@@ -183,6 +183,12 @@
       "type": "speaker_correction",
       "description": "Task A increment 4 — 12 more JESUS segments from the UNSURE mono bucket (T3/T4/T6/T10/T11x3/T12x3/T13), the unambiguous divine-first-person subset (Je/Moi/Ma/Me-cost). Deferred teaching-exposition cases lacking first-person cues (need English alignment); skipped narration lead-ins and Luisa vision/prayer paragraphs.",
       "status": "applied_v2.6.11"
+    },
+    {
+      "id": "speaker_attribution_v2.6.12_increment5",
+      "type": "speaker_correction",
+      "description": "Task A increment 5 — 13 more JESUS segments (T19x4/T21/T24/T26/T29x3/T30/T36x2), completing the mono-entry UNSURE bucket read-through. Applied only unambiguous divine first-person / self-reference (\"Ton Jésus\", \"Tu Me sens\", \"Je/Moi/Mes\"). Skipped narration lead-ins (\"Jésus ajouta:\"), fragments (\"Oh!\", \"Et\"), and general exclamations without a speaker marker (\"Oh! si tous savaient\") which need English alignment.",
+      "status": "applied_v2.6.12"
     }
   ],
   "known_gaps": [
