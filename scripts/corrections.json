@@ -158,6 +158,13 @@
       "type": "review_dismissal",
       "description": "125 cross-paragraph lowercase-boundary candidates (paragraph ends without terminal punctuation, next begins lowercase) reviewed and dismissed: they are mid-sentence paragraph splits inherited from the source PDF line layout. The text reads correctly in sequence. Merging paragraphs would break stable IDs, search records and speech offsets for no reader benefit.",
       "status": "no_change_v2.6.6"
+    },
+    {
+      "id": "speaker_attribution_campaign_v2.6.8_increment1",
+      "type": "speaker_correction",
+      "description": "Task A (speaker attribution) increment 1 — English-translation-validated fixes. Set up the English edition (queenofthedivinewill.org, all 36 vols via antiword, date-indexed, 91% coverage) as a validation source; discovered its quote convention (Jesus=\"...\" double, Luisa='...' single) which reliably determines speaker. Fixed 3 entries, all confirmed against English: T4 1903-02-22 P007 (added missing JESUS[0:157] for \"Si l'homme ne monte pas...pour lui.\" + LUISA[201:297] question); T4 1903-03-12 P002/P003/P006 (full-entry reconstruction: P002 LUISA added; P003 fixed mislabeled LUISA[499:652] to LUISA[0:473]+JESUS[490:652]; P006 whole paragraph LUISA->JESUS); T2 1899-05-02 P008 (OTHER->JESUS, \"mon Église\" speech in a Jesus-monologue entry). Net +4 speech segments; validator clean.",
+      "scan_findings": "Full-corpus scan found 719 missing-segment + 63 suspicious-attribution candidates. English entry-structure classifier: 150 M + 3 W in JESUS_MONOLOGUE entries (safer); 541 M + 53 W in DIALOGUE entries (need per-paragraph reading). Confirmed NO safe batch exists — categories mix Jesus/Luisa/narration/nested-speech; every case needs individual reading + English cross-check. Remaining ~600 real candidates = multi-session campaign. Tooling in scratchpad: english_index.py, english_speaker_struct.py, scan_speech_gaps.py, taskA_scan.json.",
+      "status": "increment1_applied_v2.6.8"
     }
   ],
   "known_gaps": [
