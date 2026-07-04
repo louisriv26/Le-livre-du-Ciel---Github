@@ -165,6 +165,12 @@
       "description": "Task A (speaker attribution) increment 1 — English-translation-validated fixes. Set up the English edition (queenofthedivinewill.org, all 36 vols via antiword, date-indexed, 91% coverage) as a validation source; discovered its quote convention (Jesus=\"...\" double, Luisa='...' single) which reliably determines speaker. Fixed 3 entries, all confirmed against English: T4 1903-02-22 P007 (added missing JESUS[0:157] for \"Si l'homme ne monte pas...pour lui.\" + LUISA[201:297] question); T4 1903-03-12 P002/P003/P006 (full-entry reconstruction: P002 LUISA added; P003 fixed mislabeled LUISA[499:652] to LUISA[0:473]+JESUS[490:652]; P006 whole paragraph LUISA->JESUS); T2 1899-05-02 P008 (OTHER->JESUS, \"mon Église\" speech in a Jesus-monologue entry). Net +4 speech segments; validator clean.",
       "scan_findings": "Full-corpus scan found 719 missing-segment + 63 suspicious-attribution candidates. English entry-structure classifier: 150 M + 3 W in JESUS_MONOLOGUE entries (safer); 541 M + 53 W in DIALOGUE entries (need per-paragraph reading). Confirmed NO safe batch exists — categories mix Jesus/Luisa/narration/nested-speech; every case needs individual reading + English cross-check. Remaining ~600 real candidates = multi-session campaign. Tooling in scratchpad: english_index.py, english_speaker_struct.py, scan_speech_gaps.py, taskA_scan.json.",
       "status": "increment1_applied_v2.6.8"
+    },
+    {
+      "id": "speaker_attribution_v2.6.9_increment2",
+      "type": "speaker_correction",
+      "description": "Task A increment 2 — 7 missing JESUS segments added across T4/T10/T11/T12/T13, all in Jesus-monologue entries, each individually read + confirmed as Jesus direct speech (2 partial spans split at the closing guillemet before Luisa narration: T11.1915-04-24.P002, T11.1916-10-30.P005). Deferred T27.E0031.P052 (ambiguous \"Nous le voulons\") and skipped T32.E0030.P013 (Luisa thought + narration lead-in). Method: mono-M candidates containing literal guillemets, read case-by-case.",
+      "status": "applied_v2.6.9"
     }
   ],
   "known_gaps": [
