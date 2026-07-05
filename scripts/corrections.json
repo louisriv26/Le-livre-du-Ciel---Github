@@ -255,6 +255,18 @@
       "skipped": 3,
       "deferred": 8,
       "speech_segments_after": 54248
+    },
+    {
+      "version": "v2.6.23",
+      "increment": 16,
+      "task": "speaker-attribution",
+      "method": "neighbor-context reading (UNSURE dialogue tier)",
+      "range": "UNSURE indices 320-353 (vols 30-36) — FINAL UNSURE batch",
+      "applied": 24,
+      "speaker": "JESUS",
+      "skipped": 8,
+      "deferred": 2,
+      "speech_segments_after": 54272
     }
   ],
   "known_gaps": [
