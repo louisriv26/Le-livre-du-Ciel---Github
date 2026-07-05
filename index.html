@@ -1653,7 +1653,7 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; color: #D4A843; }
    VERSION — single source of truth
    Update this string on every release.
 ═══════════════════════════════════════════════════════ */
-const APP_VERSION = 'v2.6.26';
+const APP_VERSION = 'v2.6.27';
 const APP_BUILD   = '2026-06-25';
 
 /* ═══════════════════════════════════════════════════════
@@ -2867,6 +2867,13 @@ async function shareCitation() {
 function buildSpeechHTML(text, segments, highlights) {
   if (!segments || !segments.length) return applyHighlights(escapeHtml(text), highlights);
 
+  // Only JESUS/MARIE spans get the coloured/italic visual style that replaces the
+  // function of the quotation marks. The guillemet-hiding + boundary-fix passes below
+  // (PASS 1/2/3) must therefore run ONLY for those speakers. LUISA/OTHER/etc. render
+  // as plain narration, so their surrounding quotes and spacing MUST be preserved —
+  // otherwise punctuation is deleted and words fuse (e.g. "dirent:C'est", "dit.Alors").
+  const STYLED = spk => spk === 'JESUS' || spk === 'MARIE' || spk === 'MARY';
+
   // Resolve overlaps: where segments overlap, use the more specific (shorter) one
   // Sort by start, then by length descending (longer = outer context)
   const sorted = [...segments]
@@ -2942,6 +2949,7 @@ function buildSpeechHTML(text, segments, highlights) {
     const sp = spans[i];
     if (sp.type !== 'speech') continue;
     if (sp.confidence === 'low') continue;
+    if (!STYLED(sp.speaker)) continue;   // only Jesus/Marie spans get boundary cleanup
     const prev = spans[i - 1];
     if (!prev || prev.type !== 'narrative') continue;
 
@@ -2972,8 +2980,8 @@ function buildSpeechHTML(text, segments, highlights) {
   // not an overshoot. Confirmed: only 15 such cases across 36 tomes.
   const correctedSpans = [];
   for (const sp of spans) {
-    if (sp.type !== 'speech' || sp.confidence === 'low') {
-      correctedSpans.push(sp);
+    if (sp.type !== 'speech' || sp.confidence === 'low' || !STYLED(sp.speaker)) {
+      correctedSpans.push(sp);   // non-styled speakers pass through untouched
       continue;
     }
     const t = sp.text;
@@ -3033,9 +3041,11 @@ function buildSpeechHTML(text, segments, highlights) {
 
     const nextIsSpeech = i + 1 < spans.length &&
                          spans[i + 1].type === 'speech' &&
+                         STYLED(spans[i + 1].speaker) &&
                          (spans[i + 1].confidence === 'high' || spans[i + 1].confidence === 'medium');
     const prevIsSpeech = i > 0 &&
                          spans[i - 1].type === 'speech' &&
+                         STYLED(spans[i - 1].speaker) &&
                          (spans[i - 1].confidence === 'high' || spans[i - 1].confidence === 'medium');
 
     let t = span.text;
