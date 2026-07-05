@@ -1653,7 +1653,7 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; color: #D4A843; }
    VERSION — single source of truth
    Update this string on every release.
 ═══════════════════════════════════════════════════════ */
-const APP_VERSION = 'v2.6.24';
+const APP_VERSION = 'v2.6.25';
 const APP_BUILD   = '2026-06-25';
 
 /* ═══════════════════════════════════════════════════════
@@ -2329,49 +2329,25 @@ async function openEntry(vol, entryId, backDest) {
       return !/[.!?»]$/.test(prevText);
     }
 
-    // ── Pass 1: classify enumeration clusters ──
-    let i = 0;
-    while (i < dps.length) {
-      if (startsWithDash(dps[i])) {
-        let j = i;
-        while (j < dps.length && startsWithDash(dps[j])) j++;
-        const run = dps.slice(i, j);
-        if (run.length >= 2) {
-          run.forEach((el, idx) => {
-            if (idx === 0)                 el.classList.add('dp-list-first');
-            else if (idx === run.length-1) el.classList.add('dp-list-last');
-            else                           el.classList.add('dp-list-middle');
-          });
-        }
-        i = j;
-      } else {
-        i++;
-      }
-    }
-
-    // ── Pass 1.5: handle isolated (non-cluster) dash paragraphs ──
-    // Merge into previous paragraph UNLESS the previous paragraph ends with terminal
-    // punctuation (. ! ? »), which means the dash starts a new independent clause.
-    // This guards the ~45 audit-confirmed false-positive cases while keeping the
-    // correct merge behaviour for the remaining ~4,058 continuation clauses.
-    // The merged paragraph's DOM node is removed but its p_<id> anchor is copied
-    // to the previous element so search/highlight targets remain reachable.
+    // ── Pass 1: fold ALL leading-dash paragraphs into flowing prose (R34) ──
+    // Every leading-dash paragraph is a segmentation-artifact continuation; the
+    // printed book has no such dashes. We strip the dash and merge the fragment
+    // into the running block so it reads as prose. Two shapes are handled:
+    //   • Dash CLUSTERS (≥2 consecutive dash paras — enumerations like the
+    //     "- Si je… / - Si, à l'église…" clauses): all siblings join one block.
+    //     The block head is the non-dash lead-in when it is non-terminal, else
+    //     the first dash item becomes the head and later siblings fold into it.
+    //   • ISOLATED dashes: merge into the previous block UNLESS that block ends
+    //     with terminal punctuation (. ! ? »), which preserves the ~45
+    //     audit-confirmed genuine-standalone cases (they stay .dp-isolated-dash).
+    // Corpus text/IDs are never touched — display only. Removed nodes leave a
+    // hidden .merged-anchor carrying their p_<id> so search/highlight still work.
     const TERMINAL_RE = /[.!?»]\s*$/;
-    dps.forEach((el, idx) => {
-      if (!startsWithDash(el)) return;
-      if (el.classList.contains('dp-list-first') ||
-          el.classList.contains('dp-list-middle') ||
-          el.classList.contains('dp-list-last')) return;
 
-      const prevEl = dps[idx - 1];
+    // Snapshot original dash-ness BEFORE any mutation so cluster detection is stable.
+    const origDash = dps.map(el => startsWithDash(el));
 
-      // If previous paragraph ends with terminal punctuation → keep as isolated dash
-      if (!prevEl || TERMINAL_RE.test(prevEl.textContent.trim())) {
-        el.classList.add('dp-isolated-dash');
-        return;
-      }
-
-      // Strip leading dash from the continuation clause
+    function stripLeadDash(el) {
       const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null, false);
       let tn;
       while ((tn = walker.nextNode())) {
@@ -2381,15 +2357,13 @@ async function openEntry(vol, entryId, backDest) {
           break;
         }
       }
-
+    }
+    function mergeInto(prevEl, el) {
       prevEl.appendChild(document.createTextNode(' '));
       const speechLabel = el.querySelector('.speech-label');
       Array.from(el.childNodes).forEach(child => {
         if (child !== speechLabel) prevEl.appendChild(child);
       });
-
-      // Preserve anchor: add a hidden span with el's ID inside prevEl so that
-      // getElementById('p_' + id) still resolves and scrollIntoView works.
       if (el.id) {
         const anchor = document.createElement('span');
         anchor.id = el.id;
@@ -2398,7 +2372,32 @@ async function openEntry(vol, entryId, backDest) {
         el.removeAttribute('id');
       }
       el.remove();
-    });
+    }
+
+    for (let idx = 0; idx < dps.length; idx++) {
+      if (!origDash[idx]) continue;
+      const el = dps[idx];
+      stripLeadDash(el);
+
+      // Nearest still-attached previous .dp is the running block target.
+      let prevEl = null;
+      for (let k = idx - 1; k >= 0; k--) {
+        if (dps[k].isConnected) { prevEl = dps[k]; break; }
+      }
+      if (!prevEl) { el.classList.add('dp-isolated-dash'); continue; }
+
+      const prevIsDashSibling = origDash[idx - 1];              // part of same cluster
+      const isClusterFirst    = !origDash[idx - 1] && origDash[idx + 1];
+
+      let merge;
+      if (prevIsDashSibling)      merge = true;                 // sibling item → always join
+      else if (isClusterFirst)    merge = !TERMINAL_RE.test(prevEl.textContent.trim());
+      else                        merge = !TERMINAL_RE.test(prevEl.textContent.trim());
+
+      if (merge)                 mergeInto(prevEl, el);
+      else if (isClusterFirst)   { /* becomes the flowing block head — no indent class */ }
+      else                       el.classList.add('dp-isolated-dash'); // truly standalone item
+    }
 
     // ── Pass 2: classify continuation paragraphs ──
     for (let k = 1; k < dps.length; k++) {
