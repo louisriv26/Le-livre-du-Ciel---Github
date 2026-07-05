@@ -278,6 +278,17 @@
       "change": "LUISA->JESUS",
       "note": "49 left as-is: correctly-labeled Luisa replies/prayers, already-JES, or genuinely OTHER (birds/souls/creature words)",
       "speech_segments_after": 54272
+    },
+    {
+      "version": "v2.6.26",
+      "increment": 18,
+      "task": "speaker-attribution",
+      "method": "neighbor-context reading (M/mono missing-segment tier)",
+      "range": "M tier: 719 flagged; 345 already labeled; 374 truly missing reviewed (all 36 vols)",
+      "applied": 62,
+      "speaker": "JESUS",
+      "note": "312 correctly left unlabeled: narration lead-ins (Mon doux Jésus ajouta:), Luisa replies/prayers/experiential narration, nested quotes (creature words, Pater Noster) unstyled per ruling, 1 demon quote, 3rd-person-Jesus deferrals consistent with UNSURE tier",
+      "speech_segments_after": 54334
     }
   ],
   "known_gaps": [
