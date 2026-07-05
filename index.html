@@ -24,16 +24,19 @@
   --body:'Crimson Text',Georgia,serif;
   --reader-size:19px;
   --accent:#7a5c10;
+  --accent-fill:#1A2A4A; --accent-fill-ink:#D4A060;
   --sat-top:env(safe-area-inset-top,0px);
   --sat-bot:env(safe-area-inset-bottom,0px);
 }
 @media(prefers-color-scheme:dark){
   :root{--ivory:#1A1612;--night:#E8D9C4;--gold:#D4A843;--accent:#d4a843;--gold-light:#5A4520;
-        --gold-pale:#2A2010;--ink:#D4C8BC;--muted:#8A7E72;--border:#2E2820;--white:#201C18;}
+        --gold-pale:#2A2010;--ink:#D4C8BC;--muted:#8A7E72;--border:#2E2820;--white:#201C18;
+        --accent-fill:#2A2010;--accent-fill-ink:#D4A843;}
 }
 html[data-theme="dark"]{
   --ivory:#1A1612;--night:#E8D9C4;--gold:#D4A843;--accent:#d4a843;--gold-light:#5A4520;
   --gold-pale:#2A2010;--ink:#D4C8BC;--muted:#8A7E72;--border:#2E2820;--white:#201C18;
+  --accent-fill:#2A2010;--accent-fill-ink:#D4A843;
 }
 
 
@@ -43,7 +46,7 @@ html[data-theme="dark"]{
 @media(prefers-color-scheme:dark){
   :root:not([data-theme="light"]) .resume-card,
   html[data-theme="dark"] .resume-card
-  { background:#1A2540 !important; }
+  { background:#242018 !important; }
 
   :root:not([data-theme="light"]) .rc-ref,
   html[data-theme="dark"] .rc-ref
@@ -133,7 +136,7 @@ html[data-theme="dark"]{
   { background:#2A2418 !important; }
 }
 /* Repeat key rules for explicit data-theme=dark (manual toggle) */
-html[data-theme="dark"] .resume-card { background:#1A2540 !important; }
+html[data-theme="dark"] .resume-card { background:#242018 !important; }
 html[data-theme="dark"] .btn-primary  { background:#C9A84C !important; color:#1A1612 !important; }
 html[data-theme="dark"] .btn-secondary{ background:#2A2418 !important; color:#8A7E72 !important; border-color:#3A3020 !important; }
 html[data-theme="dark"] #hl-popup    { background:#2A2418 !important; border:0.5px solid #3A3020; }
@@ -149,6 +152,19 @@ html[data-theme="dark"] .vol-card    { background:#242018 !important; }
 html[data-theme="dark"] .entry-door  { background:#242018 !important; }
 html[data-theme="dark"] .ha-btn      { background:#242018 !important; }
 html[data-theme="dark"] .result-card { background:#242018 !important; }
+
+/* Navy-blue accent blocks (#1A2A4A) were the LIGHT-mode "night" ink colour, hardcoded
+   directly instead of via a theme-aware token — so they never adapted for dark mode
+   and sat as a jarring cool-blue patch against the warm near-black dark surfaces.
+   Fixed at the source: .featured-quote/.chip.active/.dn-result-header/.dn-open-btn and
+   their JS-computed equivalents (date navigator picker) now reference var(--accent-fill)
+   / var(--accent-fill-ink), which resolve to the warm dark gold-pale/gold pairing in
+   dark mode automatically — see the :root token definitions above. No !important
+   overrides needed here; system-mode-resolves-to-dark is handled by the same tokens. */
+html[data-theme="dark"] .dn-result-count { color:var(--muted) !important; }
+@media(prefers-color-scheme:dark) {
+  :root:not([data-theme="light"]):not([data-theme="dark"]) .dn-result-count { color:var(--muted) !important; }
+}
 
 
 html[data-theme="light"]{
@@ -269,7 +285,7 @@ body{overflow:hidden;overflow-x:hidden;max-width:100vw;min-height:100vh;min-heig
 .home-lib-link:hover{color:var(--night);}
 
 #home-return{padding:16px;}
-.featured-quote{background:#1A2A4A;border-radius:16px;padding:18px 20px;
+.featured-quote{background:var(--accent-fill);border-radius:16px;padding:18px 20px;
   margin-bottom:14px;cursor:pointer;transition:opacity .15s;border-left:3px solid var(--gold);}
 .featured-quote:hover{opacity:.9;}
 .fq-label{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);
@@ -463,7 +479,7 @@ mark.search-hl{background:rgba(201,168,76,.35);color:inherit;border-radius:2px;p
 .chip{flex-shrink:0;padding:5px 12px;border-radius:20px;font-size:12px;
   cursor:pointer;border:0.5px solid var(--border);background:var(--white);
   color:var(--muted);transition:all .15s;font-family:var(--body);}
-.chip.active{background:#1A2A4A;color:#D4A060;border-color:#1A2A4A;}
+.chip.active{background:var(--accent-fill);color:var(--accent-fill-ink);border-color:var(--accent-fill);}
 
 /* ═══ MON ESPACE ═══ */
 .espace-tabs{display:flex;border-bottom:0.5px solid var(--border);flex-shrink:0;}
@@ -600,23 +616,42 @@ html[data-theme="dark"] .speech-marie { color:#8AB8D8; }
 }
 .study-mode .speech-conf { display: block; }
 
-/* Update banner — hardcoded dark navy to avoid --night flipping to cream in dark mode */
+/* Update banner — floating card, visible from any screen (previously a thin strip
+   scoped inside #screen-home only, easy to miss — matches the 24h app's pattern). */
 #update-banner {
   display: none;
+  position: fixed;
+  left: 12px; right: 12px;
+  bottom: calc(env(safe-area-inset-bottom, 0px) + 76px);
+  z-index: 5000;
   background: #1A2A4A;
-  color: #C9A84C;
-  text-align: center;
-  padding: 10px 16px;
-  font-size: 13px;
+  color: #F0EDE6;
+  border-radius: 14px;
+  padding: 12px 14px;
   font-family: var(--body);
-  flex-shrink: 0;
-  cursor: pointer;
+  box-shadow: 0 6px 24px rgba(0,0,0,.28);
+  align-items: center;
+  gap: 10px;
+  max-width: 480px;
+  margin: 0 auto;
+  animation: ub-in .25s ease;
+}
+@keyframes ub-in { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+#update-banner.show { display: flex; }
+.ub-text { flex: 1; font-size: 14px; line-height: 1.35; }
+.ub-refresh {
+  flex-shrink: 0; padding: 7px 14px; border-radius: 20px; border: none;
+  background: #D4A843; color: #1A1612; font-family: var(--body); font-weight: 600;
+  font-size: 13px; cursor: pointer; white-space: nowrap;
+}
+.ub-dismiss {
+  flex-shrink: 0; background: none; border: none; color: rgba(240,237,230,.65);
+  font-size: 18px; cursor: pointer; padding: 2px 4px; line-height: 1;
 }
 @media(prefers-color-scheme:dark) {
-  #update-banner { background: #0F1A2E; color: #D4A843; }
+  #update-banner { background: #0F1A2E; }
 }
-html[data-theme="dark"] #update-banner { background: #0F1A2E; color: #D4A843; }
-#update-banner.show { display: block; }
+html[data-theme="dark"] #update-banner { background: #0F1A2E; }
 
 /* Version pill — always visible in top bar */
 .version-pill {
@@ -869,9 +904,9 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; color: #D4A843; }
   font-size:13px;padding:16px 0;font-family:var(--body);}
 .dn-result-card{border-radius:12px;overflow:hidden;
   box-shadow:0 2px 12px rgba(0,0,0,.10);}
-.dn-result-header{background:#1A2A4A;padding:12px 16px;display:flex;
+.dn-result-header{background:var(--accent-fill);padding:12px 16px;display:flex;
   align-items:baseline;justify-content:space-between;}
-.dn-result-date{color:#D4A060;font-size:14px;font-family:var(--serif);}
+.dn-result-date{color:var(--accent-fill-ink);font-size:14px;font-family:var(--serif);}
 .dn-result-count{color:#8AABD4;font-size:12px;font-family:var(--body);}
 .dn-result-body{background:var(--ivory);border:1px solid var(--border);
   border-top:none;border-radius:0 0 12px 12px;}
@@ -881,8 +916,8 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; color: #D4A843; }
 .dn-entry-title{font-size:13px;font-weight:600;color:var(--ink);line-height:1.3;
   overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;}
 .dn-entry-sub{font-size:11px;color:var(--muted);margin-top:2px;font-family:var(--body);}
-.dn-open-btn{flex-shrink:0;padding:5px 12px;border-radius:16px;background:#1A2A4A;
-  color:#D4A060;font-size:12px;white-space:nowrap;cursor:pointer;font-family:var(--body);}
+.dn-open-btn{flex-shrink:0;padding:5px 12px;border-radius:16px;background:var(--accent-fill);
+  color:var(--accent-fill-ink);font-size:12px;white-space:nowrap;cursor:pointer;font-family:var(--body);}
 </style>
 </head>
 <body>
@@ -1031,11 +1066,15 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; color: #D4A843; }
   </div>
 </div>
 
+<!-- Update banner — global, floats above whichever screen is active -->
+<div id="update-banner">
+  <div class="ub-text">Une nouvelle version est disponible.</div>
+  <button class="ub-refresh" onclick="reloadForUpdate()">Actualiser</button>
+  <button class="ub-dismiss" onclick="document.getElementById('update-banner').classList.remove('show')" aria-label="Fermer">×</button>
+</div>
+
 <!-- HOME -->
 <div class="screen active" id="screen-home">
-  <div id="update-banner" onclick="reloadForUpdate()">
-    Nouvelle version disponible — appuyez pour mettre à jour
-  </div>
   <div class="top-bar">
     <span class="top-bar-title">Livre du Ciel</span>
     <div style="display:flex;gap:4px;align-items:center;">
@@ -1653,7 +1692,7 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; color: #D4A843; }
    VERSION — single source of truth
    Update this string on every release.
 ═══════════════════════════════════════════════════════ */
-const APP_VERSION = 'v2.6.28';
+const APP_VERSION = 'v2.6.29';
 const APP_BUILD   = '2026-06-25';
 
 /* ═══════════════════════════════════════════════════════
@@ -4464,26 +4503,28 @@ async function searchImageFamily(terms, excludeEntryId, limit) {
 /* ═══════════════════════════════════════════════════════
    THEME TOGGLE
 ═══════════════════════════════════════════════════════ */
+// Three-way theme preference: système (follows OS) → clair → sombre → système…
+const THEME_ORDER = ['system', 'light', 'dark'];
+const THEME_LABEL = { system: 'Thème automatique (système)', light: 'Mode jour', dark: 'Mode nuit' };
+
 async function toggleTheme() {
   const html = document.documentElement;
-  const current = html.getAttribute('data-theme');
-  // Determine effective current theme
-  const isDark = current === 'dark' ||
-    (current === 'system' && window.matchMedia('(prefers-color-scheme:dark)').matches) ||
-    (!current && window.matchMedia('(prefers-color-scheme:dark)').matches);
-  const next = isDark ? 'light' : 'dark';
+  const current = html.getAttribute('data-theme') || 'system';
+  const idx = THEME_ORDER.indexOf(current);
+  const next = THEME_ORDER[(idx === -1 ? 0 : idx + 1) % THEME_ORDER.length];
   html.setAttribute('data-theme', next);
   await dbPut('settings', { key:'theme', val: next });
   updateThemeBtn(next);
-  showToast(next === 'dark' ? 'Mode nuit' : 'Mode jour');
+  showToast(THEME_LABEL[next]);
 }
 
 function updateThemeBtn(theme) {
   const btn = document.getElementById('theme-btn');
   if (!btn) return;
-  const isDark = theme === 'dark' ||
-    (theme === 'system' && window.matchMedia('(prefers-color-scheme:dark)').matches);
-  btn.querySelector('i').className = isDark ? 'ti ti-sun' : 'ti ti-moon';
+  const icon = btn.querySelector('i');
+  if (theme === 'system') { icon.className = 'ti ti-sun-moon'; btn.title = 'Thème : Système'; }
+  else if (theme === 'dark') { icon.className = 'ti ti-moon'; btn.title = 'Thème : Nuit'; }
+  else { icon.className = 'ti ti-sun'; btn.title = 'Thème : Jour'; }
 }
 
 /* ═══════════════════════════════════════════════════════
@@ -4670,10 +4711,14 @@ async function boot() {
       });
       // Check for updates at boot
       reg.update().catch(()=>{});
-      // Re-check every time app comes to foreground (critical for iOS where background SW checks are throttled)
+      // Re-check on every plausible "app came back to attention" signal — critical for
+      // iOS/Android where background SW checks are throttled or suspended entirely.
       document.addEventListener('visibilitychange', () => {
         if (document.visibilityState === 'visible') reg.update().catch(()=>{});
       });
+      window.addEventListener('focus', () => reg.update().catch(()=>{}));
+      window.addEventListener('online', () => reg.update().catch(()=>{}));
+      window.addEventListener('pageshow', () => reg.update().catch(()=>{}));
     });
   }
 }
@@ -4764,8 +4809,8 @@ function renderDnYearStrip() {
     const count = DN_YEAR_COUNTS[y] || 0;
     const opacity = count === 0 ? 0.2 : (0.3 + (count / maxCount) * 0.7).toFixed(2);
     const sel = y === dnYear;
-    const bg    = sel ? '#1A2A4A' : 'transparent';
-    const color = sel ? '#D4A060' : 'var(--ink)';
+    const bg    = sel ? 'var(--accent-fill)' : 'transparent';
+    const color = sel ? 'var(--accent-fill-ink)' : 'var(--ink)';
     const border = sel ? 'none' : '1px solid var(--border)';
     html += `<button class="dn-year-pill" style="opacity:${opacity};background:${bg};color:${color};border:${border};"
       onclick="dnSelectYear(${y})" data-year="${y}">${y}</button>`;
@@ -4797,8 +4842,8 @@ function renderDnMonthGrid() {
     const isSel   = mo === dnMonth;
     let bg, textColor, barColor;
     if (isEmpty)       { bg = 'var(--border)'; textColor = 'var(--muted)'; barColor = 'transparent'; }
-    else               { bg = '#1A2A4A';      textColor = '#D4A060';  barColor = '#D4A060'; }
-    const border  = isSel ? '1.5px solid #D4A060' : '1.5px solid transparent';
+    else               { bg = 'var(--accent-fill)'; textColor = 'var(--accent-fill-ink)'; barColor = 'var(--accent-fill-ink)'; }
+    const border  = isSel ? '1.5px solid var(--accent-fill-ink)' : '1.5px solid transparent';
     const barW    = isEmpty ? 0 : Math.round(ratio * 100);
     html += `<button class="dn-month-cell" style="background:${bg};color:${textColor};border:${border};opacity:${isEmpty?0.3:1};"
       ${isEmpty ? 'disabled' : `onclick="dnSelectMonth(${mo})"`}>
@@ -4834,8 +4879,8 @@ function renderDnDayGrid() {
     const multi   = entries.length > 1;
     let style;
     if (!has)      style = 'color:var(--muted);border-color:var(--border);cursor:default;opacity:0.4;';
-    else if (isSel) style = 'background:#1A2A4A;color:#D4A060;border-color:#1A2A4A;';
-    else            style = 'border-color:#1A2A4A;background:rgba(26,42,74,0.07);color:var(--ink);';
+    else if (isSel) style = 'background:var(--accent-fill);color:var(--accent-fill-ink);border-color:var(--accent-fill);';
+    else            style = 'border-color:var(--accent-fill);background:var(--gold-pale);color:var(--ink);';
     html += `<button class="dn-day-cell" style="${style}" ${has ? `onclick="dnSelectDay(${d})"` : 'disabled'}>
       ${multi ? '<span class="dn-multi-dot"></span>' : ''}
       <span>${d}</span>
