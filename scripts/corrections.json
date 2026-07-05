@@ -267,6 +267,17 @@
       "skipped": 8,
       "deferred": 2,
       "speech_segments_after": 54272
+    },
+    {
+      "version": "v2.6.24",
+      "increment": 17,
+      "task": "speaker-attribution",
+      "method": "neighbor-context reading (W mislabel tier — overriding existing labels)",
+      "range": "W tier: 63 flagged (cur!=flank), vols 1-30",
+      "applied": 14,
+      "change": "LUISA->JESUS",
+      "note": "49 left as-is: correctly-labeled Luisa replies/prayers, already-JES, or genuinely OTHER (birds/souls/creature words)",
+      "speech_segments_after": 54272
     }
   ],
   "known_gaps": [
