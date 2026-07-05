@@ -1653,7 +1653,7 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; color: #D4A843; }
    VERSION — single source of truth
    Update this string on every release.
 ═══════════════════════════════════════════════════════ */
-const APP_VERSION = 'v2.6.27';
+const APP_VERSION = 'v2.6.28';
 const APP_BUILD   = '2026-06-25';
 
 /* ═══════════════════════════════════════════════════════
@@ -3059,10 +3059,22 @@ function buildSpeechHTML(text, segments, highlights) {
   // or contain only a stray punctuation character (lone '.', ',', etc.)
   // These are corpus boundary artifacts — drop them.
   const PUNCT_ONLY = /^[\s\u00A0.,;:!?…\-–—«»"']+$/;
-  const cleanSpans = spans.filter(s => {
+  const cleanSpans = spans.filter((s, i) => {
     if (s.type !== 'narrative') return true;
     const t = s.text.trim();
-    return t.length > 0 && !PUNCT_ONLY.test(t);
+    if (t.length === 0) return false;
+    if (!PUNCT_ONLY.test(t)) return true;
+    // A lone « or » is a real quote mark (not an artifact) when it borders a NON-styled
+    // speech span — that span renders as plain text with no colour to replace the quote,
+    // so the mark must survive. Styled (Jesus/Marie) neighbours still drop it (colour replaces).
+    if (/[«»]/.test(t)) {
+      const prevSp = spans[i - 1], nextSp = spans[i + 1];
+      const adjNonStyled =
+        (prevSp && prevSp.type === 'speech' && !STYLED(prevSp.speaker)) ||
+        (nextSp && nextSp.type === 'speech' && !STYLED(nextSp.speaker));
+      if (adjNonStyled) return true;
+    }
+    return false;
   });
   spans.length = 0;
   cleanSpans.forEach(s => spans.push(s));
