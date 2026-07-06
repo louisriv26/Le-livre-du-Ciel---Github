@@ -1596,6 +1596,22 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; }
       </div>
     </div>
 
+    <!-- ── MISES À JOUR ── -->
+    <div class="help-section">
+      <div class="help-section-head">
+        <div class="help-section-icon hsi-amber"><i class="ti ti-refresh"></i></div>
+        <span class="help-section-title">Mises à jour</span>
+      </div>
+      <div class="help-card">
+        <div class="help-text" style="padding:2px 0 10px;" id="update-check-status">
+          L'application vérifie automatiquement les mises à jour à l'ouverture. Vous pouvez aussi vérifier manuellement.
+        </div>
+        <button class="btn-secondary" style="width:100%;" onclick="manualCheckForUpdate()" id="update-check-btn">
+          <i class="ti ti-refresh"></i> Vérifier les mises à jour
+        </button>
+      </div>
+    </div>
+
     <div class="help-version" id="help-version-footer"></div>
 
     <!-- ── PAROLES DE JÉSUS ── -->
@@ -1714,7 +1730,7 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; }
    VERSION — single source of truth
    Update this string on every release.
 ═══════════════════════════════════════════════════════ */
-const APP_VERSION = 'v2.6.30';
+const APP_VERSION = 'v2.6.31';
 const APP_BUILD   = '2026-06-25';
 
 /* ═══════════════════════════════════════════════════════
@@ -4970,6 +4986,54 @@ function reloadForUpdate() {
     });
   }
   window.location.reload();
+}
+
+// Manual "check for update" — for users who don't want to wait for the automatic
+// focus/visibility/online checks (e.g. right after they know a new version shipped).
+// Reuses the registration already set up at boot: calling reg.update() re-triggers
+// the same 'updatefound'/'statechange' listeners, which populate reg.waiting exactly
+// as the automatic path does — no separate detection logic to keep in sync.
+async function manualCheckForUpdate() {
+  const statusEl = document.getElementById('update-check-status');
+  const btn = document.getElementById('update-check-btn');
+  if (!statusEl || !btn) return;
+
+  if (!('serviceWorker' in navigator)) {
+    statusEl.textContent = 'Les mises à jour automatiques ne sont pas prises en charge sur ce navigateur.';
+    return;
+  }
+
+  const originalBtnHtml = btn.innerHTML;
+  btn.disabled = true;
+  btn.innerHTML = '<i class="ti ti-refresh"></i> Vérification…';
+  statusEl.textContent = 'Vérification en cours…';
+
+  try {
+    const reg = await navigator.serviceWorker.getRegistration();
+    if (!reg) {
+      statusEl.textContent = 'Impossible de vérifier pour le moment.';
+      return;
+    }
+    await reg.update();
+    // Give the browser a moment to evaluate/install the new worker before checking reg.waiting
+    await new Promise(r => setTimeout(r, 1200));
+    if (reg.waiting) {
+      statusEl.textContent = 'Une nouvelle version est disponible.';
+      document.getElementById('update-banner').classList.add('show');
+      showToast('Nouvelle version disponible');
+    } else {
+      statusEl.textContent = 'Vous avez déjà la dernière version (' + APP_VERSION + ').';
+      showToast('Vous avez déjà la dernière version');
+    }
+  } catch (e) {
+    statusEl.textContent = navigator.onLine === false
+      ? 'Vérification impossible hors ligne.'
+      : 'Vérification impossible pour le moment.';
+    showToast('Vérification impossible pour le moment');
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = originalBtnHtml;
+  }
 }
 
 boot();
