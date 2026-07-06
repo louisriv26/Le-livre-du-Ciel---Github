@@ -424,6 +424,21 @@ mark.hl{border-radius:2px;padding:0 1px;cursor:pointer;}
 mark.hl-gold{background:rgba(201,168,76,.32);color:inherit;}
 mark.hl-green{background:rgba(80,180,120,.25);color:inherit;}
 mark.hl-blue{background:rgba(80,140,220,.25);color:inherit;}
+mark.hl-purple{background:rgba(130,91,190,.28);color:inherit;}
+mark.hl-pink{background:rgba(185,84,135,.28);color:inherit;}
+
+/* Highlight-popup colour swatches — solid preview dots, one per mark.hl-* colour above */
+.hl-dot{width:22px;height:22px;border-radius:50%;border:2px solid transparent;cursor:pointer;
+  margin:2px;flex-shrink:0;padding:0;}
+.hl-dot.hl-gold{background:#C9A84C;}
+.hl-dot.hl-green{background:#4a9b69;}
+.hl-dot.hl-blue{background:#5c8bd2;}
+.hl-dot.hl-purple{background:#825bbe;}
+.hl-dot.hl-pink{background:#b95487;}
+.hl-dot.selected{border-color:var(--gold);}
+.hl-del-btn{background:none;border:none;cursor:pointer;color:var(--red);font-size:16px;
+  padding:5px 8px;border-radius:7px;}
+.hl-del-btn:hover{background:rgba(255,255,255,.1);}
 
 /* ═══ SEARCH SCREEN ═══ */
 .search-bar-wrap{padding:10px 12px 8px;flex-shrink:0;}
@@ -932,13 +947,10 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; }
 <!-- Toast -->
 <div id="toast"></div>
 
-<!-- Highlight popup -->
-<div id="hl-popup">
-  <button class="hl-opt" onclick="applyHighlight('gold')">Surligner</button>
-  <button class="hl-opt" onclick="showNoteSheet()">Note</button>
-  <button class="hl-opt" onclick="addToCollectionFromSelection()">＋ Collection</button>
-  <button class="hl-opt" onclick="hideHlPopup()">✕</button>
-</div>
+<!-- Highlight popup — content is built dynamically: colour-picker for a new
+     selection (renderNewSelectionPopup) or recolour/delete for an existing
+     highlight the user tapped (renderExistingHighlightPopup) -->
+<div id="hl-popup"></div>
 
 
 <!-- Autour de ce passage -->
@@ -1730,7 +1742,7 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; }
    VERSION — single source of truth
    Update this string on every release.
 ═══════════════════════════════════════════════════════ */
-const APP_VERSION = 'v2.6.31';
+const APP_VERSION = 'v2.6.32';
 const APP_BUILD   = '2026-06-25';
 
 /* ═══════════════════════════════════════════════════════
@@ -2641,29 +2653,35 @@ function toggleMode() {
 }
 
 /* ═══ PARAGRAPH INTERACTION (highlight/note) ═══ */
+const HL_COLORS = ['gold', 'green', 'blue', 'purple', 'pink'];
+
 function onParaClick(e) {
   if (e.target.classList.contains('hl')) {
-    showToast('Surlignage enregistré');
+    // Tapped an EXISTING highlight — offer recolour / delete instead of just a toast.
+    showExistingHighlightPopup(e.target);
     return;
   }
   // On touch devices the selection may not be ready on click —
-  // handled by selectionchange listener below.
+  // handled by the debounced selectionchange listener below.
   // For mouse (desktop), check immediately.
   checkAndShowHighlightPopup(e.currentTarget);
 }
 
-// iOS/iPad: use selectionchange to detect when user finishes selecting
+// iOS/iPad: selectionchange fires continuously while the user drags a selection
+// handle, so showing/repositioning the popup on every event made it flicker and
+// jump mid-drag. Debounce so the popup only appears once the selection settles.
+let _selChangeTimer = null;
 document.addEventListener('selectionchange', () => {
-  const sel = window.getSelection();
-  if (!sel || sel.toString().trim().length <= 3) return;
-  // Find which paragraph the selection is in
-  const anchor = sel.anchorNode;
-  if (!anchor) return;
-  const para = anchor.parentElement
-    ? anchor.parentElement.closest('.dp')
-    : null;
-  if (!para) return;
-  checkAndShowHighlightPopup(para);
+  clearTimeout(_selChangeTimer);
+  _selChangeTimer = setTimeout(() => {
+    const sel = window.getSelection();
+    if (!sel || sel.toString().trim().length <= 3) return;
+    const anchor = sel.anchorNode;
+    if (!anchor) return;
+    const para = anchor.parentElement ? anchor.parentElement.closest('.dp') : null;
+    if (!para) return;
+    checkAndShowHighlightPopup(para);
+  }, 150);
 });
 
 function checkAndShowHighlightPopup(paraEl) {
@@ -2673,18 +2691,66 @@ function checkAndShowHighlightPopup(paraEl) {
   if (!paraEl || !paraEl.dataset) return;
   selectionParaId = paraEl.dataset.paraId;
   selectionRange  = { text };
-  // Use getBoundingClientRect for fixed positioning (works in scroll containers)
   try {
     const range = sel.getRangeAt(0);
     const rect  = range.getBoundingClientRect();
-    const popup = document.getElementById('hl-popup');
-    // Position above selection, clamped to viewport
-    const top  = Math.max(8, rect.top - 54);
-    const left = Math.max(4, Math.min(rect.left, window.innerWidth - 240));
-    popup.style.top  = top  + 'px';
-    popup.style.left = left + 'px';
-    popup.classList.add('show');
+    renderNewSelectionPopup();
+    positionHlPopup(rect);
   } catch(err) { /* selection may have changed */ }
+}
+
+function positionHlPopup(rect) {
+  const popup = document.getElementById('hl-popup');
+  // Position above selection, clamped to viewport
+  const top  = Math.max(8, rect.top - 54);
+  const left = Math.max(4, Math.min(rect.left, window.innerWidth - 260));
+  popup.style.top  = top  + 'px';
+  popup.style.left = left + 'px';
+  popup.classList.add('show');
+}
+
+function renderNewSelectionPopup() {
+  const popup = document.getElementById('hl-popup');
+  popup.innerHTML =
+    HL_COLORS.map(c => `<button class="hl-dot hl-${c}" onclick="applyHighlight('${c}')" aria-label="Surligner en ${c}"></button>`).join('') +
+    `<button class="hl-opt" onclick="showNoteSheet()">Note</button>
+     <button class="hl-opt" onclick="addToCollectionFromSelection()">＋ Collection</button>
+     <button class="hl-opt" onclick="hideHlPopup()">✕</button>`;
+}
+
+function showExistingHighlightPopup(markEl) {
+  const id = parseInt(markEl.dataset.hlId, 10);
+  if (!id) return;
+  const currentColor = [...markEl.classList].find(c => c.startsWith('hl-') && c !== 'hl').replace('hl-', '');
+  const popup = document.getElementById('hl-popup');
+  popup.innerHTML =
+    HL_COLORS.map(c => `<button class="hl-dot hl-${c}${c===currentColor?' selected':''}" onclick="recolorHighlight(${id},'${c}')" aria-label="Changer en ${c}"></button>`).join('') +
+    `<button class="hl-del-btn" onclick="deleteHighlightFromReader(${id})" aria-label="Supprimer le surlignage"><i class="ti ti-trash"></i></button>
+     <button class="hl-opt" onclick="hideHlPopup()">✕</button>`;
+  const rect = markEl.getBoundingClientRect();
+  positionHlPopup(rect);
+}
+
+async function recolorHighlight(id, color) {
+  const hl = await dbGet('highlights', id);
+  if (!hl) return;
+  hl.color = color;
+  await dbPut('highlights', hl);
+  hideHlPopup();
+  pendingParaId = hl.para_id;
+  await openEntry(currentVolume, currentEntry.id, readerBack);
+  showToast('Couleur modifiée');
+}
+
+async function deleteHighlightFromReader(id) {
+  const hl = await dbGet('highlights', id);
+  await dbDelete('highlights', id);
+  hideHlPopup();
+  if (hl && currentEntry) {
+    pendingParaId = hl.para_id;
+    await openEntry(currentVolume, currentEntry.id, readerBack);
+  }
+  showToast('Surlignage supprimé');
 }
 
 document.addEventListener('touchend', e => {
@@ -2698,7 +2764,15 @@ document.addEventListener('touchend', e => {
 });
 
 document.addEventListener('mousedown', e => {
-  if (!e.target.closest('#hl-popup')) hideHlPopup();
+  // Don't dismiss for a click/tap that lands inside a paragraph while there is
+  // still an active (non-collapsed) text selection — that's the user adjusting
+  // their selection handles, not dismissing the popup. Only hide on a genuine
+  // tap outside both the popup and any in-progress selection.
+  if (e.target.closest('#hl-popup')) return;
+  const sel = window.getSelection();
+  const hasActiveSelection = sel && !sel.isCollapsed && sel.toString().trim().length > 3;
+  if (hasActiveSelection && e.target.closest('.dp')) return;
+  hideHlPopup();
 });
 
 function hideHlPopup() {
