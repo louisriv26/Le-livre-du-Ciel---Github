@@ -310,6 +310,21 @@
       "entries_after": 2305,
       "paragraphs_after": 74331,
       "note": "Text conserved (prefix relocated to metadata, no word change). 4 boundary paragraphs edited (date prefix stripped) => their embeddings slightly stale but count/id unchanged so validator clean; vector search opt-in/off, not re-embedded to avoid model mismatch. Verified in-browser: clean bodies, no dup markers, Jesus spans styled, chronological order correct."
+    },
+    {
+      "version": "v2.7.1",
+      "stage": "EB-22A A02",
+      "task": "entry-recovery-addition",
+      "case": "A02",
+      "entry": "LDC.T15.E0020A",
+      "date": "21 avril 1923",
+      "title": "La tache la plus noire de la société actuelle.",
+      "source": "Composite French edition (36T Livre du Ciel PDF pages 1122-1123), extracted via PyMuPDF; English-corroborated",
+      "method": "AUTHENTIC FRENCH recovered from composite edition (NOT translated from English, per Louis's confirmation to use the French source). Cleaned to app house typography only (straight apostrophes, tight «word»/?/», ': «' after colon, œ preserved) — no wording normalization. Page numbers/line-wraps stripped. Split into 2 paragraphs at the Luisa-speech→Jesus-reply boundary. No speaker segments (contract §9.4.5). Inserted between E0020 (20 avr) and E0021 (28 avr).",
+      "embeddings": "model empirically confirmed = paraphrase-multilingual-MiniLM-L12-v2 (cosine 1.0000 vs stored); 2 normalized float16 vectors appended",
+      "entries_after": 2306,
+      "paragraphs_after": 74333,
+      "note": "Source has lowercase 'pour d'autres' after a period — preserved faithfully (no correction). semantic_index N and embeddings n both bumped to 74333. Validator clean; browser-verified render + chronological order."
     }
   ],
   "known_gaps": [

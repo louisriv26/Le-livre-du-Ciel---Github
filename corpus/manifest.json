@@ -2,8 +2,8 @@
   "version": "v24-eb20",
   "corpus": "livre_du_ciel",
   "generated": "2026-07-02",
-  "total_paragraphs": 74331,
-  "total_entries": 2305,
+  "total_paragraphs": 74333,
+  "total_entries": 2306,
   "total_corrections": 20885,
   "correction_ledger": "All 36 tomes completed source-boundary reconciliation. EB-17 corrects only two source-page provenance records: Tome 3 / 10 June 1900 ends at PDF page 102, and Tome 5 preface spans pages 1–6 with pages 1;3;5;6 evidenced. Tome 17 23 November 1924 remains title-only/body-not-proven. EB-20 normalises three malformed semicolon source-page records: T3 16 April 1900 = 77–79; T3 27 April 1900 = 82–84; T17 17 May 1925 = 113–119.",
   "volumes_available": [
