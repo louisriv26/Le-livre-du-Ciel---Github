@@ -289,6 +289,27 @@
       "speaker": "JESUS",
       "note": "312 correctly left unlabeled: narration lead-ins (Mon doux Jésus ajouta:), Luisa replies/prayers/experiential narration, nested quotes (creature words, Pater Noster) unstyled per ruling, 1 demon quote, 3rd-person-Jesus deferrals consistent with UNSURE tier",
       "speech_segments_after": 54334
+    },
+    {
+      "version": "v2.7.0",
+      "stage": "EB-22A Stage 1",
+      "task": "entry-boundary-split",
+      "cases": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "method": "char-0 boundary: relocate embedded DATE—TITLE. prefix into new-entry metadata (contract §13/§16), move affected paragraphs to new standalone entry, preserve paragraph IDs (§14.1), retarget search+speaker records, recompute per-entry speech meta",
+      "results": {
+        "S01": "T2 1er août 1899 (9 paras from 31 juil P003-P011)",
+        "S02": "T2 1er sept 1899 (33 paras)",
+        "S03": "T2 1er oct 1899 (14 paras)",
+        "S04": "T6 1er mai 1904 (6 paras)"
+      },
+      "entries_after": 2305,
+      "paragraphs_after": 74331,
+      "note": "Text conserved (prefix relocated to metadata, no word change). 4 boundary paragraphs edited (date prefix stripped) => their embeddings slightly stale but count/id unchanged so validator clean; vector search opt-in/off, not re-embedded to avoid model mismatch. Verified in-browser: clean bodies, no dup markers, Jesus spans styled, chronological order correct."
     }
   ],
   "known_gaps": [
