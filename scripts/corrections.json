@@ -357,6 +357,22 @@
       "entries_after": 2309,
       "paragraphs_after": 74335,
       "note": "Validator clean; browser-verified: 19 mai ends '...cette créature.», 24 mai opens 'Le premier mot...Fiat' ends '...de Ma Volonté.», 29 mai opens 'Leçon à Luisa...', order 19->24->29 mai->1 juin correct. No new speaker segments (contract §9.4.5)."
+    },
+    {
+      "version": "v2.7.4",
+      "stage": "EB-22A A01 — FINAL, EB-22 COMPLETE",
+      "task": "entry-recovery-addition",
+      "case": "A01",
+      "entry": "LDC.T20.E0022A",
+      "date": "10 novembre 1926",
+      "title": "Comment celle qui vit dans la Divine Volonté contient en elle toute la Création, est le reflet de son Créateur. Deux effets du péché.",
+      "source": "Composite French edition PDF (pp.1585-1588) via PyMuPDF, VERIFIED word-for-word against all 4 official hard-copy photos (book pp.60-63, IMG_4998/4999/5001/5002)",
+      "method": "Authentic French (not English-translated). Words byte-exact from composite; casing+punctuation matched to APP CORPUS conventions per Louis (devotional capitals Il/Elle/Son/Ses/Ciel/Œuvres, semantic lowercase for soul/Adam/ordinary), NOT the photographed book edition. Word-fidelity guard: letters-only-lowercased == composite (only casing/punct changed). Artifacts fixed (page number '33', 5 line-wrap space-drops). 5 paragraphs at discourse boundaries. 4 JESUS speech segments added (Jesus's direct discourse P001/P002/P003/P005; P004 Luisa reflection unstyled) — per Louis 'match corpus incl Jesus/Mary direct words'. Inserted between E0022(6 nov) & E0023(14 nov).",
+      "embeddings": "5 MiniLM vectors appended (confirmed model)",
+      "entries_after": 2310,
+      "paragraphs_after": 74340,
+      "speech_segments_after": 54338,
+      "note": "EB-22 COMPLETE: all 9 cases done (S01-S07 splits + A02 21 avril 1923 + A01 10 nov 1926). Entries 2301->2310 (contract target hit exactly). 25 avril 1923 correctly excluded (English-only). Validator clean; browser-verified render+order+Jesus styling."
     }
   ],
   "known_gaps": [
