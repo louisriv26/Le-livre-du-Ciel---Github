@@ -325,6 +325,19 @@
       "entries_after": 2306,
       "paragraphs_after": 74333,
       "note": "Source has lowercase 'pour d'autres' after a period — preserved faithfully (no correction). semantic_index N and embeddings n both bumped to 74333. Validator clean; browser-verified render + chronological order."
+    },
+    {
+      "version": "v2.7.2",
+      "stage": "EB-22A Stage 2 (S05)",
+      "task": "entry-boundary-split-midpara",
+      "case": "S05",
+      "new_entry": "LDC.T16.E0006A",
+      "date": "9 août 1923",
+      "title": "La Volonté Divine est Lumière et la volonté humaine noirceur.",
+      "method": "Boundary split at LDC.T16.E0006.P041 char 137. Suffix was date+title ONLY (no body) -> relocated to new-entry metadata; P041 prefix truncated+KEPT with 5 août (E0006); P042-P051 moved to new 9 août entry (ids preserved, re-parented). No new paragraph. P041 embedding refreshed in place (model confirmed MiniLM, cosine 1.0).",
+      "entries_after": 2307,
+      "paragraphs_after": 74333,
+      "note": "8 JESUS segments re-parented. Validator clean; browser-verified: 5 août ends at '...je m'arrête.', 9 août renders with title/date/Jesus spans, order 5->9->13 août correct."
     }
   ],
   "known_gaps": [
