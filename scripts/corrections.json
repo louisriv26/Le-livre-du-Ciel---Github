@@ -338,6 +338,25 @@
       "entries_after": 2307,
       "paragraphs_after": 74333,
       "note": "8 JESUS segments re-parented. Validator clean; browser-verified: 5 août ends at '...je m'arrête.', 9 août renders with title/date/Jesus spans, order 5->9->13 août correct."
+    },
+    {
+      "version": "v2.7.3",
+      "stage": "EB-22A Stage 2 (S06/S07 atomic)",
+      "task": "entry-boundary-split-midpara-3way",
+      "cases": [
+        "S06",
+        "S07"
+      ],
+      "new_entries": [
+        "LDC.T16.E0055A (24 mai 1924)",
+        "LDC.T16.E0055B (29 mai 1924)"
+      ],
+      "method": "Atomic 3-way realignment of T16 19 mai entry. P033 split@57 (prefix stays 19 mai; suffix date+title->24 mai metadata, body->new frag E0055A.P001). P110 split@89 (prefix->last para of 24 mai keeping id P110; suffix date+title->29 mai metadata, body->new frag E0055B.P001). 24 mai=frag+P034-P109+P110; 29 mai=frag+P111-P157. No speech segment straddled either cut (P033 seg 0-55<57, P110 seg 0-87<89) so only re-parenting, no offset surgery. +2 entries, +2 paragraphs.",
+      "embeddings": "refreshed P033+P110 vectors in place (truncated text); appended 2 frag vectors (MiniLM confirmed)",
+      "render_fix": "getParagraphs() now sorts by display_order (was file order) — fragment paras are appended at file end but belong first; no-op for all 2333 other entries, verified. Without this the frag rendered last.",
+      "entries_after": 2309,
+      "paragraphs_after": 74335,
+      "note": "Validator clean; browser-verified: 19 mai ends '...cette créature.», 24 mai opens 'Le premier mot...Fiat' ends '...de Ma Volonté.», 29 mai opens 'Leçon à Luisa...', order 19->24->29 mai->1 juin correct. No new speaker segments (contract §9.4.5)."
     }
   ],
   "known_gaps": [

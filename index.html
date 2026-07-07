@@ -1742,7 +1742,7 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; }
    VERSION — single source of truth
    Update this string on every release.
 ═══════════════════════════════════════════════════════ */
-const APP_VERSION = 'v2.7.2';
+const APP_VERSION = 'v2.7.3';
 const APP_BUILD   = '2026-06-25';
 
 /* ═══════════════════════════════════════════════════════
@@ -1868,7 +1868,11 @@ async function getEntry(vol, entryId) {
 
 async function getParagraphs(vol, entryId) {
   await loadVolumeData(vol);
-  return parasCache[vol].filter(p => p.entry_id === entryId);
+  // Order by display_order (authoritative), not file order. No-op for all original
+  // entries (file order already matches); required for EB-22 boundary-split entries
+  // whose fragment paragraphs are appended at the end of the file but belong first.
+  return parasCache[vol].filter(p => p.entry_id === entryId)
+    .sort((a, b) => (a.display_order || 0) - (b.display_order || 0));
 }
 
 /* ═══════════════════════════════════════════════════════
