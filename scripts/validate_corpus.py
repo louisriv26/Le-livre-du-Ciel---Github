@@ -99,6 +99,11 @@ def check_corpus(corpus_dir, errors, warnings):
             if pid in smap and smap[pid].get('text') != p['text']:
                 errors.append(f'T{nn} {pid}: search text != paragraph text')
 
+        # search norm field present (missing norm crashes runSearch() app-wide, index.html:3888)
+        for s in search:
+            if not s.get('norm'):
+                errors.append(f'T{nn} {s["id"]}: search record missing "norm" field')
+
         # Speech offset + boundary checks
         for seg in speakers:
             pid = seg['paragraph_id']
