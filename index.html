@@ -1742,7 +1742,7 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; }
    VERSION — single source of truth
    Update this string on every release.
 ═══════════════════════════════════════════════════════ */
-const APP_VERSION = 'v2.7.6';
+const APP_VERSION = 'v2.7.7';
 const APP_BUILD   = '2026-07-08';
 
 /* ═══════════════════════════════════════════════════════
@@ -3228,6 +3228,12 @@ function buildSpeechHTML(text, segments, highlights) {
         (prevSp && prevSp.type === 'speech' && !STYLED(prevSp.speaker)) ||
         (nextSp && nextSp.type === 'speech' && !STYLED(nextSp.speaker));
       if (adjNonStyled) return true;
+      // Sentence-terminal punctuation tail (".»" / "!»" / "?»") that follows a styled
+      // span is that sentence's own closing punctuation + quote — keep it so PASS 5 can
+      // fold it back into the span (preserving the final full stop). A lone "»" (which
+      // starts with ») is NOT kept here — it still drops (colour replaces the quote).
+      if (/»\s*$/.test(t) && !/^[«»]/.test(t) &&
+          prevSp && prevSp.type === 'speech' && STYLED(prevSp.speaker)) return true;
     }
     return false;
   });
