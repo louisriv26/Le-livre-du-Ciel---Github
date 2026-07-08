@@ -1742,7 +1742,7 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; }
    VERSION — single source of truth
    Update this string on every release.
 ═══════════════════════════════════════════════════════ */
-const APP_VERSION = 'v2.7.5';
+const APP_VERSION = 'v2.7.6';
 const APP_BUILD   = '2026-07-08';
 
 /* ═══════════════════════════════════════════════════════
@@ -3234,6 +3234,44 @@ function buildSpeechHTML(text, segments, highlights) {
   spans.length = 0;
   cleanSpans.forEach(s => spans.push(s));
 
+  // PASS 5 — end-undershoot fold (fixes orphaned sentence-tail like "Moi.»")
+  // The corpus end_char occasionally stops a few chars BEFORE the closing » of a
+  // Jesus/Marie quote, stranding the sentence's final word(s) + » as a tiny trailing
+  // narrative fragment. That renders as a spurious line break + un-styled orphan
+  // (e.g. «…attendant tout de» / break / «Moi.»»). Fold such a fragment back into
+  // the preceding styled span so the whole sentence stays together and styled.
+  // Strictly scoped so it never absorbs real narration:
+  //   • previous span must be a styled (Jesus/Marie) high/medium speech span
+  //   • fragment is short (≤14 chars trimmed)
+  //   • fragment ENDS with » but does NOT start with » or « (a leading » means
+  //     narration-after-quote, which must stay narrative)
+  //   • fragment has no interior « (no nested quote) and no attribution verb
+  const NARR_VERB_RE = /\b(dit|dis|dirent|ajouta|reprit|répondit|repondit|répondis|repondis|poursuivit|continua|s['’]écria|murmura|disparut|pensai|pensais|repris)\b/i;
+  const foldedSpans = [];
+  for (let i = 0; i < spans.length; i++) {
+    const span = spans[i];
+    const prev = foldedSpans[foldedSpans.length - 1];
+    if (span.type === 'narrative' && prev && prev.type === 'speech' &&
+        STYLED(prev.speaker) && (prev.confidence === 'high' || prev.confidence === 'medium')) {
+      const nt = span.text.trim();
+      const isUndershootTail =
+        nt.length > 0 && nt.length <= 14 &&
+        /»\s*$/.test(nt) &&                 // ends with »
+        !/^[«»]/.test(nt) &&           // does not start with « or »
+        nt.indexOf('«') === -1 &&           // no nested opening quote
+        !NARR_VERB_RE.test(nt);                  // not narration
+      if (isUndershootTail) {
+        // Re-attach with a single space if the join would fuse two words.
+        const joiner = (/[A-Za-zÀ-ÿ]$/.test(prev.text) && /^[A-Za-zÀ-ÿ]/.test(span.text)) ? ' ' : '';
+        prev.text = prev.text + joiner + span.text;
+        continue; // fragment consumed
+      }
+    }
+    foldedSpans.push(span);
+  }
+  spans.length = 0;
+  foldedSpans.forEach(s => spans.push(s));
+
   // Render spans to HTML
   //
   // Paragraph-break rule: insert <br><br> after a Jesus/Marie speech span when
@@ -3320,8 +3358,20 @@ function applyHighlights(escapedText, highlights) {
   if (!highlights || !highlights.length) return escapedText;
   let t = escapedText;
   highlights.forEach(h => {
-    t = t.replace(escapeHtml(h.text),
-      `<mark class="hl hl-${h.color}" data-hl-id="${h.id}">${escapeHtml(h.text)}</mark>`);
+    if (!h.text) return;
+    const wrap = s => `<mark class="hl hl-${h.color}" data-hl-id="${h.id}">${s}</mark>`;
+    const full = escapeHtml(h.text);
+    if (t.indexOf(full) !== -1) { t = t.replace(full, wrap(full)); return; }
+    // Tolerant fallback: styled speech spans render with their surrounding quote
+    // marks and leading labels stripped, so an exact match on the stored selection
+    // (which includes those «» " characters) fails. Trim edge quotes/space/dashes
+    // from the needle and match the inner core instead, so the highlight still shows.
+    const EDGE = /^[\s «»"'“”„‟–—-]+|[\s «»"'“”„‟–—-]+$/g;
+    const core = h.text.replace(EDGE, '');
+    if (core && core !== h.text) {
+      const escCore = escapeHtml(core);
+      if (t.indexOf(escCore) !== -1) { t = t.replace(escCore, wrap(escCore)); return; }
+    }
   });
   return t;
 }
