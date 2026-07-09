@@ -1742,7 +1742,7 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; }
    VERSION — single source of truth
    Update this string on every release.
 ═══════════════════════════════════════════════════════ */
-const APP_VERSION = 'v2.7.8';
+const APP_VERSION = 'v2.7.9';
 const APP_BUILD   = '2026-07-08';
 
 /* ═══════════════════════════════════════════════════════
@@ -3232,37 +3232,40 @@ function buildSpeechHTML(text, segments, highlights) {
     // A lone « or » is a real quote mark (not an artifact) when it borders a NON-styled
     // speech span — that span renders as plain text with no colour to replace the quote,
     // so the mark must survive. Styled (Jesus/Marie) neighbours still drop it (colour replaces).
+    const prevSp = spans[i - 1], nextSp = spans[i + 1];
     if (/[«»]/.test(t)) {
-      const prevSp = spans[i - 1], nextSp = spans[i + 1];
       const adjNonStyled =
         (prevSp && prevSp.type === 'speech' && !STYLED(prevSp.speaker)) ||
         (nextSp && nextSp.type === 'speech' && !STYLED(nextSp.speaker));
       if (adjNonStyled) return true;
-      // Sentence-terminal punctuation tail (".»" / "!»" / "?»") that follows a styled
-      // span is that sentence's own closing punctuation + quote — keep it so PASS 5 can
-      // fold it back into the span (preserving the final full stop). A lone "»" (which
-      // starts with ») is NOT kept here — it still drops (colour replaces the quote).
-      if (/»\s*$/.test(t) && !/^[«»]/.test(t) &&
-          prevSp && prevSp.type === 'speech' && STYLED(prevSp.speaker)) return true;
     }
+    // A punctuation/closing-quote tail stranded right after a styled span is that
+    // sentence's OWN terminal punctuation (period, «!?», closing quote) that the corpus
+    // end_char undershot — keep it so PASS 5 folds it back into the span (preserving the
+    // final full stop / quote). Otherwise a bare "." here would be dropped and the
+    // sentence would display with no ending. Exclude a lone opening « (never a tail).
+    if (prevSp && prevSp.type === 'speech' && STYLED(prevSp.speaker) &&
+        prevSp.confidence !== 'low' && !/^[«]/.test(t)) return true;
     return false;
   });
   spans.length = 0;
   cleanSpans.forEach(s => spans.push(s));
 
-  // PASS 5 — end-undershoot fold (fixes orphaned sentence-tail like "Moi.»")
-  // The corpus end_char occasionally stops a few chars BEFORE the closing » of a
-  // Jesus/Marie quote, stranding the sentence's final word(s) + » as a tiny trailing
-  // narrative fragment. That renders as a spurious line break + un-styled orphan
-  // (e.g. «…attendant tout de» / break / «Moi.»»). Fold such a fragment back into
-  // the preceding styled span so the whole sentence stays together and styled.
-  // Strictly scoped so it never absorbs real narration:
+  // PASS 5 — end-undershoot fold (fixes orphaned sentence-tail like "Moi.»", a bare
+  // stranded "." , or a stranded closing quote that renders as a lone comma-looking mark)
+  // The corpus end_char frequently stops 1-2 chars BEFORE a Jesus/Marie sentence's
+  // terminal punctuation and/or closing quote, stranding it as a tiny trailing narrative
+  // fragment. Left alone that renders as a spurious line break + un-styled orphan
+  // ("…attendant tout de" / break / "Moi.»"), OR — for a bare "." — gets dropped so the
+  // sentence shows with no ending, OR — for a stranded closing quote ' / » — shows as a
+  // lone punctuation mark on its own line. Fold such a fragment back into the preceding
+  // styled span. Strictly scoped so it never absorbs real narration:
   //   • previous span must be a styled (Jesus/Marie) high/medium speech span
-  //   • fragment is short (≤14 chars trimmed)
-  //   • fragment ENDS with » but does NOT start with » or « (a leading » means
-  //     narration-after-quote, which must stay narrative)
-  //   • fragment has no interior « (no nested quote) and no attribution verb
+  //   • fragment is short (≤14 chars trimmed), never starts with an opening «
+  //   • AND EITHER it is pure terminal punctuation / closing quotes (PUNCT_TAIL),
+  //     OR it is a short word-tail ending in » that is not narration (no verb, no «)
   const NARR_VERB_RE = /\b(dit|dis|dirent|ajouta|reprit|répondit|repondit|répondis|repondis|poursuivit|continua|s['’]écria|murmura|disparut|pensai|pensais|repris)\b/i;
+  const PUNCT_TAIL = /^[.,;:!?…»"'‘’“”]+$/;   // stranded sentence-terminal punctuation / closing quotes
   const foldedSpans = [];
   for (let i = 0; i < spans.length; i++) {
     const span = spans[i];
@@ -3271,15 +3274,17 @@ function buildSpeechHTML(text, segments, highlights) {
         STYLED(prev.speaker) && (prev.confidence === 'high' || prev.confidence === 'medium')) {
       const nt = span.text.trim();
       const isUndershootTail =
-        nt.length > 0 && nt.length <= 14 &&
-        /»\s*$/.test(nt) &&                 // ends with »
-        !/^[«»]/.test(nt) &&           // does not start with « or »
-        nt.indexOf('«') === -1 &&           // no nested opening quote
-        !NARR_VERB_RE.test(nt);                  // not narration
+        nt.length > 0 && nt.length <= 14 && !/^[«]/.test(nt) && (
+          PUNCT_TAIL.test(nt) ||                                // stranded terminal punct / quote
+          ( /»\s*$/.test(nt) && !/^[«»]/.test(nt) &&            // short word-tail ending in »
+            nt.indexOf('«') === -1 && !NARR_VERB_RE.test(nt) )
+        );
       if (isUndershootTail) {
-        // Re-attach with a single space if the join would fuse two words.
-        const joiner = (/[A-Za-zÀ-ÿ]$/.test(prev.text) && /^[A-Za-zÀ-ÿ]/.test(span.text)) ? ' ' : '';
-        prev.text = prev.text + joiner + span.text;
+        // Pure punctuation attaches tight (use trimmed form); a word-tail keeps its
+        // original spacing. Add a single space only if the join would fuse two words.
+        const frag = PUNCT_TAIL.test(nt) ? nt : span.text;
+        const joiner = (/[A-Za-zÀ-ÿ]$/.test(prev.text) && /^[A-Za-zÀ-ÿ]/.test(frag)) ? ' ' : '';
+        prev.text = prev.text + joiner + frag;
         continue; // fragment consumed
       }
     }
