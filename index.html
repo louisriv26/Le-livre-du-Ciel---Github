@@ -1742,7 +1742,7 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; }
    VERSION — single source of truth
    Update this string on every release.
 ═══════════════════════════════════════════════════════ */
-const APP_VERSION = 'v2.8.1';
+const APP_VERSION = 'v2.8.2';
 const APP_BUILD   = '2026-07-08';
 
 /* ═══════════════════════════════════════════════════════
@@ -3948,53 +3948,81 @@ async function runSearch() {
   // L3 theme families matched by query
   const matchedFamilies = findThemeMatches(norm);
 
-  // Score each paragraph
-  const scored = [];
+  // ── IDF-weighted (rarity-aware) ranking ─────────────────────────────────
+  // Rank word matches by BM25 so a rare, distinctive query word (e.g. "filet")
+  // outweighs common ones ("Jésus", "lumière"). Equal-weight word counting buried
+  // the intended passage under many loosely-related common-word matches — a long
+  // paraphrase would return 30 near-ties. IDF lives in semantic_index.json (small,
+  // cached). Falls back to plain word counting if the index is unavailable.
+  const _sem   = await loadSemanticIndex();
+  const _idf   = (_sem && _sem.idf) || null;
+  const _avgdl = (_sem && _sem.avgdl) || 30;
+  // NB: rank on the actual query tokens only — synonym expansion (clarté, soleil…)
+  // dilutes a rare distinctive term ("filet") and pulls in common look-alikes.
+  const _qtok  = _idf ? semTokenise(raw) : [];
+  const _qImpTotal = words.reduce((a,w) => a + ((_idf && _idf[w]) || 2.5), 0) || 1;
+
+  // Pass 1 (cheap, all items): rarity-weighted coverage — sum of IDF of matched
+  // query words, using only substring checks (no per-doc tokenisation). This already
+  // favours rare distinctive terms and cheaply narrows to a candidate pool.
+  const prelim = [];
   for (const item of allItems) {
     const itemNorm = item.norm;
-    let score = 0;
-    let matchType = '';
+    if (itemNorm.includes(norm)) { prelim.push({ item, exact: true, cov: 1e9, matched: words }); continue; }
+    let cov = 0; const matched = [];
+    for (const w of words) if (itemNorm.includes(w)) { cov += (_idf && _idf[w]) || 2.5; matched.push(w); }
+    let themeBoost = 0;
+    if (matchedFamilies.length > 0) themeBoost = getThemeBoost(itemNorm, matchedFamilies);
+    if (cov > 0 || themeBoost > 0) prelim.push({ item, exact: false, cov, matched, themeBoost });
+  }
 
-    // L1 — Exact phrase match
-    if (itemNorm.includes(norm)) {
-      score = 100; matchType = 'exact';
-    } else {
-      // L1 — Word matches
-      const matched = words.filter(w => itemNorm.includes(w));
-      if (matched.length === words.length) {
-        score = 80; matchType = 'words';
-      } else if (matched.length >= Math.ceil(words.length * 0.6)) {
-        score = 50 + (matched.length / words.length) * 20;
-        matchType = 'partial';
-      } else if (matched.length > 0) {
-        score = 20 + matched.length * 5;
-        matchType = 'weak';
+  // Pass 2 (accurate BM25, bounded): re-rank only the strongest candidates for speed.
+  // BM25 tokenises each doc, so cap it — the pool is far more than 30 and always
+  // contains rare-term matches (they carry high coverage in pass 1).
+  prelim.sort((a, b) => b.cov - a.cov);
+  const POOL = 500;
+  const pool = prelim.slice(0, POOL);
+  const scored = [];
+  for (const c of pool) {
+    let score = 0, matchType = '';
+    if (c.exact) {
+      // Exact phrase always tops; BM25 tie-breaks so the densest/most-relevant
+      // exact match ranks above incidental mentions (e.g. preface paragraphs).
+      score = 1000 + (_idf ? bm25Score(_qtok, c.item.norm, _idf, _avgdl) * 10 : 0);
+      matchType = 'exact';
+    } else if (c.matched.length > 0) {
+      if (_idf) score = bm25Score(_qtok, c.item.norm, _idf, _avgdl) * 10;
+      if (score <= 0) {
+        score = c.matched.length === words.length ? 80
+              : c.matched.length >= Math.ceil(words.length * 0.6) ? 50 + (c.matched.length / words.length) * 20
+              : 20 + c.matched.length * 5;
       }
-      // L3 — Theme boost (adds to or replaces weak/zero scores)
-      if (matchedFamilies.length > 0) {
-        const themeBoost = getThemeBoost(itemNorm, matchedFamilies);
-        if (themeBoost > 0) {
-          if (score === 0) { score = themeBoost; matchType = 'thematic'; }
-          else if (matchType === 'weak') { score += themeBoost * 0.5; }
-          else { score += themeBoost * 0.2; }
-        }
-      }
+      const covFrac = c.cov / _qImpTotal;
+      matchType = c.matched.length === words.length ? 'words' : covFrac >= 0.5 ? 'partial' : 'weak';
     }
-    if (score > 0) scored.push({ ...item, score, matchType });
+    if (c.themeBoost > 0) {
+      if (score === 0) { score = c.themeBoost; matchType = 'thematic'; }
+      else score += c.themeBoost * 0.2;
+    }
+    if (score > 0) scored.push({ ...c.item, score, matchType });
   }
 
   scored.sort((a,b) => b.score - a.score);
   let results = scored.slice(0, 30);
 
-  // ── Semantic augmentation ──
+  // ── Semantic augmentation (vector only) ──
+  // The primary ranking above is now rarity-weighted BM25, so the old BM25 fallback
+  // here would be redundant (same results, filtered as dups) AND slow (full-corpus
+  // pass). Only augment when true vector embeddings are loaded — that adds meaning-
+  // based hits the keyword ranker can miss. Without vectors, the BM25 primary stands
+  // alone (fast).
   const semWords = raw.trim().split(/\s+/).filter(w => w.length > 2);
   let semResults = [];
   let usedSemantic = false;
-  if (semWords.length >= 2 || results.length < 5) {
-    // Show subtle indicator that semantic search is running
+  if ((embModel && embCorpus) && (semWords.length >= 2 || results.length < 5)) {
     const metaEl2 = document.getElementById('search-meta');
     if (metaEl2 && semWords.length >= 2) {
-      metaEl2.innerHTML += ' <span style="color:var(--muted);font-size:11px;">· recherche sémantique…</span>';
+      metaEl2.innerHTML += ' <span style="color:var(--muted);font-size:11px;">· recherche vectorielle…</span>';
     }
     const semRaw = await runSemanticSearch(raw, vols, searchSpeakerFilter);
     const existingIds = new Set(results.map(r => r.id));
@@ -4011,11 +4039,11 @@ async function runSearch() {
   metaEl.style.display = 'block';
   trustEl.style.display = isApprox ? 'block' : 'none';
 
-  let modeLabel = 'Mot exact';
+  let modeLabel = 'Idée proche';
   if (results.length && results[0].matchType === 'exact') modeLabel = 'Phrase exacte';
+  else if (results.some(r=>r.matchType==='words')) modeLabel = 'Mots correspondants';
   else if (results.some(r=>r.matchType==='partial')) modeLabel = 'Idée proche';
   else if (results.some(r=>r.matchType==='thematic')) modeLabel = 'Thème lié';
-  else if (results.some(r=>r.matchType==='words')) modeLabel = 'Mots correspondants';
 
   metaEl.innerHTML = `${results.length} résultat${results.length!==1?'s':''} <span class="search-mode-badge">${modeLabel}</span>`;
 
