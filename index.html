@@ -1742,7 +1742,7 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; }
    VERSION — single source of truth
    Update this string on every release.
 ═══════════════════════════════════════════════════════ */
-const APP_VERSION = 'v2.8.3';
+const APP_VERSION = 'v2.8.4';
 const APP_BUILD   = '2026-07-08';
 
 /* ═══════════════════════════════════════════════════════
@@ -3143,6 +3143,14 @@ function buildSpeechHTML(text, segments, highlights) {
   // is fewer than 3 non-space characters — that indicates an internal quotation
   // within the speech (e.g. «Dominus tecum» («le Seigneur est avec toi»)),
   // not an overshoot. Confirmed: only 15 such cases across 36 tomes.
+  // A 3rd-person continuation attribution introducing a NEW quote by the SAME speaker,
+  // e.g. "…condition.» Il ajouta: «Un proverbe dit…". Without this, the overshoot split
+  // below dumps the second quote into plain narration. Deliberately tight: starts with
+  // Il/Elle/Jésus/… (a 3rd-person pronoun/name — NOT Luisa's "Je répondis:") then a
+  // 3rd-person speech verb + colon, so it never re-styles Luisa's replies. Group 1 =
+  // the narration lead-in up to (but excluding) the «.
+  const CONT_ATTR = /^(\s*(?:(?:Puis|Plus tard|Ensuite|Alors|Et|Enfin|De nouveau|D['’]autres fois)[\s,]+)?(?:Il|Elle|Jésus|Notre[- ]Seigneur|Le Seigneur|La (?:Très )?Sainte Vierge|La Reine|Marie|Maman)\b[^«»:]{0,45}?\b(?:me dit|lui dit|me répondit|dit|ajouta|ajoutait|reprit|reprenait|répondit|repondit|poursuivit|continua|conclut|s['’]exclama|s['’]écria|s['’]écriait|murmura|disait)\s*:\s*)«/i;
+
   const correctedSpans = [];
   for (const sp of spans) {
     if (sp.type !== 'speech' || sp.confidence === 'low' || !STYLED(sp.speaker)) {
@@ -3180,15 +3188,24 @@ function buildSpeechHTML(text, segments, highlights) {
       continue;
     }
 
-    // Genuine overshoot — split at first »
-    const speechPart    = t.slice(0, closePos).trimEnd();
-    const narrativePart = afterClose.trimStart();
-
-    if (speechPart) {
-      correctedSpans.push({ ...sp, text: speechPart });
-    }
-    if (narrativePart) {
-      correctedSpans.push({ type: 'narrative', text: narrativePart });
+    // Genuine overshoot — split at first ». If the tail is a same-speaker continuation
+    // ("Il ajouta: «…"), re-emit that quote as styled speech and loop for further quotes.
+    const speechPart = t.slice(0, closePos).trimEnd();
+    if (speechPart) correctedSpans.push({ ...sp, text: speechPart });
+    let tail = afterClose.trimStart();
+    let guard = 0;
+    while (tail && guard++ < 6) {
+      const mm = tail.match(CONT_ATTR);
+      if (!mm) { correctedSpans.push({ type: 'narrative', text: tail }); break; }
+      if (mm[1].trim()) correctedSpans.push({ type: 'narrative', text: mm[1].trim() });
+      const cont = tail.slice(mm[1].length);          // "«…" — same-speaker continuation
+      const cp2 = cont.indexOf('»');
+      if (cp2 === -1 || cp2 >= cont.length - 2) {      // no further split needed
+        correctedSpans.push({ ...sp, text: cp2 === -1 ? cont : cont.slice(0, cp2).trimEnd() });
+        break;
+      }
+      correctedSpans.push({ ...sp, text: cont.slice(0, cp2).trimEnd() });
+      tail = cont.slice(cp2 + 1).trimStart();          // continue after this quote's »
     }
   }
 
