@@ -389,6 +389,21 @@
       "paragraphs_after": 74340,
       "speech_segments_after": 54338,
       "note": "716 paragraphs (714 letter-ending + 2 closing-quote-ending: T34.E0034.P041, T35.E0008.P031). Distinct from the v2.7.9 RENDER fix which recovered ~1,620 periods/quotes that were IN the corpus but dropped in display (segment end_char undershoot). Validator clean; browser-verified T34.E0034."
+    },
+    {
+      "version": "v2.8.3",
+      "stage": "speaker-attribution: two-quotes-in-one-paragraph",
+      "task": "fix-second-quote-styling",
+      "case": "ATTR-02",
+      "entry": "19 paragraphs (T2-T16)",
+      "date": "2026-07-10",
+      "title": "Fix Jesus/Marie 2nd direct-quote hidden or misattributed when a paragraph has quote1 + narration + quote2",
+      "source": "Neighbor-context reading; grammatical person of the narration gap (Il/Jésus vs Je) disambiguates.",
+      "method": "Scanned styled segments whose TEXT contains »<narration>«second-quote (renderer PASS-2 splits at first » and demotes the rest). 104 candidates, classified: 9 SPLIT (Jesus q1+Jesus q2, gap=Il ajouta -> split into two same-speaker segs); 6 RELOCATE (Luisa prayer wrongly styled as q1 -> move segment to Jesus/Marie q2); 4 SPECIAL (T3 crowd-quote 2nd = shrink to q1; T6 multi-turn = 2 Jesus segs, Luisa replies plain; T9 Jesus-Luisa-Jesus = add q1 seg + move seg to q3; T11 Marie q1 + Jesus q2 = shrink Marie, add Jesus seg). 43 first-person Je (Luisa replies, correctly plain) + 42 ambiguous LEFT UNTOUCHED.",
+      "entries_after": 2310,
+      "paragraphs_after": 74340,
+      "speech_segments_after": 54350,
+      "note": "Reported case: T11 20 aout 1912 p004 (Il ajouta: Un proverbe dit: L homme propose et Dieu dispose). Validator clean; browser-verified reported + relocate + marie/jesus cases. Scripts scratchpad/jesus2q.py, jesus_reloc.py, jesus_special.py. 42 ambiguous + 43 Luisa-reply cases documented, not changed."
     }
   ],
   "known_gaps": [
