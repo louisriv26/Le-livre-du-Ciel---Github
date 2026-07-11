@@ -419,6 +419,21 @@
       "paragraphs_after": 74340,
       "speech_segments_after": 54353,
       "note": "Broader class (unattributed Jesus/Marie continuation paragraphs inside an open quote) scanned: 487 candidates w/ divine markers, 236 after strict Luisa-marker exclusion — but STILL unsafe to auto-fix (corpus capitalises 1st-person inconsistently; Luisa narration like -Pendant qu-Il parlait, Je Me sentais confuse- has capital Je/Me). Needs careful per-case reading like the original campaign. NOT auto-applied. Validator clean; browser-verified all 5 paras gold."
+    },
+    {
+      "version": "v2.8.6",
+      "stage": "speaker-attribution: missing-segment gap pass (parallel readers, part 1)",
+      "task": "add-missing-jesus-marie-segments",
+      "case": "ATTR-04a",
+      "entry": "137 paragraphs across 22 volumes",
+      "date": "2026-07-11",
+      "title": "Add JESUS/MARIE segments to unattributed continuation paragraphs (4 of 14 reader batches)",
+      "source": "Parallel neighbour-context reading (14 subagent readers over 299 entries / 1674 candidates). Session rate-limit interrupted 10 readers; 4 batches (00,06,07,08) completed = 176 verdicts.",
+      "method": "Candidates = no-styled-segment paragraphs inside an open Jesus/Marie quote (quote-balance walk). Readers judged JESUS/MARIE/SKIP by full-entry context. Central verify: mechanical guards (offsets valid, no mid-word, no overlap with ANY existing segment), red-flag scan for Luisa-narration markers (3 flagged, all confirmed Jesus false-positives), manual spot-checks. Applied 137 (127 JESUS + 10 MARIE); 39 skipped = overlap an existing OTHER/LUISA/UNKNOWN segment (need relabel/split, handled separately incl. 1 agent MARIE-mislabel caught at T18.E0005A.P039).",
+      "entries_after": 2310,
+      "paragraphs_after": 74340,
+      "speech_segments_after": 54490,
+      "note": "PARTIAL. Remaining: (a) 39 overlap cases within completed batches; (b) 10 reader batches (~1100 candidates) not yet run — blocked by session rate-limit reset ~12:30 Mauritius. Scripts scratchpad/build_gap_dataset.py, apply_gaps.py, gap_verdicts_*.json."
     }
   ],
   "known_gaps": [
