@@ -404,6 +404,21 @@
       "paragraphs_after": 74340,
       "speech_segments_after": 54350,
       "note": "Reported case: T11 20 aout 1912 p004 (Il ajouta: Un proverbe dit: L homme propose et Dieu dispose). Validator clean; browser-verified reported + relocate + marie/jesus cases. Scripts scratchpad/jesus2q.py, jesus_reloc.py, jesus_special.py. 42 ambiguous + 43 Luisa-reply cases documented, not changed."
+    },
+    {
+      "version": "v2.8.5",
+      "stage": "speaker-attribution: missing continuation segments",
+      "task": "add-missing-jesus-segments",
+      "case": "ATTR-03",
+      "entry": "ldc_t11_1912_08_16_e001 (16 aout 1912)",
+      "date": "2026-07-11",
+      "title": "Add JESUS segments to p003-p005 (Jesus monologue continuation that had no segment)",
+      "source": "Neighbor-context: entry is one unbroken Jesus quote — p001 opens «Ma fille..., p005 closes ...elle-meme.». p003-p005 were unattributed.",
+      "method": "Added 3 JESUS high segments [0:len] for p003/p004/p005 (whole paragraphs, all Jesus discourse: filet de Lumiere / ne pense qu-a Moi / Comme il est beau de voir une ame). Fixed segment_ids to clean dotted form.",
+      "entries_after": 2310,
+      "paragraphs_after": 74340,
+      "speech_segments_after": 54353,
+      "note": "Broader class (unattributed Jesus/Marie continuation paragraphs inside an open quote) scanned: 487 candidates w/ divine markers, 236 after strict Luisa-marker exclusion — but STILL unsafe to auto-fix (corpus capitalises 1st-person inconsistently; Luisa narration like -Pendant qu-Il parlait, Je Me sentais confuse- has capital Je/Me). Needs careful per-case reading like the original campaign. NOT auto-applied. Validator clean; browser-verified all 5 paras gold."
     }
   ],
   "known_gaps": [
