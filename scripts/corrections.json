@@ -464,6 +464,21 @@
       "paragraphs_after": 74340,
       "speech_segments_after": 54798,
       "note": "PARTIAL — serial pass continuing. Done through batch 04. Remaining batches: 05,09,10,11,12,13."
+    },
+    {
+      "version": "v2.9.3",
+      "stage": "speaker-attribution: missing-segment gap pass (serial main-loop, batch 05)",
+      "task": "add-missing-jesus-marie-segments",
+      "case": "ATTR-04d",
+      "entry": "batch 05 (21 entries, 107 candidates)",
+      "date": "2026-07-11",
+      "title": "Batch 05: 58 adds (56 JESUS + 2 MARIE) + 4 relabels",
+      "source": "Serial main-loop reading, full entry context; context-primary, English corroborator, fail-closed.",
+      "method": "56 JESUS + 2 MARIE (t11_1916_06_15 p010/p011 Virgin's prayer instruction) continuation adds across vols 1,2,7,9,11,12,13,14,16,17,24,27,29,30. Largest: T29.E0044 P059-P090 (32, the 'peuple du Royaume' discourse; P090 partial to drop a trailing 'Table des Matieres' artifact). 4 relabels: t04_1901_07_16.p008 LUISA->JESUS ('Mon Amour pour toi est si grand'), T13.E0034.P035/P037 LUISA->JESUS (divine voice at Creation-restoration), T24.E0015.P048 JESUS->LUISA (Luisa's fatigue narration mislabeled Jesus, un-styled). Fail-closed drops: Luisa replies/prayers/narration (t03.p008, t04 several, t05.p013 'Fiat', t11_1912.p011, t11_1916 p005-007/p009, T13.E0034 handled, T14.E0009.P006, T16.E0051 P012/P014/P034-036, T18.E0017.P058, T20.E0029.P052, T24.E0015 P049-057, T29.E0044 P025-036/P052).",
+      "entries_after": 2310,
+      "paragraphs_after": 74340,
+      "speech_segments_after": 54856,
+      "note": "PARTIAL — serial pass continuing. Done through batch 05. Remaining batches: 09,10,11,12,13."
     }
   ],
   "known_gaps": [
