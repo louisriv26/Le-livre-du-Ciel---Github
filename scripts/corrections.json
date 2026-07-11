@@ -434,6 +434,21 @@
       "paragraphs_after": 74340,
       "speech_segments_after": 54490,
       "note": "PARTIAL. Remaining: (a) 39 overlap cases within completed batches; (b) 10 reader batches (~1100 candidates) not yet run — blocked by session rate-limit reset ~12:30 Mauritius. Scripts scratchpad/build_gap_dataset.py, apply_gaps.py, gap_verdicts_*.json."
+    },
+    {
+      "version": "v2.9.1",
+      "stage": "speaker-attribution: missing-segment gap pass (serial main-loop, batches 01-03)",
+      "task": "add-missing-jesus-marie-segments",
+      "case": "ATTR-04b",
+      "entry": "batches 01, 02, 03 of the remaining reader queue",
+      "date": "2026-07-11",
+      "title": "Add JESUS/MARIE segments to unattributed continuation paragraphs (serial pass)",
+      "source": "Serial main-loop reading (no subagents) — immune to the parallel-loss problem when session limits hit. Each candidate read in full entry context; context = primary evidence, English editions = corroborator, defective French source punctuation = weak witness only, fail-closed on genuine ambiguity.",
+      "method": "Batch 01 = 46 adds; batch 02 = 111 adds; batch 03 = 85 adds (84 JESUS + 1 MARIE) across vols 1,3,4,5,7,8,11,13,16,17,20,26,36 + 2 relabels (t04.p008 LUISA->MARIE, T16.E0022.P073 UNKNOWN->JESUS). Batch 03 fail-closed drops: nested creature/prayer quotes (T18.E0014 P034/P037, T26.E0024 P044/P055, T29.E0023 P073), Luisa narration/attribution/vision (T14.E0003 P030-036, T16.E0022 P069-092/P103, T30.E0030 P082-083, T36.E0001 P025-027), and one mixed paragraph with an indeterminable Jesus/Luisa split (t11_1912.p012).",
+      "entries_after": 2310,
+      "paragraphs_after": 74340,
+      "speech_segments_after": 54719,
+      "note": "PARTIAL — serial pass continuing. Done: batches 00,06,07,08 (v2.8.6), 01 (v2.8.9), 02 (v2.9.0), 03 (v2.9.1). Remaining batches: 04,05,09,10,11,12,13. Guards unchanged (offsets valid, no mid-word, no overlap with any existing segment)."
     }
   ],
   "known_gaps": [
