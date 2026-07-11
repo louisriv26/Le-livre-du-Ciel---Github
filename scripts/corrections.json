@@ -449,6 +449,21 @@
       "paragraphs_after": 74340,
       "speech_segments_after": 54719,
       "note": "PARTIAL — serial pass continuing. Done: batches 00,06,07,08 (v2.8.6), 01 (v2.8.9), 02 (v2.9.0), 03 (v2.9.1). Remaining batches: 04,05,09,10,11,12,13. Guards unchanged (offsets valid, no mid-word, no overlap with any existing segment)."
+    },
+    {
+      "version": "v2.9.2",
+      "stage": "speaker-attribution: missing-segment gap pass (serial main-loop, batch 04)",
+      "task": "add-missing-jesus-marie-segments",
+      "case": "ATTR-04c",
+      "entry": "batch 04 (22 entries, 111 candidates)",
+      "date": "2026-07-11",
+      "title": "Batch 04: 79 JESUS adds + 9 relabels",
+      "source": "Serial main-loop reading, full entry context; context-primary, English corroborator, fail-closed.",
+      "method": "79 JESUS continuation adds across vols 1,2,3,11,12,13,14,16,18,36 (incl. T13.E0033.P069 partial up to closing guillemet). 9 relabels: T17.E0034.P010-P013 LUISA->JESUS (Jesus praising Luisa after binding her, mislabeled), T18.E0016.P020/P023 UNKNOWN->JESUS (Jesus addressing the Father + continuation), T30.E0032.P009 OTHER->JESUS (closes a divine-Will quote already styled JESUS), and T29.E0034.P006/P013 JESUS->LUISA (creature's own aspirational quotes wrongly colored as Jesus — un-styled). Fail-closed drops: Luisa replies/narration (t04.p012-013, t05.p012, t07.p005-006, t09.p006, T14.E0005.P017 attribution, T17.E0034.P009/P014-016, T20.E0019.P043, T24.E0005.P049-050, T26.E0031.P052-060 vision narration), and nested creature quotes (T29.E0034.P007-008).",
+      "entries_after": 2310,
+      "paragraphs_after": 74340,
+      "speech_segments_after": 54798,
+      "note": "PARTIAL — serial pass continuing. Done through batch 04. Remaining batches: 05,09,10,11,12,13."
     }
   ],
   "known_gaps": [
