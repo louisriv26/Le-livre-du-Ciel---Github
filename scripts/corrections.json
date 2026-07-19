@@ -1,594 +1,609 @@
 {
-  "schema": "LDC manual correction ledger v1 — every hand-approved text/offset correction, independent of source-extraction lineage. On any future corpus rebuild or lineage swap, re-check this list against the new corpus and reapply anything missing.",
-  "corrections": [
+ "schema": "LDC manual correction ledger v1 — every hand-approved text/offset correction, independent of source-extraction lineage. On any future corpus rebuild or lineage swap, re-check this list against the new corpus and reapply anything missing.",
+ "corrections": [
+  {
+   "id": "T02.1899-10-28.P007.essuyes",
+   "paragraph_id": "ldc_t02_1899_10_28_e001_p007",
+   "type": "word_choice",
+   "old": "séchés",
+   "new": "essuyés",
+   "reason": "Louis's explicit translation/wording judgment call",
+   "approved_by": "Louis",
+   "date": "2026-06-2x (exact date not recorded)",
+   "status": "applied_v2.6.1"
+  },
+  {
+   "id": "mechanical_v2.5.63_accents_and_typography",
+   "type": "batch_rule_set",
+   "description": "101 mechanical/typography fixes across 98 paragraphs: missing accented capitals (É/À/Ê/Ô on Éternité, Éternel(le), À mesure/peine/Toi, Ô mon, Être), duplicate semicolons (;; -> ;), semicolon/comma collisions (;, -> ;), comma/period collisions (, . and ,. -> .), OCR fixes (ln fine -> In fine, superscript-2 duplication before Viens/viens), one-off typos (missing initial T in 'Tout le reste...', 'appararences' -> 'apparence', missing space after ellipsis in T32.E0024.P021), s'unie -> s'unit conjugation fix.",
+   "source": "Originally from LDC_v2.5.50_Corrected_Text_Deep_Audit_Evidence.zip (124-item ledger, audit1) + LDC_v2.5.50_Text_Quality_Fourth_Deep_Audit_Evidence.zip (47-item punctuation ledger, audit4). Audit1 zip is no longer available locally as of 2026-07-04 — rule set reconstructed by exact-string pattern re-scan against the corpus instead of the original paragraph-id list.",
+   "rules": [
     {
-      "id": "T02.1899-10-28.P007.essuyes",
-      "paragraph_id": "ldc_t02_1899_10_28_e001_p007",
-      "type": "word_choice",
-      "old": "séchés",
-      "new": "essuyés",
-      "reason": "Louis's explicit translation/wording judgment call",
-      "approved_by": "Louis",
-      "date": "2026-06-2x (exact date not recorded)",
-      "status": "applied_v2.6.1"
+     "old": "Eternité",
+     "new": "Éternité"
     },
     {
-      "id": "mechanical_v2.5.63_accents_and_typography",
-      "type": "batch_rule_set",
-      "description": "101 mechanical/typography fixes across 98 paragraphs: missing accented capitals (É/À/Ê/Ô on Éternité, Éternel(le), À mesure/peine/Toi, Ô mon, Être), duplicate semicolons (;; -> ;), semicolon/comma collisions (;, -> ;), comma/period collisions (, . and ,. -> .), OCR fixes (ln fine -> In fine, superscript-2 duplication before Viens/viens), one-off typos (missing initial T in 'Tout le reste...', 'appararences' -> 'apparence', missing space after ellipsis in T32.E0024.P021), s'unie -> s'unit conjugation fix.",
-      "source": "Originally from LDC_v2.5.50_Corrected_Text_Deep_Audit_Evidence.zip (124-item ledger, audit1) + LDC_v2.5.50_Text_Quality_Fourth_Deep_Audit_Evidence.zip (47-item punctuation ledger, audit4). Audit1 zip is no longer available locally as of 2026-07-04 — rule set reconstructed by exact-string pattern re-scan against the corpus instead of the original paragraph-id list.",
-      "rules": [
-        {
-          "old": "Eternité",
-          "new": "Éternité"
-        },
-        {
-          "old": "Eternelle",
-          "new": "Éternelle"
-        },
-        {
-          "old": "Eternel",
-          "new": "Éternel"
-        },
-        {
-          "old": "A mesure",
-          "new": "À mesure"
-        },
-        {
-          "old": "A peine",
-          "new": "À peine"
-        },
-        {
-          "old": "A Toi",
-          "new": "À Toi"
-        },
-        {
-          "old": "O mon",
-          "new": "Ô mon"
-        },
-        {
-          "old": "Etre",
-          "new": "Être"
-        },
-        {
-          "old": "s’unie",
-          "new": "s’unit"
-        },
-        {
-          "old": "s'unie",
-          "new": "s'unit"
-        },
-        {
-          "old": "ln fine",
-          "new": "In fine"
-        },
-        {
-          "old": ";;",
-          "new": ";"
-        },
-        {
-          "old": ";,",
-          "new": ";"
-        },
-        {
-          "old": ", .",
-          "new": "."
-        },
-        {
-          "old": ",.",
-          "new": "."
-        },
-        {
-          "old": "out le reste est fini",
-          "new": "Tout le reste est fini",
-          "note": "one-off, LDC.T21.E0021.P011 — regex re-check will always match substring of the fix itself; not a real remaining defect"
-        },
-        {
-          "old": "en appararences",
-          "new": "en apparence",
-          "note": "one-off, LDC.T36.E0039.P013"
-        },
-        {
-          "old": "….f",
-          "new": "…. f",
-          "note": "one-off, LDC.T32.E0024.P021"
-        },
-        {
-          "old": "²²Viens",
-          "new": "Viens",
-          "note": "one-off OCR superscript, LDC.T14.E0072.P050"
-        },
-        {
-          "old": "²²viens",
-          "new": "viens",
-          "note": "one-off OCR superscript"
-        }
-      ],
-      "status": "applied_v2.5.63_original_lineage; reapplied_v2.6.2_EB21_lineage"
+     "old": "Eternelle",
+     "new": "Éternelle"
     },
     {
-      "id": "elision_apostrophe_space_49",
-      "type": "batch_pattern_fix",
-      "description": "49 genuine elision-apostrophe defects: a stray space after an elision apostrophe following a known elision word (qu', jusqu', lorsqu', puisqu', quoiqu', presqu', entr', aujourd', n', d', l', m', t', s', c', j'). E.g. 'qu’ à' -> 'qu’à'.",
-      "excluded": "132 similar-looking apostrophe+space patterns were deliberately NOT touched because they are legitimate scare-quotes (e.g. 'prendre', 'fiat', 'cattiva') rather than elision errors. Only fix when the apostrophe immediately follows one of the known elision words above.",
-      "status": "applied_v2.6.2_EB21_lineage"
+     "old": "Eternel",
+     "new": "Éternel"
     },
     {
-      "id": "T04.1901-10-08.P011.narrative_bleed",
-      "paragraph_id": "ldc_t04_1901_10_08_e001_p011",
-      "segment_id": "LDC.T04.1901-10-08.E001.P011.S01",
-      "type": "speech_offset",
-      "old_end_char": 399,
-      "new_end_char": 109,
-      "reason": "Jesus-speech segment incorrectly extended into Luisa's first-person narrative ('Pendant qu'Il disait cela, je voyais...') that follows the actual quoted words in the same paragraph. Speech should end at 'pervertit.' (position 109), not run to the paragraph end (399).",
-      "status": "applied_v2.5.66_original_lineage; reapplied_v2.6.0_EB21_lineage"
+     "old": "A mesure",
+     "new": "À mesure"
     },
     {
-      "id": "T02.1899-10-28.P007.essuyes_offset_regression",
-      "paragraph_id": "ldc_t02_1899_10_28_e001_p007",
-      "segment_id": "LDC.T02.1899-10-28.E001.P007.S01",
-      "type": "speech_offset",
-      "old_end_char": 223,
-      "new_end_char": 225,
-      "reason": "Self-inflicted regression: the essuyés word-length change (+1 char vs séchés) shifted the paragraph length but the speech segment end_char wasn't migrated at the same time. Caught by the mechanical-fixes re-scan pass and corrected to tlen (225) — no closing guillemet present, segment runs to end of paragraph.",
-      "status": "applied_v2.6.2_EB21_lineage"
+     "old": "A peine",
+     "new": "À peine"
     },
     {
-      "id": "boundary_repair_program_v2.5.52_to_v2.5.65",
-      "type": "batch_program",
-      "description": "Full-corpus speech segment boundary repair, applied to the ORIGINAL corpus lineage (pre-EB21) across multiple sessions: 723 start_char mid-word offsets (scan-back to word boundary), 5,368 end_char short errors (3,505 closing-quote orphans, 1,106 mid-word truncations, 759 large-tail closing-quote inclusions), 38 additional end_char boundary fixes (21 over-tlen clamped, 17 mid-word snapped to nearest closing guillemet or tlen), 13 sc/ec boundary fixes. Result: 0 defects across all 8 boundary-defect categories (over-tlen, sc>ec, sc mid-word, sc past guillemet, sc 2-past-guillemet+space, short article before guillemet, ec mid-word, overlapping segments).",
-      "status": "applied_to_original_lineage_only — NOT applicable to EB-21 lineage, which required its own independent boundary repair (see boundary_repair_program_v2.6.0 below) since it was an independent rebuild with its own offset bugs"
+     "old": "A Toi",
+     "new": "À Toi"
     },
     {
-      "id": "boundary_repair_program_v2.6.0_EB21",
-      "type": "batch_program",
-      "description": "Full-corpus speech segment boundary repair applied to the EB-21 lineage after migration (v2.6.0): 2,437 defects found and fixed (723 mid-word start_char snapped to nearest preceding guillemet/colon/word-boundary, 1,082 end-of-paragraph end_char extended to tlen, 108 guillemet-overshoot end_char snapped back to nearest closing guillemet). Result: 0 defects across all boundary categories, 53,922 speech segments preserved.",
-      "status": "applied_v2.6.0"
+     "old": "O mon",
+     "new": "Ô mon"
     },
     {
-      "id": "quote_balance_campaign_v2.6.6_to_v2.6.7",
-      "type": "batch_program",
-      "description": "Guillemet-balance repair across 531 unbalanced entries (of 2,301). 249 entries fixed with 255 single-character operations: (a) appended missing closing guillemet at end of speech runs that open « and run unclosed to entry end (validated against speech-annotation layer); (b) inserted missing opening guillemet after attribution colons (\"Il me dit: \", \"Je répondis: \", \"proclama: \", etc.) for speech that closes » but never opens; (c) 19 hand-adjudicated cases (speech starting at entry start, laments shifting to direct address, editorial extract, entry-boundary quote splits); (d) 5 leading ASCII double-quotes replaced with «. All offsets migrated, fingerprints/search/norm resynced. 3 placement errors found by self-audit during the pass (T14.E0056, T28.E0003, T30.E0008 — « initially landed on list-items due to non-sequential paragraph IDs / list-colon false matches) and corrected before deploy. ROUND 3 (v2.6.7): 17 more entries / 25 operations — closing guillemets placed at verified speech-segment end offsets, opens after paragraph-final attribution colons, one curly-quote pair normalized. All 33 machine proposals individually read; 7 rejected (speech continued past the proposed close).",
-      "adjudication_basis": "Balance of probabilities per Louis 2026-07-04 instruction: source PDF contains formatting/quote/grammar mistakes; interpret the text and make it coherent rather than mirror the source.",
-      "not_fixed": "64 entries legitimate French continuation-guillemet convention; 201 entries remaining for manual reading — see quote_balance_review_v2.6.6.json. Campaign total: 266 of 531 fixed.",
-      "status": "applied_v2.6.6_and_v2.6.7"
+     "old": "Etre",
+     "new": "Être"
     },
     {
-      "id": "lowercase_boundary_review_v2.6.6",
-      "type": "review_dismissal",
-      "description": "125 cross-paragraph lowercase-boundary candidates (paragraph ends without terminal punctuation, next begins lowercase) reviewed and dismissed: they are mid-sentence paragraph splits inherited from the source PDF line layout. The text reads correctly in sequence. Merging paragraphs would break stable IDs, search records and speech offsets for no reader benefit.",
-      "status": "no_change_v2.6.6"
+     "old": "s’unie",
+     "new": "s’unit"
     },
     {
-      "id": "speaker_attribution_campaign_v2.6.8_increment1",
-      "type": "speaker_correction",
-      "description": "Task A (speaker attribution) increment 1 — English-translation-validated fixes. Set up the English edition (queenofthedivinewill.org, all 36 vols via antiword, date-indexed, 91% coverage) as a validation source; discovered its quote convention (Jesus=\"...\" double, Luisa='...' single) which reliably determines speaker. Fixed 3 entries, all confirmed against English: T4 1903-02-22 P007 (added missing JESUS[0:157] for \"Si l'homme ne monte pas...pour lui.\" + LUISA[201:297] question); T4 1903-03-12 P002/P003/P006 (full-entry reconstruction: P002 LUISA added; P003 fixed mislabeled LUISA[499:652] to LUISA[0:473]+JESUS[490:652]; P006 whole paragraph LUISA->JESUS); T2 1899-05-02 P008 (OTHER->JESUS, \"mon Église\" speech in a Jesus-monologue entry). Net +4 speech segments; validator clean.",
-      "scan_findings": "Full-corpus scan found 719 missing-segment + 63 suspicious-attribution candidates. English entry-structure classifier: 150 M + 3 W in JESUS_MONOLOGUE entries (safer); 541 M + 53 W in DIALOGUE entries (need per-paragraph reading). Confirmed NO safe batch exists — categories mix Jesus/Luisa/narration/nested-speech; every case needs individual reading + English cross-check. Remaining ~600 real candidates = multi-session campaign. Tooling in scratchpad: english_index.py, english_speaker_struct.py, scan_speech_gaps.py, taskA_scan.json.",
-      "status": "increment1_applied_v2.6.8"
+     "old": "s'unie",
+     "new": "s'unit"
     },
     {
-      "id": "speaker_attribution_v2.6.9_increment2",
-      "type": "speaker_correction",
-      "description": "Task A increment 2 — 7 missing JESUS segments added across T4/T10/T11/T12/T13, all in Jesus-monologue entries, each individually read + confirmed as Jesus direct speech (2 partial spans split at the closing guillemet before Luisa narration: T11.1915-04-24.P002, T11.1916-10-30.P005). Deferred T27.E0031.P052 (ambiguous \"Nous le voulons\") and skipped T32.E0030.P013 (Luisa thought + narration lead-in). Method: mono-M candidates containing literal guillemets, read case-by-case.",
-      "status": "applied_v2.6.9"
+     "old": "ln fine",
+     "new": "In fine"
     },
     {
-      "id": "speaker_attribution_v2.6.10_increment3",
-      "type": "speaker_correction",
-      "description": "Task A increment 3 — 13 more missing JESUS segments (T3/T11/T25/T26/T29/T30x2/T31/T33/T34x2/T35x2), the divine-voice subset of mono-entry candidates (contain \"Nous/notre Vouloir/Ma Volonté/Ma fille\"), each read individually. Deferred 2 exclamatory-apostrophe cases (T31.E0023.P012, T36.E0025.P020 — ambiguous speaker); skipped 3 narration/lead-in false-positives (T19.E0021.P052, T31.E0012.P009, T36.E0010.P046).",
-      "status": "applied_v2.6.10"
+     "old": ";;",
+     "new": ";"
     },
     {
-      "id": "speaker_attribution_v2.6.11_increment4",
-      "type": "speaker_correction",
-      "description": "Task A increment 4 — 12 more JESUS segments from the UNSURE mono bucket (T3/T4/T6/T10/T11x3/T12x3/T13), the unambiguous divine-first-person subset (Je/Moi/Ma/Me-cost). Deferred teaching-exposition cases lacking first-person cues (need English alignment); skipped narration lead-ins and Luisa vision/prayer paragraphs.",
-      "status": "applied_v2.6.11"
+     "old": ";,",
+     "new": ";"
     },
     {
-      "id": "speaker_attribution_v2.6.12_increment5",
-      "type": "speaker_correction",
-      "description": "Task A increment 5 — 13 more JESUS segments (T19x4/T21/T24/T26/T29x3/T30/T36x2), completing the mono-entry UNSURE bucket read-through. Applied only unambiguous divine first-person / self-reference (\"Ton Jésus\", \"Tu Me sens\", \"Je/Moi/Mes\"). Skipped narration lead-ins (\"Jésus ajouta:\"), fragments (\"Oh!\", \"Et\"), and general exclamations without a speaker marker (\"Oh! si tous savaient\") which need English alignment.",
-      "status": "applied_v2.6.12"
+     "old": ", .",
+     "new": "."
     },
     {
-      "id": "speaker_attribution_v2.6.13_increment6",
-      "type": "speaker_correction",
-      "description": "Task A increment 6 — FIRST dialogue-entry batch. 29 segments across 27 paragraphs (T2/T10/T11/T12x4/T16/T17x3/T18x2/T19/T20x2/T21/T23x3/T24x5/T25), the divine-first-person/divine-we subset of the 104 dialogue-M DIVINE-marker candidates (first 52 read). Two multi-turn paragraphs split correctly: T2.1899-10-07.P004 (Jesus[0:290]+trailing Luisa narration left unstyled); T11.1912-07-23.P010 (Jesus/Luisa/Jesus 3-turn dialogue in one paragraph). Skipped narration, Luisa prayers/questions, creation-voice nested quotes (T2.1899-03-13.P008), and apostrophe-to-the-Will forms (deferred). Reading method same as mono tier.",
-      "status": "applied_v2.6.13"
+     "old": ",.",
+     "new": "."
     },
     {
-      "id": "speaker_attribution_v2.6.14_increment7",
-      "type": "speaker_correction",
-      "description": "Task A increment 7 — 37 JESUS segments, completing the dialogue-M DIVINE bucket (indices 52-103). Divine-we/first-person voice across T25-T36. Skipped creature-voice quotes (\"Nous voulons la Volonté Divine\"=souls; \"je Vous donne tout\"=Luisa to God), narration, and feminine/Mary-ambiguous cases (deferred: T34.E0023.P026, T34.E0027.P020, T32.E0016.P020, etc.). Dialogue DIVINE bucket now done: 66 of 104 applied across inc6+7.",
-      "status": "applied_v2.6.14"
+     "old": "out le reste est fini",
+     "new": "Tout le reste est fini",
+     "note": "one-off, LDC.T21.E0021.P011 — regex re-check will always match substring of the fix itself; not a real remaining defect"
     },
     {
-      "id": "speaker_attribution_v2.6.15_increment8",
-      "type": "speaker_correction",
-      "description": "Task A increment 8 — BREAKTHROUGH on the UNSURE tier via neighbor-context reading (reliable where cross-lingual alignment failed). Read each UNSURE candidate WITH its corpus prev/next paragraphs + their speaker labels: continuous divine discourse = JESUS; narration lead-ins (\"Il me répondit:\", \"Jésus ajouta:\") / Luisa speech / 3rd-person-about-Jesus = skip. First 40 of 354 UNSURE dialogue candidates processed: 17 JESUS + 2 MARY applied, 19 skipped, 1 deferred, 1 already-done. Also confirmed the 3rd French edition (36T Livre du Ciel, scratchpad/fr36_full.txt, 3044pp) and Owen translation help as reading aids but neighbor-context is the primary reliable signal.",
-      "status": "applied_v2.6.15"
+     "old": "en appararences",
+     "new": "en apparence",
+     "note": "one-off, LDC.T36.E0039.P013"
     },
     {
-      "id": "speaker_attribution_v2.6.16_increment9",
-      "type": "speaker_correction",
-      "description": "Task A increment 9 — UNSURE dialogue indices 40-79 via neighbor-context reading. 20 JESUS applied, 20 skipped (narration lead-ins, Luisa speech, one feminine \"heureuse\"=Luisa). Progress: 80 of 354 UNSURE read.",
-      "status": "applied_v2.6.16"
+     "old": "….f",
+     "new": "…. f",
+     "note": "one-off, LDC.T32.E0024.P021"
     },
     {
-      "id": "speaker_attribution_v2.6.17_increment10",
-      "type": "speaker_correction",
-      "description": "Task A increment 10 — UNSURE dialogue indices 80-119. 26 JESUS applied (much is continuous list-form teaching incl. short connective fragments Or,/Vu styled for visual continuity), 3 nested-quote defers, 11 skips. Progress: 120 of 354 UNSURE read.",
-      "status": "applied_v2.6.17"
+     "old": "²²Viens",
+     "new": "Viens",
+     "note": "one-off OCR superscript, LDC.T14.E0072.P050"
     },
     {
-      "id": "speaker_attribution_v2.6.18_increment11",
-      "type": "speaker_correction",
-      "description": "Task A increment 11 — UNSURE dialogue indices 120-159 (mostly vol 19-20). 21 JESUS applied, 2 deferred (ambiguous Je-Me-disais musings), 17 skipped (narration lead-ins, Luisa prayers, 3rd-person Marian vision narration). Progress: 160 of 354 UNSURE read.",
-      "status": "applied_v2.6.18"
-    },
-    {
-      "id": "speaker_attribution_v2.6.19_increment12",
-      "type": "speaker_correction",
-      "description": "Task A increment 12 — UNSURE dialogue 160-199 (vols 20-23, dense continuous Jesus teaching). 35 JESUS applied, 5 skipped. Refined discriminator: within a Jesus-flanked run, PRESENT-tense doctrinal/exclamatory = JESUS; PAST-tense experiential (je voyais / mon pauvre esprit / il me dit) = Luisa narration = skip. Progress: 200 of 354 UNSURE read.",
-      "status": "applied_v2.6.19"
-    },
-    {
-      "id": "speaker_attribution_v2.6.20_increment13",
-      "type": "speaker_correction",
-      "description": "Task A increment 13 — UNSURE dialogue 200-239 (vols 23-25). 31 JESUS applied, 4 skipped, 5 deferred (nested cries Fiat!/je T aime, 1 mixed para, 1 past-tense vision). Rule refinement: past-tense DOCTRINAL recounting (Creation/Redemption) is still JESUS; only past-tense EXPERIENTIAL (je voyais/j entendais/il me dit) is Luisa. Progress: 240 of 354 UNSURE read.",
-      "status": "applied_v2.6.20"
-    },
-    {
-      "id": "speaker_attribution_v2.6.21_increment14",
-      "type": "speaker_correction",
-      "description": "Task A increment 14 — UNSURE dialogue 240-279 (vols 25-28). 30 JESUS applied, 1 skip, 9 deferred (nested quotes of creature/others words). Progress: 280 of 354 UNSURE read.",
-      "status": "applied_v2.6.21"
-    },
-    {
-      "version": "v2.6.22",
-      "increment": 15,
-      "task": "speaker-attribution",
-      "method": "neighbor-context reading (UNSURE dialogue tier)",
-      "range": "UNSURE indices 280-319 (vols 28-30)",
-      "applied": 29,
-      "speaker": "JESUS",
-      "skipped": 3,
-      "deferred": 8,
-      "speech_segments_after": 54248
-    },
-    {
-      "version": "v2.6.23",
-      "increment": 16,
-      "task": "speaker-attribution",
-      "method": "neighbor-context reading (UNSURE dialogue tier)",
-      "range": "UNSURE indices 320-353 (vols 30-36) — FINAL UNSURE batch",
-      "applied": 24,
-      "speaker": "JESUS",
-      "skipped": 8,
-      "deferred": 2,
-      "speech_segments_after": 54272
-    },
-    {
-      "version": "v2.6.24",
-      "increment": 17,
-      "task": "speaker-attribution",
-      "method": "neighbor-context reading (W mislabel tier — overriding existing labels)",
-      "range": "W tier: 63 flagged (cur!=flank), vols 1-30",
-      "applied": 14,
-      "change": "LUISA->JESUS",
-      "note": "49 left as-is: correctly-labeled Luisa replies/prayers, already-JES, or genuinely OTHER (birds/souls/creature words)",
-      "speech_segments_after": 54272
-    },
-    {
-      "version": "v2.6.26",
-      "increment": 18,
-      "task": "speaker-attribution",
-      "method": "neighbor-context reading (M/mono missing-segment tier)",
-      "range": "M tier: 719 flagged; 345 already labeled; 374 truly missing reviewed (all 36 vols)",
-      "applied": 62,
-      "speaker": "JESUS",
-      "note": "312 correctly left unlabeled: narration lead-ins (Mon doux Jésus ajouta:), Luisa replies/prayers/experiential narration, nested quotes (creature words, Pater Noster) unstyled per ruling, 1 demon quote, 3rd-person-Jesus deferrals consistent with UNSURE tier",
-      "speech_segments_after": 54334
-    },
-    {
-      "version": "v2.7.0",
-      "stage": "EB-22A Stage 1",
-      "task": "entry-boundary-split",
-      "cases": [
-        "S01",
-        "S02",
-        "S03",
-        "S04"
-      ],
-      "method": "char-0 boundary: relocate embedded DATE—TITLE. prefix into new-entry metadata (contract §13/§16), move affected paragraphs to new standalone entry, preserve paragraph IDs (§14.1), retarget search+speaker records, recompute per-entry speech meta",
-      "results": {
-        "S01": "T2 1er août 1899 (9 paras from 31 juil P003-P011)",
-        "S02": "T2 1er sept 1899 (33 paras)",
-        "S03": "T2 1er oct 1899 (14 paras)",
-        "S04": "T6 1er mai 1904 (6 paras)"
-      },
-      "entries_after": 2305,
-      "paragraphs_after": 74331,
-      "note": "Text conserved (prefix relocated to metadata, no word change). 4 boundary paragraphs edited (date prefix stripped) => their embeddings slightly stale but count/id unchanged so validator clean; vector search opt-in/off, not re-embedded to avoid model mismatch. Verified in-browser: clean bodies, no dup markers, Jesus spans styled, chronological order correct."
-    },
-    {
-      "version": "v2.7.1",
-      "stage": "EB-22A A02",
-      "task": "entry-recovery-addition",
-      "case": "A02",
-      "entry": "LDC.T15.E0020A",
-      "date": "21 avril 1923",
-      "title": "La tache la plus noire de la société actuelle.",
-      "source": "Composite French edition (36T Livre du Ciel PDF pages 1122-1123), extracted via PyMuPDF; English-corroborated",
-      "method": "AUTHENTIC FRENCH recovered from composite edition (NOT translated from English, per Louis's confirmation to use the French source). Cleaned to app house typography only (straight apostrophes, tight «word»/?/», ': «' after colon, œ preserved) — no wording normalization. Page numbers/line-wraps stripped. Split into 2 paragraphs at the Luisa-speech→Jesus-reply boundary. No speaker segments (contract §9.4.5). Inserted between E0020 (20 avr) and E0021 (28 avr).",
-      "embeddings": "model empirically confirmed = paraphrase-multilingual-MiniLM-L12-v2 (cosine 1.0000 vs stored); 2 normalized float16 vectors appended",
-      "entries_after": 2306,
-      "paragraphs_after": 74333,
-      "note": "Source has lowercase 'pour d'autres' after a period — preserved faithfully (no correction). semantic_index N and embeddings n both bumped to 74333. Validator clean; browser-verified render + chronological order."
-    },
-    {
-      "version": "v2.7.2",
-      "stage": "EB-22A Stage 2 (S05)",
-      "task": "entry-boundary-split-midpara",
-      "case": "S05",
-      "new_entry": "LDC.T16.E0006A",
-      "date": "9 août 1923",
-      "title": "La Volonté Divine est Lumière et la volonté humaine noirceur.",
-      "method": "Boundary split at LDC.T16.E0006.P041 char 137. Suffix was date+title ONLY (no body) -> relocated to new-entry metadata; P041 prefix truncated+KEPT with 5 août (E0006); P042-P051 moved to new 9 août entry (ids preserved, re-parented). No new paragraph. P041 embedding refreshed in place (model confirmed MiniLM, cosine 1.0).",
-      "entries_after": 2307,
-      "paragraphs_after": 74333,
-      "note": "8 JESUS segments re-parented. Validator clean; browser-verified: 5 août ends at '...je m'arrête.', 9 août renders with title/date/Jesus spans, order 5->9->13 août correct."
-    },
-    {
-      "version": "v2.7.3",
-      "stage": "EB-22A Stage 2 (S06/S07 atomic)",
-      "task": "entry-boundary-split-midpara-3way",
-      "cases": [
-        "S06",
-        "S07"
-      ],
-      "new_entries": [
-        "LDC.T16.E0055A (24 mai 1924)",
-        "LDC.T16.E0055B (29 mai 1924)"
-      ],
-      "method": "Atomic 3-way realignment of T16 19 mai entry. P033 split@57 (prefix stays 19 mai; suffix date+title->24 mai metadata, body->new frag E0055A.P001). P110 split@89 (prefix->last para of 24 mai keeping id P110; suffix date+title->29 mai metadata, body->new frag E0055B.P001). 24 mai=frag+P034-P109+P110; 29 mai=frag+P111-P157. No speech segment straddled either cut (P033 seg 0-55<57, P110 seg 0-87<89) so only re-parenting, no offset surgery. +2 entries, +2 paragraphs.",
-      "embeddings": "refreshed P033+P110 vectors in place (truncated text); appended 2 frag vectors (MiniLM confirmed)",
-      "render_fix": "getParagraphs() now sorts by display_order (was file order) — fragment paras are appended at file end but belong first; no-op for all 2333 other entries, verified. Without this the frag rendered last.",
-      "entries_after": 2309,
-      "paragraphs_after": 74335,
-      "note": "Validator clean; browser-verified: 19 mai ends '...cette créature.», 24 mai opens 'Le premier mot...Fiat' ends '...de Ma Volonté.», 29 mai opens 'Leçon à Luisa...', order 19->24->29 mai->1 juin correct. No new speaker segments (contract §9.4.5)."
-    },
-    {
-      "version": "v2.7.4",
-      "stage": "EB-22A A01 — FINAL, EB-22 COMPLETE",
-      "task": "entry-recovery-addition",
-      "case": "A01",
-      "entry": "LDC.T20.E0022A",
-      "date": "10 novembre 1926",
-      "title": "Comment celle qui vit dans la Divine Volonté contient en elle toute la Création, est le reflet de son Créateur. Deux effets du péché.",
-      "source": "Composite French edition PDF (pp.1585-1588) via PyMuPDF, VERIFIED word-for-word against all 4 official hard-copy photos (book pp.60-63, IMG_4998/4999/5001/5002)",
-      "method": "Authentic French (not English-translated). Words byte-exact from composite; casing+punctuation matched to APP CORPUS conventions per Louis (devotional capitals Il/Elle/Son/Ses/Ciel/Œuvres, semantic lowercase for soul/Adam/ordinary), NOT the photographed book edition. Word-fidelity guard: letters-only-lowercased == composite (only casing/punct changed). Artifacts fixed (page number '33', 5 line-wrap space-drops). 5 paragraphs at discourse boundaries. 4 JESUS speech segments added (Jesus's direct discourse P001/P002/P003/P005; P004 Luisa reflection unstyled) — per Louis 'match corpus incl Jesus/Mary direct words'. Inserted between E0022(6 nov) & E0023(14 nov).",
-      "embeddings": "5 MiniLM vectors appended (confirmed model)",
-      "entries_after": 2310,
-      "paragraphs_after": 74340,
-      "speech_segments_after": 54338,
-      "note": "EB-22 COMPLETE: all 9 cases done (S01-S07 splits + A02 21 avril 1923 + A01 10 nov 1926). Entries 2301->2310 (contract target hit exactly). 25 avril 1923 correctly excluded (English-only). Validator clean; browser-verified render+order+Jesus styling."
-    },
-    {
-      "version": "v2.8.0",
-      "stage": "punctuation-restoration (source-verified diagnosis, editorial add)",
-      "task": "add-terminal-period",
-      "case": "PUNCT-01",
-      "entry": "corpus-wide (36 vols)",
-      "date": "2026-07-09",
-      "title": "Append terminal period to complete-sentence paragraphs missing one",
-      "source": "Base-source GELDC1-36 PDFs (PyMuPDF) — source-verified: 0 extraction-dropped periods; the gaps are in the source itself (dash-list formatting). Fix is therefore an editorial addition of a period, NOT a restore.",
-      "method": "Guarded set: paragraph text ends with a letter OR a closing single/double quote (not »), has NO terminal punctuation, next paragraph in the same entry begins a new capitalised sentence (or entry end), and last token is not a 1-2 char capital (excludes mid-word splits). Excluded 13,418 comma/lowercase continuations and colon lead-ins. Appended '.'; updated paragraphs text+fingerprint, search text+norm, and extended any speaker segment reaching paragraph end. Sample of 35 verified all genuine complete sentences.",
-      "embeddings": "NOT regenerated — a trailing period is semantically negligible for vector search; validator checks id count/format only (clean).",
-      "entries_after": 2310,
-      "paragraphs_after": 74340,
-      "speech_segments_after": 54338,
-      "note": "716 paragraphs (714 letter-ending + 2 closing-quote-ending: T34.E0034.P041, T35.E0008.P031). Distinct from the v2.7.9 RENDER fix which recovered ~1,620 periods/quotes that were IN the corpus but dropped in display (segment end_char undershoot). Validator clean; browser-verified T34.E0034."
-    },
-    {
-      "version": "v2.8.3",
-      "stage": "speaker-attribution: two-quotes-in-one-paragraph",
-      "task": "fix-second-quote-styling",
-      "case": "ATTR-02",
-      "entry": "19 paragraphs (T2-T16)",
-      "date": "2026-07-10",
-      "title": "Fix Jesus/Marie 2nd direct-quote hidden or misattributed when a paragraph has quote1 + narration + quote2",
-      "source": "Neighbor-context reading; grammatical person of the narration gap (Il/Jésus vs Je) disambiguates.",
-      "method": "Scanned styled segments whose TEXT contains »<narration>«second-quote (renderer PASS-2 splits at first » and demotes the rest). 104 candidates, classified: 9 SPLIT (Jesus q1+Jesus q2, gap=Il ajouta -> split into two same-speaker segs); 6 RELOCATE (Luisa prayer wrongly styled as q1 -> move segment to Jesus/Marie q2); 4 SPECIAL (T3 crowd-quote 2nd = shrink to q1; T6 multi-turn = 2 Jesus segs, Luisa replies plain; T9 Jesus-Luisa-Jesus = add q1 seg + move seg to q3; T11 Marie q1 + Jesus q2 = shrink Marie, add Jesus seg). 43 first-person Je (Luisa replies, correctly plain) + 42 ambiguous LEFT UNTOUCHED.",
-      "entries_after": 2310,
-      "paragraphs_after": 74340,
-      "speech_segments_after": 54350,
-      "note": "Reported case: T11 20 aout 1912 p004 (Il ajouta: Un proverbe dit: L homme propose et Dieu dispose). Validator clean; browser-verified reported + relocate + marie/jesus cases. Scripts scratchpad/jesus2q.py, jesus_reloc.py, jesus_special.py. 42 ambiguous + 43 Luisa-reply cases documented, not changed."
-    },
-    {
-      "version": "v2.8.5",
-      "stage": "speaker-attribution: missing continuation segments",
-      "task": "add-missing-jesus-segments",
-      "case": "ATTR-03",
-      "entry": "ldc_t11_1912_08_16_e001 (16 aout 1912)",
-      "date": "2026-07-11",
-      "title": "Add JESUS segments to p003-p005 (Jesus monologue continuation that had no segment)",
-      "source": "Neighbor-context: entry is one unbroken Jesus quote — p001 opens «Ma fille..., p005 closes ...elle-meme.». p003-p005 were unattributed.",
-      "method": "Added 3 JESUS high segments [0:len] for p003/p004/p005 (whole paragraphs, all Jesus discourse: filet de Lumiere / ne pense qu-a Moi / Comme il est beau de voir une ame). Fixed segment_ids to clean dotted form.",
-      "entries_after": 2310,
-      "paragraphs_after": 74340,
-      "speech_segments_after": 54353,
-      "note": "Broader class (unattributed Jesus/Marie continuation paragraphs inside an open quote) scanned: 487 candidates w/ divine markers, 236 after strict Luisa-marker exclusion — but STILL unsafe to auto-fix (corpus capitalises 1st-person inconsistently; Luisa narration like -Pendant qu-Il parlait, Je Me sentais confuse- has capital Je/Me). Needs careful per-case reading like the original campaign. NOT auto-applied. Validator clean; browser-verified all 5 paras gold."
-    },
-    {
-      "version": "v2.8.6",
-      "stage": "speaker-attribution: missing-segment gap pass (parallel readers, part 1)",
-      "task": "add-missing-jesus-marie-segments",
-      "case": "ATTR-04a",
-      "entry": "137 paragraphs across 22 volumes",
-      "date": "2026-07-11",
-      "title": "Add JESUS/MARIE segments to unattributed continuation paragraphs (4 of 14 reader batches)",
-      "source": "Parallel neighbour-context reading (14 subagent readers over 299 entries / 1674 candidates). Session rate-limit interrupted 10 readers; 4 batches (00,06,07,08) completed = 176 verdicts.",
-      "method": "Candidates = no-styled-segment paragraphs inside an open Jesus/Marie quote (quote-balance walk). Readers judged JESUS/MARIE/SKIP by full-entry context. Central verify: mechanical guards (offsets valid, no mid-word, no overlap with ANY existing segment), red-flag scan for Luisa-narration markers (3 flagged, all confirmed Jesus false-positives), manual spot-checks. Applied 137 (127 JESUS + 10 MARIE); 39 skipped = overlap an existing OTHER/LUISA/UNKNOWN segment (need relabel/split, handled separately incl. 1 agent MARIE-mislabel caught at T18.E0005A.P039).",
-      "entries_after": 2310,
-      "paragraphs_after": 74340,
-      "speech_segments_after": 54490,
-      "note": "PARTIAL. Remaining: (a) 39 overlap cases within completed batches; (b) 10 reader batches (~1100 candidates) not yet run — blocked by session rate-limit reset ~12:30 Mauritius. Scripts scratchpad/build_gap_dataset.py, apply_gaps.py, gap_verdicts_*.json."
-    },
-    {
-      "version": "v2.9.1",
-      "stage": "speaker-attribution: missing-segment gap pass (serial main-loop, batches 01-03)",
-      "task": "add-missing-jesus-marie-segments",
-      "case": "ATTR-04b",
-      "entry": "batches 01, 02, 03 of the remaining reader queue",
-      "date": "2026-07-11",
-      "title": "Add JESUS/MARIE segments to unattributed continuation paragraphs (serial pass)",
-      "source": "Serial main-loop reading (no subagents) — immune to the parallel-loss problem when session limits hit. Each candidate read in full entry context; context = primary evidence, English editions = corroborator, defective French source punctuation = weak witness only, fail-closed on genuine ambiguity.",
-      "method": "Batch 01 = 46 adds; batch 02 = 111 adds; batch 03 = 85 adds (84 JESUS + 1 MARIE) across vols 1,3,4,5,7,8,11,13,16,17,20,26,36 + 2 relabels (t04.p008 LUISA->MARIE, T16.E0022.P073 UNKNOWN->JESUS). Batch 03 fail-closed drops: nested creature/prayer quotes (T18.E0014 P034/P037, T26.E0024 P044/P055, T29.E0023 P073), Luisa narration/attribution/vision (T14.E0003 P030-036, T16.E0022 P069-092/P103, T30.E0030 P082-083, T36.E0001 P025-027), and one mixed paragraph with an indeterminable Jesus/Luisa split (t11_1912.p012).",
-      "entries_after": 2310,
-      "paragraphs_after": 74340,
-      "speech_segments_after": 54719,
-      "note": "PARTIAL — serial pass continuing. Done: batches 00,06,07,08 (v2.8.6), 01 (v2.8.9), 02 (v2.9.0), 03 (v2.9.1). Remaining batches: 04,05,09,10,11,12,13. Guards unchanged (offsets valid, no mid-word, no overlap with any existing segment)."
-    },
-    {
-      "version": "v2.9.2",
-      "stage": "speaker-attribution: missing-segment gap pass (serial main-loop, batch 04)",
-      "task": "add-missing-jesus-marie-segments",
-      "case": "ATTR-04c",
-      "entry": "batch 04 (22 entries, 111 candidates)",
-      "date": "2026-07-11",
-      "title": "Batch 04: 79 JESUS adds + 9 relabels",
-      "source": "Serial main-loop reading, full entry context; context-primary, English corroborator, fail-closed.",
-      "method": "79 JESUS continuation adds across vols 1,2,3,11,12,13,14,16,18,36 (incl. T13.E0033.P069 partial up to closing guillemet). 9 relabels: T17.E0034.P010-P013 LUISA->JESUS (Jesus praising Luisa after binding her, mislabeled), T18.E0016.P020/P023 UNKNOWN->JESUS (Jesus addressing the Father + continuation), T30.E0032.P009 OTHER->JESUS (closes a divine-Will quote already styled JESUS), and T29.E0034.P006/P013 JESUS->LUISA (creature's own aspirational quotes wrongly colored as Jesus — un-styled). Fail-closed drops: Luisa replies/narration (t04.p012-013, t05.p012, t07.p005-006, t09.p006, T14.E0005.P017 attribution, T17.E0034.P009/P014-016, T20.E0019.P043, T24.E0005.P049-050, T26.E0031.P052-060 vision narration), and nested creature quotes (T29.E0034.P007-008).",
-      "entries_after": 2310,
-      "paragraphs_after": 74340,
-      "speech_segments_after": 54798,
-      "note": "PARTIAL — serial pass continuing. Done through batch 04. Remaining batches: 05,09,10,11,12,13."
-    },
-    {
-      "version": "v2.9.3",
-      "stage": "speaker-attribution: missing-segment gap pass (serial main-loop, batch 05)",
-      "task": "add-missing-jesus-marie-segments",
-      "case": "ATTR-04d",
-      "entry": "batch 05 (21 entries, 107 candidates)",
-      "date": "2026-07-11",
-      "title": "Batch 05: 58 adds (56 JESUS + 2 MARIE) + 4 relabels",
-      "source": "Serial main-loop reading, full entry context; context-primary, English corroborator, fail-closed.",
-      "method": "56 JESUS + 2 MARIE (t11_1916_06_15 p010/p011 Virgin's prayer instruction) continuation adds across vols 1,2,7,9,11,12,13,14,16,17,24,27,29,30. Largest: T29.E0044 P059-P090 (32, the 'peuple du Royaume' discourse; P090 partial to drop a trailing 'Table des Matieres' artifact). 4 relabels: t04_1901_07_16.p008 LUISA->JESUS ('Mon Amour pour toi est si grand'), T13.E0034.P035/P037 LUISA->JESUS (divine voice at Creation-restoration), T24.E0015.P048 JESUS->LUISA (Luisa's fatigue narration mislabeled Jesus, un-styled). Fail-closed drops: Luisa replies/prayers/narration (t03.p008, t04 several, t05.p013 'Fiat', t11_1912.p011, t11_1916 p005-007/p009, T13.E0034 handled, T14.E0009.P006, T16.E0051 P012/P014/P034-036, T18.E0017.P058, T20.E0029.P052, T24.E0015 P049-057, T29.E0044 P025-036/P052).",
-      "entries_after": 2310,
-      "paragraphs_after": 74340,
-      "speech_segments_after": 54856,
-      "note": "PARTIAL — serial pass continuing. Done through batch 05. Remaining batches: 09,10,11,12,13."
-    },
-    {
-      "version": "v2.9.4",
-      "stage": "speaker-attribution: missing-segment gap pass (serial main-loop, batch 09)",
-      "task": "add-missing-jesus-marie-segments",
-      "case": "ATTR-04e",
-      "entry": "batch 09 (21 entries, 148 candidates)",
-      "date": "2026-07-11",
-      "title": "Batch 09: 85 adds (78 JESUS + 7 MARIE) + 13 relabels",
-      "source": "Serial main-loop reading, full entry context; context-primary, English corroborator, fail-closed.",
-      "method": "78 JESUS + 7 MARIE continuation adds across vols 2,4,8,10,11,13,15,17,19,30,32. Largest: T30.E0006 (42) — an entry alternating Jesus 3rd-person narration (35 JESUS) with the Virgin's 1st-person quoted prayers (7 MARIE); T19.E0012 (16). 13 relabels: T14.E0022.P012 + T17.E0004.P025 UNKNOWN->JESUS (Jesus continuation / prayer to the Father), T15.E0009.P019 JESUS->LUISA (Luisa's prayer), T30.E0006.P034 JESUS->MARIE (Virgin's quoted prayer), and a 9-paragraph block T20.E0056.P063/P065-P072 JESUS->LUISA (Luisa's meta-reflection on her scribal duty, wholesale mislabeled as Jesus). Fail-closed drops: extensive Luisa narration/vision/prayer (t01_sec103 all, T17.E0048 P031-035/P063-070, T27.E0021 all 13 vision paras, T15.E0009 prayer block, etc.).",
-      "entries_after": 2310,
-      "paragraphs_after": 74340,
-      "speech_segments_after": 54941,
-      "note": "PARTIAL — serial pass continuing. Done through batch 09. Remaining batches: 10,11,12,13."
-    },
-    {
-      "version": "v2.9.5",
-      "stage": "speaker-attribution: missing-segment gap pass (serial main-loop, batch 10)",
-      "task": "add-missing-jesus-marie-segments",
-      "case": "ATTR-04f",
-      "entry": "batch 10 (21 entries, 98 candidates)",
-      "date": "2026-07-11",
-      "title": "Batch 10: 39 JESUS adds + 1 relabel",
-      "source": "Serial main-loop reading, full entry context; context-primary, English corroborator, fail-closed.",
-      "method": "39 JESUS continuation adds across vols 2,8,10,11,12,13,14,21,24,33. Largest T21.E0004 (17). 1 relabel: T15.E0012.P035 JESUS->LUISA (Luisa's question 'pourquoi montres-tu tant d'Amour', mislabeled). This batch was heavy on fail-closed drops — whole Luisa vision/prayer sequences left plain (t01_sec109 crucifixion-prayer, t02 obedience-apostrophe block, T17.E0052 garden-vision narration, T24.E0032 field-of-Jesus vision). NOTE: candidate detection (quote-balance walk) misses clearly-Jesus paragraphs that fall outside a detected open quote (e.g. T33.E0008.P020-P023) — a known completeness gap in the gap-finder, not fixed here.",
-      "entries_after": 2310,
-      "paragraphs_after": 74340,
-      "speech_segments_after": 54980,
-      "note": "PARTIAL — serial pass continuing. Done through batch 10. Remaining batches: 11,12,13."
-    },
-    {
-      "version": "v2.9.6",
-      "stage": "speaker-attribution: missing-segment gap pass (serial main-loop, batch 11)",
-      "task": "add-missing-jesus-marie-segments",
-      "case": "ATTR-04g",
-      "entry": "batch 11 (21 entries, 185 candidates)",
-      "date": "2026-07-11",
-      "title": "Batch 11: 139 JESUS adds + 8 relabels",
-      "source": "Serial main-loop reading, full entry context; context-primary, English corroborator, fail-closed.",
-      "method": "139 JESUS continuation adds across vols 6,8,11,12,13,15,17,24,27,30. Largest: T15.E0022 (47 — Jesus' exposition of the Our Father / three breads), T27.E0033 (36 — Creation-symbolism discourse), T17.E0006 (30 — crucifixion extended-arms discourse), T12.1918_10_16 (14 — war/peace prophecy). 8 relabels (all expand-to-full-paragraph): t02_1899_09_02.p006/p007 + t10_1911_02_08.p018 + T15.E0022.P015/P034 + T24.E0039.P014 LUISA->JESUS (Jesus speech mislabeled Luisa), T13.E0044.P021 UNKNOWN->JESUS, T14.E0028.P018 JESUS->LUISA (Luisa's question). Very heavy fail-closed batch: t01_sec109_r02's entire 28-candidate confession-scene narration left plain; also T18.E0002/T19.E0046/T21.E0009 attribution lines, T33.E0048 vision narration.",
-      "entries_after": 2310,
-      "paragraphs_after": 74340,
-      "speech_segments_after": 55119,
-      "note": "PARTIAL — serial pass continuing. Done through batch 11. Remaining batches: 12,13."
-    },
-    {
-      "version": "v2.9.7",
-      "stage": "speaker-attribution: missing-segment gap pass (serial main-loop, batch 12)",
-      "task": "add-missing-jesus-marie-segments",
-      "case": "ATTR-04h",
-      "entry": "batch 12 (21 entries, 75 candidates)",
-      "date": "2026-07-11",
-      "title": "Batch 12: 27 adds (26 JESUS + 1 MARIE) + 3 relabels",
-      "source": "Serial main-loop reading, full entry context; context-primary, English corroborator, fail-closed.",
-      "method": "26 JESUS + 1 MARIE (t10_1911_03_26.p008 Virgin's answer) continuation adds across vols 4,8,10,11,12,13,14,15,18. 3 relabels: T13.E0017.P024 OTHER->JESUS (fish-metaphor nested quote, block already JESUS), T17.E0010.P011 + T20.E0001.P067 JESUS->LUISA (Luisa's plea/question mislabeled, expand-to-full-paragraph). Very heavy fail-closed batch: T28.E0008's entire 20-candidate block was Luisa narration; also t01_sec113_2 (5 womb-vision narration), T22/T25/T30.E0009/T34 attribution+narration lines.",
-      "entries_after": 2310,
-      "paragraphs_after": 74340,
-      "speech_segments_after": 55146,
-      "note": "PARTIAL — serial pass continuing. Done through batch 12. Remaining batch: 13 (last)."
-    },
-    {
-      "version": "v2.9.8",
-      "stage": "speaker-attribution: missing-segment gap pass (serial main-loop, batch 13 = FINAL)",
-      "task": "add-missing-jesus-marie-segments",
-      "case": "ATTR-04i",
-      "entry": "batch 13 (21 entries, 142 candidates)",
-      "date": "2026-07-11",
-      "title": "Batch 13 (final): 114 JESUS adds + 13 relabels — GAP PASS COMPLETE",
-      "source": "Serial main-loop reading, full entry context; context-primary, English corroborator, fail-closed.",
-      "method": "114 JESUS continuation adds across vols 3,4,12,15,17,22,25,28,30,34. Largest by far: T30.E0012 (85 — the 'acquiring the Kingdom of the Divine Will as a property, with gages/deposits' discourse). Also T15.E0032 (Eucharist self-reception, 7), T17.E0012 (6), T28.E0015 (4), T25.E0011 (4). 13 relabels (all expand-to-full-paragraph): 6 UNKNOWN->JESUS (T18.E0005 suspended-fruits discourse), 6 LUISA->JESUS (Jesus speech mislabeled: t01_sec113_3 p012/p013, t02 p007, t06 p004, t08 p007, T22.E0015.P098), 1 JESUS->LUISA (T13.E0046.P006 Luisa's reply). Fail-closed drops incl. t10_1911_10_11 fight-dialogue, T22/T25 tail narration.",
-      "entries_after": 2310,
-      "paragraphs_after": 74340,
-      "speech_segments_after": 55260,
-      "note": "COMPLETE. All 14 gap-pass batches applied & deployed (v2.8.6 through v2.9.8). Total ~917 attributions (adds + relabels) across the campaign; speech_segments 53,922 (EB-21 baseline) -> 55,260. KNOWN RESIDUAL GAP: the quote-balance candidate-finder misses clearly-Jesus paragraphs that fall OUTSIDE a detected open quote (observed e.g. T33.E0008.P020-023, T25.E0011.P042-056, T28.E0015.P047-069). Addressed by the context-finder residual pass (v2.9.9+, below)."
-    },
-    {
-      "version": "v2.9.9",
-      "stage": "residual gap pass (context finder) — STAGE 1: high-precision block bulk",
-      "task": "add-missing-jesus-marie-segments",
-      "case": "ATTR-05a",
-      "entry": "53 verified whole-blocks across vols 8,17,20,24,25,27,28,29,30,31,32,33,34,35,36",
-      "date": "2026-07-11",
-      "title": "Context-finder residual pass, stage 1: 440 JESUS adds (whole verified blocks)",
-      "source": "New context-based finder (build_ctx_dataset.py / build_blocks.py). The quote-balance walk only flagged unstyled paragraphs INSIDE a detected open guillemet; this finder flags unstyled runs ANCHORED to Jesus speech with divine-voice markers (Ma Volonte, Nous/Notre, Ma fille, mon Fiat), ZERO Luisa markers (no lowercase 'je', no attribution verbs, no 'mon doux Jesus'/'ta Volonte'/'ma pauvre ame'), and >=1 positive divine self-reference.",
-      "method": "Staged hybrid. Stage 1 = high-precision SAFE blocks only (whole runs, zero-Luisa-marker gate). All 53 blocks hand-verified (~99% precision). Applied 440 pure ADDs (JESUS, full paragraph). Excluded 3 add false-positives (T16.E0051.P012 Luisa 'Non non Mon Amour' reply; T27.E0033.P069 nested creation-quote previously skipped; T36.E0019.P022 'Ensuite Il a ajoute' narration) and DROPPED all 3 relabels to the manual stage (2 of 3 were wrong, incl. T20.E0001.P067 which would have reversed a correct batch-12 fix). Largest blocks: T28.E0031 (57p), T25.E0027 (38p), T24.E0042 (29p), T28.E0015 (23p), T17.E0031 (22p).",
-      "entries_after": 2310,
-      "paragraphs_after": 74340,
-      "speech_segments_after": 55700,
-      "note": "PARTIAL. Stage 1 (safe bulk) done. Stage 2 = manual fail-closed pass over the harder remainder the block-gate deliberately excluded: mixed runs (Jesus + nested Luisa quotes / lowercase-je artifacts), tail runs, and LUISA/UNKNOWN->JESUS relabels of whole mislabeled discourses (e.g. T15.E0018.P026-049 24-para Jesus answer tagged LUISA; T19.E0039.P054-075 22-para unstyled Jesus block). Residual candidate lists: ctx_batch_00-07.json (~2074 flags, tips-of-icebergs); read whole entries, not just flags."
-    },
-    {
-      "version": "v2.9.10",
-      "stage": "residual gap pass (context finder) — STAGE 2 batch 00 (targeted manual)",
-      "task": "add-missing-jesus-marie-segments",
-      "case": "ATTR-05b",
-      "entry": "s2 batch 00 (33 entries / targeted large-block + relabel runs)",
-      "date": "2026-07-11",
-      "title": "Stage 2 batch 00: 280 JESUS adds + 33 relabels (whole mislabeled/unstyled discourses)",
-      "source": "build_blocks2.py targeted detector (Jesus-anchored runs, >=6 paras OR containing a relabel-candidate; mixed runs allowed). Each run read in FULL entry context and split Jesus-from-Luisa by hand (context-primary, fail-closed).",
-      "method": "280 JESUS adds (whole unstyled Jesus discourses) + 33 relabels->JESUS (from LUISA x31, UNKNOWN x2, expand-to-full-paragraph). Headline finds: T15.E0018.P026-049+P060+P062 (26-para Jesus answer tagged LUISA), T26.E0007 (28p add), T36.E0030 (31p add across 2 runs), T27.E0035 (25p), T35.E0005 (20p). Note: many stage-2 Jesus discourses use lowercase 'je' (translation artifact) so the stage-1 zero-je gate correctly deferred them here; judged by CONTENT (ma Volonte / mon Fiat / Nous / ma vie eucharistique). Skipped all Luisa narration/prayer interjections within the runs (e.g. T13.E0019, T14.E0004, T16.E0037, T23.E0032, T28.E0035, T30.E0037 entirely Luisa).",
-      "entries_after": 2310,
-      "paragraphs_after": 74340,
-      "speech_segments_after": 55980,
-      "note": "PARTIAL. Stage-2 batch 00 of 6 done. Remaining s2 batches: 01-05 (~178 targeted runs)."
+     "old": "²²viens",
+     "new": "viens",
+     "note": "one-off OCR superscript"
     }
-  ],
-  "known_gaps": [
-    "The original audit1 ledger zip (LDC_v2.5.50_Corrected_Text_Deep_Audit_Evidence.zip, 124-item list) is missing from Downloads as of 2026-07-04. The mechanical_v2.5.63 rule set above was reconstructed by exact-string pattern scan rather than the original paragraph-id list. If that zip resurfaces, diff it against this ledger to confirm nothing else was missed.",
-    "27 source-matched title quotation-balance candidates logged by the EB-18 audit were deliberately NOT corrected (no text altered on that basis alone) — see EB-18 evidence if this needs revisiting.",
-    "6 dash-prefix speech segments (T25.E0030.P023/P028, T26.E0010.P030, T28.E0001.P074/E0023.P032, T29.E0028.P027) start with a list-marker dash. Renderer already strips it before display, so left as-is — not a defect, just noted for completeness."
-  ]
+   ],
+   "status": "applied_v2.5.63_original_lineage; reapplied_v2.6.2_EB21_lineage"
+  },
+  {
+   "id": "elision_apostrophe_space_49",
+   "type": "batch_pattern_fix",
+   "description": "49 genuine elision-apostrophe defects: a stray space after an elision apostrophe following a known elision word (qu', jusqu', lorsqu', puisqu', quoiqu', presqu', entr', aujourd', n', d', l', m', t', s', c', j'). E.g. 'qu’ à' -> 'qu’à'.",
+   "excluded": "132 similar-looking apostrophe+space patterns were deliberately NOT touched because they are legitimate scare-quotes (e.g. 'prendre', 'fiat', 'cattiva') rather than elision errors. Only fix when the apostrophe immediately follows one of the known elision words above.",
+   "status": "applied_v2.6.2_EB21_lineage"
+  },
+  {
+   "id": "T04.1901-10-08.P011.narrative_bleed",
+   "paragraph_id": "ldc_t04_1901_10_08_e001_p011",
+   "segment_id": "LDC.T04.1901-10-08.E001.P011.S01",
+   "type": "speech_offset",
+   "old_end_char": 399,
+   "new_end_char": 109,
+   "reason": "Jesus-speech segment incorrectly extended into Luisa's first-person narrative ('Pendant qu'Il disait cela, je voyais...') that follows the actual quoted words in the same paragraph. Speech should end at 'pervertit.' (position 109), not run to the paragraph end (399).",
+   "status": "applied_v2.5.66_original_lineage; reapplied_v2.6.0_EB21_lineage"
+  },
+  {
+   "id": "T02.1899-10-28.P007.essuyes_offset_regression",
+   "paragraph_id": "ldc_t02_1899_10_28_e001_p007",
+   "segment_id": "LDC.T02.1899-10-28.E001.P007.S01",
+   "type": "speech_offset",
+   "old_end_char": 223,
+   "new_end_char": 225,
+   "reason": "Self-inflicted regression: the essuyés word-length change (+1 char vs séchés) shifted the paragraph length but the speech segment end_char wasn't migrated at the same time. Caught by the mechanical-fixes re-scan pass and corrected to tlen (225) — no closing guillemet present, segment runs to end of paragraph.",
+   "status": "applied_v2.6.2_EB21_lineage"
+  },
+  {
+   "id": "boundary_repair_program_v2.5.52_to_v2.5.65",
+   "type": "batch_program",
+   "description": "Full-corpus speech segment boundary repair, applied to the ORIGINAL corpus lineage (pre-EB21) across multiple sessions: 723 start_char mid-word offsets (scan-back to word boundary), 5,368 end_char short errors (3,505 closing-quote orphans, 1,106 mid-word truncations, 759 large-tail closing-quote inclusions), 38 additional end_char boundary fixes (21 over-tlen clamped, 17 mid-word snapped to nearest closing guillemet or tlen), 13 sc/ec boundary fixes. Result: 0 defects across all 8 boundary-defect categories (over-tlen, sc>ec, sc mid-word, sc past guillemet, sc 2-past-guillemet+space, short article before guillemet, ec mid-word, overlapping segments).",
+   "status": "applied_to_original_lineage_only — NOT applicable to EB-21 lineage, which required its own independent boundary repair (see boundary_repair_program_v2.6.0 below) since it was an independent rebuild with its own offset bugs"
+  },
+  {
+   "id": "boundary_repair_program_v2.6.0_EB21",
+   "type": "batch_program",
+   "description": "Full-corpus speech segment boundary repair applied to the EB-21 lineage after migration (v2.6.0): 2,437 defects found and fixed (723 mid-word start_char snapped to nearest preceding guillemet/colon/word-boundary, 1,082 end-of-paragraph end_char extended to tlen, 108 guillemet-overshoot end_char snapped back to nearest closing guillemet). Result: 0 defects across all boundary categories, 53,922 speech segments preserved.",
+   "status": "applied_v2.6.0"
+  },
+  {
+   "id": "quote_balance_campaign_v2.6.6_to_v2.6.7",
+   "type": "batch_program",
+   "description": "Guillemet-balance repair across 531 unbalanced entries (of 2,301). 249 entries fixed with 255 single-character operations: (a) appended missing closing guillemet at end of speech runs that open « and run unclosed to entry end (validated against speech-annotation layer); (b) inserted missing opening guillemet after attribution colons (\"Il me dit: \", \"Je répondis: \", \"proclama: \", etc.) for speech that closes » but never opens; (c) 19 hand-adjudicated cases (speech starting at entry start, laments shifting to direct address, editorial extract, entry-boundary quote splits); (d) 5 leading ASCII double-quotes replaced with «. All offsets migrated, fingerprints/search/norm resynced. 3 placement errors found by self-audit during the pass (T14.E0056, T28.E0003, T30.E0008 — « initially landed on list-items due to non-sequential paragraph IDs / list-colon false matches) and corrected before deploy. ROUND 3 (v2.6.7): 17 more entries / 25 operations — closing guillemets placed at verified speech-segment end offsets, opens after paragraph-final attribution colons, one curly-quote pair normalized. All 33 machine proposals individually read; 7 rejected (speech continued past the proposed close).",
+   "adjudication_basis": "Balance of probabilities per Louis 2026-07-04 instruction: source PDF contains formatting/quote/grammar mistakes; interpret the text and make it coherent rather than mirror the source.",
+   "not_fixed": "64 entries legitimate French continuation-guillemet convention; 201 entries remaining for manual reading — see quote_balance_review_v2.6.6.json. Campaign total: 266 of 531 fixed.",
+   "status": "applied_v2.6.6_and_v2.6.7"
+  },
+  {
+   "id": "lowercase_boundary_review_v2.6.6",
+   "type": "review_dismissal",
+   "description": "125 cross-paragraph lowercase-boundary candidates (paragraph ends without terminal punctuation, next begins lowercase) reviewed and dismissed: they are mid-sentence paragraph splits inherited from the source PDF line layout. The text reads correctly in sequence. Merging paragraphs would break stable IDs, search records and speech offsets for no reader benefit.",
+   "status": "no_change_v2.6.6"
+  },
+  {
+   "id": "speaker_attribution_campaign_v2.6.8_increment1",
+   "type": "speaker_correction",
+   "description": "Task A (speaker attribution) increment 1 — English-translation-validated fixes. Set up the English edition (queenofthedivinewill.org, all 36 vols via antiword, date-indexed, 91% coverage) as a validation source; discovered its quote convention (Jesus=\"...\" double, Luisa='...' single) which reliably determines speaker. Fixed 3 entries, all confirmed against English: T4 1903-02-22 P007 (added missing JESUS[0:157] for \"Si l'homme ne monte pas...pour lui.\" + LUISA[201:297] question); T4 1903-03-12 P002/P003/P006 (full-entry reconstruction: P002 LUISA added; P003 fixed mislabeled LUISA[499:652] to LUISA[0:473]+JESUS[490:652]; P006 whole paragraph LUISA->JESUS); T2 1899-05-02 P008 (OTHER->JESUS, \"mon Église\" speech in a Jesus-monologue entry). Net +4 speech segments; validator clean.",
+   "scan_findings": "Full-corpus scan found 719 missing-segment + 63 suspicious-attribution candidates. English entry-structure classifier: 150 M + 3 W in JESUS_MONOLOGUE entries (safer); 541 M + 53 W in DIALOGUE entries (need per-paragraph reading). Confirmed NO safe batch exists — categories mix Jesus/Luisa/narration/nested-speech; every case needs individual reading + English cross-check. Remaining ~600 real candidates = multi-session campaign. Tooling in scratchpad: english_index.py, english_speaker_struct.py, scan_speech_gaps.py, taskA_scan.json.",
+   "status": "increment1_applied_v2.6.8"
+  },
+  {
+   "id": "speaker_attribution_v2.6.9_increment2",
+   "type": "speaker_correction",
+   "description": "Task A increment 2 — 7 missing JESUS segments added across T4/T10/T11/T12/T13, all in Jesus-monologue entries, each individually read + confirmed as Jesus direct speech (2 partial spans split at the closing guillemet before Luisa narration: T11.1915-04-24.P002, T11.1916-10-30.P005). Deferred T27.E0031.P052 (ambiguous \"Nous le voulons\") and skipped T32.E0030.P013 (Luisa thought + narration lead-in). Method: mono-M candidates containing literal guillemets, read case-by-case.",
+   "status": "applied_v2.6.9"
+  },
+  {
+   "id": "speaker_attribution_v2.6.10_increment3",
+   "type": "speaker_correction",
+   "description": "Task A increment 3 — 13 more missing JESUS segments (T3/T11/T25/T26/T29/T30x2/T31/T33/T34x2/T35x2), the divine-voice subset of mono-entry candidates (contain \"Nous/notre Vouloir/Ma Volonté/Ma fille\"), each read individually. Deferred 2 exclamatory-apostrophe cases (T31.E0023.P012, T36.E0025.P020 — ambiguous speaker); skipped 3 narration/lead-in false-positives (T19.E0021.P052, T31.E0012.P009, T36.E0010.P046).",
+   "status": "applied_v2.6.10"
+  },
+  {
+   "id": "speaker_attribution_v2.6.11_increment4",
+   "type": "speaker_correction",
+   "description": "Task A increment 4 — 12 more JESUS segments from the UNSURE mono bucket (T3/T4/T6/T10/T11x3/T12x3/T13), the unambiguous divine-first-person subset (Je/Moi/Ma/Me-cost). Deferred teaching-exposition cases lacking first-person cues (need English alignment); skipped narration lead-ins and Luisa vision/prayer paragraphs.",
+   "status": "applied_v2.6.11"
+  },
+  {
+   "id": "speaker_attribution_v2.6.12_increment5",
+   "type": "speaker_correction",
+   "description": "Task A increment 5 — 13 more JESUS segments (T19x4/T21/T24/T26/T29x3/T30/T36x2), completing the mono-entry UNSURE bucket read-through. Applied only unambiguous divine first-person / self-reference (\"Ton Jésus\", \"Tu Me sens\", \"Je/Moi/Mes\"). Skipped narration lead-ins (\"Jésus ajouta:\"), fragments (\"Oh!\", \"Et\"), and general exclamations without a speaker marker (\"Oh! si tous savaient\") which need English alignment.",
+   "status": "applied_v2.6.12"
+  },
+  {
+   "id": "speaker_attribution_v2.6.13_increment6",
+   "type": "speaker_correction",
+   "description": "Task A increment 6 — FIRST dialogue-entry batch. 29 segments across 27 paragraphs (T2/T10/T11/T12x4/T16/T17x3/T18x2/T19/T20x2/T21/T23x3/T24x5/T25), the divine-first-person/divine-we subset of the 104 dialogue-M DIVINE-marker candidates (first 52 read). Two multi-turn paragraphs split correctly: T2.1899-10-07.P004 (Jesus[0:290]+trailing Luisa narration left unstyled); T11.1912-07-23.P010 (Jesus/Luisa/Jesus 3-turn dialogue in one paragraph). Skipped narration, Luisa prayers/questions, creation-voice nested quotes (T2.1899-03-13.P008), and apostrophe-to-the-Will forms (deferred). Reading method same as mono tier.",
+   "status": "applied_v2.6.13"
+  },
+  {
+   "id": "speaker_attribution_v2.6.14_increment7",
+   "type": "speaker_correction",
+   "description": "Task A increment 7 — 37 JESUS segments, completing the dialogue-M DIVINE bucket (indices 52-103). Divine-we/first-person voice across T25-T36. Skipped creature-voice quotes (\"Nous voulons la Volonté Divine\"=souls; \"je Vous donne tout\"=Luisa to God), narration, and feminine/Mary-ambiguous cases (deferred: T34.E0023.P026, T34.E0027.P020, T32.E0016.P020, etc.). Dialogue DIVINE bucket now done: 66 of 104 applied across inc6+7.",
+   "status": "applied_v2.6.14"
+  },
+  {
+   "id": "speaker_attribution_v2.6.15_increment8",
+   "type": "speaker_correction",
+   "description": "Task A increment 8 — BREAKTHROUGH on the UNSURE tier via neighbor-context reading (reliable where cross-lingual alignment failed). Read each UNSURE candidate WITH its corpus prev/next paragraphs + their speaker labels: continuous divine discourse = JESUS; narration lead-ins (\"Il me répondit:\", \"Jésus ajouta:\") / Luisa speech / 3rd-person-about-Jesus = skip. First 40 of 354 UNSURE dialogue candidates processed: 17 JESUS + 2 MARY applied, 19 skipped, 1 deferred, 1 already-done. Also confirmed the 3rd French edition (36T Livre du Ciel, scratchpad/fr36_full.txt, 3044pp) and Owen translation help as reading aids but neighbor-context is the primary reliable signal.",
+   "status": "applied_v2.6.15"
+  },
+  {
+   "id": "speaker_attribution_v2.6.16_increment9",
+   "type": "speaker_correction",
+   "description": "Task A increment 9 — UNSURE dialogue indices 40-79 via neighbor-context reading. 20 JESUS applied, 20 skipped (narration lead-ins, Luisa speech, one feminine \"heureuse\"=Luisa). Progress: 80 of 354 UNSURE read.",
+   "status": "applied_v2.6.16"
+  },
+  {
+   "id": "speaker_attribution_v2.6.17_increment10",
+   "type": "speaker_correction",
+   "description": "Task A increment 10 — UNSURE dialogue indices 80-119. 26 JESUS applied (much is continuous list-form teaching incl. short connective fragments Or,/Vu styled for visual continuity), 3 nested-quote defers, 11 skips. Progress: 120 of 354 UNSURE read.",
+   "status": "applied_v2.6.17"
+  },
+  {
+   "id": "speaker_attribution_v2.6.18_increment11",
+   "type": "speaker_correction",
+   "description": "Task A increment 11 — UNSURE dialogue indices 120-159 (mostly vol 19-20). 21 JESUS applied, 2 deferred (ambiguous Je-Me-disais musings), 17 skipped (narration lead-ins, Luisa prayers, 3rd-person Marian vision narration). Progress: 160 of 354 UNSURE read.",
+   "status": "applied_v2.6.18"
+  },
+  {
+   "id": "speaker_attribution_v2.6.19_increment12",
+   "type": "speaker_correction",
+   "description": "Task A increment 12 — UNSURE dialogue 160-199 (vols 20-23, dense continuous Jesus teaching). 35 JESUS applied, 5 skipped. Refined discriminator: within a Jesus-flanked run, PRESENT-tense doctrinal/exclamatory = JESUS; PAST-tense experiential (je voyais / mon pauvre esprit / il me dit) = Luisa narration = skip. Progress: 200 of 354 UNSURE read.",
+   "status": "applied_v2.6.19"
+  },
+  {
+   "id": "speaker_attribution_v2.6.20_increment13",
+   "type": "speaker_correction",
+   "description": "Task A increment 13 — UNSURE dialogue 200-239 (vols 23-25). 31 JESUS applied, 4 skipped, 5 deferred (nested cries Fiat!/je T aime, 1 mixed para, 1 past-tense vision). Rule refinement: past-tense DOCTRINAL recounting (Creation/Redemption) is still JESUS; only past-tense EXPERIENTIAL (je voyais/j entendais/il me dit) is Luisa. Progress: 240 of 354 UNSURE read.",
+   "status": "applied_v2.6.20"
+  },
+  {
+   "id": "speaker_attribution_v2.6.21_increment14",
+   "type": "speaker_correction",
+   "description": "Task A increment 14 — UNSURE dialogue 240-279 (vols 25-28). 30 JESUS applied, 1 skip, 9 deferred (nested quotes of creature/others words). Progress: 280 of 354 UNSURE read.",
+   "status": "applied_v2.6.21"
+  },
+  {
+   "version": "v2.6.22",
+   "increment": 15,
+   "task": "speaker-attribution",
+   "method": "neighbor-context reading (UNSURE dialogue tier)",
+   "range": "UNSURE indices 280-319 (vols 28-30)",
+   "applied": 29,
+   "speaker": "JESUS",
+   "skipped": 3,
+   "deferred": 8,
+   "speech_segments_after": 54248
+  },
+  {
+   "version": "v2.6.23",
+   "increment": 16,
+   "task": "speaker-attribution",
+   "method": "neighbor-context reading (UNSURE dialogue tier)",
+   "range": "UNSURE indices 320-353 (vols 30-36) — FINAL UNSURE batch",
+   "applied": 24,
+   "speaker": "JESUS",
+   "skipped": 8,
+   "deferred": 2,
+   "speech_segments_after": 54272
+  },
+  {
+   "version": "v2.6.24",
+   "increment": 17,
+   "task": "speaker-attribution",
+   "method": "neighbor-context reading (W mislabel tier — overriding existing labels)",
+   "range": "W tier: 63 flagged (cur!=flank), vols 1-30",
+   "applied": 14,
+   "change": "LUISA->JESUS",
+   "note": "49 left as-is: correctly-labeled Luisa replies/prayers, already-JES, or genuinely OTHER (birds/souls/creature words)",
+   "speech_segments_after": 54272
+  },
+  {
+   "version": "v2.6.26",
+   "increment": 18,
+   "task": "speaker-attribution",
+   "method": "neighbor-context reading (M/mono missing-segment tier)",
+   "range": "M tier: 719 flagged; 345 already labeled; 374 truly missing reviewed (all 36 vols)",
+   "applied": 62,
+   "speaker": "JESUS",
+   "note": "312 correctly left unlabeled: narration lead-ins (Mon doux Jésus ajouta:), Luisa replies/prayers/experiential narration, nested quotes (creature words, Pater Noster) unstyled per ruling, 1 demon quote, 3rd-person-Jesus deferrals consistent with UNSURE tier",
+   "speech_segments_after": 54334
+  },
+  {
+   "version": "v2.7.0",
+   "stage": "EB-22A Stage 1",
+   "task": "entry-boundary-split",
+   "cases": [
+    "S01",
+    "S02",
+    "S03",
+    "S04"
+   ],
+   "method": "char-0 boundary: relocate embedded DATE—TITLE. prefix into new-entry metadata (contract §13/§16), move affected paragraphs to new standalone entry, preserve paragraph IDs (§14.1), retarget search+speaker records, recompute per-entry speech meta",
+   "results": {
+    "S01": "T2 1er août 1899 (9 paras from 31 juil P003-P011)",
+    "S02": "T2 1er sept 1899 (33 paras)",
+    "S03": "T2 1er oct 1899 (14 paras)",
+    "S04": "T6 1er mai 1904 (6 paras)"
+   },
+   "entries_after": 2305,
+   "paragraphs_after": 74331,
+   "note": "Text conserved (prefix relocated to metadata, no word change). 4 boundary paragraphs edited (date prefix stripped) => their embeddings slightly stale but count/id unchanged so validator clean; vector search opt-in/off, not re-embedded to avoid model mismatch. Verified in-browser: clean bodies, no dup markers, Jesus spans styled, chronological order correct."
+  },
+  {
+   "version": "v2.7.1",
+   "stage": "EB-22A A02",
+   "task": "entry-recovery-addition",
+   "case": "A02",
+   "entry": "LDC.T15.E0020A",
+   "date": "21 avril 1923",
+   "title": "La tache la plus noire de la société actuelle.",
+   "source": "Composite French edition (36T Livre du Ciel PDF pages 1122-1123), extracted via PyMuPDF; English-corroborated",
+   "method": "AUTHENTIC FRENCH recovered from composite edition (NOT translated from English, per Louis's confirmation to use the French source). Cleaned to app house typography only (straight apostrophes, tight «word»/?/», ': «' after colon, œ preserved) — no wording normalization. Page numbers/line-wraps stripped. Split into 2 paragraphs at the Luisa-speech→Jesus-reply boundary. No speaker segments (contract §9.4.5). Inserted between E0020 (20 avr) and E0021 (28 avr).",
+   "embeddings": "model empirically confirmed = paraphrase-multilingual-MiniLM-L12-v2 (cosine 1.0000 vs stored); 2 normalized float16 vectors appended",
+   "entries_after": 2306,
+   "paragraphs_after": 74333,
+   "note": "Source has lowercase 'pour d'autres' after a period — preserved faithfully (no correction). semantic_index N and embeddings n both bumped to 74333. Validator clean; browser-verified render + chronological order."
+  },
+  {
+   "version": "v2.7.2",
+   "stage": "EB-22A Stage 2 (S05)",
+   "task": "entry-boundary-split-midpara",
+   "case": "S05",
+   "new_entry": "LDC.T16.E0006A",
+   "date": "9 août 1923",
+   "title": "La Volonté Divine est Lumière et la volonté humaine noirceur.",
+   "method": "Boundary split at LDC.T16.E0006.P041 char 137. Suffix was date+title ONLY (no body) -> relocated to new-entry metadata; P041 prefix truncated+KEPT with 5 août (E0006); P042-P051 moved to new 9 août entry (ids preserved, re-parented). No new paragraph. P041 embedding refreshed in place (model confirmed MiniLM, cosine 1.0).",
+   "entries_after": 2307,
+   "paragraphs_after": 74333,
+   "note": "8 JESUS segments re-parented. Validator clean; browser-verified: 5 août ends at '...je m'arrête.', 9 août renders with title/date/Jesus spans, order 5->9->13 août correct."
+  },
+  {
+   "version": "v2.7.3",
+   "stage": "EB-22A Stage 2 (S06/S07 atomic)",
+   "task": "entry-boundary-split-midpara-3way",
+   "cases": [
+    "S06",
+    "S07"
+   ],
+   "new_entries": [
+    "LDC.T16.E0055A (24 mai 1924)",
+    "LDC.T16.E0055B (29 mai 1924)"
+   ],
+   "method": "Atomic 3-way realignment of T16 19 mai entry. P033 split@57 (prefix stays 19 mai; suffix date+title->24 mai metadata, body->new frag E0055A.P001). P110 split@89 (prefix->last para of 24 mai keeping id P110; suffix date+title->29 mai metadata, body->new frag E0055B.P001). 24 mai=frag+P034-P109+P110; 29 mai=frag+P111-P157. No speech segment straddled either cut (P033 seg 0-55<57, P110 seg 0-87<89) so only re-parenting, no offset surgery. +2 entries, +2 paragraphs.",
+   "embeddings": "refreshed P033+P110 vectors in place (truncated text); appended 2 frag vectors (MiniLM confirmed)",
+   "render_fix": "getParagraphs() now sorts by display_order (was file order) — fragment paras are appended at file end but belong first; no-op for all 2333 other entries, verified. Without this the frag rendered last.",
+   "entries_after": 2309,
+   "paragraphs_after": 74335,
+   "note": "Validator clean; browser-verified: 19 mai ends '...cette créature.», 24 mai opens 'Le premier mot...Fiat' ends '...de Ma Volonté.», 29 mai opens 'Leçon à Luisa...', order 19->24->29 mai->1 juin correct. No new speaker segments (contract §9.4.5)."
+  },
+  {
+   "version": "v2.7.4",
+   "stage": "EB-22A A01 — FINAL, EB-22 COMPLETE",
+   "task": "entry-recovery-addition",
+   "case": "A01",
+   "entry": "LDC.T20.E0022A",
+   "date": "10 novembre 1926",
+   "title": "Comment celle qui vit dans la Divine Volonté contient en elle toute la Création, est le reflet de son Créateur. Deux effets du péché.",
+   "source": "Composite French edition PDF (pp.1585-1588) via PyMuPDF, VERIFIED word-for-word against all 4 official hard-copy photos (book pp.60-63, IMG_4998/4999/5001/5002)",
+   "method": "Authentic French (not English-translated). Words byte-exact from composite; casing+punctuation matched to APP CORPUS conventions per Louis (devotional capitals Il/Elle/Son/Ses/Ciel/Œuvres, semantic lowercase for soul/Adam/ordinary), NOT the photographed book edition. Word-fidelity guard: letters-only-lowercased == composite (only casing/punct changed). Artifacts fixed (page number '33', 5 line-wrap space-drops). 5 paragraphs at discourse boundaries. 4 JESUS speech segments added (Jesus's direct discourse P001/P002/P003/P005; P004 Luisa reflection unstyled) — per Louis 'match corpus incl Jesus/Mary direct words'. Inserted between E0022(6 nov) & E0023(14 nov).",
+   "embeddings": "5 MiniLM vectors appended (confirmed model)",
+   "entries_after": 2310,
+   "paragraphs_after": 74340,
+   "speech_segments_after": 54338,
+   "note": "EB-22 COMPLETE: all 9 cases done (S01-S07 splits + A02 21 avril 1923 + A01 10 nov 1926). Entries 2301->2310 (contract target hit exactly). 25 avril 1923 correctly excluded (English-only). Validator clean; browser-verified render+order+Jesus styling."
+  },
+  {
+   "version": "v2.8.0",
+   "stage": "punctuation-restoration (source-verified diagnosis, editorial add)",
+   "task": "add-terminal-period",
+   "case": "PUNCT-01",
+   "entry": "corpus-wide (36 vols)",
+   "date": "2026-07-09",
+   "title": "Append terminal period to complete-sentence paragraphs missing one",
+   "source": "Base-source GELDC1-36 PDFs (PyMuPDF) — source-verified: 0 extraction-dropped periods; the gaps are in the source itself (dash-list formatting). Fix is therefore an editorial addition of a period, NOT a restore.",
+   "method": "Guarded set: paragraph text ends with a letter OR a closing single/double quote (not »), has NO terminal punctuation, next paragraph in the same entry begins a new capitalised sentence (or entry end), and last token is not a 1-2 char capital (excludes mid-word splits). Excluded 13,418 comma/lowercase continuations and colon lead-ins. Appended '.'; updated paragraphs text+fingerprint, search text+norm, and extended any speaker segment reaching paragraph end. Sample of 35 verified all genuine complete sentences.",
+   "embeddings": "NOT regenerated — a trailing period is semantically negligible for vector search; validator checks id count/format only (clean).",
+   "entries_after": 2310,
+   "paragraphs_after": 74340,
+   "speech_segments_after": 54338,
+   "note": "716 paragraphs (714 letter-ending + 2 closing-quote-ending: T34.E0034.P041, T35.E0008.P031). Distinct from the v2.7.9 RENDER fix which recovered ~1,620 periods/quotes that were IN the corpus but dropped in display (segment end_char undershoot). Validator clean; browser-verified T34.E0034."
+  },
+  {
+   "version": "v2.8.3",
+   "stage": "speaker-attribution: two-quotes-in-one-paragraph",
+   "task": "fix-second-quote-styling",
+   "case": "ATTR-02",
+   "entry": "19 paragraphs (T2-T16)",
+   "date": "2026-07-10",
+   "title": "Fix Jesus/Marie 2nd direct-quote hidden or misattributed when a paragraph has quote1 + narration + quote2",
+   "source": "Neighbor-context reading; grammatical person of the narration gap (Il/Jésus vs Je) disambiguates.",
+   "method": "Scanned styled segments whose TEXT contains »<narration>«second-quote (renderer PASS-2 splits at first » and demotes the rest). 104 candidates, classified: 9 SPLIT (Jesus q1+Jesus q2, gap=Il ajouta -> split into two same-speaker segs); 6 RELOCATE (Luisa prayer wrongly styled as q1 -> move segment to Jesus/Marie q2); 4 SPECIAL (T3 crowd-quote 2nd = shrink to q1; T6 multi-turn = 2 Jesus segs, Luisa replies plain; T9 Jesus-Luisa-Jesus = add q1 seg + move seg to q3; T11 Marie q1 + Jesus q2 = shrink Marie, add Jesus seg). 43 first-person Je (Luisa replies, correctly plain) + 42 ambiguous LEFT UNTOUCHED.",
+   "entries_after": 2310,
+   "paragraphs_after": 74340,
+   "speech_segments_after": 54350,
+   "note": "Reported case: T11 20 aout 1912 p004 (Il ajouta: Un proverbe dit: L homme propose et Dieu dispose). Validator clean; browser-verified reported + relocate + marie/jesus cases. Scripts scratchpad/jesus2q.py, jesus_reloc.py, jesus_special.py. 42 ambiguous + 43 Luisa-reply cases documented, not changed."
+  },
+  {
+   "version": "v2.8.5",
+   "stage": "speaker-attribution: missing continuation segments",
+   "task": "add-missing-jesus-segments",
+   "case": "ATTR-03",
+   "entry": "ldc_t11_1912_08_16_e001 (16 aout 1912)",
+   "date": "2026-07-11",
+   "title": "Add JESUS segments to p003-p005 (Jesus monologue continuation that had no segment)",
+   "source": "Neighbor-context: entry is one unbroken Jesus quote — p001 opens «Ma fille..., p005 closes ...elle-meme.». p003-p005 were unattributed.",
+   "method": "Added 3 JESUS high segments [0:len] for p003/p004/p005 (whole paragraphs, all Jesus discourse: filet de Lumiere / ne pense qu-a Moi / Comme il est beau de voir une ame). Fixed segment_ids to clean dotted form.",
+   "entries_after": 2310,
+   "paragraphs_after": 74340,
+   "speech_segments_after": 54353,
+   "note": "Broader class (unattributed Jesus/Marie continuation paragraphs inside an open quote) scanned: 487 candidates w/ divine markers, 236 after strict Luisa-marker exclusion — but STILL unsafe to auto-fix (corpus capitalises 1st-person inconsistently; Luisa narration like -Pendant qu-Il parlait, Je Me sentais confuse- has capital Je/Me). Needs careful per-case reading like the original campaign. NOT auto-applied. Validator clean; browser-verified all 5 paras gold."
+  },
+  {
+   "version": "v2.8.6",
+   "stage": "speaker-attribution: missing-segment gap pass (parallel readers, part 1)",
+   "task": "add-missing-jesus-marie-segments",
+   "case": "ATTR-04a",
+   "entry": "137 paragraphs across 22 volumes",
+   "date": "2026-07-11",
+   "title": "Add JESUS/MARIE segments to unattributed continuation paragraphs (4 of 14 reader batches)",
+   "source": "Parallel neighbour-context reading (14 subagent readers over 299 entries / 1674 candidates). Session rate-limit interrupted 10 readers; 4 batches (00,06,07,08) completed = 176 verdicts.",
+   "method": "Candidates = no-styled-segment paragraphs inside an open Jesus/Marie quote (quote-balance walk). Readers judged JESUS/MARIE/SKIP by full-entry context. Central verify: mechanical guards (offsets valid, no mid-word, no overlap with ANY existing segment), red-flag scan for Luisa-narration markers (3 flagged, all confirmed Jesus false-positives), manual spot-checks. Applied 137 (127 JESUS + 10 MARIE); 39 skipped = overlap an existing OTHER/LUISA/UNKNOWN segment (need relabel/split, handled separately incl. 1 agent MARIE-mislabel caught at T18.E0005A.P039).",
+   "entries_after": 2310,
+   "paragraphs_after": 74340,
+   "speech_segments_after": 54490,
+   "note": "PARTIAL. Remaining: (a) 39 overlap cases within completed batches; (b) 10 reader batches (~1100 candidates) not yet run — blocked by session rate-limit reset ~12:30 Mauritius. Scripts scratchpad/build_gap_dataset.py, apply_gaps.py, gap_verdicts_*.json."
+  },
+  {
+   "version": "v2.9.1",
+   "stage": "speaker-attribution: missing-segment gap pass (serial main-loop, batches 01-03)",
+   "task": "add-missing-jesus-marie-segments",
+   "case": "ATTR-04b",
+   "entry": "batches 01, 02, 03 of the remaining reader queue",
+   "date": "2026-07-11",
+   "title": "Add JESUS/MARIE segments to unattributed continuation paragraphs (serial pass)",
+   "source": "Serial main-loop reading (no subagents) — immune to the parallel-loss problem when session limits hit. Each candidate read in full entry context; context = primary evidence, English editions = corroborator, defective French source punctuation = weak witness only, fail-closed on genuine ambiguity.",
+   "method": "Batch 01 = 46 adds; batch 02 = 111 adds; batch 03 = 85 adds (84 JESUS + 1 MARIE) across vols 1,3,4,5,7,8,11,13,16,17,20,26,36 + 2 relabels (t04.p008 LUISA->MARIE, T16.E0022.P073 UNKNOWN->JESUS). Batch 03 fail-closed drops: nested creature/prayer quotes (T18.E0014 P034/P037, T26.E0024 P044/P055, T29.E0023 P073), Luisa narration/attribution/vision (T14.E0003 P030-036, T16.E0022 P069-092/P103, T30.E0030 P082-083, T36.E0001 P025-027), and one mixed paragraph with an indeterminable Jesus/Luisa split (t11_1912.p012).",
+   "entries_after": 2310,
+   "paragraphs_after": 74340,
+   "speech_segments_after": 54719,
+   "note": "PARTIAL — serial pass continuing. Done: batches 00,06,07,08 (v2.8.6), 01 (v2.8.9), 02 (v2.9.0), 03 (v2.9.1). Remaining batches: 04,05,09,10,11,12,13. Guards unchanged (offsets valid, no mid-word, no overlap with any existing segment)."
+  },
+  {
+   "version": "v2.9.2",
+   "stage": "speaker-attribution: missing-segment gap pass (serial main-loop, batch 04)",
+   "task": "add-missing-jesus-marie-segments",
+   "case": "ATTR-04c",
+   "entry": "batch 04 (22 entries, 111 candidates)",
+   "date": "2026-07-11",
+   "title": "Batch 04: 79 JESUS adds + 9 relabels",
+   "source": "Serial main-loop reading, full entry context; context-primary, English corroborator, fail-closed.",
+   "method": "79 JESUS continuation adds across vols 1,2,3,11,12,13,14,16,18,36 (incl. T13.E0033.P069 partial up to closing guillemet). 9 relabels: T17.E0034.P010-P013 LUISA->JESUS (Jesus praising Luisa after binding her, mislabeled), T18.E0016.P020/P023 UNKNOWN->JESUS (Jesus addressing the Father + continuation), T30.E0032.P009 OTHER->JESUS (closes a divine-Will quote already styled JESUS), and T29.E0034.P006/P013 JESUS->LUISA (creature's own aspirational quotes wrongly colored as Jesus — un-styled). Fail-closed drops: Luisa replies/narration (t04.p012-013, t05.p012, t07.p005-006, t09.p006, T14.E0005.P017 attribution, T17.E0034.P009/P014-016, T20.E0019.P043, T24.E0005.P049-050, T26.E0031.P052-060 vision narration), and nested creature quotes (T29.E0034.P007-008).",
+   "entries_after": 2310,
+   "paragraphs_after": 74340,
+   "speech_segments_after": 54798,
+   "note": "PARTIAL — serial pass continuing. Done through batch 04. Remaining batches: 05,09,10,11,12,13."
+  },
+  {
+   "version": "v2.9.3",
+   "stage": "speaker-attribution: missing-segment gap pass (serial main-loop, batch 05)",
+   "task": "add-missing-jesus-marie-segments",
+   "case": "ATTR-04d",
+   "entry": "batch 05 (21 entries, 107 candidates)",
+   "date": "2026-07-11",
+   "title": "Batch 05: 58 adds (56 JESUS + 2 MARIE) + 4 relabels",
+   "source": "Serial main-loop reading, full entry context; context-primary, English corroborator, fail-closed.",
+   "method": "56 JESUS + 2 MARIE (t11_1916_06_15 p010/p011 Virgin's prayer instruction) continuation adds across vols 1,2,7,9,11,12,13,14,16,17,24,27,29,30. Largest: T29.E0044 P059-P090 (32, the 'peuple du Royaume' discourse; P090 partial to drop a trailing 'Table des Matieres' artifact). 4 relabels: t04_1901_07_16.p008 LUISA->JESUS ('Mon Amour pour toi est si grand'), T13.E0034.P035/P037 LUISA->JESUS (divine voice at Creation-restoration), T24.E0015.P048 JESUS->LUISA (Luisa's fatigue narration mislabeled Jesus, un-styled). Fail-closed drops: Luisa replies/prayers/narration (t03.p008, t04 several, t05.p013 'Fiat', t11_1912.p011, t11_1916 p005-007/p009, T13.E0034 handled, T14.E0009.P006, T16.E0051 P012/P014/P034-036, T18.E0017.P058, T20.E0029.P052, T24.E0015 P049-057, T29.E0044 P025-036/P052).",
+   "entries_after": 2310,
+   "paragraphs_after": 74340,
+   "speech_segments_after": 54856,
+   "note": "PARTIAL — serial pass continuing. Done through batch 05. Remaining batches: 09,10,11,12,13."
+  },
+  {
+   "version": "v2.9.4",
+   "stage": "speaker-attribution: missing-segment gap pass (serial main-loop, batch 09)",
+   "task": "add-missing-jesus-marie-segments",
+   "case": "ATTR-04e",
+   "entry": "batch 09 (21 entries, 148 candidates)",
+   "date": "2026-07-11",
+   "title": "Batch 09: 85 adds (78 JESUS + 7 MARIE) + 13 relabels",
+   "source": "Serial main-loop reading, full entry context; context-primary, English corroborator, fail-closed.",
+   "method": "78 JESUS + 7 MARIE continuation adds across vols 2,4,8,10,11,13,15,17,19,30,32. Largest: T30.E0006 (42) — an entry alternating Jesus 3rd-person narration (35 JESUS) with the Virgin's 1st-person quoted prayers (7 MARIE); T19.E0012 (16). 13 relabels: T14.E0022.P012 + T17.E0004.P025 UNKNOWN->JESUS (Jesus continuation / prayer to the Father), T15.E0009.P019 JESUS->LUISA (Luisa's prayer), T30.E0006.P034 JESUS->MARIE (Virgin's quoted prayer), and a 9-paragraph block T20.E0056.P063/P065-P072 JESUS->LUISA (Luisa's meta-reflection on her scribal duty, wholesale mislabeled as Jesus). Fail-closed drops: extensive Luisa narration/vision/prayer (t01_sec103 all, T17.E0048 P031-035/P063-070, T27.E0021 all 13 vision paras, T15.E0009 prayer block, etc.).",
+   "entries_after": 2310,
+   "paragraphs_after": 74340,
+   "speech_segments_after": 54941,
+   "note": "PARTIAL — serial pass continuing. Done through batch 09. Remaining batches: 10,11,12,13."
+  },
+  {
+   "version": "v2.9.5",
+   "stage": "speaker-attribution: missing-segment gap pass (serial main-loop, batch 10)",
+   "task": "add-missing-jesus-marie-segments",
+   "case": "ATTR-04f",
+   "entry": "batch 10 (21 entries, 98 candidates)",
+   "date": "2026-07-11",
+   "title": "Batch 10: 39 JESUS adds + 1 relabel",
+   "source": "Serial main-loop reading, full entry context; context-primary, English corroborator, fail-closed.",
+   "method": "39 JESUS continuation adds across vols 2,8,10,11,12,13,14,21,24,33. Largest T21.E0004 (17). 1 relabel: T15.E0012.P035 JESUS->LUISA (Luisa's question 'pourquoi montres-tu tant d'Amour', mislabeled). This batch was heavy on fail-closed drops — whole Luisa vision/prayer sequences left plain (t01_sec109 crucifixion-prayer, t02 obedience-apostrophe block, T17.E0052 garden-vision narration, T24.E0032 field-of-Jesus vision). NOTE: candidate detection (quote-balance walk) misses clearly-Jesus paragraphs that fall outside a detected open quote (e.g. T33.E0008.P020-P023) — a known completeness gap in the gap-finder, not fixed here.",
+   "entries_after": 2310,
+   "paragraphs_after": 74340,
+   "speech_segments_after": 54980,
+   "note": "PARTIAL — serial pass continuing. Done through batch 10. Remaining batches: 11,12,13."
+  },
+  {
+   "version": "v2.9.6",
+   "stage": "speaker-attribution: missing-segment gap pass (serial main-loop, batch 11)",
+   "task": "add-missing-jesus-marie-segments",
+   "case": "ATTR-04g",
+   "entry": "batch 11 (21 entries, 185 candidates)",
+   "date": "2026-07-11",
+   "title": "Batch 11: 139 JESUS adds + 8 relabels",
+   "source": "Serial main-loop reading, full entry context; context-primary, English corroborator, fail-closed.",
+   "method": "139 JESUS continuation adds across vols 6,8,11,12,13,15,17,24,27,30. Largest: T15.E0022 (47 — Jesus' exposition of the Our Father / three breads), T27.E0033 (36 — Creation-symbolism discourse), T17.E0006 (30 — crucifixion extended-arms discourse), T12.1918_10_16 (14 — war/peace prophecy). 8 relabels (all expand-to-full-paragraph): t02_1899_09_02.p006/p007 + t10_1911_02_08.p018 + T15.E0022.P015/P034 + T24.E0039.P014 LUISA->JESUS (Jesus speech mislabeled Luisa), T13.E0044.P021 UNKNOWN->JESUS, T14.E0028.P018 JESUS->LUISA (Luisa's question). Very heavy fail-closed batch: t01_sec109_r02's entire 28-candidate confession-scene narration left plain; also T18.E0002/T19.E0046/T21.E0009 attribution lines, T33.E0048 vision narration.",
+   "entries_after": 2310,
+   "paragraphs_after": 74340,
+   "speech_segments_after": 55119,
+   "note": "PARTIAL — serial pass continuing. Done through batch 11. Remaining batches: 12,13."
+  },
+  {
+   "version": "v2.9.7",
+   "stage": "speaker-attribution: missing-segment gap pass (serial main-loop, batch 12)",
+   "task": "add-missing-jesus-marie-segments",
+   "case": "ATTR-04h",
+   "entry": "batch 12 (21 entries, 75 candidates)",
+   "date": "2026-07-11",
+   "title": "Batch 12: 27 adds (26 JESUS + 1 MARIE) + 3 relabels",
+   "source": "Serial main-loop reading, full entry context; context-primary, English corroborator, fail-closed.",
+   "method": "26 JESUS + 1 MARIE (t10_1911_03_26.p008 Virgin's answer) continuation adds across vols 4,8,10,11,12,13,14,15,18. 3 relabels: T13.E0017.P024 OTHER->JESUS (fish-metaphor nested quote, block already JESUS), T17.E0010.P011 + T20.E0001.P067 JESUS->LUISA (Luisa's plea/question mislabeled, expand-to-full-paragraph). Very heavy fail-closed batch: T28.E0008's entire 20-candidate block was Luisa narration; also t01_sec113_2 (5 womb-vision narration), T22/T25/T30.E0009/T34 attribution+narration lines.",
+   "entries_after": 2310,
+   "paragraphs_after": 74340,
+   "speech_segments_after": 55146,
+   "note": "PARTIAL — serial pass continuing. Done through batch 12. Remaining batch: 13 (last)."
+  },
+  {
+   "version": "v2.9.8",
+   "stage": "speaker-attribution: missing-segment gap pass (serial main-loop, batch 13 = FINAL)",
+   "task": "add-missing-jesus-marie-segments",
+   "case": "ATTR-04i",
+   "entry": "batch 13 (21 entries, 142 candidates)",
+   "date": "2026-07-11",
+   "title": "Batch 13 (final): 114 JESUS adds + 13 relabels — GAP PASS COMPLETE",
+   "source": "Serial main-loop reading, full entry context; context-primary, English corroborator, fail-closed.",
+   "method": "114 JESUS continuation adds across vols 3,4,12,15,17,22,25,28,30,34. Largest by far: T30.E0012 (85 — the 'acquiring the Kingdom of the Divine Will as a property, with gages/deposits' discourse). Also T15.E0032 (Eucharist self-reception, 7), T17.E0012 (6), T28.E0015 (4), T25.E0011 (4). 13 relabels (all expand-to-full-paragraph): 6 UNKNOWN->JESUS (T18.E0005 suspended-fruits discourse), 6 LUISA->JESUS (Jesus speech mislabeled: t01_sec113_3 p012/p013, t02 p007, t06 p004, t08 p007, T22.E0015.P098), 1 JESUS->LUISA (T13.E0046.P006 Luisa's reply). Fail-closed drops incl. t10_1911_10_11 fight-dialogue, T22/T25 tail narration.",
+   "entries_after": 2310,
+   "paragraphs_after": 74340,
+   "speech_segments_after": 55260,
+   "note": "COMPLETE. All 14 gap-pass batches applied & deployed (v2.8.6 through v2.9.8). Total ~917 attributions (adds + relabels) across the campaign; speech_segments 53,922 (EB-21 baseline) -> 55,260. KNOWN RESIDUAL GAP: the quote-balance candidate-finder misses clearly-Jesus paragraphs that fall OUTSIDE a detected open quote (observed e.g. T33.E0008.P020-023, T25.E0011.P042-056, T28.E0015.P047-069). Addressed by the context-finder residual pass (v2.9.9+, below)."
+  },
+  {
+   "version": "v2.9.9",
+   "stage": "residual gap pass (context finder) — STAGE 1: high-precision block bulk",
+   "task": "add-missing-jesus-marie-segments",
+   "case": "ATTR-05a",
+   "entry": "53 verified whole-blocks across vols 8,17,20,24,25,27,28,29,30,31,32,33,34,35,36",
+   "date": "2026-07-11",
+   "title": "Context-finder residual pass, stage 1: 440 JESUS adds (whole verified blocks)",
+   "source": "New context-based finder (build_ctx_dataset.py / build_blocks.py). The quote-balance walk only flagged unstyled paragraphs INSIDE a detected open guillemet; this finder flags unstyled runs ANCHORED to Jesus speech with divine-voice markers (Ma Volonte, Nous/Notre, Ma fille, mon Fiat), ZERO Luisa markers (no lowercase 'je', no attribution verbs, no 'mon doux Jesus'/'ta Volonte'/'ma pauvre ame'), and >=1 positive divine self-reference.",
+   "method": "Staged hybrid. Stage 1 = high-precision SAFE blocks only (whole runs, zero-Luisa-marker gate). All 53 blocks hand-verified (~99% precision). Applied 440 pure ADDs (JESUS, full paragraph). Excluded 3 add false-positives (T16.E0051.P012 Luisa 'Non non Mon Amour' reply; T27.E0033.P069 nested creation-quote previously skipped; T36.E0019.P022 'Ensuite Il a ajoute' narration) and DROPPED all 3 relabels to the manual stage (2 of 3 were wrong, incl. T20.E0001.P067 which would have reversed a correct batch-12 fix). Largest blocks: T28.E0031 (57p), T25.E0027 (38p), T24.E0042 (29p), T28.E0015 (23p), T17.E0031 (22p).",
+   "entries_after": 2310,
+   "paragraphs_after": 74340,
+   "speech_segments_after": 55700,
+   "note": "PARTIAL. Stage 1 (safe bulk) done. Stage 2 = manual fail-closed pass over the harder remainder the block-gate deliberately excluded: mixed runs (Jesus + nested Luisa quotes / lowercase-je artifacts), tail runs, and LUISA/UNKNOWN->JESUS relabels of whole mislabeled discourses (e.g. T15.E0018.P026-049 24-para Jesus answer tagged LUISA; T19.E0039.P054-075 22-para unstyled Jesus block). Residual candidate lists: ctx_batch_00-07.json (~2074 flags, tips-of-icebergs); read whole entries, not just flags."
+  },
+  {
+   "version": "v2.9.10",
+   "stage": "residual gap pass (context finder) — STAGE 2 batch 00 (targeted manual)",
+   "task": "add-missing-jesus-marie-segments",
+   "case": "ATTR-05b",
+   "entry": "s2 batch 00 (33 entries / targeted large-block + relabel runs)",
+   "date": "2026-07-11",
+   "title": "Stage 2 batch 00: 280 JESUS adds + 33 relabels (whole mislabeled/unstyled discourses)",
+   "source": "build_blocks2.py targeted detector (Jesus-anchored runs, >=6 paras OR containing a relabel-candidate; mixed runs allowed). Each run read in FULL entry context and split Jesus-from-Luisa by hand (context-primary, fail-closed).",
+   "method": "280 JESUS adds (whole unstyled Jesus discourses) + 33 relabels->JESUS (from LUISA x31, UNKNOWN x2, expand-to-full-paragraph). Headline finds: T15.E0018.P026-049+P060+P062 (26-para Jesus answer tagged LUISA), T26.E0007 (28p add), T36.E0030 (31p add across 2 runs), T27.E0035 (25p), T35.E0005 (20p). Note: many stage-2 Jesus discourses use lowercase 'je' (translation artifact) so the stage-1 zero-je gate correctly deferred them here; judged by CONTENT (ma Volonte / mon Fiat / Nous / ma vie eucharistique). Skipped all Luisa narration/prayer interjections within the runs (e.g. T13.E0019, T14.E0004, T16.E0037, T23.E0032, T28.E0035, T30.E0037 entirely Luisa).",
+   "entries_after": 2310,
+   "paragraphs_after": 74340,
+   "speech_segments_after": 55980,
+   "note": "PARTIAL. Stage-2 batch 00 of 6 done. Remaining s2 batches: 01-05 (~178 targeted runs)."
+  },
+  {
+   "version": "v2.9.11",
+   "stage": "residual gap pass (context finder) -> STAGE 2 batch 01 (targeted manual)",
+   "task": "add-missing-jesus-marie-segments",
+   "case": "ATTR-05c",
+   "entry": "s2 batch 01 (33 entries / targeted large-block + relabel runs)",
+   "date": "2026-07-19",
+   "title": "Stage 2 batch 01: 398 JESUS adds + 8 relabels (whole mislabeled/unstyled discourses)",
+   "source": "build_blocks2.py targeted detector (batch 01). Each of the 38 runs read in FULL entry context and split Jesus-from-Luisa by hand (context-primary, fail-closed).",
+   "method": "398 JESUS adds (whole unstyled Jesus discourses) + 8 relabels->JESUS (T14.E0012.P007-014, from LUISA; Jesus words recounted to confessor, expand-to-full-paragraph). Headline finds: T29.E0020 (73p Ascension/apostles discourse), T25.E0003 (37p Eucharistic), T23.E0043 run1 (36p Kingdom), T29.E0001 (25p Divine Light/Love), T34.E0009 (22p Ascension). Skipped ENTIRE runs that were Luisa prayer/narration despite Jesus-anchor: T15.E0029, T16.E0049 run1, T17.E0050, T20.E0047, T22.E0017, T23.E0043 run0, T30.E0038, ldc_t02_1899_09_19 (Luisa allegory of dame obeissance), ldc_t04_1901_01_05, ldc_t12_1919_02_20. CRITICAL: ldc_t08_1908_04_08 is a dialogue with a SAINT (labeled OTHER) not Jesus - left OTHER, not relabeled. Also skipped nested other-speaker quotes inside Jesus discourse (Jesus quoting Luisa T19.E0039.P056; future readers T26.E0009.P170-175; the soul T33.E0002.P012).",
+   "entries_after": 2310,
+   "paragraphs_after": 74340,
+   "speech_segments_after": 56378,
+   "note": "PARTIAL. Stage-2 batches 00-01 of 6 done. Remaining s2 batches: 02-05."
+  }
+ ],
+ "known_gaps": [
+  "The original audit1 ledger zip (LDC_v2.5.50_Corrected_Text_Deep_Audit_Evidence.zip, 124-item list) is missing from Downloads as of 2026-07-04. The mechanical_v2.5.63 rule set above was reconstructed by exact-string pattern scan rather than the original paragraph-id list. If that zip resurfaces, diff it against this ledger to confirm nothing else was missed.",
+  "27 source-matched title quotation-balance candidates logged by the EB-18 audit were deliberately NOT corrected (no text altered on that basis alone) — see EB-18 evidence if this needs revisiting.",
+  "6 dash-prefix speech segments (T25.E0030.P023/P028, T26.E0010.P030, T28.E0001.P074/E0023.P032, T29.E0028.P027) start with a list-marker dash. Renderer already strips it before display, so left as-is — not a defect, just noted for completeness."
+ ]
 }
