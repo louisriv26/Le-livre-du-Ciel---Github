@@ -614,6 +614,21 @@
    "paragraphs_after": 74340,
    "speech_segments_after": 56750,
    "note": "PARTIAL. Stage-2 batches 00-02 of 6 done. Remaining s2 batches: 03-05."
+  },
+  {
+   "version": "v2.9.13",
+   "stage": "residual gap pass (context finder) -> STAGE 2 batch 03 (targeted manual)",
+   "task": "add-missing-jesus-marie-segments",
+   "case": "ATTR-05e",
+   "entry": "s2 batch 03 (35 runs)",
+   "date": "2026-07-19",
+   "title": "Stage 2 batch 03: 208 JESUS adds (0 relabels)",
+   "source": "build_blocks2.py targeted detector (batch 03). Each of 35 runs read in FULL entry context and split Jesus-from-Luisa by hand (context-primary, fail-closed).",
+   "method": "208 JESUS adds (whole unstyled Jesus discourses); ZERO relabels this batch - every REL candidate was correctly-labeled LUISA/OTHER and left untouched. Headline: T32.E0018 (21p Life-of-Divine-Will nourishment), T26.E0021 (27p His Work/silence/Kingdom), T35.E0011 (20p), T34.E0039 (14p Roi/Royaume). Confirms known residual gap T33.E0008.P020-023 (clearly-Jesus outside detected quote) - now styled. Skipped ENTIRE Luisa-prayer/narration runs despite Jesus-anchor: T13.E0033, T14.E0019 (appropriation prayer), T16.E0022, T19.E0020, T24.E0015, T27.E0023, T28.E0004 (Our-Father prayer), ldc_t01_sec102 (Luisa crucifixion narration), ldc_t03 x2, ldc_t04_1902_04_04, ldc_t12_1921_03_12. Left T20.E0056.P063-072 LUISA (scribal-reflection block correctly fixed in batch 09 - relabeling would reverse it). Skipped nested personified-Act quote T30.E0014.P055 (kept OTHER).",
+   "entries_after": 2310,
+   "paragraphs_after": 74340,
+   "speech_segments_after": 56958,
+   "note": "PARTIAL. Stage-2 batches 00-03 of 6 done. Remaining s2 batches: 04-05."
   }
  ],
  "known_gaps": [
