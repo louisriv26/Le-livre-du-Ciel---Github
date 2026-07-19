@@ -674,6 +674,21 @@
    "paragraphs_after": 74340,
    "speech_segments_after": 58094,
    "note": "LESSON: the s2 dump only showed from the ANCHOR (para before the run); when the run was preceded by pre-existing mislabels, the true speaker-introduction (Luisa \"Elle me dit:\") sat above the anchor and was invisible. For any Mary-adjacent or relabel-heavy entry, read the FULL entry, not just the run window."
+  },
+  {
+   "version": "v2.9.17",
+   "stage": "STAGE-2 ADVERSARIAL AUDIT + pre-existing fixes",
+   "task": "add-missing-jesus-marie-segments",
+   "case": "ATTR-05i",
+   "entry": "audit of all 57 relabels + all 20 MARIE adds + 22 JESUS-add boundaries",
+   "date": "2026-07-19",
+   "title": "Stage-2 audit: my work verified 100% clean; fixed 5 pre-existing errors surfaced by full-entry re-reads",
+   "source": "Adversarial self-audit weighted to the risk-dense parts. Read all 12 relabel entries + 2 MARIE entries in FULL, plus 22 JESUS-add run-boundaries with preceding context.",
+   "method": "RESULT: all 57 stage-2 relabels CORRECT, all 20 MARIE adds CORRECT, 22/22 JESUS-add run-starts CORRECT. My stage-2 additions verified clean (the one earlier error, T34.E0023, was already fixed in v2.9.16). Full-entry reads ALSO surfaced 5 PRE-EXISTING wrong-attributions (in the corpus before this campaign, adjacent to my edits) - now fixed: (1) T14.E0012 p004/016/018/022 JESUS->OTHER (dead confessor talking ABOUT Jesus in 3rd person - display_role words_of_confessor); (2) T18.E0022 p016/026/029/030 UNKNOWN->JESUS (Jesus discourse rendering plain); (3) T19.E0023 p105-109 JESUS->deleted (Luisa vision-narration \"Je vis...Jesus alla vers elles\"); (4) T24.E0036 p037 JESUS->deleted (Luisa narration \"Je continuai Mon abandon\"); (5) T36.E0020.P014 zero-length JESUS seg [117,117]->[0,212] (expanded to full Jesus para). Corpus now validates with ZERO total structural errors (was 1 pre-existing zero-length).",
+   "entries_after": 2310,
+   "paragraphs_after": 74340,
+   "speech_segments_after": 58088,
+   "note": "Stage-2 campaign VERIFIED. Confidence: relabels/MARIE audited exhaustively, JESUS adds sampled at boundaries + seen in-context across 14 full entries. Note: audit only covered ~14 entries near stage-2 edits; the 5 pre-existing errors found suggest similar isolated mislabels may exist elsewhere in the EB-21 corpus (not systematically swept)."
   }
  ],
  "known_gaps": [
