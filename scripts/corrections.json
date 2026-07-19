@@ -553,7 +553,22 @@
       "entries_after": 2310,
       "paragraphs_after": 74340,
       "speech_segments_after": 55260,
-      "note": "COMPLETE. All 14 gap-pass batches applied & deployed (v2.8.6 through v2.9.8). Total ~917 attributions (adds + relabels) across the campaign; speech_segments 53,922 (EB-21 baseline) -> 55,260. KNOWN RESIDUAL GAP: the quote-balance candidate-finder misses clearly-Jesus paragraphs that fall OUTSIDE a detected open quote (observed e.g. T33.E0008.P020-023, T25.E0011.P042-056, T28.E0015.P047-069). A follow-up sweep with a context-based (not quote-balance) finder could catch these; not done in this campaign."
+      "note": "COMPLETE. All 14 gap-pass batches applied & deployed (v2.8.6 through v2.9.8). Total ~917 attributions (adds + relabels) across the campaign; speech_segments 53,922 (EB-21 baseline) -> 55,260. KNOWN RESIDUAL GAP: the quote-balance candidate-finder misses clearly-Jesus paragraphs that fall OUTSIDE a detected open quote (observed e.g. T33.E0008.P020-023, T25.E0011.P042-056, T28.E0015.P047-069). Addressed by the context-finder residual pass (v2.9.9+, below)."
+    },
+    {
+      "version": "v2.9.9",
+      "stage": "residual gap pass (context finder) — STAGE 1: high-precision block bulk",
+      "task": "add-missing-jesus-marie-segments",
+      "case": "ATTR-05a",
+      "entry": "53 verified whole-blocks across vols 8,17,20,24,25,27,28,29,30,31,32,33,34,35,36",
+      "date": "2026-07-11",
+      "title": "Context-finder residual pass, stage 1: 440 JESUS adds (whole verified blocks)",
+      "source": "New context-based finder (build_ctx_dataset.py / build_blocks.py). The quote-balance walk only flagged unstyled paragraphs INSIDE a detected open guillemet; this finder flags unstyled runs ANCHORED to Jesus speech with divine-voice markers (Ma Volonte, Nous/Notre, Ma fille, mon Fiat), ZERO Luisa markers (no lowercase 'je', no attribution verbs, no 'mon doux Jesus'/'ta Volonte'/'ma pauvre ame'), and >=1 positive divine self-reference.",
+      "method": "Staged hybrid. Stage 1 = high-precision SAFE blocks only (whole runs, zero-Luisa-marker gate). All 53 blocks hand-verified (~99% precision). Applied 440 pure ADDs (JESUS, full paragraph). Excluded 3 add false-positives (T16.E0051.P012 Luisa 'Non non Mon Amour' reply; T27.E0033.P069 nested creation-quote previously skipped; T36.E0019.P022 'Ensuite Il a ajoute' narration) and DROPPED all 3 relabels to the manual stage (2 of 3 were wrong, incl. T20.E0001.P067 which would have reversed a correct batch-12 fix). Largest blocks: T28.E0031 (57p), T25.E0027 (38p), T24.E0042 (29p), T28.E0015 (23p), T17.E0031 (22p).",
+      "entries_after": 2310,
+      "paragraphs_after": 74340,
+      "speech_segments_after": 55700,
+      "note": "PARTIAL. Stage 1 (safe bulk) done. Stage 2 = manual fail-closed pass over the harder remainder the block-gate deliberately excluded: mixed runs (Jesus + nested Luisa quotes / lowercase-je artifacts), tail runs, and LUISA/UNKNOWN->JESUS relabels of whole mislabeled discourses (e.g. T15.E0018.P026-049 24-para Jesus answer tagged LUISA; T19.E0039.P054-075 22-para unstyled Jesus block). Residual candidate lists: ctx_batch_00-07.json (~2074 flags, tips-of-icebergs); read whole entries, not just flags."
     }
   ],
   "known_gaps": [
