@@ -629,6 +629,21 @@
    "paragraphs_after": 74340,
    "speech_segments_after": 56958,
    "note": "PARTIAL. Stage-2 batches 00-03 of 6 done. Remaining s2 batches: 04-05."
+  },
+  {
+   "version": "v2.9.14",
+   "stage": "residual gap pass (context finder) -> STAGE 2 batch 04 (targeted manual)",
+   "task": "add-missing-jesus-marie-segments",
+   "case": "ATTR-05f",
+   "entry": "s2 batch 04 (34 runs, largest batch)",
+   "date": "2026-07-19",
+   "title": "Stage 2 batch 04: 633 JESUS + 3 MARIE adds + 5 relabels",
+   "source": "build_blocks2.py targeted detector (batch 04). Each of 34 runs read in FULL entry context and split Jesus-from-Luisa by hand (context-primary, fail-closed).",
+   "method": "633 JESUS adds + 3 MARIE adds + 5 relabels->JESUS. Many very long continuous Jesus discourses: T27.E0010 (75p Greffon/Adam/Redemption), T29.E0013 (71p), T30.E0024 (59p His Power/Lazarus), T25.E0033 (56p Truths of His Will), T28.E0019 (34p), T17.E0024 (32p His Mother). MARIE: T35.E0015.P041-043 = Marys maternal plea (\"Tout ce que Je suis et possede est pour mes enfants...\") nested in Jesus discourse - styled MARIE per only-actual-speaker policy (o44 refers to \"sa tendresse maternelle\" in 3rd person, confirming Mary spoke). 5 relabels LUISA->JESUS: T19.E0023.P014/019/046/057 (first-person Jesus mislabeled in the 65p Mother/FIAT discourse), T24.E0026.P064 (\"Je n etais donc roi que pour Moi-meme\"). Skipped ENTIRE Luisa-prayer/narration runs: T13.E0044, T14.E0023, T15.E0009, T16.E0030 (self-doubt), T20.E0009 (declining primacy), T21.E0001, T23.E0004, ldc_t02_1899_06_14 (cup-of-blood scene w/ confessor+Mary, all narration), ldc_t03_1900_01_12 (Luisa humility meditation, exc. p014), ldc_t05_1903_10_25 (Luisa vision-interpretation of the Church). Skipped nested creature refrain T25.E0033.P029 (kept OTHER). T34.E0044.P015-017 = joint Jesus+Mary teaching, styled JESUS (primary).",
+   "entries_after": 2310,
+   "paragraphs_after": 74340,
+   "speech_segments_after": 57594,
+   "note": "PARTIAL. Stage-2 batches 00-04 of 6 done. Remaining s2 batch: 05 (final)."
   }
  ],
  "known_gaps": [
