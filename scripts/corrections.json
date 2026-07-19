@@ -494,6 +494,21 @@
       "paragraphs_after": 74340,
       "speech_segments_after": 54941,
       "note": "PARTIAL — serial pass continuing. Done through batch 09. Remaining batches: 10,11,12,13."
+    },
+    {
+      "version": "v2.9.5",
+      "stage": "speaker-attribution: missing-segment gap pass (serial main-loop, batch 10)",
+      "task": "add-missing-jesus-marie-segments",
+      "case": "ATTR-04f",
+      "entry": "batch 10 (21 entries, 98 candidates)",
+      "date": "2026-07-11",
+      "title": "Batch 10: 39 JESUS adds + 1 relabel",
+      "source": "Serial main-loop reading, full entry context; context-primary, English corroborator, fail-closed.",
+      "method": "39 JESUS continuation adds across vols 2,8,10,11,12,13,14,21,24,33. Largest T21.E0004 (17). 1 relabel: T15.E0012.P035 JESUS->LUISA (Luisa's question 'pourquoi montres-tu tant d'Amour', mislabeled). This batch was heavy on fail-closed drops — whole Luisa vision/prayer sequences left plain (t01_sec109 crucifixion-prayer, t02 obedience-apostrophe block, T17.E0052 garden-vision narration, T24.E0032 field-of-Jesus vision). NOTE: candidate detection (quote-balance walk) misses clearly-Jesus paragraphs that fall outside a detected open quote (e.g. T33.E0008.P020-P023) — a known completeness gap in the gap-finder, not fixed here.",
+      "entries_after": 2310,
+      "paragraphs_after": 74340,
+      "speech_segments_after": 54980,
+      "note": "PARTIAL — serial pass continuing. Done through batch 10. Remaining batches: 11,12,13."
     }
   ],
   "known_gaps": [
