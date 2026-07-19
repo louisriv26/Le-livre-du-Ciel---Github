@@ -117,8 +117,8 @@ def check_corpus(corpus_dir, errors, warnings):
             if ec > tlen:
                 errors.append(f'T{nn} {seg["segment_id"]}: end_char={ec} > tlen={tlen}')
                 continue
-            if sc > ec:
-                errors.append(f'T{nn} {seg["segment_id"]}: start_char={sc} > end_char={ec}')
+            if sc >= ec:
+                errors.append(f'T{nn} {seg["segment_id"]}: start_char={sc} >= end_char={ec} (empty/zero-length or inverted span)')
                 continue
             if 0 < sc < tlen and text[sc-1].isalnum() and text[sc].isalnum():
                 errors.append(f'T{nn} {seg["segment_id"]}: start_char={sc} splits a word')
@@ -232,7 +232,9 @@ def main():
             print(f'  ... and {len(errors) - 100} more')
         sys.exit(1)
     else:
-        print('=== PASS: all checks clean ===')
+        print('=== PASS: structural/referential checks only ===')
+        print('    (offsets, overlaps, word-boundaries, id alignment, search norms).')
+        print('    NOT evaluated here: semantic speaker identity, source authority.')
         sys.exit(0)
 
 

@@ -1,14 +1,19 @@
-# Livre du Ciel — PWA v2.5.57
+# Livre du Ciel — PWA v2.9.18
 
 Application de lecture et d'étude du Livre du Ciel de Luisa Piccarreta.
 
 ## Corpus
-- **36 tomes complets** · 74 476 paragraphes · 2 307 entrées
-- **20 885 corrections** appliquées (v3→v10)
-- Parole de Jésus rendue inline — 52 186 segments visibles dans les 36 tomes
-- Parole de Marie rendue inline — 154 segments visibles
-- Corpus version : v10 (22 juin 2026)
-- Couche parole : 0 offset hors-limites · 0 chevauchement
+- **36 tomes complets** · 74 340 paragraphes · 2 310 entrées
+- Parole de Jésus rendue inline — **56 248 segments**
+- Parole de Marie rendue inline — **211 segments** (MARIE 67 · MARY 144)
+- Couche parole : 0 offset hors-limites · 0 chevauchement (validation **structurelle**)
+
+> **Portée de la vérification.** La couche « parole » a été construite et corrigée par
+> campagnes successives puis auditée sur un sous-ensemble à risque (relabels, Marie,
+> lead-ins narratifs). La validation automatique couvre l'intégrité **structurelle**
+> (offsets, chevauchements, alignement) — **pas** une vérification sémantique complète
+> locuteur-par-locuteur ni une collation intégrale contre les sources. Elle ne doit pas
+> être décrite comme « entièrement vérifiée ».
 
 ## Fonctionnalités
 - Mode Prier : parole de Jésus en italique brun foncé + bordure or · sans label

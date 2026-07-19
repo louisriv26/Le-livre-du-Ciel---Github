@@ -1,4 +1,4 @@
-const VERSION = 'ldc-v2.9.17';
+const VERSION = 'ldc-v2.9.18';
 const SHELL = [
   './', './index.html', './manifest.json', './sw.js',
 
@@ -76,10 +76,13 @@ self.addEventListener('fetch', e => {
   }
 
   // paragraphs/search/speakers — cache-first (large files, immutable once deployed)
+  // ignoreSearch: reader loads with ?cv=NN, search/pre-cache without it — match either so
+  // pre-cached T1–8 assets satisfy the query-keyed reader request offline, and reader/search
+  // share one cache entry per asset (no duplicate query/no-query generations).
   if (path.includes('/corpus/') || path.includes('/embeddings_ldc')) {
     e.respondWith(
       caches.open(VERSION).then(cache =>
-        cache.match(e.request).then(cached => {
+        cache.match(e.request, {ignoreSearch: true}).then(cached => {
           if (cached) return cached;
           return fetch(e.request).then(res => {
             if (res && res.ok) cache.put(e.request, res.clone());

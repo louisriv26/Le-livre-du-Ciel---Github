@@ -689,6 +689,21 @@
    "paragraphs_after": 74340,
    "speech_segments_after": 58088,
    "note": "Stage-2 campaign VERIFIED. Confidence: relabels/MARIE audited exhaustively, JESUS adds sampled at boundaries + seen in-context across 14 full entries. Note: audit only covered ~14 entries near stage-2 edits; the 5 pre-existing errors found suggest similar isolated mislabels may exist elsewhere in the EB-21 corpus (not systematically swept)."
+  },
+  {
+   "version": "v2.9.18",
+   "stage": "External-audit remediation — Track A (bounded, verified fixes)",
+   "task": "audit-remediation",
+   "case": "AUDIT-TRACKA",
+   "entry": "response to external AI audit reports (v2.9.17 deep re-audit x4)",
+   "date": "2026-07-19",
+   "title": "Track A: mixed narrative lead-ins, display-role contradictions, validator/README/manifest, cache+date parser, T17 metadata",
+   "source": "Four external audit reports + evidence zips. Each claim independently verified against the live repo before acting; over-escalated/architectural items deferred to Track B.",
+   "method": "(1) MIXED LEAD-INS: 623 styled JESUS/MARIE segments starting at char0 with a THIRD-PERSON narration attribution before the guillemet -> start moved past the attribution (narration now renders plain, speech stays styled). 8 unambiguous 3rd-person attribution-only frames (Il Me repondit:, Et Il ajouta:, ...) deleted -> plain. CRITICAL: restricted to THIRD-PERSON frames only; first-person divine self-frames (Je dis:, Jai dit:) and false positives (un Acte continu:) deliberately NOT touched to avoid un-styling genuine divine speech. (2) 3 display_role contradictions fixed: t01_sec109_p016 desired-words (Tes peches sont pardonnes) deleted->plain; t11_1912_11_25_p005 JESUS+words_of_mary -> display words_of_jesus + start moved to As-Tu pleure; t12_1921_02_22_p009 illustrative Fiat deleted->plain. (3) validate_corpus.py zero-length bug fixed (sc>ec -> sc>=ec) + PASS message scoped to structural-only; README refreshed to real counts (74340 paras / 2310 entries / 56248 JESUS / 211 Mary) with honest verification-scope note; manifest regenerated (date, speaker_layer scope, T17 status). (4) SW cache: ignoreSearch:true so ?cv=27 reader requests match no-query pre-cached assets (fixes offline T1-8 + reader/search key duplication); date parser extended for 1er ordinals + missing-space + duplicate (N) -> recovers 29 day-level Date-Navigator entries (month-only x3 + undated x1 legitimately remain out of a day grid). (5) T17.E0021B (23 Nov 1924) metadata contradiction resolved: body RETAINED, recorded as legacy English-corroborated (both English witnesses contain full entry incl. Jesus discourse; FR compressed), pending controlled FR reconstruction — per user-confirmed English-led source policy.",
+   "entries_after": 2310,
+   "paragraphs_after": 74340,
+   "speech_segments_after": 58078,
+   "note": "Track A = bounded defect fixes verified against the live repo. Track B (English-led bilingual reconstruction + utterance-provenance speaker rebuild; exact-utterance search; embedding manifest; content-addressed cache; CI semantic gates) is a separate strategic program, NOT done here. 4 ambiguous 3rd-person-ish frames (Et la Divinite dit:, Elle disait:, etc.) left for manual review."
   }
  ],
  "known_gaps": [
