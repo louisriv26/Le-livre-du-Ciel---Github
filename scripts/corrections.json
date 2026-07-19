@@ -479,6 +479,21 @@
       "paragraphs_after": 74340,
       "speech_segments_after": 54856,
       "note": "PARTIAL — serial pass continuing. Done through batch 05. Remaining batches: 09,10,11,12,13."
+    },
+    {
+      "version": "v2.9.4",
+      "stage": "speaker-attribution: missing-segment gap pass (serial main-loop, batch 09)",
+      "task": "add-missing-jesus-marie-segments",
+      "case": "ATTR-04e",
+      "entry": "batch 09 (21 entries, 148 candidates)",
+      "date": "2026-07-11",
+      "title": "Batch 09: 85 adds (78 JESUS + 7 MARIE) + 13 relabels",
+      "source": "Serial main-loop reading, full entry context; context-primary, English corroborator, fail-closed.",
+      "method": "78 JESUS + 7 MARIE continuation adds across vols 2,4,8,10,11,13,15,17,19,30,32. Largest: T30.E0006 (42) — an entry alternating Jesus 3rd-person narration (35 JESUS) with the Virgin's 1st-person quoted prayers (7 MARIE); T19.E0012 (16). 13 relabels: T14.E0022.P012 + T17.E0004.P025 UNKNOWN->JESUS (Jesus continuation / prayer to the Father), T15.E0009.P019 JESUS->LUISA (Luisa's prayer), T30.E0006.P034 JESUS->MARIE (Virgin's quoted prayer), and a 9-paragraph block T20.E0056.P063/P065-P072 JESUS->LUISA (Luisa's meta-reflection on her scribal duty, wholesale mislabeled as Jesus). Fail-closed drops: extensive Luisa narration/vision/prayer (t01_sec103 all, T17.E0048 P031-035/P063-070, T27.E0021 all 13 vision paras, T15.E0009 prayer block, etc.).",
+      "entries_after": 2310,
+      "paragraphs_after": 74340,
+      "speech_segments_after": 54941,
+      "note": "PARTIAL — serial pass continuing. Done through batch 09. Remaining batches: 10,11,12,13."
     }
   ],
   "known_gaps": [
