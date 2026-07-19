@@ -569,6 +569,21 @@
       "paragraphs_after": 74340,
       "speech_segments_after": 55700,
       "note": "PARTIAL. Stage 1 (safe bulk) done. Stage 2 = manual fail-closed pass over the harder remainder the block-gate deliberately excluded: mixed runs (Jesus + nested Luisa quotes / lowercase-je artifacts), tail runs, and LUISA/UNKNOWN->JESUS relabels of whole mislabeled discourses (e.g. T15.E0018.P026-049 24-para Jesus answer tagged LUISA; T19.E0039.P054-075 22-para unstyled Jesus block). Residual candidate lists: ctx_batch_00-07.json (~2074 flags, tips-of-icebergs); read whole entries, not just flags."
+    },
+    {
+      "version": "v2.9.10",
+      "stage": "residual gap pass (context finder) — STAGE 2 batch 00 (targeted manual)",
+      "task": "add-missing-jesus-marie-segments",
+      "case": "ATTR-05b",
+      "entry": "s2 batch 00 (33 entries / targeted large-block + relabel runs)",
+      "date": "2026-07-11",
+      "title": "Stage 2 batch 00: 280 JESUS adds + 33 relabels (whole mislabeled/unstyled discourses)",
+      "source": "build_blocks2.py targeted detector (Jesus-anchored runs, >=6 paras OR containing a relabel-candidate; mixed runs allowed). Each run read in FULL entry context and split Jesus-from-Luisa by hand (context-primary, fail-closed).",
+      "method": "280 JESUS adds (whole unstyled Jesus discourses) + 33 relabels->JESUS (from LUISA x31, UNKNOWN x2, expand-to-full-paragraph). Headline finds: T15.E0018.P026-049+P060+P062 (26-para Jesus answer tagged LUISA), T26.E0007 (28p add), T36.E0030 (31p add across 2 runs), T27.E0035 (25p), T35.E0005 (20p). Note: many stage-2 Jesus discourses use lowercase 'je' (translation artifact) so the stage-1 zero-je gate correctly deferred them here; judged by CONTENT (ma Volonte / mon Fiat / Nous / ma vie eucharistique). Skipped all Luisa narration/prayer interjections within the runs (e.g. T13.E0019, T14.E0004, T16.E0037, T23.E0032, T28.E0035, T30.E0037 entirely Luisa).",
+      "entries_after": 2310,
+      "paragraphs_after": 74340,
+      "speech_segments_after": 55980,
+      "note": "PARTIAL. Stage-2 batch 00 of 6 done. Remaining s2 batches: 01-05 (~178 targeted runs)."
     }
   ],
   "known_gaps": [
