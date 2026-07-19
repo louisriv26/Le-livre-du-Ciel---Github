@@ -599,6 +599,21 @@
    "paragraphs_after": 74340,
    "speech_segments_after": 56378,
    "note": "PARTIAL. Stage-2 batches 00-01 of 6 done. Remaining s2 batches: 02-05."
+  },
+  {
+   "version": "v2.9.12",
+   "stage": "residual gap pass (context finder) -> STAGE 2 batch 02 (targeted manual)",
+   "task": "add-missing-jesus-marie-segments",
+   "case": "ATTR-05d",
+   "entry": "s2 batch 02 (35 runs)",
+   "date": "2026-07-19",
+   "title": "Stage 2 batch 02: 372 JESUS adds + 4 relabels",
+   "source": "build_blocks2.py targeted detector (batch 02). Each of 35 runs read in FULL entry context and split Jesus-from-Luisa by hand (context-primary, fail-closed).",
+   "method": "372 JESUS adds (whole unstyled Jesus discourses) + 4 relabels->JESUS (T18.E0022.P011-013 from UNKNOWN; T24.E0013.P054 from LUISA - Jesus \"Ma Nature humaine a ressenti...ma Nature divine\"). Headline adds: T27.E0020 (49p acts-of-Divine-Will discourse), T30.E0003 (33p seed/acts), T26.E0016 (32p Eden), T25.E0016 (28p Ray-of-Sun/Volonte), T35.E0041 (36p cities/sun/Redemption). Skipped ENTIRE Jesus-anchored runs that were actually Luisa prayer/narration: T13.E0028 x2, T16.E0020, T16.E0050, T20.E0053, T22.E0022, ldc_t02_1899_10_14 (Esperance-as-mother allegory), ldc_t09_1910_10_24 (Luisa trouble-meditation + a DOVE symbolic voice - left as SYMBOLIC_VOICE_OR_DOVE), ldc_t12_1919_04_07 (Luisa reparation prayer). Left T20.E0001.P067 LUISA (relabeling would reverse a correct batch-12 fix). Skipped nested non-Jesus quotes: creature prayer (T35.E0008.P013), God/Adam in Eden meditation (T28.E0002.P047-052 kept OTHER).",
+   "entries_after": 2310,
+   "paragraphs_after": 74340,
+   "speech_segments_after": 56750,
+   "note": "PARTIAL. Stage-2 batches 00-02 of 6 done. Remaining s2 batches: 03-05."
   }
  ],
  "known_gaps": [
