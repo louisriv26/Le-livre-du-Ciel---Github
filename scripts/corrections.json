@@ -524,6 +524,21 @@
       "paragraphs_after": 74340,
       "speech_segments_after": 55119,
       "note": "PARTIAL — serial pass continuing. Done through batch 11. Remaining batches: 12,13."
+    },
+    {
+      "version": "v2.9.7",
+      "stage": "speaker-attribution: missing-segment gap pass (serial main-loop, batch 12)",
+      "task": "add-missing-jesus-marie-segments",
+      "case": "ATTR-04h",
+      "entry": "batch 12 (21 entries, 75 candidates)",
+      "date": "2026-07-11",
+      "title": "Batch 12: 27 adds (26 JESUS + 1 MARIE) + 3 relabels",
+      "source": "Serial main-loop reading, full entry context; context-primary, English corroborator, fail-closed.",
+      "method": "26 JESUS + 1 MARIE (t10_1911_03_26.p008 Virgin's answer) continuation adds across vols 4,8,10,11,12,13,14,15,18. 3 relabels: T13.E0017.P024 OTHER->JESUS (fish-metaphor nested quote, block already JESUS), T17.E0010.P011 + T20.E0001.P067 JESUS->LUISA (Luisa's plea/question mislabeled, expand-to-full-paragraph). Very heavy fail-closed batch: T28.E0008's entire 20-candidate block was Luisa narration; also t01_sec113_2 (5 womb-vision narration), T22/T25/T30.E0009/T34 attribution+narration lines.",
+      "entries_after": 2310,
+      "paragraphs_after": 74340,
+      "speech_segments_after": 55146,
+      "note": "PARTIAL — serial pass continuing. Done through batch 12. Remaining batch: 13 (last)."
     }
   ],
   "known_gaps": [
