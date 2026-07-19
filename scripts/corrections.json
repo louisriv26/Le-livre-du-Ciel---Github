@@ -644,6 +644,21 @@
    "paragraphs_after": 74340,
    "speech_segments_after": 57594,
    "note": "PARTIAL. Stage-2 batches 00-04 of 6 done. Remaining s2 batch: 05 (final)."
+  },
+  {
+   "version": "v2.9.15",
+   "stage": "residual gap pass (context finder) -> STAGE 2 batch 05 (FINAL targeted manual)",
+   "task": "add-missing-jesus-marie-segments",
+   "case": "ATTR-05g",
+   "entry": "s2 batch 05 (34 runs) - FINAL",
+   "date": "2026-07-19",
+   "title": "Stage 2 batch 05 (FINAL): 468 JESUS + 17 MARIE adds + 7 relabels",
+   "source": "build_blocks2.py targeted detector (batch 05, final). Each of 34 runs read in FULL entry context and split Jesus-from-Luisa by hand (context-primary, fail-closed).",
+   "method": "468 JESUS adds + 17 MARIE adds + 7 relabels->JESUS. Headline JESUS: T20.E0017 (102p continuous creation-of-man discourse), T21.E0002 (61p Will-exposed-in-creation-vs-Eucharist), T35.E0016 (41p), T27.E0015 (28p), T33.E0015 (21p). TWO MARIE blocks: T29.E0015.P003-012 (the Sovereign Queen: \"Regarde-Moi, Je suis Reine...mon Royaume est universel\", prev=MARIE confirms), T34.E0023.P029-035 (unmarked Jesus->Mary transition: \"Ma Maternite...J agirai en Reine...unie a ta Maman...avec moi\"; P028 kept JESUS as it completes the anchor Jesus sentence). 7 relabels: T24.E0036.P039 + T28.E0029.P074 (LUISA->JESUS), ldc_t10_1911_01_08.p036-040 (OTHER->JESUS, Jesus addressing a named priest \"Je t ai choisi...Mets-toi a mon travail\" - speaker is Jesus regardless of 3rd-party addressee). Skipped ENTIRE Luisa runs: T13.E0047, T15.E0012, T16.E0031, T17.E0040 (Luisa as \"la petite fille\" praying to the Trinity - critical false-positive), T19.E0027, T27.E0028, ldc_t02_1899_09_01 (obedience apostrophe), ldc_t03_1900_07_27 (China-war vision). Skipped nested creature quotes (T30.E0029.P030, T35.E0016.P034).",
+   "entries_after": 2310,
+   "paragraphs_after": 74340,
+   "speech_segments_after": 58079,
+   "note": "COMPLETE. Context-finder STAGE 2 done (all 6 batches 00-05). Stages 1+2 combined added ~2,379 JESUS/MARIE segments beyond the quote-balance gap pass. Corpus speech_segments 53,922 (EB-21 baseline) -> 58,079."
   }
  ],
  "known_gaps": [
