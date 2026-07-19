@@ -509,6 +509,21 @@
       "paragraphs_after": 74340,
       "speech_segments_after": 54980,
       "note": "PARTIAL — serial pass continuing. Done through batch 10. Remaining batches: 11,12,13."
+    },
+    {
+      "version": "v2.9.6",
+      "stage": "speaker-attribution: missing-segment gap pass (serial main-loop, batch 11)",
+      "task": "add-missing-jesus-marie-segments",
+      "case": "ATTR-04g",
+      "entry": "batch 11 (21 entries, 185 candidates)",
+      "date": "2026-07-11",
+      "title": "Batch 11: 139 JESUS adds + 8 relabels",
+      "source": "Serial main-loop reading, full entry context; context-primary, English corroborator, fail-closed.",
+      "method": "139 JESUS continuation adds across vols 6,8,11,12,13,15,17,24,27,30. Largest: T15.E0022 (47 — Jesus' exposition of the Our Father / three breads), T27.E0033 (36 — Creation-symbolism discourse), T17.E0006 (30 — crucifixion extended-arms discourse), T12.1918_10_16 (14 — war/peace prophecy). 8 relabels (all expand-to-full-paragraph): t02_1899_09_02.p006/p007 + t10_1911_02_08.p018 + T15.E0022.P015/P034 + T24.E0039.P014 LUISA->JESUS (Jesus speech mislabeled Luisa), T13.E0044.P021 UNKNOWN->JESUS, T14.E0028.P018 JESUS->LUISA (Luisa's question). Very heavy fail-closed batch: t01_sec109_r02's entire 28-candidate confession-scene narration left plain; also T18.E0002/T19.E0046/T21.E0009 attribution lines, T33.E0048 vision narration.",
+      "entries_after": 2310,
+      "paragraphs_after": 74340,
+      "speech_segments_after": 55119,
+      "note": "PARTIAL — serial pass continuing. Done through batch 11. Remaining batches: 12,13."
     }
   ],
   "known_gaps": [
