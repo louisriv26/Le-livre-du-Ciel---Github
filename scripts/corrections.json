@@ -539,6 +539,21 @@
       "paragraphs_after": 74340,
       "speech_segments_after": 55146,
       "note": "PARTIAL — serial pass continuing. Done through batch 12. Remaining batch: 13 (last)."
+    },
+    {
+      "version": "v2.9.8",
+      "stage": "speaker-attribution: missing-segment gap pass (serial main-loop, batch 13 = FINAL)",
+      "task": "add-missing-jesus-marie-segments",
+      "case": "ATTR-04i",
+      "entry": "batch 13 (21 entries, 142 candidates)",
+      "date": "2026-07-11",
+      "title": "Batch 13 (final): 114 JESUS adds + 13 relabels — GAP PASS COMPLETE",
+      "source": "Serial main-loop reading, full entry context; context-primary, English corroborator, fail-closed.",
+      "method": "114 JESUS continuation adds across vols 3,4,12,15,17,22,25,28,30,34. Largest by far: T30.E0012 (85 — the 'acquiring the Kingdom of the Divine Will as a property, with gages/deposits' discourse). Also T15.E0032 (Eucharist self-reception, 7), T17.E0012 (6), T28.E0015 (4), T25.E0011 (4). 13 relabels (all expand-to-full-paragraph): 6 UNKNOWN->JESUS (T18.E0005 suspended-fruits discourse), 6 LUISA->JESUS (Jesus speech mislabeled: t01_sec113_3 p012/p013, t02 p007, t06 p004, t08 p007, T22.E0015.P098), 1 JESUS->LUISA (T13.E0046.P006 Luisa's reply). Fail-closed drops incl. t10_1911_10_11 fight-dialogue, T22/T25 tail narration.",
+      "entries_after": 2310,
+      "paragraphs_after": 74340,
+      "speech_segments_after": 55260,
+      "note": "COMPLETE. All 14 gap-pass batches applied & deployed (v2.8.6 through v2.9.8). Total ~917 attributions (adds + relabels) across the campaign; speech_segments 53,922 (EB-21 baseline) -> 55,260. KNOWN RESIDUAL GAP: the quote-balance candidate-finder misses clearly-Jesus paragraphs that fall OUTSIDE a detected open quote (observed e.g. T33.E0008.P020-023, T25.E0011.P042-056, T28.E0015.P047-069). A follow-up sweep with a context-based (not quote-balance) finder could catch these; not done in this campaign."
     }
   ],
   "known_gaps": [
