@@ -659,6 +659,21 @@
    "paragraphs_after": 74340,
    "speech_segments_after": 58079,
    "note": "COMPLETE. Context-finder STAGE 2 done (all 6 batches 00-05). Stages 1+2 combined added ~2,379 JESUS/MARIE segments beyond the quote-balance gap pass. Corpus speech_segments 53,922 (EB-21 baseline) -> 58,079."
+  },
+  {
+   "version": "v2.9.16",
+   "stage": "post-stage-2 correction (self-audit of flagged call)",
+   "task": "add-missing-jesus-marie-segments",
+   "case": "ATTR-05h",
+   "entry": "LDC.T34.E0023 full re-read",
+   "date": "2026-07-19",
+   "title": "Correct T34.E0023: whole P016-P035 is Mary direct discourse (fixes my batch-05 boundary error + pre-existing mislabels)",
+   "source": "Self-flagged during happy-with-it review; full-entry re-read revealed the Jesus->Mary boundary was drawn wrong in batch 05.",
+   "method": "Full entry: Jesus opens (P004-P005), QUOTES Mary (P007-P010), reflects (P011-P013); Luisa narrates handoff (P014-P015: \"Elle me dit:\"); then Mary speaks DIRECTLY and UNBROKEN P016-P035 (no \"Jesus reprit\" anywhere). Corrections: (a) my batch-05 error P028 JESUS->MARIE; (b) pre-existing mislabels P021/P025/P026/P027 JESUS->MARIE (these bad labels are what misled the batch-05 dump, whose ANCHOR was P027 and never showed P015); (c) added MARIE for unstyled Mary paras P016-020,P022-024; (d) added MARIE for Mary-quoted-by-Jesus P007-010; (e) added JESUS for Jesus framing/reflection P005/P011/P012. P006 left plain (genuinely mixed: Mary plea + Jesus reflection tail). Net: 5 relabels JESUS->MARIE, 12 MARIE adds, 3 JESUS adds.",
+   "entries_after": 2310,
+   "paragraphs_after": 74340,
+   "speech_segments_after": 58094,
+   "note": "LESSON: the s2 dump only showed from the ANCHOR (para before the run); when the run was preceded by pre-existing mislabels, the true speaker-introduction (Luisa \"Elle me dit:\") sat above the anchor and was invisible. For any Mary-adjacent or relabel-heavy entry, read the FULL entry, not just the run window."
   }
  ],
  "known_gaps": [
