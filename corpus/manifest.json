@@ -49,15 +49,22 @@
  "speech_resynced": true,
  "notes": "All 36 tomes structurally reconciled. EB-17 completed the two provenance corrections identified by EB-16; Tome 17 23 November 1924 remains PDF-title-only/body-not-proven. EB-20 normalised three source-page ranges from direct PDF evidence.",
  "speech_layer_note": "EB-4 mechanically relocated existing Tome 2 speaker segments through source-proven boundary changes and rebuilt valid previews. No new speaker interpretation was introduced. EB-2 Tome 3 and EB-3 Tome 1 speaker treatments are retained.",
- "app_version": "v2.9.18",
+ "app_version": "v2.9.19",
  "speaker_layer": {
-  "total_segments": 58078,
-  "jesus": 56248,
+  "total_segments": 58077,
+  "jesus": 56247,
   "marie": 67,
   "mary": 144,
   "luisa": 1383,
   "verification_scope": "STRUCTURAL_PASS + risk-subset semantic review (relabels, Marie, narrative lead-ins). NOT a full per-speaker semantic verification nor a complete source collation.",
   "not_verified": "Full-corpus semantic speaker identity; English/French source collation; utterance-level provenance."
  },
- "t17_23nov1924_status": "Body retained: title-only in supplied FR PDF but full entry (incl. Jesus discourse) present and materially matching both English witnesses (QDW, Hugh Owen); FR is compressed. Provenance recorded as legacy/English-corroborated, pending controlled FR reconstruction."
+ "t17_23nov1924_status": "Body retained: title-only in supplied FR PDF but full entry (incl. Jesus discourse) present and materially matching both English witnesses (QDW, Hugh Owen); FR is compressed. Provenance recorded as legacy/English-corroborated, pending controlled FR reconstruction.",
+ "search_norm": {
+  "normalizer": "normalise() (index.html) + whitespace-collapse",
+  "regenerated": "2026-07-19",
+  "all_74340_consistent": true,
+  "ci_gate": "validate_corpus.py asserts stored norm == normalise(text)"
+ },
+ "embedding_manifest": "embeddings_manifest.json (binary/id-order/text hashes; vectors bound to current paragraph text)"
 }

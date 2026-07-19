@@ -25,8 +25,21 @@ import argparse
 import hashlib
 import json
 import os
+import re
 import sys
 from collections import defaultdict
+
+
+def _norm(s):
+    """Canonical search normaliser — exact port of normalise() in index.html
+    (accent folding, œ/æ expansion, punctuation→space, ASCII \\w) plus whitespace-collapse."""
+    s = s.lower()
+    s = re.sub(r'[éèêë]', 'e', s); s = re.sub(r'[àâ]', 'a', s); s = re.sub(r'[îï]', 'i', s)
+    s = re.sub(r'[ôö]', 'o', s); s = re.sub(r'[ùûü]', 'u', s); s = s.replace('ç', 'c')
+    s = s.replace('œ', 'oe').replace('æ', 'ae')
+    s = re.sub(r'[‘’‚‛]', ' ', s); s = re.sub(r'[\-–—]', ' ', s)
+    s = re.sub(r'[^A-Za-z0-9_\s]', ' ', s)
+    return re.sub(r'\s+', ' ', s).strip()
 
 
 def load_json(path):
@@ -100,9 +113,13 @@ def check_corpus(corpus_dir, errors, warnings):
                 errors.append(f'T{nn} {pid}: search text != paragraph text')
 
         # search norm field present (missing norm crashes runSearch() app-wide, index.html:3888)
+        # AND consistent with the app normaliser (mirrors normalise() in index.html:3715 +
+        # whitespace-collapse). Inconsistent norms silently degrade ligature/accent search.
         for s in search:
             if not s.get('norm'):
                 errors.append(f'T{nn} {s["id"]}: search record missing "norm" field')
+            elif s['norm'] != _norm(s.get('text', '')):
+                errors.append(f'T{nn} {s["id"]}: search "norm" != normalise(text)')
 
         # Speech offset + boundary checks
         for seg in speakers:

@@ -1,0 +1,16 @@
+{
+ "schema": "ldc-embedding-manifest-v1",
+ "generated_at": "2026-07-19",
+ "embedding_model": "Xenova/paraphrase-multilingual-MiniLM-L12-v2",
+ "embedding_model_source": "@xenova/transformers@2.17.2 (CDN, query-time)",
+ "dimension": 384,
+ "dtype": "float16",
+ "vector_count": 74340,
+ "binary_bytes": 57093120,
+ "expected_binary_bytes": 57093120,
+ "binary_sha256": "271174b65ea8d771272c81f44e99fc77abdfa9ecd672490ce9db1ca684d56c4a",
+ "paragraph_id_order_sha256": "53146fa0830ec4806af5754a7fc882cdfa8e875c7b2743c2f0f9373d7870f60a",
+ "paragraph_text_manifest_sha256": "7b4eb9925ab74a08a92a04fc82cb567d24aab054e0d9a02e9241167efd8f4476",
+ "ids_missing_from_corpus": 0,
+ "note": "Vectors bound to the exact current paragraph text (paragraph text unchanged by the speaker/search/metadata edits). Regenerate vectors + this manifest whenever indexed paragraph text changes."
+}

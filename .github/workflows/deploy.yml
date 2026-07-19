@@ -7,7 +7,43 @@ permissions:
   pages: write
   id-token: write
 jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Corpus structural + search-norm validation
+        run: python scripts/validate_corpus.py
+      - name: Release-identity gate (app / service-worker version lockstep)
+        run: |
+          python - <<'PY'
+          import re, sys
+          app = re.search(r"APP_VERSION\s*=\s*'([^']+)'", open('index.html', encoding='utf-8').read())
+          sw  = re.search(r"VERSION\s*=\s*'ldc-([^']+)'", open('sw.js', encoding='utf-8').read())
+          app, sw = (app and app.group(1)), (sw and sw.group(1))
+          print(f'index.html APP_VERSION={app}  sw.js VERSION=ldc-{sw}')
+          if not app or not sw or app != sw:
+              sys.exit(f'FAIL: app/service-worker version mismatch ({app} vs {sw})')
+          print('PASS: versions in lockstep')
+          PY
+      - name: Source-authority gate (no body on TITLE_ONLY entries)
+        run: |
+          python - <<'PY'
+          import json, glob, sys
+          bad = []
+          for vf in glob.glob('corpus/volume_*.json'):
+              for e in json.load(open(vf, encoding='utf-8')).get('entries', []):
+                  loc = (e.get('source_locator_type') or '')
+                  if loc == 'PDF_TOC_ONLY_BODY_ABSENT' and int(e.get('para_count', 0)) > 0:
+                      bad.append(e.get('id'))
+          if bad:
+              sys.exit('FAIL: TITLE_ONLY_BODY_ABSENT entries carry body paragraphs: ' + ', '.join(bad))
+          print('PASS: no unproven-body entries publish a body')
+          PY
   deploy:
+    needs: validate
     runs-on: ubuntu-latest
     environment:
       name: github-pages

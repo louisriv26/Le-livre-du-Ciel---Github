@@ -704,6 +704,21 @@
    "paragraphs_after": 74340,
    "speech_segments_after": 58078,
    "note": "Track A = bounded defect fixes verified against the live repo. Track B (English-led bilingual reconstruction + utterance-provenance speaker rebuild; exact-utterance search; embedding manifest; content-addressed cache; CI semantic gates) is a separate strategic program, NOT done here. 4 ambiguous 3rd-person-ish frames (Et la Divinite dit:, Elle disait:, etc.) left for manual review."
+  },
+  {
+   "version": "v2.9.19",
+   "stage": "External-audit remediation — Track B Tier 1 (bounded, verified cleanups)",
+   "task": "audit-remediation",
+   "case": "AUDIT-TIER1",
+   "entry": "search norms, CI gates, embedding manifest, tail boundaries, ambiguous frames",
+   "date": "2026-07-19",
+   "title": "Tier 1: search-norm regen + CI gate, embedding manifest, quote-tail boundary cleanup, 1 more frame",
+   "source": "Track B Tier 1 (bounded cleanups). Each claim verified against the live repo first; strategic items (English reconstruction, utterance-provenance rebuild, exact-utterance search) deferred to Tier 2/3.",
+   "method": "(B4a) SEARCH NORMS: confirmed the auditor 43,172 mismatch is REAL for vols 10-21/28-36 (kept punctuation, unexpanded oe/accents -> degrades ligature/accent search). Regenerated all 74,340 norm fields with the exact app normalise()+whitespace-collapse (43,897 changed); 0 remaining mismatch. Added CI consistency gate to validate_corpus.py (_norm port; stored norm must == normalise(text)). Two normalizers verified compatible (substring-includes + semTokenise BM25). (B5) CI GATE: deploy.yml now runs a validate job (validator + app/SW version lockstep + source-authority no-body-on-TITLE_ONLY gate) that gates deploy (was: deploy any push, no checks). (B4b) EMBEDDING MANIFEST: embeddings_manifest.json with binary_sha256, id-order + text-manifest hashes, dim/dtype/count; binary size == 74340*384*2 exactly; 0 orphan ids (paragraph text unchanged by all edits, so vectors valid). (FRAMES) 4 ambiguous 3rd-person attribution frames read in full entry context: only T21.E0016.P010 Elle disait: was a narration frame for Mary -> deleted->plain; the other 3 (Et la Divinite dit:, ...elle dit:, ...elle Lui dit:) are genuinely Jesus discourse -> kept. (TAILS) 3,632 styled spans extended over trailing terminal-punctuation/closing-quote left outside the span (deterministic; stops at letter/space; overlap-guarded) -> exact boundaries, reduces reliance on runtime tail-repair.",
+   "entries_after": 2310,
+   "paragraphs_after": 74340,
+   "speech_segments_after": 58077,
+   "note": "DEFERRED within Tier 1: month-only(3)+undated(1) Date-Navigator entries (disproportionate day-grid UI change for 4 entries; still readable via search/TOC); 189 quote-OVERSHOOTS (moving a span end back out of narration is the risky direction — needs per-case judgment, focused follow-up). Tier 2 (staged full-corpus blind speaker sweep) and Tier 3 (English-led bilingual reconstruction; utterance-provenance rebuild) remain strategic decisions."
   }
  ],
  "known_gaps": [
