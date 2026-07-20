@@ -1,16 +1,18 @@
-# Livre du Ciel — PWA v2.9.20
+# Livre du Ciel — PWA v2.9.21
 
 Application de lecture et d'étude du Livre du Ciel de Luisa Piccarreta.
 
 ## Corpus
 - **36 tomes complets** · 74 340 paragraphes · 2 310 entrées
-- Parole de Jésus rendue inline — **56 248 segments**
-- Parole de Marie rendue inline — **211 segments** (MARIE 67 · MARY 144)
+- Parole de Jésus rendue inline — **56 298 segments**
+- Parole de Marie rendue inline — **176 segments** (MARIE 70 · MARY 106)
 - Couche parole : 0 offset hors-limites · 0 chevauchement (validation **structurelle**)
 
 > **Portée de la vérification.** La couche « parole » a été construite et corrigée par
 > campagnes successives puis auditée sur un sous-ensemble à risque (relabels, Marie,
-> lead-ins narratifs). La validation automatique couvre l'intégrité **structurelle**
+> lead-ins narratifs). Les 38 entrées contenant de la parole mariale ont été relues
+> intégralement (Stage 2a) : 13 comportaient une erreur de couche (blocs de Jésus
+> absorbés dans Marie, narration faussement stylée). La validation automatique couvre l'intégrité **structurelle**
 > (offsets, chevauchements, alignement) — **pas** une vérification sémantique complète
 > locuteur-par-locuteur ni une collation intégrale contre les sources. Elle ne doit pas
 > être décrite comme « entièrement vérifiée ».

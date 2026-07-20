@@ -734,6 +734,21 @@
    "paragraphs_after": 74340,
    "speech_segments_after": 58077,
    "note": "Tier 1 COMPLETE. All concrete audit P1/P2 items now addressed (attribution lead-ins, display-role contradictions, validator+CI, README/manifest, cache ignoreSearch, date parser+buckets, search-norm regen+gate, embedding manifest, quote-tails, quote-overshoots). 26 ambiguous overshoots + a handful of within-discourse attribution frames left for manual review. Tier 2 (blind full-corpus speaker sweep) and Tier 3 (English-led reconstruction; utterance-provenance rebuild) remain strategic decisions."
+  },
+  {
+   "version": "v2.9.21",
+   "stage": "Track B Tier 2 - Stage 2a (Mary-entry blind audit)",
+   "task": "audit-remediation",
+   "case": "AUDIT-TIER2-STAGE2A",
+   "entry": "38 entries containing MARIE/MARY speech (T34.E0023 excluded - already audited)",
+   "date": "2026-07-20",
+   "title": "Stage 2a: full-entry blind re-read of every Mary-styled entry; 13 of 38 carried a Mary-layer error",
+   "source": "External-auditor claim that the inherited Mary layer had boundary/attribution errors. Verified by reading each Mary entry in full, judging every paragraph blind to stored labels, then diffing.",
+   "method": "Enumerated the 39 MARIE/MARY entries, split into batch A (7 big), B (13 medium), C (18 small). Read each entry FULL (not run-window), judged each paragraph on decisive first-person evidence (mon Fils/Douce Maman=Mary; J instituai/Je passe par ma Mere=Jesus; explicit lead-ins La maman dit / Jesus ajouta). Applied 61 relabels + 20 new segments across batches. Key catches: (1) T19.E0028 p020-027 and T19.E0027 p108-109 = continuous JESUS discourse swallowed into MARY by embedded Annunciation quote / mislabel - the latter proven by p107 tail \"Interrompant Mes dires Jesus ajouta:\"; (2) T36.E0032 p024, T10.1911-10-19 p009 = Mary speech (La maman dit... Jesus veut... 3rd person) mislabeled JESUS; (3) T06.1905-07-03 p001, T04.1900-10-31 p002 = Luisa narration falsely styled MARY -> un-styled; (4) T03.1899-11-21 p010 (Mon cher Fils, accepte-la) = Mary mislabeled LUISA; (5) T08.1908-12-27 p006-010 = garbled placeholder labels over one Jesus discourse. Verified NON-errors too: T11.1912-11-25 p005 correctly carries two partial segments (MARY 18-296 + JESUS 357-371); T30.E0002 Fille de mon Vouloir block genuinely Mary (p009 reintroduces Jesus separately).",
+   "entries_after": 2310,
+   "paragraphs_after": 74340,
+   "speech_segments_after": 58097,
+   "note": "Stage 2a COMPLETE. 13/38 Mary entries had a real Mary-layer error (~34%), confirming the auditors. Stage 2b (relabel candidates) and Stage 2c (~7000 onsets/transitions, multi-agent) remain and require explicit opt-in. Placeholder-label cleanup and missed-Jesus onsets seen in-passing (e.g. T36.E0032 p006-020/p027-034 unstyled Jesus) were left for the systematic Stage 2c sweep to keep treatment consistent across the corpus."
   }
  ],
  "known_gaps": [
