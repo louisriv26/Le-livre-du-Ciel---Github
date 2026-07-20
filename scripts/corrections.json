@@ -749,6 +749,21 @@
    "paragraphs_after": 74340,
    "speech_segments_after": 58097,
    "note": "Stage 2a COMPLETE. 13/38 Mary entries had a real Mary-layer error (~34%), confirming the auditors. Stage 2b (relabel candidates) and Stage 2c (~7000 onsets/transitions, multi-agent) remain and require explicit opt-in. Placeholder-label cleanup and missed-Jesus onsets seen in-passing (e.g. T36.E0032 p006-020/p027-034 unstyled Jesus) were left for the systematic Stage 2c sweep to keep treatment consistent across the corpus."
+  },
+  {
+   "version": "v2.9.22",
+   "stage": "Track B Tier 2 - Stage 2b (relabel candidates: false-styling sweep)",
+   "task": "audit-remediation",
+   "case": "AUDIT-TIER2-STAGE2B",
+   "entry": "corpus-wide styled-segment contradiction scan (all 36 tomes)",
+   "date": "2026-07-20",
+   "title": "Stage 2b: 47 false-styling corrections (Luisa narration/prayer gilded as Jesus; T17 garden = Mary)",
+   "source": "Planned Stage 2b (~560 est.). Reproducible contradiction scan replaced the estimate: styled segments whose OWN text contradicts the assigned speaker. Post Tier-1 + Stage-2a the real high-precision set was ~160 raw -> 47 true errors, i.e. the corpus was far cleaner than the 560 guess.",
+   "method": "Four detectors, each hit judged in full context (never on the regex alone): (1) 1st-person Luisa narration styled JESUS (je vis/je me trouvai/j ai vu + no guillemet) -> 7 un-style + 3 trim; (2) 3rd-person stage-direction narration styled JESUS (Il disparut/Il se tut/Il garda le silence, no divine 1st/2nd person) -> 14 un-style + 1 trim; (3) JESUS segment carrying a Mary self-marker -> reopened T17.E0052 garden scene: decisive mon Fils Jesus (p035) + ma dignite de Mere/Reine (p041) + 3rd-person ma Mere celeste (p045) => p034-044 are Mary (one discourse), p045-046 Luisa narration; corrected 10 JESUS->MARY + 2 JESUS->LUISA (this REVERSES the Stage-2a note that left T17.E0052 as-is); (4) Luisa prayers TO Jesus styled JESUS (vocative mon doux Jesus/Seigneur + lowercase je) -> 7 un-style + 3 trim (segment ended before Jesus reply, which had its own segment). Discriminator lesson: reverential capital Je=Jesus vs lowercase je=Luisa holds MOSTLY but not always (translation drops caps), so every call was context-checked. False positives correctly kept: Jesus teaching 3rd-person about Il=man / Elle=His Will; T35.E0041 lowercase-je Jesus discourse; T30/T20 blocks deferred.",
+   "entries_after": 2310,
+   "paragraphs_after": 74340,
+   "speech_segments_after": 58097,
+   "note": "Stage 2b COMPLETE. 47 corrections: 30 un-style (JESUS->LUISA narration/prayer), 10 JESUS->MARY (T17 garden), 7 boundary trims. Speaker totals now JESUS 56,258 / MARY 116 / MARIE 70. All fix directions browser-verified (speech-marie render + hasMarker:false for un-styles; dash-list items merge via merged-anchor). DEFERRED to Stage 2c: multi-paragraph 3rd-person narration blocks that need full-entry section judgment (e.g. T20.E0040 p022-026 Nativity), and missed unstyled-Jesus onsets seen in passing. Stage 2c (~7000 onsets/transitions, multi-agent) still needs explicit opt-in."
   }
  ],
  "known_gaps": [
