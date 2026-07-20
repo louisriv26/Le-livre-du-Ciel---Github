@@ -779,6 +779,21 @@
    "paragraphs_after": 74340,
    "speech_segments_after": 58279,
    "note": "PILOT SUCCESS. T34: +124 (added), T19: +41, T01: +17 added +29 relabeled (LUISA->JESUS mislabels the agent caught). Total 211 paragraphs of missed divine speech recovered from 3 volumes. Agent verified highly accurate across both id-schemes, all eras, fast dialogue: correctly stops at narration breaks (Jésus garda le silence), excludes Luisa prayers / personified Divine-Will+Fiat+heartbeat quotes / confessor / Trinity-collective voice. Confidence=medium so app shows Jesus (probable). Agent also flagged existing [JESUS] anchors in T01 that may be mislabeled (sec101_p015, sec105_p007/p010, sec081_p030/032/033) - captured for a Stage-2b-style follow-up. REMAINING: 33 volumes of STRONG (~950 candidates) then optionally MEDIUM (3,605). Awaiting user go-ahead to continue the serial run."
+  },
+  {
+   "version": "v2.9.24",
+   "stage": "Track B Tier 2 - Stage 2c (missed-speech, volumes 02-03) + handoff package",
+   "task": "audit-remediation",
+   "case": "AUDIT-TIER2-STAGE2C-V02-03",
+   "entry": "T02, T03 - unstyled paragraphs that are actually Jesus/Mary direct speech",
+   "date": "2026-07-20",
+   "title": "Stage 2c continues: T02/T03 (+61 paragraphs) + full handoff package for the remaining 31 volumes",
+   "source": "Continuation of the serial-agent Stage 2c run (Opus 4.8/High, one agent per volume, verdicts checkpointed to disk). User then requested a self-contained handoff package so another AI agent can finish the remaining 31 volumes.",
+   "method": "Same as pilot: per-volume worksheet -> one Opus agent judging whole entries -> verdicts file -> relabel-or-add apply -> validate. T02 +6 added +11 relabeled (LUISA->JESUS); T03 +22 added +11 relabeled. Spot-verified boundaries. Documented edge case: mixed Luisa-reply+Jesus paragraphs are styled to the dominant speaker per para-level convention (e.g. T02 1899-03-18 p003).",
+   "entries_after": 2310,
+   "paragraphs_after": 74340,
+   "speech_segments_after": 58307,
+   "note": "DONE volumes now 01,02,03,19,34 (JESUS 56,517 / MARY 116 / MARIE 72). A complete handoff package was produced at Claude Code/stage2c_handoff/ (+ zip LDC_Stage2c_Handoff_2026-07-20.zip): RUNBOOK.md, agent_prompt_template.md, full current corpus, s2c scripts (scope/worksheet/apply, relative-path), validator, worksheets for the 31 remaining volumes, done-verdicts, s2c_candidates.json, and s2c_mislabel_flags.txt (existing anchors the agents flagged as mislabeled -> a Stage-2b-style follow-up). REMAINING: 04-18,20-33,35,36 STRONG (~950 candidates); then optional MEDIUM (3,605) and the mislabel pass."
   }
  ],
  "known_gaps": [
