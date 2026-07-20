@@ -1742,7 +1742,7 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; }
    VERSION — single source of truth
    Update this string on every release.
 ═══════════════════════════════════════════════════════ */
-const APP_VERSION = 'v2.9.19';
+const APP_VERSION = 'v2.9.20';
 const APP_BUILD   = '2026-07-08';
 
 /* ═══════════════════════════════════════════════════════
@@ -4973,6 +4973,7 @@ async function boot() {
 let DN_BY_YMD = {};
 let DN_YEAR_COUNTS = {};
 let DN_MONTH_COUNTS = {};
+let DN_UNDATED = [];
 let dnBuilt = false;
 let dnYear = null, dnMonth = null, dnDay = null;
 
@@ -4989,7 +4990,9 @@ function parseEntryDate(entry) {
   // space between month and year ("10 mars1899")
   m = s.match(/^(\d{1,2})(?:er|re|ème|e)?\s+([a-zà-ÿ]+)\s*(\d{4})$/i);
   if (m) { const mo = MO[m[2].toLowerCase()]; if (mo) return [+m[3], mo, +m[1]]; }
-  // month-only ("Septembre 1907") — no day; left out of the day grid (returns null)
+  // month-only ("Septembre 1907") — day 0 sentinel, surfaced as a "Mois entier" cell
+  m = s.match(/^([a-zà-ÿ]+)\s+(\d{4})$/i);
+  if (m) { const mo = MO[m[1].toLowerCase()]; if (mo) return [+m[2], mo, 0]; }
   return null;
 }
 
@@ -5008,7 +5011,12 @@ async function buildDateIndex() {
     }
     for (const entry of entries) {
       const parsed = parseEntryDate(entry);
-      if (!parsed) continue;
+      if (!parsed) {
+        const dd = (entry.date_display || '').trim();
+        if (dd) DN_UNDATED.push({ vol: v, seq: entry.seq, entry_id: entry.id,
+          title: entry.title || entry.stable_ref || '', date_display: dd });
+        continue;
+      }
       const [y, mo, d] = parsed;
       const ymd = `${y}-${mo}-${d}`;
       const ym  = `${y}-${mo}`;
@@ -5063,6 +5071,10 @@ function renderDnYearStrip() {
     const border = sel ? 'none' : '1px solid var(--border)';
     html += `<button class="dn-year-pill" style="opacity:${opacity};background:${bg};color:${color};border:${border};"
       onclick="dnSelectYear(${y})" data-year="${y}">${y}</button>`;
+  }
+  if (DN_UNDATED.length) {
+    html += `<button class="dn-year-pill" style="border:1px solid var(--border);color:var(--ink);"
+      onclick="dnSelectUndated()" title="Entrées sans date">Sans date</button>`;
   }
   strip.innerHTML = html;
   requestAnimationFrame(() => {
@@ -5119,6 +5131,14 @@ function renderDnDayGrid() {
   const daysInMonth = new Date(dnYear, dnMonth, 0).getDate();
   const firstDow    = (new Date(dnYear, dnMonth - 1, 1).getDay() + 6) % 7;
   let html = '';
+  // month-only entries (day 0) — a full-width "Mois entier" cell above the day grid
+  const moOnly = DN_BY_YMD[`${dnYear}-${dnMonth}-0`] || [];
+  if (moOnly.length) {
+    const sel = dnDay === 0;
+    const st = sel ? 'background:var(--accent-fill);color:var(--accent-fill-ink);border-color:var(--accent-fill);'
+                   : 'border-color:var(--accent-fill);background:var(--gold-pale);color:var(--ink);';
+    html += `<button class="dn-day-cell" style="grid-column:1/-1;${st}" onclick="dnSelectDay(0)">Mois entier · ${moOnly.length}</button>`;
+  }
   for (let i = 0; i < firstDow; i++) html += '<div class="dn-day-cell dn-day-empty"></div>';
   for (let d = 1; d <= daysInMonth; d++) {
     const ymd     = `${dnYear}-${dnMonth}-${d}`;
@@ -5143,12 +5163,34 @@ function dnSelectDay(d) {
   renderDnDayGrid(); renderDnResultCard();
 }
 
+function dnSelectUndated() {
+  dnMonth = null; dnDay = null;
+  renderDnMonthGrid(); renderDnDayGrid();
+  const el = document.getElementById('dn-result');
+  const rows = DN_UNDATED.map((e, i) => `
+    ${i > 0 ? '<div class="dn-entry-sep"></div>' : ''}
+    <div class="dn-entry-row">
+      <div class="dn-entry-info">
+        <div class="dn-entry-title">${escapeHtml(e.title)}</div>
+        <div class="dn-entry-sub">Tome ${e.vol} · ${escapeHtml(e.date_display)}</div>
+      </div>
+      <button class="dn-open-btn" onclick="openEntry(${e.vol},'${escapeHtml(e.entry_id)}','date-nav')">Ouvrir ↗</button>
+    </div>`).join('');
+  el.innerHTML = `<div class="dn-result-card">
+    <div class="dn-result-header">
+      <span class="dn-result-date">Sans date</span>
+      <span class="dn-result-count">${DN_UNDATED.length === 1 ? '1 entrée' : DN_UNDATED.length + ' entrées'}</span>
+    </div>
+    <div class="dn-result-body">${rows}</div>
+  </div>`;
+}
+
 const DN_MONTH_LONG = ['janvier','février','mars','avril','mai','juin',
   'juillet','août','septembre','octobre','novembre','décembre'];
 
 function renderDnResultCard() {
   const el = document.getElementById('dn-result');
-  if (!dnDay || !dnMonth || !dnYear) {
+  if (dnDay == null || !dnMonth || !dnYear) {
     el.innerHTML = '<div class="dn-result-empty">Sélectionnez une date pour voir les entrées</div>';
     return;
   }
@@ -5157,7 +5199,8 @@ function renderDnResultCard() {
     el.innerHTML = '<div class="dn-result-empty">Aucune entrée ce jour</div>';
     return;
   }
-  const dateLabel  = `${dnDay} ${DN_MONTH_LONG[dnMonth-1]} ${dnYear}`;
+  const dateLabel  = dnDay === 0 ? `${DN_MONTH_LONG[dnMonth-1]} ${dnYear} · mois entier`
+                                 : `${dnDay} ${DN_MONTH_LONG[dnMonth-1]} ${dnYear}`;
   const countLabel = entries.length === 1 ? '1 entrée' : `${entries.length} entrées`;
   const rows = entries.map((e, i) => `
     ${i > 0 ? '<div class="dn-entry-sep"></div>' : ''}

@@ -719,6 +719,21 @@
    "paragraphs_after": 74340,
    "speech_segments_after": 58077,
    "note": "DEFERRED within Tier 1: month-only(3)+undated(1) Date-Navigator entries (disproportionate day-grid UI change for 4 entries; still readable via search/TOC); 189 quote-OVERSHOOTS (moving a span end back out of narration is the risky direction — needs per-case judgment, focused follow-up). Tier 2 (staged full-corpus blind speaker sweep) and Tier 3 (English-led bilingual reconstruction; utterance-provenance rebuild) remain strategic decisions."
+  },
+  {
+   "version": "v2.9.20",
+   "stage": "Track B Tier 1 — final (overshoots + date buckets)",
+   "task": "audit-remediation",
+   "case": "AUDIT-TIER1-FINAL",
+   "entry": "quote overshoots + Date-Navigator month-only/undated buckets",
+   "date": "2026-07-20",
+   "title": "Tier 1 close-out: 258 quote-overshoot end-fixes + month-only/undated date buckets",
+   "source": "Finishing Tier 1 per user. Overshoot fixes reviewed with speaker-change guard; date buckets are a bounded DN UI addition.",
+   "method": "OVERSHOOTS: styled spans that swallowed narration/other-speaker text after the closing ». Detected 284; applied 258 (A=237 pure-narration tail after »; B=21 dialogic where the gap before the next « carries a clear LUISA first-person response cue -> Luisa turn un-styled). Set end to just after the first depth-0 closing »; skipped nested (« before close) and 26 ambiguous C-cases (incl. a Jesus-continuation Il ajouta: « that a naive rule would have mis-cut — the speaker-change cue was tightened to exclude 3rd-person il/elle). DATE BUCKETS: parseEntryDate now returns [y,mo,0] for month-only (Septembre 1907) surfaced as a full-width Mois entier cell in the day grid; undated entries (1: T14.E0001 Sans date) collected into DN_UNDATED and reachable via a Sans date pill. The 153 blank editorial/section entries correctly excluded (empty date_display). Verified in browser: month-only bucket, undated pill, no console errors.",
+   "entries_after": 2310,
+   "paragraphs_after": 74340,
+   "speech_segments_after": 58077,
+   "note": "Tier 1 COMPLETE. All concrete audit P1/P2 items now addressed (attribution lead-ins, display-role contradictions, validator+CI, README/manifest, cache ignoreSearch, date parser+buckets, search-norm regen+gate, embedding manifest, quote-tails, quote-overshoots). 26 ambiguous overshoots + a handful of within-discourse attribution frames left for manual review. Tier 2 (blind full-corpus speaker sweep) and Tier 3 (English-led reconstruction; utterance-provenance rebuild) remain strategic decisions."
   }
  ],
  "known_gaps": [

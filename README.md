@@ -1,4 +1,4 @@
-# Livre du Ciel — PWA v2.9.19
+# Livre du Ciel — PWA v2.9.20
 
 Application de lecture et d'étude du Livre du Ciel de Luisa Piccarreta.
 
