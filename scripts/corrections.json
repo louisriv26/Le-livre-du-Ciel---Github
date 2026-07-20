@@ -764,6 +764,21 @@
    "paragraphs_after": 74340,
    "speech_segments_after": 58097,
    "note": "Stage 2b COMPLETE. 47 corrections: 30 un-style (JESUS->LUISA narration/prayer), 10 JESUS->MARY (T17 garden), 7 boundary trims. Speaker totals now JESUS 56,258 / MARY 116 / MARIE 70. All fix directions browser-verified (speech-marie render + hasMarker:false for un-styles; dash-list items merge via merged-anchor). DEFERRED to Stage 2c: multi-paragraph 3rd-person narration blocks that need full-entry section judgment (e.g. T20.E0040 p022-026 Nativity), and missed unstyled-Jesus onsets seen in passing. Stage 2c (~7000 onsets/transitions, multi-agent) still needs explicit opt-in."
+  },
+  {
+   "version": "v2.9.23",
+   "stage": "Track B Tier 2 - Stage 2c PILOT (missed-speech onsets, 3 volumes)",
+   "task": "audit-remediation",
+   "case": "AUDIT-TIER2-STAGE2C-PILOT",
+   "entry": "T01, T19, T34 - unstyled paragraphs that are actually Jesus/Mary direct speech",
+   "date": "2026-07-20",
+   "title": "Stage 2c pilot: serial Opus-4.8 agents recovered 211 missed-speech paragraphs across 3 tomes",
+   "source": "User opted for serial-agent execution and a 3-volume pilot to calibrate before the full run. Scoping scan: 17,909 unstyled paragraphs; 1,082 STRONG candidates (Ma fille / quote+reverential) + 3,605 MEDIUM. Pilot ran STRONG on T01/T19/T34.",
+   "method": "Per-volume worksheet = every entry containing a STRONG seed, with ALL its paragraphs + current styled labels. One Opus-4.8/High general-purpose agent per volume (serial, run_in_background=false, verdicts checkpointed to s2c_verdicts_NN.json). Agent judged each entry whole, returning adds (pid+speaker) and considered_but_left_unstyled (seeds rejected). I VERIFIED every agent by spot-checking boundaries against source text before applying. Apply = relabel-or-add: skip if already styled, relabel existing non-styled segment in place (preserve offsets), else add full-paragraph medium-confidence segment.",
+   "entries_after": 2310,
+   "paragraphs_after": 74340,
+   "speech_segments_after": 58279,
+   "note": "PILOT SUCCESS. T34: +124 (added), T19: +41, T01: +17 added +29 relabeled (LUISA->JESUS mislabels the agent caught). Total 211 paragraphs of missed divine speech recovered from 3 volumes. Agent verified highly accurate across both id-schemes, all eras, fast dialogue: correctly stops at narration breaks (Jésus garda le silence), excludes Luisa prayers / personified Divine-Will+Fiat+heartbeat quotes / confessor / Trinity-collective voice. Confidence=medium so app shows Jesus (probable). Agent also flagged existing [JESUS] anchors in T01 that may be mislabeled (sec101_p015, sec105_p007/p010, sec081_p030/032/033) - captured for a Stage-2b-style follow-up. REMAINING: 33 volumes of STRONG (~950 candidates) then optionally MEDIUM (3,605). Awaiting user go-ahead to continue the serial run."
   }
  ],
  "known_gaps": [
