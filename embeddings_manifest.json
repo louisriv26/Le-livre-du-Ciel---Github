@@ -1,0 +1,18 @@
+{
+ "schema": "ldc-embedding-manifest-v1",
+ "generated_at": "2026-08-04",
+ "corpus_generation": "G036-AFLP-R1B-UWR2",
+ "embedding_model": "Xenova/paraphrase-multilingual-MiniLM-L12-v2",
+ "embedding_model_source": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2 (identical weights; @xenova/transformers at query time)",
+ "dimension": 384,
+ "dtype": "float16",
+ "normalised": true,
+ "vector_count": 74348,
+ "binary_bytes": 57099264,
+ "expected_binary_bytes": 57099264,
+ "binary_sha256": "58307e975f27cc7eeb9e4988dbff74aae307e07f5bd8dbfe43502726c6418252",
+ "paragraph_id_order_sha256": "34762c7c1f23b8526cac880ae387de8761d7701970f5c0ccd0862b5a97ead3cf",
+ "paragraph_text_manifest_sha256": "c88d0bd207fed0adc693fdb39cb4070c3ccf4d9e236cc93abd22f785f55e81fd",
+ "ids_missing_from_corpus": 0,
+ "note": "Vectors bound to the exact R1B canonical paragraph text. Regenerate whenever indexed paragraph text changes."
+}

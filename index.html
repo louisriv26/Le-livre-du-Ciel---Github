@@ -1759,7 +1759,7 @@ html[data-theme="light"]{--gold-text:#6E5410;}
    VERSION — single source of truth
    Update this string on every release.
 ═══════════════════════════════════════════════════════ */
-const APP_VERSION = 'v2.10.11-R1B';
+const APP_VERSION = 'v2.10.12-R1B';
 const APP_BUILD   = '2026-07-08';
 
 /* ═══════════════════════════════════════════════════════
@@ -1936,7 +1936,7 @@ async function refreshVectorOptIn() {
 }
 
 async function enableVectorSearch() {
-  await dbPut('settings', { key: 'vector_search_enabled', val: false /* R1B: embeddings STALE+removed */ });
+  await dbPut('settings', { key: 'vector_search_enabled', val: true });
   const banner = document.getElementById('vector-opt-in');
   if (banner) banner.style.display = 'none';
   loadEmbModel().catch(()=>{});
