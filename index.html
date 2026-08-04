@@ -583,6 +583,7 @@ mark.search-hl{background:rgba(201,168,76,.35);color:inherit;border-radius:2px;p
 /* ═══ INLINE SPEECH RENDERING ═══ */
 /* Jesus speech: italic + colour only — no left border */
 .speech-jesus {
+  font-weight: 600;   /* Crimson has no 600-italic; synthesised bold reads cleanly at 19px */
   display: block;
   margin: 0.3em 0 0.1em 0;
   padding: 2px 0;
@@ -1759,7 +1760,7 @@ html[data-theme="light"]{--gold-text:#6E5410;}
    VERSION — single source of truth
    Update this string on every release.
 ═══════════════════════════════════════════════════════ */
-const APP_VERSION = 'v2.10.12-R1B';
+const APP_VERSION = 'v2.10.13-R1B';
 const APP_BUILD   = '2026-07-08';
 
 /* ═══════════════════════════════════════════════════════
