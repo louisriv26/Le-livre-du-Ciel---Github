@@ -1,9 +1,9 @@
 {
- "version": "v25-eb21-speaker-audited",
+ "version": "G036-AFLP-R1B-UWR2",
  "corpus": "livre_du_ciel",
- "generated": "2026-07-19",
- "total_paragraphs": 74340,
- "total_entries": 2310,
+ "generated": "2026-08-04",
+ "total_paragraphs": 74348,
+ "total_entries": 2312,
  "total_corrections": 20885,
  "correction_ledger": "All 36 tomes completed source-boundary reconciliation. EB-17 corrects only two source-page provenance records: Tome 3 / 10 June 1900 ends at PDF page 102, and Tome 5 preface spans pages 1–6 with pages 1;3;5;6 evidenced. Tome 17 23 November 1924 remains title-only/body-not-proven. EB-20 normalises three malformed semicolon source-page records: T3 16 April 1900 = 77–79; T3 27 April 1900 = 82–84; T17 17 May 1925 = 113–119.",
  "volumes_available": [
@@ -45,19 +45,18 @@
   36
  ],
  "volumes_total": 36,
- "status": "tomes1_to36 source-boundary repairs; speaker layer stages 1-2 + audit remediation (Track A)",
+ "status": "R1B_ONBOARDING_CANDIDATE_NOT_DEPLOYED",
  "speech_resynced": true,
  "notes": "All 36 tomes structurally reconciled. EB-17 completed the two provenance corrections identified by EB-16; Tome 17 23 November 1924 remains PDF-title-only/body-not-proven. EB-20 normalised three source-page ranges from direct PDF evidence.",
  "speech_layer_note": "EB-4 mechanically relocated existing Tome 2 speaker segments through source-proven boundary changes and rebuilt valid previews. No new speaker interpretation was introduced. EB-2 Tome 3 and EB-3 Tome 1 speaker treatments are retained.",
- "app_version": "v2.9.20",
+ "app_version": "PENDING_CANDIDATE",
  "speaker_layer": {
-  "total_segments": 58077,
-  "jesus": 56247,
-  "marie": 67,
-  "mary": 144,
-  "luisa": 1383,
-  "verification_scope": "STRUCTURAL_PASS + risk-subset semantic review (relabels, Marie, narrative lead-ins). NOT a full per-speaker semantic verification nor a complete source collation.",
-  "not_verified": "Full-corpus semantic speaker identity; English/French source collation; utterance-level provenance."
+  "total_segments": 65107,
+  "jesus": 59007,
+  "marie": 0,
+  "mary": 226,
+  "luisa": 4556,
+  "verification_scope": "R1B governing checkpoint (G036-AFLP-R1B-UWR2) - authenticated 19/19; counts per governing identity"
  },
  "t17_23nov1924_status": "Body retained: title-only in supplied FR PDF but full entry (incl. Jesus discourse) present and materially matching both English witnesses (QDW, Hugh Owen); FR is compressed. Provenance recorded as legacy/English-corroborated, pending controlled FR reconstruction.",
  "search_norm": {
@@ -66,5 +65,8 @@
   "all_74340_consistent": true,
   "ci_gate": "validate_corpus.py asserts stored norm == normalise(text)"
  },
- "embedding_manifest": "embeddings_manifest.json (binary/id-order/text hashes; vectors bound to current paragraph text)"
+ "embedding_manifest": {
+  "status": "STALE_DISABLED",
+  "reason": "governing identity declares embeddings STALE; baseline bin keyed to 74340 ids != 74348"
+ }
 }

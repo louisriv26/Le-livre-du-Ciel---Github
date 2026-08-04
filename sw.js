@@ -1,4 +1,4 @@
-const VERSION = 'ldc-v2.9.24';
+const VERSION = 'ldc-v2.10.9-R1B';
 const SHELL = [
   './', './index.html', './manifest.json', './sw.js',
 
@@ -24,7 +24,6 @@ const SHELL = [
   // Corpus manifest and search index
   './corpus/manifest.json',
   './corpus/semantic_index.json',
-  './embeddings_ldc_ids.json',
 
   // T1–T8 paragraphs/search/speakers pre-cached for immediate offline reading
   './corpus/volume_01.json', './corpus/paragraphs_01.json', './corpus/search_01.json', './corpus/speakers_01.json',
