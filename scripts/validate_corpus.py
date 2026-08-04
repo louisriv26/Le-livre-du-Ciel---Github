@@ -38,7 +38,8 @@ def _norm(s):
     s = re.sub(r'[ôö]', 'o', s); s = re.sub(r'[ùûü]', 'u', s); s = s.replace('ç', 'c')
     s = s.replace('œ', 'oe').replace('æ', 'ae')
     s = re.sub(r'[‘’‚‛]', ' ', s); s = re.sub(r'[\-–—]', ' ', s)
-    s = re.sub(r'[^A-Za-z0-9_\s]', ' ', s)
+    # _ excluded from word chars to match normalise() in index.html and the R1B generator
+    s = re.sub(r'[^A-Za-z0-9\s]', ' ', s)
     return re.sub(r'\s+', ' ', s).strip()
 
 
