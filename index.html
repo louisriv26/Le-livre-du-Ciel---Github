@@ -1760,7 +1760,7 @@ html[data-theme="light"]{--gold-text:#6E5410;}
    VERSION — single source of truth
    Update this string on every release.
 ═══════════════════════════════════════════════════════ */
-const APP_VERSION = 'v2.10.13-R1B';
+const APP_VERSION = 'v2.10.14-R1B';
 const APP_BUILD   = '2026-07-08';
 
 /* ═══════════════════════════════════════════════════════
@@ -1985,6 +1985,18 @@ async function countReadEntries(vol) {
     if (!readerActive) return;
     // Don't trigger on interactive elements
     if (e.target.closest('button,a,input,textarea,.hl-popup,#hl-popup,.sheet,.overlay')) return;
+    // Don't hijack a text-selection gesture. On iOS/iPadOS, dragging a selection
+    // handle to widen the selection produces the same touchstart/touchend deltas as
+    // a swipe, so without this the app navigated to the next/previous entry and the
+    // selection + highlight popup vanished. If text is selected, this touch was a
+    // selection adjustment, not a page swipe.
+    // NB: test the LIVE selection only. selectionRange stays set after the popup
+    // closes, so guarding on it would disable swipe navigation permanently after
+    // the user's first ever selection.
+    const sel = window.getSelection();
+    if (sel && !sel.isCollapsed && String(sel).trim().length > 0) return;
+    const pop = document.getElementById('hl-popup');
+    if (pop && getComputedStyle(pop).display !== 'none') return;
     const dx = e.changedTouches[0].clientX - touchStartX;
     const dy = e.changedTouches[0].clientY - touchStartY;
     if (Math.abs(dx) < SWIPE_THRESHOLD || Math.abs(dy) > SWIPE_RESTRAINT) return;
