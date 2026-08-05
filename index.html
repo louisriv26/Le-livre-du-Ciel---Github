@@ -1792,7 +1792,7 @@ html[data-theme="light"]{--gold-text:#6E5410;}
    VERSION — single source of truth
    Update this string on every release.
 ═══════════════════════════════════════════════════════ */
-const APP_VERSION = 'v2.10.15-R1B';
+const APP_VERSION = 'v2.10.16-R1B';
 const APP_BUILD   = '2026-07-08';
 
 /* ═══════════════════════════════════════════════════════
@@ -2769,14 +2769,26 @@ function checkAndShowHighlightPopup(paraEl) {
   selectionRange  = { text };
   try {
     const range = sel.getRangeAt(0);
+    // Keep a real cloned Range: on touch, tapping the action-bar "Surligner" button
+    // can collapse the live selection before applyHighlight() reads its offsets.
+    window.lastLiveRange = range.cloneRange();
     const rect  = range.getBoundingClientRect();
     renderNewSelectionPopup();
     positionHlPopup(rect);
   } catch(err) { /* selection may have changed */ }
 }
 
+// Coarse pointer (phone/tablet) → the floating bar is suppressed entirely and the
+// action-bar "Surligner" button is used instead. Two reasons: it collided with the
+// iOS/iPadOS native selection menu, and being position:fixed it stayed pinned to the
+// screen while the text scrolled away beneath it.
+function isCoarsePointer() {
+  return window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
+}
+
 function positionHlPopup(rect) {
   const popup = document.getElementById('hl-popup');
+  if (isCoarsePointer()) { popup.classList.remove('show'); return; }
   // Position above selection, clamped to viewport
   const top  = Math.max(8, rect.top - 54);
   const left = Math.max(4, Math.min(rect.left, window.innerWidth - 260));
@@ -2784,6 +2796,21 @@ function positionHlPopup(rect) {
   popup.style.left = left + 'px';
   popup.classList.add('show');
 }
+
+// Desktop safety net: a fixed-position bar must not linger over unrelated text.
+(function () {
+  let t = null;
+  const dismiss = function () {
+    const popup = document.getElementById('hl-popup');
+    if (popup && popup.classList.contains('show')) popup.classList.remove('show');
+  };
+  ['scroll', 'wheel', 'touchmove'].forEach(function (ev) {
+    window.addEventListener(ev, function () {
+      if (t) return;
+      t = setTimeout(function () { t = null; dismiss(); }, 60);
+    }, { passive: true });
+  });
+})();
 
 function renderNewSelectionPopup() {
   const popup = document.getElementById('hl-popup');
@@ -2893,9 +2920,10 @@ let cpSavedRange = null, cpSavedParaId = null;
 function openHighlightPicker() {
   const sel = window.getSelection();
   const live = sel && !sel.isCollapsed && String(sel).trim().length > 0;
-  // prefer the live selection; fall back to the handler's stored range
+  // Prefer the live selection; otherwise use the real Range captured when the
+  // selection was made (the app's own selectionRange is only {text}, not a Range).
   cpSavedRange  = (live && sel.rangeCount) ? sel.getRangeAt(0).cloneRange()
-                : (selectionRange ? selectionRange.cloneRange ? selectionRange.cloneRange() : selectionRange : null);
+                : (window.lastLiveRange || null);
   cpSavedParaId = selectionParaId || null;
   if (!cpSavedRange || !cpSavedParaId) {
     showToast('Sélectionnez d’abord un passage');
