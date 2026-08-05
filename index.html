@@ -846,6 +846,20 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; }
 #toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
 
 /* Highlight popup */
+/* Colour picker sheet (24 Heures pattern) — anchored to the bottom, never over the text */
+#cp-overlay{position:fixed;inset:0;background:rgba(0,0,0,.35);display:none;z-index:9500;
+  align-items:flex-end;justify-content:center;}
+#cp-overlay.show{display:flex;}
+#cp-sheet{background:var(--white);border-radius:16px 16px 0 0;padding:14px 16px 20px;
+  width:100%;max-width:520px;box-shadow:0 -4px 24px rgba(0,0,0,.25);}
+.cp-label{font-family:var(--body);font-size:14px;color:var(--muted);margin-bottom:10px;text-align:center;}
+.cp-swatches{display:flex;gap:14px;justify-content:center;margin-bottom:14px;}
+.cp-swatch{width:48px;height:48px;min-width:48px;min-height:48px;border-radius:50%;
+  border:1px solid var(--border);cursor:pointer;}
+.cp-gold{background:#F1E7CC;} .cp-yellow{background:#FCF3A0;}
+.cp-blue{background:#CFE3F5;} .cp-green{background:#CFEBD2;}
+.cp-close{display:block;width:100%;min-height:44px;border:1px solid var(--border);
+  border-radius:10px;background:none;font-family:var(--body);font-size:15px;color:var(--ink);cursor:pointer;}
 #hl-popup{position:fixed;background:var(--night);border-radius:10px;
   padding:6px 4px;display:none;flex-direction:row;gap:2px;z-index:150;
   box-shadow:0 4px 20px rgba(0,0,0,.3);}
@@ -969,6 +983,21 @@ html[data-theme="light"]{--gold-text:#6E5410;}
      selection (renderNewSelectionPopup) or recolour/delete for an existing
      highlight the user tapped (renderExistingHighlightPopup) -->
 <div id="hl-popup"></div>
+
+<!-- Colour picker (24 Heures pattern: never floats over the selection, so it cannot
+     collide with the iOS/iPadOS native selection menu) -->
+<div id="cp-overlay" onclick="if(event.target===this)closeHighlightPicker()">
+  <div id="cp-sheet" role="dialog" aria-modal="false" aria-label="Surlignage">
+    <div class="cp-label">Surligner en</div>
+    <div class="cp-swatches">
+      <button type="button" class="cp-swatch cp-gold"   onclick="pickHighlight('gold')"   aria-label="Or"></button>
+      <button type="button" class="cp-swatch cp-yellow" onclick="pickHighlight('yellow')" aria-label="Jaune"></button>
+      <button type="button" class="cp-swatch cp-blue"   onclick="pickHighlight('blue')"   aria-label="Bleu"></button>
+      <button type="button" class="cp-swatch cp-green"  onclick="pickHighlight('green')"  aria-label="Vert"></button>
+    </div>
+    <button type="button" class="cp-close" onclick="closeHighlightPicker()">Fermer</button>
+  </div>
+</div>
 
 
 <!-- Autour de ce passage -->
@@ -1268,6 +1297,9 @@ html[data-theme="light"]{--gold-text:#6E5410;}
     </button>
   </div>
   <div class="action-bar">
+    <button class="ab-btn" onclick="openHighlightPicker()" id="hl-btn">
+      <i class="ti ti-highlight"></i><span>Surligner</span>
+    </button>
     <button class="ab-btn" onclick="toggleFav()" id="fav-btn">
       <i class="ti ti-heart"></i><span>Favori</span>
     </button>
@@ -1760,7 +1792,7 @@ html[data-theme="light"]{--gold-text:#6E5410;}
    VERSION — single source of truth
    Update this string on every release.
 ═══════════════════════════════════════════════════════ */
-const APP_VERSION = 'v2.10.14-R1B';
+const APP_VERSION = 'v2.10.15-R1B';
 const APP_BUILD   = '2026-07-08';
 
 /* ═══════════════════════════════════════════════════════
@@ -2844,6 +2876,57 @@ function canonicalOffset(paraEl, targetNode, targetOffset) {
     len += tn.length;
   }
   return len;
+}
+
+/* ── Action-bar highlight flow (24 Heures pattern) ───────────────────────────
+   Rationale: on iOS/iPadOS the native selection menu (Copier / Rechercher …) is
+   owned by the OS and cannot be suppressed from a web page, so a popup floating
+   beside the selection collides with it. 24 Heures avoids this by offering
+   "Surligner" in the paragraph action bar and choosing the colour in a sheet that
+   never overlaps the text. Same approach here, so both apps behave alike.
+
+   The selection must be captured when "Surligner" is tapped: tapping a button can
+   collapse the live selection, but selectionRange/selectionParaId (set by the
+   selection handler) survive, so we snapshot them and restore before applying. */
+let cpSavedRange = null, cpSavedParaId = null;
+
+function openHighlightPicker() {
+  const sel = window.getSelection();
+  const live = sel && !sel.isCollapsed && String(sel).trim().length > 0;
+  // prefer the live selection; fall back to the handler's stored range
+  cpSavedRange  = (live && sel.rangeCount) ? sel.getRangeAt(0).cloneRange()
+                : (selectionRange ? selectionRange.cloneRange ? selectionRange.cloneRange() : selectionRange : null);
+  cpSavedParaId = selectionParaId || null;
+  if (!cpSavedRange || !cpSavedParaId) {
+    showToast('Sélectionnez d’abord un passage');
+    return;
+  }
+  try { hideHlPopup(); } catch (e) {}
+  const ov = document.getElementById('cp-overlay');
+  if (ov) ov.classList.add('show');
+}
+
+function closeHighlightPicker() {
+  const ov = document.getElementById('cp-overlay');
+  if (ov) ov.classList.remove('show');
+  cpSavedRange = null; cpSavedParaId = null;
+}
+
+async function pickHighlight(color) {
+  // restore the snapshot so applyHighlight sees exactly the user's selection
+  if (cpSavedRange) {
+    selectionRange  = cpSavedRange;
+    selectionParaId = cpSavedParaId || selectionParaId;
+    try {
+      const sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(cpSavedRange);
+    } catch (e) {}
+  }
+  const ov = document.getElementById('cp-overlay');
+  if (ov) ov.classList.remove('show');
+  await applyHighlight(color);
+  cpSavedRange = null; cpSavedParaId = null;
 }
 
 async function applyHighlight(color) {
