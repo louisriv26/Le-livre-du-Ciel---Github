@@ -1827,7 +1827,7 @@ html[data-theme="light"]{--gold-text:#6E5410;}
    VERSION — single source of truth
    Update this string on every release.
 ═══════════════════════════════════════════════════════ */
-const APP_VERSION = 'v2.10.17-R1B';
+const APP_VERSION = 'v2.10.18-R1B';
 const APP_BUILD   = '2026-07-08';
 
 /* ═══════════════════════════════════════════════════════
@@ -2807,6 +2807,28 @@ function checkAndShowHighlightPopup(paraEl) {
     // Keep a real cloned Range: on touch, tapping the action-bar "Surligner" button
     // can collapse the live selection before applyHighlight() reads its offsets.
     window.lastLiveRange = range.cloneRange();
+    // Compute the canonical anchor NOW, while the selection is guaranteed live.
+    // iOS/iPadOS drops the selection when a button is tapped and commonly ignores
+    // programmatic restore via addRange(), which left applyHighlight() writing a
+    // record with null offsets — saved but never rendered.
+    try {
+      const paraEl = document.getElementById('p_' + selectionParaId);
+      if (paraEl) {
+        const sc = canonicalOffset(paraEl, range.startContainer, range.startOffset);
+        const paraText = canonicalParaText(paraEl);
+        let pos = 0, occ = 0;
+        while (pos < sc) {
+          const found = paraText.indexOf(text, pos);
+          if (found < 0 || found >= sc) break;
+          occ++; pos = found + 1;
+        }
+        window.lastSelAnchor = {
+          paraId: selectionParaId, text: text,
+          startChar: sc, endChar: sc + range.toString().length,
+          occurrenceIndex: occ, paraFingerprint: paraText.slice(0, 32)
+        };
+      }
+    } catch (e) { window.lastSelAnchor = null; }
     const rect  = range.getBoundingClientRect();
     renderNewSelectionPopup();
     positionHlPopup(rect);
@@ -3057,7 +3079,20 @@ async function applyHighlight(color) {
         occurrenceIndex = occ;
       }
     }
-  } catch(err) { /* selection may have changed — fall back to text-only */ }
+  } catch(err) { /* selection may have changed — fall back to the stored anchor */ }
+
+  // Touch fallback: if the live selection was lost (iOS drops it when a button is
+  // tapped and often ignores programmatic restore), use the anchor computed at
+  // selection time. Without this the record is written with null offsets and the
+  // re-render has nothing to place — saved, but no visible highlight.
+  if (startChar === null && window.lastSelAnchor &&
+      window.lastSelAnchor.paraId === selectionParaId) {
+    startChar       = window.lastSelAnchor.startChar;
+    endChar         = window.lastSelAnchor.endChar;
+    occurrenceIndex = window.lastSelAnchor.occurrenceIndex;
+    paraFingerprint = window.lastSelAnchor.paraFingerprint;
+  }
+  if (startChar === null) { showToast('Sélection perdue — réessayez'); return; }
 
   await dbPut('highlights', {
     entry_id:        currentEntry.id,
