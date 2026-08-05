@@ -846,6 +846,21 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; }
 #toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
 
 /* Highlight popup */
+/* Selected-text panel (24 Heures pattern) — sits above the bottom nav, never over the
+   selection, so the iOS native menu (Copy / Look Up / Translate) cannot collide with it. */
+#seltext-panel{position:fixed;left:8px;right:8px;bottom:calc(var(--nav-h,116px) + 8px);
+  z-index:9400;display:none;background:var(--white);border:1px solid var(--gold-light);
+  border-radius:14px;padding:8px 10px 10px;box-shadow:0 4px 18px rgba(0,0,0,.18);}
+#seltext-panel.show{display:block;}
+.stp-label{font-family:var(--body);font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);text-align:center;margin-bottom:8px;}
+.stp-actions{display:flex;gap:8px;justify-content:space-between;}
+.stp-btn{flex:1 1 0;display:flex;flex-direction:column;align-items:center;gap:3px;
+  min-height:56px;padding:8px 4px;background:none;border:1px solid var(--border);
+  border-radius:10px;font-family:var(--body);font-size:12px;color:var(--ink);cursor:pointer;}
+.stp-btn i{font-size:18px;}
+.stp-btn:active{background:var(--gold-pale);}
+
 /* Colour picker sheet (24 Heures pattern) — anchored to the bottom, never over the text */
 #cp-overlay{position:fixed;inset:0;background:rgba(0,0,0,.35);display:none;z-index:9500;
   align-items:flex-end;justify-content:center;}
@@ -983,6 +998,26 @@ html[data-theme="light"]{--gold-text:#6E5410;}
      selection (renderNewSelectionPopup) or recolour/delete for an existing
      highlight the user tapped (renderExistingHighlightPopup) -->
 <div id="hl-popup"></div>
+
+<!-- Selected-text panel (24 Heures pattern): contextual, labelled, anchored above the
+     bottom nav so it can never collide with the iOS native selection menu. -->
+<div id="seltext-panel" aria-live="polite">
+  <div class="stp-label">TEXTE SÉLECTIONNÉ</div>
+  <div class="stp-actions">
+    <button type="button" class="stp-btn" onclick="openHighlightPicker()">
+      <i class="ti ti-contrast"></i><span>Surligner</span>
+    </button>
+    <button type="button" class="stp-btn" onclick="copySelectedText()">
+      <i class="ti ti-copy"></i><span>Copier</span>
+    </button>
+    <button type="button" class="stp-btn" onclick="openNoteSheet()">
+      <i class="ti ti-pencil"></i><span>Note</span>
+    </button>
+    <button type="button" class="stp-btn" onclick="closeSelText()">
+      <i class="ti ti-x"></i><span>Fermer</span>
+    </button>
+  </div>
+</div>
 
 <!-- Colour picker (24 Heures pattern: never floats over the selection, so it cannot
      collide with the iOS/iPadOS native selection menu) -->
@@ -1792,7 +1827,7 @@ html[data-theme="light"]{--gold-text:#6E5410;}
    VERSION — single source of truth
    Update this string on every release.
 ═══════════════════════════════════════════════════════ */
-const APP_VERSION = 'v2.10.16-R1B';
+const APP_VERSION = 'v2.10.17-R1B';
 const APP_BUILD   = '2026-07-08';
 
 /* ═══════════════════════════════════════════════════════
@@ -2786,9 +2821,41 @@ function isCoarsePointer() {
   return window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
 }
 
+// ── Selected-text panel (touch) ─────────────────────────────────────────────
+function showSelText() {
+  const el = document.getElementById('seltext-panel');
+  if (el) el.classList.add('show');
+}
+function closeSelText() {
+  const el = document.getElementById('seltext-panel');
+  if (el) el.classList.remove('show');
+  try { window.getSelection().removeAllRanges(); } catch (e) {}
+  window.lastLiveRange = null;
+  try { hideHlPopup(); } catch (e) {}
+}
+function copySelectedText() {
+  const txt = (window.lastLiveRange ? String(window.lastLiveRange) : '')
+           || (selectionRange && selectionRange.text) || String(window.getSelection() || '');
+  if (!txt.trim()) { showToast('Sélectionnez d’abord un passage'); return; }
+  const done = function () { showToast('Copié'); closeSelText(); };
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(txt).then(done).catch(function () {
+      showToast('Copie indisponible');
+    });
+  } else {
+    try {
+      const ta = document.createElement('textarea');
+      ta.value = txt; ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.appendChild(ta); ta.select(); document.execCommand('copy');
+      document.body.removeChild(ta); done();
+    } catch (e) { showToast('Copie indisponible'); }
+  }
+}
+
 function positionHlPopup(rect) {
   const popup = document.getElementById('hl-popup');
-  if (isCoarsePointer()) { popup.classList.remove('show'); return; }
+  // Touch: use the labelled selected-text panel instead of a bar floating over the text.
+  if (isCoarsePointer()) { popup.classList.remove('show'); showSelText(); return; }
   // Position above selection, clamped to viewport
   const top  = Math.max(8, rect.top - 54);
   const left = Math.max(4, Math.min(rect.left, window.innerWidth - 260));
@@ -2955,6 +3022,8 @@ async function pickHighlight(color) {
   if (ov) ov.classList.remove('show');
   await applyHighlight(color);
   cpSavedRange = null; cpSavedParaId = null;
+  const stp = document.getElementById('seltext-panel');
+  if (stp) stp.classList.remove('show');
 }
 
 async function applyHighlight(color) {
