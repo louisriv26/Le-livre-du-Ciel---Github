@@ -1827,7 +1827,7 @@ html[data-theme="light"]{--gold-text:#6E5410;}
    VERSION — single source of truth
    Update this string on every release.
 ═══════════════════════════════════════════════════════ */
-const APP_VERSION = 'v2.10.19-R1B';
+const APP_VERSION = 'v2.10.21-R1B';
 const APP_BUILD   = '2026-07-08';
 
 /* ═══════════════════════════════════════════════════════
@@ -2486,6 +2486,12 @@ async function openEntry(vol, entryId, backDest) {
     }
     div.addEventListener('click', onParaClick);
     body.appendChild(div);
+    // Paint highlights on the ASSEMBLED paragraph. The per-span text matching in
+    // buildSpeechHTML/applyHighlights can only ever match inside a single speaker
+    // segment, so any selection crossing a segment boundary was saved but never
+    // drawn. Working on the finished DOM matches the text the user actually
+    // selected and wraps across span boundaries.
+    paintHighlightsInPara(div, entryHl.filter(h => h.para_id === p.id));
   });
 
   // ── Dash-list classification (R33) ──────────────────────────────────────
@@ -3093,12 +3099,23 @@ async function applyHighlight(color) {
     paraFingerprint = window.lastSelAnchor.paraFingerprint;
   }
   if (startChar === null) { showToast('Sélection perdue — réessayez'); return; }
+  const hlText = (selectionRange && selectionRange.text) ||
+                 (window.lastSelAnchor && window.lastSelAnchor.paraId === selectionParaId
+                    ? window.lastSelAnchor.text : '') ||
+                 (window.lastLiveRange ? String(window.lastLiveRange) : '');
+  if (!hlText.trim()) { showToast('Sélection perdue — réessayez'); return; }
 
   await dbPut('highlights', {
     entry_id:        currentEntry.id,
     para_id:         selectionParaId,
     stable_ref:      currentEntry.stable_ref,
-    text:            selectionRange.text,
+    // Never store an empty needle: every painter matches on this string, so an empty
+    // value saves a record that can never be drawn (the iOS failure — selection dropped
+    // before the colour tap left selectionRange.text blank while offsets stayed valid).
+    text:            (selectionRange && selectionRange.text) ||
+                     (window.lastSelAnchor && window.lastSelAnchor.paraId === selectionParaId
+                        ? window.lastSelAnchor.text : '') ||
+                     (window.lastLiveRange ? String(window.lastLiveRange) : ''),
     start_char:      startChar,
     end_char:        endChar,
     occurrence_index: occurrenceIndex,
@@ -3635,6 +3652,101 @@ function buildSpeechHTML(text, segments, highlights) {
     }
   }
   return html || applyHighlights(escapeHtml(text), highlights);
+}
+
+/* ── DOM-level highlight painter ─────────────────────────────────────────────
+   Runs on the assembled paragraph, after all speech/narrative spans exist.
+
+   Why not per-span text matching (applyHighlights): buildSpeechHTML emits one span
+   per speaker segment and matches inside each span in isolation, so a selection
+   crossing a segment boundary can never match. R1B has ~12% more speaker segments
+   than the previous corpus (65,107 vs 58,307), so many more selections straddle a
+   boundary — saved correctly, but never drawn.
+
+   Matching the rendered text is correct here because that is exactly what the user
+   selected. Folding makes it tolerant of apostrophe/quote/space variants. */
+function ldcFoldChar(ch) {
+  return ch.replace(/[\u2018\u2019\u02BC\u2032]/g, "'")
+           .replace(/[\u201C\u201D\u00AB\u00BB]/g, '"')
+           .replace(/[\u00A0\u202F\u2009\u2007]/g, ' ')
+           .replace(/[\u2010-\u2015]/g, '-');
+}
+
+function paintHighlightsInPara(paraEl, hls) {
+  if (!paraEl || !hls || !hls.length) return;
+  hls.forEach(function (h) {
+    if (!h || !h.text) return;
+    if (paraEl.querySelector('mark[data-hl-id="' + h.id + '"]')) return; // already drawn
+
+    // Collect text nodes, skipping injected labels and existing marks.
+    const nodes = [];
+    const walker = document.createTreeWalker(paraEl, NodeFilter.SHOW_TEXT, {
+      acceptNode: function (n) {
+        if (!n.nodeValue) return NodeFilter.FILTER_REJECT;
+        let el = n.parentElement;
+        while (el && el !== paraEl) {
+          if (el.classList && (el.classList.contains('speech-label') || el.tagName === 'MARK'))
+            return NodeFilter.FILTER_REJECT;
+          el = el.parentElement;
+        }
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    let n;
+    while ((n = walker.nextNode())) nodes.push(n);
+    if (!nodes.length) return;
+
+    // Folded view of the rendered text, with a map back to (node, offset).
+    let hay = '';
+    const map = [];
+    nodes.forEach(function (node) {
+      const v = node.nodeValue;
+      for (let i = 0; i < v.length; i++) {
+        const f = ldcFoldChar(v[i]);
+        if (/\s/.test(f)) {
+          if (hay.length && hay[hay.length - 1] === ' ') continue;
+          hay += ' ';
+        } else { hay += f; }
+        map.push({ node: node, offset: i });
+      }
+    });
+    const needle = ldcFoldChar(h.text).replace(/\s+/g, ' ').trim();
+    if (!needle) return;
+    let at = hay.indexOf(needle);
+    if (at === -1) {
+      // last resort: trim edge quotes/dashes from the stored selection
+      const core = h.text.replace(/^[\s\u00AB\u00BB"'\u201C\u201D\u2013\u2014-]+|[\s\u00AB\u00BB"'\u201C\u201D\u2013\u2014-]+$/g, '');
+      const alt = ldcFoldChar(core).replace(/\s+/g, ' ').trim();
+      if (!alt) return;
+      at = hay.indexOf(alt);
+      if (at === -1) return;
+      var endIdx = at + alt.length;
+    } else { var endIdx = at + needle.length; }
+    if (endIdx > map.length) endIdx = map.length;
+
+    // Wrap each node's slice of the match (handles crossing span boundaries).
+    const pieces = [];
+    let cur = null;
+    for (let i = at; i < endIdx; i++) {
+      const m = map[i];
+      if (cur && cur.node === m.node && m.offset === cur.end) { cur.end = m.offset + 1; continue; }
+      if (cur) pieces.push(cur);
+      cur = { node: m.node, start: m.offset, end: m.offset + 1 };
+    }
+    if (cur) pieces.push(cur);
+
+    pieces.reverse().forEach(function (pc) {
+      try {
+        const r = document.createRange();
+        r.setStart(pc.node, pc.start);
+        r.setEnd(pc.node, pc.end);
+        const mk = document.createElement('mark');
+        mk.className = 'hl hl-' + h.color;
+        mk.setAttribute('data-hl-id', h.id);
+        r.surroundContents(mk);
+      } catch (e) { /* node re-split by a previous piece; skip */ }
+    });
+  });
 }
 
 function applyHighlights(escapedText, highlights) {
