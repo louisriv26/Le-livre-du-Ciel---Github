@@ -1827,7 +1827,7 @@ html[data-theme="light"]{--gold-text:#6E5410;}
    VERSION — single source of truth
    Update this string on every release.
 ═══════════════════════════════════════════════════════ */
-const APP_VERSION = 'v2.10.18-R1B';
+const APP_VERSION = 'v2.10.19-R1B';
 const APP_BUILD   = '2026-07-08';
 
 /* ═══════════════════════════════════════════════════════
@@ -3655,6 +3655,31 @@ function applyHighlights(escapedText, highlights) {
       const escCore = escapeHtml(core);
       if (t.indexOf(escCore) !== -1) { t = t.replace(escCore, wrap(escCore)); return; }
     }
+    // Character-tolerant fallback. A device selection returns exactly what is rendered,
+    // which can differ from the canonical corpus string by apostrophe form (U+2019 vs '),
+    // quote form, or space form (NBSP / narrow NBSP before French punctuation). Match on a
+    // folded copy, then wrap the ORIGINAL substring at that position so nothing is altered.
+    const fold = function (s) {
+      return s.replace(/[‘’ʼ′]/g, "'")
+              .replace(/[“”«»]/g, '"')
+              .replace(/[    ]/g, ' ')
+              .replace(/[‐-―]/g, '-');
+    };
+    const needle = fold(core || h.text).replace(/\s+/g, ' ').trim();
+    if (!needle) return;
+    const chars = [], map = [];
+    for (let i = 0; i < t.length; i++) {
+      const f = fold(t[i]);
+      if (/\s/.test(f)) {
+        if (chars.length && chars[chars.length - 1] === ' ') continue;
+        chars.push(' '); map.push(i);
+      } else { chars.push(f); map.push(i); }
+    }
+    const at = chars.join('').indexOf(needle);
+    if (at === -1) return;
+    const from = map[at];
+    const to = (at + needle.length < map.length) ? map[at + needle.length] : t.length;
+    t = t.slice(0, from) + wrap(t.slice(from, to)) + t.slice(to);
   });
   return t;
 }
