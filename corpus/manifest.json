@@ -45,11 +45,11 @@
   36
  ],
  "volumes_total": 36,
- "status": "R1B_ONBOARDING_CANDIDATE_NOT_DEPLOYED",
+ "status": "R1B_READER_FLOW_REPAIR_CANDIDATE_NOT_DEPLOYED",
  "speech_resynced": true,
  "notes": "All 36 tomes structurally reconciled. EB-17 completed the two provenance corrections identified by EB-16; Tome 17 23 November 1924 remains PDF-title-only/body-not-proven. EB-20 normalised three source-page ranges from direct PDF evidence.",
  "speech_layer_note": "EB-4 mechanically relocated existing Tome 2 speaker segments through source-proven boundary changes and rebuilt valid previews. No new speaker interpretation was introduced. EB-2 Tome 3 and EB-3 Tome 1 speaker treatments are retained.",
- "app_version": "PENDING_CANDIDATE",
+ "app_version": "v2.11.0-R1B",
  "speaker_layer": {
   "total_segments": 65107,
   "jesus": 59007,
@@ -62,11 +62,50 @@
  "search_norm": {
   "normalizer": "normalise() (index.html) + whitespace-collapse",
   "regenerated": "2026-07-19",
-  "all_74340_consistent": true,
-  "ci_gate": "validate_corpus.py asserts stored norm == normalise(text)"
+  "ci_gate": "validate_corpus.py asserts stored norm == normalise(text)",
+  "records_consistent": 74348,
+  "records_total": 74348,
+  "claim": "every search record norm equals normalise(text); asserted per build by validate_corpus.py, not a frozen count"
  },
  "embedding_manifest": {
-  "status": "STALE_DISABLED",
-  "reason": "governing identity declares embeddings STALE; baseline bin keyed to 74340 ids != 74348"
+  "status": "REBUILT_AND_AUDITED",
+  "superseded_claim": "STALE_DISABLED - 'baseline bin keyed to 74340 ids != 74348'. That reason no longer holds: the binary was regenerated against this corpus.",
+  "vector_count": 74348,
+  "dimension": 384,
+  "dtype": "float16",
+  "binary_bytes": 57099264,
+  "ids_match_corpus_order": true,
+  "runtime": "opt-in per user (settings.vector_search_enabled); BM25 remains the default path"
+ },
+ "display_flow_layer": {
+  "schema": "ldc-display-flow-v2",
+  "files": "corpus/flow_01.json .. flow_36.json",
+  "groups": 11498,
+  "members": 35085,
+  "boundaries": 23587,
+  "inherited_dash_joins": 23530,
+  "non_dash_continuations": 57,
+  "cross_role_joins_reviewed": 88,
+  "generator": "scripts/build_display_flow.py",
+  "note": "Derived DISPLAY data. Canonical paragraph IDs, text, fingerprints and speaker offsets are unchanged; flow groups only describe how fragments are shown together."
+ },
+ "display_transform_layer": {
+  "schema": "ldc-display-transform-v2",
+  "files": "corpus/display_01.json .. display_36.json",
+  "authority": "LDC_R1B_runtime_display_transform_map_v2.json (structural-dash handoff RECHECKED v2)",
+  "handoff_operations": 24139,
+  "app_derived_section_markers": 1054,
+  "total_operations": 25193,
+  "canonical_mutations": 0,
+  "note": "Display-only token projection. Suppressed and replaced tokens keep their canonical [start,end) so highlights, notes and bookmarks stay anchored."
+ },
+ "reader_architecture": {
+  "version": "v2.11.0-R1B",
+  "flow_aware_dom": true,
+  "post_render_structural_mutation": false,
+  "paragraph_local_styled_runs": 57966,
+  "cross_fragment_run_links": 20467,
+  "flow_level_displayed_styled_runs": 37499,
+  "user_data_schema_version": 2
  }
 }

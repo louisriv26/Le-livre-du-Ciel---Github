@@ -1,6 +1,9 @@
-const VERSION = 'ldc-v2.10.21-R1B';
+const VERSION = 'ldc-v2.11.0-R1B';
 const SHELL = [
   './', './index.html', './manifest.json', './sw.js',
+
+  // Reader modules (display map, speech model, interaction anchoring)
+  './speech_model.js', './display_map.js', './interaction_anchor.js',
 
   // Icons
   './icons/icon-192.png', './icons/icon-512.png',
@@ -24,16 +27,28 @@ const SHELL = [
   // Corpus manifest and search index
   './corpus/manifest.json',
   './corpus/semantic_index.json',
+  './corpus/display_titles.json',
 
-  // T1–T8 paragraphs/search/speakers pre-cached for immediate offline reading
+  // T1–T8 corpus + derived display layers pre-cached for immediate offline reading.
+  // flow_NN.json and display_NN.json are derived: without them the reader still opens
+  // (canonical passthrough), but paragraphs would not join and source-layout dashes
+  // would show, so they ship with the volume data they describe.
   './corpus/volume_01.json', './corpus/paragraphs_01.json', './corpus/search_01.json', './corpus/speakers_01.json',
+  './corpus/flow_01.json', './corpus/display_01.json',
   './corpus/volume_02.json', './corpus/paragraphs_02.json', './corpus/search_02.json', './corpus/speakers_02.json',
+  './corpus/flow_02.json', './corpus/display_02.json',
   './corpus/volume_03.json', './corpus/paragraphs_03.json', './corpus/search_03.json', './corpus/speakers_03.json',
+  './corpus/flow_03.json', './corpus/display_03.json',
   './corpus/volume_04.json', './corpus/paragraphs_04.json', './corpus/search_04.json', './corpus/speakers_04.json',
+  './corpus/flow_04.json', './corpus/display_04.json',
   './corpus/volume_05.json', './corpus/paragraphs_05.json', './corpus/search_05.json', './corpus/speakers_05.json',
+  './corpus/flow_05.json', './corpus/display_05.json',
   './corpus/volume_06.json', './corpus/paragraphs_06.json', './corpus/search_06.json', './corpus/speakers_06.json',
+  './corpus/flow_06.json', './corpus/display_06.json',
   './corpus/volume_07.json', './corpus/paragraphs_07.json', './corpus/search_07.json', './corpus/speakers_07.json',
+  './corpus/flow_07.json', './corpus/display_07.json',
   './corpus/volume_08.json', './corpus/paragraphs_08.json', './corpus/search_08.json', './corpus/speakers_08.json',
+  './corpus/flow_08.json', './corpus/display_08.json',
 ];
 
 self.addEventListener('message', e => {

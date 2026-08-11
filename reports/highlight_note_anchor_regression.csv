@@ -1,0 +1,13 @@
+scenario,result
+1_2_search_result_targets_second_member,PASS
+pendingParaId_works_for_every_member,PASS
+3_single_fragment_highlight,PASS
+4_persists_under_P006,PASS
+5_cross_fragment_highlight,"PASS — 2 part records, both painted"
+6_grouped_parts_persist_after_reload,PASS
+7_8_note_targets_correct_fragment,"PASS — para_id, para_ids and canonical fingerprint"
+9_collection_uses_selected_member,PASS — does not default to the flow leader
+10_reading_position_at_P006,PASS
+group_recolour_all_parts,PASS
+group_delete_all_parts,PASS
+mon_espace_shows_one_grouped_quotation,implemented (parts reassembled per group)

@@ -1,0 +1,5 @@
+property,value
+schema_marker,"user_data_schema_version = 2, written to settings"
+idempotent,"second run skipped at schema 2, data byte-identical; forced re-run also leaves data identical"
+non_destructive,no record is ever deleted; original anchoring kept in legacy_anchor
+caveat,"The ZIP contains no live IndexedDB, so REAL user-data migration cannot be proven without exported sample data. These are synthetic fixtures covering the five classes §9 requires."

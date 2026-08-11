@@ -157,7 +157,9 @@
    "id": "lowercase_boundary_review_v2.6.6",
    "type": "review_dismissal",
    "description": "125 cross-paragraph lowercase-boundary candidates (paragraph ends without terminal punctuation, next begins lowercase) reviewed and dismissed: they are mid-sentence paragraph splits inherited from the source PDF line layout. The text reads correctly in sequence. Merging paragraphs would break stable IDs, search records and speech offsets for no reader benefit.",
-   "status": "no_change_v2.6.6"
+   "status": "no_change_v2.6.6",
+   "superseded_by": "cross_paragraph_flow_layer_v2.11.0-R1B",
+   "superseded_note": "Retained for history. The dismissal reasoning \"merging paragraphs would break stable IDs, search records and speech offsets for no reader benefit\" is corrected by the entry below: a DERIVED display-flow layer joins the fragments visually while preserving every stable ID."
   },
   {
    "id": "speaker_attribution_campaign_v2.6.8_increment1",
@@ -794,6 +796,13 @@
    "paragraphs_after": 74340,
    "speech_segments_after": 58307,
    "note": "DONE volumes now 01,02,03,19,34 (JESUS 56,517 / MARY 116 / MARIE 72). A complete handoff package was produced at Claude Code/stage2c_handoff/ (+ zip LDC_Stage2c_Handoff_2026-07-20.zip): RUNBOOK.md, agent_prompt_template.md, full current corpus, s2c scripts (scope/worksheet/apply, relative-path), validator, worksheets for the 31 remaining volumes, done-verdicts, s2c_candidates.json, and s2c_mislabel_flags.txt (existing anchors the agents flagged as mislabeled -> a Stage-2b-style follow-up). REMAINING: 04-18,20-33,35,36 STRONG (~950 candidates); then optional MEDIUM (3,605) and the mislabel pass."
+  },
+  {
+   "id": "cross_paragraph_flow_layer_v2.11.0-R1B",
+   "type": "historical_correction",
+   "supersedes": "lowercase_boundary_review_v2.6.6",
+   "description": "The 2.6.6 review dismissed cross-paragraph lowercase boundaries as having \"no reader benefit\" because merging would break stable IDs. Both halves of that judgement are now corrected. There IS a reader defect - users reported sentences such as \"...qui en\" / \"resultent.\" rendering as separate paragraphs, and Jesus speech restarting as a new styled block mid-sentence. And no ID has to break: corpus/flow_NN.json is a DERIVED display layer that groups fragments visually while every canonical paragraph keeps its ID, text, fingerprint, search record and speaker offsets. 23,530 inherited dash joins plus 57 reviewed non-dash continuations are represented as 11,498 flow groups, and 20,467 same-speaker runs are linked across fragment boundaries under the seven conditions in section 7.4 of the governing instruction.",
+   "status": "corrected_v2.11.0-R1B"
   }
  ],
  "known_gaps": [

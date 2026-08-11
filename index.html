@@ -722,7 +722,18 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; }
 
 /* Hidden anchor span injected when a merged paragraph is removed from the DOM.
    Preserves the original p_<id> so getElementById / scrollIntoView still work. */
-.merged-anchor { position:absolute; visibility:hidden; pointer-events:none; }
+/* ── Flow-aware reader DOM (instruction v2 §6.4) ─────────────────────────
+   A .dp-flow group is the visual paragraph. Its member .para-fragment spans
+   keep separate identity and canonical text but must NOT create paragraph
+   margins of their own — the group supplies the spacing. */
+.dp-flow { }
+.para-anchor { display:inline; width:0; height:0; overflow:hidden; }
+.para-fragment { display:inline; margin:0; padding:0; }
+.flow-joiner { display:inline; white-space:pre; }
+/* a run continued from the previous fragment never restarts block spacing */
+.speech-run-continuation { display:inline !important; margin:0 !important; padding:0 !important; }
+.para-fragment.target { background:rgba(200,160,60,.20); border-radius:3px; transition:background .5s; }
+
 
 /* Embedded enumeration: lead-in + split items within a single paragraph */
 .dp-embedded-leadin {
@@ -980,7 +991,19 @@ html[data-theme="light"]{--gold-text:#6E5410;}
 @media (prefers-color-scheme: light){html:not([data-theme="dark"]){--gold-text:#6E5410;}}
 :is(.rh-vol,.reader-date,.btn-back,.nav-item,.nav-item.active,.ab-btn,.collection-add,.mode-pill),
 :is(.rh-vol,.reader-date,.btn-back,.nav-item,.nav-item.active,.ab-btn,.collection-add,.mode-pill) *{color:var(--gold-text,var(--gold)) !important;}
+
+/* Stage C — run-level speech presentation (one element per RUN) */
+.speech-run.speech-block{display:block;margin:0.3em 0 0.1em 0;padding:2px 0;}
+.speech-run.speech-inline{display:inline;margin:0;padding:0;}
+.speech-outer-delimiter{display:none;}
+/* structural-dash display map v2 — suppressed source-layout tokens keep their
+   canonical [start,end) in the DOM but render at zero width */
+.dtok-suppressed{display:inline;}
+.dtok-replaced{display:inline;}
 </style>
+  <script src="display_map.js"></script>
+<script src="interaction_anchor.js"></script>
+<script src="speech_model.js"></script>
 </head>
 <body>
 
@@ -1827,8 +1850,8 @@ html[data-theme="light"]{--gold-text:#6E5410;}
    VERSION — single source of truth
    Update this string on every release.
 ═══════════════════════════════════════════════════════ */
-const APP_VERSION = 'v2.10.21-R1B';
-const APP_BUILD   = '2026-07-08';
+const APP_VERSION = 'v2.11.0-R1B';
+const APP_BUILD   = '2026-08-11';
 
 /* ═══════════════════════════════════════════════════════
    STATE
@@ -1842,6 +1865,9 @@ const corpusCache = {};   // { vol: { entries:[], byId:{} } }
 const parasCache  = {};   // { vol: [] }
 const searchCache = {};   // { vol: [] }
 const speakerCache= {};   // { vol: [] } — speaker segments
+const displayCache= {};   // { vol: { paragraph_id: [ops] } } — structural-dash display map v2
+let   titleOverrides = null; // entry stable_ref -> normalized display title
+const flowCache   = {};   // { vol: { paragraph_id: {flow_id, members, idx} } } — display flow v2
 const volumeMeta  = {};   // { vol: { entry_count, para_count } } — lightweight metadata
 
 // Reader state
@@ -1925,7 +1951,7 @@ function dbGetAll(store) {
 /* ═══════════════════════════════════════════════════════
    CORPUS LOADING
 ═══════════════════════════════════════════════════════ */
-const CORPUS_CV = 'cv=27';
+const CORPUS_CV = 'cv=28';
 
 async function loadVolumeData(vol) {
   if (corpusCache[vol]) return;
@@ -1935,6 +1961,20 @@ async function loadVolumeData(vol) {
     fetch(`corpus/paragraphs_${pad}.json?${CORPUS_CV}`).then(r=>r.json()),
     fetch(`corpus/search_${pad}.json?${CORPUS_CV}`).then(r=>r.json()),
   ]);
+  // Title display decisions (structural-dash handoff v2). Exactly one title is
+  // overridden — the 31 July 1902 charity title — and the normalized prose is
+  // used everywhere a title is shown, copied or shared (§11).
+  if (titleOverrides === null) {
+    try {
+      const td = await fetch(`corpus/display_titles.json?${CORPUS_CV}`).then(r=>r.ok?r.json():null);
+      titleOverrides = (td && td.overrides) ? td.overrides : {};
+    } catch(e) { titleOverrides = {}; }
+  }
+  vData.entries.forEach(e => {
+    const ov = titleOverrides[e.stable_ref];
+    if (ov) { e.canonical_title = e.title; e.title = ov; }
+  });
+
   const byId = {};
   vData.entries.forEach(e => { byId[e.id] = e; });
   corpusCache[vol] = { entries: vData.entries, byId };
@@ -1945,6 +1985,22 @@ async function loadVolumeData(vol) {
     const spkData = await fetch(`corpus/speakers_${pad}.json?${CORPUS_CV}`).then(r=>r.ok?r.json():[]);
     speakerCache[vol] = spkData;
   } catch(e) { speakerCache[vol] = []; }
+  // Structural-dash display map v2 — display-only token projection.
+  // Absent file ⇒ empty map ⇒ canonical passthrough, never a broken render.
+  try {
+    const dsp = await fetch(`corpus/display_${pad}.json?${CORPUS_CV}`).then(r=>r.ok?r.json():null);
+    displayCache[vol] = (dsp && dsp.paragraphs) ? dsp.paragraphs : {};
+  } catch(e) { displayCache[vol] = {}; }
+  // Display flow groups — the reader assembles these BEFORE DOM insertion.
+  // Absent file ⇒ every paragraph is its own single-member flow.
+  try {
+    const fl = await fetch(`corpus/flow_${pad}.json?${CORPUS_CV}`).then(r=>r.ok?r.json():null);
+    const idx = {};
+    ((fl && fl.groups) || []).forEach(g => {
+      g.members.forEach((m, i) => { idx[m.paragraph_id] = { group: g, pos: i }; });
+    });
+    flowCache[vol] = idx;
+  } catch(e) { flowCache[vol] = {}; }
 }
 
 async function getEntry(vol, entryId) {
@@ -2454,206 +2510,119 @@ async function openEntry(vol, entryId, backDest) {
     segsByPara[pid].push(s);
   }
 
-  paras.forEach((p, pidx) => {
-    const div = document.createElement('div');
-    div.className = 'dp';
-    div.id = 'p_' + p.id;
-    div.dataset.paraId = p.id;
-    div.dataset.stableRef = p.stable_ref;
-    div.dataset.rawText = p.text.slice(0, 12); // first 12 chars for list detection
+  // ── Flow-aware assembly (instruction v2 §5.4, §6.4) ──────────────────────
+  // The display flow is assembled from explicit flow metadata BEFORE insertion.
+  // Nothing is rendered and then merged or deleted in a second DOM pass: the
+  // destructive classifyLists() mergeInto() path is gone.
+  const flowIdx   = flowCache[vol] || {};
+  const paraById  = {};
+  paras.forEach(p => { paraById[p.id] = p; });
 
-    const paraSegs = segsByPara[p.id] || [];
-    const hasSpeech = paraSegs.length > 0;
-
-    if (hasSpeech) {
-      // Build inline speech rendering from offsets — use p.text so segment char offsets stay valid
-      // Strip leading section number (1), (2)… from the rendered HTML, not the raw text.
-      // Two cases: (N) before any speech span (plain text prefix), or (N) inside first speech span.
-      let html = buildSpeechHTML(p.text, paraSegs, entryHl.filter(h=>h.para_id===p.id));
-      html = html.replace(/^\(\d+\)\s*/, '');
-      html = html.replace(/(<span[^>]*class="speech-[^"]*"[^>]*>)\(\d+\)\s*/, '$1');
-      // Strip opening quote exposed after section-number removal (e.g. span started with '(2) “')
-      html = html.replace(new RegExp('(<span[^>]*class=\"speech-[^\"]*\"[^>]*>)["«“„]\\s*'), '$1');
-      div.innerHTML = html;
+  // group paragraphs into display units, preserving canonical display order
+  const placed = new Set();
+  const units  = [];
+  paras.forEach(p => {
+    if (placed.has(p.id)) return;
+    const hit = flowIdx[p.id];
+    const grp = hit && hit.group;
+    // only assemble a group whose members are all present in this entry
+    const members = grp ? grp.members.filter(m => paraById[m.paragraph_id]) : null;
+    if (grp && members.length === grp.members.length && members.length > 1) {
+      members.forEach(m => placed.add(m.paragraph_id));
+      units.push({ flowId: grp.flow_id, classification: grp.classification, members });
     } else {
-      // Strip leading section numbers — no offsets involved for plain paragraphs
-      let text = escapeHtml(p.text.replace(/^\(\d+\)\s*/, ''));
-      entryHl.filter(h=>h.para_id===p.id).forEach(h => {
-        text = text.replace(escapeHtml(h.text),
-          `<mark class="hl hl-${h.color}" data-hl-id="${h.id}">${escapeHtml(h.text)}</mark>`);
-      });
-      div.innerHTML = text;
+      placed.add(p.id);
+      units.push({ flowId: null, classification: 'single',
+                   members: [{ paragraph_id: p.id, boundary_after: null }] });
     }
-    div.addEventListener('click', onParaClick);
-    body.appendChild(div);
-    // Paint highlights on the ASSEMBLED paragraph. The per-span text matching in
-    // buildSpeechHTML/applyHighlights can only ever match inside a single speaker
-    // segment, so any selection crossing a segment boundary was saved but never
-    // drawn. Working on the finished DOM matches the text the user actually
-    // selected and wraps across span boundaries.
-    paintHighlightsInPara(div, entryHl.filter(h => h.para_id === p.id));
   });
 
-  // ── Dash-list classification (R33) ──────────────────────────────────────
-  // Handles four patterns:
-  //   1. Mid-sentence dashes  → no class (prose, unchanged)
-  //   2. Enumeration cluster  → dp-list-first / dp-list-middle / dp-list-last
-  //   3. Embedded enumeration → paragraph text split at ", –" boundaries, re-rendered
-  //   4. Continuation para    → dp-list-cont [dp-list-cont-last]
-  (function classifyLists() {
-    const dps = Array.from(body.querySelectorAll('.dp'));
+  const JOINER_CHAR = { none: '', space: ' ', nonbreaking_space: '\u00A0',
+                        soft_line_break: ' ' };
+  window.__ldcFlowLinks = [];
 
-    // ── Helper: does a .dp element start with a dash character? ──
-    // rawText stores only first 6 chars; re-check actual text node for accuracy.
-    function startsWithDash(el) {
-      const raw = (el.dataset.rawText || '') + (el.textContent || '');
-      return /^\s*[-–—]\s/.test(raw.slice(0, 10));
+  units.forEach(unit => {
+    const div = document.createElement('div');
+    div.className = 'dp dp-flow';
+    if (unit.flowId) {
+      div.dataset.flowId = unit.flowId;
+      div.dataset.flowClass = unit.classification || '';
     }
 
-    // ── Helper: is a paragraph a continuation candidate?
-    // Conservative: previous element is a dash-list item, current has no dash,
-    // and the previous item's visible text does not end with a sentence terminator.
-    function isContinuation(el, prevEl) {
-      if (!prevEl) return false;
-      if (startsWithDash(el)) return false;
-      const prevInList = prevEl.classList.contains('dp-list-first') ||
-                         prevEl.classList.contains('dp-list-middle') ||
-                         prevEl.classList.contains('dp-list-last') ||
-                         prevEl.classList.contains('dp-list-cont');
-      if (!prevInList) return false;
-      // Previous item must not end with a full stop, exclamation, or question mark
-      const prevText = (prevEl.textContent || '').trimEnd();
-      return !/[.!?»]$/.test(prevText);
-    }
-
-    // ── Pass 1: fold ALL leading-dash paragraphs into flowing prose (R34) ──
-    // Every leading-dash paragraph is a segmentation-artifact continuation; the
-    // printed book has no such dashes. We strip the dash and merge the fragment
-    // into the running block so it reads as prose. Two shapes are handled:
-    //   • Dash CLUSTERS (≥2 consecutive dash paras — enumerations like the
-    //     "- Si je… / - Si, à l'église…" clauses): all siblings join one block.
-    //     The block head is the non-dash lead-in when it is non-terminal, else
-    //     the first dash item becomes the head and later siblings fold into it.
-    //   • ISOLATED dashes: merge into the previous block UNLESS that block ends
-    //     with terminal punctuation (. ! ? »), which preserves the ~45
-    //     audit-confirmed genuine-standalone cases (they stay .dp-isolated-dash).
-    // Corpus text/IDs are never touched — display only. Removed nodes leave a
-    // hidden .merged-anchor carrying their p_<id> so search/highlight still work.
-    const TERMINAL_RE = /[.!?»]\s*$/;
-
-    // Snapshot original dash-ness BEFORE any mutation so cluster detection is stable.
-    const origDash = dps.map(el => startsWithDash(el));
-
-    function stripLeadDash(el) {
-      const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null, false);
-      let tn;
-      while ((tn = walker.nextNode())) {
-        if (tn.parentElement && tn.parentElement.closest('.speech-label')) continue;
-        if (/^\s*[-–—]/.test(tn.textContent)) {
-          tn.textContent = tn.textContent.replace(/^\s*[-–—]\s*/, '');
-          break;
-        }
+    // paragraph-local models first, then §7.4 cross-fragment run linking
+    const mem = unit.members.map(m => {
+      const p    = paraById[m.paragraph_id];
+      const ops  = (displayCache[vol] || {})[p.id];
+      let atoms  = null;
+      if (ops && window.LDCDisplayMap) {
+        const pr = LDCDisplayMap.projectParagraph(p.text, ops);
+        if (pr.ok) atoms = pr.atoms; else console.warn('LDC: display map rejected', p.id, pr.errors);
       }
-    }
-    function mergeInto(prevEl, el) {
-      prevEl.appendChild(document.createTextNode(' '));
-      const speechLabel = el.querySelector('.speech-label');
-      Array.from(el.childNodes).forEach(child => {
-        if (child !== speechLabel) prevEl.appendChild(child);
-      });
-      if (el.id) {
-        const anchor = document.createElement('span');
-        anchor.id = el.id;
-        anchor.className = 'merged-anchor';
-        prevEl.appendChild(anchor);
-        el.removeAttribute('id');
-      }
-      el.remove();
-    }
-
-    for (let idx = 0; idx < dps.length; idx++) {
-      if (!origDash[idx]) continue;
-      const el = dps[idx];
-      stripLeadDash(el);
-
-      // Nearest still-attached previous .dp is the running block target.
-      let prevEl = null;
-      for (let k = idx - 1; k >= 0; k--) {
-        if (dps[k].isConnected) { prevEl = dps[k]; break; }
-      }
-      if (!prevEl) { el.classList.add('dp-isolated-dash'); continue; }
-
-      const prevIsDashSibling = origDash[idx - 1];              // part of same cluster
-      const isClusterFirst    = !origDash[idx - 1] && origDash[idx + 1];
-
-      let merge;
-      if (prevIsDashSibling)      merge = true;                 // sibling item → always join
-      else if (isClusterFirst)    merge = !TERMINAL_RE.test(prevEl.textContent.trim());
-      else                        merge = !TERMINAL_RE.test(prevEl.textContent.trim());
-
-      if (merge)                 mergeInto(prevEl, el);
-      else if (isClusterFirst)   { /* becomes the flowing block head — no indent class */ }
-      else                       el.classList.add('dp-isolated-dash'); // truly standalone item
-    }
-
-    // ── Pass 2: classify continuation paragraphs ──
-    for (let k = 1; k < dps.length; k++) {
-      if (isContinuation(dps[k], dps[k - 1])) {
-        dps[k].classList.add('dp-list-cont');
-        // Check whether the next element is also a continuation or list item
-        const next = dps[k + 1];
-        const nextIsListOrCont = next && (
-          startsWithDash(next) ||
-          next.classList.contains('dp-list-cont')
-        );
-        if (!nextIsListOrCont) {
-          dps[k].classList.add('dp-list-cont-last');
-        }
-      }
-    }
-
-    // ── Pass 3: embedded enumeration (high-confidence only) ──
-    // Fires only when ALL conditions are met — validated against corpus:
-    //   1. Paragraph does not start with a dash (Pass 1 territory)
-    //   2. At least 3 dash items — 2-item cases are structurally ambiguous
-    //   3. Every item is ≤65 chars — longer items are prose clauses with own subject
-    //   4. Every item starts with a preposition/article (de, du, à, en, dans, …)
-    //      or is a very short phrase (≤2 words) — rules out finite verb clauses
-    //   5. No speech spans — those require separate corpus-level handling
-    // Paragraph IDs and raw corpus text are never modified — display only.
-    const prepStartRe = /^(de |du |d'|des |en |au |aux |par |pour |sur |sous |dans |avec |à |l'|la |le |les |un |une |ma |mon |mes |ta |ton |tes |sa |son |ses |notre |votre |leur |leurs |même |plus |moins |ni |soit |tant |autant |toute |toutes |tout |tous )/i;
-    function isPhrase(s) {
-      const core = s.replace(/[.,;:!?»]+$/, '');
-      if (prepStartRe.test(core)) return true;
-      const words = core.trim().split(/\s+/);
-      return words.length <= 2 && words.every(w => w.length <= 15);
-    }
-    dps.forEach(el => {
-      if (el.classList.contains('dp-list-first') ||
-          el.classList.contains('dp-list-middle') ||
-          el.classList.contains('dp-list-last')) return;
-      if (el.querySelector('.speech-jesus, .speech-marie')) return;
-
-      const fullText = el.textContent || '';
-      const parts = fullText.split(/\s[-–—]\s/);
-      if (parts.length < 4) return; // need lead-in + 3+ items
-
-      const leadIn = parts[0].trimEnd();
-      const items  = parts.slice(1).map(s => s.trim());
-
-      if (!items.every(it => it.length <= 65)) return;
-      if (!items.every(it => isPhrase(it))) return;
-
-      let html = `<span class="dp-embedded-leadin">${escapeHtml(leadIn)}</span>`;
-      items.forEach((item, idx) => {
-        const isLast = idx === items.length - 1;
-        const cls = isLast ? 'dp-embedded-item dp-embedded-last' : 'dp-embedded-item';
-        html += `<span class="${cls}">– ${escapeHtml(item)}</span>`;
-      });
-      el.innerHTML = html;
-      el.classList.add('dp-has-embedded-list');
+      const model = window.LDCSpeechModel
+        ? LDCSpeechModel.buildParagraphSpeechModel(p.text, segsByPara[p.id] || [])
+        : null;
+      return { paraId: p.id, text: p.text, model, atoms,
+               boundaryAfter: m.boundary_after || null, para: p };
     });
-  })();
+    if (window.LDCSpeechModel && LDCSpeechModel.linkFlowRuns) {
+      const links = LDCSpeechModel.linkFlowRuns(mem);
+      if (links.length) window.__ldcFlowLinks.push(...links);
+    }
+
+    mem.forEach((m, i) => {
+      // the p_<id> anchor sits at the START of its own fragment
+      const anchor = document.createElement('span');
+      anchor.id = 'p_' + m.paraId;
+      anchor.className = 'para-anchor';
+      div.appendChild(anchor);
+
+      const frag = document.createElement('span');
+      frag.className = 'para-fragment';
+      frag.dataset.paraId = m.paraId;
+      frag.dataset.stableRef = m.para.stable_ref;
+      frag.dataset.canonicalLength = String(m.para.text.length);
+      frag.innerHTML = (m.model && m.model.ok)
+        ? LDCSpeechModel.renderSpeechModel(m.model, {
+            showLabels: true, hideOuterDelimiters: true,
+            paraId: m.paraId, atoms: m.atoms })
+        : escapeHtml(m.text);
+      div.appendChild(frag);
+      // §8.1 explicit canonical map for this fragment — built from canonical
+      // p.text and the display atoms, never reconstructed from visible text
+      if (window.LDCAnchor) LDCAnchor.indexFragment(frag, m.paraId, m.text, m.atoms);
+
+      if (i < mem.length - 1) {
+        // a derived visual character: it belongs to NEITHER paragraph and has
+        // no canonical offset, so it is marked and excluded from selection maths
+        const b = m.boundaryAfter || {};
+        const j = document.createElement('span');
+        j.className = 'flow-joiner';
+        j.setAttribute('aria-hidden', 'true');
+        j.dataset.joiner = b.display_joiner || 'space';
+        j.textContent = JOINER_CHAR[b.display_joiner] !== undefined
+          ? JOINER_CHAR[b.display_joiner] : ' ';
+        div.appendChild(j);
+      }
+    });
+
+    div.addEventListener('click', onParaClick);
+    body.appendChild(div);
+
+    // paint highlights per FRAGMENT so each stays under its own paragraph id
+    mem.forEach(m => {
+      const frag = div.querySelector('.para-fragment[data-para-id="' + m.paraId + '"]');
+      if (!frag) return;
+      const mine = entryHl.filter(h => h.para_id === m.paraId);
+      if (window.LDCAnchor) {
+        // prefer valid canonical offsets; fall back to text matching only for
+        // legacy records that lack usable offsets (§8.3)
+        const r = LDCAnchor.paintParts(frag, mine);
+        if (r.fallback.length) paintHighlightsInPara(frag, r.fallback);
+      } else {
+        paintHighlightsInPara(frag, mine);
+      }
+    });
+  });
 
   // Prev / next
   const entries = corpusCache[vol].entries;
@@ -2687,11 +2656,16 @@ async function openEntry(vol, entryId, backDest) {
     requestAnimationFrame(() => { sc.scrollTop = savedTop; }); // and after layout settles
   } else if (pendingParaId) {
     requestAnimationFrame(() => {
-      const el = document.getElementById('p_' + pendingParaId);
+      // The anchor sits at the START of its member fragment, so scrolling to it
+      // lands on that paragraph even when several share one flow container.
+      const el   = document.getElementById('p_' + pendingParaId);
+      const frag = fragmentEl(pendingParaId) || el;
       if (el) {
         el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        el.classList.add('target');
-        setTimeout(() => el.classList.remove('target'), 2000);
+        if (frag) {
+          frag.classList.add('target');
+          setTimeout(() => frag.classList.remove('target'), 2000);
+        }
       }
       pendingParaId = null;
     });
@@ -2733,7 +2707,7 @@ async function onReaderScroll() {
   clearTimeout(scrollTimer);
   scrollTimer = setTimeout(async () => {
     // Find first visible paragraph and save as anchor
-    const paras = document.querySelectorAll('.dp');
+    const paras = document.querySelectorAll('.para-fragment');
     const scrollEl = document.getElementById('reader-scroll');
     const top = scrollEl.getBoundingClientRect().top;
     for (const p of paras) {
@@ -2795,7 +2769,9 @@ document.addEventListener('selectionchange', () => {
     if (!sel || sel.toString().trim().length <= 3) return;
     const anchor = sel.anchorNode;
     if (!anchor) return;
-    const para = anchor.parentElement ? anchor.parentElement.closest('.dp') : null;
+    const para = anchor.parentElement
+      ? (anchor.parentElement.closest('.para-fragment') || anchor.parentElement.closest('.dp'))
+      : null;
     if (!para) return;
     checkAndShowHighlightPopup(para);
   }, 150);
@@ -2818,23 +2794,35 @@ function checkAndShowHighlightPopup(paraEl) {
     // programmatic restore via addRange(), which left applyHighlight() writing a
     // record with null offsets — saved but never rendered.
     try {
-      const paraEl = document.getElementById('p_' + selectionParaId);
-      if (paraEl) {
-        const sc = canonicalOffset(paraEl, range.startContainer, range.startOffset);
-        const paraText = canonicalParaText(paraEl);
+      // §8.2/§8.3 canonical parts, one per paragraph fragment the selection
+      // touches. Never derived from sel.toString(), which injects a newline at
+      // element boundaries and therefore cannot be matched against either
+      // fragment's canonical text.
+      const parts = window.LDCAnchor ? LDCAnchor.selectionParts(range) : [];
+      window.lastSelParts = parts;
+      if (parts.length) {
+        const first = parts[0];
+        selectionParaId = first.para_id;          // the fragment actually selected
+        const rec = LDCAnchor.recordFor(LDCAnchor.fragmentOf(range.startContainer));
+        const canonText = rec ? rec.text : '';
         let pos = 0, occ = 0;
-        while (pos < sc) {
-          const found = paraText.indexOf(text, pos);
-          if (found < 0 || found >= sc) break;
+        while (pos < first.start_char) {
+          const found = canonText.indexOf(first.text, pos);
+          if (found < 0 || found >= first.start_char) break;
           occ++; pos = found + 1;
         }
         window.lastSelAnchor = {
-          paraId: selectionParaId, text: text,
-          startChar: sc, endChar: sc + range.toString().length,
-          occurrenceIndex: occ, paraFingerprint: paraText.slice(0, 32)
+          paraId: first.para_id, text: first.text,
+          startChar: first.start_char, endChar: first.end_char,
+          occurrenceIndex: occ,
+          // fingerprint from CANONICAL text, not rendered text (§8.2)
+          paraFingerprint: canonText.slice(0, 32),
+          parts: parts
         };
+        // the visible grouped quotation, rebuilt with the recorded joiner
+        selectionRange = { text: LDCAnchor.groupedQuote(parts, 'space'), parts: parts };
       }
-    } catch (e) { window.lastSelAnchor = null; }
+    } catch (e) { window.lastSelAnchor = null; window.lastSelParts = []; }
     const rect  = range.getBoundingClientRect();
     renderNewSelectionPopup();
     positionHlPopup(rect);
@@ -2929,11 +2917,21 @@ function showExistingHighlightPopup(markEl) {
   positionHlPopup(rect);
 }
 
+// A cross-fragment highlight is several part records sharing a
+// highlight_group_id — they must recolour and delete as one unit.
+async function highlightGroupSiblings(hl) {
+  if (!hl || !hl.highlight_group_id) return hl ? [hl] : [];
+  const all = await dbGetAll('highlights');
+  return all.filter(h => h.highlight_group_id === hl.highlight_group_id);
+}
+
 async function recolorHighlight(id, color) {
   const hl = await dbGet('highlights', id);
   if (!hl) return;
-  hl.color = color;
-  await dbPut('highlights', hl);
+  for (const part of await highlightGroupSiblings(hl)) {
+    part.color = color;
+    await dbPut('highlights', part);
+  }
   hideHlPopup();
   keepScrollTop = document.getElementById('reader-scroll').scrollTop;
   await openEntry(currentVolume, currentEntry.id, readerBack);
@@ -2942,7 +2940,7 @@ async function recolorHighlight(id, color) {
 
 async function deleteHighlightFromReader(id) {
   const hl = await dbGet('highlights', id);
-  await dbDelete('highlights', id);
+  for (const part of await highlightGroupSiblings(hl)) await dbDelete('highlights', part.id);
   hideHlPopup();
   if (hl && currentEntry) {
     keepScrollTop = document.getElementById('reader-scroll').scrollTop;
@@ -2979,6 +2977,14 @@ function hideHlPopup() {
 
 // Walk text nodes of paraEl, skipping .speech-label spans, to get canonical text
 // and to compute char offsets that match canonical p.text (not the DOM display text).
+// A paragraph now renders as a .para-fragment inside a .dp-flow container, so
+// interactions must resolve to the fragment that owns the canonical text, never
+// to the flow group (which may hold several paragraphs).
+function fragmentEl(paraId) {
+  if (!paraId) return null;
+  return document.querySelector('.para-fragment[data-para-id="' + paraId + '"]');
+}
+
 function canonicalParaText(paraEl) {
   const walker = document.createTreeWalker(paraEl, NodeFilter.SHOW_TEXT);
   let text = '', tn;
@@ -3055,78 +3061,227 @@ async function pickHighlight(color) {
 }
 
 async function applyHighlight(color) {
-  if (!selectionRange || !selectionParaId || !currentEntry) return;
+  if (!currentEntry) return;
   hideHlPopup();
 
-  // Store offset-based anchoring so highlights survive repeated occurrences
-  // and minor corpus updates. Offsets exclude injected speech-label text so
-  // they align with canonical paragraph text (p.text in the corpus).
-  let startChar = null, endChar = null, occurrenceIndex = 0, paraFingerprint = '';
+  // §8.3 — a visually continuous sentence may cross several canonical
+  // paragraphs. Never store the whole range against the leader paragraph:
+  // write one part record per fragment, sharing a highlight_group_id.
+  let parts = null;
   try {
     const sel = window.getSelection();
-    if (sel && sel.rangeCount > 0) {
-      const range = sel.getRangeAt(0);
-      const paraEl = document.getElementById('p_' + selectionParaId);
-      if (paraEl) {
-        // Compute offsets excluding speech-label spans
-        startChar = canonicalOffset(paraEl, range.startContainer, range.startOffset);
-        endChar   = startChar + range.toString().length;
-        // Count prior occurrences using canonical (label-free) text
-        const paraText = canonicalParaText(paraEl);
-        paraFingerprint = paraText.slice(0, 32);
-        const searchText = selectionRange.text;
-        let pos = 0, occ = 0;
-        while (pos < startChar) {
-          const found = paraText.indexOf(searchText, pos);
-          if (found < 0 || found >= startChar) break;
-          occ++;
-          pos = found + 1;
-        }
-        occurrenceIndex = occ;
-      }
+    if (sel && sel.rangeCount > 0 && !sel.isCollapsed && window.LDCAnchor) {
+      parts = LDCAnchor.selectionParts(sel.getRangeAt(0));
     }
-  } catch(err) { /* selection may have changed — fall back to the stored anchor */ }
-
-  // Touch fallback: if the live selection was lost (iOS drops it when a button is
-  // tapped and often ignores programmatic restore), use the anchor computed at
-  // selection time. Without this the record is written with null offsets and the
-  // re-render has nothing to place — saved, but no visible highlight.
-  if (startChar === null && window.lastSelAnchor &&
-      window.lastSelAnchor.paraId === selectionParaId) {
-    startChar       = window.lastSelAnchor.startChar;
-    endChar         = window.lastSelAnchor.endChar;
-    occurrenceIndex = window.lastSelAnchor.occurrenceIndex;
-    paraFingerprint = window.lastSelAnchor.paraFingerprint;
+  } catch (err) { parts = null; }
+  // Touch fallback: iOS drops the live selection when a button is tapped, so
+  // fall back to the parts captured while the selection was still live.
+  if ((!parts || !parts.length) && window.lastSelParts && window.lastSelParts.length) {
+    parts = window.lastSelParts;
   }
-  if (startChar === null) { showToast('Sélection perdue — réessayez'); return; }
-  const hlText = (selectionRange && selectionRange.text) ||
-                 (window.lastSelAnchor && window.lastSelAnchor.paraId === selectionParaId
-                    ? window.lastSelAnchor.text : '') ||
-                 (window.lastLiveRange ? String(window.lastLiveRange) : '');
-  if (!hlText.trim()) { showToast('Sélection perdue — réessayez'); return; }
+  if ((!parts || !parts.length) && window.lastLiveRange && window.LDCAnchor) {
+    try { parts = LDCAnchor.selectionParts(window.lastLiveRange); } catch (e) {}
+  }
+  if (!parts || !parts.length) { showToast('Sélection perdue — réessayez'); return; }
 
-  await dbPut('highlights', {
-    entry_id:        currentEntry.id,
-    para_id:         selectionParaId,
-    stable_ref:      currentEntry.stable_ref,
-    // Never store an empty needle: every painter matches on this string, so an empty
-    // value saves a record that can never be drawn (the iOS failure — selection dropped
-    // before the colour tap left selectionRange.text blank while offsets stayed valid).
-    text:            (selectionRange && selectionRange.text) ||
-                     (window.lastSelAnchor && window.lastSelAnchor.paraId === selectionParaId
-                        ? window.lastSelAnchor.text : '') ||
-                     (window.lastLiveRange ? String(window.lastLiveRange) : ''),
-    start_char:      startChar,
-    end_char:        endChar,
-    occurrence_index: occurrenceIndex,
-    para_fingerprint: paraFingerprint,
-    color,
-    ts: Date.now(),
-  });
+  const groupId = 'hg_' + Date.now().toString(36) + '_' +
+                  Math.random().toString(36).slice(2, 8);
+  const joiner = 'space';
+  const ts = Date.now();
+
+  for (let k = 0; k < parts.length; k++) {
+    const pt = parts[k];
+    const frag = fragmentEl(pt.para_id);
+    const rec  = frag && window.LDCAnchor ? LDCAnchor.recordFor(frag) : null;
+    const canonText = rec ? rec.text : '';
+    let pos = 0, occ = 0;
+    while (pos < pt.start_char) {
+      const found = canonText.indexOf(pt.text, pos);
+      if (found < 0 || found >= pt.start_char) break;
+      occ++; pos = found + 1;
+    }
+    await dbPut('highlights', {
+      entry_id:          currentEntry.id,
+      para_id:           pt.para_id,
+      stable_ref:        currentEntry.stable_ref,
+      text:              pt.text,               // canonical slice, never sel.toString()
+      start_char:        pt.start_char,
+      end_char:          pt.end_char,
+      occurrence_index:  occ,
+      para_fingerprint:  canonText.slice(0, 32),
+      highlight_group_id: groupId,
+      part_index:        k,
+      part_count:        parts.length,
+      group_joiner:      joiner,
+      anchor_schema:     2,
+      color,
+      ts: ts,
+    });
+  }
+
   // Re-render paragraphs — keep the reader exactly where it is (no scroll jump)
   keepScrollTop = document.getElementById('reader-scroll').scrollTop;
   await openEntry(currentVolume, currentEntry.id, readerBack);
-  showToast('Surlignage enregistré');
+  showToast(parts.length > 1 ? 'Surlignage enregistré (' + parts.length + ' fragments)'
+                             : 'Surlignage enregistré');
+}
+
+
+/* ═══════════════════════════════════════════════════════
+   §9 USER-DATA MIGRATION — schema-versioned, idempotent, non-destructive
+   ═══════════════════════════════════════════════════════
+   Old records may carry text-only anchoring, offsets taken from the previously
+   mutated DOM, a fingerprint from rendered text, or the old flow LEADER id even
+   though the text belongs to a later member. Nothing is ever deleted: a record
+   that cannot be re-anchored is preserved and marked needs_reanchor. */
+const USER_DATA_SCHEMA_VERSION = 2;
+
+async function migrateUserAnchors(opts) {
+  opts = opts || {};
+  const marker = await dbGet('settings', 'user_data_schema_version');
+  if (!opts.force && marker && marker.value >= USER_DATA_SCHEMA_VERSION) {
+    return { skipped: true, reason: 'already at schema ' + marker.value, changed: 0 };
+  }
+  const log = { scanned: 0, already_v2: 0, validated: 0, reanchored: 0, split: 0,
+                needs_reanchor: 0, unchanged: 0, entries: [] };
+
+  const fold = s => (window.LDCAnchor ? LDCAnchor.fold(s) : String(s || '').trim());
+  const hls  = await dbGetAll('highlights');
+
+  // group members of the flow that owns a paragraph, so a misattributed leader
+  // id can be resolved to the member that actually holds the text
+  async function flowMembersOf(vol, paraId) {
+    await loadVolumeData(vol);
+    const hit = (flowCache[vol] || {})[paraId];
+    if (!hit) return [paraId];
+    return hit.group.members.map(m => m.paragraph_id);
+  }
+
+  for (const h of hls) {
+    log.scanned++;
+    if (h.anchor_schema >= 2) { log.already_v2++; continue; }
+    const vol = h.volume || volumeOfStableRef(h.stable_ref);
+    if (!vol) { log.unchanged++; continue; }
+    let paras;
+    try { paras = await getParagraphs(vol, h.entry_id); } catch (e) { log.unchanged++; continue; }
+    const byId = {}; paras.forEach(x => { byId[x.id] = x; });
+
+    const before = { para_id: h.para_id, start_char: h.start_char, end_char: h.end_char };
+    let done = false;
+
+    // 1+2+3 — stored para_id and offsets, validated against CANONICAL text
+    const p = byId[h.para_id];
+    if (p && typeof h.start_char === 'number' && typeof h.end_char === 'number' &&
+        h.start_char >= 0 && h.end_char > h.start_char && h.end_char <= p.text.length) {
+      if (!h.text || fold(p.text.slice(h.start_char, h.end_char)) === fold(h.text)) {
+        h.anchor_schema = 2; h.legacy_anchor = before;
+        await dbPut('highlights', h); log.validated++; done = true;
+      }
+    }
+
+    // 4+5+6 — search the stored text across every member of the same flow group
+    if (!done && h.text) {
+      const members = p ? await flowMembersOf(vol, h.para_id) : Object.keys(byId);
+      const needle = fold(h.text);
+      // Count OCCURRENCES, not members: text appearing twice inside one
+      // paragraph is just as ambiguous as text appearing in two paragraphs.
+      let hits = [], total = 0;
+      members.forEach(mid => {
+        const mp = byId[mid]; if (!mp) return;
+        const hay = fold(mp.text);
+        let at = hay.indexOf(needle), n = 0;
+        while (at >= 0) { n++; if (n === 1) hits.push({ id: mid, at: at }); at = hay.indexOf(needle, at + 1); }
+        total += n;
+      });
+      if (total === 1) {
+        // 5 — found uniquely in exactly one member: re-anchor and log
+        const mp = byId[hits[0].id];
+        const raw = mp.text.indexOf(h.text);
+        const s = raw >= 0 ? raw : hits[0].at;
+        h.legacy_anchor = before; h.para_id = mp.id;
+        h.start_char = s; h.end_char = s + (raw >= 0 ? h.text.length : needle.length);
+        h.para_fingerprint = mp.text.slice(0, 32);
+        h.anchor_schema = 2; h.migrated_reason = 'reanchored_within_flow_group';
+        await dbPut('highlights', h);
+        log.reanchored++; done = true;
+        log.entries.push({ id: h.id, from: before, to: { para_id: h.para_id,
+          start_char: h.start_char, end_char: h.end_char }, kind: 'reanchor' });
+      } else if (total === 0 && p) {
+        // 6 — the stored selection spans two members: split into grouped parts.
+        // Map the match onto member ranges in the JOINED display string rather
+        // than probing each member with a prefix, which cannot match a part
+        // that straddles the boundary.
+        const members2 = await flowMembersOf(vol, h.para_id);
+        let joined = '', bounds = [];
+        members2.forEach((mid, ix) => {
+          const mp = byId[mid]; if (!mp) return;
+          if (ix > 0) joined += ' ';
+          bounds.push({ id: mid, ms: joined.length, len: mp.text.length });
+          joined += mp.text;
+        });
+        let at = joined.indexOf(h.text), matchLen = h.text.length;
+        if (at < 0) {
+          const fj = fold(joined), fa = fj.indexOf(needle);
+          if (fa >= 0 && fj.length === joined.length) { at = fa; matchLen = needle.length; }
+        }
+        if (at >= 0 && bounds.length > 1) {
+          const atEnd = at + matchLen;
+          const parts = [];
+          bounds.forEach(b => {
+            const s = Math.max(at, b.ms), e = Math.min(atEnd, b.ms + b.len);
+            if (e > s) parts.push({ para_id: b.id, start_char: s - b.ms, end_char: e - b.ms,
+                                    text: byId[b.id].text.slice(s - b.ms, e - b.ms) });
+          });
+          if (parts.length > 1) {
+            const gid = 'hg_mig_' + h.id;
+            for (let k = 0; k < parts.length; k++) {
+              const row = Object.assign({}, h, {
+                para_id: parts[k].para_id, start_char: parts[k].start_char,
+                end_char: parts[k].end_char, text: parts[k].text,
+                highlight_group_id: gid, part_index: k, part_count: parts.length,
+                group_joiner: 'space', anchor_schema: 2,
+                para_fingerprint: byId[parts[k].para_id].text.slice(0, 32),
+                legacy_anchor: before, migrated_reason: 'split_across_flow_members'
+              });
+              if (k > 0) delete row.id;                 // new row for each extra part
+              await dbPut('highlights', row);
+            }
+            log.split++; done = true;
+            log.entries.push({ id: h.id, from: before, parts: parts.length, kind: 'split' });
+          }
+        }
+      }
+    }
+
+    // 7 — ambiguous or unrecoverable: PRESERVE and mark, never silently reattach
+    if (!done) {
+      h.needs_reanchor = true; h.legacy_anchor = before; h.anchor_schema = 2;
+      await dbPut('highlights', h);
+      log.needs_reanchor++;
+      log.entries.push({ id: h.id, from: before, kind: 'needs_reanchor' });
+    }
+  }
+
+  // notes: add para_ids for compatibility, never move the target
+  const notes = await dbGetAll('notes');
+  for (const n of notes) {
+    if (n.anchor_schema >= 2) continue;
+    n.para_ids = n.para_ids || (n.para_id ? [n.para_id] : []);
+    n.anchor_schema = 2;
+    await dbPut('notes', n);
+  }
+
+  await dbPut('settings', { key: 'user_data_schema_version', value: USER_DATA_SCHEMA_VERSION,
+                            ts: Date.now() });
+  await dbPut('settings', { key: 'user_data_migration_log',
+                            value: JSON.stringify(log).slice(0, 60000), ts: Date.now() });
+  window.__ldcMigrationLog = log;
+  return log;
+}
+
+function volumeOfStableRef(ref) {
+  const m = /^LDC\.T(\d+)/.exec(ref || '');
+  return m ? parseInt(m[1], 10) : null;
 }
 
 /* ═══ NOTE ═══ */
@@ -3161,13 +3316,23 @@ async function saveNote() {
   // the exact paragraph after restart and after lazy-loading.
   let paraFingerprint = '';
   if (selectionParaId) {
-    const paraEl = document.getElementById('p_' + selectionParaId);
-    if (paraEl) paraFingerprint = (paraEl.textContent || '').slice(0, 32);
+    const paraEl = fragmentEl(selectionParaId);
+    const rec = (paraEl && window.LDCAnchor) ? LDCAnchor.recordFor(paraEl) : null;
+    // canonical text, not rendered text (§8.2)
+    paraFingerprint = rec ? rec.text.slice(0, 32)
+                          : ((paraEl && paraEl.textContent) || '').slice(0, 32);
   }
 
+  // §8.4 — for a cross-fragment quotation keep the complete quote and every
+  // anchor part; para_id stays the FIRST SELECTED fragment (not the flow leader)
+  const noteParts = (window.lastSelParts && window.lastSelParts.length)
+    ? window.lastSelParts : null;
   await dbPut('notes', {
     entry_id:        currentEntry ? currentEntry.id   : '',
-    para_id:         selectionParaId || '',
+    para_id:         (noteParts ? noteParts[0].para_id : selectionParaId) || '',
+    anchor_parts:    noteParts ? JSON.parse(JSON.stringify(noteParts)) : null,
+    para_ids:        noteParts ? noteParts.map(x => x.para_id) : (selectionParaId ? [selectionParaId] : []),
+    anchor_schema:   2,
     stable_ref:      currentEntry ? currentEntry.stable_ref : '',
     volume:          currentVolume || null,
     entry_title:     currentEntry ? (currentEntry.title || '') : '',
@@ -3237,8 +3402,12 @@ async function createAndAddCollection() {
 async function addToCollection(colId, colName) {
   if (!currentEntry) { closeColSheet(); return; }
   // Get current paragraph text
+  // §8.5 — use the fragment the user actually selected; never default to the
+  // flow leader when a later member was selected
   const paras = await getParagraphs(currentVolume, currentEntry.id);
-  const para  = paras.find(p => p.id === (selectionParaId || paras[0].id)) || paras[0];
+  const selId = (window.lastSelParts && window.lastSelParts.length)
+    ? window.lastSelParts[0].para_id : selectionParaId;
+  const para  = paras.find(p => p.id === (selId || paras[0].id)) || paras[0];
   await dbPut('col_items', {
     col_id:     colId,
     entry_id:   currentEntry.id,
@@ -3291,380 +3460,43 @@ async function shareCitation() {
    Marie speech → purple left border block.
    Luisa/narrative → normal inline text.
 ═══════════════════════════════════════════════════════ */
-function buildSpeechHTML(text, segments, highlights) {
-  if (!segments || !segments.length) return applyHighlights(escapeHtml(text), highlights);
+function buildSpeechHTML(text, segments, highlights, paraId, vol) {
+  if (!window.LDCSpeechModel) return escapeHtml(text);
+  var model = LDCSpeechModel.buildParagraphSpeechModel(text, segments || []);
+  if (!model.ok) { console.warn('LDC: invalid speaker segments', paraId, model.errors); return escapeHtml(text); }
 
-  // Only JESUS/MARIE spans get the coloured/italic visual style that replaces the
-  // function of the quotation marks. The guillemet-hiding + boundary-fix passes below
-  // (PASS 1/2/3) must therefore run ONLY for those speakers. LUISA/OTHER/etc. render
-  // as plain narration, so their surrounding quotes and spacing MUST be preserved —
-  // otherwise punctuation is deleted and words fuse (e.g. "dirent:C'est", "dit.Alors").
-  const STYLED = spk => spk === 'JESUS' || spk === 'MARIE' || spk === 'MARY';
-
-  // Resolve overlaps: where segments overlap, use the more specific (shorter) one
-  // Sort by start, then by length descending (longer = outer context)
-  const sorted = [...segments]
-    .filter(s => {
-      const start = parseInt(s.start_char || 0);
-      const end   = parseInt(s.end_char   || 0);
-      return end > start; // skip zero-length
-    })
-    .sort((a, b) => parseInt(a.start_char) - parseInt(b.start_char));
-
-  // Remove overlapping outer segments (keep inner/more-specific)
-  const resolved = [];
-  for (const seg of sorted) {
-    const start = parseInt(seg.start_char);
-    const end   = parseInt(seg.end_char);
-    // If this segment is contained within the last resolved, skip outer
-    if (resolved.length > 0) {
-      const prev = resolved[resolved.length - 1];
-      const prevStart = parseInt(prev.start_char);
-      const prevEnd   = parseInt(prev.end_char);
-      if (start >= prevStart && end <= prevEnd) {
-        // This seg is inside prev — replace prev with this (more specific)
-        resolved[resolved.length - 1] = seg;
-        continue;
-      }
-      if (start < prevEnd) {
-        // Partial overlap — trim previous to avoid overlap
-        prev._end_override = start;
-      }
-    }
-    resolved.push({ ...seg });
+  // Structural-dash display projection (handoff RECHECKED v2). The map is the
+  // sole authority for which glyphs are source layout and which are semantic —
+  // no regex here makes an editorial punctuation decision.
+  var atoms = null;
+  var ops = (displayCache[vol] || {})[paraId];
+  if (ops && window.LDCDisplayMap) {
+    var proj = LDCDisplayMap.projectParagraph(text, ops);
+    if (proj.ok) atoms = proj.atoms;
+    else console.warn('LDC: display map rejected', paraId, proj.errors);
   }
 
-  // Build spans: walk through text, emit spans for each region
-  const spans = [];
-  let pos = 0;
-  const tlen = text.length;
-
-  for (const seg of resolved) {
-    const start = parseInt(seg.start_char);
-    const end   = Math.min(parseInt(seg._end_override || seg.end_char), tlen);
-    const spk   = seg.speaker || 'LUISA';
-    const conf  = seg.confidence || 'low';
-
-    // Text before this segment (Luisa narrative)
-    if (pos < start && start <= tlen) {
-      const before = text.slice(pos, start);
-      if (before.trim()) spans.push({ type: 'narrative', text: before });
-    }
-
-    // Speech segment
-    if (start < end) {
-      const speechText = text.slice(start, end);
-      spans.push({ type: 'speech', speaker: spk, confidence: conf, text: speechText });
-    }
-    pos = end;
-  }
-
-  // Remaining narrative after last segment
-  if (pos < tlen) {
-    const after = text.slice(pos);
-    if (after.trim()) spans.push({ type: 'narrative', text: after });
-  }
-
-  // ── v2.5.12 Span correction passes ──────────────────────────────────────
-  //
-  // PASS 1 — start_char word-boundary fix
-  // The corpus start_char offset sometimes lands mid-word (e.g. «Ma fille» where
-  // start_char points to 'a', leaving '«M' in the preceding narrative span).
-  // Fix: walk back into the preceding narrative to recover the orphaned word-prefix.
-  // The recovered prefix is prepended to the speech span; the narrative is trimmed.
-  for (let i = 1; i < spans.length; i++) {
-    const sp = spans[i];
-    if (sp.type !== 'speech') continue;
-    if (sp.confidence === 'low') continue;
-    if (!STYLED(sp.speaker)) continue;   // only Jesus/Marie spans get boundary cleanup
-    const prev = spans[i - 1];
-    if (!prev || prev.type !== 'narrative') continue;
-
-    const nt = prev.text;
-    // Check if narrative ends with a letter (mid-word boundary)
-    if (!nt || !/[a-zA-ZÀ-ÿ]$/.test(nt)) continue;
-
-    // Walk back through the narrative to find the start of the orphaned word
-    let cut = nt.length;
-    while (cut > 0 && /[a-zA-ZÀ-ÿ]/.test(nt[cut - 1])) cut--;
-
-    const orphan = nt.slice(cut);    // word fragment stranded in narrative
-    const newNarr = nt.slice(0, cut); // narrative text before the orphan
-
-    // Move the orphan prefix to the speech span
-    sp.text = orphan + sp.text;
-    prev.text = newNarr;
-  }
-
-  // PASS 2 — end_char overshoot fix (» split)
-  // The corpus end_char consistently overshoots past the closing » of Jesus/Marie
-  // speech into Luisa's narration. Corpus-wide: 723 overshoot segments confirmed.
-  // Fix: split the speech span at the first » found inside it.
-  //
-  // Exception: do NOT split if the text between the first » and the next «
-  // is fewer than 3 non-space characters — that indicates an internal quotation
-  // within the speech (e.g. «Dominus tecum» («le Seigneur est avec toi»)),
-  // not an overshoot. Confirmed: only 15 such cases across 36 tomes.
-  // A 3rd-person continuation attribution introducing a NEW quote by the SAME speaker,
-  // e.g. "…condition.» Il ajouta: «Un proverbe dit…". Without this, the overshoot split
-  // below dumps the second quote into plain narration. Deliberately tight: starts with
-  // Il/Elle/Jésus/… (a 3rd-person pronoun/name — NOT Luisa's "Je répondis:") then a
-  // 3rd-person speech verb + colon, so it never re-styles Luisa's replies. Group 1 =
-  // the narration lead-in up to (but excluding) the «.
-  const CONT_ATTR = /^(\s*(?:(?:Puis|Plus tard|Ensuite|Alors|Et|Enfin|De nouveau|D['’]autres fois)[\s,]+)?(?:Il|Elle|Jésus|Notre[- ]Seigneur|Le Seigneur|La (?:Très )?Sainte Vierge|La Reine|Marie|Maman)\b[^«»:]{0,45}?\b(?:me dit|lui dit|me répondit|dit|ajouta|ajoutait|reprit|reprenait|répondit|repondit|poursuivit|continua|conclut|s['’]exclama|s['’]écria|s['’]écriait|murmura|disait)\s*:\s*)«/i;
-
-  const correctedSpans = [];
-  for (const sp of spans) {
-    if (sp.type !== 'speech' || sp.confidence === 'low' || !STYLED(sp.speaker)) {
-      correctedSpans.push(sp);   // non-styled speakers pass through untouched
-      continue;
-    }
-    const t = sp.text;
-    const closePos = t.indexOf('\u00BB'); // »
-
-    if (closePos === -1) {
-      // No » at all — clean segment, keep as-is
-      correctedSpans.push(sp);
-      continue;
-    }
-
-    if (closePos >= t.length - 2) {
-      // » is the last character (trailing ») — strip it, keep speech
-      correctedSpans.push({ ...sp, text: t.slice(0, closePos).trimEnd() });
-      continue;
-    }
-
-    // » is mid-segment — check for internal-quotation exception
-    const afterClose = t.slice(closePos + 1);
-    const nextOpen = afterClose.indexOf('\u00AB'); // «
-    // Tightened: gap must be truly empty (≤1 non-space char, no attribution verbs)
-    // A single space «» gap is NOT an internal quotation — it's an overshoot
-    const _gapText = afterClose.slice(0, nextOpen);
-    const _isInternal = nextOpen !== -1 &&
-      _gapText.trim().length < 2 &&
-      !/\b(dit|dis|répondis|ajouta|reprit|répondit)\b/i.test(_gapText);
-    if (_isInternal) {
-      // Internal quotation — do not split, but still strip trailing »
-      // (the segment ends correctly, trailing » will be cleaned below)
-      correctedSpans.push(sp);
-      continue;
-    }
-
-    // Genuine overshoot — split at first ». If the tail is a same-speaker continuation
-    // ("Il ajouta: «…"), re-emit that quote as styled speech and loop for further quotes.
-    const speechPart = t.slice(0, closePos).trimEnd();
-    if (speechPart) correctedSpans.push({ ...sp, text: speechPart });
-    let tail = afterClose.trimStart();
-    let guard = 0;
-    while (tail && guard++ < 6) {
-      const mm = tail.match(CONT_ATTR);
-      if (!mm) { correctedSpans.push({ type: 'narrative', text: tail }); break; }
-      if (mm[1].trim()) correctedSpans.push({ type: 'narrative', text: mm[1].trim() });
-      const cont = tail.slice(mm[1].length);          // "«…" — same-speaker continuation
-      const cp2 = cont.indexOf('»');
-      if (cp2 === -1 || cp2 >= cont.length - 2) {      // no further split needed
-        correctedSpans.push({ ...sp, text: cp2 === -1 ? cont : cont.slice(0, cp2).trimEnd() });
-        break;
-      }
-      correctedSpans.push({ ...sp, text: cont.slice(0, cp2).trimEnd() });
-      tail = cont.slice(cp2 + 1).trimStart();          // continue after this quote's »
-    }
-  }
-
-  // Replace spans with corrected set
-  spans.length = 0;
-  correctedSpans.forEach(s => spans.push(s));
-
-  // PASS 3 — Adjacent narrative guillemet normalisation
-  // After the overshoot fix, narrative spans adjacent to speech may still carry
-  // orphaned « (before speech) or » (after speech — from trailing cases now in
-  // narrative). Strip these from narrative spans only, not from within speech.
-  for (let i = 0; i < spans.length; i++) {
-    const span = spans[i];
-    if (span.type !== 'narrative') continue;
-
-    const nextIsSpeech = i + 1 < spans.length &&
-                         spans[i + 1].type === 'speech' &&
-                         STYLED(spans[i + 1].speaker) &&
-                         (spans[i + 1].confidence === 'high' || spans[i + 1].confidence === 'medium');
-    const prevIsSpeech = i > 0 &&
-                         spans[i - 1].type === 'speech' &&
-                         STYLED(spans[i - 1].speaker) &&
-                         (spans[i - 1].confidence === 'high' || spans[i - 1].confidence === 'medium');
-
-    let t = span.text;
-    if (nextIsSpeech) t = t.replace(/[\s\u00A0]*\u00AB[\s\u00A0]*$/, '');
-    if (prevIsSpeech) t = t.replace(/^[\s\u00A0]*\u00BB[\s\u00A0]*/, '');
-    span.text = t;
-  }
-
-  // PASS 4 — Drop empty or punctuation-only narrative spans
-  // After passes 1–3, some narrative spans may be empty, whitespace-only,
-  // or contain only a stray punctuation character (lone '.', ',', etc.)
-  // These are corpus boundary artifacts — drop them.
-  const PUNCT_ONLY = /^[\s\u00A0.,;:!?…\-–—«»"']+$/;
-  const cleanSpans = spans.filter((s, i) => {
-    if (s.type !== 'narrative') return true;
-    const t = s.text.trim();
-    if (t.length === 0) return false;
-    if (!PUNCT_ONLY.test(t)) return true;
-    // A lone « or » is a real quote mark (not an artifact) when it borders a NON-styled
-    // speech span — that span renders as plain text with no colour to replace the quote,
-    // so the mark must survive. Styled (Jesus/Marie) neighbours still drop it (colour replaces).
-    const prevSp = spans[i - 1], nextSp = spans[i + 1];
-    if (/[«»]/.test(t)) {
-      const adjNonStyled =
-        (prevSp && prevSp.type === 'speech' && !STYLED(prevSp.speaker)) ||
-        (nextSp && nextSp.type === 'speech' && !STYLED(nextSp.speaker));
-      if (adjNonStyled) return true;
-    }
-    // A punctuation/closing-quote tail stranded right after a styled span is that
-    // sentence's OWN terminal punctuation (period, «!?», closing quote) that the corpus
-    // end_char undershot — keep it so PASS 5 folds it back into the span (preserving the
-    // final full stop / quote). Otherwise a bare "." here would be dropped and the
-    // sentence would display with no ending. Exclude a lone opening « (never a tail).
-    if (prevSp && prevSp.type === 'speech' && STYLED(prevSp.speaker) &&
-        prevSp.confidence !== 'low' && !/^[«]/.test(t)) return true;
-    return false;
+  return LDCSpeechModel.renderSpeechModel(model, {
+    // Labels are always emitted; CSS reveals them only in study mode
+    // (.study-mode .speech-label{display:block}). This matches the baseline exactly.
+    showLabels: true,
+    hideOuterDelimiters: true,
+    paraId: paraId || '',
+    atoms: atoms
   });
-  spans.length = 0;
-  cleanSpans.forEach(s => spans.push(s));
-
-  // PASS 5 — end-undershoot fold (fixes orphaned sentence-tail like "Moi.»", a bare
-  // stranded "." , or a stranded closing quote that renders as a lone comma-looking mark)
-  // The corpus end_char frequently stops 1-2 chars BEFORE a Jesus/Marie sentence's
-  // terminal punctuation and/or closing quote, stranding it as a tiny trailing narrative
-  // fragment. Left alone that renders as a spurious line break + un-styled orphan
-  // ("…attendant tout de" / break / "Moi.»"), OR — for a bare "." — gets dropped so the
-  // sentence shows with no ending, OR — for a stranded closing quote ' / » — shows as a
-  // lone punctuation mark on its own line. Fold such a fragment back into the preceding
-  // styled span. Strictly scoped so it never absorbs real narration:
-  //   • previous span must be a styled (Jesus/Marie) high/medium speech span
-  //   • fragment is short (≤14 chars trimmed), never starts with an opening «
-  //   • AND EITHER it is pure terminal punctuation / closing quotes (PUNCT_TAIL),
-  //     OR it is a short word-tail ending in » that is not narration (no verb, no «)
-  const NARR_VERB_RE = /\b(dit|dis|dirent|ajouta|reprit|répondit|repondit|répondis|repondis|poursuivit|continua|s['’]écria|murmura|disparut|pensai|pensais|repris)\b/i;
-  const PUNCT_TAIL = /^[.,;:!?…»"'‘’“”]+$/;   // stranded sentence-terminal punctuation / closing quotes
-  const foldedSpans = [];
-  for (let i = 0; i < spans.length; i++) {
-    const span = spans[i];
-    const prev = foldedSpans[foldedSpans.length - 1];
-    if (span.type === 'narrative' && prev && prev.type === 'speech' &&
-        STYLED(prev.speaker) && (prev.confidence === 'high' || prev.confidence === 'medium')) {
-      const nt = span.text.trim();
-      const isUndershootTail =
-        nt.length > 0 && nt.length <= 14 && !/^[«]/.test(nt) && (
-          PUNCT_TAIL.test(nt) ||                                // stranded terminal punct / quote
-          ( /»\s*$/.test(nt) && !/^[«»]/.test(nt) &&            // short word-tail ending in »
-            nt.indexOf('«') === -1 && !NARR_VERB_RE.test(nt) )
-        );
-      if (isUndershootTail) {
-        // Pure punctuation attaches tight (use trimmed form); a word-tail keeps its
-        // original spacing. Add a single space only if the join would fuse two words.
-        const frag = PUNCT_TAIL.test(nt) ? nt : span.text;
-        const joiner = (/[A-Za-zÀ-ÿ]$/.test(prev.text) && /^[A-Za-zÀ-ÿ]/.test(frag)) ? ' ' : '';
-        prev.text = prev.text + joiner + frag;
-        continue; // fragment consumed
-      }
-    }
-    foldedSpans.push(span);
-  }
-  spans.length = 0;
-  foldedSpans.forEach(s => spans.push(s));
-
-  // Render spans to HTML
-  //
-  // Paragraph-break rule: insert <br><br> after a Jesus/Marie speech span when
-  // narrative resumes — but suppress the break in two cases:
-  //
-  //   Case 1 — Short attribution: "me dit-Il", "ajouta-t-Elle", "continua Jésus"
-  //            Detected by ATTRIBUTION_RE + length ≤ 120 chars.
-  //
-  //   Case 2 — Embedded mid-sentence speech: Jésus me dit : « … », et je sentis…
-  //            If any narrative preceded the speech in this paragraph, the speech
-  //            is grammatically embedded and what follows is a sentence continuation.
-  //            Detected by speechWasFirstSpan = false.
-  //
-  // Break is only inserted when speech opens the paragraph (speechWasFirstSpan = true)
-  // AND the following narrative is not a bare attribution.
-
-  const ATTRIBUTION_RE = /^[\s,;—–-]*(me\s+dit|dit[\s-]?(il|elle|notre[\s-]seigneur|jesus|marie)|ajouta|continua|reprit|répondit|repondit|s['\u2019]écria|s['\u2019]ecria|murmura|souffla|poursuivit|acheva|conclut|me\s+(répondit|repondit|répliqua|repliqua)|ajouta[\s-]t[\s-](il|elle)|continua[\s-]t[\s-](il|elle)|reprit[\s-]t[\s-](il|elle)|répondit[\s-]t[\s-](il|elle)|s['\u2019]exprima)/i;
-
-  function isAttribution(text) {
-    const t = text.trim();
-    return t.length <= 120 && ATTRIBUTION_RE.test(t);
-  }
-
-  let html = '';
-  let lastWasSpeech     = false; // previous rendered span was Jesus/Marie high/medium
-  let speechWasFirst    = false; // that speech span had no narrative before it in this paragraph
-  let narrativeSeenYet  = false; // any narrative span rendered before the current speech
-
-  for (const span of spans) {
-    if (span.type === 'narrative') {
-      // Insert paragraph break after speech — suppressed for attributions and
-      // for narrative that continues an embedding sentence (speechWasFirst = false)
-      if (lastWasSpeech && speechWasFirst && span.text.trim() && !isAttribution(span.text)) {
-        html += '<br>';
-      }
-      html += applyHighlights(escapeHtml(span.text), highlights);
-      narrativeSeenYet = true;
-      lastWasSpeech    = false;
-      speechWasFirst   = false;
-    } else {
-      const spk  = span.speaker;
-      const conf = span.confidence;
-      // Low confidence: render as plain narrative, no speech styling
-      if (conf === 'low') {
-        html += applyHighlights(escapeHtml(span.text), highlights);
-        narrativeSeenYet = true;
-        lastWasSpeech    = false;
-        speechWasFirst   = false;
-        continue;
-      }
-      const isMarie = spk === 'MARIE' || spk === 'MARY';
-      const cls     = spk === 'JESUS' ? 'speech-jesus' : isMarie ? 'speech-marie' : '';
-      const lbl     = spk === 'JESUS' ? 'Jésus' : isMarie ? 'Marie' : '';
-      const lblCls  = spk === 'JESUS' ? 'lbl-jesus' : 'lbl-marie';
-      const confLabel = conf === 'medium' ? ' <em>(probable)</em>' : '';
-      if (cls) {
-        // Strip opening/closing quote marks — colour+italic already signals speech boundaries
-        // Strip leading section number, attribution prefix, opening quote, and leading em-dash.
-        // Safe — spText is display-only, p.text offsets are unchanged.
-        // Attribution strip requires [:;] before «: only genuine “X me dit: «” patterns qualify.
-        // Regular hyphen (-) is NOT stripped — it is a list-item marker and must remain visible.
-        const spText = span.text
-          .replace(/^\(\d+\)\s*/, '')           // (1) section number
-          .replace(/^[^«”„”]*[;:]\s*[«”„”]\s*/, '') // attribution ending in : or ; + opening quote + space
-          .replace(/^[“«”„]/, '')               // bare opening quote with no prefix
-          .replace(/^\s*[–—]\s*/, '')           // leading em/en-dash only (not list hyphen)
-          .replace(/[“»”]$/, '');               // trailing closing quote
-        html += `<span class="speech-label ${lblCls}">${lbl}${confLabel}</span>`;
-        html += `<span class="${cls}">${applyHighlights(escapeHtml(spText), highlights)}</span>`;
-        lastWasSpeech  = true;
-        speechWasFirst = !narrativeSeenYet; // true only if no narrative came before this speech
-      } else {
-        html += applyHighlights(escapeHtml(span.text), highlights);
-        narrativeSeenYet = true;
-        lastWasSpeech    = false;
-        speechWasFirst   = false;
-      }
-    }
-  }
-  return html || applyHighlights(escapeHtml(text), highlights);
 }
 
-/* ── DOM-level highlight painter ─────────────────────────────────────────────
-   Runs on the assembled paragraph, after all speech/narrative spans exist.
+/* ── LEGACY text-matching highlight painter ──────────────────────────────────
+   Fallback only. Since v2.11.0-R1B the primary painter is LDCAnchor.paintParts(),
+   which places a highlight from its canonical [start_char, end_char) using the
+   explicit fragment offset map. This function runs solely for legacy records that
+   lack usable offsets, and is kept because such records must never be dropped.
 
-   Why not per-span text matching (applyHighlights): buildSpeechHTML emits one span
-   per speaker segment and matches inside each span in isolation, so a selection
-   crossing a segment boundary can never match. R1B has ~12% more speaker segments
-   than the previous corpus (65,107 vs 58,307), so many more selections straddle a
-   boundary — saved correctly, but never drawn.
+   Do not extend it: matching rendered text cannot express a selection that spans
+   two paragraphs, because Selection.toString() injects a newline at the fragment
+   boundary. That failure is exactly what the canonical parts model replaced.
 
-   Matching the rendered text is correct here because that is exactly what the user
-   selected. Folding makes it tolerant of apostrophe/quote/space variants. */
+   Folding makes it tolerant of apostrophe/quote/space variants. */
 function ldcFoldChar(ch) {
   return ch.replace(/[\u2018\u2019\u02BC\u2032]/g, "'")
            .replace(/[\u201C\u201D\u00AB\u00BB]/g, '"')
@@ -4654,6 +4486,22 @@ async function renderHighlights() {
     el.innerHTML = '<div class="empty-state"><i class="ti ti-highlight-off"></i>Aucun surlignage pour l\'instant.</div>';
     return;
   }
+  // one row per highlight GROUP: parts of a cross-fragment selection are
+  // reassembled into the quotation the user actually selected (§8.3)
+  const grouped = [], seenGroup = {};
+  hls.forEach(h => {
+    if (h.highlight_group_id) {
+      if (seenGroup[h.highlight_group_id]) return;
+      seenGroup[h.highlight_group_id] = 1;
+      const parts = hls.filter(x => x.highlight_group_id === h.highlight_group_id)
+                       .sort((a, b) => (a.part_index || 0) - (b.part_index || 0));
+      grouped.push(Object.assign({}, h, {
+        text: parts.map(x => x.text).join(h.group_joiner === 'none' ? '' : ' '),
+        _partCount: parts.length
+      }));
+    } else grouped.push(h);
+  });
+  hls = grouped;
   hls.forEach(h => {
     const d = document.createElement('div');
     d.className = 'espace-item';
@@ -4670,7 +4518,8 @@ async function renderHighlights() {
 }
 
 async function deleteHighlight(id) {
-  await dbDelete('highlights', id);
+  const hl = await dbGet('highlights', id);
+  for (const part of await highlightGroupSiblings(hl)) await dbDelete('highlights', part.id);
   await renderHighlights();
   showToast('Surlignage supprimé');
 }
@@ -5279,6 +5128,13 @@ async function preloadSearchIndexes() {
 
 async function boot() {
   await openDB();
+
+  // §9 one-time, idempotent, non-destructive user-data re-anchoring. Runs in the
+  // background: a failure here must never block the reader from opening.
+  migrateUserAnchors()
+    .then(r => { if (r && !r.skipped && (r.reanchored || r.split || r.needs_reanchor))
+                   console.info('LDC: user anchors migrated', r); })
+    .catch(e => console.warn('LDC: anchor migration deferred', e));
 
   // Restore text size
   const szSetting = await dbGet('settings','textSize');
