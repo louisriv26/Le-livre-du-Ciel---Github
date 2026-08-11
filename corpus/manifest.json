@@ -45,7 +45,7 @@
   36
  ],
  "volumes_total": 36,
- "status": "R1B_READER_FLOW_REPAIR_CANDIDATE_NOT_DEPLOYED",
+ "status": "R1B_READER_FLOW_REPAIR_DEPLOYED_PENDING_DEVICE_VALIDATION",
  "speech_resynced": true,
  "notes": "All 36 tomes structurally reconciled. EB-17 completed the two provenance corrections identified by EB-16; Tome 17 23 November 1924 remains PDF-title-only/body-not-proven. EB-20 normalised three source-page ranges from direct PDF evidence.",
  "speech_layer_note": "EB-4 mechanically relocated existing Tome 2 speaker segments through source-proven boundary changes and rebuilt valid previews. No new speaker interpretation was introduced. EB-2 Tome 3 and EB-3 Tome 1 speaker treatments are retained.",
@@ -107,5 +107,21 @@
   "cross_fragment_run_links": 20467,
   "flow_level_displayed_styled_runs": 37499,
   "user_data_schema_version": 2
+ },
+ "deployment": {
+  "deployed": true,
+  "date": "2026-08-11",
+  "commit": "6a05beb",
+  "url": "https://louisriv26.github.io/Le-livre-du-Ciel---Github/",
+  "audited_package": "LDC_v2.11.0-R1B_Reader_Flow_Repair_FINAL.zip",
+  "audited_package_sha256": "ece04d83847e4e8cba514714b4faf016d6f2b2ebbabd52ddab24eb1d3708ddb4",
+  "audit_status": "LIMITED_PASS_STATIC",
+  "note": "Deployed on explicit instruction before physical-device validation. This file is the ONLY difference between the deployed tree and the audited package: the status field was updated post-deploy because the audited value (CANDIDATE_NOT_DEPLOYED) became false once the package went live.",
+  "previous_status": "R1B_READER_FLOW_REPAIR_CANDIDATE_NOT_DEPLOYED",
+  "outstanding": [
+   "physical iPad Safari validation",
+   "physical iPhone Safari validation",
+   "installed-PWA update and offline validation"
+  ]
  }
 }
