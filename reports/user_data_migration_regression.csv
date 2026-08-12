@@ -1,6 +1,0 @@
-fixture_class,result
-valid_old_offsets,PASS — kept as-is
-leader_id_misattribution,PASS — re-anchored to the member holding the text; legacy_anchor preserved
-cross_fragment_text,"PASS — split into 2 grouped parts (p005 [102,108) 'qui en' + p006 [0,10) 'résultent.')"
-duplicate_text_ambiguity,"PASS — marked needs_reanchor, NOT moved"
-unrecoverable_record,PASS — preserved and marked needs_reanchor

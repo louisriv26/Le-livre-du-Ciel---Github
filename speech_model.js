@@ -27,6 +27,12 @@
 
   function normSpeaker(s) { return STYLED[s] || null; }
   function isStyled(s) { return !!STYLED[s]; }
+  var CONF_RANK = { low: 0, medium: 1, high: 2 };
+  function mergeConfidence(a, b) {
+    if (!a) return b || null;
+    if (!b) return a || null;
+    return (CONF_RANK[a] <= CONF_RANK[b]) ? a : b;
+  }
 
   /* -- validation: report, never mutate ----------------------------------- */
   function validateSegments(text, segments) {
@@ -95,6 +101,7 @@
         last.end = iv.end;
         last.text += iv.text;
         last.segment_ids = last.segment_ids.concat(iv.segment_ids);
+        last.confidence = mergeConfidence(last.confidence, iv.confidence);
         merges.push({ at: iv.start, kind: 'abut', bridge: '' });
         continue;
       }
@@ -107,6 +114,7 @@
           last.end = nxt.end;
           last.text += iv.text + nxt.text;
           last.segment_ids = last.segment_ids.concat(nxt.segment_ids);
+          last.confidence = mergeConfidence(last.confidence, nxt.confidence);
           merges.push({ at: iv.start, kind: 'non_lexical_bridge', bridge: iv.text });
           j++; // consume nxt
           continue;
@@ -287,7 +295,7 @@
 
   function renderSpeechModel(model, opts) {
     opts = opts || {};
-    var showLabels = !!opts.showLabels;         // Étudier mode
+    var showLabels = !!opts.showLabels;         // labels emitted; Repères CSS controls visibility
     var hideOuter  = opts.hideOuterDelimiters !== false;
     var paraId     = opts.paraId || '';
     var atoms      = opts.atoms || null;        // display projection, may be absent
@@ -335,7 +343,10 @@
               (isCont ? ' data-run-continuation="1"' : '') +
               ' data-run-start="' + r.start + '" data-run-end="' + r.end + '">' +
               (showLabels && !isCont ? '<span class="speech-label lbl-' +
-                 (M.normSpeaker(r.speaker) === 'marie' ? 'marie' : 'jesus') + '">' + label + '</span>' : '') +
+                 (M.normSpeaker(r.speaker) === 'marie' ? 'marie' : 'jesus') + '">' + label + '</span>' +
+                 (r.confidence ? '<span class="speech-conf" data-confidence="' + esc(r.confidence) + '">' +
+                   (r.confidence === 'high' ? 'confiance élevée' : r.confidence === 'medium' ? 'confiance moyenne' : 'confiance faible') +
+                  '</span>' : '') : '') +
               inner + '</span>';
     }
     return html;

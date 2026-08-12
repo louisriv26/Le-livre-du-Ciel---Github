@@ -1,6 +1,0 @@
-stage,title,gate_result,canonical_corpus_files_modified
-C,Reader speech rendering from the Stage B model,PASS — mandatory speech and visible-text tests pass; no canonical file change.,
-D,Display-flow generation,PASS — flow inventory and all member/ordering checks pass.,0
-E,Flow-aware DOM and navigation,PASS — all five screenshot flows and target-navigation tests pass; no post-render structural mutation.,0
-F,Interaction anchoring,PASS — interaction regression matrix passes.,0
-dash-v2,R1B structural-dash display normalization,,0

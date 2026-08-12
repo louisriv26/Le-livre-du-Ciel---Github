@@ -1,7 +1,0 @@
-.DS_Store
-node_modules/
-*.log
-
-# Python build artefacts
-__pycache__/
-*.pyc

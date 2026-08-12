@@ -1,7 +1,0 @@
-{
- "paragraph_local_styled_runs": 57966,
- "paragraph_local_all_runs": 88239,
- "approved_cross_fragment_run_links": 20467,
- "flow_level_displayed_styled_runs": 37499,
- "method": "byte-verified port of the shipped LDCSpeechModel (see scripts/build_flow_run_links.py --expect-sha256)"
-}

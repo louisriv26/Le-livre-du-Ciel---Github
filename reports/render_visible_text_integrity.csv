@@ -1,2 +1,0 @@
-scope,paragraphs,visible_text_failures,canonical_recovery_failures,br_injected,chars_suppressed,note
-all volumes,74348,0,0,0,52053,rendered visible text equals the display projection for every paragraph; canonical text remains fully recoverable from atom ranges

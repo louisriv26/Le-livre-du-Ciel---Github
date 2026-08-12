@@ -1,84 +1,29 @@
-# Livre du Ciel — PWA v2.11.0-R1B
+# Le Livre du Ciel — v2.18.1-R1B
 
-Application de lecture et d'étude du Livre du Ciel de Luisa Piccarreta.
+Application PWA de lecture des 36 tomes du *Livre du Ciel* de Luisa Piccarreta.
 
-> **Statut : candidat non déployé.** Cette version n'a pas encore été publiée ni
-> validée sur appareil physique. Voir « Statut des tests ».
+## État de ce paquet
 
-## Corpus
-Corpus gouvernant : `G036-AFLP-R1B-UWR2`
+- **Étape : LDC-GR — réparation d’intégrité hors ligne + réconciliation des gates**
+- **Candidat : NON DÉPLOYÉ**
+- **Base corrective : v2.18.0-R1B / LDC-G** — SHA-256 `047a41c1d2ff34e61f8a89faee0d7cc7e3aa10195cd78117c7400ba4129f0727`.
+- **Autorisation propriétaire : `Do it`** — autorise la réparation LDC-GR; **ne vaut pas** validation utilisateur de LDC-F ni preuve physique PWA/appareil.
+- **LDC-F owner/user acceptance : PENDING** — les 10 scénarios d’acceptation doivent encore être exécutés et acceptés explicitement.
+- **Corpus : G036-AFLP-R1B-UWR2** — 2 312 entrées · 74 348 paragraphes · 74 348 enregistrements de recherche · 65 107 segments de parole.
+- Les fichiers `corpus/` sont protégés et ne sont pas modifiés par LDC-GR.
 
-- **36 tomes complets** · 74 348 paragraphes · 2 312 entrées
-- Couche parole : **65 107 segments** — Jésus 59 007 · Marie 0 · Mary 226 · Luisa 4 556
-- Couche parole : 0 offset hors-limites · 0 chevauchement (validation **structurelle**)
-- Index de recherche : 74 348 enregistrements, `norm` vérifié à chaque build
+## Corrections LDC-GR
 
-> **Portée de la vérification.** La couche « parole » a été construite et corrigée par
-> campagnes successives puis auditée sur un sous-ensemble à risque (relabels, Marie,
-> lead-ins narratifs). La validation automatique couvre l'intégrité **structurelle**
-> (offsets, chevauchements, alignement) — **pas** une vérification sémantique complète
-> locuteur-par-locuteur ni une collation intégrale contre les sources. Elle ne doit pas
-> être décrite comme « entièrement vérifiée ».
+1. Chaque asset de préparation hors ligne est vérifié **avant mise en cache** par taille attendue + SHA-256 attendu.
+2. Un HTTP 200 contenant des octets erronés/tronqués est rejeté et ne peut jamais conduire à `READY`.
+3. Le cache hors ligne v18.1 utilise un nouveau namespace; les anciens marqueurs non vérifiés ne sont pas hérités.
+4. `READY` est lié à une empreinte immuable du manifeste hors ligne (`content_binding_sha256`) et au SHA-256 de `corpus/manifest.json`.
+5. Les réponses mises en cache portent des marqueurs de vérification SHA-256/taille/binding; une entrée sans marqueurs valides est invalidée lors du scan.
+6. La liste des fichiers en échec est conservée et affichée dans l’interface hors ligne.
+7. Au démarrage, un ancien `READY` IndexedDB n’est plus affiché comme fiable avant réponse corrélée du service worker; absence de réponse => `ERROR`.
+8. La métadonnée erronée assimilant `Do ldc G` à l’acceptation LDC-F est corrigée : l’acceptation reste `PENDING` jusqu’à preuve.
+9. Les anciens rapports LDC-G sont conservés comme historique `history_ldcg_pre_gr`, pas comme preuve courante.
 
-## Couches d'affichage dérivées
-Le texte canonique n'est **jamais** modifié. Deux couches dérivées gouvernent le rendu :
+## Gate LDC-GR
 
-- `corpus/flow_NN.json` — **flux d'affichage** : 11 498 groupes, 35 085 membres.
-  23 530 jonctions de tirets héritées + 57 continuations sans tiret revues.
-  Chaque paragraphe conserve son identifiant, son texte, son empreinte et ses offsets.
-- `corpus/display_NN.json` — **projection typographique** (handoff structural-dash
-  RECHECKED v2) : 25 193 opérations. Un marqueur de mise en page supprimé garde sa
-  plage canonique `[début, fin)`, donc surlignages, notes et signets restent ancrés.
-
-Rendu de la parole : 57 966 séquences locales au paragraphe, dont 20 467 liées
-au-delà d'une frontière de fragment → **37 499 séquences affichées**.
-
-## Fonctionnalités
-- Mode Prier : parole de Jésus en italique brun foncé + bordure or · sans label
-- Mode Étudier : label « Jésus » (or) / « Marie » (violet)
-- Lecture continue : les fragments d'une même phrase s'affichent ensemble, sans
-  fusion destructive du DOM et sans perte d'identité de paragraphe
-- Recherche L1–L3 (BM25) sur 36 tomes avec précharge en arrière-plan
-- Recherche vectorielle : **optionnelle**, activée par l'utilisateur
-- Collections · Autour de ce passage · Mon Espace (notes, surlignages, favoris)
-- Surlignage : ancré sur offsets canoniques ; une sélection qui traverse plusieurs
-  paragraphes est stockée en **parties groupées** (`highlight_group_id`)
-- Migration des données utilisateur : versionnée, idempotente, non destructive
-- Mode jour/nuit · taille de texte · aide in-app · PWA hors-ligne · aucun compte
-
-## Statut des tests
-- ⚠ Tests Samsung et iPhone **pas encore effectués** — bloquants pour distribution publique
-- ⚠ Paquet **non déployé** — aucune validation appareil / mise à jour / hors-ligne
-- ✓ Tests navigateur desktop : validés
-- ✓ Intégrité du texte visible : 74 348/74 348 paragraphes, 0 écart
-- ✓ Matrice d'interaction (§11.6) : 11/11
-- ✓ Migration données utilisateur : 5 classes de fixtures, idempotente
-
-## Architecture
-```
-index.html              — app shell
-sw.js                   — service worker (cache key: ldc-v2.5.57)
-manifest.json           — PWA manifest (#1A2A4A theme)
-corpus/manifest.json    — version v10, 36 tomes
-corpus/volume_NN.json   — entrées (métadonnées)
-corpus/paragraphs_NN.json — texte d'affichage
-corpus/search_NN.json   — index de recherche normalisé
-corpus/speakers_NN.json — segments de parole audités v10
-icons/                  — 512px, 192px, 32px, apple-touch-icon
-.github/workflows/deploy.yml — GitHub Actions → GitHub Pages
-```
-
-## Vérifier la version déployée
-La version est visible en permanence dans la barre d'accueil (ex. `v2.5.52`).
-Le bouton **?** affiche le badge version complet.
-
-## Mise à jour
-Quand une nouvelle version est déployée, une bannière apparaît en haut de l'accueil.
-Appuyez dessus pour mettre à jour.
-
-## Corpus — note
-`human_review_flags_v9.csv` contient 1 passage à vérifier :
-LDC.T02.1899-10-28.E001.P007 — `séchés` vs `essuyés`
-
-## Constitution du projet
-Voir `Project_Constitution_v1.0.docx` et `Continuite_Projet_Luisa_v6.0.docx`.
+Les réparations statiques/code/package peuvent être auditées ici. Le **PASS complet de LDC-G reste impossible** tant que les preuves suivantes ne sont pas exécutées : acceptation utilisateur LDC-F, smoke appareil hérité A/C, iPhone/iPad/Samsung installés PWA, mode avion/offline reopen/update et live GitHub Pages. LDC-H reste bloqué jusque-là.
