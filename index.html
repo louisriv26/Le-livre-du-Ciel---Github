@@ -261,9 +261,12 @@ body{overflow:hidden;overflow-x:hidden;max-width:100vw;min-height:100vh;min-heig
 .stat-progress-label{font-size:11px;color:var(--muted);margin-bottom:6px;}
 .stat-progress-bar-bg{height:6px;background:var(--border);border-radius:3px;}
 .stat-progress-bar-fill{height:6px;background:var(--gold);border-radius:3px;transition:width .5s;}
-/* ═══ ENTRY SPEECH DOT ═══ */
-.ei-speech-dot{width:6px;height:6px;border-radius:50%;background:#5C3A10;
-  flex-shrink:0;margin-top:6px;opacity:.75;}
+/* ═══ ENTRY READ STATUS ═══ */
+.ei-read-mark{width:22px;height:22px;min-width:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;margin-top:1px;color:var(--green);font-size:18px;}
+.entry-item:not(.read) .ei-title{font-weight:600;}
+.entry-item.read .ei-title{font-weight:400;opacity:.66;}
+.entry-item.read .ei-date{opacity:.72;}
 /* ═══ READER DESKTOP WIDTH ═══ */
 @media(min-width:680px){#reader-body{max-width:640px;margin:0 auto;}}
 #home-first{padding:32px 20px;}
@@ -348,7 +351,6 @@ body{overflow:hidden;overflow-x:hidden;max-width:100vw;min-height:100vh;min-heig
   border-bottom:0.5px solid var(--border);cursor:pointer;transition:background .1s;
   background:none;width:100%;text-align:left;border-left:2px solid transparent;}
 .entry-item:hover,.entry-item:focus-visible{background:var(--gold-pale);outline:none;}
-.entry-item.read .ei-title{opacity:.6;}
 .ei-seq{font-size:10px;color:var(--muted);width:28px;flex-shrink:0;text-align:right;margin-top:2px;}
 .ei-body{flex:1;min-width:0;}
 .ei-title{font-family:var(--serif);font-size:14px;color:var(--night);
@@ -415,6 +417,12 @@ body{overflow:hidden;overflow-x:hidden;max-width:100vw;min-height:100vh;min-heig
 
 /* Prev/next nav */
 .entry-nav{display:flex;gap:8px;padding:12px 22px 20px;flex-shrink:0;border-top:0.5px solid var(--border);}
+.reader-fav-top.active{color:var(--red);background:var(--gold-pale);}
+.mark-read-btn{flex:0 0 86px;min-height:44px;border:1px solid var(--border);border-radius:10px;background:var(--white);
+  color:var(--ink);font-family:var(--body);font-size:13px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;
+  transition:background .15s,border-color .15s,color .15s;}
+.mark-read-btn.done{background:var(--accent-fill);border-color:var(--accent-fill);color:var(--accent-fill-ink);}
+.mark-read-btn:focus-visible{outline:2px solid var(--gold-text);outline-offset:2px;}
 .enav-btn{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;
   padding:10px;border:0.5px solid var(--border);border-radius:10px;background:none;
   cursor:pointer;font-size:13px;color:var(--muted);font-family:var(--body);transition:all .15s;}
@@ -443,6 +451,7 @@ body{overflow:hidden;overflow-x:hidden;max-width:100vw;min-height:100vh;min-heig
 /* Highlights */
 mark.hl{border-radius:2px;padding:0 1px;cursor:pointer;}
 mark.hl-gold{background:rgba(201,168,76,.32);color:inherit;}
+mark.hl-yellow{background:rgba(252,243,160,.60);color:inherit;}
 mark.hl-green{background:rgba(80,180,120,.25);color:inherit;}
 mark.hl-blue{background:rgba(80,140,220,.25);color:inherit;}
 mark.hl-purple{background:rgba(130,91,190,.28);color:inherit;}
@@ -453,9 +462,11 @@ mark.hl-pink{background:rgba(185,84,135,.28);color:inherit;}
   margin:0;flex-shrink:0;padding:0;position:relative;background:transparent !important;}
 .hl-dot::after{content:"";position:absolute;left:50%;top:50%;width:18px;height:18px;
   transform:translate(-50%,-50%);border-radius:50%;background:var(--hl-dot-color);border:2px solid transparent;}
-.hl-dot.hl-gold{--hl-dot-color:#C9A84C;}
-.hl-dot.hl-green{--hl-dot-color:#4a9b69;}
-.hl-dot.hl-blue{--hl-dot-color:#5c8bd2;}
+.hl-dot.hl-gold{--hl-dot-color:#F1E7CC;}
+.hl-dot.hl-yellow{--hl-dot-color:#FCF3A0;}
+.hl-dot.hl-blue{--hl-dot-color:#CFE3F5;}
+.hl-dot.hl-green{--hl-dot-color:#CFEBD2;}
+/* Legacy colours remain renderable/importable but are no longer offered in the picker. */
 .hl-dot.hl-purple{--hl-dot-color:#825bbe;}
 .hl-dot.hl-pink{--hl-dot-color:#b95487;}
 .hl-dot.selected::after{border-color:var(--gold-text);}
@@ -1014,11 +1025,13 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; }
 /* LDC-A contrast matrix hardening: highlighted speaker text and technical labels. */
 @media(prefers-color-scheme:dark){
   :root:not([data-theme="light"]) mark.hl-gold{background:rgba(201,168,76,.25);}
+  :root:not([data-theme="light"]) mark.hl-yellow{background:rgba(252,243,160,.18);}
   :root:not([data-theme="light"]) mark.search-hl{background:rgba(201,168,76,.22);}
   :root:not([data-theme="light"]) .speech-label.lbl-marie{color:#8AB8D8;}
   :root:not([data-theme="light"]) .st-luisa{color:#D4A843;}
 }
 html[data-theme="dark"] mark.hl-gold{background:rgba(201,168,76,.25);}
+html[data-theme="dark"] mark.hl-yellow{background:rgba(252,243,160,.18);}
 html[data-theme="dark"] mark.search-hl{background:rgba(201,168,76,.22);}
 html[data-theme="dark"] .speech-label.lbl-marie{color:#8AB8D8;}
 html[data-theme="dark"] .st-luisa{color:#D4A843;}
@@ -1026,7 +1039,7 @@ html[data-theme="dark"] .st-luisa{color:#D4A843;}
 /* F11 lineage: WCAG 2.5.5 minimum hit-area foundation; extended by LDC-A. */
 /* LDC-A touch foundation — frequent controls and all current reader actions use
    a 44x44 CSS-pixel hit area. Compact visual affordances may remain smaller inside it. */
-.btn-back,.mode-pill,.enav-btn,.home-lib-link,.btn-icon,.nav-item,.ob-next,.ob-skip,.voi-btn,
+.btn-back,.mode-pill,.enav-btn,.mark-read-btn,.home-lib-link,.btn-icon,.nav-item,.ob-next,.ob-skip,.voi-btn,
 .theme-pref-chip,.text-level-btn,.hl-opt,.hl-dot,.stp-btn,.cp-swatch,.cp-close,
 .sugg-chip,.sugg-clear,.speech-filter-chip,.chip,.es-tab,.ei-del,.hl-del-btn,
 .ci-act,.ci-mv,.col-rename-btn,.col-del-btn,.col-pick-item,.col-export-btn,
@@ -1454,6 +1467,7 @@ html[data-theme="dark"] .st-luisa{color:#D4A843;}
     <div class="reader-top-title" id="reader-top-title">Livre du Ciel</div>
     <div class="reader-tools">
       <button class="mode-pill" id="reperes-toggle" type="button" aria-pressed="false" onclick="toggleReperes()">Repères</button>
+      <button class="btn-icon reader-fav-top" id="reader-fav-top" type="button" aria-pressed="false" onclick="toggleFav()" aria-label="Ajouter aux favoris" title="Ajouter aux favoris"><i class="ti ti-heart"></i></button>
       <button class="btn-icon" type="button" onclick="openReaderMore()" aria-label="Plus d’outils"><i class="ti ti-dots"></i></button>
     </div>
   </div>
@@ -1476,6 +1490,7 @@ html[data-theme="dark"] .st-luisa{color:#D4A843;}
     <button class="enav-btn" id="prev-btn" onclick="navEntry(-1)">
       <i class="ti ti-arrow-left"></i> Entrée précédente
     </button>
+    <button class="mark-read-btn" id="reader-read-action" type="button" aria-pressed="false" onclick="toggleCurrentEntryRead()">Lu</button>
     <button class="enav-btn" id="next-btn" onclick="navEntry(1)">
       Entrée suivante <i class="ti ti-arrow-right"></i>
     </button>
@@ -1981,9 +1996,9 @@ html[data-theme="dark"] .st-luisa{color:#D4A843;}
    VERSION — single source of truth
    Update this string on every release.
 ═══════════════════════════════════════════════════════ */
-const APP_VERSION = 'v2.18.1-R1B';
+const APP_VERSION = 'v2.18.2-R1B';
 const APP_BUILD   = '2026-08-12';
-const SW_CACHE_VERSION = 'ldc-v2.18.1-R1B';
+const SW_CACHE_VERSION = 'ldc-v2.18.2-R1B';
 const CORPUS_MANIFEST_SHA256 = '0701191761994c69a32eb4ca1b33312f2c5e043939a3a4d61b0f326739cb12c8';
 const DEEP_LINK_SCHEMA = 'ldc-deep-link-v1';
 const READING_POSITION_SCHEMA = 'ldc-reading-position-v2';
@@ -2189,7 +2204,7 @@ const USER_DATA_ENVELOPE_SCHEMA = 'ldc-user-data-envelope';
 const USER_DATA_ENVELOPE_VERSION = 3;
 const USER_DATA_MAX_IMPORT_BYTES = 10 * 1024 * 1024;
 const USER_DATA_STORES = Object.freeze(['reading_pos','highlights','notes','favorites','collections','col_items','settings','read_entries']);
-const USER_DATA_HL_COLORS = Object.freeze(['gold','green','blue','purple','pink']);
+const USER_DATA_HL_COLORS = Object.freeze(['gold','yellow','blue','green','purple','pink']); // purple/pink = legacy import/render only
 const CORPUS_ENTRY_COUNT = 2312;
 
 function paragraphFingerprint(text) {
@@ -2347,18 +2362,59 @@ function goTomes()  { showScreen('tomes'); renderTomes(); }
 /* ═══════════════════════════════════════════════════════
    READ STATE TRACKING
 ═══════════════════════════════════════════════════════ */
+function isConfirmedReadRecord(r) {
+  // v2.18.2: only an explicit user action means “Lu”. Older records were created
+  // automatically on open and are preserved in IndexedDB/backups but deliberately
+  // not counted as confirmed reading.
+  return !!(r && (r.explicit_read === true || r.status === 'read' || r.source === 'explicit_user'));
+}
+
 async function markEntryRead(vol, entryId) {
-  await dbPut('read_entries', { key: `${vol}:${entryId}`, vol, entry_id: entryId, ts: Date.now() });
+  const key = `${vol}:${entryId}`;
+  const previous = await dbGet('read_entries', key);
+  await dbPut('read_entries', Object.assign({}, previous || {}, {
+    key, vol, entry_id:entryId, explicit_read:true, status:'read', source:'explicit_user', ts:Date.now()
+  }));
+}
+
+async function unmarkEntryRead(vol, entryId) {
+  await dbDelete('read_entries', `${vol}:${entryId}`);
 }
 
 async function getReadEntryIds(vol) {
   const all = await dbGetAll('read_entries');
-  return new Set(all.filter(r => r.vol === vol).map(r => r.entry_id));
+  return new Set(all.filter(r => r.vol === vol && isConfirmedReadRecord(r)).map(r => r.entry_id));
 }
 
 async function countReadEntries(vol) {
   const all = await dbGetAll('read_entries');
-  return all.filter(r => r.vol === vol).length;
+  return all.filter(r => r.vol === vol && isConfirmedReadRecord(r)).length;
+}
+
+function updateReadActionState(active) {
+  const btn = document.getElementById('reader-read-action');
+  if (!btn) return;
+  btn.classList.toggle('done', !!active);
+  btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+  btn.textContent = active ? '✓ Lu' : 'Lu';
+  btn.setAttribute('aria-label', active ? 'Marqué comme lu — appuyer pour annuler' : 'Marquer ce texte comme lu');
+}
+
+async function toggleCurrentEntryRead() {
+  if (!currentEntry) return;
+  const key = `${currentVolume}:${currentEntry.id}`;
+  const existing = await dbGet('read_entries', key);
+  const wasRead = isConfirmedReadRecord(existing);
+  try {
+    if (wasRead) await unmarkEntryRead(currentVolume, currentEntry.id);
+    else await markEntryRead(currentVolume, currentEntry.id);
+  } catch(e) {
+    console.warn('LDC: read-state persistence failed', e);
+    showToast('Statut Lu non modifié — stockage local indisponible');
+    return;
+  }
+  updateReadActionState(!wasRead);
+  showToast(wasRead ? 'Marque Lu retirée' : 'Marqué comme lu');
 }
 
 /* ═══════════════════════════════════════════════════════
@@ -2778,33 +2834,32 @@ async function renderTomes() {
 
   const grid = document.createElement('div');
   grid.className = 'vol-grid';
+  const confirmedReads = (await dbGetAll('read_entries')).filter(isConfirmedReadRecord);
+  const readCountByVol = {};
+  confirmedReads.forEach(r => { readCountByVol[r.vol] = (readCountByVol[r.vol] || 0) + 1; });
 
   for (const vd of validated) {
-    // Use cached data if available, otherwise show from corpus metadata
-    let entryCount = 0, paraCount = 0;
+    // Use cached data if available, otherwise show from corpus metadata. Paragraph
+    // counts are intentionally not exposed in Bibliothèque: users navigate entries.
+    let entryCount = 0;
     if (corpusCache[vd.v]) {
       entryCount = corpusCache[vd.v].entries.length;
-      paraCount  = parasCache[vd.v] ? parasCache[vd.v].length : 0;
     } else if (volumeMeta[vd.v]) {
       entryCount = volumeMeta[vd.v].entry_count;
-      paraCount  = volumeMeta[vd.v].para_count;
     }
     const btn = document.createElement('button');
     btn.className = 'vol-card' + (pos && pos.vol === vd.v ? ' current' : '');
-    // Calculate reading progress if this volume is cached
     let progressBar = '';
-    if (corpusCache[vd.v] && entryCount > 0) {
-      const readCount = await countReadEntries(vd.v).catch(() => 0);
+    if (entryCount > 0) {
+      const readCount = readCountByVol[vd.v] || 0;
       const pct = Math.round((readCount / entryCount) * 100);
-      if (pct > 0) {
-        progressBar = `<div class="vol-progress"><div class="vol-progress-bar" style="width:${pct}%"></div></div>`;
-      }
+      if (pct > 0) progressBar = `<div class="vol-progress" aria-label="${readCount} entrées lues sur ${entryCount}"><div class="vol-progress-bar" style="width:${pct}%"></div></div>`;
     }
     btn.innerHTML = `
       <span class="vc-num">T${vd.v}</span>
       <div class="vc-body">
         <div class="vc-title">Tome ${vd.v}</div>
-        <div class="vc-sub" id="vol-sub-${vd.v}">${entryCount ? entryCount + ' entrées · ' + paraCount + ' paragraphes' : 'Tome ' + vd.v}</div>
+        <div class="vc-sub" id="vol-sub-${vd.v}">${entryCount ? entryCount + ' entrées' : 'Tome ' + vd.v}</div>
         ${progressBar}
       </div>
       <span class="vc-status vs-ok" title="Validé"></span>`;
@@ -2828,15 +2883,15 @@ async function openTome(vol) {
     btn.className = 'entry-item' + (readIds.has(e.id) ? ' read' : '');
     btn.dataset.entryId = e.id;
     btn.id = 'entry-row-' + e.id;
-    const speechDot = e.has_speech
-      ? `<div class="ei-speech-dot" title="Contient des paroles de Jésus"></div>` : '';
+    const readMark = readIds.has(e.id)
+      ? `<span class="ei-read-mark" title="Lu" aria-label="Lu"><i class="ti ti-circle-check"></i></span>` : '';
     btn.innerHTML = `
       <span class="ei-seq">${idx+1}</span>
       <div class="ei-body">
         <div class="ei-title">${e.title || 'Entrée ' + (idx+1)}</div>
         <div class="ei-date">${e.date_display || ''}</div>
       </div>
-      ${speechDot}`;
+      ${readMark}`;
     btn.onclick = () => openEntry(vol, e.id, 'entries');
     list.appendChild(btn);
   });
@@ -2878,9 +2933,6 @@ async function openEntry(vol, entryId, backDest, opts={}) {
       ? `${currentEntry.source_page_start}–${currentEntry.source_page_end}`
       : '—';
   document.getElementById('prov-status').textContent = currentEntry.verification_status || '—';
-
-  // Mark entry as read
-  markEntryRead(vol, entryId).catch(()=>{});
 
   // Paragraphs
   const paras = await getParagraphs(vol, entryId);
@@ -3037,6 +3089,8 @@ async function openEntry(vol, entryId, backDest, opts={}) {
   // Fav state — entry-level action lives in the More sheet.
   const fav = await dbGet('favorites', entryId);
   updateFavActionState(!!fav);
+  const readRec = await dbGet('read_entries', `${vol}:${entryId}`);
+  updateReadActionState(isConfirmedReadRecord(readRec));
 
   applyReperesState();
   showScreen('reader');
@@ -3176,7 +3230,7 @@ async function toggleReperes() {
 }
 
 /* ═══ PARAGRAPH INTERACTION (highlight/note) ═══ */
-const HL_COLORS = ['gold', 'green', 'blue', 'purple', 'pink'];
+const HL_COLORS = ['gold', 'yellow', 'blue', 'green'];
 
 function onParaClick(e) {
   if (e.target.classList.contains('hl')) {
@@ -3574,6 +3628,7 @@ async function pickHighlight(color) {
 
 async function applyHighlight(color) {
   if (!currentEntry) return;
+  if (!HL_COLORS.includes(color)) { showToast('Couleur de surlignage indisponible'); return; }
   hideHlPopup();
 
   // §8.3 — a visually continuous sentence may cross several canonical
@@ -3895,14 +3950,24 @@ async function saveNote() {
 
 /* ═══ FAVOURITES ═══ */
 function updateFavActionState(active) {
-  const btn = document.getElementById('reader-fav-action');
-  if (!btn) return;
-  btn.classList.toggle('active', !!active);
-  btn.setAttribute('aria-pressed', active ? 'true' : 'false');
-  const span = btn.querySelector('span');
-  if (span) span.textContent = active ? 'Retirer des favoris' : 'Ajouter aux favoris';
-  const icon = btn.querySelector('i');
-  if (icon) icon.className = active ? 'ti ti-heart-filled' : 'ti ti-heart';
+  const moreBtn = document.getElementById('reader-fav-action');
+  if (moreBtn) {
+    moreBtn.classList.toggle('active', !!active);
+    moreBtn.setAttribute('aria-pressed', active ? 'true' : 'false');
+    const span = moreBtn.querySelector('span');
+    if (span) span.textContent = active ? 'Retirer des favoris' : 'Ajouter aux favoris';
+    const icon = moreBtn.querySelector('i');
+    if (icon) icon.className = active ? 'ti ti-heart-filled' : 'ti ti-heart';
+  }
+  const topBtn = document.getElementById('reader-fav-top');
+  if (topBtn) {
+    topBtn.classList.toggle('active', !!active);
+    topBtn.setAttribute('aria-pressed', active ? 'true' : 'false');
+    topBtn.setAttribute('aria-label', active ? 'Retirer des favoris' : 'Ajouter aux favoris');
+    topBtn.setAttribute('title', active ? 'Retirer des favoris' : 'Ajouter aux favoris');
+    const icon = topBtn.querySelector('i');
+    if (icon) icon.className = active ? 'ti ti-heart-filled' : 'ti ti-heart';
+  }
 }
 
 async function toggleFav() {
@@ -4965,9 +5030,10 @@ async function updateEspaceBadges() {
 async function renderStats() {
   const el=document.getElementById('ep-stats');if(!el)return;
   const notes=await dbGetAll('notes'), hls=await dbGetAll('highlights'), favs=await dbGetAll('favorites'), readAll=await dbGetAll('read_entries');
-  const hCount=highlightUserCount(hls), readCount=readAll.length, tomesStarted=new Set(readAll.map(r=>r.vol)).size;
+  const confirmedReads=readAll.filter(isConfirmedReadRecord);
+  const hCount=highlightUserCount(hls), readCount=confirmedReads.length, tomesStarted=new Set(confirmedReads.map(r=>r.vol)).size;
   const stale=notes.filter(isStaleRecord).length+groupedHighlights(hls).filter(h=>h._stale).length+favs.filter(isStaleRecord).length+(await dbGetAll('col_items')).filter(isStaleRecord).length;
-  el.innerHTML=`<div style="padding:20px 16px;"><div style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:16px;">Votre lecture</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px;"><div class="stat-card"><div class="stat-num">${readCount}</div><div class="stat-label">entrées lues</div></div><div class="stat-card"><div class="stat-num">${tomesStarted}</div><div class="stat-label">tomes ouverts</div></div><div class="stat-card"><div class="stat-num">${notes.length}</div><div class="stat-label">notes</div></div><div class="stat-card"><div class="stat-num">${hCount}</div><div class="stat-label">surlignages</div></div></div><div class="stat-progress-label">Progression globale</div><div class="stat-progress-bar-bg"><div class="stat-progress-bar-fill" style="width:${Math.min(100,Math.round(readCount/CORPUS_ENTRY_COUNT*100))}%"></div></div><div style="font-size:12px;color:var(--muted);margin-top:6px;">${readCount} / ${CORPUS_ENTRY_COUNT} entrées · ${Math.round(readCount/CORPUS_ENTRY_COUNT*100)}%</div>${stale?`<div class="backup-warning" style="margin-top:16px;">${stale} élément${stale!==1?'s':''} à vérifier dans Mon Espace.</div>`:''}</div>`;
+  el.innerHTML=`<div style="padding:20px 16px;"><div style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:16px;">Votre lecture</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px;"><div class="stat-card"><div class="stat-num">${readCount}</div><div class="stat-label">entrées lues</div></div><div class="stat-card"><div class="stat-num">${tomesStarted}</div><div class="stat-label">tomes commencés</div></div><div class="stat-card"><div class="stat-num">${notes.length}</div><div class="stat-label">notes</div></div><div class="stat-card"><div class="stat-num">${hCount}</div><div class="stat-label">surlignages</div></div></div><div class="stat-progress-label">Progression globale</div><div class="stat-progress-bar-bg"><div class="stat-progress-bar-fill" style="width:${Math.min(100,Math.round(readCount/CORPUS_ENTRY_COUNT*100))}%"></div></div><div style="font-size:12px;color:var(--muted);margin-top:6px;">${readCount} / ${CORPUS_ENTRY_COUNT} entrées · ${Math.round(readCount/CORPUS_ENTRY_COUNT*100)}%</div>${stale?`<div class="backup-warning" style="margin-top:16px;">${stale} élément${stale!==1?'s':''} à vérifier dans Mon Espace.</div>`:''}</div>`;
 }
 
 function staleBadge(r){return isStaleRecord(r)?`<span class="espace-stale-badge"><i class="ti ti-alert-triangle"></i>${escapeHtml(r.stale_status||'à vérifier')}</span>`:'';}
@@ -4988,7 +5054,7 @@ async function deleteHighlight(id){const hl=await dbGet('highlights',id);if(!hl)
 
 async function renderFavorites(){
   const favs=(await dbGetAll('favorites')).sort((a,b)=>b.ts-a.ts),el=document.getElementById('ep-favorites');el.innerHTML='';if(!favs.length){el.innerHTML='<div class="empty-state"><i class="ti ti-heart-off"></i>Aucun favori pour l\'instant.</div>';return;}
-  favs.forEach(f=>{const d=document.createElement('div');d.className='espace-item';d.dataset.filterText=[f.stable_ref,f.title,f.date_display,'tome '+f.volume].join(' ');d.innerHTML=`<i class="ti ti-heart ei-icon"></i><div class="ei-content"><div class="ei-ref">${escapeHtml(f.stable_ref||'—')} · Tome ${f.volume||'—'}</div><div class="ei-text">${escapeHtml(f.title||'')}</div><div class="ei-date">${escapeHtml(f.date_display||'')}</div>${staleBadge(f)}</div><button class="ei-del" onclick="deleteFav('${f.entry_id}')" aria-label="Retirer des favoris"><i class="ti ti-trash"></i></button>`;d.onclick=e=>{if(!e.target.closest('.ei-del'))goToEntry(f.volume||volumeOfStableRef(f.stable_ref),f.entry_id,null);};el.appendChild(d);});applyEspaceFilter();
+  favs.forEach(f=>{const d=document.createElement('div');d.className='espace-item';d.dataset.filterText=[f.stable_ref,f.title,f.date_display,'tome '+f.volume].join(' ');d.innerHTML=`<i class="ti ti-heart-filled ei-icon"></i><div class="ei-content"><div class="ei-ref">${escapeHtml(f.stable_ref||'—')} · Tome ${f.volume||'—'}</div><div class="ei-text">${escapeHtml(f.title||'')}</div><div class="ei-date">${escapeHtml(f.date_display||'')}</div>${staleBadge(f)}</div><button class="ei-del" onclick="deleteFav('${f.entry_id}')" aria-label="Retirer des favoris"><i class="ti ti-trash"></i></button>`;d.onclick=e=>{if(!e.target.closest('.ei-del'))goToEntry(f.volume||volumeOfStableRef(f.stable_ref),f.entry_id,null);};el.appendChild(d);});applyEspaceFilter();
 }
 async function deleteFav(entryId){try{await dbDelete('favorites',entryId);}catch(e){showToast('Favori non supprimé — stockage local indisponible');return;}await renderFavorites();await updateEspaceBadges();showToast('Favori supprimé');}
 
@@ -5871,9 +5937,9 @@ function renderDnResultCard() {
    CacheStorage contains public app/corpus bytes only. IndexedDB settings holds
    the user-visible completion record; it is not itself the offline payload.
 ═══════════════════════════════════════════════════════ */
-const OFFLINE_CACHE_VERSION = 'ldc-le-livre-du-ciel-offline-v2.18.1-R1B';
+const OFFLINE_CACHE_VERSION = 'ldc-le-livre-du-ciel-offline-v2.18.2-R1B';
 const OFFLINE_MANIFEST_SCHEMA = 'ldc-offline-manifest-v2';
-const OFFLINE_CONTENT_BINDING = '32360e1ae2ae96f8924360420b378eb579b96ea4a21c70b36960ad06decdc851';
+const OFFLINE_CONTENT_BINDING = '170675fbe3e12d452c5cdb35d67567cc148bbe85a41c36566389b8b12a36cc33';
 const OFFLINE_CORPUS_MANIFEST_SHA256 = '0701191761994c69a32eb4ca1b33312f2c5e043939a3a4d61b0f326739cb12c8';
 const OFFLINE_STATES = Object.freeze(['NOT_PREPARED','CHECKING','DOWNLOADING','READY','PARTIAL','ERROR','CANCELLED']);
 let offlineUiState = {state:'NOT_PREPARED',completed:0,total:0,failed:[],total_bytes:0,job_id:null,message:'',content_binding_sha256:OFFLINE_CONTENT_BINDING,corpus_manifest_sha256:OFFLINE_CORPUS_MANIFEST_SHA256};
