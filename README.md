@@ -1,10 +1,10 @@
-# Le Livre du Ciel — v2.18.2-R1B
+# Le Livre du Ciel — v2.18.3-R1B
 
 Application PWA de lecture des 36 tomes du *Livre du Ciel* de Luisa Piccarreta.
 
 ## État de ce paquet
 
-- **Étape : LDC-GR2 — corrections UX issues de l’acceptation propriétaire, sur la base LDC-GR**
+- **Étape : LDC-GR3 — stabilisation du surlignage navigateur/iPhone + clarification Bibliothèque, sur la base LDC-GR2**
 - **Candidat : NON DÉPLOYÉ**
 - **Base corrective : v2.18.1-R1B / LDC-GR** — SHA-256 `0a5c100012e4f3ba4592fc1b44ee2a7f4dfcfa6109561be928e5686b2d9ed3f3`.
 - **Autorisation propriétaire : `Do it`** — autorise la réparation LDC-GR; **ne vaut pas** validation utilisateur de LDC-F ni preuve physique PWA/appareil.
@@ -40,3 +40,15 @@ Les réparations statiques/code/package peuvent être auditées ici. Le **PASS c
 8. Les cartes de Tome affichent uniquement le nombre d’entrées (ex. **184 entrées**) et plus le nombre de paragraphes.
 
 **Acceptation propriétaire : PENDING RETEST.** Ces corrections répondent aux constats de test mais ne constituent pas elles-mêmes l’acceptation finale LDC-F/G ni la preuve appareil/PWA.
+
+## Corrections LDC-GR3 — stabilité du surlignage et Bibliothèque
+
+1. Le point vert à droite des cartes de Tome était un ancien indicateur technique « Tome validé ». Comme les 36 Tomes actifs sont validés, il n’apportait plus d’information et pouvait être confondu avec la lecture : il est supprimé de la Bibliothèque.
+2. Une sélection texte n’applique plus de contour à tout le paragraphe. L’ancien `outline` sur un `span` multi-ligne produisait sur iPhone plusieurs rectangles autour des lignes voisines. Le contour reste réservé à l’activation volontaire d’un paragraphe entier.
+3. Les deux extrémités d’une sélection doivent maintenant appartenir à de vrais fragments canoniques du lecteur. Une sélection qui déborde hors du lecteur est rejetée au lieu d’être « accrochée » à un fragment éloigné, ce qui pouvait transformer une petite sélection en plage très large sur navigateur.
+4. Le clic généré juste après un glisser-sélection sur ordinateur n’est plus réinterprété comme activation du paragraphe entier.
+5. Sur iPhone/iPad, l’app mémorise les offsets canoniques puis libère la sélection native avant d’ouvrir la palette. Elle ne recrée plus le `Range` avec `addRange()`, ce qui pouvait provoquer des rectangles de sélection et un auto-scroll Safari.
+6. Ajouter, recolorer ou supprimer un surlignage ne reconstruit plus toute l’entrée. Le DOM concerné est mis à jour localement. Les marques ont `padding:0`, afin de ne pas modifier la mise en ligne.
+7. Le `scrollTop` précédant la palette est conservé et réappliqué après le dessin local pour neutraliser un éventuel auto-scroll différé de Safari.
+
+Aucun texte canonique, ID, offset de parole, corpus, index de recherche ou donnée utilisateur n’est modifié par cette réparation.

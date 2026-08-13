@@ -118,14 +118,15 @@
     if (!range) return [];
     var startFrag = fragmentOf(range.startContainer);
     var endFrag   = fragmentOf(range.endContainer);
-    // an endpoint may land on a derived flow joiner, which belongs to NEITHER
-    // paragraph and has no canonical offset — snap it to a real fragment
-    if (!startFrag && !endFrag) return [];
-    if (!startFrag) startFrag = nextFragment(range.startContainer, 1) || endFrag;
-    if (!endFrag)   endFrag   = nextFragment(range.endContainer, -1) || startFrag;
+    var reader = document.getElementById('reader-body');
+    // Fail closed. If either browser Range endpoint escapes the canonical reader
+    // fragment layer, do NOT “snap” it to some neighbouring/distant fragment.
+    // That old recovery could turn a small mouse/touch selection into a range
+    // spanning many paragraphs or almost the whole screen.
+    if (!reader || !startFrag || !endFrag || !reader.contains(startFrag) || !reader.contains(endFrag)) return [];
 
     var all = Array.prototype.slice.call(
-      document.querySelectorAll('#reader-body .para-fragment'));
+      reader.querySelectorAll('.para-fragment'));
     var i0 = all.indexOf(startFrag), i1 = all.indexOf(endFrag);
     if (i0 < 0 || i1 < 0) return [];
     if (i0 > i1) { var t = i0; i0 = i1; i1 = t; t = startFrag; startFrag = endFrag; endFrag = t; }

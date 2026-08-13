@@ -399,6 +399,7 @@ body{overflow:hidden;overflow-x:hidden;max-width:100vw;min-height:100vh;min-heig
 #reader-body{-webkit-touch-callout:none;}
 .dp.target{background:rgba(201,168,76,.08);border-radius:4px;padding:4px 6px;margin:-4px -6px;}
 .para-fragment.context-target{outline:2px solid var(--gold-light);outline-offset:3px;border-radius:3px;}
+/* Whole-paragraph activation only. Text selection deliberately gets no fragment outline: on iOS an outline on a multi-line inline span is painted as many rectangular line boxes. */
 
 /* Repères — technical provenance cues, never tool gating */
 .provenance{background:var(--white);border:0.5px solid var(--border);border-radius:10px;
@@ -449,7 +450,7 @@ body{overflow:hidden;overflow-x:hidden;max-width:100vw;min-height:100vh;min-heig
 .text-level-btn:focus-visible{outline:2px solid var(--gold-text,var(--gold));outline-offset:2px;}
 
 /* Highlights */
-mark.hl{border-radius:2px;padding:0 1px;cursor:pointer;}
+mark.hl{border-radius:2px;padding:0;cursor:pointer;}
 mark.hl-gold{background:rgba(201,168,76,.32);color:inherit;}
 mark.hl-yellow{background:rgba(252,243,160,.60);color:inherit;}
 mark.hl-green{background:rgba(80,180,120,.25);color:inherit;}
@@ -1655,7 +1656,7 @@ html[data-theme="dark"] .st-luisa{color:#D4A843;}
       <div class="help-card">
         <div class="help-row">
           <span class="help-chip light">Appui long</span>
-          <span class="help-text">Sur un mot dans le lecteur. Étendez la sélection : une seule barre contextuelle propose <b>Surligner</b>, <b>Note</b>, <b>Copier</b>, <b>Référence</b>, <b>Collection</b> et <b>Fermer</b>. Touchez simplement un paragraphe pour ouvrir les mêmes actions sur le paragraphe entier.</span>
+          <span class="help-text">Sur un mot dans le lecteur. Étendez la sélection : une seule barre contextuelle propose <b>Surligner</b>, <b>Note</b>, <b>Copier</b>, <b>Référence</b>, <b>Collection</b> et <b>Fermer</b>. Sur iPhone/iPad, la sélection native disparaît lorsque la palette de couleurs s’ouvre : le passage reste mémorisé sans déplacer la page. Touchez simplement un paragraphe pour ouvrir les mêmes actions sur le paragraphe entier.</span>
         </div>
         <div class="help-divider"></div>
         <div class="help-row">
@@ -1996,9 +1997,9 @@ html[data-theme="dark"] .st-luisa{color:#D4A843;}
    VERSION — single source of truth
    Update this string on every release.
 ═══════════════════════════════════════════════════════ */
-const APP_VERSION = 'v2.18.2-R1B';
+const APP_VERSION = 'v2.18.3-R1B';
 const APP_BUILD   = '2026-08-12';
-const SW_CACHE_VERSION = 'ldc-v2.18.2-R1B';
+const SW_CACHE_VERSION = 'ldc-v2.18.3-R1B';
 const CORPUS_MANIFEST_SHA256 = '0701191761994c69a32eb4ca1b33312f2c5e043939a3a4d61b0f326739cb12c8';
 const DEEP_LINK_SCHEMA = 'ldc-deep-link-v1';
 const READING_POSITION_SCHEMA = 'ldc-reading-position-v2';
@@ -2054,6 +2055,7 @@ let keepScrollTop  = null;  // exact scrollTop to restore after an in-place re-r
 let selectionRange = null;
 let selectionParaId= null;
 let contextTarget   = null; // {kind, paraId, text, parts, stableRef}
+let selectionCaptureAt = 0; // last valid reader text-selection capture; prevents click-after-drag from becoming whole-paragraph context
 
 /* ═══════════════════════════════════════════════════════
    DB
@@ -2861,8 +2863,7 @@ async function renderTomes() {
         <div class="vc-title">Tome ${vd.v}</div>
         <div class="vc-sub" id="vol-sub-${vd.v}">${entryCount ? entryCount + ' entrées' : 'Tome ' + vd.v}</div>
         ${progressBar}
-      </div>
-      <span class="vc-status vs-ok" title="Validé"></span>`;
+      </div>`;
     btn.onclick = () => openTome(vd.v);
     grid.appendChild(btn);
   }
@@ -3234,88 +3235,94 @@ const HL_COLORS = ['gold', 'yellow', 'blue', 'green'];
 
 function onParaClick(e) {
   if (e.target.classList.contains('hl')) {
-    // Existing-highlight editing remains its own edit popup; the general reader
-    // actions use one contextual surface.
     showExistingHighlightPopup(e.target);
     return;
   }
   const sel = window.getSelection();
-  if (sel && !sel.isCollapsed && String(sel).trim().length > 3) {
+  if (sel && !sel.isCollapsed && String(sel).trim().length > 0) {
     checkAndShowHighlightPopup(e.currentTarget);
+    return;
+  }
+  // Desktop browsers can collapse the native Selection immediately before the
+  // synthetic click that follows mouse-up. If we just captured a valid text
+  // selection, that click must NOT be reinterpreted as “whole paragraph”.
+  if (selectionCaptureAt && (Date.now() - selectionCaptureAt) < 650 &&
+      window.lastSelParts && window.lastSelParts.length) {
+    showSelectionContext();
     return;
   }
   const frag = e.target.closest('.para-fragment') || e.currentTarget.querySelector('.para-fragment');
   if (frag && frag.dataset.paraId) showParagraphContext(frag.dataset.paraId);
 }
 
-// iOS/iPad: selectionchange fires continuously while the user drags a selection
-// handle, so showing/repositioning the popup on every event made it flicker and
-// jump mid-drag. Debounce so the popup only appears once the selection settles.
+// iOS/iPad and desktop: selectionchange fires repeatedly while handles/mouse are
+// moving. Capture only after it settles, and only if BOTH endpoints map to real
+// canonical reader fragments. A range that escapes the reader is rejected rather
+// than being snapped to a distant paragraph.
 let _selChangeTimer = null;
 document.addEventListener('selectionchange', () => {
   clearTimeout(_selChangeTimer);
   _selChangeTimer = setTimeout(() => {
     const sel = window.getSelection();
-    if (!sel || sel.toString().trim().length <= 3) return;
-    const anchor = sel.anchorNode;
-    if (!anchor) return;
-    const para = anchor.parentElement
-      ? (anchor.parentElement.closest('.para-fragment') || anchor.parentElement.closest('.dp'))
-      : null;
-    if (!para) return;
-    checkAndShowHighlightPopup(para);
-  }, 150);
+    if (!sel || sel.isCollapsed || !sel.rangeCount || sel.toString().trim().length <= 0) return;
+    const range = sel.getRangeAt(0);
+    const reader = document.getElementById('reader-body');
+    if (!reader || !reader.contains(range.startContainer) || !reader.contains(range.endContainer)) return;
+    const startFrag = window.LDCAnchor ? LDCAnchor.fragmentOf(range.startContainer) : null;
+    const endFrag = window.LDCAnchor ? LDCAnchor.fragmentOf(range.endContainer) : null;
+    if (!startFrag || !endFrag) return;
+    checkAndShowHighlightPopup(startFrag);
+  }, 180);
 });
 
 function checkAndShowHighlightPopup(paraEl) {
   const sel = window.getSelection();
-  if (!sel || sel.toString().trim().length <= 3) return;
-  const text = sel.toString().trim();
-  if (!paraEl || !paraEl.dataset) return;
-  selectionParaId = paraEl.dataset.paraId;
-  selectionRange  = { text };
+  if (!sel || sel.isCollapsed || !sel.rangeCount || sel.toString().trim().length <= 0) return;
   try {
     const range = sel.getRangeAt(0);
-    // Keep a real cloned Range: on touch, tapping the contextual "Surligner" action
-    // can collapse the live selection before applyHighlight() reads its offsets.
+    const reader = document.getElementById('reader-body');
+    if (!reader || !reader.contains(range.startContainer) || !reader.contains(range.endContainer)) return;
+    const parts = window.LDCAnchor ? LDCAnchor.selectionParts(range) : [];
+    if (!parts.length) return;
+    // Guard against an endpoint/mapping bug turning a small visible selection into
+    // a giant canonical range. The canonical grouped quote should remain close to
+    // the browser's selected text after whitespace folding.
+    const grouped = LDCAnchor.groupedQuote(parts, 'space');
+    const liveFold = LDCAnchor.fold(sel.toString());
+    const groupedFold = LDCAnchor.fold(grouped);
+    if (!liveFold || !groupedFold) return;
+    const delta = Math.abs(groupedFold.length - liveFold.length);
+    const ratio = Math.max(groupedFold.length, liveFold.length) / Math.max(1, Math.min(groupedFold.length, liveFold.length));
+    if (delta > 96 && ratio > 1.35) {
+      console.warn('LDC: selection mapping rejected as disproportionate', {live:liveFold.length, canonical:groupedFold.length, parts:parts.length});
+      showToast('Sélection instable — relâchez puis sélectionnez à nouveau');
+      return;
+    }
+
     window.lastLiveRange = range.cloneRange();
-    // Compute the canonical anchor NOW, while the selection is guaranteed live.
-    // iOS/iPadOS drops the selection when a button is tapped and commonly ignores
-    // programmatic restore via addRange(), which left applyHighlight() writing a
-    // record with null offsets — saved but never rendered.
-    try {
-      // §8.2/§8.3 canonical parts, one per paragraph fragment the selection
-      // touches. Never derived from sel.toString(), which injects a newline at
-      // element boundaries and therefore cannot be matched against either
-      // fragment's canonical text.
-      const parts = window.LDCAnchor ? LDCAnchor.selectionParts(range) : [];
-      window.lastSelParts = parts;
-      if (parts.length) {
-        const first = parts[0];
-        selectionParaId = first.para_id;          // the fragment actually selected
-        const rec = LDCAnchor.recordFor(LDCAnchor.fragmentOf(range.startContainer));
-        const canonText = rec ? rec.text : '';
-        let pos = 0, occ = 0;
-        while (pos < first.start_char) {
-          const found = canonText.indexOf(first.text, pos);
-          if (found < 0 || found >= first.start_char) break;
-          occ++; pos = found + 1;
-        }
-        window.lastSelAnchor = {
-          paraId: first.para_id, text: first.text,
-          startChar: first.start_char, endChar: first.end_char,
-          occurrenceIndex: occ,
-          // fingerprint from CANONICAL text, not rendered text (§8.2)
-          paraFingerprint: canonText.slice(0, 32),
-          parts: parts
-        };
-        // the visible grouped quotation, rebuilt with the recorded joiner
-        selectionRange = { text: LDCAnchor.groupedQuote(parts, 'space'), parts: parts };
-      }
-    } catch (e) { window.lastSelAnchor = null; window.lastSelParts = []; }
+    window.lastSelParts = parts;
+    const first = parts[0];
+    selectionParaId = first.para_id;
+    const firstFrag = fragmentEl(first.para_id);
+    const rec = firstFrag && window.LDCAnchor ? LDCAnchor.recordFor(firstFrag) : null;
+    const canonText = rec ? rec.text : '';
+    let pos = 0, occ = 0;
+    while (canonText && pos < first.start_char) {
+      const found = canonText.indexOf(first.text, pos);
+      if (found < 0 || found >= first.start_char) break;
+      occ++; pos = found + 1;
+    }
+    window.lastSelAnchor = {
+      paraId:first.para_id, text:first.text, startChar:first.start_char, endChar:first.end_char,
+      occurrenceIndex:occ, paraFingerprint:canonText.slice(0,32), parts:parts
+    };
+    selectionRange = { text: grouped, parts: parts };
+    selectionCaptureAt = Date.now();
     showSelectionContext();
     hideHlPopup();
-  } catch(err) { /* selection may have changed */ }
+  } catch(err) {
+    console.warn('LDC: selection capture failed', err);
+  }
 }
 
 // Coarse pointer (phone/tablet) → the floating bar is suppressed entirely and the
@@ -3339,7 +3346,7 @@ function showContextPanel(target) {
   if (label) label.textContent = contextTarget.kind === 'selection' ? 'PASSAGE SÉLECTIONNÉ' : 'PARAGRAPHE';
   clearContextTargetVisual();
   const frag = fragmentEl(contextTarget.paraId);
-  if (frag) frag.classList.add('context-target');
+  if (frag && contextTarget.kind === 'paragraph') frag.classList.add('context-target');
   el.classList.add('show');
 }
 
@@ -3380,6 +3387,11 @@ function closeContextPanel(opts) {
   if (!opts.keepAnchor) {
     try { window.getSelection().removeAllRanges(); } catch (e) {}
     window.lastLiveRange = null;
+    window.lastSelParts = [];
+    window.lastSelAnchor = null;
+    selectionRange = null;
+    selectionParaId = null;
+    selectionCaptureAt = 0;
   }
   contextTarget = null;
   try { hideHlPopup(); } catch (e) {}
@@ -3490,6 +3502,18 @@ async function highlightGroupSiblings(hl) {
   return all.filter(h => h.highlight_group_id === hl.highlight_group_id);
 }
 
+function replaceHighlightColorClass(markEl, color) {
+  if (!markEl) return;
+  Array.from(markEl.classList).forEach(c => { if (c.startsWith('hl-') && c !== 'hl') markEl.classList.remove(c); });
+  markEl.classList.add('hl-' + color);
+}
+function unwrapHighlightMark(markEl) {
+  if (!markEl || !markEl.parentNode) return;
+  const parent = markEl.parentNode;
+  while (markEl.firstChild) parent.insertBefore(markEl.firstChild, markEl);
+  parent.removeChild(markEl);
+  if (parent.normalize) parent.normalize();
+}
 async function recolorHighlight(id, color) {
   const hl = await dbGet('highlights', id);
   if (!hl || !USER_DATA_HL_COLORS.includes(color)) return;
@@ -3497,9 +3521,8 @@ async function recolorHighlight(id, color) {
   parts.forEach(part => { part.color = color; part.ts = Date.now(); });
   try { await dbPutManyAtomic('highlights', parts); }
   catch(e){ console.warn('LDC: highlight recolour persistence failed',e); showToast('Couleur non modifiée — stockage local indisponible'); return; }
+  parts.forEach(part => document.querySelectorAll('mark.hl[data-hl-id="'+part.id+'"]').forEach(m => replaceHighlightColorClass(m,color)));
   hideHlPopup();
-  keepScrollTop = document.getElementById('reader-scroll').scrollTop;
-  await openEntry(currentVolume, currentEntry.id, readerBack, { preserveOrigin:true, originContext:readerOriginContext });
   showToast('Couleur modifiée');
 }
 
@@ -3509,9 +3532,8 @@ async function deleteHighlightFromReader(id) {
   const parts = await highlightGroupSiblings(hl);
   try { await dbDeleteManyAtomic('highlights', parts.map(p=>p.id)); }
   catch(e){ console.warn('LDC: highlight delete failed',e); showToast('Surlignage non supprimé — stockage local indisponible'); return; }
+  parts.forEach(part => document.querySelectorAll('mark.hl[data-hl-id="'+part.id+'"]').forEach(unwrapHighlightMark));
   hideHlPopup();
-  keepScrollTop = document.getElementById('reader-scroll').scrollTop;
-  await openEntry(currentVolume, currentEntry.id, readerBack, { preserveOrigin:true, originContext:readerOriginContext });
   showToast('Surlignage supprimé');
 }
 
@@ -3582,22 +3604,32 @@ function canonicalOffset(paraEl, targetNode, targetOffset) {
    The selection must be captured when "Surligner" is tapped: tapping a button can
    collapse the live selection, but selectionRange/selectionParaId (set by the
    selection handler) survive, so we snapshot them and restore before applying. */
-let cpSavedRange = null, cpSavedParaId = null;
+let cpSavedParts = null, cpSavedParaId = null, cpSavedScrollTop = null, cpSavedSemantic = null;
 
 function openHighlightPicker() {
-  const sel = window.getSelection();
-  const live = sel && !sel.isCollapsed && String(sel).trim().length > 0;
-  // Prefer the live selection; otherwise use the real Range captured when the
-  // selection was made (the app's own selectionRange is only {text}, not a Range).
-  cpSavedRange  = (live && sel.rangeCount) ? sel.getRangeAt(0).cloneRange()
-                : (window.lastLiveRange || null);
-  cpSavedParaId = selectionParaId || null;
-  const haveCanonicalParts = window.lastSelParts && window.lastSelParts.length > 0;
-  if ((!cpSavedRange && !haveCanonicalParts) || !cpSavedParaId) {
+  const parts = (contextTarget && contextTarget.parts && contextTarget.parts.length)
+    ? contextTarget.parts
+    : (window.lastSelParts && window.lastSelParts.length ? window.lastSelParts : []);
+  cpSavedParts = parts.length ? JSON.parse(JSON.stringify(parts)) : null;
+  cpSavedParaId = (contextTarget && contextTarget.paraId) || selectionParaId || (parts[0] && parts[0].para_id) || null;
+  if (!cpSavedParts || !cpSavedParts.length || !cpSavedParaId) {
     showToast('Sélectionnez d’abord un passage');
     return;
   }
+  const sc = document.getElementById('reader-scroll');
+  cpSavedScrollTop = sc ? sc.scrollTop : null;
+  try { cpSavedSemantic = captureSemanticReadingPosition(); } catch(e) { cpSavedSemantic = null; }
   try { hideHlPopup(); } catch (e) {}
+  // The canonical parts are already frozen. On iPhone/iPad, keeping/restoring a
+  // native Range while the colour sheet opens causes Safari selection rectangles
+  // and can scroll the reader. Collapse it now and never addRange() it back.
+  if (isCoarsePointer()) {
+    try { window.getSelection().removeAllRanges(); } catch (e) {}
+    window.lastLiveRange = null;
+  }
+  const panel = document.getElementById('seltext-panel');
+  if (panel) panel.classList.remove('show');
+  clearContextTargetVisual();
   const ov = document.getElementById('cp-overlay');
   if (ov) ov.classList.add('show');
 }
@@ -3605,63 +3637,55 @@ function openHighlightPicker() {
 function closeHighlightPicker() {
   const ov = document.getElementById('cp-overlay');
   if (ov) ov.classList.remove('show');
-  cpSavedRange = null; cpSavedParaId = null;
-}
-
-async function pickHighlight(color) {
-  // restore the snapshot so applyHighlight sees exactly the user's selection
-  if (cpSavedRange) {
-    selectionRange  = cpSavedRange;
-    selectionParaId = cpSavedParaId || selectionParaId;
-    try {
-      const sel = window.getSelection();
-      sel.removeAllRanges();
-      sel.addRange(cpSavedRange);
-    } catch (e) {}
-  }
-  const ov = document.getElementById('cp-overlay');
-  if (ov) ov.classList.remove('show');
-  await applyHighlight(color);
-  cpSavedRange = null; cpSavedParaId = null;
+  cpSavedParts = null; cpSavedParaId = null; cpSavedScrollTop = null; cpSavedSemantic = null;
+  // Cancelling the picker also ends the selection action; never leave a stale
+  // invisible context target armed for a later click.
   closeContextPanel();
 }
 
-async function applyHighlight(color) {
+async function pickHighlight(color) {
+  const parts = cpSavedParts ? JSON.parse(JSON.stringify(cpSavedParts)) : null;
+  const viewport = {scrollTop:cpSavedScrollTop, semantic:cpSavedSemantic};
+  const ov = document.getElementById('cp-overlay');
+  if (ov) ov.classList.remove('show');
+  await applyHighlight(color, parts, viewport);
+  cpSavedParts = null; cpSavedParaId = null; cpSavedScrollTop = null; cpSavedSemantic = null;
+  closeContextPanel();
+}
+
+async function applyHighlight(color, frozenParts, viewport) {
   if (!currentEntry) return;
   if (!HL_COLORS.includes(color)) { showToast('Couleur de surlignage indisponible'); return; }
   hideHlPopup();
 
-  // §8.3 — a visually continuous sentence may cross several canonical
-  // paragraphs. Never store the whole range against the leader paragraph:
-  // write one part record per fragment, sharing a highlight_group_id.
-  let parts = null;
-  try {
-    const sel = window.getSelection();
-    if (sel && sel.rangeCount > 0 && !sel.isCollapsed && window.LDCAnchor) {
-      parts = LDCAnchor.selectionParts(sel.getRangeAt(0));
-    }
-  } catch (err) { parts = null; }
-  // Touch fallback: iOS drops the live selection when a button is tapped, so
-  // fall back to the parts captured while the selection was still live.
-  if ((!parts || !parts.length) && window.lastSelParts && window.lastSelParts.length) {
-    parts = window.lastSelParts;
+  // Frozen canonical parts captured while the selection was live are authoritative.
+  // Live Selection is only a desktop fallback; iOS is deliberately never restored.
+  let parts = frozenParts && frozenParts.length ? frozenParts : null;
+  if (!parts) {
+    try {
+      const sel = window.getSelection();
+      if (sel && sel.rangeCount > 0 && !sel.isCollapsed && window.LDCAnchor) {
+        parts = LDCAnchor.selectionParts(sel.getRangeAt(0));
+      }
+    } catch (err) { parts = null; }
   }
-  if ((!parts || !parts.length) && window.lastLiveRange && window.LDCAnchor) {
-    try { parts = LDCAnchor.selectionParts(window.lastLiveRange); } catch (e) {}
-  }
+  if ((!parts || !parts.length) && window.lastSelParts && window.lastSelParts.length) parts = window.lastSelParts;
   if (!parts || !parts.length) { showToast('Sélection perdue — réessayez'); return; }
 
-  const groupId = 'hg_' + Date.now().toString(36) + '_' +
-                  Math.random().toString(36).slice(2, 8);
+  const groupId = 'hg_' + Date.now().toString(36) + '_' + Math.random().toString(36).slice(2, 8);
   const joiner = 'space';
   const ts = Date.now();
-
   const records = [];
   for (let k = 0; k < parts.length; k++) {
     const pt = parts[k];
     const frag = fragmentEl(pt.para_id);
     const rec  = frag && window.LDCAnchor ? LDCAnchor.recordFor(frag) : null;
     const canonText = rec ? rec.text : '';
+    if (!frag || !rec || pt.start_char < 0 || pt.end_char <= pt.start_char || pt.end_char > canonText.length || canonText.slice(pt.start_char,pt.end_char) !== pt.text) {
+      console.warn('LDC: highlight part rejected before persistence', pt);
+      showToast('Sélection instable — réessayez');
+      return;
+    }
     let pos = 0, occ = 0;
     while (pos < pt.start_char) {
       const found = canonText.indexOf(pt.text, pos);
@@ -3669,41 +3693,46 @@ async function applyHighlight(color) {
       occ++; pos = found + 1;
     }
     records.push({
-      entry_id:          currentEntry.id,
-      para_id:           pt.para_id,
-      stable_ref:        currentEntry.stable_ref,
-      volume:            currentVolume,
-      corpus_generation: CORPUS_GENERATION,
-      text:              pt.text,               // canonical slice, never sel.toString()
-      start_char:        pt.start_char,
-      end_char:          pt.end_char,
-      occurrence_index:  occ,
-      para_fingerprint:  canonText.slice(0, 32), // retained for legacy compatibility
-      para_fingerprint_v3: paragraphFingerprint(canonText),
-      stale_status:      'active',
-      highlight_group_id: groupId,
-      part_index:        k,
-      part_count:        parts.length,
-      group_joiner:      joiner,
-      anchor_schema:     2,
-      color,
-      ts: ts,
+      entry_id:currentEntry.id, para_id:pt.para_id, stable_ref:currentEntry.stable_ref,
+      volume:currentVolume, corpus_generation:CORPUS_GENERATION, text:pt.text,
+      start_char:pt.start_char, end_char:pt.end_char, occurrence_index:occ,
+      para_fingerprint:canonText.slice(0,32), para_fingerprint_v3:paragraphFingerprint(canonText),
+      stale_status:'active', highlight_group_id:groupId, part_index:k, part_count:parts.length,
+      group_joiner:joiner, anchor_schema:2, color, ts
     });
   }
 
-  try {
-    await dbPutManyAtomic('highlights', records);
-  } catch (err) {
+  let keys;
+  try { keys = await dbPutManyAtomic('highlights', records); }
+  catch (err) {
     console.warn('LDC: highlight persistence failed', err);
     showToast('Surlignage non enregistré — stockage local indisponible');
     return;
   }
+  records.forEach((r,i)=>{ r.id = keys[i]; });
 
-  // Re-render paragraphs — keep the reader exactly where it is (no scroll jump)
-  keepScrollTop = document.getElementById('reader-scroll').scrollTop;
-  await openEntry(currentVolume, currentEntry.id, readerBack, { preserveOrigin:true, originContext:readerOriginContext });
-  showToast(parts.length > 1 ? 'Surlignage enregistré (' + parts.length + ' fragments)'
-                             : 'Surlignage enregistré');
+  // Paint only the new records in-place. Never rebuild the entire entry just to
+  // display a highlight: that was the principal source of post-highlight jumps.
+  const byPara = new Map();
+  records.forEach(r=>{ if(!byPara.has(r.para_id)) byPara.set(r.para_id,[]); byPara.get(r.para_id).push(r); });
+  for (const [paraId, mine] of byPara.entries()) {
+    const frag = fragmentEl(paraId);
+    if (!frag || !window.LDCAnchor) continue;
+    const prior = LDCAnchor.recordFor(frag);
+    if (prior) LDCAnchor.indexFragment(frag, paraId, prior.text, prior.atoms);
+    const painted = LDCAnchor.paintParts(frag, mine);
+    if (painted.fallback && painted.fallback.length) paintHighlightsInPara(frag, painted.fallback);
+  }
+
+  // Marks have zero padding, so line metrics should not change. Still pin the
+  // exact pre-picker viewport twice to defeat Safari's delayed selection scroll.
+  const sc = document.getElementById('reader-scroll');
+  if (sc && viewport && Number.isFinite(viewport.scrollTop)) {
+    const top = viewport.scrollTop;
+    sc.scrollTop = top;
+    requestAnimationFrame(()=>{ sc.scrollTop = top; });
+  }
+  showToast(parts.length > 1 ? 'Surlignage enregistré (' + parts.length + ' fragments)' : 'Surlignage enregistré');
 }
 
 
@@ -5937,9 +5966,9 @@ function renderDnResultCard() {
    CacheStorage contains public app/corpus bytes only. IndexedDB settings holds
    the user-visible completion record; it is not itself the offline payload.
 ═══════════════════════════════════════════════════════ */
-const OFFLINE_CACHE_VERSION = 'ldc-le-livre-du-ciel-offline-v2.18.2-R1B';
+const OFFLINE_CACHE_VERSION = 'ldc-le-livre-du-ciel-offline-v2.18.3-R1B';
 const OFFLINE_MANIFEST_SCHEMA = 'ldc-offline-manifest-v2';
-const OFFLINE_CONTENT_BINDING = '170675fbe3e12d452c5cdb35d67567cc148bbe85a41c36566389b8b12a36cc33';
+const OFFLINE_CONTENT_BINDING = '232d87b0b21d1e6f6240f89e40de457cf002b91e6534a50c0f5f0fe5395b67f2';
 const OFFLINE_CORPUS_MANIFEST_SHA256 = '0701191761994c69a32eb4ca1b33312f2c5e043939a3a4d61b0f326739cb12c8';
 const OFFLINE_STATES = Object.freeze(['NOT_PREPARED','CHECKING','DOWNLOADING','READY','PARTIAL','ERROR','CANCELLED']);
 let offlineUiState = {state:'NOT_PREPARED',completed:0,total:0,failed:[],total_bytes:0,job_id:null,message:'',content_binding_sha256:OFFLINE_CONTENT_BINDING,corpus_manifest_sha256:OFFLINE_CORPUS_MANIFEST_SHA256};

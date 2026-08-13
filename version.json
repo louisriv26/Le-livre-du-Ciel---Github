@@ -1,15 +1,15 @@
 {
-  "app_version": "v2.18.2-R1B",
+  "app_version": "v2.18.3-R1B",
   "build_date": "2026-08-12",
   "corpus_version": "G036-AFLP-R1B-UWR2",
-  "stage": "LDC-GR2",
-  "candidate_status": "OWNER_ACCEPTANCE_UX_REPAIR_CANDIDATE_NOT_DEPLOYED__OWNER_RETEST_AND_DEVICE_PWA_GATES_PENDING",
+  "stage": "LDC-GR3",
+  "candidate_status": "HIGHLIGHT_STABILITY_REPAIR_CANDIDATE_NOT_DEPLOYED__OWNER_RETEST_AND_DEVICE_PWA_GATES_PENDING",
   "previous_live_version": "v2.11.0-R1B",
   "previous_live_commit": "6a05beb",
   "device_validation": "LDC_F_OWNER_ACCEPTANCE_PLUS_INHERITED_A_C_DEVICE_SMOKE_PLUS_LDC_G_PHYSICAL_IPHONE_IPAD_SAMSUNG_INSTALLED_PWA_LIVE_DEPLOY_PASS_REQUIRED__CURRENTLY_NOT_TESTED",
-  "baseline_candidate_version": "v2.18.1-R1B",
-  "baseline_candidate_sha256": "0a5c100012e4f3ba4592fc1b44ee2a7f4dfcfa6109561be928e5686b2d9ed3f3",
-  "owner_stage_start_authorisation": "Do it",
+  "baseline_candidate_version": "v2.18.2-R1B",
+  "baseline_candidate_sha256": "4b77602cc173d10861f0406bfb66da88d434417ff7c6e2cc0717f15e6999e277",
+  "owner_stage_start_authorisation": "review and recheck and correct highlighting functions",
   "owner_override_note": "Owner instruction “Do it” authorises the LDC-GR corrective repair only. It is not treated as evidence that the LDC-F owner/user acceptance scenarios or physical-device/PWA gates were executed.",
   "reader_contract": "ONE_CALM_READER_PLUS_OPTIONAL_REPERES",
   "context_action_contract": "SELECTION_OR_PARAGRAPH_SINGLE_CONTEXT_SURFACE",
@@ -30,13 +30,13 @@
     "Mon Espace"
   ],
   "collections_visibility": "VISIBLE_MON_ESPACE_WORKSPACE_AND_EXPLICIT_ENTRYPOINT",
-  "owner_user_acceptance": "PENDING_RETEST_AFTER_OWNER_FINDINGS_REPAIR",
+  "owner_user_acceptance": "PENDING_RETEST_AFTER_HIGHLIGHT_STABILITY_REPAIR",
   "offline_state_schema": "ldc-offline-state-v2",
   "offline_manifest_schema": "ldc-offline-manifest-v2",
-  "offline_cache_version": "ldc-le-livre-du-ciel-offline-v2.18.2-R1B",
+  "offline_cache_version": "ldc-le-livre-du-ciel-offline-v2.18.3-R1B",
   "offline_scope": "36_TOMES_PLUS_LEXICAL_METADATA_SPEAKER_SEARCH__VECTOR_SEMANTIC_EXCLUDED",
   "volume_lru_max": 4,
-  "offline_content_binding_sha256": "170675fbe3e12d452c5cdb35d67567cc148bbe85a41c36566389b8b12a36cc33",
+  "offline_content_binding_sha256": "232d87b0b21d1e6f6240f89e40de457cf002b91e6534a50c0f5f0fe5395b67f2",
   "offline_corpus_manifest_sha256": "0701191761994c69a32eb4ca1b33312f2c5e043939a3a4d61b0f326739cb12c8",
   "offline_integrity_contract": "EVERY_OFFLINE_ASSET_BYTE_LENGTH_AND_SHA256_VERIFIED_BEFORE_CACHE_ACCEPTANCE__READY_REQUIRES_VERIFIED_CACHE_MARKERS_AND_EXACT_CONTENT_BINDING",
   "owner_acceptance_findings_2026_08_12": [
@@ -49,5 +49,7 @@
   ],
   "reading_completion_contract": "EXPLICIT_USER_LU_ONLY__LEGACY_AUTO_OPEN_RECORDS_PRESERVED_BUT_NOT_COUNTED_AS_READ",
   "highlight_palette_contract": "ACTIVE_PALETTE_GOLD_YELLOW_BLUE_GREEN__LEGACY_PURPLE_PINK_RENDER_IMPORT_ONLY",
-  "favourite_contract": "ENTRY_LEVEL_STABLE_ID__VISIBLE_FILLED_HEART_WHEN_ACTIVE__MON_ESPACE_FAVORITES"
+  "favourite_contract": "ENTRY_LEVEL_STABLE_ID__VISIBLE_FILLED_HEART_WHEN_ACTIVE__MON_ESPACE_FAVORITES",
+  "highlight_stability_contract": "STRICT_READER_ENDPOINTS__SELECTION_NO_PARAGRAPH_OUTLINE__IOS_NO_RANGE_RESTORE__LOCAL_DOM_PAINT__ZERO_LAYOUT_PADDING__VIEWPORT_PIN",
+  "tome_status_dot": "REMOVED__LEGACY_VALIDATION_INDICATOR_REDUNDANT_FOR_36_VALIDATED_TOMES"
 }
