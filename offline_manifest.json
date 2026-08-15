@@ -1,13 +1,13 @@
 {
   "schema": "ldc-offline-manifest-v2",
-  "app_version": "v2.18.3-R1B",
-  "cache_version": "ldc-le-livre-du-ciel-offline-v2.18.3-R1B",
-  "corpus_generation": "G036-AFLP-R1B-UWR2",
-  "scope": "COMPLETE_36_TOME_READING_PLUS_LEXICAL_METADATA_SPEAKER_SEARCH",
+  "app_version": "v2.19.7-R1B",
+  "cache_version": "ldc-le-livre-du-ciel-offline-v2.19.7-R1B",
+  "corpus_generation": "G036-AFLP-R1B-SUP-T1",
+  "scope": "COMPLETE_36_TOME_READING_PLUS_LDC_AFLP_SUP_T1_PLUS_LEXICAL_METADATA_SPEAKER_SEARCH__VECTOR_SEMANTIC_DISABLED_STALE_FOR_COMPOSITE",
   "semantic_vector_search_included": false,
-  "semantic_vector_search_note": "Recherche « Par le sens » exclue : modèle externe et embeddings optionnels non inclus dans la préparation hors ligne.",
-  "asset_count": 220,
-  "total_bytes": 167366537,
+  "semantic_vector_search_note": "Recherche « Par le sens » désactivée pour la génération composite : les vecteurs R1B sont conservés comme artefact de la dorsale AFLP mais ne couvrent pas les ajouts LDC-AFLP-SUP-T1.",
+  "asset_count": 224,
+  "total_bytes": 167893131,
   "families": {
     "display": 36,
     "display_titles": 1,
@@ -18,7 +18,11 @@
     "search_metadata": 1,
     "semantic_index": 1,
     "speakers": 36,
-    "volume": 36
+    "volume": 36,
+    "supplements": 1,
+    "supplement_search": 1,
+    "supplement_speakers": 1,
+    "supplement_manifest": 1
   },
   "assets": [
     {
@@ -1556,9 +1560,33 @@
       "sha256": "b3e4028d8922a7520e4a9d7f5e7ef412b8066ef792ef4731cc7cf4caaaab9a02",
       "family": "volume",
       "volume": 36
+    },
+    {
+      "path": "corpus/supplements.json",
+      "bytes": 360978,
+      "sha256": "7ab5cad2f7a938423badb7589470630f638427da3b8876ac890a859bee6ed083",
+      "family": "supplements"
+    },
+    {
+      "path": "corpus/supplement_search.json",
+      "bytes": 123596,
+      "sha256": "e09c5930c4ba13ead9aa8d414ba3231dac0fca176ee878103892e83c971c9acf",
+      "family": "supplement_search"
+    },
+    {
+      "path": "corpus/supplement_speakers.json",
+      "bytes": 40765,
+      "sha256": "64d21d6628ad9da1fc83ad73848c97068a978ee913e4ad699207b816d6a4c885",
+      "family": "supplement_speakers"
+    },
+    {
+      "path": "corpus/supplement_manifest.json",
+      "bytes": 1255,
+      "sha256": "fe18ad9d3d7ed535735d242b09564c34fb5a8eb5feaa0aaed9e15ef14f2cc912",
+      "family": "supplement_manifest"
     }
   ],
   "content_binding_schema": "ldc-offline-content-binding-v1",
   "corpus_manifest_sha256": "0701191761994c69a32eb4ca1b33312f2c5e043939a3a4d61b0f326739cb12c8",
-  "content_binding_sha256": "232d87b0b21d1e6f6240f89e40de457cf002b91e6534a50c0f5f0fe5395b67f2"
+  "content_binding_sha256": "7a4bf41e73110cf6beefeababb883576e9267511a7f667677f9ab53f6a653e92"
 }

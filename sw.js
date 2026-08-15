@@ -1,11 +1,11 @@
-const VERSION = 'ldc-v2.18.3-R1B';
+const VERSION = 'ldc-v2.19.7-R1B';
 const CACHE_PREFIX = 'ldc-le-livre-du-ciel-';
-const SHELL_CACHE = `${CACHE_PREFIX}shell-v2.18.3-R1B`;
-const RUNTIME_CACHE = `${CACHE_PREFIX}runtime-v2.18.3-R1B`;
-const OFFLINE_CACHE = 'ldc-le-livre-du-ciel-offline-v2.18.3-R1B';
+const SHELL_CACHE = `${CACHE_PREFIX}shell-v2.19.7-R1B`;
+const RUNTIME_CACHE = `${CACHE_PREFIX}runtime-v2.19.7-R1B`;
+const OFFLINE_CACHE = 'ldc-le-livre-du-ciel-offline-v2.19.7-R1B';
 const OFFLINE_MANIFEST_URL = './offline_manifest.json';
 const OFFLINE_MANIFEST_SCHEMA = 'ldc-offline-manifest-v2';
-const OFFLINE_CONTENT_BINDING = '232d87b0b21d1e6f6240f89e40de457cf002b91e6534a50c0f5f0fe5395b67f2';
+const OFFLINE_CONTENT_BINDING = '7a4bf41e73110cf6beefeababb883576e9267511a7f667677f9ab53f6a653e92';
 const OFFLINE_CORPUS_MANIFEST_SHA256 = '0701191761994c69a32eb4ca1b33312f2c5e043939a3a4d61b0f326739cb12c8';
 const OFFLINE_META_PATH = '__ldc_offline_meta__.json';
 
@@ -19,7 +19,8 @@ const SHELL = [
   './assets/fonts/im-fell-english-latin-400-normal.woff2', './assets/fonts/im-fell-english-latin-400-italic.woff2',
   './assets/fonts/crimson-text-latin-400-normal.woff2', './assets/fonts/crimson-text-latin-400-italic.woff2', './assets/fonts/crimson-text-latin-600-normal.woff2',
   './assets/icons/tabler-icons.min.css', './assets/icons/tabler-icons.woff2', './assets/js/sortable.min.js',
-  './corpus/manifest.json', './corpus/search_metadata_index.json', './corpus/display_titles.json'
+  './corpus/manifest.json', './corpus/search_metadata_index.json', './corpus/display_titles.json',
+  './corpus/supplements.json', './corpus/supplement_search.json', './corpus/supplement_speakers.json', './corpus/supplement_manifest.json'
 ];
 
 let offlineJob = null;
@@ -61,7 +62,7 @@ async function loadOfflineManifest() {
   if(!r){r=await fetch(OFFLINE_MANIFEST_URL,{cache:'reload'});if(r&&r.ok)await shell.put(OFFLINE_MANIFEST_URL,r.clone());}
   if(!r||!r.ok)throw new Error('offline manifest indisponible');
   const m=await r.json();
-  if(m.schema!==OFFLINE_MANIFEST_SCHEMA||m.app_version!=='v2.18.3-R1B'||m.cache_version!==OFFLINE_CACHE)throw new Error('offline manifest incompatible');
+  if(m.schema!==OFFLINE_MANIFEST_SCHEMA||m.app_version!=='v2.19.7-R1B'||m.cache_version!==OFFLINE_CACHE)throw new Error('offline manifest incompatible');
   if(m.content_binding_schema!=='ldc-offline-content-binding-v1'||m.content_binding_sha256!==OFFLINE_CONTENT_BINDING)throw new Error('offline manifest binding incompatible');
   if(m.corpus_manifest_sha256!==OFFLINE_CORPUS_MANIFEST_SHA256)throw new Error('offline corpus manifest binding incompatible');
   const unique=[...new Set((m.assets||[]).map(a=>a.path))];

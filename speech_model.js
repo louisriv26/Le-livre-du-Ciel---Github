@@ -72,11 +72,14 @@
                          role: 'NARRATIVE', speaker: null, styled: false,
                          confidence: null, segment_ids: [] });
       }
+      var displaySpeaker = s.display_speaker || s.speaker;
       intervals.push({ start: s.start_char, end: s.end_char,
                        text: text.slice(s.start_char, s.end_char),
-                       role: s.speaker, speaker: s.speaker,
-                       styled: isStyled(s.speaker),
+                       role: s.speaker, semantic_speaker: s.speaker,
+                       speaker: displaySpeaker,
+                       styled: isStyled(displaySpeaker),
                        confidence: s.confidence || null,
+                       quotation_depth: s.quotation_depth == null ? null : s.quotation_depth,
                        segment_ids: [s.segment_id] });
       cur = s.end_char;
     }
@@ -205,13 +208,118 @@
     return links;
   }
 
+  /* -- GR8: presentation speaker for nested quotations ----------------------
+     Semantic attribution and presentation attribution are deliberately separate.
+     A depth-2 quotation is a quotation made INSIDE an already active depth-1
+     speaking turn. The quoted person's identity remains in `speaker`, but the
+     visible font/colour must remain that of the outer speaker. This prevents:
+       - Luisa quoting remembered words of Jesus from turning gold mid-sentence;
+       - Jesus quoting a human/personified voice from turning back to narrative.
+
+     The source speaker JSON is immutable. This function clones records and adds
+     `display_speaker`; search/audit continue to use the original `speaker`.
+     Parent resolution is structural: nearest preceding depth-1 segment before a
+     depth-0 boundary governs. If no preceding depth-1 speaker exists, the nested
+     quotation belongs to Luisa's narrative presentation (normal prose); it must
+     never borrow a speaker turn that starts later. When a following depth-1
+     candidate differs from the preceding one, the preceding speaker still governs
+     because the nested quotation has already been introduced inside that turn.
+  -------------------------------------------------------------------------- */
+  function resolveNestedQuotationPresentation(segments, paragraphOrder) {
+    paragraphOrder = paragraphOrder || {};
+    var arr = (segments || []).map(function (s, ix) {
+      var c = {};
+      for (var k in s) if (Object.prototype.hasOwnProperty.call(s, k)) c[k] = s[k];
+      c.__ix = ix;
+      c.display_speaker = s.speaker;
+      c.display_resolution = 'semantic_speaker';
+      return c;
+    });
+    arr.sort(function (a, b) {
+      var ao = paragraphOrder[a.paragraph_id];
+      var bo = paragraphOrder[b.paragraph_id];
+      if (ao == null) ao = 0;
+      if (bo == null) bo = 0;
+      return ao - bo || a.start_char - b.start_char || a.end_char - b.end_char || a.__ix - b.__ix;
+    });
+
+    var prevParent = new Array(arr.length), nextParent = new Array(arr.length);
+    var active = null;
+    for (var i = 0; i < arr.length; i++) {
+      var q = Number(arr[i].quotation_depth || 0);
+      if (q === 0) active = null;
+      else if (q === 1) active = arr[i].speaker;
+      prevParent[i] = active;
+    }
+    active = null;
+    for (var j = arr.length - 1; j >= 0; j--) {
+      var q2 = Number(arr[j].quotation_depth || 0);
+      if (q2 === 0) active = null;
+      else if (q2 === 1) active = arr[j].speaker;
+      nextParent[j] = active;
+    }
+
+    var ledger = [], errors = [];
+    for (var n = 0; n < arr.length; n++) {
+      var s = arr[n];
+      if (Number(s.quotation_depth || 0) !== 2) continue;
+      var prev = prevParent[n], next = nextParent[n];
+      // No preceding depth-1 turn means the nested quotation is embedded in
+      // Luisa's narrative presentation. Do NOT borrow a later Jesus/Mary turn.
+      var parent = prev || 'LUISA';
+      s.display_speaker = parent;
+      s.display_resolution = prev
+        ? (next && next !== prev ? 'outer_prev_conflict_resolved' : 'outer_prev')
+        : 'narrative_luisa_default';
+      ledger.push({ scheme: 'quotation_depth', segment_id: s.segment_id, paragraph_id: s.paragraph_id,
+                    semantic_speaker: s.speaker, display_speaker: parent,
+                    previous_depth1: prev, next_depth1: next,
+                    resolution: s.display_resolution });
+    }
+
+    /* GR8 — legacy nested-quotation compatibility.
+       Fourteen inherited Tome 4 records use the older `quote_depth` field while
+       `quotation_depth` is zero. They are semantically valid nested quotations,
+       but GR5's presentation projection did not see them. Resolve them from the
+       nearest PRECEDING legacy depth-1 speaking turn, across paragraph boundaries
+       within the same entry. Never borrow a later turn. The semantic `speaker`
+       remains immutable; only display_speaker changes. */
+    var legacyParent = null;
+    for (var q = 0; q < arr.length; q++) {
+      var ls = arr[q];
+      var ld = Number(ls.quote_depth || 0);
+      if (ld === 1) {
+        legacyParent = ls.speaker;
+        continue;
+      }
+      if (ld !== 2 || Number(ls.quotation_depth || 0) === 2) continue;
+      var legacyDisplay = legacyParent || 'LUISA';
+      ls.display_speaker = legacyDisplay;
+      ls.display_resolution = legacyParent ? 'legacy_outer_prev' : 'legacy_narrative_luisa_default';
+      if (!legacyParent) {
+        errors.push({ code: 'LEGACY_NESTED_WITHOUT_PRECEDING_DEPTH1',
+                      segment_id: ls.segment_id, paragraph_id: ls.paragraph_id });
+      }
+      ledger.push({ scheme: 'legacy_quote_depth', segment_id: ls.segment_id,
+                    paragraph_id: ls.paragraph_id, semantic_speaker: ls.speaker,
+                    display_speaker: legacyDisplay, previous_depth1: legacyParent,
+                    next_depth1: null, resolution: ls.display_resolution });
+    }
+
+    // Restore original source order for paragraph indexing. Remove private sort key.
+    arr.sort(function (a, b) { return a.__ix - b.__ix; });
+    for (var z = 0; z < arr.length; z++) delete arr[z].__ix;
+    return { ok: errors.length === 0, segments: arr, ledger: ledger, errors: errors };
+  }
+
   root.LDCSpeechModel = {
     buildParagraphSpeechModel: buildParagraphSpeechModel,
     reconstruct: reconstruct,
     validateSegments: validateSegments,
     normSpeaker: normSpeaker,
     isStyled: isStyled,
-    linkFlowRuns: linkFlowRuns
+    linkFlowRuns: linkFlowRuns,
+    resolveNestedQuotationPresentation: resolveNestedQuotationPresentation
   };
 })(typeof window !== 'undefined' ? window : globalThis);
 
@@ -234,6 +342,43 @@
   }
   var OPEN = '«“„"';
   var CLOSE = '»”"';
+  // LDC-GR4 — display-only handling for direct-speech guillemets that sit
+  // immediately OUTSIDE the validated speaker span. Canonical text is never changed.
+  // Inline/embedded quotations keep their punctuation; only block/continued speech
+  // receives outer-delimiter suppression.
+  function splitNarrativeBoundaryDelimiters(t, prevRun, nextRun, hideOuter) {
+    if (!hideOuter) return { lead: '', core: t, trail: '' };
+    var lead = '', trail = '', core = t;
+
+    // Closing delimiter immediately after a block/continued styled run.
+    if (prevRun && prevRun.styled &&
+        (prevRun.presentation === 'block' || prevRun.isContinuation)) {
+      var cm = core.match(/^(\s*[»”"])/);
+      if (cm) {
+        lead = cm[1];
+        core = core.slice(lead.length);
+        // Quote-only suffix: hide residual whitespace too, so no empty visual line remains.
+        if (/^\s*$/.test(core)) { lead += core; core = ''; }
+      }
+    }
+
+    // Opening delimiter immediately before block speech. Suppress only after an
+    // explicit attribution colon, or when the prefix is delimiter/whitespace only.
+    if (nextRun && nextRun.styled && nextRun.presentation === 'block') {
+      var om = core.match(/([«“„"]\s*)$/);
+      if (om) {
+        var before = core.slice(0, core.length - om[1].length);
+        if (/^\s*$/.test(before)) {
+          trail = before + om[1];
+          core = '';
+        } else if (/[:：]\s*$/.test(before)) {
+          trail = om[1];
+          core = before;
+        }
+      }
+    }
+    return { lead: lead, core: core, trail: trail };
+  }
 
   // Split a run into [openDelim, core, closeDelim] without dropping anything.
   function splitOuterDelimiters(t) {
@@ -304,8 +449,23 @@
     for (var i = 0; i < model.runs.length; i++) {
       var r = model.runs[i];
       if (!r.styled) {
-        var nar = atoms ? emitRange(atoms, r.start, r.end, 0, 0) : null;
-        html += (nar === null ? esc(r.text) : nar);
+        var prevRun = i > 0 ? model.runs[i - 1] : null;
+        var nextRun = i + 1 < model.runs.length ? model.runs[i + 1] : null;
+        var narDisplay = r.text;
+        if (atoms && DM) {
+          var nra = DM.atomsForRange(atoms, r.start, r.end);
+          narDisplay = '';
+          for (var nq = 0; nq < nra.length; nq++) narDisplay += nra[nq].text;
+        }
+        var np = splitNarrativeBoundaryDelimiters(narDisplay, prevRun, nextRun, hideOuter);
+        var nar = atoms ? emitRange(atoms, r.start, r.end, np.lead.length, np.trail.length) : null;
+        if (nar === null) {
+          nar = '';
+          if (np.lead) nar += '<span class="speech-outer-delimiter" aria-hidden="true">' + esc(np.lead) + '</span>';
+          nar += esc(np.core);
+          if (np.trail) nar += '<span class="speech-outer-delimiter" aria-hidden="true">' + esc(np.trail) + '</span>';
+        }
+        html += nar;
         continue;
       }
       var cls = M.normSpeaker(r.speaker) === 'marie' ? 'speech-marie' : 'speech-jesus';
@@ -322,20 +482,26 @@
         runDisplay = '';
         for (var q = 0; q < ra.length; q++) runDisplay += ra[q].text;
       }
-      var parts = splitOuterDelimiters(runDisplay);
+      // LDC-GR4: inline/embedded quotations keep visible punctuation.
+      // Only block speech or an approved cross-fragment continuation suppresses
+      // its outer direct-speech delimiters.
+      var suppressRunDelims = hideOuter && (r.presentation === 'block' || isCont);
+      var parts = suppressRunDelims
+        ? splitOuterDelimiters(runDisplay)
+        : { lead: '', core: runDisplay, trail: '' };
       var inner = null;
       if (atoms) {
         inner = emitRange(atoms, r.start, r.end,
-                          hideOuter ? parts.lead.length : 0,
-                          hideOuter ? parts.trail.length : 0);
+                          suppressRunDelims ? parts.lead.length : 0,
+                          suppressRunDelims ? parts.trail.length : 0);
       }
       if (inner === null) {
         inner = '';
         if (parts.lead)  inner += '<span class="speech-outer-delimiter"' +
-                                  (hideOuter ? ' aria-hidden="true"' : '') + '>' + esc(parts.lead) + '</span>';
+                                  (suppressRunDelims ? ' aria-hidden="true"' : '') + '>' + esc(parts.lead) + '</span>';
         inner += esc(parts.core);
         if (parts.trail) inner += '<span class="speech-outer-delimiter"' +
-                                  (hideOuter ? ' aria-hidden="true"' : '') + '>' + esc(parts.trail) + '</span>';
+                                  (suppressRunDelims ? ' aria-hidden="true"' : '') + '>' + esc(parts.trail) + '</span>';
       }
       html += '<span class="' + cls + ' speech-run speech-' +
               (isCont ? 'inline speech-run-continuation' : r.presentation) + '"' +
@@ -354,5 +520,6 @@
 
   M.renderSpeechModel = renderSpeechModel;
   M.splitOuterDelimiters = splitOuterDelimiters;
+  M.splitNarrativeBoundaryDelimiters = splitNarrativeBoundaryDelimiters;
   M.escapeForRender = esc;
 })(typeof window !== 'undefined' ? window : globalThis);

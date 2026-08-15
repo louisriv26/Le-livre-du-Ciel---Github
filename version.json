@@ -1,19 +1,19 @@
 {
-  "app_version": "v2.18.3-R1B",
-  "build_date": "2026-08-12",
-  "corpus_version": "G036-AFLP-R1B-UWR2",
-  "stage": "LDC-GR3",
-  "candidate_status": "HIGHLIGHT_STABILITY_REPAIR_CANDIDATE_NOT_DEPLOYED__OWNER_RETEST_AND_DEVICE_PWA_GATES_PENDING",
+  "app_version": "v2.19.7-R1B",
+  "build_date": "2026-08-15",
+  "corpus_version": "G036-AFLP-R1B-SUP-T1",
+  "stage": "LDC-AFLP-SUP-T1-RA2C-INTERACTION-HARMONISATION",
+  "candidate_status": "CANDIDATE__FINAL_REOPEN_EXTERNAL_AUDIT_REQUIRED__NOT_DEPLOYED__RA2C_INTERACTION_HARMONISATION",
   "previous_live_version": "v2.11.0-R1B",
   "previous_live_commit": "6a05beb",
-  "device_validation": "LDC_F_OWNER_ACCEPTANCE_PLUS_INHERITED_A_C_DEVICE_SMOKE_PLUS_LDC_G_PHYSICAL_IPHONE_IPAD_SAMSUNG_INSTALLED_PWA_LIVE_DEPLOY_PASS_REQUIRED__CURRENTLY_NOT_TESTED",
-  "baseline_candidate_version": "v2.18.2-R1B",
-  "baseline_candidate_sha256": "4b77602cc173d10861f0406bfb66da88d434417ff7c6e2cc0717f15e6999e277",
-  "owner_stage_start_authorisation": "review and recheck and correct highlighting functions",
-  "owner_override_note": "Owner instruction “Do it” authorises the LDC-GR corrective repair only. It is not treated as evidence that the LDC-F owner/user acceptance scenarios or physical-device/PWA gates were executed.",
+  "device_validation": "PHYSICAL_IPHONE_IPAD_SAMSUNG_INSTALLED_PWA_LIVE_ORIGIN_NOT_TESTED_ON_V2_19_7_R1B",
+  "baseline_candidate_version": "v2.19.1-R1B",
+  "baseline_candidate_sha256": "0ac408f41dff90d350ed3fcc29c6e1a79517c6665bc61fb960e8876d0a2eb7c3",
+  "owner_stage_start_authorisation": "Execute LDC-AFLP-SUP-T1 strict script: translate and visibly integrate the authorised 2 internal supplements + 12 complete external-only entries while preserving R1B as the immutable AFLP backbone.",
+  "owner_override_note": "Owner explicitly authorised a separately provenance-labelled French supplement layer translated directly from IT-PM and reversible to AFLP-only reading.",
   "reader_contract": "ONE_CALM_READER_PLUS_OPTIONAL_REPERES",
   "context_action_contract": "SELECTION_OR_PARAGRAPH_SINGLE_CONTEXT_SURFACE",
-  "vector_binding": "VECTOR_ROW_ORDER_PLUS_EXACT_CORPUS_ID_SET_AND_TEXT_BINDING_V2",
+  "vector_binding": "STALE_FOR_COMPOSITE_GENERATION__R1B_VECTORS_PRESERVED_AS_BACKBONE_ARTIFACT_BUT_RUNTIME_DISABLED",
   "vector_order_clarification": "IDs file row order differs from physical paragraph-shard order; exact ID-set parity is the invariant.",
   "user_data_schema_version": 3,
   "user_data_envelope": "ldc-user-data-envelope-v3",
@@ -30,13 +30,13 @@
     "Mon Espace"
   ],
   "collections_visibility": "VISIBLE_MON_ESPACE_WORKSPACE_AND_EXPLICIT_ENTRYPOINT",
-  "owner_user_acceptance": "PENDING_RETEST_AFTER_HIGHLIGHT_STABILITY_REPAIR",
+  "owner_user_acceptance": "PENDING_RETEST_ON_V2_19_7_R1B_AFTER_INTERACTION_HARMONISATION",
   "offline_state_schema": "ldc-offline-state-v2",
   "offline_manifest_schema": "ldc-offline-manifest-v2",
-  "offline_cache_version": "ldc-le-livre-du-ciel-offline-v2.18.3-R1B",
-  "offline_scope": "36_TOMES_PLUS_LEXICAL_METADATA_SPEAKER_SEARCH__VECTOR_SEMANTIC_EXCLUDED",
+  "offline_cache_version": "ldc-le-livre-du-ciel-offline-v2.19.7-R1B",
+  "offline_scope": "COMPLETE_36_TOME_READING_PLUS_LDC_AFLP_SUP_T1_PLUS_LEXICAL_METADATA_SPEAKER_SEARCH__VECTOR_SEMANTIC_DISABLED_STALE_FOR_COMPOSITE",
   "volume_lru_max": 4,
-  "offline_content_binding_sha256": "232d87b0b21d1e6f6240f89e40de457cf002b91e6534a50c0f5f0fe5395b67f2",
+  "offline_content_binding_sha256": "7a4bf41e73110cf6beefeababb883576e9267511a7f667677f9ab53f6a653e92",
   "offline_corpus_manifest_sha256": "0701191761994c69a32eb4ca1b33312f2c5e043939a3a4d61b0f326739cb12c8",
   "offline_integrity_contract": "EVERY_OFFLINE_ASSET_BYTE_LENGTH_AND_SHA256_VERIFIED_BEFORE_CACHE_ACCEPTANCE__READY_REQUIRES_VERIFIED_CACHE_MARKERS_AND_EXACT_CONTENT_BINDING",
   "owner_acceptance_findings_2026_08_12": [
@@ -48,8 +48,147 @@
     "Tome cards must show entry count only, not paragraph count"
   ],
   "reading_completion_contract": "EXPLICIT_USER_LU_ONLY__LEGACY_AUTO_OPEN_RECORDS_PRESERVED_BUT_NOT_COUNTED_AS_READ",
-  "highlight_palette_contract": "ACTIVE_PALETTE_GOLD_YELLOW_BLUE_GREEN__LEGACY_PURPLE_PINK_RENDER_IMPORT_ONLY",
-  "favourite_contract": "ENTRY_LEVEL_STABLE_ID__VISIBLE_FILLED_HEART_WHEN_ACTIVE__MON_ESPACE_FAVORITES",
-  "highlight_stability_contract": "STRICT_READER_ENDPOINTS__SELECTION_NO_PARAGRAPH_OUTLINE__IOS_NO_RANGE_RESTORE__LOCAL_DOM_PAINT__ZERO_LAYOUT_PADDING__VIEWPORT_PIN",
-  "tome_status_dot": "REMOVED__LEGACY_VALIDATION_INDICATOR_REDUNDANT_FOR_36_VALIDATED_TOMES"
+  "highlight_palette_contract": "ACTIVE_PALETTE_YELLOW_BLUE_GREEN_PURPLE_PINK_MATCHES_24H__LEGACY_GOLD_RENDER_IMPORT_RECOLOUR_ONLY",
+  "favourite_contract": "ENTRY_LEVEL_STABLE_ID__VISIBLE_FILLED_HEART_WHEN_ACTIVE__MON_ESPACE_FAVORITES__TOME_DIRECTORY_SMALL_FILLED_HEART_INDICATOR__LIVE_SYNC_ON_ADD_REMOVE",
+  "highlight_stability_contract": "GR3_STRICT_READER_ENDPOINTS__IOS_NO_RANGE_RESTORE__LOCAL_DOM_PAINT__VIEWPORT_PIN_PRESERVED__GR6_PLATFORM_UI_ADDED",
+  "tome_status_dot": "REMOVED__LEGACY_VALIDATION_INDICATOR_REDUNDANT_FOR_36_VALIDATED_TOMES",
+  "baseline_deploy_sha256": "cc0759f1c635b0b2be8d58bd2c97305b11168e5b3ab90d194f757340f14c5f90",
+  "quote_display_contract": "CANONICAL_GUILLEMETS_PRESERVED__REDUNDANT_OUTER_BLOCK_SPEECH_DELIMITERS_HIDDEN_IN_NORMAL_READER__INLINE_QUOTES_PRESERVED",
+  "favourite_icon_contract": "ENTRY_HEART_ALWAYS_VISIBLE__OUTLINE_WHEN_INACTIVE__FILLED_HEART_WHEN_ACTIVE__MON_ESPACE_FAVORITES",
+  "speaker_presentation_contract": "SEMANTIC_SPEAKER_IMMUTABLE__DISPLAY_STYLE_FOLLOWS_ACTIVE_OUTER_SPEAKING_TURN__CURRENT_QUOTATION_DEPTH_AND_LEGACY_QUOTE_DEPTH_NESTED_QUOTES_INHERIT_PRECEDING_OUTER_SPEAKER__NO_LATER_TURN_BORROWING",
+  "nested_quote_audit_counts": {
+    "quotation_depth_2_segments": 749,
+    "legacy_quote_depth_2_segments": 14,
+    "total_nested_segments": 763,
+    "display_speaker_changed": 587,
+    "nested_jesus_restyled_to_outer_non_jesus": 11,
+    "nested_non_jesus_restyled_to_jesus": 524,
+    "current_scheme_conflicting_next_turn_cases_resolved_by_preceding_turn": 38,
+    "current_scheme_no_preceding_turn_cases_kept_as_luisa_narrative": 22,
+    "legacy_nested_without_preceding_depth1": 0
+  },
+  "highlight_platform_contract": "IPHONE_IPAD_DESKTOP_EXACT_SELECTED_TEXT__ANDROID_SAMSUNG_EXPLICIT_PARAGRAPHE_WHOLE_PARAGRAPH_MODE",
+  "highlight_context_action_contract": "PRIMARY_SURLIGNER_NOTE_COPIER_FERMER__READER_LEVEL_LIEN_PARTAGER__LDC_COLLECTION_SECONDARY_SEPARATE_ACTION",
+  "highlight_existing_edit_contract": "ALL_PLATFORMS_USE_VIEWPORT_CLAMPED_FLOATING_5_COLOUR_PICKER_PLUS_DELETE__ACTUAL_OFFSET_DIMENSIONS__VISUALVIEWPORT__8PX_MARGIN__ABOVE_BELOW_PLACEMENT__FRENCH_LABELS__ESCAPE_CLOSES_ONLY_PICKER__HIGHLIGHT_MARKS_KEYBOARD_FOCUSABLE",
+  "gr7_baseline_deploy_sha256": "464a08619b003f2e12d6ecac3e77da464c104d0d7dfb4af96d8d09ee047ca281",
+  "gr8_baseline_deploy_sha256": "908a2c45ba8c8a43fc20124c484eb73cb76c94e876846d16b5469dadebacbacb",
+  "gr8_reaudit_repairs": [
+    "offline content-binding regenerated and verified against service-worker canonical algorithm",
+    "legacy quote_depth=2 nested quotations added to outer-speaker presentation projection",
+    "nested quotation audit counts corrected from source evidence",
+    "existing highlight marks made keyboard-focusable with button semantics",
+    "unused duplicate assets/assets subtree removed from deploy package"
+  ],
+  "gr9_favorite_directory_indicator": {
+    "scope": "BIBLIOTHEQUE_TOME_ENTRY_LIST_ONLY_PLUS_LIVE_STATUS_SYNC_AND_HELP",
+    "storage_authority": "EXISTING_INDEXEDDB_FAVORITES_STORE_UNCHANGED",
+    "rendering": "ONE_DBGETALL_PER_TOME_RENDER__SET_LOOKUP_PER_ENTRY",
+    "indicator": "SMALL_FILLED_HEART_NON_INTERACTIVE_STATUS_MARKER__ROW_REMAINS_SINGLE_TAP_TARGET",
+    "live_sync": [
+      "toggleFav add",
+      "toggleFav remove",
+      "Mon Espace deleteFav"
+    ],
+    "protected": [
+      "220 corpus files",
+      "paragraph IDs",
+      "search records",
+      "speech metadata",
+      "highlight anchoring",
+      "speaker projection"
+    ]
+  },
+  "backbone_corpus_version": "G036-AFLP-R1B-UWR2",
+  "supplement_programme": "LDC-AFLP-SUP-T1",
+  "supplement_counts": {
+    "items": 14,
+    "inline_supplements": 2,
+    "complete_entries": 12,
+    "paragraphs": 79,
+    "search_records": 79,
+    "speaker_segments": 52
+  },
+  "supplement_provenance_contract": "AFLP_ALIGNED_BACKBONE_IMMUTABLE__NON_AFLP_TRANSLATIONS_SEPARATE_LDCSUP_NAMESPACE__VISIBLE_COMPLEMENT_ITPM_BADGE__SPEAKER_STYLE_ORTHOGONAL_TO_PROVENANCE",
+  "reading_source_mode_contract": "THREE_STATE_PERSISTED__ALIGNE_AFLP_SCOPE__COMPLEMENT_14_ITEM_SUPPLEMENT_REGISTRY_AND_SUPPLEMENT_ONLY_READER__ENRICHI_ALIGNE_PLUS_SUPPLEMENTS__DEFAULT_ENRICHI",
+  "vector_search_authorised": false,
+  "offline_asset_count": 224,
+  "offline_total_bytes": 167893131,
+  "supplement_provenance_fields_embedded": true,
+  "supplement_runtime_schema": "ldc-supplement-registry-v1",
+  "static_audit_scope": "CODE_DATA_PACKAGE_REOPENED_ZIP__NO_PHYSICAL_DEVICE_OR_LIVE_ORIGIN_CLAIM",
+  "final_static_decision": "EXTERNAL_FINAL_PACKAGE_AUDIT_REQUIRED",
+  "final_reopen_gate": "EXTERNAL_FINAL_PACKAGE_AUDIT_REQUIRED",
+  "independent_reopen_gate": "EXTERNAL_INDEPENDENT_REOPEN_AUDIT_REQUIRED",
+  "supplement_stage_original_gr9_baseline_version": "v2.18.9-R1B",
+  "supplement_stage_original_gr9_baseline_sha256": "cc0759f1c635b0b2be8d58bd2c97305b11168e5b3ab90d194f757340f14c5f90",
+  "reaudit_repairs": [
+    "restored six GR9 lexical/BM25/semantic helper functions accidentally deleted during v2.19.0 Stage B vector-disable patch",
+    "fixed composite search metadata paragraph_count and per-volume object-shaped entry/paragraph counts",
+    "fixed public diagnostics ReferenceError metadataSearchIndex -> searchMetadataIndex",
+    "clarified public diagnostics corpus manifest as immutable backbone manifest",
+    "superseded v2.19.0 key-claim-only report audit with exhaustive active-report line/row audit and exact shipped-function tests"
+  ],
+  "report_integrity_gate": "EXTERNAL_REPORT_INTEGRITY_AUDIT_REQUIRED",
+  "reaudit_static_validator": "PRE_FINAL_TARGETED_TESTS_PASS__FINAL_REOPEN_EVIDENCE_EXTERNAL",
+  "reaudit_exact_shipped_function_suite": "PRE_FINAL_EXACT_FUNCTION_TESTS_PASS__FINAL_REOPEN_EVIDENCE_EXTERNAL",
+  "reaudit_runtime_browser": "NOT_TESTED_ADMIN_POLICY",
+  "reaudit_redo_events": [
+    "RA1 validator/recheck caught app-side OFFLINE_CONTENT_BINDING not synchronized after manifest rebuild; corrected and rerun",
+    "Pass 4 stale scan then caught app-side OFFLINE_CACHE_VERSION still v2.19.0-R1B; corrected to v2.19.1-R1B and all affected gates rerun"
+  ],
+  "v2_19_0_superseded_reason": "Deep four-pass audit found six deleted lexical/BM25 helper functions, composite metadata contract drift, diagnostics ReferenceError, incomplete report-evidence scope, and stale version evidence. v2.19.0 must not be deployed.",
+  "translation_set_revision": "RA2__2_SOURCE_CONTROLLED_AMENDMENTS",
+  "translation_freeze_amendment_sha256": "1f726a4e9a246aaa1aa5424cda244064211b836227acd2124deff92ad940acc1",
+  "ra2_repairs": [
+    "supplement deep-link / Mon Espace inline-target opening now automatically enables enriched mode before target validation/render",
+    "T06 1905-05-05 IT-PM heading corrected from fille/enfant to fils/fils under an explicit Translation Set amendment",
+    "T14 1922-09-09 P003 grammatical agent corrected to the human will, corroborated by Queen and Hugh Owen",
+    "four core supplement JSON bootstrap files added to service-worker shell cache"
+  ],
+  "ra2_recheck_scope": "ALL_14_TRANSLATIONS_REOPENED__2_SOURCE_CONTROLLED_AMENDMENTS__THREE_SOURCE_MODE_UI__ALL_14_SUPPLEMENT_DISCOVERABILITY__MODE_FILTERING__SEARCH__NAVIGATION__CORPUS_BYTE_PARITY__PACKAGE_REOPEN",
+  "ra2_pre_freeze_redo_events": [
+    "RA2 validator initially treated a legitimate supplement-to-supplement chronological anchor as unresolved; validator corrected to simulate shipped merge order and rerun 86/86 PASS",
+    "An earlier pre-freeze v2.19.2 ZIP was found stale against the current candidate in 9 files after the editorial/runtime patch; it was discarded and rebuilt deterministically before final reopen",
+    "Pass 4 found inherited RA1 validator/report-integrity numbers still presented as current in version.json; metadata refreshed before final freeze and all final-package gates rerun"
+  ],
+  "source_mode_values": [
+    "aflp",
+    "additions",
+    "enriched"
+  ],
+  "source_mode_user_labels": {
+    "aflp": "ALIGNÉ",
+    "additions": "COMPLÉMENT",
+    "enriched": "ENRICHI"
+  },
+  "ra3_repairs": [
+    "historical RA3 introduced the persisted three-state selector; current user labels are ALIGNÉ / COMPLÉMENT / ENRICHI",
+    "added a 14-item additions-only registry view including the two internal supplements",
+    "added additions-only Tome lists and supplement-only reader rendering with compact AFLP before/after context for inline supplements",
+    "made lexical/metadata/speaker/date navigation source-mode aware",
+    "preserved all corpus and Translation Set runtime JSON files byte-for-byte from RA2"
+  ],
+  "translation_set_reacceptance": "14_OF_14_PASS_AFTER_2_SOURCE_CONTROLLED_AMENDMENTS",
+  "translation_amended_items": [
+    "LDCSUP.T06.1905-05-05.E001",
+    "LDCSUP.T14.1922-09-09.E001"
+  ],
+  "ra2b_terminology_about": [
+    "user-facing source labels are ALIGNÉ / COMPLÉMENT / ENRICHI while internal values aflp/additions/enriched are preserved",
+    "user-facing supplement provenance badge is COMPLÉMENT · IT-PM",
+    "Help now explains that ALIGNÉ means alignment to the AFLP edition scope of texts/dates and does not claim word-for-word identity with the printed AFLP French translation",
+    "dedicated À propos screen added with source-mode definitions, IT-PM provenance, Queen/Hugh comparative role, Translation Set 1 scope limitation, user-data locality, and dynamic app/corpus version information",
+    "no corpus, Translation Set wording, stable ID, search record, speaker record, or user-data schema mutation"
+  ],
+  "ra2c_interaction_harmonisation": {
+    "baseline_version": "v2.19.6-R1B",
+    "baseline_sha256": "64872f494449c2be5e54da67e0b14acb8825fe0a5b6cafb7fd78d86348f92638",
+    "about_contract": "ONE_AIDE_SCREEN__A_PROPOS_ET_SOURCES_FINAL_HELP_SECTIONS__NO_SEPARATE_ABOUT_SCREEN",
+    "context_action_contract": "SURLIGNER_NOTE_COPIER_FERMER",
+    "reader_reference_contract": "PARTAGER_LA_REFERENCE__COPIER_LE_LIEN",
+    "collection_contract": "LDC_COLLECTION_SECONDARY_ACTION_PRESERVED",
+    "corpus_changed": false,
+    "supplement_changed": false,
+    "user_data_schema_changed": false
+  }
 }
