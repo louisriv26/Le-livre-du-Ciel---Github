@@ -1409,13 +1409,14 @@
     "paragraph_id": "ldc_t11_1912_02_24_e001_p009",
     "quotation_depth": 1,
     "review_status": "APPROVED_UNIFIED_R3A31",
-    "segment_id": "LDC.T11.1912-02-24.E001.P009.R3A31.0034.0136.JESUS",
+    "segment_id": "LDC.T11.1912-02-24.E001.P009.RA5C.0016.0137.JESUS",
     "source": "SUBMITTED",
     "speaker": "JESUS",
     "stable_ref": "LDC.T11.1912-02-24.E001.P009",
-    "start_char": 35,
-    "text_preview": "promets. Je ne te laisserai jamais hors de Ma Volonté. Et tu prendras et feras tout ce que tu voudras.",
-    "volume": 11
+    "start_char": 16,
+    "text_preview": "Oui, oui, Je te le promets. Je ne te laisserai jamais hors de Ma Volonté. Et tu prendras et feras tout ce que tu voudras.",
+    "volume": 11,
+    "ra5c_reconciliation": "OFFSET_DRIFT_AFTER_TEXT_CHANGE"
   },
   {
     "addressee": "contextually_adjudicated",
@@ -14525,13 +14526,14 @@
     "paragraph_id": "ldc_t11_1914_10_14_e001_p004",
     "quotation_depth": 1,
     "review_status": "APPROVED_UNIFIED_R3A31",
-    "segment_id": "LDC.T11.1914-10-14.E001.P004.R3A31.0014.0367.JESUS",
+    "segment_id": "LDC.T11.1914-10-14.E001.P004.RA5C.0013.0368.JESUS",
     "source": "SUBMITTED",
     "speaker": "JESUS",
     "stable_ref": "LDC.T11.1914-10-14.E001.P004",
-    "start_char": 15,
-    "text_preview": "ils les font avec Moi dans Ma Volonté, Je leur donnerai aussi une âme pour chaque mot qu'ils réciteront. En fait, l'effet sera petit ou grand suivant la grandeur de leur union avec",
-    "volume": 11
+    "start_char": 13,
+    "text_preview": "S'ils les font avec Moi dans Ma Volonté, Je leur donnerai aussi une âme pour chaque mot qu'ils réciteront. En fait, l'effet sera petit ou grand suivant la grandeur de leur union av",
+    "volume": 11,
+    "ra5c_reconciliation": "OFFSET_DRIFT_AFTER_TEXT_CHANGE"
   },
   {
     "addressee": "contextually_adjudicated",
@@ -23335,19 +23337,20 @@
     "addressee": "contextually_adjudicated",
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 354,
+    "end_char": 360,
     "entry_id": "ldc_t11_1916_12_14_e001",
     "evidence": "Complete French entry + aligned Queen of the Divine Will Volume 11 + aligned Hugh Owen Volume 11",
     "paragraph_id": "ldc_t11_1916_12_14_e001_p007",
     "quotation_depth": 1,
     "review_status": "APPROVED_UNIFIED_R3A31",
-    "segment_id": "LDC.T11.1916-12-14.E001.P007.R3A31.0000.0354.JESUS",
+    "segment_id": "LDC.T11.1916-12-14.E001.P007.RA5C.0000.0360.JESUS",
     "source": "SUBMITTED",
     "speaker": "JESUS",
     "stable_ref": "LDC.T11.1916-12-14.E001.P007",
     "start_char": 0,
     "text_preview": "Pendant que Je dormais, J'obtenais du vrai repos pour tous, et J'invitais chaque cœur à renoncer au péché. J'aime tant que les créatures se reposent en Moi, que Je ne voulus pas se",
-    "volume": 11
+    "volume": 11,
+    "ra5c_reconciliation": "OFFSET_DRIFT_AFTER_TEXT_CHANGE"
   },
   {
     "addressee": "contextually_adjudicated",

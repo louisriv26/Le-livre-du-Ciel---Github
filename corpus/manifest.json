@@ -48,15 +48,16 @@
   "status": "R1B_LDC_B_CANDIDATE_NOT_DEPLOYED_INHERITED_LDC_A_DEVICE_SMOKE_NOT_TESTED",
   "speech_resynced": true,
   "notes": "All 36 tomes structurally reconciled. EB-17 completed the two provenance corrections identified by EB-16; Tome 17 23 November 1924 remains PDF-title-only/body-not-proven. EB-20 normalised three source-page ranges from direct PDF evidence.",
-  "speech_layer_note": "EB-4 mechanically relocated existing Tome 2 speaker segments through source-proven boundary changes and rebuilt valid previews. No new speaker interpretation was introduced. EB-2 Tome 3 and EB-3 Tome 1 speaker treatments are retained.",
+  "speech_layer_note": "RA5C source-backed targeted reconciliation: three Tome 11 offsets mechanically resynchronised after later canonical punctuation/quotation repairs; Tome 23 P117-P118 outer Jesus continuity restored while preserving embedded illustrative quotations as depth-2 structure; Tome 25 P040 missing lexical “seule” restored inside the existing Jesus quoted term; Tome 20 P073 restored as outer JESUS plus the previously source-adjudicated complete PERSONIFIED_VOICE Fiat prayer at depth 2. Canonical devotional text and all speaker identities outside these seven paragraphs are unchanged.",
   "app_version": "v2.13.0-R1B",
   "speaker_layer": {
-    "total_segments": 65107,
-    "jesus": 59007,
+    "total_segments": 65110,
+    "jesus": 59009,
     "marie": 0,
     "mary": 226,
     "luisa": 4556,
-    "verification_scope": "R1B governing checkpoint (G036-AFLP-R1B-UWR2) - authenticated 19/19; counts per governing identity"
+    "verification_scope": "R1B governing checkpoint plus RA5C targeted source-backed speaker-geometry/display reconciliation (7 paragraphs); canonical text unchanged",
+    "personified_voice": 468
   },
   "t17_23nov1924_status": "Body retained: title-only in supplied FR PDF but full entry (incl. Jesus discourse) present and materially matching both English witnesses (QDW, Hugh Owen); FR is compressed. Provenance recorded as legacy/English-corroborated, pending controlled FR reconstruction.",
   "search_norm": {
@@ -169,5 +170,27 @@
     "metadata_index": "corpus/search_metadata_index.json",
     "vector_runtime_gate": "manifest + corpus generation + count/dim/dtype + binary bytes/SHA-256 + vector-row ID-order SHA-256 + current paragraph-ID-set SHA-256 + corpus text-binding digest equality",
     "predecessor_device_smoke": "NOT_TESTED"
+  },
+  "ra5c_speaker_reconciliation": {
+    "date": "2026-08-16",
+    "baseline_app_version": "v2.19.14-R1B",
+    "baseline_zip_sha256": "16b9d2377a0d29db7e81d6b1cff546cd9f14ccee3a47973d0a4a825c25639ee1",
+    "affected_paragraphs": 7,
+    "changed_speaker_shards": [
+      11,
+      20,
+      23,
+      25
+    ],
+    "canonical_paragraph_mutations": 0,
+    "speaker_identity_changes": {
+      "new_personified_voice_nested_segment": 1,
+      "all_other_identity_changes": 0
+    },
+    "final_total_segments": 65110,
+    "final_jesus": 59009,
+    "final_personified_voice": 468,
+    "current_quotation_depth_2": 753,
+    "legacy_quote_depth_2": 14
   }
 }

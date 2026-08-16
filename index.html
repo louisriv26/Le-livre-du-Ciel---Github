@@ -106,14 +106,6 @@ html[data-theme="dark"]{
   { background:#2A2418 !important; color:#8A7E72 !important;
     border-color:#3A3020 !important; }
 
-  /* Highlight popup */
-  :root:not([data-theme="light"]) #hl-popup,
-  html[data-theme="dark"] #hl-popup
-  { background:#2A2418 !important; border:0.5px solid #3A3020; }
-
-  :root:not([data-theme="light"]) .hl-opt,
-  html[data-theme="dark"] .hl-opt
-  { color:var(--gold-text) !important; }
 
   /* Collection picker items */
   :root:not([data-theme="light"]) .col-pick-item:hover,
@@ -142,8 +134,6 @@ html[data-theme="dark"]{
 html[data-theme="dark"] .resume-card { background:#242018 !important; }
 html[data-theme="dark"] .btn-primary  { background:#C9A84C !important; color:#1A1612 !important; }
 html[data-theme="dark"] .btn-secondary{ background:#2A2418 !important; color:#8A7E72 !important; border-color:#3A3020 !important; }
-html[data-theme="dark"] #hl-popup    { background:#2A2418 !important; border:0.5px solid #3A3020; }
-html[data-theme="dark"] .hl-opt      { color:var(--gold-text) !important; }
 html[data-theme="dark"] .sheet       { background:#201C18 !important; }
 html[data-theme="dark"] #autour-sheet{ background:#201C18 !important; }
 html[data-theme="dark"] .col-new-input{ background:#2A2418 !important; color:#D4C8BC !important; border-color:#3A3020 !important; }
@@ -944,7 +934,6 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; }
   opacity:0;transition:all .25s;pointer-events:none;z-index:200;white-space:nowrap;}
 #toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
 
-/* Highlight popup */
 /* Selected-text panel (24 Heures pattern) — sits above the bottom nav, never over the
    selection, so the iOS native menu (Copy / Look Up / Translate) cannot collide with it. */
 #seltext-panel{position:fixed;left:8px;right:8px;bottom:calc(var(--nav-h,116px) + 8px);
@@ -985,17 +974,6 @@ body.android-highlight-platform #reader-body .para-fragment{-webkit-user-select:
   background:none;color:var(--red);font-family:var(--body);font-size:14px;text-align:center;cursor:pointer;margin:0 0 8px;}
 .cp-close{display:block;width:100%;min-height:44px;border:1px solid var(--border);
   border-radius:10px;background:none;font-family:var(--body);font-size:15px;color:var(--ink);cursor:pointer;}
-#hl-popup{position:fixed;background:var(--night);border-radius:10px;
-  padding:6px 4px;display:none;flex-direction:row;flex-wrap:wrap;align-items:center;justify-content:center;
-  gap:2px;z-index:150;width:max-content;max-width:calc(100vw - 16px);box-sizing:border-box;
-  box-shadow:0 4px 20px rgba(0,0,0,.3);}
-@supports (width:100dvw){#hl-popup{max-width:calc(100dvw - 16px);}}
-#hl-popup.show{display:flex;}
-.hl-opt{background:none;border:none;cursor:pointer;color:var(--gold-text);
-  font-size:12px;font-family:var(--body);padding:5px 9px;border-radius:7px;
-  min-width:44px;min-height:44px;white-space:nowrap;}
-.hl-opt:hover{background:rgba(255,255,255,.1);}
-/* .hl-dot hit area is defined above at 44x44; visual swatch remains 18px via ::after. */
 
 /* Empty state */
 .empty-state{padding:48px 20px;text-align:center;color:var(--muted);font-size:13px;line-height:1.7;}
@@ -1160,10 +1138,6 @@ html[data-theme="dark"] .st-luisa{color:#D4A843;}
 <!-- Toast -->
 <div id="toast"></div>
 
-<!-- Highlight edit popup — used only to recolour/delete an existing highlight.
-     New selections and paragraph activation use the single contextual action surface below. -->
-<div id="hl-popup" role="dialog" aria-modal="false" aria-label="Modifier le surlignage"></div>
-
 <!-- Selected-text panel (24 Heures pattern): contextual, labelled, anchored above the
      bottom nav so it can never collide with the iOS native selection menu. -->
 <div id="seltext-panel" aria-live="polite" role="region" aria-label="Actions du passage">
@@ -1194,14 +1168,9 @@ html[data-theme="dark"] .st-luisa{color:#D4A843;}
 <div id="cp-overlay" onclick="if(event.target===this)closeHighlightPicker()">
   <div id="cp-sheet" role="dialog" aria-modal="false" aria-label="Surlignage">
     <div class="cp-label" id="cp-label">Surligner en</div>
-    <div class="cp-swatches">
-      <button type="button" class="cp-swatch cp-yellow" data-hl-color="yellow" onclick="pickHighlight('yellow')" aria-label="Jaune" title="Jaune"></button>
-      <button type="button" class="cp-swatch cp-blue"   data-hl-color="blue"   onclick="pickHighlight('blue')"   aria-label="Bleu" title="Bleu"></button>
-      <button type="button" class="cp-swatch cp-green"  data-hl-color="green"  onclick="pickHighlight('green')"  aria-label="Vert" title="Vert"></button>
-      <button type="button" class="cp-swatch cp-purple" data-hl-color="purple" onclick="pickHighlight('purple')" aria-label="Violet" title="Violet"></button>
-      <button type="button" class="cp-swatch cp-pink"   data-hl-color="pink"   onclick="pickHighlight('pink')"   aria-label="Rose" title="Rose"></button>
-    </div>
-    <button type="button" class="cp-close" onclick="closeHighlightPicker()">Fermer</button>
+    <div class="cp-swatches" id="cp-swatches"></div>
+    <button type="button" class="cp-remove" id="cp-remove" onclick="deleteHighlightFromSharedPicker()" style="display:none">Supprimer le surlignage</button>
+    <button type="button" class="cp-close" onclick="closeHighlightPicker({restoreFocus:true})">Fermer</button>
   </div>
 </div>
 
@@ -1372,7 +1341,7 @@ html[data-theme="dark"] .st-luisa{color:#D4A843;}
       <div class="ob-slide" id="ob-slide-1">
         <div class="ob-icon" style="font-size:32px;margin-bottom:16px;"><i class="ti ti-message-circle" style="color:#D4A060;"></i></div>
         <div class="ob-title">Les paroles de Jésus</div>
-        <div class="ob-body">Dans cette édition numérique, la typographie suit le locuteur principal. Quand Jésus tient la parole, son passage apparaît en couleur ; s’Il cite quelqu’un d’autre, la citation conserve le style de Jésus. Inversement, quand Luisa cite des paroles de Jésus, la citation reste dans le style de Luisa. Les 65 107 segments conservent séparément leur attribution sémantique pour l’audit et la recherche.</div>
+        <div class="ob-body">Dans cette édition numérique, la typographie suit le locuteur principal. Quand Jésus tient la parole, son passage apparaît en couleur ; s’Il cite quelqu’un d’autre, la citation conserve le style de Jésus. Inversement, quand Luisa cite des paroles de Jésus, la citation reste dans le style de Luisa. Les 65 110 segments conservent séparément leur attribution sémantique pour l’audit et la recherche.</div>
         <div class="ob-speech-demo">
           <div style="font-size:13px;color:rgba(255,255,255,.5);margin-bottom:8px;">Luisa écrit:</div>
           <div style="font-size:14px;color:rgba(255,255,255,.75);margin-bottom:12px;font-style:italic;">Ce matin, mon aimable Jésus est venu et Il m'a dit:</div>
@@ -1452,7 +1421,7 @@ html[data-theme="dark"] .st-luisa{color:#D4A843;}
       <i class="ti ti-message-circle door-icon" style="color:#C9A84C;"></i>
       <div class="door-text">
         <div class="dt">Paroles de Jésus</div>
-        <div class="ds">65 107 segments de parole · lecture directe</div>
+        <div class="ds">65 110 segments de parole · lecture directe</div>
       </div>
     </button>
     <button class="home-lib-link" onclick="goTomes()">
@@ -2122,10 +2091,10 @@ html[data-theme="dark"] .st-luisa{color:#D4A843;}
    VERSION — single source of truth
    Update this string on every release.
 ═══════════════════════════════════════════════════════ */
-const APP_VERSION = 'v2.19.12-R1B';
-const APP_BUILD   = '2026-08-15';
-const SW_CACHE_VERSION = 'ldc-v2.19.12-R1B';
-const CORPUS_MANIFEST_SHA256 = '0701191761994c69a32eb4ca1b33312f2c5e043939a3a4d61b0f326739cb12c8';
+const APP_VERSION = 'v2.19.15-R1B';
+const APP_BUILD   = '2026-08-16';
+const SW_CACHE_VERSION = 'ldc-v2.19.15-R1B';
+const CORPUS_MANIFEST_SHA256 = '6c04cc4f21e9c18475b27c43d14a1bfa787112e659306f668874d22b7d49ae54';
 const DEEP_LINK_SCHEMA = 'ldc-deep-link-v1';
 const READING_POSITION_SCHEMA = 'ldc-reading-position-v2';
 
@@ -2136,21 +2105,31 @@ const DB_NAME = 'ldc_user_v1';
 const DB_VER  = 2;
 let db = null;
 
-// Corpus cache (loaded lazily per volume)
-const corpusCache = {};   // { vol: { entries:[], byId:{} } }
-const parasCache  = {};   // { vol: [] }
-const searchCache = {};   // { vol: [] }
-const speakerCache= {};   // { vol: [] } — effective speaker segments for current reading mode
-const baseSpeakerCache = {};  // { vol: [] } — immutable R1B speaker segments
-const displayCache= {};   // { vol: { paragraph_id: [ops] } } — structural-dash display map v2
+// RA5 two-tier volume cache. corpusCache is lightweight Tome metadata and may
+// remain for all 36 Tomes. Reader payloads are separately bounded by the heavy LRU.
+const corpusCache = {};   // { vol: { baseEntries, entries, byId, ... } } — lightweight index tier
+const volumeIndexPromises = {}; // in-flight lightweight Tome index loads
+const parasCache  = {};   // { vol: [] } — heavy reader tier
+const searchCache = {};   // { vol: [] } — independent lazy search shards
+const speakerCache= {};   // { vol: [] } — heavy effective speaker segments
+const baseSpeakerCache = {};  // { vol: [] } — heavy immutable R1B speaker segments
+const displayCache= {};   // { vol: { paragraph_id: [ops] } } — heavy structural display map
 let   titleOverrides = null; // entry stable_ref -> normalized display title
-const flowCache   = {};   // { vol: { paragraph_id: {flow_id, members, idx} } } — display flow v2
-const volumeMeta  = {};   // { vol: { entry_count, para_count } } — lightweight metadata
+let   titleOverridesPromise = null;
+const flowCache   = {};   // { vol: { paragraph_id: {flow_id, members, idx} } } — heavy display flow
+const readerDataReady = {};   // explicit Tier-2 readiness; lightweight index is never sufficient proof
+const readerDataPromises = {}; // duplicate-in-flight guard for heavy reader bundles
+const volumeMeta  = {};   // { vol: { entry_count, para_count } } — compact global metadata
 
-// LDC-G low-memory contract: keep only a bounded number of fully materialised
-// volume bundles in JS memory. Search shards remain streaming/non-retained.
+// LDC-G/RA5 low-memory contract: keep only a bounded number of fully materialised
+// reader bundles in JS memory. Lightweight Tome indexes and search shards are not
+// evicted merely because the heavy-reader LRU reaches its limit.
 const VOLUME_LRU_MAX = 4;
 const volumeLru = [];
+function evictHeavyVolumeData(vol) {
+  delete parasCache[vol]; delete speakerCache[vol]; delete baseSpeakerCache[vol];
+  delete displayCache[vol]; delete flowCache[vol]; delete readerDataReady[vol];
+}
 function touchVolumeLru(vol) {
   const i = volumeLru.indexOf(vol); if (i >= 0) volumeLru.splice(i, 1);
   volumeLru.push(vol);
@@ -2159,8 +2138,7 @@ function touchVolumeLru(vol) {
     if (evictIndex < 0) evictIndex = 0;
     const victim = volumeLru.splice(evictIndex, 1)[0];
     if (victim === vol || victim === currentVolume) { volumeLru.push(victim); break; }
-    delete corpusCache[victim]; delete parasCache[victim]; delete searchCache[victim];
-    delete speakerCache[victim]; delete baseSpeakerCache[victim]; delete displayCache[victim]; delete flowCache[victim];
+    evictHeavyVolumeData(victim);
   }
 }
 
@@ -2372,35 +2350,61 @@ function sourceModeCaption(mode=supplementMode) {
   return 'ALIGNÉ + compléments approuvés';
 }
 
-async function loadSupplementData() {
-  if (supplementRegistry && supplementSearchData && supplementSpeakerData && supplementManifest) return supplementRegistry;
-  if (supplementLoading) return supplementLoading;
-  supplementLoading = (async () => {
-    const [registry, search, speakers, manifest] = await Promise.all([
+async function loadSupplementRegistryData() {
+  if (supplementRegistry && supplementManifest) return supplementRegistry;
+  if (supplementRegistryLoading) return supplementRegistryLoading;
+  supplementRegistryLoading = (async () => {
+    const [registry, manifest] = await Promise.all([
       fetch(`corpus/supplements.json?${CORPUS_CV}`).then(r=>{if(!r.ok)throw new Error('supplements registry HTTP '+r.status);return r.json();}),
-      fetch(`corpus/supplement_search.json?${CORPUS_CV}`).then(r=>{if(!r.ok)throw new Error('supplement search HTTP '+r.status);return r.json();}),
-      fetch(`corpus/supplement_speakers.json?${CORPUS_CV}`).then(r=>{if(!r.ok)throw new Error('supplement speakers HTTP '+r.status);return r.json();}),
       fetch(`corpus/supplement_manifest.json?${CORPUS_CV}`).then(r=>{if(!r.ok)throw new Error('supplement manifest HTTP '+r.status);return r.json();})
     ]);
     const reasons=[];
     if(registry.schema!=='ldc-supplement-registry-v1'||registry.programme!==SUPPLEMENT_PROGRAMME)reasons.push('registry identity');
     if(registry.backbone_generation!==BACKBONE_GENERATION||registry.composite_generation!==CORPUS_GENERATION)reasons.push('registry generation');
-    if(search.schema!=='ldc-supplement-search-v1'||search.composite_generation!==CORPUS_GENERATION)reasons.push('search identity');
-    if(speakers.schema!=='ldc-supplement-speakers-v1'||speakers.composite_generation!==CORPUS_GENERATION)reasons.push('speaker identity');
     if(manifest.schema!=='ldc-supplement-manifest-v1'||manifest.backbone_generation!==BACKBONE_GENERATION||manifest.composite_generation!==CORPUS_GENERATION)reasons.push('manifest identity');
     const counts=registry.counts||{};
     if(counts.items!==14||counts.inline_supplements!==2||counts.complete_entries!==12||counts.paragraphs!==79||counts.search_records!==79||counts.speaker_segments!==52)reasons.push('registry counts');
     if(!Array.isArray(registry.supplements)||registry.supplements.length!==14)reasons.push('scope count');
     const provFields=['itpm_anchor','queen_anchor','hugh_anchor','decision_id','source_evidence_ids','translation_hash','translation_confidence','provenance_badge'];
     if(Array.isArray(registry.supplements)&&registry.supplements.some(s=>provFields.some(k=>s[k]==null)||s.aflp_status!=='ABSENT_FROM_AFLP'||s.source_origin!=='ITPM'))reasons.push('supplement provenance contract');
-    if(!Array.isArray(search.records)||search.records.length!==79)reasons.push('search count');
-    if(!Array.isArray(speakers.segments)||speakers.segments.length!==52)reasons.push('speaker count');
-    if(reasons.length) throw new Error('supplement evidence mismatch: '+reasons.join(', '));
-    supplementRegistry=registry; supplementSearchData=search; supplementSpeakerData=speakers; supplementManifest=manifest;
+    if(reasons.length) throw new Error('supplement registry evidence mismatch: '+reasons.join(', '));
+    supplementRegistry=registry; supplementManifest=manifest;
     supplementEntryIds=new Set(registry.supplements.filter(s=>s.supplement_type==='COMPLETE_ENTRY'&&s.entry).map(s=>s.entry.id));
     return registry;
   })();
-  try { return await supplementLoading; } finally { supplementLoading=null; }
+  try { return await supplementRegistryLoading; } finally { supplementRegistryLoading=null; }
+}
+
+async function loadSupplementSearchData() {
+  await loadSupplementRegistryData();
+  if (supplementSearchData) return supplementSearchData;
+  if (supplementSearchLoading) return supplementSearchLoading;
+  supplementSearchLoading = (async () => {
+    const search=await fetch(`corpus/supplement_search.json?${CORPUS_CV}`).then(r=>{if(!r.ok)throw new Error('supplement search HTTP '+r.status);return r.json();});
+    if(search.schema!=='ldc-supplement-search-v1'||search.composite_generation!==CORPUS_GENERATION||!Array.isArray(search.records)||search.records.length!==79)throw new Error('supplement search evidence mismatch');
+    supplementSearchData=search; return search;
+  })();
+  try { return await supplementSearchLoading; } finally { supplementSearchLoading=null; }
+}
+
+async function loadSupplementSpeakerData() {
+  await loadSupplementRegistryData();
+  if (supplementSpeakerData) return supplementSpeakerData;
+  if (supplementSpeakerLoading) return supplementSpeakerLoading;
+  supplementSpeakerLoading = (async () => {
+    const speakers=await fetch(`corpus/supplement_speakers.json?${CORPUS_CV}`).then(r=>{if(!r.ok)throw new Error('supplement speakers HTTP '+r.status);return r.json();});
+    if(speakers.schema!=='ldc-supplement-speakers-v1'||speakers.composite_generation!==CORPUS_GENERATION||!Array.isArray(speakers.segments)||speakers.segments.length!==52)throw new Error('supplement speaker evidence mismatch');
+    supplementSpeakerData=speakers; return speakers;
+  })();
+  try { return await supplementSpeakerLoading; } finally { supplementSpeakerLoading=null; }
+}
+
+// Full compatibility loader for call sites that genuinely require both optional
+// supplement shards. Tier-1 Tome/navigation paths must use registry-only loading.
+async function loadSupplementData() {
+  await loadSupplementRegistryData();
+  await Promise.all([loadSupplementSearchData(), loadSupplementSpeakerData()]);
+  return supplementRegistry;
 }
 
 function supplementItemsForVolume(vol, type=null) {
@@ -2455,7 +2459,7 @@ function supplementBadgeForUserRecord(r){return r&&r.supplement_id?'<span class=
 async function openUserRecordTarget(r,backDest='espace'){
   if(!r)return;
   if(r.supplement_id){
-    await loadSupplementData();
+    await loadSupplementRegistryData();
     const sp=supplementById(r.supplement_id);
     if(sp){pendingParaId=r.para_id||null;await openSupplementItem(sp,backDest);return;}
   }
@@ -2485,8 +2489,10 @@ function rebuildLoadedVolumeView(vol) {
   c.allById=Object.fromEntries(c.allEntries.map(e=>[e.id,e]));
   c.generation=CORPUS_GENERATION;
   c.backbone_generation=BACKBONE_GENERATION;
-  const base=baseSpeakerCache[vol]||[], add=supplementSpeakersForVolume(vol);
-  speakerCache[vol]=supplementMode==='enriched'?base.concat(add):(supplementMode==='additions'?add:base);
+  if (readerDataReady[vol]) {
+    const base=baseSpeakerCache[vol]||[], add=supplementSpeakersForVolume(vol);
+    speakerCache[vol]=supplementMode==='enriched'?base.concat(add):(supplementMode==='additions'?add:base);
+  }
 }
 
 function resetSupplementDependentIndexes() {
@@ -2506,7 +2512,7 @@ function syncSupplementModeUI() {
 function focusReaderSourceMode(){closeReaderMore();const btn=document.querySelector(`#reader-source-mode [data-source-mode="${supplementMode}"]`);if(btn){btn.focus();btn.scrollIntoView({block:'nearest'});}showToast('Choisissez ALIGNÉ, COMPLÉMENT ou ENRICHI.');}
 
 async function initialiseSupplementMode() {
-  await loadSupplementData();
+  await loadSupplementRegistryData();
   const saved=await dbGet('settings',SUPPLEMENT_MODE_KEY).catch(()=>null);
   const migratedMode=saved&&saved.val==='supplements'?'additions':(saved&&saved.val);
   supplementMode=(migratedMode&&['enriched','aflp','additions'].includes(migratedMode))?migratedMode:(supplementRegistry.default_mode==='enriched'?'enriched':'aflp');
@@ -2516,7 +2522,7 @@ async function initialiseSupplementMode() {
 
 async function openSupplementItem(s,backDest='tomes',opts={}){
   if(!s)return;
-  await loadVolumeData(s.volume);
+  // Reader data is loaded exactly once by openEntry(); do not pre-load it here.
   currentSupplementFocusId=s.supplement_id;
   if(s.supplement_type==='INLINE_SUPPLEMENT')pendingParaId=(s.paragraphs&&s.paragraphs[0]&&s.paragraphs[0].id)||null;
   else pendingParaId=null;
@@ -2525,7 +2531,7 @@ async function openSupplementItem(s,backDest='tomes',opts={}){
 }
 
 async function setSupplementMode(mode, opts={}) {
-  await loadSupplementData();
+  await loadSupplementRegistryData();
   // An explicit source-selector action supersedes any automatic reader-only override.
   readerTemporarySourceModeRestore=null;
   const next=['aflp','additions','enriched'].includes(mode)?mode:'enriched';
@@ -2561,63 +2567,103 @@ async function setSupplementMode(mode, opts={}) {
 }
 async function toggleSupplementMode(){const order=['aflp','additions','enriched'];return setSupplementMode(order[(order.indexOf(supplementMode)+1)%order.length]);}
 
-async function loadVolumeData(vol) {
-  if (corpusCache[vol]) { touchVolumeLru(vol); return; }
-  await loadSupplementData();
-  const pad = String(vol).padStart(2,'0');
-  const [vData, pData] = await Promise.all([
-    fetch(`corpus/volume_${pad}.json?${CORPUS_CV}`).then(r=>r.json()),
-    fetch(`corpus/paragraphs_${pad}.json?${CORPUS_CV}`).then(r=>r.json()),
-  ]);
-  if (titleOverrides === null) {
+async function ensureTitleOverrides() {
+  if (titleOverrides !== null) return titleOverrides;
+  if (titleOverridesPromise) return titleOverridesPromise;
+  titleOverridesPromise = (async()=>{
     try {
       const td = await fetch(`corpus/display_titles.json?${CORPUS_CV}`).then(r=>r.ok?r.json():null);
       titleOverrides = (td && td.overrides) ? td.overrides : {};
     } catch(e) { titleOverrides = {}; }
-  }
-  vData.entries.forEach(e => {
-    const ov = titleOverrides[e.stable_ref];
-    if (ov) { e.canonical_title = e.title; e.title = ov; }
-  });
-  const baseEntries=vData.entries;
-  const allEntries=mergeCompleteSupplementEntries(baseEntries,vol,true);
-  const effectiveEntries=sourceModeEntries(baseEntries,vol);
-  corpusCache[vol] = {
-    baseEntries,
-    allEntries,
-    allById:Object.fromEntries(allEntries.map(e=>[e.id,e])),
-    entries:effectiveEntries,
-    byId:Object.fromEntries(effectiveEntries.map(e=>[e.id,e])),
-    generation:CORPUS_GENERATION,
-    backbone_generation:BACKBONE_GENERATION,
-    status:'AFLP_BACKBONE_PLUS_SEPARATE_SUPPLEMENT_LAYER'
-  };
-  parasCache[vol] = pData.concat(supplementParagraphsForVolume(vol));
-  try {
-    const spkData = await fetch(`corpus/speakers_${pad}.json?${CORPUS_CV}`).then(r=>r.ok?r.json():[]);
-    baseSpeakerCache[vol]=spkData;
-    const add=supplementSpeakersForVolume(vol);speakerCache[vol]=supplementMode==='enriched'?spkData.concat(add):(supplementMode==='additions'?add:spkData);
-  } catch(e) { baseSpeakerCache[vol]=[]; speakerCache[vol]=supplementMode==='aflp'?[]:supplementSpeakersForVolume(vol); }
-  try {
-    const dsp = await fetch(`corpus/display_${pad}.json?${CORPUS_CV}`).then(r=>r.ok?r.json():null);
+    return titleOverrides;
+  })();
+  try { return await titleOverridesPromise; } finally { titleOverridesPromise = null; }
+}
+
+async function ensureVolumeIndex(vol) {
+  if (corpusCache[vol]) return corpusCache[vol];
+  if (volumeIndexPromises[vol]) return volumeIndexPromises[vol];
+  volumeIndexPromises[vol] = (async()=>{
+    await loadSupplementRegistryData();
+    const pad = String(vol).padStart(2,'0');
+    const vData = await fetch(`corpus/volume_${pad}.json?${CORPUS_CV}`).then(r=>{if(!r.ok)throw new Error(`Tome ${vol}: index indisponible`);return r.json();});
+    await ensureTitleOverrides();
+    vData.entries.forEach(e => {
+      const ov = titleOverrides[e.stable_ref];
+      if (ov) { e.canonical_title = e.title; e.title = ov; }
+    });
+    const baseEntries=vData.entries;
+    const allEntries=mergeCompleteSupplementEntries(baseEntries,vol,true);
+    const effectiveEntries=sourceModeEntries(baseEntries,vol);
+    corpusCache[vol] = {
+      baseEntries, allEntries, allById:Object.fromEntries(allEntries.map(e=>[e.id,e])),
+      entries:effectiveEntries, byId:Object.fromEntries(effectiveEntries.map(e=>[e.id,e])),
+      generation:CORPUS_GENERATION, backbone_generation:BACKBONE_GENERATION,
+      status:'AFLP_BACKBONE_PLUS_SEPARATE_SUPPLEMENT_LAYER'
+    };
+    return corpusCache[vol];
+  })();
+  try { return await volumeIndexPromises[vol]; }
+  finally { delete volumeIndexPromises[vol]; }
+}
+
+async function ensureVolumeReaderData(vol) {
+  await ensureVolumeIndex(vol);
+  if (readerDataReady[vol]) { touchVolumeLru(vol); return; }
+  await loadSupplementSpeakerData();
+  if (readerDataPromises[vol]) return readerDataPromises[vol];
+  const pad = String(vol).padStart(2,'0');
+  readerDataPromises[vol] = (async()=>{
+    const [pData, spkData, dsp, fl] = await Promise.all([
+      fetch(`corpus/paragraphs_${pad}.json?${CORPUS_CV}`).then(r=>{if(!r.ok)throw new Error(`Tome ${vol}: paragraphes indisponibles`);return r.json();}),
+      fetch(`corpus/speakers_${pad}.json?${CORPUS_CV}`).then(r=>r.ok?r.json():[]).catch(()=>[]),
+      fetch(`corpus/display_${pad}.json?${CORPUS_CV}`).then(r=>r.ok?r.json():null).catch(()=>null),
+      fetch(`corpus/flow_${pad}.json?${CORPUS_CV}`).then(r=>r.ok?r.json():null).catch(()=>null)
+    ]);
+    parasCache[vol] = pData.concat(supplementParagraphsForVolume(vol));
+    baseSpeakerCache[vol] = spkData;
     displayCache[vol] = (dsp && dsp.paragraphs) ? dsp.paragraphs : {};
-  } catch(e) { displayCache[vol] = {}; }
-  try {
-    const fl = await fetch(`corpus/flow_${pad}.json?${CORPUS_CV}`).then(r=>r.ok?r.json():null);
     const idx = {};
-    ((fl && fl.groups) || []).forEach(g => { g.members.forEach((m, i) => { idx[m.paragraph_id] = { group: g, pos: i }; }); });
+    ((fl && fl.groups) || []).forEach(g => { g.members.forEach((m, i) => { idx[m.paragraph_id] = { group:g, pos:i }; }); });
     flowCache[vol] = idx;
-  } catch(e) { flowCache[vol] = {}; }
-  touchVolumeLru(vol);
+    readerDataReady[vol] = true;
+    rebuildLoadedVolumeView(vol);
+    touchVolumeLru(vol);
+  })();
+  try { return await readerDataPromises[vol]; }
+  catch(e) { evictHeavyVolumeData(vol); throw e; }
+  finally { delete readerDataPromises[vol]; }
+}
+
+let pendingReaderPreload = null;
+function scheduleVolumeReaderPreload(vol) {
+  if (readerDataReady[vol] || readerDataPromises[vol]) return;
+  if (pendingReaderPreload) {
+    try { pendingReaderPreload.cancel(); } catch(e) {}
+    pendingReaderPreload = null;
+  }
+  let cancelled=false, handle=null;
+  const run=()=>{ if(cancelled)return; pendingReaderPreload=null; ensureVolumeReaderData(vol).catch(()=>{}); };
+  if ('requestIdleCallback' in window) handle=requestIdleCallback(run,{timeout:1200});
+  else handle=setTimeout(run,80);
+  pendingReaderPreload={cancel:()=>{cancelled=true;if('cancelIdleCallback' in window&&typeof handle==='number')cancelIdleCallback(handle);else clearTimeout(handle);}};
+}
+
+function scheduleAllVolumeIndexesPreload() {
+  if (navigator.connection && navigator.connection.saveData === true) return;
+  const queue=Array.from({length:36},(_,i)=>i+1).filter(v=>!corpusCache[v]);
+  let cursor=0;
+  const worker=async()=>{while(cursor<queue.length){const vol=queue[cursor++];try{await ensureVolumeIndex(vol);}catch(e){}}};
+  setTimeout(()=>{worker();worker();},1200);
 }
 
 async function getEntry(vol, entryId) {
-  await loadVolumeData(vol);
+  await ensureVolumeIndex(vol);
   return corpusCache[vol].byId[entryId] || null;
 }
 
 async function getParagraphs(vol, entryId) {
-  await loadVolumeData(vol);
+  await ensureVolumeReaderData(vol);
   return parasCache[vol].filter(p => p.entry_id === entryId && (supplementMode==='enriched' || (supplementMode==='additions'?isSupplementParagraphRecord(p):!isSupplementParagraphRecord(p))))
     .sort((a, b) => (a.display_order || 0) - (b.display_order || 0));
 }
@@ -2685,7 +2731,7 @@ async function getReadEntryIds(vol) {
 }
 
 async function countReadEntries(vol) {
-  await loadSupplementData();
+  await loadSupplementRegistryData();
   const all = await dbGetAll('read_entries');
   return all.filter(r => r.vol === vol && isConfirmedReadRecord(r) && readRecordVisibleInSourceMode(r)).length;
 }
@@ -2732,19 +2778,19 @@ async function toggleCurrentEntryRead() {
     const readerActive = document.getElementById('screen-reader').classList.contains('active');
     if (!readerActive) return;
     // Don't trigger on interactive elements
-    if (e.target.closest('button,a,input,textarea,.hl-popup,#hl-popup,.sheet,.overlay')) return;
+    if (e.target.closest('button,a,input,textarea,.sheet,.overlay')) return;
     // Don't hijack a text-selection gesture. On iOS/iPadOS, dragging a selection
     // handle to widen the selection produces the same touchstart/touchend deltas as
     // a swipe, so without this the app navigated to the next/previous entry and the
-    // selection + highlight popup vanished. If text is selected, this touch was a
+    // selection + highlight editor vanished. If text is selected, this touch was a
     // selection adjustment, not a page swipe.
     // NB: test the LIVE selection only. selectionRange stays set after the popup
     // closes, so guarding on it would disable swipe navigation permanently after
     // the user's first ever selection.
     const sel = window.getSelection();
     if (sel && !sel.isCollapsed && String(sel).trim().length > 0) return;
-    const pop = document.getElementById('hl-popup');
-    if (pop && getComputedStyle(pop).display !== 'none') return;
+    const picker = document.getElementById('cp-overlay');
+    if (picker && picker.classList.contains('show')) return;
     const dx = e.changedTouches[0].clientX - touchStartX;
     const dy = e.changedTouches[0].clientY - touchStartY;
     if (Math.abs(dx) < SWIPE_THRESHOLD || Math.abs(dy) > SWIPE_RESTRAINT) return;
@@ -2769,10 +2815,6 @@ document.addEventListener('keydown', async e => {
     return;
   }
   if (e.key === 'Escape') {
-    const popup = document.getElementById('hl-popup');
-    if (popup && popup.classList.contains('show')) {
-      e.preventDefault(); e.stopPropagation(); hideHlPopup(true); return;
-    }
     const picker = document.getElementById('cp-overlay');
     if (picker && picker.classList.contains('show')) {
       e.preventDefault(); e.stopPropagation(); closeHighlightPicker(); return;
@@ -2888,7 +2930,7 @@ async function renderParcours() {
 async function openParcoursEntry(parcours, idx) {
   const entry = parcours.entries[idx];
   if (!entry) return;
-  await loadVolumeData(entry.vol);
+  await ensureVolumeIndex(entry.vol);
   const entries = corpusCache[entry.vol].baseEntries || corpusCache[entry.vol].entries;
   const target = entries[Math.min(entry.seq - 1, entries.length - 1)] || entries[0];
   if(target)openEntry(entry.vol, target.id, 'parcours');
@@ -3099,13 +3141,13 @@ async function renderHome() {
 }
 
 async function startReading() {
-  await loadSupplementData();
+  await loadSupplementRegistryData();
   if(supplementsOnly()){
     const first=sortedSupplementItems()[0];
     if(first){await openSupplementItem(first,'tomes');return;}
     showToast('Aucun complément disponible.');return;
   }
-  await loadVolumeData(1);
+  await ensureVolumeIndex(1);
   const first = corpusCache[1].entries[0];
   if(first)openEntry(1, first.id, 'tomes');
 }
@@ -3114,20 +3156,20 @@ async function resumeReading() {
   const pos = await dbGet('reading_pos', 'main');
   if (!pos) return;
   pendingSemanticPosition = pos;
-  await loadVolumeData(pos.vol);
+  await ensureVolumeIndex(pos.vol);
   openEntry(pos.vol, pos.entry_id, 'home', { restorePosition:pos, supplementId:pos.supplement_id||null });
 }
 
 // Open reader with calm defaults (Repères off) on first Jesus-speech entry of T02
 async function openJesusSpeech() {
-  await loadSupplementData();
+  await loadSupplementRegistryData();
   showReperes = false; applyReperesState();
   if(supplementsOnly()){
     const hit=sortedSupplementItems().find(s=>(s.speakers||[]).some(x=>x.speaker==='JESUS'));
     if(hit){await openSupplementItem(hit,'home');return;}
     showToast('Aucune parole de Jésus dans les compléments.');return;
   }
-  await loadVolumeData(2);
+  await ensureVolumeIndex(2);
   const entries = corpusCache[2].entries;
   if (!entries || !entries.length) return;
   const speechEntry = entries.find(e => e.has_speech) || entries[0];
@@ -3142,7 +3184,7 @@ const VOLUME_DEFS = [
 ];
 
 async function renderTomes() {
-  await loadSupplementData();
+  await loadSupplementRegistryData();
   const pos = await dbGet('reading_pos','main');
   const list = document.getElementById('tomes-list');
   list.innerHTML = '';
@@ -3232,7 +3274,7 @@ async function renderSupplementRegistryList(container,items,opts={}){
 
 async function openTome(vol) {
   currentVolume = vol;
-  await loadVolumeData(vol);
+  await ensureVolumeIndex(vol);
   document.getElementById('entries-title').textContent = `Tome ${vol}`;
   const list = document.getElementById('entries-list');
   list.innerHTML = '';
@@ -3240,7 +3282,7 @@ async function openTome(vol) {
   if(supplementsOnly()){
     document.getElementById('entries-title').textContent=`Tome ${vol} · Compléments`;
     await renderSupplementRegistryList(list,sortedSupplementItems(supplementItemsForVolume(vol)),{global:false});
-    showScreen('entries');return;
+    showScreen('entries'); scheduleVolumeReaderPreload(vol); return;
   }
   const entries = corpusCache[vol].entries;
   // Load user-status sets once per Tome render. This avoids one IndexedDB query per row.
@@ -3270,6 +3312,7 @@ async function openTome(vol) {
     list.appendChild(btn);
   });
   showScreen('entries');
+  scheduleVolumeReaderPreload(vol);
 }
 
 function backToTomes() { showScreen('tomes'); }
@@ -3298,7 +3341,7 @@ async function openEntry(vol, entryId, backDest, opts={}) {
   else if (!opts.preserveOrigin && !sameReaderRerender) readerOriginContext = backDest==='autour' ? captureReaderOriginContext() : captureNavigationContext(backDest);
   readerBack     = backDest;
   currentVolume  = vol;
-  await loadVolumeData(vol);
+  await ensureVolumeReaderData(vol);
 
   let requestedEntry=(corpusCache[vol].allById&&corpusCache[vol].allById[entryId])||corpusCache[vol].byId[entryId];
   const requestedPara=pendingParaId?paragraphRecordById(vol,pendingParaId):null;
@@ -3695,8 +3738,15 @@ async function toggleReperes() {
 }
 
 /* ═══ PARAGRAPH INTERACTION (highlight/note) ═══ */
-const HL_COLORS = ['yellow', 'blue', 'green', 'purple', 'pink'];
-const HL_COLOR_LABELS = Object.freeze({yellow:'Jaune',blue:'Bleu',green:'Vert',purple:'Violet',pink:'Rose'});
+const ACTIVE_HIGHLIGHT_PALETTE = Object.freeze([
+  Object.freeze({key:'yellow',label:'Jaune'}),
+  Object.freeze({key:'blue',label:'Bleu'}),
+  Object.freeze({key:'green',label:'Vert'}),
+  Object.freeze({key:'purple',label:'Violet'}),
+  Object.freeze({key:'pink',label:'Rose'})
+]);
+const ACTIVE_HIGHLIGHT_KEYS = Object.freeze(ACTIVE_HIGHLIGHT_PALETTE.map(x=>x.key));
+const HL_COLOR_LABELS = Object.freeze(Object.fromEntries(ACTIVE_HIGHLIGHT_PALETTE.map(x=>[x.key,x.label])));
 let androidParagraphHighlightMode = false;
 
 function isAndroidHighlightPlatform() {
@@ -3841,7 +3891,7 @@ function checkAndShowHighlightPopup(paraEl) {
     selectionRange = { text: grouped, parts: parts };
     selectionCaptureAt = Date.now();
     showSelectionContext();
-    hideHlPopup();
+    if (typeof cpMode !== 'undefined' && cpMode === 'edit') closeHighlightPicker();
   } catch(err) {
     console.warn('LDC: selection capture failed', err);
   }
@@ -3918,7 +3968,6 @@ function closeContextPanel(opts) {
     selectionCaptureAt = 0;
   }
   contextTarget = null;
-  try { hideHlPopup(); } catch (e) {}
 }
 
 function contextHighlight() {
@@ -3968,80 +4017,13 @@ function copySelectedText() { contextCopy(); }
 function closeSelText() { closeContextPanel(); }
 function showSelText() { showSelectionContext(); }
 
-function highlightViewportBounds() {
-  const vv = window.visualViewport;
-  if (vv) {
-    const left = Number(vv.offsetLeft || 0), top = Number(vv.offsetTop || 0);
-    const width = Number(vv.width || window.innerWidth), height = Number(vv.height || window.innerHeight);
-    return {left,top,width,height,right:left+width,bottom:top+height,source:'visualViewport'};
-  }
-  const width = window.innerWidth, height = window.innerHeight;
-  return {left:0,top:0,width,height,right:width,bottom:height,source:'layoutViewport'};
-}
+let highlightPickerReturnMark = null;
+let highlightPickerReturnPara = null;
 
-function positionHlPopup(rect, forceFloating) {
-  const popup = document.getElementById('hl-popup');
-  if (!popup || !rect) return null;
-  // New selections never use this popup. Existing highlights do, on every platform,
-  // matching the 24 Heures existing-highlight contract.
-  if (isCoarsePointer() && !forceFloating) { popup.classList.remove('show'); showSelectionContext(); return null; }
-
-  const vb = highlightViewportBounds();
-  const margin = 8, gap = 8;
-  popup.style.visibility = 'hidden';
-  popup.style.maxWidth = Math.max(0, vb.width - margin * 2) + 'px';
-  popup.style.boxSizing = 'border-box';
-  popup.style.left = Math.round(vb.left + margin) + 'px';
-  popup.style.top = Math.round(vb.top + margin) + 'px';
-  popup.classList.add('show');
-
-  // IMPORTANT: offsetWidth/offsetHeight are the untransformed layout dimensions.
-  // Do not use getBoundingClientRect() for popup size while an opening animation may
-  // be scaled; this is the same class of bug corrected in 24 Heures v101.57.
-  const popupWidth = popup.offsetWidth;
-  const popupHeight = popup.offsetHeight;
-  const minLeft = vb.left + margin;
-  const maxLeft = Math.max(minLeft, vb.right - margin - popupWidth);
-  let left = rect.left + (rect.width || Math.max(0, rect.right - rect.left)) / 2 - popupWidth / 2;
-  left = Math.max(minLeft, Math.min(left, maxLeft));
-
-  const above = rect.top - gap - popupHeight;
-  const below = rect.bottom + gap;
-  const fitsAbove = above >= vb.top + margin;
-  const fitsBelow = below + popupHeight <= vb.bottom - margin;
-  const roomAbove = rect.top - (vb.top + margin);
-  const roomBelow = (vb.bottom - margin) - rect.bottom;
-  let top = (fitsAbove || (!fitsBelow && roomAbove >= roomBelow)) ? above : below;
-  const minTop = vb.top + margin;
-  const maxTop = Math.max(minTop, vb.bottom - margin - popupHeight);
-  top = Math.max(minTop, Math.min(top, maxTop));
-
-  popup.style.left = Math.round(left) + 'px';
-  popup.style.top = Math.round(top) + 'px';
-  popup.style.visibility = 'visible';
-  popup.dataset.placement = top < rect.top ? 'above' : 'below';
-  window.__ldcLastHighlightPopupLayout = {
-    viewport:vb, margin, gap, popupWidth, popupHeight,
-    left:Math.round(left), top:Math.round(top), placement:popup.dataset.placement
-  };
-  return window.__ldcLastHighlightPopupLayout;
-}
-
-let hlPopupReturnMark = null;
-let hlPopupReturnPara = null;
-
-function focusHighlightPopupWithoutScroll() {
-  const popup = document.getElementById('hl-popup');
-  if (!popup || !popup.classList.contains('show')) return;
-  const target = popup.querySelector('.hl-dot.selected') || popup.querySelector('.hl-dot') || popup.querySelector('button');
-  if (!target) return;
-  try { target.focus({preventScroll:true}); } catch (e) { /* avoid focus-induced Safari scroll */ }
-}
-
-function restoreHighlightPopupFocus() {
-  const target = (hlPopupReturnMark && hlPopupReturnMark.isConnected) ? hlPopupReturnMark
-    : (hlPopupReturnPara && hlPopupReturnPara.isConnected ? hlPopupReturnPara : null);
-  hlPopupReturnMark = null; hlPopupReturnPara = null;
+function restoreHighlightPickerFocus() {
+  const target = (highlightPickerReturnMark && highlightPickerReturnMark.isConnected) ? highlightPickerReturnMark
+    : (highlightPickerReturnPara && highlightPickerReturnPara.isConnected ? highlightPickerReturnPara : null);
+  highlightPickerReturnMark = null; highlightPickerReturnPara = null;
   if (!target) return;
   const hadTabIndex = target.hasAttribute('tabindex');
   const oldTabIndex = target.getAttribute('tabindex');
@@ -4051,47 +4033,15 @@ function restoreHighlightPopupFocus() {
   else if (oldTabIndex != null) target.setAttribute('tabindex', oldTabIndex);
 }
 
-// Desktop/touch safety net: a fixed-position picker must not linger over unrelated text.
-(function () {
-  let t = null;
-  const dismiss = function () {
-    const popup = document.getElementById('hl-popup');
-    if (popup && popup.classList.contains('show')) hideHlPopup(false);
-  };
-  ['scroll', 'wheel', 'touchmove'].forEach(function (ev) {
-    window.addEventListener(ev, function () {
-      if (t) return;
-      t = setTimeout(function () { t = null; dismiss(); }, 60);
-    }, { passive: true });
-  });
-  if (window.visualViewport) {
-    ['scroll','resize'].forEach(function(ev){
-      window.visualViewport.addEventListener(ev, dismiss, {passive:true});
-    });
-  }
-})();
-
 function showExistingHighlightPopup(markEl) {
   const id = parseInt(markEl && markEl.dataset && markEl.dataset.hlId, 10);
   if (!id) return;
   const colorClass = [...markEl.classList].find(c => c.startsWith('hl-') && c !== 'hl');
   const currentColor = colorClass ? colorClass.replace('hl-', '') : '';
-  const popup = document.getElementById('hl-popup');
-  hlPopupReturnMark = markEl;
-  hlPopupReturnPara = markEl.closest('.para-fragment');
+  highlightPickerReturnMark = markEl;
+  highlightPickerReturnPara = markEl.closest('.para-fragment');
   try { window.getSelection().removeAllRanges(); } catch (e) {}
-  popup.innerHTML =
-    HL_COLORS.map(c => `<button type="button" class="hl-dot hl-${c}${c===currentColor?' selected':''}" onclick="recolorHighlight(${id},'${c}')" aria-label="Changer en ${HL_COLOR_LABELS[c]}" title="${HL_COLOR_LABELS[c]}" aria-pressed="${c===currentColor?'true':'false'}"></button>`).join('') +
-    `<button type="button" class="hl-del-btn" onclick="deleteHighlightFromReader(${id})" aria-label="Supprimer le surlignage" title="Supprimer le surlignage"><i class="ti ti-trash"></i></button>
-     <button type="button" class="hl-opt" onclick="hideHlPopup(true)" aria-label="Fermer" title="Fermer">✕</button>`;
-  const rect = markEl.getBoundingClientRect();
-  positionHlPopup(rect, true);
-  const sc = document.getElementById('reader-scroll');
-  const before = sc ? sc.scrollTop : null;
-  requestAnimationFrame(() => {
-    focusHighlightPopupWithoutScroll();
-    if (sc && before != null && Math.abs(sc.scrollTop - before) > 1) sc.scrollTop = before;
-  });
+  openHighlightPicker({editHighlightId:id,currentColor,returnMark:markEl});
 }
 
 // A cross-fragment highlight is several part records sharing a
@@ -4116,13 +4066,13 @@ function unwrapHighlightMark(markEl) {
 }
 async function recolorHighlight(id, color) {
   const hl = await dbGet('highlights', id);
-  if (!hl || !USER_DATA_HL_COLORS.includes(color)) return;
+  if (!hl || !ACTIVE_HIGHLIGHT_KEYS.includes(color)) return;
   const parts = await highlightGroupSiblings(hl);
   parts.forEach(part => { part.color = color; part.ts = Date.now(); });
   try { await dbPutManyAtomic('highlights', parts); }
   catch(e){ console.warn('LDC: highlight recolour persistence failed',e); showToast('Couleur non modifiée — stockage local indisponible'); return; }
   parts.forEach(part => document.querySelectorAll('mark.hl[data-hl-id="'+part.id+'"]').forEach(m => replaceHighlightColorClass(m,color)));
-  hideHlPopup(true);
+  closeHighlightPicker({restoreFocus:true});
   showToast('Couleur modifiée');
 }
 
@@ -4133,43 +4083,8 @@ async function deleteHighlightFromReader(id) {
   try { await dbDeleteManyAtomic('highlights', parts.map(p=>p.id)); }
   catch(e){ console.warn('LDC: highlight delete failed',e); showToast('Surlignage non supprimé — stockage local indisponible'); return; }
   parts.forEach(part => document.querySelectorAll('mark.hl[data-hl-id="'+part.id+'"]').forEach(unwrapHighlightMark));
-  hideHlPopup(true);
+  closeHighlightPicker({restoreFocus:true});
   showToast('Surlignage supprimé');
-}
-
-document.addEventListener('touchend', e => {
-  // Small delay to let iOS commit ordinary text selections before we check.
-  // A touch on an existing highlight intentionally opens #hl-popup on the ensuing
-  // click; do not let this legacy safety timer close it 300 ms later.
-  if (!e.target.closest('#hl-popup, mark.hl')) {
-    setTimeout(() => {
-      const sel = window.getSelection();
-      if (!sel || sel.toString().trim().length <= 3) hideHlPopup(false);
-    }, 300);
-  }
-});
-
-document.addEventListener('mousedown', e => {
-  // Don't dismiss for a click/tap that lands inside a paragraph while there is
-  // still an active (non-collapsed) text selection — that's the user adjusting
-  // their selection handles, not dismissing the popup. Only hide on a genuine
-  // tap outside both the popup and any in-progress selection.
-  if (e.target.closest('#hl-popup')) return;
-  const sel = window.getSelection();
-  const hasActiveSelection = sel && !sel.isCollapsed && sel.toString().trim().length > 3;
-  if (hasActiveSelection && e.target.closest('.dp')) return;
-  hideHlPopup(false);
-});
-
-function hideHlPopup(restoreFocus) {
-  const popup = document.getElementById('hl-popup');
-  if (popup) {
-    popup.classList.remove('show');
-    popup.style.visibility = '';
-    popup.removeAttribute('data-placement');
-  }
-  if (restoreFocus) restoreHighlightPopupFocus();
-  else { hlPopupReturnMark = null; hlPopupReturnPara = null; }
 }
 
 // Walk text nodes of paraEl, skipping .speech-label spans, to get canonical text
@@ -4214,17 +4129,39 @@ function canonicalOffset(paraEl, targetNode, targetOffset) {
    collapse the live selection, but selectionRange/selectionParaId (set by the
    selection handler) survive, so we snapshot them and restore before applying. */
 let cpSavedParts = null, cpSavedParaId = null, cpSavedScrollTop = null, cpSavedSemantic = null;
+let cpMode = 'create', cpEditingHighlightId = null;
+
+function renderHighlightPickerPalette(currentColor) {
+  const box=document.getElementById('cp-swatches');
+  if (!box) return;
+  box.innerHTML = ACTIVE_HIGHLIGHT_PALETTE.map(item =>
+    `<button type="button" class="cp-swatch cp-${item.key}${item.key===currentColor?' selected':''}" data-hl-color="${item.key}" onclick="pickHighlight('${item.key}')" aria-label="${item.label}" title="${item.label}" aria-pressed="${item.key===currentColor?'true':'false'}"></button>`
+  ).join('');
+}
 
 function syncHighlightPickerState(currentColor) {
-  document.querySelectorAll('#cp-sheet .cp-swatch').forEach(btn => {
-    const selected = !!currentColor && btn.dataset.hlColor === currentColor;
-    btn.classList.toggle('selected', selected);
-    btn.setAttribute('aria-pressed', selected ? 'true' : 'false');
-  });
+  renderHighlightPickerPalette(currentColor);
 }
 
 function openHighlightPicker(opts) {
   opts = opts || {};
+  const editId=Number(opts.editHighlightId||0);
+  cpMode=editId?'edit':'create'; cpEditingHighlightId=editId||null;
+  const sc = document.getElementById('reader-scroll');
+  cpSavedScrollTop = sc ? sc.scrollTop : null;
+  try { cpSavedSemantic = captureSemanticReadingPosition(); } catch(e) { cpSavedSemantic = null; }
+
+  if (cpMode==='edit') {
+    cpSavedParts=null; cpSavedParaId=null;
+    if (opts.returnMark) { highlightPickerReturnMark=opts.returnMark; highlightPickerReturnPara=opts.returnMark.closest('.para-fragment'); }
+    try { window.getSelection().removeAllRanges(); } catch (e) {}
+    const label=document.getElementById('cp-label'); if(label)label.textContent='Changer la couleur';
+    syncHighlightPickerState(ACTIVE_HIGHLIGHT_KEYS.includes(opts.currentColor)?opts.currentColor:null);
+    const remove=document.getElementById('cp-remove'); if(remove)remove.style.display='block';
+    const ov=document.getElementById('cp-overlay'); if(ov)ov.classList.add('show');
+    return;
+  }
+
   const parts = (contextTarget && contextTarget.parts && contextTarget.parts.length)
     ? contextTarget.parts
     : (window.lastSelParts && window.lastSelParts.length ? window.lastSelParts : []);
@@ -4232,15 +4169,9 @@ function openHighlightPicker(opts) {
   cpSavedParaId = (contextTarget && contextTarget.paraId) || selectionParaId || (parts[0] && parts[0].para_id) || null;
   if (!cpSavedParts || !cpSavedParts.length || !cpSavedParaId) {
     showToast('Sélectionnez d’abord un passage');
+    cpMode='create'; cpEditingHighlightId=null;
     return;
   }
-  const sc = document.getElementById('reader-scroll');
-  cpSavedScrollTop = sc ? sc.scrollTop : null;
-  try { cpSavedSemantic = captureSemanticReadingPosition(); } catch(e) { cpSavedSemantic = null; }
-  try { hideHlPopup(); } catch (e) {}
-  // The canonical parts are already frozen. On iPhone/iPad, keeping/restoring a
-  // native Range while the colour sheet opens causes Safari selection rectangles
-  // and can scroll the reader. Collapse it now and never addRange() it back.
   if (isCoarsePointer()) {
     try { window.getSelection().removeAllRanges(); } catch (e) {}
     window.lastLiveRange = null;
@@ -4251,36 +4182,50 @@ function openHighlightPicker(opts) {
   const label = document.getElementById('cp-label');
   if (label) label.textContent = opts.paragraphMode ? 'Surligner ce paragraphe en' : 'Surligner en';
   syncHighlightPickerState(null);
+  const remove=document.getElementById('cp-remove'); if(remove)remove.style.display='none';
   const ov = document.getElementById('cp-overlay');
   if (ov) ov.classList.add('show');
 }
 
-function closeHighlightPicker() {
+function closeHighlightPicker(opts) {
+  opts=opts||{};
   const ov = document.getElementById('cp-overlay');
   if (ov) ov.classList.remove('show');
   cpSavedParts = null; cpSavedParaId = null; cpSavedScrollTop = null; cpSavedSemantic = null;
+  cpMode='create'; cpEditingHighlightId=null;
   const label = document.getElementById('cp-label'); if (label) label.textContent = 'Surligner en';
+  const remove=document.getElementById('cp-remove'); if(remove)remove.style.display='none';
   syncHighlightPickerState(null);
-  // Cancelling the picker also ends the selection action; never leave a stale
-  // invisible context target armed for a later click.
   closeContextPanel();
+  if(opts.restoreFocus) restoreHighlightPickerFocus();
+  else { highlightPickerReturnMark=null; highlightPickerReturnPara=null; }
 }
 
 async function pickHighlight(color) {
-  if (!HL_COLORS.includes(color)) { showToast('Couleur de surlignage indisponible'); return; }
+  if (!ACTIVE_HIGHLIGHT_KEYS.includes(color)) { showToast('Couleur de surlignage indisponible'); return; }
+  if (cpMode==='edit' && cpEditingHighlightId) {
+    const id=cpEditingHighlightId;
+    await recolorHighlight(id,color);
+    return;
+  }
   const parts = cpSavedParts ? JSON.parse(JSON.stringify(cpSavedParts)) : null;
   const viewport = {scrollTop:cpSavedScrollTop, semantic:cpSavedSemantic};
   const ov = document.getElementById('cp-overlay');
   if (ov) ov.classList.remove('show');
   await applyHighlight(color, parts, viewport);
   cpSavedParts = null; cpSavedParaId = null; cpSavedScrollTop = null; cpSavedSemantic = null;
+  cpMode='create'; cpEditingHighlightId=null;
   closeContextPanel();
+}
+
+async function deleteHighlightFromSharedPicker() {
+  if (cpMode!=='edit' || !cpEditingHighlightId) return;
+  await deleteHighlightFromReader(cpEditingHighlightId);
 }
 
 async function applyHighlight(color, frozenParts, viewport) {
   if (!currentEntry) return;
-  if (!HL_COLORS.includes(color)) { showToast('Couleur de surlignage indisponible'); return; }
-  hideHlPopup();
+  if (!ACTIVE_HIGHLIGHT_KEYS.includes(color)) { showToast('Couleur de surlignage indisponible'); return; }
 
   // Frozen canonical parts captured while the selection was live are authoritative.
   // Live Selection is only a desktop fallback; iOS is deliberately never restored.
@@ -4377,7 +4322,7 @@ async function migrateAnchorsToV2(opts) {
   const fold = x => (window.LDCAnchor ? LDCAnchor.fold(x) : String(x || '').trim());
   const hls = await dbGetAll('highlights');
   async function flowMembersOf(vol, paraId) {
-    await loadVolumeData(vol);
+    await ensureVolumeReaderData(vol);
     const hit = (flowCache[vol] || {})[paraId];
     return hit ? hit.group.members.map(m => m.paragraph_id) : [paraId];
   }
@@ -4433,13 +4378,13 @@ function volumeOfStableRef(ref) {
 
 async function currentParagraph(vol, entryId, paraId) {
   if (!vol || !entryId || !paraId) return null;
-  try { await loadVolumeData(vol); return (parasCache[vol]||[]).find(p=>p.entry_id===entryId&&p.id===paraId)||null; }
+  try { await ensureVolumeReaderData(vol); return (parasCache[vol]||[]).find(p=>p.entry_id===entryId&&p.id===paraId)||null; }
   catch(e){ return null; }
 }
 
 async function currentEntryById(vol, entryId) {
   if (!vol || !entryId) return null;
-  try { await loadVolumeData(vol); return (corpusCache[vol] && ((corpusCache[vol].allById||{})[entryId] || corpusCache[vol].byId[entryId])) || null; }
+  try { await ensureVolumeIndex(vol); return (corpusCache[vol] && ((corpusCache[vol].allById||{})[entryId] || corpusCache[vol].byId[entryId])) || null; }
   catch(e){ return null; }
 }
 
@@ -4594,7 +4539,6 @@ function openNoteSheet() {
 }
 
 function showNoteSheet() {
-  hideHlPopup();
   openNoteSheet();
 }
 
@@ -4759,7 +4703,6 @@ async function addToCollection(colId, colName) {
 }
 
 function addToCollectionFromSelection() {
-  hideHlPopup();
   openColSheet(selectionParaId);
 }
 
@@ -5019,7 +4962,8 @@ const SUPPLEMENT_BADGE = 'COMPLÉMENT · IT-PM';
 const SUPPLEMENT_PROVENANCE_TEXT = 'Complément au corpus aligné : texte absent de l’édition AFLP de référence. Traduction française établie directement d’après IT-PM. Queen et Hugh Owen ont été utilisés comme traductions comparatives.';
 let supplementMode = 'enriched';
 let currentSupplementFocusId = null;
-let supplementRegistry = null, supplementSearchData = null, supplementSpeakerData = null, supplementManifest = null, supplementLoading = null;
+let supplementRegistry = null, supplementSearchData = null, supplementSpeakerData = null, supplementManifest = null;
+let supplementRegistryLoading = null, supplementSearchLoading = null, supplementSpeakerLoading = null;
 let supplementEntryIds = new Set();
 function renderSpeakerFilterRow() {
   const row = document.getElementById('speaker-filter-row');
@@ -5294,7 +5238,7 @@ async function loadSearchMetadataIndex() {
   if (searchMetadataIndex) return searchMetadataIndex;
   if (searchMetadataLoading) return searchMetadataLoading;
   searchMetadataLoading = (async () => {
-    await loadSupplementData();
+    await loadSupplementRegistryData();
     const r = await fetch(`corpus/search_metadata_index.json?${CORPUS_CV}`);
     if (!r.ok) throw new Error(`metadata index HTTP ${r.status}`);
     const d = await r.json();
@@ -5417,7 +5361,7 @@ async function findMetadataHits(raw, vols, speakerFilter) {
 }
 
 async function fetchSearchShard(vol, signal, keepInMemory=false) {
-  await loadSupplementData();
+  await loadSupplementSearchData();
   let base=searchCache[vol];
   if(!base){
     const pad=String(vol).padStart(2,'0');
@@ -5430,7 +5374,7 @@ async function fetchSearchShard(vol, signal, keepInMemory=false) {
 }
 
 async function fetchSpeakerShard(vol, signal, keepInMemory=false) {
-  await loadSupplementData();
+  await loadSupplementSpeakerData();
   if(baseSpeakerCache[vol]){const add=supplementSpeakersForVolume(vol);return supplementMode==='enriched'?baseSpeakerCache[vol].concat(add):(supplementMode==='additions'?add:baseSpeakerCache[vol]);}
   const pad=String(vol).padStart(2,'0');
   const r=await fetch(`corpus/speakers_${pad}.json?${CORPUS_CV}`,{signal});
@@ -5619,9 +5563,8 @@ async function runSearch() {
 }
 
 async function openFromSearch(item) {
-  await loadVolumeData(item.volume);
   pendingParaId = item.id;
-  openEntry(item.volume, item.entry_id, 'search');
+  return openEntry(item.volume, item.entry_id, 'search');
 }
 
 /* ═══════════════════════════════════════════════════════
@@ -5678,7 +5621,7 @@ async function updateEspaceBadges() {
 async function renderStats() {
   const el=document.getElementById('ep-stats');if(!el)return;
   const notes=await dbGetAll('notes'), hls=await dbGetAll('highlights'), favs=await dbGetAll('favorites'), readAll=await dbGetAll('read_entries');
-  await loadSupplementData();
+  await loadSupplementRegistryData();
   const confirmedReads=readAll.filter(r=>isConfirmedReadRecord(r)&&readRecordVisibleInSourceMode(r));
   const hCount=highlightUserCount(hls), readCount=confirmedReads.length, tomesStarted=new Set(confirmedReads.map(r=>r.vol)).size;
   const entryDenominator=effectiveGlobalEntryCount();
@@ -5705,7 +5648,7 @@ async function deleteHighlight(id){const hl=await dbGet('highlights',id);if(!hl)
 
 async function renderFavorites(){
   const favs=(await dbGetAll('favorites')).sort((a,b)=>b.ts-a.ts),el=document.getElementById('ep-favorites');el.innerHTML='';if(!favs.length){el.innerHTML='<div class="empty-state"><i class="ti ti-heart-off"></i>Aucun favori pour l\'instant.</div>';return;}
-  favs.forEach(f=>{const d=document.createElement('div');d.className='espace-item';d.dataset.filterText=[f.stable_ref,f.title,f.date_display,'tome '+f.volume].join(' ');d.innerHTML=`<i class="ti ti-heart-filled ei-icon"></i><div class="ei-content"><div class="ei-ref">${escapeHtml(f.stable_ref||'—')} · Tome ${f.volume||'—'}</div><div class="ei-text">${escapeHtml(f.title||'')}</div><div class="ei-date">${escapeHtml(f.date_display||'')}</div>${supplementBadgeForUserRecord(f)}${staleBadge(f)}</div><button class="ei-del" onclick="deleteFav('${f.entry_id}')" aria-label="Retirer des favoris"><i class="ti ti-trash"></i></button>`;d.onclick=async e=>{if(e.target.closest('.ei-del'))return;if(f.supplement_id){await loadSupplementData();const sp=supplementById(f.supplement_id);if(sp){await openSupplementItem(sp,'espace');return;}}goToEntry(f.volume||volumeOfStableRef(f.stable_ref),f.host_entry_id||f.entry_id,null);};el.appendChild(d);});applyEspaceFilter();
+  favs.forEach(f=>{const d=document.createElement('div');d.className='espace-item';d.dataset.filterText=[f.stable_ref,f.title,f.date_display,'tome '+f.volume].join(' ');d.innerHTML=`<i class="ti ti-heart-filled ei-icon"></i><div class="ei-content"><div class="ei-ref">${escapeHtml(f.stable_ref||'—')} · Tome ${f.volume||'—'}</div><div class="ei-text">${escapeHtml(f.title||'')}</div><div class="ei-date">${escapeHtml(f.date_display||'')}</div>${supplementBadgeForUserRecord(f)}${staleBadge(f)}</div><button class="ei-del" onclick="deleteFav('${f.entry_id}')" aria-label="Retirer des favoris"><i class="ti ti-trash"></i></button>`;d.onclick=async e=>{if(e.target.closest('.ei-del'))return;if(f.supplement_id){await loadSupplementRegistryData();const sp=supplementById(f.supplement_id);if(sp){await openSupplementItem(sp,'espace');return;}}goToEntry(f.volume||volumeOfStableRef(f.stable_ref),f.host_entry_id||f.entry_id,null);};el.appendChild(d);});applyEspaceFilter();
 }
 async function deleteFav(entryId){try{await dbDelete('favorites',entryId);}catch(e){showToast('Favori non supprimé — stockage local indisponible');return;}updateEntryFavoriteIndicator(entryId,false);await renderFavorites();await updateEspaceBadges();showToast('Favori supprimé');}
 
@@ -5758,7 +5701,7 @@ function dbReplaceUserDataAtomic(state){return dbWriteStoresAtomic(USER_DATA_STO
 async function applyImportedPreferences(){const theme=await dbGet('settings','theme').catch(()=>null);const tv=theme&&THEME_VALUES.includes(theme.val)?theme.val:'system';document.documentElement.setAttribute('data-theme',tv);updateThemeBtn(tv);const level=await dbGet('settings','textLevel').catch(()=>null);applyTextLevel(level&&TEXT_LEVELS[level.val]?level.val:'normal');const rp=await dbGet('settings','showReperes').catch(()=>null);showReperes=!!(rp&&rp.val===true);applyReperesState();await initialiseSupplementMode();}
 async function confirmImportBackup(){if(!pendingBackupImport||!pendingBackupImport.validation.ok)return;const env=pendingBackupImport.env;try{await dbReplaceUserDataAtomic(env.state);await dbPut('settings',{key:'user_data_schema_version',value:2,ts:Date.now()});await migrateUserDataV3();await dbPut('settings',{key:'last_backup_import_at',val:new Date().toISOString(),source_version:env.version,ts:Date.now()});await refreshUserDataStaleness();await applyImportedPreferences();closeImportPreview();await renderEspace();showToast('Sauvegarde restaurée');}catch(e){console.error('LDC: import rolled back',e);showToast('Restauration annulée — aucune donnée remplacée');}}
 
-async function goToEntry(vol,entryId,paraId){if(paraId)pendingParaId=paraId;await loadVolumeData(vol);openEntry(vol,entryId,'espace');}
+async function goToEntry(vol,entryId,paraId){if(paraId)pendingParaId=paraId;return openEntry(vol,entryId,'espace');}
 
 /* ═══════════════════════════════════════════════════════
    LDC-E — STABLE DEEP LINKS + SUPPORT / PRIVACY HOOKS
@@ -5852,7 +5795,7 @@ async function applyInitialDeepLink(){
   const r=parseDeepLink(window.location.href);if(!r.ok)return routeFail(r.error);if(r.view==='root')return true;
   try{
     if(r.view==='tome'){await openTome(r.vol);return true;}
-    if(['entry','paragraph','related'].includes(r.view)){await loadVolumeData(r.vol);const c=corpusCache[r.vol],e=c&&(((c.allById||{})[r.entry])||c.byId[r.entry]);if(!e)return routeFail('entrée absente');if(r.para){const p=paragraphRecordById(r.vol,r.para);if(!p||p.entry_id!==r.entry)return routeFail('paragraphe absent');pendingParaId=r.para;}await openEntry(r.vol,r.entry,r.view==='related'?'tomes':'tomes');return true;}
+    if(['entry','paragraph','related'].includes(r.view)){await ensureVolumeIndex(r.vol);const c=corpusCache[r.vol],e=c&&(((c.allById||{})[r.entry])||c.byId[r.entry]);if(!e)return routeFail('entrée absente');if(r.para){await ensureVolumeReaderData(r.vol);const p=paragraphRecordById(r.vol,r.para);if(!p||p.entry_id!==r.entry)return routeFail('paragraphe absent');pendingParaId=r.para;}await openEntry(r.vol,r.entry,r.view==='related'?'tomes':'tomes');return true;}
     if(r.view==='search'){goSearch();document.getElementById('search-input').value=r.q;await runSearch();return true;}
     if(r.view==='date'){await openDateNav();const [y,m,d]=r.date.split('-').map(Number);dnYear=y;dnMonth=m;dnDay=d;renderDnYearStrip();renderDnMonthGrid();renderDnDayGrid();renderDnResultCard();const k=`${y}-${m}-${d}`;if(!DN_BY_YMD[k]||!DN_BY_YMD[k].length)return routeFail('date sans entrée','search');return true;}
     if(r.view==='collection'){await goCollections();const col=await dbGet('collections',r.collection).catch(()=>null);if(!col){showToast('Collection absente sur cet appareil');return true;}requestAnimationFrame(()=>{const el=document.querySelector(`.col-section[data-col-id="${r.collection}"]`);if(el)el.scrollIntoView({block:'start'});});return true;}
@@ -5890,7 +5833,7 @@ async function buildAutourContent(container) {
   // Skip — user is already reading the entry
 
   // ── Section 2: Même tome — nearby entries / additions (±5) ──
-  await loadVolumeData(vol);
+  await ensureVolumeIndex(vol);
   const activeSupp=activeReaderSupplement();
   if(activeSupp&&supplementsOnly()){
     const items=sortedSupplementItems(supplementItemsForVolume(vol));
@@ -6255,8 +6198,8 @@ async function boot() {
   applyReperesState();
   syncHighlightPlatformUI();
 
-  // Preload vol 1 in background
-  loadVolumeData(1).catch(()=>{});
+  // Preload only lightweight Tome 1 metadata in background. Heavy reader data stays lazy.
+  ensureVolumeIndex(1).catch(()=>{});
 
   // Set version strings
   const vb = document.getElementById('version-badge');
@@ -6312,8 +6255,9 @@ async function boot() {
     initOfflineState().catch(()=>{});
   }
 
-  // Background preload of compact metadata only; body search shards remain lazy.
+  // Background Tome-index preload remains lightweight; optional supplement search/speaker shards stay lazy until their feature requires them.
   setTimeout(() => preloadSearchMetadata().catch(()=>{}), 500);
+  scheduleAllVolumeIndexesPreload();
 }
 
 /* ═══════════════════════════════════════════════════════
@@ -6348,7 +6292,7 @@ function parseEntryDate(entry) {
 
 async function buildDateIndex() {
   if (dnBuilt) return;
-  await loadSupplementData();
+  await loadSupplementRegistryData();
   const pushRow=(entry)=>{
     const parsed=parseEntryDate(entry);if(!parsed){const dd=(entry.date_display||'').trim();if(dd)DN_UNDATED.push(entry);return;}
     const [y,mo,d]=parsed,ymd=`${y}-${mo}-${d}`,ym=`${y}-${mo}`;
@@ -6565,10 +6509,10 @@ function renderDnResultCard() {
    CacheStorage contains public app/corpus bytes only. IndexedDB settings holds
    the user-visible completion record; it is not itself the offline payload.
 ═══════════════════════════════════════════════════════ */
-const OFFLINE_CACHE_VERSION = 'ldc-le-livre-du-ciel-offline-v2.19.12-R1B';
+const OFFLINE_CACHE_VERSION = 'ldc-le-livre-du-ciel-offline-v2.19.15-R1B';
 const OFFLINE_MANIFEST_SCHEMA = 'ldc-offline-manifest-v2';
-const OFFLINE_CONTENT_BINDING = 'be9f9339a51913b42000402190987c8fe60a9101ffd52fbc58f6178f0571f8d3';
-const OFFLINE_CORPUS_MANIFEST_SHA256 = '0701191761994c69a32eb4ca1b33312f2c5e043939a3a4d61b0f326739cb12c8';
+const OFFLINE_CONTENT_BINDING = '108f514979df88d298f8c3d4a7d548577b52eacdf71780a79e99f58fa43f4189';
+const OFFLINE_CORPUS_MANIFEST_SHA256 = '6c04cc4f21e9c18475b27c43d14a1bfa787112e659306f668874d22b7d49ae54';
 const OFFLINE_STATES = Object.freeze(['NOT_PREPARED','CHECKING','DOWNLOADING','READY','PARTIAL','ERROR','CANCELLED']);
 let offlineUiState = {state:'NOT_PREPARED',completed:0,total:0,failed:[],total_bytes:0,job_id:null,message:'',content_binding_sha256:OFFLINE_CONTENT_BINDING,corpus_manifest_sha256:OFFLINE_CORPUS_MANIFEST_SHA256};
 const offlineStatusWaiters = new Map();

@@ -1,4 +1,38 @@
-# Le Livre du Ciel — v2.19.12-R1B
+# Le Livre du Ciel — v2.19.15-R1B
+
+## RA5C — réconciliation ciblée des locuteurs (2026-08-16)
+
+RA5C part exactement du ZIP v2.19.14-R1B bloqué (`16b9d2377a0d29db7e81d6b1cff546cd9f14ccee3a47973d0a4a825c25639ee1`). Il ne rouvre pas l’adjudication générale du corpus. Les décisions antérieures fondées sur le français, Queen et Hugh Owen restent l’autorité; RA5C réconcilie uniquement sept paragraphes où les offsets/structures de citation n’étaient plus synchronisés avec le texte canonique final ou avec la projection locuteur extérieur/intérieur.
+
+- Tome 11: trois dérives d’offset après réparations typographiques/de guillemets sont resynchronisées, sans changement d’identité du locuteur.
+- Tome 23 E0040 P117-P118: le tour extérieur continu de Jésus est restauré; les citations illustratives internes restent visibles et sont structurellement imbriquées.
+- Tome 25 E0035 P040: le mot `seule` est réintégré dans `«Une seule»`; la citation interne reste visible.
+- Tome 20 E0012 P073: Jésus reste le locuteur extérieur; la prière complète déjà identifiée par les preuves antérieures comme parole du Fiat personnifié est `PERSONIFIED_VOICE` en profondeur 2 et hérite visuellement de la typographie de Jésus.
+
+Le texte dévotionnel canonique, les IDs, l’ordre, la recherche, les suppléments, les cartes display/flow, `speech_model.js` et les schémas de données utilisateur ne sont pas modifiés. Les seuls fichiers `corpus/**` modifiés par RA5C sont `corpus/manifest.json` et les quatre shards de locuteurs `speakers_11.json`, `speakers_20.json`, `speakers_23.json`, `speakers_25.json`. Le total de segments backbone devient 65 110, dont 59 009 JESUS et 468 PERSONIFIED_VOICE.
+
+
+## RA5B — recheck profond performance + intégrité des preuves (2026-08-16)
+
+RA5B repart des octets v2.19.13-R1B (`65ade47bf7baa385bf4b5951d91e11780c41a58e341d16253131c084bed15044`). Le recheck a confirmé les trois objectifs RA5 mais a trouvé un défaut de profondeur dans le chargement : les chemins légers (`boot`, Tomes, index de Tome, statistiques/dates) appelaient encore le chargeur de suppléments monolithique et téléchargeaient aussi `supplement_search.json` et `supplement_speakers.json` avant que Recherche ou le lecteur n'en aient besoin. Les chargeurs sont maintenant séparés : registre+manifeste pour la navigation/index, locuteurs uniquement pour le lecteur/filtre locuteur, recherche uniquement pour les recherches textuelles. La sémantique du corpus et des compléments ne change pas.
+
+Le recheck a aussi invalidé l'ancien paquet de preuves RA5 comme preuve autonome : plusieurs scripts dépendaient de chemins absolus `/mnt/data/ra5_exec` et le rebuild déterministe exigeait un ZIP baseline absent du paquet de preuves. Le nouveau paquet de preuves RA5B inclut donc la baseline v2.19.13 et des outils relatifs/portables.
+
+À l’étape historique RA5B, les **224 fichiers `corpus/**`, `speech_model.js`, les IDs, offsets de locuteur, la recherche, les schémas utilisateurs et la palette active Jaune · Bleu · Vert · Violet · Rose restaient inchangés**. La navigation basse persistante et le chargement Tier-1/Tier-2 RA5 sont conservés.
+
+**Blocage découvert par le recheck global des paroles directes.** Le test RA4C/RA5 prouvait que chaque *segment déjà validé comme Jésus/Marie* commençait en bloc, mais il ne prouvait pas que la géométrie de tous les segments couvrait l'intégralité de chaque parole directe. Le recheck a trouvé plusieurs sous-couvertures certaines (notamment T11 24-02-1912 P009, T11 14-10-1914 P004, T11 14-12-1916 P007, T23 E0040 P117-P118 et T25 E0035 P040) ainsi qu'un cas imbriqué T20 E0012 P073 où le discours extérieur de Jésus contient une citation personnifiée du Fiat. Ce dernier cas interdit une expansion automatique sans adjudication source/locuteur. **Historique RA5B : v2.19.14 était donc un candidat correctif de travail, non autorisé au déploiement.** Ce blocage est précisément celui traité par RA5C; les validations physiques/PWA restent séparées et externes.
+
+
+## RA5 — navigation persistante, ouverture rapide des Tomes et palette unique (2026-08-16)
+
+RA5 part des octets v2.19.12-R1B (`cc1522e9c5480eef558ac1090467a54778bea874937894df26837314bb0108d4`). Le bandeau principal `Accueil · Tomes · Recherche · Mon Espace` était déjà structurellement persistant dans le shell v2.19.12 ; aucun changement gratuit de navigation n'a été introduit.
+
+L'ouverture d'un Tome utilise maintenant deux niveaux : le fichier léger `volume_NN.json` suffit pour afficher la liste des entrées, tandis que `paragraphs_NN.json`, `speakers_NN.json`, `display_NN.json` et `flow_NN.json` sont chargés séparément lorsque le lecteur en a besoin ou en préchargement non bloquant après l'affichage de la liste. Les index légers peuvent rester en mémoire pour la session ; le LRU de 4 volumes ne concerne que les données lourdes du lecteur. Les métadonnées `volume_NN.json` sont servies cache-first par le service worker versionné, avec repli réseau.
+
+La création et la modification d'un surlignage utilisent désormais une seule palette et le même sélecteur : **Jaune · Bleu · Vert · Violet · Rose** (`yellow · blue · green · purple · pink`). La valeur historique `gold` reste lisible/importable pour compatibilité mais n'est jamais proposée comme sixième choix actif ni écrite par une nouvelle création/recoloration.
+
+À l’étape historique RA5, les **224 fichiers `corpus/**` étaient protégés et inchangés**. RA5 ne modifiait ni le texte, ni les IDs, ni les offsets de locuteur, ni la recherche, ni les schémas de données personnelles, ni le contrat RA4C des paroles directes. Une validation physique des octets v2.19.13 exacts restait requise.
+
 
 ## LDC-AFLP-SUP-T1-RA4C-DIRECT-SPEECH-BLOCK-START-GLOBAL-HARDENING — séparation globale des paroles directes
 
@@ -32,9 +66,9 @@ Les traductions françaises ont été établies directement à partir d'**IT-PM*
 
 ### Protection du backbone
 
-Les **224 fichiers `corpus/**` du paquet actuel restent byte-identical par rapport à v2.19.11**. Les 220 actifs hérités de GR9 constituent le noyau historique ; les 4 fichiers de supplément ajoutés ensuite restent eux aussi inchangés. Aucun texte, ID, ordre, offset de locuteur, recherche ou métadonnée canonique R1B n'est réécrit par ce recheck.
+À l’étape historique RA4C, les **224 fichiers `corpus/**` du paquet de cette étape restaient byte-identical par rapport à v2.19.11**. Les 220 actifs hérités de GR9 constituaient le noyau historique ; les 4 fichiers de supplément ajoutés ensuite restaient eux aussi inchangés. Aucun texte, ID, ordre, offset de locuteur, recherche ou métadonnée canonique R1B n’était réécrit par ce recheck.
 
-Backbone : **2 312 entrées · 74 348 paragraphes · 74 348 recherches · 65 107 segments sémantiques**.  
+À l’étape historique RA4C, backbone : **2 312 entrées · 74 348 paragraphes · 74 348 recherches · 65 107 segments sémantiques**.  
 Vue enrichie : **2 324 entrées visibles · 74 427 paragraphes visibles**, dont 79 paragraphes `LDCSUP`.
 
 ### Recherche
@@ -43,7 +77,7 @@ La recherche **métadonnées + lexicale/BM25** couvre le backbone et les complé
 
 ### Hors ligne / PWA
 
-La préparation hors ligne inclut **224 actifs vérifiés** : les 220 actifs hérités et les 4 fichiers du supplément. L'identité de cache, le manifeste hors ligne et son content binding sont versionnés pour v2.19.12-R1B.
+La préparation hors ligne inclut **224 actifs vérifiés** : les 220 actifs hérités et les 4 fichiers du supplément. L'identité de cache, le manifeste hors ligne et son content binding sont versionnés pour v2.19.15-R1B.
 
 ### Limites de décision
 
@@ -88,19 +122,19 @@ RA4C repart des octets immuables v2.19.11-R1B (SHA-256 `949ec1e4b5af6f486c096e49
 
 Le contrat lecteur est maintenant explicite et global : **toute parole directe validée et visible de Jésus ou de Marie commence dans un nouveau paragraphe visuel** ; lorsqu'une narration de Luisa reprend après cette parole, elle commence également dans un nouveau paragraphe visuel. Les guillemets extérieurs redondants continuent d'être masqués uniquement dans la présentation ; le texte canonique, les offsets et les IDs restent inchangés. Les citations imbriquées/reportées que la projection attribue à Luisa restent du texte narratif et ne sont pas artificiellement transformées en parole directe.
 
-Les **224 fichiers `corpus/**` restent byte-identical** à v2.19.11. Aucun texte dévotionnel, ID de paragraphe, offset de locuteur, index de recherche, complément, schéma utilisateur ou donnée personnelle n'est modifié. Une validation physique des octets v2.19.12 exacts reste requise sur iPhone/iPad/Samsung et pour le cycle PWA/live-origin.
+À l’étape historique RA4C, les **224 fichiers `corpus/**` restaient byte-identical** à v2.19.11. Aucun texte dévotionnel, ID de paragraphe, offset de locuteur, index de recherche, complément, schéma utilisateur ou donnée personnelle n’était modifié. Une validation physique des octets exacts de cette étape restait requise sur iPhone/iPad/Samsung et pour le cycle PWA/live-origin.
 
 ## RA4B four-pass corrective recheck — superseded by RA4C (2026-08-16)
 
 RA4B repart des octets immuables v2.19.10-R1B (SHA-256 `6eb568094178a3c745873792a97ddbf61fe296ef4e26a72fa5d33d16c0617367`). L'audit indépendant a reproduit le build mais a refusé la conclusion globale RA4 sur les frontières de parole. La correction reste strictement dans la couche de présentation : cinq fins de parole directe de Jésus précédemment `inline` créent désormais un nouveau paragraphe visuel pour la narration qui suit ; deux guillemets ouvrants non adjacents sont masqués uniquement lorsque le contexte contient une attribution explicite à Jésus/Marie et aucun guillemet imbriqué ; les deux cas du tome 4 ont conduit à un scan global qui a identifié et corrigé six guillemets fermants séparés de l'offset par de la ponctuation, sans masquer cette ponctuation. Les citations intégrées telles que « Je vous épouserai dans la foi » restent inline et les citations imbriquées/reportées restent visibles.
 
-Le contraste du toast sombre validé en RA4 est conservé (12,17:1 en mode sombre ; 13,21:1 en mode clair). Aucun fichier `corpus/**`, aucun ID, aucun offset de locuteur, aucune donnée de recherche, aucun schéma utilisateur et aucune donnée personnelle ne change. Une validation physique des octets v2.19.11 exacts reste requise sur iPhone/iPad/Samsung et pour le cycle PWA/live-origin.
+Le contraste du toast sombre validé en RA4 est conservé (12,17:1 en mode sombre ; 13,21:1 en mode clair). Aucun fichier `corpus/**`, aucun ID, aucun offset de locuteur, aucune donnée de recherche, aucun schéma utilisateur et aucune donnée personnelle ne change. À l’étape historique RA4B, une validation physique des octets v2.19.11 était encore requise sur iPhone/iPad/Samsung et pour le cycle PWA/live-origin.
 
 ## RA4 initial speech-boundary / dark-toast hardening — superseded by RA4B recheck (2026-08-15)
 
 RA4 a corrigé le contraste des messages temporaires et une grande partie des guillemets/retours de narration sans modifier le corpus. Le recheck RA4B du 16 août a toutefois démontré que la couverture globale RA4 était incomplète : cinq fins de tours de parole directs encore classées `inline` laissaient la narration suivante sur la même ligne, deux guillemets ouvrants restaient visibles lorsque l'offset validé commençait après un court préfixe lexical explicitement attribué à Jésus, et deux cas du tome 4 ont révélé une classe de guillemets fermants restant visibles lorsque l'offset s'arrêtait avant la ponctuation terminale ; le scan global RA4B en a ensuite identifié six relevant de la même correction de présentation. Les preuves RA4 de type « 829/829 » ne couvraient que les cas déjà classés en bloc et ne constituaient donc pas une preuve exhaustive du défaut signalé. RA4B supersède cette conclusion.
 
-Le correctif de contraste RA4 est conservé. Les 224 fichiers `corpus/**`, les IDs et les offsets de locuteur restent inchangés.
+Le correctif de contraste RA4 est conservé. À l’étape historique RA4, les 224 fichiers `corpus/**`, les IDs et les offsets de locuteur restaient inchangés.
 
 ## RA3 four-pass corrective recheck (2026-08-15)
 
