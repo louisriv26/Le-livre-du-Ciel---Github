@@ -1,11 +1,11 @@
 {
   "schema": "ldc-offline-manifest-v2",
-  "app_version": "v2.19.7-R1B",
-  "cache_version": "ldc-le-livre-du-ciel-offline-v2.19.7-R1B",
+  "app_version": "v2.19.12-R1B",
+  "cache_version": "ldc-le-livre-du-ciel-offline-v2.19.12-R1B",
   "corpus_generation": "G036-AFLP-R1B-SUP-T1",
-  "scope": "COMPLETE_36_TOME_READING_PLUS_LDC_AFLP_SUP_T1_PLUS_LEXICAL_METADATA_SPEAKER_SEARCH__VECTOR_SEMANTIC_DISABLED_STALE_FOR_COMPOSITE",
+  "scope": "COMPLETE_36_TOME_READING_PLUS_LDC_AFLP_SUP_T1_PLUS_LEXICAL_METADATA_SPEAKER_SEARCH__VECTOR_EMBEDDING_SUBSYSTEM_RETIRED",
   "semantic_vector_search_included": false,
-  "semantic_vector_search_note": "Recherche « Par le sens » désactivée pour la génération composite : les vecteurs R1B sont conservés comme artefact de la dorsale AFLP mais ne couvrent pas les ajouts LDC-AFLP-SUP-T1.",
+  "semantic_vector_search_note": "Sous-système vectoriel/embeddings retiré de ce build. La recherche métadonnées + lexicale/BM25 reste autoritative sur le corpus composite; toute future recherche vectorielle exigera une reconstruction complète et une exécution bundlée/auto-hébergée séparément autorisée.",
   "asset_count": 224,
   "total_bytes": 167893131,
   "families": {
@@ -1588,5 +1588,5 @@
   ],
   "content_binding_schema": "ldc-offline-content-binding-v1",
   "corpus_manifest_sha256": "0701191761994c69a32eb4ca1b33312f2c5e043939a3a4d61b0f326739cb12c8",
-  "content_binding_sha256": "7a4bf41e73110cf6beefeababb883576e9267511a7f667677f9ab53f6a653e92"
+  "content_binding_sha256": "be9f9339a51913b42000402190987c8fe60a9101ffd52fbc58f6178f0571f8d3"
 }

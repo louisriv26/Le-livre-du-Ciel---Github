@@ -1,11 +1,11 @@
-const VERSION = 'ldc-v2.19.7-R1B';
+const VERSION = 'ldc-v2.19.12-R1B';
 const CACHE_PREFIX = 'ldc-le-livre-du-ciel-';
-const SHELL_CACHE = `${CACHE_PREFIX}shell-v2.19.7-R1B`;
-const RUNTIME_CACHE = `${CACHE_PREFIX}runtime-v2.19.7-R1B`;
-const OFFLINE_CACHE = 'ldc-le-livre-du-ciel-offline-v2.19.7-R1B';
+const SHELL_CACHE = `${CACHE_PREFIX}shell-v2.19.12-R1B`;
+const RUNTIME_CACHE = `${CACHE_PREFIX}runtime-v2.19.12-R1B`;
+const OFFLINE_CACHE = 'ldc-le-livre-du-ciel-offline-v2.19.12-R1B';
 const OFFLINE_MANIFEST_URL = './offline_manifest.json';
 const OFFLINE_MANIFEST_SCHEMA = 'ldc-offline-manifest-v2';
-const OFFLINE_CONTENT_BINDING = '7a4bf41e73110cf6beefeababb883576e9267511a7f667677f9ab53f6a653e92';
+const OFFLINE_CONTENT_BINDING = 'be9f9339a51913b42000402190987c8fe60a9101ffd52fbc58f6178f0571f8d3';
 const OFFLINE_CORPUS_MANIFEST_SHA256 = '0701191761994c69a32eb4ca1b33312f2c5e043939a3a4d61b0f326739cb12c8';
 const OFFLINE_META_PATH = '__ldc_offline_meta__.json';
 
@@ -62,7 +62,7 @@ async function loadOfflineManifest() {
   if(!r){r=await fetch(OFFLINE_MANIFEST_URL,{cache:'reload'});if(r&&r.ok)await shell.put(OFFLINE_MANIFEST_URL,r.clone());}
   if(!r||!r.ok)throw new Error('offline manifest indisponible');
   const m=await r.json();
-  if(m.schema!==OFFLINE_MANIFEST_SCHEMA||m.app_version!=='v2.19.7-R1B'||m.cache_version!==OFFLINE_CACHE)throw new Error('offline manifest incompatible');
+  if(m.schema!==OFFLINE_MANIFEST_SCHEMA||m.app_version!=='v2.19.12-R1B'||m.cache_version!==OFFLINE_CACHE)throw new Error('offline manifest incompatible');
   if(m.content_binding_schema!=='ldc-offline-content-binding-v1'||m.content_binding_sha256!==OFFLINE_CONTENT_BINDING)throw new Error('offline manifest binding incompatible');
   if(m.corpus_manifest_sha256!==OFFLINE_CORPUS_MANIFEST_SHA256)throw new Error('offline corpus manifest binding incompatible');
   const unique=[...new Set((m.assets||[]).map(a=>a.path))];
@@ -198,7 +198,7 @@ self.addEventListener('fetch',e=>{
   if(e.request.mode==='navigate'){
     e.respondWith(fetch(e.request).then(async res=>{if(res&&res.ok){const c=await caches.open(SHELL_CACHE);await c.put('./index.html',res.clone());}return res;}).catch(async()=>{const c=await caches.open(SHELL_CACHE);return (await c.match('./index.html'))||(await c.match('./'));}));return;
   }
-  if(path.includes('/corpus/')||path.includes('/embeddings_ldc')){
+  if(path.includes('/corpus/')){
     e.respondWith(cachedCorpusResponse(e.request,/\/corpus\/volume_\d+\.json$/.test(path)));return;
   }
   e.respondWith(fetch(e.request).then(async res=>{if(res&&res.ok){const c=await caches.open(SHELL_CACHE);await c.put(e.request,res.clone());}return res;}).catch(async()=>{const c=await caches.open(SHELL_CACHE);return (await c.match(e.request,{ignoreSearch:true}))||Response.error();}));

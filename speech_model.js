@@ -80,6 +80,7 @@
                        styled: isStyled(displaySpeaker),
                        confidence: s.confidence || null,
                        quotation_depth: s.quotation_depth == null ? null : s.quotation_depth,
+                       quote_depth: s.quote_depth == null ? null : s.quote_depth,
                        segment_ids: [s.segment_id] });
       cur = s.end_char;
     }
@@ -105,6 +106,8 @@
         last.text += iv.text;
         last.segment_ids = last.segment_ids.concat(iv.segment_ids);
         last.confidence = mergeConfidence(last.confidence, iv.confidence);
+        last.end_quotation_depth = iv.quotation_depth;
+        last.end_quote_depth = iv.quote_depth;
         merges.push({ at: iv.start, kind: 'abut', bridge: '' });
         continue;
       }
@@ -118,6 +121,8 @@
           last.text += iv.text + nxt.text;
           last.segment_ids = last.segment_ids.concat(nxt.segment_ids);
           last.confidence = mergeConfidence(last.confidence, nxt.confidence);
+          last.end_quotation_depth = nxt.quotation_depth;
+          last.end_quote_depth = nxt.quote_depth;
           merges.push({ at: iv.start, kind: 'non_lexical_bridge', bridge: iv.text });
           j++; // consume nxt
           continue;
@@ -126,20 +131,20 @@
       runs.push({ start: iv.start, end: iv.end, text: iv.text,
                   role: iv.role, speaker: iv.speaker, styled: iv.styled,
                   confidence: iv.confidence, segment_ids: iv.segment_ids.slice(),
+                  start_quotation_depth: iv.quotation_depth, end_quotation_depth: iv.quotation_depth,
+                  start_quote_depth: iv.quote_depth, end_quote_depth: iv.quote_depth,
                   presentation: null });
     }
 
-    /* 3 — block vs inline, decided per RUN (§7.7) */
+    /* 3 — presentation contract per RUN (RA4C).
+       Every validated visible Jesus/Mary direct-speech run starts as a new visual
+       paragraph. This is deliberately stronger than the earlier heuristic that
+       allowed embedded direct quotations to remain inline. Nested/reported quotes
+       resolved to Luisa are not styled and remain narrative. */
     for (var k = 0; k < runs.length; k++) {
       var r = runs[k];
       if (!r.styled) { r.presentation = 'narrative'; continue; }
-      var before = text.slice(0, r.start);
-      // strip a leading source section marker such as "(2) "
-      var beforeCore = before.replace(/^\s*\(\d+\)\s*/, '');
-      if (/^\s*$/.test(beforeCore)) { r.presentation = 'block'; continue; }
-      // explicit narrative attribution ending in a colon
-      if (/[:：]\s*["'«“„]?\s*$/.test(beforeCore)) { r.presentation = 'block'; continue; }
-      r.presentation = 'inline';
+      r.presentation = 'block';
     }
 
     return { ok: true, errors: [], intervals: intervals, runs: runs, merges: merges };
@@ -344,15 +349,18 @@
   var CLOSE = '»”"';
   // LDC-GR4 — display-only handling for direct-speech guillemets that sit
   // immediately OUTSIDE the validated speaker span. Canonical text is never changed.
-  // Inline/embedded quotations keep their punctuation; only block/continued speech
-  // receives outer-delimiter suppression.
+  // Outer delimiters of validated direct Jesus/Mary speech are display-suppressed.
+  // Nested/internal quotation punctuation is preserved through quotation-depth guards.
+  function isNestedStart(r) { return !!r && (Number(r.start_quotation_depth || 0) >= 2 || Number(r.start_quote_depth || 0) >= 2); }
+  function isNestedEnd(r) { return !!r && (Number(r.end_quotation_depth || 0) >= 2 || Number(r.end_quote_depth || 0) >= 2); }
   function splitNarrativeBoundaryDelimiters(t, prevRun, nextRun, hideOuter) {
     if (!hideOuter) return { lead: '', core: t, trail: '' };
     var lead = '', trail = '', core = t;
 
-    // Closing delimiter immediately after a block/continued styled run.
-    if (prevRun && prevRun.styled &&
-        (prevRun.presentation === 'block' || prevRun.isContinuation)) {
+    // Closing delimiter immediately after validated Jesus/Mary speech.
+    // The speaker styling is already the visible quotation cue, so the redundant
+    // outer guillemet is suppressed for block and inline speech alike.
+    if (prevRun && prevRun.styled && !isNestedEnd(prevRun)) {
       var cm = core.match(/^(\s*[»”"])/);
       if (cm) {
         lead = cm[1];
@@ -362,22 +370,106 @@
       }
     }
 
-    // Opening delimiter immediately before block speech. Suppress only after an
-    // explicit attribution colon, or when the prefix is delimiter/whitespace only.
-    if (nextRun && nextRun.styled && nextRun.presentation === 'block') {
+    // Opening delimiter immediately before validated Jesus/Mary speech.
+    // Hide only the delimiter token itself; all preceding narrative remains.
+    // Internal quotation marks inside a speech run remain untouched.
+    if (nextRun && nextRun.styled && !isNestedStart(nextRun)) {
       var om = core.match(/([«“„"]\s*)$/);
       if (om) {
-        var before = core.slice(0, core.length - om[1].length);
-        if (/^\s*$/.test(before)) {
-          trail = before + om[1];
-          core = '';
-        } else if (/[:：]\s*$/.test(before)) {
-          trail = om[1];
-          core = before;
-        }
+        trail = om[1];
+        core = core.slice(0, core.length - om[1].length);
       }
     }
     return { lead: lead, core: core, trail: trail };
+  }
+
+  // RA4B — narrow corrective handling for boundary delimiters that are not
+  // immediately adjacent to the validated speaker span. This is display-only:
+  // canonical text, speaker offsets and paragraph IDs stay unchanged.
+  function directAttributionBeforeOpening(t, pos) {
+    var prefix = t.slice(0, pos).trim();
+    // Conservative attribution vocabulary. This intentionally excludes generic
+    // reported-speech introductions such as "On dira toujours :".
+    return /(?:Jésus|Jesus|Il|Elle|Marie|Maman|Seigneur)[^.!?;:]{0,48}(?:dit|répondit|répliqua|ajouta|reprit|poursuivit|sourit)\s*:\s*$/i.test(prefix);
+  }
+
+  function extraNarrativeDelimiterOffsets(r, prevRun, nextRun, hideOuter) {
+    if (!hideOuter) return [];
+    var out = [];
+    // 1) A validated direct turn can begin after a short unstyled lexical prefix
+    // inside the guillemets when the source speaker span starts a few characters
+    // late. Hide only the opening guillemet when an explicit Jesus/Mary
+    // attribution proves the turn. Nested/reported quotations are left visible.
+    if (nextRun && nextRun.styled && !isNestedStart(nextRun)) {
+      var oi = r.text.lastIndexOf('«');
+      if (oi >= 0) {
+        var gap = r.text.slice(oi + 1);
+        if (/[0-9A-Za-zÀ-ɏ]/.test(gap) &&
+            !/[«»“”„"]/.test(gap) &&
+            gap.length <= 40 && directAttributionBeforeOpening(r.text, oi)) {
+          out.push(r.start + oi);
+        }
+      }
+    }
+    // 2) Speaker offsets sometimes stop just before terminal punctuation, e.g.
+    // "... Volonté.»". Hide the closing guillemet while preserving the punctuation.
+    if (prevRun && prevRun.styled && !isNestedEnd(prevRun)) {
+      var ci = r.text.indexOf('»');
+      if (ci >= 0) {
+        var beforeClose = r.text.slice(0, ci);
+        if (beforeClose.length > 0 && !/^\s*$/.test(beforeClose) &&
+            !/[0-9A-Za-zÀ-ɏ]/.test(beforeClose) &&
+            !/[«»“”„"]/.test(beforeClose) && beforeClose.length <= 8) {
+          out.push(r.start + ci);
+        }
+      }
+    }
+    return out.filter(function (v, ix, a) { return a.indexOf(v) === ix; }).sort(function(a,b){return a-b;});
+  }
+
+  function emitRangeWithExtraHidden(atoms, start, end, lead, trail, hiddenOffsets) {
+    if (!hiddenOffsets || !hiddenOffsets.length) return emitRange(atoms, start, end, lead, trail);
+    var list = hiddenOffsets.filter(function(p){ return p >= start && p < end; }).sort(function(a,b){return a-b;});
+    if (!list.length) return emitRange(atoms, start, end, lead, trail);
+    var out = '', cur = start;
+    for (var i = 0; i < list.length; i++) {
+      var p = list[i];
+      if (p > cur) {
+        var left = emitRange(atoms, cur, p, cur === start ? lead : 0, 0);
+        if (left === null) return null;
+        out += left;
+      }
+      var mid = emitRange(atoms, p, p + 1, 1, 0);
+      if (mid === null) return null;
+      out += mid;
+      cur = p + 1;
+    }
+    if (cur < end) {
+      var right = emitRange(atoms, cur, end, 0, trail);
+      if (right === null) return null;
+      out += right;
+    }
+    return out;
+  }
+
+  function plainNarrativeWithExtraHidden(t, np, absoluteStart, hiddenOffsets) {
+    var hidden = {};
+    for (var i = 0; i < (hiddenOffsets || []).length; i++) hidden[hiddenOffsets[i] - absoluteStart] = true;
+    var leadLen = np.lead.length, trailLen = np.trail.length;
+    var out = '', hiddenMode = null, buf = '';
+    function flush() {
+      if (!buf) return;
+      out += hiddenMode ? '<span class="speech-outer-delimiter" aria-hidden="true">' + esc(buf) + '</span>' : esc(buf);
+      buf = '';
+    }
+    for (var j = 0; j < t.length; j++) {
+      var h = j < leadLen || j >= t.length - trailLen || !!hidden[j];
+      if (hiddenMode === null) hiddenMode = h;
+      if (h !== hiddenMode) { flush(); hiddenMode = h; }
+      buf += t[j];
+    }
+    flush();
+    return out;
   }
 
   // Split a run into [openDelim, core, closeDelim] without dropping anything.
@@ -458,14 +550,17 @@
           for (var nq = 0; nq < nra.length; nq++) narDisplay += nra[nq].text;
         }
         var np = splitNarrativeBoundaryDelimiters(narDisplay, prevRun, nextRun, hideOuter);
-        var nar = atoms ? emitRange(atoms, r.start, r.end, np.lead.length, np.trail.length) : null;
+        var extraHidden = extraNarrativeDelimiterOffsets(r, prevRun, nextRun, hideOuter);
+        var nar = atoms ? emitRangeWithExtraHidden(atoms, r.start, r.end, np.lead.length, np.trail.length, extraHidden) : null;
         if (nar === null) {
-          nar = '';
-          if (np.lead) nar += '<span class="speech-outer-delimiter" aria-hidden="true">' + esc(np.lead) + '</span>';
-          nar += esc(np.core);
-          if (np.trail) nar += '<span class="speech-outer-delimiter" aria-hidden="true">' + esc(np.trail) + '</span>';
+          nar = plainNarrativeWithExtraHidden(r.text, np, r.start, extraHidden);
         }
-        html += nar;
+        var postSpeechNarrative = prevRun && prevRun.styled && !isNestedEnd(prevRun) &&
+          (prevRun.presentation === 'block' || prevRun.isContinuation) &&
+          /[0-9A-Za-zÀ-ɏ]/.test(np.core || '');
+        html += postSpeechNarrative
+          ? '<span class="speech-post-narrative">' + nar + '</span>'
+          : nar;
         continue;
       }
       var cls = M.normSpeaker(r.speaker) === 'marie' ? 'speech-marie' : 'speech-jesus';
@@ -482,26 +577,28 @@
         runDisplay = '';
         for (var q = 0; q < ra.length; q++) runDisplay += ra[q].text;
       }
-      // LDC-GR4: inline/embedded quotations keep visible punctuation.
-      // Only block speech or an approved cross-fragment continuation suppresses
-      // its outer direct-speech delimiters.
-      var suppressRunDelims = hideOuter && (r.presentation === 'block' || isCont);
-      var parts = suppressRunDelims
+      // Outer direct-speech delimiters are redundant once a validated Jesus/Mary
+      // run is styled. Suppress the run's own outer delimiters for every styled
+      // run; nested/internal quotation marks remain ordinary characters inside
+      // the run and therefore remain visible.
+      var hideLeadDelim = hideOuter && !isNestedStart(r);
+      var hideTrailDelim = hideOuter && !isNestedEnd(r);
+      var parts = (hideLeadDelim || hideTrailDelim)
         ? splitOuterDelimiters(runDisplay)
         : { lead: '', core: runDisplay, trail: '' };
       var inner = null;
       if (atoms) {
         inner = emitRange(atoms, r.start, r.end,
-                          suppressRunDelims ? parts.lead.length : 0,
-                          suppressRunDelims ? parts.trail.length : 0);
+                          hideLeadDelim ? parts.lead.length : 0,
+                          hideTrailDelim ? parts.trail.length : 0);
       }
       if (inner === null) {
         inner = '';
         if (parts.lead)  inner += '<span class="speech-outer-delimiter"' +
-                                  (suppressRunDelims ? ' aria-hidden="true"' : '') + '>' + esc(parts.lead) + '</span>';
+                                  (hideLeadDelim ? ' aria-hidden="true"' : '') + '>' + esc(parts.lead) + '</span>';
         inner += esc(parts.core);
         if (parts.trail) inner += '<span class="speech-outer-delimiter"' +
-                                  (suppressRunDelims ? ' aria-hidden="true"' : '') + '>' + esc(parts.trail) + '</span>';
+                                  (hideTrailDelim ? ' aria-hidden="true"' : '') + '>' + esc(parts.trail) + '</span>';
       }
       html += '<span class="' + cls + ' speech-run speech-' +
               (isCont ? 'inline speech-run-continuation' : r.presentation) + '"' +
@@ -522,4 +619,5 @@
   M.splitOuterDelimiters = splitOuterDelimiters;
   M.splitNarrativeBoundaryDelimiters = splitNarrativeBoundaryDelimiters;
   M.escapeForRender = esc;
+  M.extraNarrativeDelimiterOffsets = extraNarrativeDelimiterOffsets;
 })(typeof window !== 'undefined' ? window : globalThis);

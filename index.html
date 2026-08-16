@@ -24,7 +24,7 @@
   --body:'Crimson Text',Georgia,serif;
   --reader-size:19px;
   --accent:#7a5c10;
-  --accent-fill:#1A2A4A; --accent-fill-ink:#D4A060;
+  --accent-fill:#1A2A4A; --accent-fill-ink:#D4A060; --toast-bg:#1A2A4A; --toast-ink:#F9F6F0;
   --supp-bg:rgba(110,84,16,.055); --supp-border:#B89432; --supp-badge-bg:#F2E6C6; --supp-badge-ink:#5C4610;
   --sat-top:env(safe-area-inset-top,0px);
   --sat-bot:env(safe-area-inset-bottom,0px);
@@ -32,13 +32,13 @@
 @media(prefers-color-scheme:dark){
   :root{--ivory:#1A1612;--night:#E8D9C4;--gold:#D4A843;--gold-decor:#D4A843;--gold-border:#8F6C24;--gold-text:#D4A843;--accent:#d4a843;--gold-light:#5A4520;
         --gold-pale:#2A2010;--ink:#D4C8BC;--muted:#A89B8E;--border:#2E2820;--white:#201C18;
-        --accent-fill:#2A2010;--accent-fill-ink:#D4A843;
+        --accent-fill:#2A2010;--accent-fill-ink:#D4A843;--toast-bg:#E8D9C4;--toast-ink:#2C1810;
         --supp-bg:rgba(212,168,67,.075);--supp-border:#8F6C24;--supp-badge-bg:#342A18;--supp-badge-ink:#E1BC61;}
 }
 html[data-theme="dark"]{
   --ivory:#1A1612;--night:#E8D9C4;--gold:#D4A843;--gold-decor:#D4A843;--gold-border:#8F6C24;--gold-text:#D4A843;--accent:#d4a843;--gold-light:#5A4520;
   --gold-pale:#2A2010;--ink:#D4C8BC;--muted:#A89B8E;--border:#2E2820;--white:#201C18;
-  --accent-fill:#2A2010;--accent-fill-ink:#D4A843;
+  --accent-fill:#2A2010;--accent-fill-ink:#D4A843;--toast-bg:#E8D9C4;--toast-ink:#2C1810;
   --supp-bg:rgba(212,168,67,.075);--supp-border:#8F6C24;--supp-badge-bg:#342A18;--supp-badge-ink:#E1BC61;
 }
 
@@ -172,7 +172,7 @@ html[data-theme="dark"] .dn-result-count { color:var(--muted) !important; }
 
 html[data-theme="light"]{
   --ivory:#F9F6F0;--night:#1A2A4A;--gold:#C9A84C;--gold-decor:#C9A84C;--gold-border:#B89432;--gold-text:#6E5410;--gold-light:#E8D5A3;
-  --gold-pale:#F5EDD8;--ink:#2C1810;--muted:#7A6E62;--border:#E2D9CC;--white:#FFFFFF;
+  --gold-pale:#F5EDD8;--ink:#2C1810;--muted:#7A6E62;--border:#E2D9CC;--white:#FFFFFF;--toast-bg:#1A2A4A;--toast-ink:#F9F6F0;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html,body{height:100%;background:var(--ivory);font-family:var(--body);color:var(--ink);}
@@ -251,11 +251,6 @@ body{overflow:hidden;overflow-x:hidden;max-width:100vw;min-height:100vh;min-heig
 .pc-title{font-family:var(--serif);font-size:16px;color:var(--night);margin-bottom:4px;}
 .pc-desc{font-size:12px;color:var(--muted);line-height:1.5;}
 .pc-meta{font-size:11px;color:var(--muted);margin-top:8px;}
-/* ═══ SEMANTIC SEARCH ═══ */
-.sem-divider{display:flex;align-items:center;gap:8px;padding:14px 16px 8px;
-  font-size:11px;color:var(--muted);font-weight:500;letter-spacing:.04em;}
-.sem-divider span{display:flex;align-items:center;gap:5px;}
-.sem-divider i{color:#4F46E5;font-size:13px;}
 /* ═══ STATS ═══ */
 .stat-card{background:var(--white);border:0.5px solid var(--border);border-radius:12px;
   padding:14px 16px;text-align:center;}
@@ -944,7 +939,7 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; }
 
 /* Toast */
 #toast{position:fixed;bottom:calc(80px + var(--sat-bot));left:50%;
-  transform:translateX(-50%) translateY(20px);background:var(--night);color:var(--gold);
+  transform:translateX(-50%) translateY(20px);background:var(--toast-bg);color:var(--toast-ink);
   padding:8px 18px;border-radius:20px;font-size:13px;font-family:var(--body);
   opacity:0;transition:all .25s;pointer-events:none;z-index:200;white-space:nowrap;}
 #toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
@@ -1022,16 +1017,6 @@ body.android-highlight-platform #reader-body .para-fragment{-webkit-user-select:
   cursor:pointer;width:100%;text-align:left;box-sizing:border-box;
   -webkit-appearance:none;min-width:0;}
 .date-nav-entry:active{background:var(--gold-pale);}
-
-/* Vector search opt-in banner */
-.vector-opt-in{padding:12px 16px;background:var(--gold-pale);
-  border-bottom:1px solid var(--border);}
-.voi-text{font-size:12.5px;color:var(--night);line-height:1.5;margin-bottom:8px;}
-.voi-actions{display:flex;gap:8px;}
-.voi-btn{border:0.5px solid var(--border);border-radius:20px;background:var(--white);
-  padding:6px 14px;font-size:12px;font-family:var(--body);color:var(--ink);
-  cursor:pointer;-webkit-appearance:none;}
-.voi-btn-primary{background:var(--night);color:var(--white);border-color:var(--night);}
 
 /* ═══ DATE NAVIGATOR ═══ */
 .dn-wrap{padding:12px 16px 32px;display:flex;flex-direction:column;gap:20px;}
@@ -1144,7 +1129,7 @@ html[data-theme="dark"] .st-luisa{color:#D4A843;}
 
 /* Stage C — run-level speech presentation (one element per RUN) */
 .speech-run.speech-block{display:block;margin:0.3em 0 0.1em 0;padding:2px 0;}
-.speech-run.speech-inline{display:inline;margin:0;padding:0;}
+.speech-post-narrative{display:block;margin-top:.65em;}
 .speech-outer-delimiter[aria-hidden="true"]{display:none;}
 /* structural-dash display map v2 — suppressed source-layout tokens keep their
    canonical [start,end) in the DOM but render at zero width */
@@ -1618,15 +1603,6 @@ html[data-theme="dark"] .st-luisa{color:#D4A843;}
     <span>Parcourir par date</span>
     <i class="ti ti-arrow-right" style="font-size:13px;margin-left:auto;opacity:0.5;"></i>
   </button>
-  <div id="vector-opt-in" class="vector-opt-in" style="display:none;">
-    <div class="voi-text">
-      <b>Recherche par le sens</b> — indisponible dans cette édition enrichie : les vecteurs R1B ne couvrent pas les 79 paragraphes complémentaires.
-    </div>
-    <div class="voi-actions">
-      <button class="voi-btn voi-btn-primary" onclick="enableVectorSearch()">Activer</button>
-      <button class="voi-btn" onclick="dismissVectorOptIn()">Plus tard</button>
-    </div>
-  </div>
   <div id="search-meta" class="search-meta" style="display:none;"></div>
   <div id="trust-notice" class="trust-notice" style="display:none;">
     Voici les passages les plus proches de votre idée. Vérifiez le texte source avant de citer.
@@ -1831,10 +1807,6 @@ html[data-theme="dark"] .st-luisa{color:#D4A843;}
           <span class="help-text">Vos mots ne correspondent pas exactement mais l'idée est présente. <b>Vérifiez toujours le texte source avant de citer.</b></span>
         </div>
         <div class="help-row">
-          <span class="help-chip outline">Par le sens</span>
-          <span class="help-text">Cette option vectorielle est <b>temporairement indisponible</b> dans l’édition enrichie, car les vecteurs existants correspondent uniquement aux 74 348 paragraphes du backbone R1B. La recherche lexicale/BM25 reste active sur le corpus ALIGNÉ et les 79 paragraphes complémentaires.</span>
-        </div>
-        <div class="help-row">
           <span class="help-chip outline">Idée proche</span>
           <span class="help-text">Vos mots ne correspondent pas exactement mais l'idée est présente dans le passage. <b>Vérifiez toujours le texte avant de citer.</b></span>
         </div>
@@ -1843,20 +1815,13 @@ html[data-theme="dark"] .st-luisa{color:#D4A843;}
           <span class="help-text">Le passage appartient à la même famille d'images spirituelles — lumière, filet, feu, mer, croix, amour-propre… — même sans mots communs avec votre requête.</span>
         </div>
         <div class="help-divider"></div>
-        <div class="help-row" id="vector-toggle-row">
-          <span class="help-chip light" style="min-width:72px;">Par le sens</span>
-          <span class="help-text">Temporairement indisponible dans cette édition enrichie : les vecteurs existants restent liés au seul backbone R1B (74 348 paragraphes) et ne couvrent pas les 79 nouveaux paragraphes. La recherche lexicale/BM25 reste active sur le corpus ALIGNÉ et les COMPLÉMENTS.
-            <button class="voi-btn" id="vector-toggle-btn" style="margin-top:6px;" disabled>Indisponible</button>
-          </span>
-        </div>
-        <div class="help-divider"></div>
         <div class="help-row">
           <span class="help-chip light">T1–6 · T7–12…</span>
           <span class="help-text">Limitez la recherche à un groupe de tomes via les chips sous la barre de recherche. Utile pour cibler une période de la vie de Luisa.</span>
         </div>
       </div>
       <div class="help-tip">
-        Conseil : utilisez les mots distinctifs dont vous vous souvenez. Les badges « Idée proche » et « Thème lié » indiquent une correspondance lexicale/thématique moins exacte ; la recherche vectorielle « Par le sens » reste désactivée dans cette édition enrichie.
+        Conseil : utilisez les mots distinctifs dont vous vous souvenez. Les badges « Idée proche » et « Thème lié » indiquent une correspondance lexicale/thématique moins exacte. La recherche repose sur les métadonnées et le moteur lexical/BM25 du corpus composite.
       </div>
     </div>
 
@@ -1955,7 +1920,7 @@ html[data-theme="dark"] .st-luisa{color:#D4A843;}
       </div>
       <div class="help-card">
         <div class="help-text" style="padding:2px 0 10px;">
-          <b>Préparer hors ligne</b> met en cache les 36 tomes, le corpus aligné, les compléments LDC-AFLP-SUP-T1, les repères de locuteur, les couches d’affichage et la recherche textuelle/métadonnées. La recherche vectorielle <b>« Par le sens »</b> est désactivée dans cette édition enrichie.
+          <b>Préparer hors ligne</b> met en cache les 36 tomes, le corpus aligné, les compléments LDC-AFLP-SUP-T1, les repères de locuteur, les couches d’affichage et la recherche textuelle/métadonnées. Le sous-système vectoriel/embeddings a été retiré de cette version ; la recherche textuelle, métadonnées et BM25 reste disponible.
         </div>
         <div id="offline-state-label" class="help-text" role="status" aria-live="polite">Vérification de l’état hors ligne…</div>
         <div style="height:8px;background:var(--border);border-radius:999px;overflow:hidden;margin:9px 0 5px;" aria-hidden="true"><div id="offline-progress-bar" style="height:100%;width:0;background:var(--gold-text);transition:width .15s ease;"></div></div>
@@ -2157,9 +2122,9 @@ html[data-theme="dark"] .st-luisa{color:#D4A843;}
    VERSION — single source of truth
    Update this string on every release.
 ═══════════════════════════════════════════════════════ */
-const APP_VERSION = 'v2.19.7-R1B';
+const APP_VERSION = 'v2.19.12-R1B';
 const APP_BUILD   = '2026-08-15';
-const SW_CACHE_VERSION = 'ldc-v2.19.7-R1B';
+const SW_CACHE_VERSION = 'ldc-v2.19.12-R1B';
 const CORPUS_MANIFEST_SHA256 = '0701191761994c69a32eb4ca1b33312f2c5e043939a3a4d61b0f326739cb12c8';
 const DEEP_LINK_SCHEMA = 'ldc-deep-link-v1';
 const READING_POSITION_SCHEMA = 'ldc-reading-position-v2';
@@ -2679,62 +2644,12 @@ function goSearch() {
   renderVolFilterRow();
   document.getElementById('search-input').focus();
   if (!document.getElementById('search-input').value) refreshSearchSuggestions().catch(()=>{});
-  // LDC-B: compact entry metadata is the first search tier; body shards stay lazy.
+  // LDC-B/RA3: compact metadata is the first search tier; body shards stay lazy.
+  // semantic_index.json remains the lexical/BM25 thematic index, not a vector embedding payload.
   loadSearchMetadataIndex().catch(()=>{});
   loadSemanticIndex().catch(()=>{});
-  // Search-by-meaning assets load only after explicit opt-in and evidence verification.
-  refreshVectorOptIn().catch(()=>{});
 }
 
-async function refreshVectorOptIn() {
-  const banner = document.getElementById('vector-opt-in');
-  // The retained 74,348 R1B vectors do not cover the 79 Translation Set 1
-  // supplement paragraphs. Fail closed for the composite generation: never
-  // advertise an opt-in whose evidence cannot cover the visible corpus.
-  if (CORPUS_GENERATION !== BACKBONE_GENERATION) {
-    if (banner) banner.style.display = 'none';
-    await dbPut('settings',{key:'vector_search_enabled',val:false,reason:'STALE_FOR_COMPOSITE_GENERATION'}).catch(()=>{});
-    vectorEvidenceState='invalid';
-    vectorEvidenceReason='STALE_FOR_COMPOSITE_GENERATION__R1B_VECTORS_DO_NOT_COVER_LDC_AFLP_SUP_T1';
-    return;
-  }
-  const setting = await dbGet('settings', 'vector_search_enabled');
-  if (setting === undefined) { if (banner) banner.style.display = 'block'; return; }
-  if (banner) banner.style.display = 'none';
-  if (setting && setting.val === true) {
-    const ok = await loadEmbCorpus();
-    if (!ok) {
-      await dbPut('settings', { key: 'vector_search_enabled', val: false }).catch(()=>{});
-      showToast('Recherche par le sens indisponible dans cette version.');
-      return;
-    }
-    loadEmbModel().catch(()=>{});
-  }
-}
-
-async function enableVectorSearch() {
-  const banner = document.getElementById('vector-opt-in');
-  if (banner) banner.style.display = 'none';
-  if (CORPUS_GENERATION !== BACKBONE_GENERATION) {
-    await dbPut('settings',{key:'vector_search_enabled',val:false,reason:'STALE_FOR_COMPOSITE_GENERATION'}).catch(()=>{});
-    showToast('Recherche par le sens indisponible dans cette version enrichie.');
-    return;
-  }
-  const ok = await loadEmbCorpus();
-  if (!ok) {
-    await dbPut('settings', { key: 'vector_search_enabled', val: false }).catch(()=>{});
-    showToast('Recherche par le sens indisponible dans cette version.');
-    return;
-  }
-  await dbPut('settings', { key: 'vector_search_enabled', val: true });
-  loadEmbModel().catch(()=>{});
-}
-
-async function dismissVectorOptIn() {
-  await dbPut('settings', { key: 'vector_search_enabled', val: false });
-  const banner = document.getElementById('vector-opt-in');
-  if (banner) banner.style.display = 'none';
-}
 function goEspace() { showScreen('espace'); renderEspace(); }
 async function goCollections(){ showScreen('espace'); await renderEspace(); showEspaceTab('collections'); }
 function goTomes()  { showScreen('tomes'); renderTomes(); }
@@ -4863,6 +4778,7 @@ async function shareCitation() {
     if (navigator.share) await navigator.share({ title: sp?supplementRegistryTitle(sp):currentEntry.title, text, url });
     else { await copyPlainText(text); showToast(hasSelection ? 'Passage et lien copiés' : 'Référence et lien copiés'); }
   } catch(e) {
+    if (e && e.name === 'AbortError') return;
     const ok = await copyPlainText(text);
     showToast(ok ? (hasSelection ? 'Passage et lien copiés' : 'Référence et lien copiés') : 'Partage indisponible');
   }
@@ -5088,13 +5004,8 @@ function buildSpeakerTag(speaker, confidence) {
 let searchVolFilter = 0; // 0 = all, or min of group
 let searchVolFilterMax = 0; // max of group (0 = all)
 let searchSpeakerFilter = false; // false = all, true = Jesus speech only
-let semanticIndex = null;        // loaded lazily on first semantic query
+let semanticIndex = null;        // lexical/BM25 thematic metadata index; not vector embeddings
 let semanticIndexLoading = false;
-// True embedding search state
-let embModel = null, embModelLoading = false;
-let embCorpus = null, embIds = null, embDim = 384, embCorpusLoading = false;
-let embManifest = null, vectorEvidenceState = 'unknown', vectorEvidenceReason = '';
-let lastSemMode = 'embedding';
 let searchMetadataIndex = null, searchMetadataLoading = null;
 let searchMetadataByEntry = new Map();
 let searchRunSeq = 0, activeSearchAbort = null;
@@ -5110,17 +5021,6 @@ let supplementMode = 'enriched';
 let currentSupplementFocusId = null;
 let supplementRegistry = null, supplementSearchData = null, supplementSpeakerData = null, supplementManifest = null, supplementLoading = null;
 let supplementEntryIds = new Set();
-// Float16 lookup table (256 KB, built once at startup)
-const F16 = new Float32Array(65536);
-(function(){
-  for(let i=0;i<65536;i++){
-    const s=i>>>15, e=(i>>>10)&31, m=i&1023;
-    F16[i] = e===31 ? (m?NaN:(s?-Infinity:Infinity))
-            : e===0  ? (s?-1:1)*m*5.96046448e-8
-            :          (s?-1:1)*Math.pow(2,e-15)*(1+m/1024);
-  }
-})();
-
 function renderSpeakerFilterRow() {
   const row = document.getElementById('speaker-filter-row');
   if (!row) return;
@@ -5452,7 +5352,7 @@ function selectedSearchVolumes() {
 function cancelActiveSearch(reason) {
   searchRunSeq += 1;
   if (activeSearchAbort) {
-    try { activeSearchAbort.abort(reason || 'cancelled'); } catch(e) {}
+    try { activeSearchAbort.abort(new DOMException(reason || 'Search cancelled','AbortError')); } catch(e) {}
     activeSearchAbort = null;
   }
 }
@@ -5542,40 +5442,8 @@ async function fetchSpeakerShard(vol, signal, keepInMemory=false) {
 }
 
 /* ═══════════════════════════════════════════════════════
-   SEMANTIC SEARCH — evidence-gated optional embeddings
+   LEXICAL/BM25 THEMATIC SEARCH METADATA — corpus/semantic_index.json
 ═══════════════════════════════════════════════════════ */
-async function loadEmbModel() {
-  if (embModel) return embModel;
-  if (embModelLoading) { while(embModelLoading) await new Promise(r=>setTimeout(r,100)); return embModel; }
-  embModelLoading = true;
-  try {
-    const {pipeline, env} = await import('https://cdn.jsdelivr.net/npm/@xenova/transformers@2.17.2');
-    env.allowLocalModels = false;
-    embModel = await pipeline('feature-extraction','Xenova/paraphrase-multilingual-MiniLM-L12-v2');
-  } catch(e) { console.warn('LDC: search-by-meaning model unavailable',e); embModel = null; }
-  embModelLoading = false;
-  return embModel;
-}
-
-async function sha256Hex(buf) {
-  const digest = await crypto.subtle.digest('SHA-256', buf);
-  return Array.from(new Uint8Array(digest)).map(b=>b.toString(16).padStart(2,'0')).join('');
-}
-
-async function loadEmbCorpus() {
-  vectorEvidenceState='invalid';
-  vectorEvidenceReason='STALE_FOR_COMPOSITE_GENERATION__R1B_VECTORS_COVER_74348_BACKBONE_PARAGRAPHS_BUT_NOT_79_SUPPLEMENT_PARAGRAPHS';
-  embCorpus=null; embIds=null; embManifest=null;
-  return false;
-}
-
-function cosineSim(qVec, paraIdx) {
-  const base = paraIdx * embDim;
-  let dot = 0;
-  for(let d=0;d<embDim;d++) dot += qVec[d] * F16[embCorpus[base+d]];
-  return dot;
-}
-
 async function loadSemanticIndex() {
   if (semanticIndex) return semanticIndex;
   if (semanticIndexLoading) {
@@ -5621,50 +5489,6 @@ function bm25Score(queryTokens, docNorm, idf, avgdl, k = 1.5, b = 0.75) {
     score += termIdf * termTf * (k + 1) / (termTf + k * (1 - b + b * dl / avgdl));
   }
   return score;
-}
-
-function paraVolumeFromId(id) {
-  let m = /^LDC\.T(\d{2})\./i.exec(id || '');
-  if (!m) m = /(?:^|_)t(\d{2})(?:_|$)/i.exec(id || '');
-  return m ? Number(m[1]) : 0;
-}
-
-async function runVectorSemanticSearch(raw, vols, token) {
-  if (!embModel || !embCorpus || vectorEvidenceState !== 'verified' || searchSpeakerFilter) return [];
-  const out = await embModel(raw, {pooling:'mean', normalize:true});
-  if (!isSearchActive(token)) return [];
-  const qVec = new Float32Array(out.data);
-  const allowed = new Set(vols);
-  const top = [];
-  const ids = Array.from(embIds.keys());
-  const CHUNK = 3000;
-  for (let i=0; i<ids.length; i+=CHUNK) {
-    if (!isSearchActive(token)) return [];
-    const stop = Math.min(ids.length, i+CHUNK);
-    for (let j=i;j<stop;j++) {
-      const id = ids[j], v = paraVolumeFromId(id);
-      if (!allowed.has(v)) continue;
-      const sim = cosineSim(qVec, j);
-      if (sim <= 0.25) continue;
-      top.push({id, volume:v, sim});
-    }
-    top.sort((a,b)=>b.sim-a.sim);
-    if (top.length > 120) top.length = 120;
-    await new Promise(r=>setTimeout(r,0));
-  }
-  const best = top.slice(0,25);
-  const byVol = new Map();
-  for (const x of best) { if(!byVol.has(x.volume)) byVol.set(x.volume,[]); byVol.get(x.volume).push(x); }
-  const outItems=[];
-  for (const [v, rows] of byVol) {
-    const shard = await fetchSearchShard(v, activeSearchAbort && activeSearchAbort.signal, false);
-    if (!isSearchActive(token)) return [];
-    const wanted = new Map(rows.map(x=>[x.id,x.sim]));
-    for (const item of shard) if (wanted.has(item.id)) outItems.push({...item,_semScore:wanted.get(item.id)});
-  }
-  outItems.sort((a,b)=>b._semScore-a._semScore);
-  lastSemMode='embedding';
-  return outItems.slice(0,20);
 }
 
 async function scanBodyKeyword(raw, vols, token, signal, speakerFilter) {
@@ -5722,8 +5546,8 @@ async function scanBodyKeyword(raw, vols, token, signal, speakerFilter) {
   return {results:scored.slice(0,SEARCH_RESULT_CAP), totalMatches};
 }
 
-function renderSearchResults(results, raw, totalMatches, semResults=[], metadataMode=false) {
-  if (!results.length && !semResults.length) {
+function renderSearchResults(results, raw, totalMatches, metadataMode=false) {
+  if (!results.length) {
     const meta=document.getElementById('search-meta'); meta.style.display='block'; meta.textContent='0 résultat';
     document.getElementById('trust-notice').style.display='none';
     document.getElementById('search-results').innerHTML='<div class="empty-state"><i class="ti ti-search-off"></i>Aucun résultat. Essayez d\'autres mots.</div>';
@@ -5751,15 +5575,6 @@ function renderSearchResults(results, raw, totalMatches, semResults=[], metadata
       <div class="rc-tags"><span class="rc-tag ${tagClass}">${tagLabel}</span>${supplementTag}${speechTag}${r.date_display?`<span class="rc-tag">${escapeHtml(r.date_display)}</span>`:''}</div>`;
     card.onclick=()=>openFromSearch(r); container.appendChild(card);
   }
-  if (semResults.length) {
-    const divider=document.createElement('div'); divider.className='sem-divider'; divider.innerHTML='<span><i class="ti ti-sparkles"></i> Autres passages proches par le sens</span>'; container.appendChild(divider);
-    for (const r of semResults) {
-      const card=document.createElement('button'); card.className='result-card'; card.type='button';
-      card.dataset.resultKey = String(r.id||r.entry_id||r.stable_ref||'');
-      card.innerHTML=`<div class="rc-stable">${escapeHtml(r.stable_ref||r.entry_id||r.id)} · Tome ${r.volume}</div><div class="rc-body-text">${highlightMatches(excerptAround(r.text||'',raw),raw)}</div><div class="rc-tags"><span class="rc-tag">Par le sens</span>${r.date_display?`<span class="rc-tag">${escapeHtml(r.date_display)}</span>`:''}</div>`;
-      card.onclick=()=>openFromSearch(r); container.appendChild(card);
-    }
-  }
 }
 
 async function runSearch() {
@@ -5786,21 +5601,12 @@ async function runSearch() {
     if (!isSearchActive(token)) return;
     const intent=metadataIntent(raw,metadataHits);
     if (intent && metadataHits.length) {
-      renderSearchResults(metadataHits.slice(0,SEARCH_RESULT_CAP),raw,metadataHits.length,[],true);
+      renderSearchResults(metadataHits.slice(0,SEARCH_RESULT_CAP),raw,metadataHits.length,true);
       activeSearchAbort=null; return;
     }
     const body=await scanBodyKeyword(raw,vols,token,signal,searchSpeakerFilter);
     if (!isSearchActive(token)) return;
-    let semResults=[];
-    const semWords=LDCSearch.terms(raw,3);
-    if (!searchSpeakerFilter && vectorEvidenceState==='verified' && embModel && embCorpus && (semWords.length>=2 || body.results.length<5)) {
-      metaEl.textContent='Recherche par le sens…';
-      const rawSem=await runVectorSemanticSearch(raw,vols,token);
-      const existing=new Set(body.results.map(r=>r.id));
-      semResults=rawSem.filter(r=>!existing.has(r.id)).slice(0,20);
-    }
-    if (!isSearchActive(token)) return;
-    renderSearchResults(body.results,raw,body.totalMatches,semResults,false);
+    renderSearchResults(body.results,raw,body.totalMatches,false);
     activeSearchAbort=null;
   } catch(e) {
     if (e && e.name==='AbortError') return;
@@ -6037,8 +5843,8 @@ async function diagnosticsText(){
   let cachesOwned=[];try{if('caches'in window)cachesOwned=(await caches.keys()).filter(k=>k.startsWith('ldc-'));}catch(e){}
   let sw='non contrôlé';try{sw=navigator.serviceWorker&&navigator.serviceWorker.controller?navigator.serviceWorker.controller.scriptURL:'non contrôlé';}catch(e){}
   const theme=document.documentElement.getAttribute('data-theme')||'system';const tl=document.documentElement.getAttribute('data-text-level')||'normal';
-  const off=await dbGet('settings','offline_completion').catch(()=>null);const vec=await dbGet('settings','vector_search_enabled').catch(()=>null);
-  return ['Livre du Ciel — diagnostic public',`App : ${APP_VERSION} · ${APP_BUILD}`,`SW attendu : ${SW_CACHE_VERSION}`,`SW contrôleur : ${sw}`,`Caches LDC : ${cachesOwned.join(', ')||'aucun détecté'}`,`Corpus composite : ${CORPUS_GENERATION}`,`Backbone AFLP : ${BACKBONE_GENERATION}`,`Lecture : ${sourceModeLabel()}`,`Backbone manifest SHA-256 : ${CORPUS_MANIFEST_SHA256}`,`Recherche metadata : ${searchMetadataIndex?`chargé · ${searchMetadataIndex.entry_count} entrées / ${searchMetadataIndex.paragraph_count} paragraphes`:'non chargé'}`,`Recherche vectorielle : ${vectorEvidenceState} · préférence=${vec&&vec.val===true?'activée':'désactivée/non définie'}`,`Stockage IndexedDB : ${db?'ouvert':'indisponible'}`,`Hors ligne : navigator.onLine=${navigator.onLine!==false} · completion=${off?JSON.stringify(off.val??off.value??off):'non préparé'}`,`Thème : ${theme}`,`Texte : ${tl}`,`Repères : ${showReperes?'ON':'OFF'}`,`Route : ${window.location.pathname}${window.location.search}`].join('\n');
+  const off=await dbGet('settings','offline_completion').catch(()=>null);
+  return ['Livre du Ciel — diagnostic public',`App : ${APP_VERSION} · ${APP_BUILD}`,`SW attendu : ${SW_CACHE_VERSION}`,`SW contrôleur : ${sw}`,`Caches LDC : ${cachesOwned.join(', ')||'aucun détecté'}`,`Corpus composite : ${CORPUS_GENERATION}`,`Backbone AFLP : ${BACKBONE_GENERATION}`,`Lecture : ${sourceModeLabel()}`,`Backbone manifest SHA-256 : ${CORPUS_MANIFEST_SHA256}`,`Recherche metadata : ${searchMetadataIndex?`chargé · ${searchMetadataIndex.entry_count} entrées / ${searchMetadataIndex.paragraph_count} paragraphes`:'non chargé'}`,`Recherche : métadonnées + lexical/BM25 · sous-système vectoriel retiré`,`Stockage IndexedDB : ${db?'ouvert':'indisponible'}`,`Hors ligne : navigator.onLine=${navigator.onLine!==false} · completion=${off?JSON.stringify(off.val??off.value??off):'non préparé'}`,`Thème : ${theme}`,`Texte : ${tl}`,`Repères : ${showReperes?'ON':'OFF'}`,`Route : ${window.location.pathname}${window.location.search}`].join('\n');
 }
 async function copyDiagnostics(){const text=await diagnosticsText();const ok=await copyPlainText(text);showToast(ok?'Diagnostic copié':'Copie indisponible');return text;}
 async function routeFail(message,fallback){console.warn('LDC deep link:',message);showToast('Lien invalide ou cible introuvable');if(fallback==='search')goSearch();else if(fallback==='espace')goEspace();else goHome();return false;}
@@ -6303,21 +6109,8 @@ function openHelp() {
   if(cg) cg.textContent=CORPUS_GENERATION;
   if(bg) bg.textContent=BACKBONE_GENERATION;
   showScreen('help');
-  refreshVectorToggleLabel().catch(()=>{});
 }
 
-async function refreshVectorToggleLabel() {
-  const btn=document.getElementById('vector-toggle-btn');if(!btn)return;
-  btn.textContent='Indisponible';btn.disabled=true;
-  await dbPut('settings',{key:'vector_search_enabled',val:false,reason:'STALE_FOR_COMPOSITE_GENERATION'}).catch(()=>{});
-}
-
-async function toggleVectorSearchSetting() {
-  await dbPut('settings',{key:'vector_search_enabled',val:false,reason:'STALE_FOR_COMPOSITE_GENERATION'}).catch(()=>{});
-  const banner = document.getElementById('vector-opt-in');
-  if (banner) banner.style.display = 'none';
-  showToast('Recherche par le sens indisponible dans cette édition enrichie.');
-}
 function closeHelp() {
   // Return to screen that was active before Help was opened
   const map = {
@@ -6434,7 +6227,6 @@ async function preloadSearchMetadata() {
 async function boot() {
   await openDB();
   await initialiseSupplementMode();
-  await dbPut('settings',{key:'vector_search_enabled',val:false,reason:'STALE_FOR_COMPOSITE_GENERATION'}).catch(()=>{});
 
   // LDC-D schema-v3 migration is idempotent and non-destructive. It enriches
   // legacy anchors with corpus-generation/fingerprint metadata and never deletes
@@ -6773,9 +6565,9 @@ function renderDnResultCard() {
    CacheStorage contains public app/corpus bytes only. IndexedDB settings holds
    the user-visible completion record; it is not itself the offline payload.
 ═══════════════════════════════════════════════════════ */
-const OFFLINE_CACHE_VERSION = 'ldc-le-livre-du-ciel-offline-v2.19.7-R1B';
+const OFFLINE_CACHE_VERSION = 'ldc-le-livre-du-ciel-offline-v2.19.12-R1B';
 const OFFLINE_MANIFEST_SCHEMA = 'ldc-offline-manifest-v2';
-const OFFLINE_CONTENT_BINDING = '7a4bf41e73110cf6beefeababb883576e9267511a7f667677f9ab53f6a653e92';
+const OFFLINE_CONTENT_BINDING = 'be9f9339a51913b42000402190987c8fe60a9101ffd52fbc58f6178f0571f8d3';
 const OFFLINE_CORPUS_MANIFEST_SHA256 = '0701191761994c69a32eb4ca1b33312f2c5e043939a3a4d61b0f326739cb12c8';
 const OFFLINE_STATES = Object.freeze(['NOT_PREPARED','CHECKING','DOWNLOADING','READY','PARTIAL','ERROR','CANCELLED']);
 let offlineUiState = {state:'NOT_PREPARED',completed:0,total:0,failed:[],total_bytes:0,job_id:null,message:'',content_binding_sha256:OFFLINE_CONTENT_BINDING,corpus_manifest_sha256:OFFLINE_CORPUS_MANIFEST_SHA256};
@@ -6796,7 +6588,7 @@ function renderOfflineUi(){
   const st=offlineUiState, total=Number(st.total||0), completed=Number(st.completed||0), failed=Array.isArray(st.failed)?st.failed:[];
   const pct=total?Math.max(0,Math.min(100,Math.round(completed/total*100))):0;
   label.textContent=`${offlineStateLabel(st.state)}${st.message?' — '+st.message:''}`;
-  detail.textContent=total?`${completed}/${total} fichiers · ${pct}% · ${offlineMb(st.total_bytes)}${failed.length?' · '+failed.length+' échec(s)':''}`:`Périmètre : 36 tomes + compléments LDC-AFLP-SUP-T1 + recherche textuelle; « Par le sens » désactivé.`;
+  detail.textContent=total?`${completed}/${total} fichiers · ${pct}% · ${offlineMb(st.total_bytes)}${failed.length?' · '+failed.length+' échec(s)':''}`:`Périmètre : 36 tomes + compléments LDC-AFLP-SUP-T1 + recherche textuelle/BM25.`;
   if(failed.length){failedEl.style.display='block';failedEl.textContent='Fichiers en échec :\n'+failed.map(f=>`• ${f.path||'fichier inconnu'}${f.error?' — '+f.error:''}`).join('\n');}else{failedEl.style.display='none';failedEl.textContent='';}
   bar.style.width=pct+'%';
   const busy=st.state==='CHECKING'||st.state==='DOWNLOADING';
