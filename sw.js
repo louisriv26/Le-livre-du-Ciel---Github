@@ -1,11 +1,11 @@
-const VERSION = 'ldc-v2.19.17-R1B';
+const VERSION = 'ldc-v2.19.15-R1B';
 const CACHE_PREFIX = 'ldc-le-livre-du-ciel-';
-const SHELL_CACHE = `${CACHE_PREFIX}shell-v2.19.17-R1B`;
-const RUNTIME_CACHE = `${CACHE_PREFIX}runtime-v2.19.17-R1B`;
-const OFFLINE_CACHE = 'ldc-le-livre-du-ciel-offline-v2.19.17-R1B';
+const SHELL_CACHE = `${CACHE_PREFIX}shell-v2.19.15-R1B`;
+const RUNTIME_CACHE = `${CACHE_PREFIX}runtime-v2.19.15-R1B`;
+const OFFLINE_CACHE = 'ldc-le-livre-du-ciel-offline-v2.19.15-R1B';
 const OFFLINE_MANIFEST_URL = './offline_manifest.json';
 const OFFLINE_MANIFEST_SCHEMA = 'ldc-offline-manifest-v2';
-const OFFLINE_CONTENT_BINDING = 'a00469f1949c3faf3fb80aa09befab08b52c024abeee43937cb9d77a9334e16b';
+const OFFLINE_CONTENT_BINDING = '108f514979df88d298f8c3d4a7d548577b52eacdf71780a79e99f58fa43f4189';
 const OFFLINE_CORPUS_MANIFEST_SHA256 = '6c04cc4f21e9c18475b27c43d14a1bfa787112e659306f668874d22b7d49ae54';
 const OFFLINE_META_PATH = '__ldc_offline_meta__.json';
 
@@ -14,8 +14,7 @@ const OFFLINE_META_PATH = '__ldc_offline_meta__.json';
 const SHELL = [
   './', './index.html', './manifest.json', './offline_manifest.json', './sw.js',
   './speech_model.js', './display_map.js', './interaction_anchor.js', './search_normalizer.js',
-  './icons/favicon-16.png', './icons/favicon-32.png', './icons/favicon.ico', './icons/icon-60.png', './icons/icon-120.png',
-  './icons/apple-touch-icon.png', './icons/icon-192.png', './icons/icon-512.png', './icons/icon-maskable-512.png',
+  './icons/icon-192.png', './icons/icon-512.png', './icons/apple-touch-icon.png', './icons/favicon-32.png',
   './assets/fonts/fonts.css',
   './assets/fonts/im-fell-english-latin-400-normal.woff2', './assets/fonts/im-fell-english-latin-400-italic.woff2',
   './assets/fonts/crimson-text-latin-400-normal.woff2', './assets/fonts/crimson-text-latin-400-italic.woff2', './assets/fonts/crimson-text-latin-600-normal.woff2',
@@ -63,7 +62,7 @@ async function loadOfflineManifest() {
   if(!r){r=await fetch(OFFLINE_MANIFEST_URL,{cache:'reload'});if(r&&r.ok)await shell.put(OFFLINE_MANIFEST_URL,r.clone());}
   if(!r||!r.ok)throw new Error('offline manifest indisponible');
   const m=await r.json();
-  if(m.schema!==OFFLINE_MANIFEST_SCHEMA||m.app_version!=='v2.19.17-R1B'||m.cache_version!==OFFLINE_CACHE)throw new Error('offline manifest incompatible');
+  if(m.schema!==OFFLINE_MANIFEST_SCHEMA||m.app_version!=='v2.19.15-R1B'||m.cache_version!==OFFLINE_CACHE)throw new Error('offline manifest incompatible');
   if(m.content_binding_schema!=='ldc-offline-content-binding-v1'||m.content_binding_sha256!==OFFLINE_CONTENT_BINDING)throw new Error('offline manifest binding incompatible');
   if(m.corpus_manifest_sha256!==OFFLINE_CORPUS_MANIFEST_SHA256)throw new Error('offline corpus manifest binding incompatible');
   const unique=[...new Set((m.assets||[]).map(a=>a.path))];

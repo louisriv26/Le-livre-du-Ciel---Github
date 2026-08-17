@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <!-- Background -->
+  <rect width="512" height="512" rx="112" fill="#1A2A4A"/>
+
+  <!-- Light ray from gold dot — subtle triangle -->
+  <polygon points="256,80 296,230 216,230" fill="#C9A84C" opacity="0.10"/>
+
+  <!-- Left page shadow -->
+  <rect x="128" y="226" width="122" height="186" rx="8" fill="#0D1E38" opacity="0.4"/>
+  <!-- Right page shadow -->
+  <rect x="264" y="226" width="122" height="186" rx="8" fill="#0D1E38" opacity="0.4"/>
+
+  <!-- Left page -->
+  <rect x="124" y="220" width="124" height="186" rx="7" fill="#F9F6F0"/>
+  <!-- Right page -->
+  <rect x="252" y="220" width="124" height="186" rx="7" fill="#F9F6F0"/>
+
+  <!-- Spine overlay — slightly darker centre crease -->
+  <rect x="248" y="220" width="16" height="186" rx="0" fill="#E2D9CC" opacity="0.5"/>
+
+  <!-- Spine gold line -->
+  <line x1="256" y1="220" x2="256" y2="406" stroke="#C9A84C" stroke-width="5" stroke-linecap="round"/>
+
+  <!-- Left page ruled lines -->
+  <line x1="144" y1="258" x2="238" y2="258" stroke="#C9A84C" stroke-width="3.5" stroke-linecap="round" opacity="0.75"/>
+  <line x1="144" y1="278" x2="238" y2="278" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" opacity="0.35"/>
+  <line x1="144" y1="296" x2="214" y2="296" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" opacity="0.35"/>
+  <line x1="144" y1="314" x2="238" y2="314" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" opacity="0.25"/>
+  <line x1="144" y1="332" x2="204" y2="332" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" opacity="0.25"/>
+
+  <!-- Right page ruled lines -->
+  <line x1="274" y1="258" x2="368" y2="258" stroke="#C9A84C" stroke-width="3.5" stroke-linecap="round" opacity="0.75"/>
+  <line x1="274" y1="278" x2="368" y2="278" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" opacity="0.35"/>
+  <line x1="274" y1="296" x2="348" y2="296" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" opacity="0.35"/>
+  <line x1="274" y1="314" x2="368" y2="314" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" opacity="0.25"/>
+  <line x1="274" y1="332" x2="338" y2="332" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" opacity="0.25"/>
+
+  <!-- Book base — page bottom curve suggestion -->
+  <ellipse cx="256" cy="408" rx="136" ry="8" fill="#0D1E38" opacity="0.25"/>
+
+  <!-- Gold star / light point above spine -->
+  <circle cx="256" cy="174" r="16" fill="#C9A84C"/>
+  <!-- Star rays -->
+  <line x1="256" y1="150" x2="256" y2="138" stroke="#C9A84C" stroke-width="3" stroke-linecap="round" opacity="0.8"/>
+  <line x1="256" y1="198" x2="256" y2="210" stroke="#C9A84C" stroke-width="3" stroke-linecap="round" opacity="0.6"/>
+  <line x1="232" y1="162" x2="222" y2="154" stroke="#C9A84C" stroke-width="3" stroke-linecap="round" opacity="0.6"/>
+  <line x1="280" y1="162" x2="290" y2="154" stroke="#C9A84C" stroke-width="3" stroke-linecap="round" opacity="0.6"/>
+  <line x1="232" y1="186" x2="222" y2="194" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" opacity="0.4"/>
+  <line x1="280" y1="186" x2="290" y2="194" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" opacity="0.4"/>
+  <!-- Inner glow -->
+  <circle cx="256" cy="174" r="8" fill="#F5EDD8"/>
+</svg>
