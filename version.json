@@ -1,14 +1,14 @@
 {
-  "app_version": "v2.19.15-R1B",
-  "build_date": "2026-08-16",
+  "app_version": "v2.19.17-R1B",
+  "build_date": "2026-08-17",
   "corpus_version": "G036-AFLP-R1B-SUP-T1",
-  "stage": "LDC-AFLP-SUP-T1-RA5C-TARGETED-SOURCE-BACKED-SPEAKER-RECONCILIATION",
-  "candidate_status": "STATIC_CANDIDATE__RA5C_RECONCILED__FINAL_RELEASE_AUTHORITY_IN_EXTERNAL_DECISION_LOCK",
+  "stage": "LDC-AFLP-SUP-T1-RA7-FINAL-LOCKED-ICON-FAMILY-V1",
+  "candidate_status": "STATIC_CANDIDATE__RA7_FINAL_LOCKED_ICON_FAMILY_V1__FINAL_RELEASE_AUTHORITY_IN_EXTERNAL_DECISION_LOCK",
   "previous_live_version": "v2.11.0-R1B",
   "previous_live_commit": "6a05beb",
   "device_validation": "NOT_TESTED__PHYSICAL_IPHONE_IPAD_SAMSUNG_INSTALLED_PWA_LIVE_ORIGIN_RETEST_REQUIRED",
-  "baseline_candidate_version": "v2.19.14-R1B",
-  "baseline_candidate_sha256": "16b9d2377a0d29db7e81d6b1cff546cd9f14ccee3a47973d0a4a825c25639ee1",
+  "baseline_candidate_version": "v2.19.16-R1B",
+  "baseline_candidate_sha256": "a4b0754f700ed6bdeca62822df9d31dbcff77a9814475896f521c893fa0a8c1c",
   "owner_stage_start_authorisation": "Execute LDC-AFLP-SUP-T1 strict script: translate and visibly integrate the authorised 2 internal supplements + 12 complete external-only entries while preserving R1B as the immutable AFLP backbone.",
   "owner_override_note": "Owner explicitly authorised a separately provenance-labelled French supplement layer translated directly from IT-PM and reversible to AFLP-only reading.",
   "reader_contract": "ONE_CALM_READER_PLUS_OPTIONAL_REPERES",
@@ -33,10 +33,10 @@
   "owner_user_acceptance": "NOT_A_DEPLOYMENT_AUTHORITY__EXTERNAL_DEVICE_VALIDATION_PENDING",
   "offline_state_schema": "ldc-offline-state-v2",
   "offline_manifest_schema": "ldc-offline-manifest-v2",
-  "offline_cache_version": "ldc-le-livre-du-ciel-offline-v2.19.15-R1B",
+  "offline_cache_version": "ldc-le-livre-du-ciel-offline-v2.19.17-R1B",
   "offline_scope": "COMPLETE_36_TOME_READING_PLUS_LDC_AFLP_SUP_T1_PLUS_LEXICAL_METADATA_SPEAKER_SEARCH__VECTOR_EMBEDDING_SUBSYSTEM_RETIRED",
   "volume_lru_max": 4,
-  "offline_content_binding_sha256": "108f514979df88d298f8c3d4a7d548577b52eacdf71780a79e99f58fa43f4189",
+  "offline_content_binding_sha256": "a00469f1949c3faf3fb80aa09befab08b52c024abeee43937cb9d77a9334e16b",
   "offline_corpus_manifest_sha256": "6c04cc4f21e9c18475b27c43d14a1bfa787112e659306f668874d22b7d49ae54",
   "offline_integrity_contract": "EVERY_OFFLINE_ASSET_BYTE_LENGTH_AND_SHA256_VERIFIED_BEFORE_CACHE_ACCEPTANCE__READY_REQUIRES_VERIFIED_CACHE_MARKERS_AND_EXACT_CONTENT_BINDING",
   "owner_acceptance_findings_2026_08_12": [
@@ -294,7 +294,7 @@
   "ra5_nav_performance_highlight_palette": {
     "baseline_version": "v2.19.12-R1B",
     "baseline_sha256": "cc1522e9c5480eef558ac1090467a54778bea874937894df26837314bb0108d4",
-    "persistent_bottom_navigation": "NO_CODE_CHANGE_REQUIRED__BASELINE_NAV_IS_FLEX_SIBLING_OUTSIDE_SCREENS_AND_REMAINS_ACTIVE_ACROSS_PRIMARY_SCREEN_MAPPING",
+    "persistent_bottom_navigation": "HISTORICAL_RA5_CLAIM_SUPERSEDED_BY_RA6__FLEX_SIBLING_WAS_NOT_TRUE_VIEWPORT_FIXED_NAV",
     "volume_loading": "TWO_TIER__LIGHTWEIGHT_VOLUME_INDEX_FIRST__HEAVY_PARAGRAPHS_SPEAKERS_DISPLAY_FLOW_ONLY_FOR_READER_OR_BACKGROUND_PRELOAD",
     "lightweight_volume_indexes": "RETAINED_FOR_SESSION__OPTIONAL_BOUNDED_CONCURRENCY_2_BACKGROUND_PRELOAD__SAVE_DATA_RESPECTED",
     "heavy_reader_lru_max": 4,
@@ -361,5 +361,78 @@
     "final_personified_voice_segments": 468,
     "current_quotation_depth_2_segments": 753,
     "legacy_quote_depth_2_segments": 14
+  },
+  "ra6_tome1_editorial_explications": {
+    "legacy_editorial_records": 16,
+    "normal_entry_list_visibility": "EXCLUDED_FROM_NORMAL_TOME1_ENTRY_SEQUENCE",
+    "user_visible_aligned_entry_denominator": 2296,
+    "source_appendix": "GELDC1oct2021__EXPLICATIONS_END_OF_TOME1",
+    "explicit_numbered_body_markers": {
+      "3": "LDC.T01.SEC081.P005",
+      "4": "LDC.T01.SEC082.P001",
+      "5": "LDC.T01.SEC082.P009"
+    },
+    "unanchored_notes": [
+      1,
+      2,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16
+    ],
+    "unanchored_policy": "APPENDIX_ONLY__NO_CONTEXTUAL_OR_EDITORIAL_INFERENCE",
+    "canonical_corpus_files_changed": 0,
+    "search_route": "LEGACY_EDITORIAL_SEARCH_RESULTS_OPEN_APPENDIX_NOT_NORMAL_READER"
+  },
+  "ra6_true_fixed_bottom_navigation": {
+    "contract": "POSITION_FIXED__LEFT_0__RIGHT_0__BOTTOM_0__SAFE_AREA_AWARE",
+    "principal_navigation": [
+      "Accueil",
+      "Tomes",
+      "Recherche",
+      "Mon Espace"
+    ],
+    "screen_reservation": "BODY_RESERVES_NAV_SAFE_HEIGHT",
+    "transient_ui_above_footer": [
+      "toast",
+      "update_banner",
+      "selected_text_panel",
+      "colour_picker"
+    ],
+    "ra5_historical_correction": "RA5_FLEX_SIBLING_WAS_NOT_PROOF_OF_TRUE_VIEWPORT_FIXATION"
+  },
+  "ra7_final_locked_icon_family_v1": {
+    "authority": "Collection_Luisa_Final_Icon_Family_v1_LOCKED_2026-08-15",
+    "family_version": "1.0",
+    "family_status": "FINAL_LOCKED",
+    "app_key": "ldc",
+    "display_name": "Le Livre du Ciel",
+    "deployed_assets": [
+      "apple-touch-icon.png",
+      "favicon-16.png",
+      "favicon-32.png",
+      "favicon.ico",
+      "icon-60.png",
+      "icon-120.png",
+      "icon-192.png",
+      "icon-512.png",
+      "icon-maskable-512.png"
+    ],
+    "removed_obsolete_assets": [
+      "icon-source-192.svg",
+      "icon-source-48.svg",
+      "icon-source-512.svg"
+    ],
+    "manifest_contract": "192_ANY__512_ANY__512_MASKABLE",
+    "apple_touch_contract": "60_120_180",
+    "favicon_contract": "16_32_ICO",
+    "canonical_corpus_files_changed": 0
   }
 }

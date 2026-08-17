@@ -1,4 +1,26 @@
-# Le Livre du Ciel — v2.19.15-R1B
+# Le Livre du Ciel — v2.19.17-R1B
+
+## RA7 — identité finale Collection Luisa / icône Livre du Ciel (2026-08-17)
+
+RA7 part exactement des octets v2.19.16-R1B (`a4b0754f700ed6bdeca62822df9d31dbcff77a9814475896f521c893fa0a8c1c`) et ne modifie aucune donnée de corpus ni logique de lecture. Il remplace l’ancienne identité d’icône par la famille **Collection Luisa v1.0 FINAL_LOCKED** du 15 août 2026, variante `ldc` / `Le Livre du Ciel`.
+
+- Les neuf actifs runtime sont ceux du lock : favicon 16/32/ICO, Apple touch 60/120/180, PWA 192/512 et maskable 512.
+- Les trois anciens `icon-source-*.svg`, non référencés, sont supprimés afin qu’aucune ancienne identité graphique ne subsiste dans le paquet de déploiement.
+- `index.html`, `manifest.json` et le shell du service worker référencent uniquement les actifs finaux.
+- Tous les fichiers `corpus/**` restent byte-identical à v2.19.16. RA6 (Explications Tome 1 + navigation basse véritablement fixe) est préservé.
+- L’identité cache/offline est rebondée à v2.19.17-R1B; la liste des 224 actifs du corpus hors ligne reste inchangée.
+
+
+## RA6 — Explications éditoriales du Tome 1 + vraie navigation basse fixe (2026-08-16)
+
+RA6 part exactement des octets v2.19.15-R1B (`e0fe99803194f4030ae66c240783f7e48374620e2d3e2bab75793242ea7f4231`) et corrige deux défauts de présentation sans modifier le corpus canonique.
+
+- Les 16 enregistrements `LDC.T01.EDITORIAL.EXPLICATIONS.NOTE001..NOTE016` restent conservés byte-for-byte dans le corpus comme matériel éditorial de l’appendice 2021, mais ne sont plus présentés ni comptés comme les 16 premières entrées du Tome 1. La liste commence désormais par `Luisa commence à écrire`.
+- Un seul appendice non compté, `Explications éditoriales`, reprend les 16 notes dans leur ordre source. Le scan exact du corps du Tome 1 ne trouve que trois repères numérotés : `(3)` à `LDC.T01.SEC081.P005`, `(4)` à `LDC.T01.SEC082.P001` et `(5)` à `LDC.T01.SEC082.P009`. Des liens sont ajoutés uniquement à ces trois passages. Aucun rattachement contextuel n’est inféré pour les notes 1, 2 et 6–16.
+- Les résultats de recherche et anciens liens ciblant une pseudo-entrée éditoriale ouvrent l’appendice correspondant au lieu d’un lecteur normal.
+- La barre `Accueil · Tomes · Recherche · Mon Espace` est maintenant réellement fixée au viewport (`position: fixed; left:0; right:0; bottom:0`) avec réserve de hauteur et safe area. Toast, bannière de mise à jour, panneau contextuel et sélecteur de couleur se placent au-dessus.
+- Les 224 fichiers `corpus/**`, tous les paragraphes, recherches, locuteurs, display/flow, suppléments, IDs et offsets restent byte-identical à v2.19.15. Le total technique du backbone reste 2 312 records d’entrée, dont 16 records éditoriaux non comptés comme entrées de lecture ; le dénominateur utilisateur ALIGNÉ devient 2 296 entrées de lecture.
+
 
 ## RA5C — réconciliation ciblée des locuteurs (2026-08-16)
 
@@ -25,7 +47,7 @@ Le recheck a aussi invalidé l'ancien paquet de preuves RA5 comme preuve autonom
 
 ## RA5 — navigation persistante, ouverture rapide des Tomes et palette unique (2026-08-16)
 
-RA5 part des octets v2.19.12-R1B (`cc1522e9c5480eef558ac1090467a54778bea874937894df26837314bb0108d4`). Le bandeau principal `Accueil · Tomes · Recherche · Mon Espace` était déjà structurellement persistant dans le shell v2.19.12 ; aucun changement gratuit de navigation n'a été introduit.
+RA5 part des octets v2.19.12-R1B (`cc1522e9c5480eef558ac1090467a54778bea874937894df26837314bb0108d4`). RA5 avait traité le bandeau principal `Accueil · Tomes · Recherche · Mon Espace` comme structurellement persistant parce qu'il était un sibling flex hors des écrans. RA6 a ensuite démontré que cette preuve était insuffisante : le bandeau n'était pas réellement fixé au viewport et pouvait être déplacé/poussé par la géométrie du shell. La vraie fixation viewport est donc une correction RA6.
 
 L'ouverture d'un Tome utilise maintenant deux niveaux : le fichier léger `volume_NN.json` suffit pour afficher la liste des entrées, tandis que `paragraphs_NN.json`, `speakers_NN.json`, `display_NN.json` et `flow_NN.json` sont chargés séparément lorsque le lecteur en a besoin ou en préchargement non bloquant après l'affichage de la liste. Les index légers peuvent rester en mémoire pour la session ; le LRU de 4 volumes ne concerne que les données lourdes du lecteur. Les métadonnées `volume_NN.json` sont servies cache-first par le service worker versionné, avec repli réseau.
 
@@ -77,7 +99,7 @@ La recherche **métadonnées + lexicale/BM25** couvre le backbone et les complé
 
 ### Hors ligne / PWA
 
-La préparation hors ligne inclut **224 actifs vérifiés** : les 220 actifs hérités et les 4 fichiers du supplément. L'identité de cache, le manifeste hors ligne et son content binding sont versionnés pour v2.19.15-R1B.
+La préparation hors ligne inclut **224 actifs vérifiés** : les 220 actifs hérités et les 4 fichiers du supplément. L'identité de cache, le manifeste hors ligne et son content binding sont versionnés pour v2.19.16-R1B.
 
 ### Limites de décision
 

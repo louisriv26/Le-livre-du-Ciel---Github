@@ -1,7 +1,7 @@
 {
   "schema": "ldc-offline-manifest-v2",
-  "app_version": "v2.19.15-R1B",
-  "cache_version": "ldc-le-livre-du-ciel-offline-v2.19.15-R1B",
+  "app_version": "v2.19.17-R1B",
+  "cache_version": "ldc-le-livre-du-ciel-offline-v2.19.17-R1B",
   "corpus_generation": "G036-AFLP-R1B-SUP-T1",
   "scope": "COMPLETE_36_TOME_READING_PLUS_LDC_AFLP_SUP_T1_PLUS_LEXICAL_METADATA_SPEAKER_SEARCH__VECTOR_EMBEDDING_SUBSYSTEM_RETIRED",
   "semantic_vector_search_included": false,
@@ -1588,5 +1588,5 @@
   ],
   "content_binding_schema": "ldc-offline-content-binding-v1",
   "corpus_manifest_sha256": "6c04cc4f21e9c18475b27c43d14a1bfa787112e659306f668874d22b7d49ae54",
-  "content_binding_sha256": "108f514979df88d298f8c3d4a7d548577b52eacdf71780a79e99f58fa43f4189"
+  "content_binding_sha256": "a00469f1949c3faf3fb80aa09befab08b52c024abeee43937cb9d77a9334e16b"
 }

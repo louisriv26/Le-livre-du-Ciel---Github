@@ -9,6 +9,12 @@
 <meta name="apple-mobile-web-app-title" content="Livre du Ciel">
 <title>Livre du Ciel — Luisa Piccarreta</title>
 <link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
+<link rel="shortcut icon" href="icons/favicon.ico">
+<link rel="apple-touch-icon" sizes="60x60" href="icons/icon-60.png">
+<link rel="apple-touch-icon" sizes="120x120" href="icons/icon-120.png">
+<link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
 <link rel="stylesheet" href="assets/icons/tabler-icons.min.css">
 <link rel="stylesheet" href="assets/fonts/fonts.css">
 <script src="assets/js/sortable.min.js"></script>
@@ -28,6 +34,8 @@
   --supp-bg:rgba(110,84,16,.055); --supp-border:#B89432; --supp-badge-bg:#F2E6C6; --supp-badge-ink:#5C4610;
   --sat-top:env(safe-area-inset-top,0px);
   --sat-bot:env(safe-area-inset-bottom,0px);
+  --nav-h:58px;
+  --nav-safe-h:calc(var(--nav-h) + var(--sat-bot));
 }
 @media(prefers-color-scheme:dark){
   :root{--ivory:#1A1612;--night:#E8D9C4;--gold:#D4A843;--gold-decor:#D4A843;--gold-border:#8F6C24;--gold-text:#D4A843;--accent:#d4a843;--gold-light:#5A4520;
@@ -167,7 +175,7 @@ html[data-theme="light"]{
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html,body{height:100%;background:var(--ivory);font-family:var(--body);color:var(--ink);}
 html{overflow-x:hidden;max-width:100vw;height:-webkit-fill-available;}
-body{overflow:hidden;overflow-x:hidden;max-width:100vw;min-height:100vh;min-height:-webkit-fill-available;display:flex;flex-direction:column;}
+body{overflow:hidden;overflow-x:hidden;max-width:100vw;min-height:100vh;min-height:-webkit-fill-available;display:flex;flex-direction:column;padding-bottom:var(--nav-safe-h);}
 
 /* ═══ SCROLL ═══ */
 .scroll{flex:1;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;}
@@ -180,8 +188,8 @@ body{overflow:hidden;overflow-x:hidden;max-width:100vw;min-height:100vh;min-heig
 .btn-icon:hover,.btn-icon:focus-visible{color:var(--night);background:var(--gold-pale);outline:none;}
 
 /* ═══ BOTTOM NAV ═══ */
-#nav{display:flex;background:var(--ivory);border-top:0.5px solid var(--border);
-  padding-bottom:var(--sat-bot);flex-shrink:0;}
+#nav{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:9000;height:var(--nav-safe-h);
+  background:var(--ivory);border-top:0.5px solid var(--border);padding-bottom:var(--sat-bot);}
 .nav-item{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
   gap:2px;padding:8px 4px 6px;background:none;border:none;cursor:pointer;
   font-size:10px;font-family:var(--body);color:var(--muted);transition:color .15s;}
@@ -649,7 +657,7 @@ mark.search-hl{background:rgba(201,168,76,.35);color:inherit;border-radius:2px;p
 
 
 /* ═══ VERSION BADGE ═══ */
-#version-badge{position:fixed;bottom:calc(58px + var(--sat-bot) + 6px);right:10px;
+#version-badge{position:fixed;bottom:calc(var(--nav-safe-h) + 6px);right:10px;
   background:var(--night);color:var(--gold);font-size:10px;font-family:var(--body);
   padding:3px 9px;border-radius:10px;opacity:0;pointer-events:none;
   transition:opacity .3s;z-index:50;letter-spacing:.04em;}
@@ -716,7 +724,7 @@ html[data-theme="dark"] .speech-marie { color:#8AB8D8; }
   display: none;
   position: fixed;
   left: 12px; right: 12px;
-  bottom: calc(env(safe-area-inset-bottom, 0px) + 76px);
+  bottom: calc(var(--nav-safe-h) + 18px);
   z-index: 5000;
   background: #1A2A4A;
   color: #F0EDE6;
@@ -928,7 +936,7 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; }
 .col-new-input:focus{border-color:var(--gold-light);}
 
 /* Toast */
-#toast{position:fixed;bottom:calc(80px + var(--sat-bot));left:50%;
+#toast{position:fixed;bottom:calc(var(--nav-safe-h) + 14px);left:50%;
   transform:translateX(-50%) translateY(20px);background:var(--toast-bg);color:var(--toast-ink);
   padding:8px 18px;border-radius:20px;font-size:13px;font-family:var(--body);
   opacity:0;transition:all .25s;pointer-events:none;z-index:200;white-space:nowrap;}
@@ -936,7 +944,7 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; }
 
 /* Selected-text panel (24 Heures pattern) — sits above the bottom nav, never over the
    selection, so the iOS native menu (Copy / Look Up / Translate) cannot collide with it. */
-#seltext-panel{position:fixed;left:8px;right:8px;bottom:calc(var(--nav-h,116px) + 8px);
+#seltext-panel{position:fixed;left:8px;right:8px;bottom:calc(var(--nav-safe-h) + 8px);
   z-index:9400;display:none;background:var(--white);border:1px solid var(--gold-light);
   border-radius:14px;padding:8px 10px 10px;box-shadow:0 4px 18px rgba(0,0,0,.18);}
 #seltext-panel.show{display:block;}
@@ -958,7 +966,7 @@ body.android-paragraph-mode .android-paragraph-toggle{background:var(--accent-fi
 body.android-highlight-platform #reader-body .para-fragment{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;}
 
 /* Colour picker sheet (24 Heures pattern) — anchored to the bottom, never over the text */
-#cp-overlay{position:fixed;inset:0;background:rgba(0,0,0,.35);display:none;z-index:9500;
+#cp-overlay{position:fixed;top:0;left:0;right:0;bottom:var(--nav-safe-h);background:rgba(0,0,0,.35);display:none;z-index:9500;
   align-items:flex-end;justify-content:center;}
 #cp-overlay.show{display:flex;}
 #cp-sheet{background:var(--white);border-radius:16px 16px 0 0;padding:14px 16px 20px;
@@ -974,6 +982,21 @@ body.android-highlight-platform #reader-body .para-fragment{-webkit-user-select:
   background:none;color:var(--red);font-family:var(--body);font-size:14px;text-align:center;cursor:pointer;margin:0 0 8px;}
 .cp-close{display:block;width:100%;min-height:44px;border:1px solid var(--border);
   border-radius:10px;background:none;font-family:var(--body);font-size:15px;color:var(--ink);cursor:pointer;}
+
+/* Tome 1 editorial appendix — presentation only; canonical corpus bytes remain unchanged. */
+.editorial-appendix-entry{margin:14px 16px 22px;padding:14px 16px;border:1px solid var(--gold-border);border-radius:12px;background:var(--gold-pale);width:calc(100% - 32px);text-align:left;cursor:pointer;color:var(--ink);font-family:var(--body);}
+.editorial-appendix-entry .eae-kicker{font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--gold-text);margin-bottom:4px;}
+.editorial-appendix-entry .eae-title{font-family:var(--serif);font-size:16px;color:var(--night);margin-bottom:4px;}
+.editorial-appendix-entry .eae-sub{font-size:12px;color:var(--muted);line-height:1.45;}
+.editorial-wrap{padding:16px 16px 36px;max-width:760px;width:100%;margin:0 auto;}
+.editorial-intro{border-left:3px solid var(--gold-border);background:var(--gold-pale);padding:12px 14px;border-radius:0 10px 10px 0;font-size:13px;line-height:1.55;color:var(--ink);margin-bottom:16px;}
+.editorial-note{padding:14px 0 16px;border-bottom:1px solid var(--border);scroll-margin-top:18px;}
+.editorial-note:last-child{border-bottom:0;}
+.editorial-note-title{font-family:var(--serif);font-size:17px;color:var(--night);margin-bottom:7px;}
+.editorial-note-text{font-size:var(--reader-size);line-height:1.62;color:var(--ink);}
+.editorial-note-proof{font-size:11px;color:var(--gold-text);margin-top:8px;line-height:1.45;}
+.editorial-marker-link{display:block;margin:8px 0 2px;padding:7px 10px;border:1px solid var(--gold-border);border-radius:9px;background:var(--gold-pale);color:var(--gold-text);font-family:var(--body);font-size:12px;cursor:pointer;min-height:44px;}
+.editorial-marker-link:focus-visible,.editorial-appendix-entry:focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
 
 /* Empty state */
 .empty-state{padding:48px 20px;text-align:center;color:var(--muted);font-size:13px;line-height:1.7;}
@@ -2042,6 +2065,20 @@ html[data-theme="dark"] .st-luisa{color:#D4A843;}
 </div>
 
 
+<!-- TOME 1 EDITORIAL EXPLICATIONS — non-entry appendix -->
+<div class="screen" id="screen-editorial">
+  <div class="top-bar">
+    <button class="btn-back" type="button" onclick="closeTome1EditorialAppendix()">
+      <i class="ti ti-arrow-left"></i> Retour
+    </button>
+    <span class="top-bar-title">Explications éditoriales</span>
+    <span style="width:44px" aria-hidden="true"></span>
+  </div>
+  <div class="scroll" id="tome1-editorial-scroll">
+    <div class="editorial-wrap" id="tome1-editorial-body"></div>
+  </div>
+</div>
+
 <!-- DATE NAVIGATOR -->
 <div class="screen" id="screen-date-nav">
   <div class="top-bar">
@@ -2091,9 +2128,9 @@ html[data-theme="dark"] .st-luisa{color:#D4A843;}
    VERSION — single source of truth
    Update this string on every release.
 ═══════════════════════════════════════════════════════ */
-const APP_VERSION = 'v2.19.15-R1B';
-const APP_BUILD   = '2026-08-16';
-const SW_CACHE_VERSION = 'ldc-v2.19.15-R1B';
+const APP_VERSION = 'v2.19.17-R1B';
+const APP_BUILD   = '2026-08-17';
+const SW_CACHE_VERSION = 'ldc-v2.19.17-R1B';
 const CORPUS_MANIFEST_SHA256 = '6c04cc4f21e9c18475b27c43d14a1bfa787112e659306f668874d22b7d49ae54';
 const DEEP_LINK_SCHEMA = 'ldc-deep-link-v1';
 const READING_POSITION_SCHEMA = 'ldc-reading-position-v2';
@@ -2312,9 +2349,29 @@ const USER_DATA_ENVELOPE_VERSION = 3;
 const USER_DATA_MAX_IMPORT_BYTES = 10 * 1024 * 1024;
 const USER_DATA_STORES = Object.freeze(['reading_pos','highlights','notes','favorites','collections','col_items','settings','read_entries']);
 const USER_DATA_HL_COLORS = Object.freeze(['gold','yellow','blue','green','purple','pink']); // gold remains legacy import/render; active palette follows 24H
-const BACKBONE_ENTRY_COUNT = 2312;
+const BACKBONE_ENTRY_COUNT = 2312; // technical corpus records; includes 16 Tome 1 editorial appendix records
+const TOME1_EDITORIAL_NOTE_COUNT = 16;
+const USER_VISIBLE_BACKBONE_ENTRY_COUNT = BACKBONE_ENTRY_COUNT - TOME1_EDITORIAL_NOTE_COUNT;
 const SUPPLEMENT_COMPLETE_ENTRY_COUNT = 12;
 const COMPOSITE_ENTRY_COUNT = BACKBONE_ENTRY_COUNT + SUPPLEMENT_COMPLETE_ENTRY_COUNT;
+const USER_VISIBLE_COMPOSITE_ENTRY_COUNT = USER_VISIBLE_BACKBONE_ENTRY_COUNT + SUPPLEMENT_COMPLETE_ENTRY_COUNT;
+const TOME1_EDITORIAL_NOTE_TARGETS = Object.freeze({
+  3:Object.freeze({entryId:'ldc_t01_sec081',paraId:'ldc_t01_sec081_p005',stableRef:'LDC.T01.SEC081.P005'}),
+  4:Object.freeze({entryId:'ldc_t01_sec082',paraId:'ldc_t01_sec082_p001',stableRef:'LDC.T01.SEC082.P001'}),
+  5:Object.freeze({entryId:'ldc_t01_sec082',paraId:'ldc_t01_sec082_p009',stableRef:'LDC.T01.SEC082.P009'})
+});
+function tome1EditorialNoteNumber(value){
+  const s=String(value||'');
+  let m=s.match(/^ldc_t01_editorial_explications_note(\d{3})(?:_p\d{3})?$/i);
+  if(!m)m=s.match(/^LDC\.T01\.EDITORIAL\.EXPLICATIONS\.NOTE(\d{3})(?:\.P\d{3})?$/i);
+  if(!m)return null;const n=Number(m[1]);return n>=1&&n<=16?n:null;
+}
+function isTome1EditorialEntryId(value){return tome1EditorialNoteNumber(value)!=null;}
+function userVisibleBackboneEntries(baseEntries,vol){
+  const base=Array.isArray(baseEntries)?baseEntries.slice():[];
+  return Number(vol)===1?base.filter(e=>!isTome1EditorialEntryId(e&&e.id)&&!isTome1EditorialEntryId(e&&e.stable_ref)):base;
+}
+function editorialNoteForParagraph(paraId){for(const [n,t] of Object.entries(TOME1_EDITORIAL_NOTE_TARGETS))if(t.paraId===paraId)return Number(n);return null;}
 
 function paragraphFingerprint(text) {
   const str = String(text || '');
@@ -2432,18 +2489,19 @@ function isSupplementEntryId(id) { return supplementEntryIds.has(id); }
 function isSupplementParagraphRecord(p) { return !!(p&&p.is_supplement); }
 function paragraphRecordById(vol, paraId) { return (parasCache[vol]||[]).find(p=>p.id===paraId)||null; }
 function sourceModeEntries(baseEntries,vol) {
-  const base=Array.isArray(baseEntries)?baseEntries.slice():[];
+  const base=userVisibleBackboneEntries(baseEntries,vol);
   if(supplementMode==='aflp')return base;
   const all=mergeCompleteSupplementEntries(base,vol,true);
   return supplementMode==='additions'?all.filter(e=>e.is_supplement):all;
 }
 function effectiveEntryCountForVolume(vol, baseCount) {
   if(supplementMode==='additions')return completeSupplementCountForVolume(vol);
-  return Number(baseCount||0)+(supplementMode==='enriched'?completeSupplementCountForVolume(vol):0);
+  const visibleBase=Math.max(0,Number(baseCount||0)-(Number(vol)===1?TOME1_EDITORIAL_NOTE_COUNT:0));
+  return visibleBase+(supplementMode==='enriched'?completeSupplementCountForVolume(vol):0);
 }
-function effectiveGlobalEntryCount() { return supplementMode==='enriched'?COMPOSITE_ENTRY_COUNT:(supplementMode==='additions'?14:BACKBONE_ENTRY_COUNT); }
+function effectiveGlobalEntryCount() { return supplementMode==='enriched'?USER_VISIBLE_COMPOSITE_ENTRY_COUNT:(supplementMode==='additions'?14:USER_VISIBLE_BACKBONE_ENTRY_COUNT); }
 function recordIsSupplementOwned(r){return !!(r&&(r.supplement_id||isSupplementEntryId(r.entry_id)));}
-function readRecordVisibleInSourceMode(r){const isSupp=recordIsSupplementOwned(r);return supplementMode==='enriched'?true:(supplementMode==='additions'?isSupp:!isSupp);}
+function readRecordVisibleInSourceMode(r){if(r&&isTome1EditorialEntryId(r.entry_id))return false;const isSupp=recordIsSupplementOwned(r);return supplementMode==='enriched'?true:(supplementMode==='additions'?isSupp:!isSupp);}
 function activeReaderSupplement(){
   if(currentSupplementFocusId)return supplementById(currentSupplementFocusId);
   if(currentEntry&&currentEntry.is_supplement&&currentEntry.supplement_id)return supplementById(currentEntry.supplement_id);
@@ -2677,7 +2735,7 @@ function showScreen(id) {
   document.getElementById('screen-' + id).classList.add('active');
   document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
   const navMap = { home:'nav-home', tomes:'nav-tomes', entries:'nav-tomes',
-                   reader:'nav-tomes', search:'nav-search', espace:'nav-espace',
+                   reader:'nav-tomes', editorial:'nav-tomes', search:'nav-search', espace:'nav-espace',
                    'date-nav':'nav-search' };
   const ni = document.getElementById(navMap[id]);
   if (ni) ni.classList.add('active');
@@ -2727,7 +2785,7 @@ async function unmarkEntryRead(vol, entryId) {
 
 async function getReadEntryIds(vol) {
   const all = await dbGetAll('read_entries');
-  return new Set(all.filter(r => r.vol === vol && isConfirmedReadRecord(r)).map(r => r.entry_id));
+  return new Set(all.filter(r => r.vol === vol && isConfirmedReadRecord(r) && !isTome1EditorialEntryId(r.entry_id)).map(r => r.entry_id));
 }
 
 async function countReadEntries(vol) {
@@ -3311,8 +3369,45 @@ async function openTome(vol) {
     btn.onclick = () => openEntry(vol, e.id, 'entries');
     list.appendChild(btn);
   });
+  if(Number(vol)===1 && supplementMode!=='additions'){
+    const appendix=document.createElement('button');appendix.type='button';appendix.className='editorial-appendix-entry';appendix.id='tome1-editorial-appendix-entry';
+    appendix.innerHTML='<div class="eae-kicker">Matériel éditorial · non compté comme entrée</div><div class="eae-title">Explications éditoriales</div><div class="eae-sub">16 notes de l’appendice de l’édition source 2021. Seuls les repères (3), (4) et (5) sont explicitement numérotés dans le corps du texte.</div>';
+    appendix.onclick=()=>openTome1EditorialAppendix('entries');list.appendChild(appendix);
+  }
   showScreen('entries');
   scheduleVolumeReaderPreload(vol);
+}
+
+let tome1EditorialBackState=null;
+async function renderTome1EditorialAppendix(){
+  await ensureVolumeReaderData(1);
+  const host=document.getElementById('tome1-editorial-body');if(!host)return;
+  host.innerHTML='<div class="editorial-intro"><b>Appendice éditorial — édition source 2021.</b><br>Ces 16 explications sont distinctes du récit de Luisa et ne comptent pas comme entrées du Tome 1. Le corps source ne porte des repères numérotés explicites que pour (3), (4) et (5). Les autres notes sont conservées ici sans rattachement contextuel inféré.</div>';
+  for(let n=1;n<=16;n++){
+    const entryId=`ldc_t01_editorial_explications_note${String(n).padStart(3,'0')}`;
+    const entry=corpusCache[1]&&corpusCache[1].allById&&corpusCache[1].allById[entryId];
+    const ps=(parasCache[1]||[]).filter(p=>p.entry_id===entryId).sort((a,b)=>(a.display_order||0)-(b.display_order||0));
+    if(!entry||!ps.length)throw new Error('Explication éditoriale absente: '+entryId);
+    const section=document.createElement('section');section.className='editorial-note';section.id='editorial-note-'+n;section.dataset.noteNo=String(n);
+    const target=TOME1_EDITORIAL_NOTE_TARGETS[n];
+    section.innerHTML=`<div class="editorial-note-title">Explication éditoriale — note ${n}</div><div class="editorial-note-text">${ps.map(p=>escapeHtml(p.text)).join('<br>')}</div>${target?`<div class="editorial-note-proof">Repère source explicite (${n}) · ${escapeHtml(target.stableRef)}</div>`:'<div class="editorial-note-proof">Aucun repère numéroté explicite prouvé dans le corps source — aucun rattachement inféré.</div>'}`;
+    host.appendChild(section);
+  }
+}
+async function openTome1EditorialAppendix(origin='entries',noteNo=null){
+  const readerScroll=document.getElementById('reader-scroll');
+  tome1EditorialBackState={origin,readerScrollTop:origin==='reader'&&readerScroll?readerScroll.scrollTop:null};
+  await renderTome1EditorialAppendix();showScreen('editorial');
+  requestAnimationFrame(()=>{const sc=document.getElementById('tome1-editorial-scroll');if(sc)sc.scrollTop=0;const el=noteNo?document.getElementById('editorial-note-'+noteNo):null;if(el)el.scrollIntoView({block:'start'});});
+}
+function closeTome1EditorialAppendix(){
+  const st=tome1EditorialBackState||{origin:'entries'};tome1EditorialBackState=null;
+  const origin=st.origin||'entries';
+  if(origin==='reader'){
+    showScreen('reader');requestAnimationFrame(()=>{const sc=document.getElementById('reader-scroll');if(sc&&Number.isFinite(st.readerScrollTop))sc.scrollTop=st.readerScrollTop;});return;
+  }
+  if(document.getElementById('screen-'+origin)){showScreen(origin);return;}
+  showScreen('entries');
 }
 
 function backToTomes() { showScreen('tomes'); }
@@ -3336,6 +3431,8 @@ async function restoreAutomaticReaderSourceMode(){
   return true;
 }
 async function openEntry(vol, entryId, backDest, opts={}) {
+  const editorialNoteNo=Number(vol)===1?tome1EditorialNoteNumber(entryId):null;
+  if(editorialNoteNo)return openTome1EditorialAppendix(backDest||'entries',editorialNoteNo);
   const sameReaderRerender = !!(currentEntry && currentEntry.id===entryId && currentVolume===vol && document.getElementById('screen-reader')?.classList.contains('active'));
   if (opts.originContext !== undefined) readerOriginContext = opts.originContext;
   else if (!opts.preserveOrigin && !sameReaderRerender) readerOriginContext = backDest==='autour' ? captureReaderOriginContext() : captureNavigationContext(backDest);
@@ -3532,6 +3629,14 @@ async function openEntry(vol, entryId, backDest, opts={}) {
       // §8.1 explicit canonical map for this fragment — built from canonical
       // p.text and the display atoms, never reconstructed from visible text
       if (window.LDCAnchor) LDCAnchor.indexFragment(frag, m.paraId, m.text, m.atoms);
+
+      const editorialNoteNo=editorialNoteForParagraph(m.paraId);
+      if(editorialNoteNo){
+        const noteLink=document.createElement('button');noteLink.type='button';noteLink.className='editorial-marker-link';noteLink.dataset.editorialNote=String(editorialNoteNo);
+        noteLink.textContent=`Explication éditoriale (${editorialNoteNo})`;
+        noteLink.addEventListener('click',ev=>{ev.preventDefault();ev.stopPropagation();openTome1EditorialAppendix('reader',editorialNoteNo);});
+        div.appendChild(noteLink);
+      }
 
       if (i < mem.length - 1) {
         // a derived visual character: it belongs to NEITHER paragraph and has
@@ -5508,13 +5613,15 @@ function renderSearchResults(results, raw, totalMatches, metadataMode=false) {
   for (const r of results) {
     const card=document.createElement('button'); card.className='result-card'; card.type='button';
     card.dataset.resultKey = String(r.id||r.entry_id||r.stable_ref||'');
+    const editorialNo=tome1EditorialNoteNumber(r.entry_id||r.id||r.stable_ref);
     const tagClass=r.matchType==='exact'||r.matchType==='words'?'exact':r.matchType==='metadata'?'exact':'approximate';
-    const tagLabel=r.matchType==='metadata'?(r._metaKind||'Titre / date'):({exact:'Phrase exacte',words:'Mots exacts',partial:'Idée proche',weak:'Thème approché',thematic:'Thème lié'}[r.matchType]||'Résultat');
+    const tagLabel=editorialNo?'Éditorial':(r.matchType==='metadata'?(r._metaKind||'Titre / date'):({exact:'Phrase exacte',words:'Mots exacts',partial:'Idée proche',weak:'Thème approché',thematic:'Thème lié'}[r.matchType]||'Résultat'));
     const excerpt=r.matchType==='metadata'?(r.text||r.title||''):excerptAround(r.text||'',raw);
+    const displayTitle=editorialNo?`Explication éditoriale — note ${editorialNo}`:(r.title||'');
     const speechTag=searchSpeakerFilter?`<span class="rc-tag" style="background:rgba(92,58,16,.12);color:#5C3A10;border-color:rgba(92,58,16,.2);"><i class="ti ti-message-circle" style="font-size:10px;"></i> Paroles de Jésus</span>`:'';
     const supplementTag=r.is_supplement?`<span class="rc-tag exact">COMPLÉMENT · IT-PM</span>`:'';
     card.innerHTML=`<div class="rc-stable">${escapeHtml(r.stable_ref||r.entry_id||r.id)} · Tome ${r.volume}</div>
-      ${r.title?`<div class="rc-title">${escapeHtml(r.title)}</div>`:''}
+      ${displayTitle?`<div class="rc-title">${escapeHtml(displayTitle)}</div>`:''}
       <div class="rc-body-text">${r.matchType==='metadata'?escapeHtml(excerpt):highlightMatches(excerpt,raw)}</div>
       <div class="rc-tags"><span class="rc-tag ${tagClass}">${tagLabel}</span>${supplementTag}${speechTag}${r.date_display?`<span class="rc-tag">${escapeHtml(r.date_display)}</span>`:''}</div>`;
     card.onclick=()=>openFromSearch(r); container.appendChild(card);
@@ -5563,6 +5670,8 @@ async function runSearch() {
 }
 
 async function openFromSearch(item) {
+  const editorialNo=tome1EditorialNoteNumber(item&&item.entry_id);
+  if(editorialNo)return openTome1EditorialAppendix('search',editorialNo);
   pendingParaId = item.id;
   return openEntry(item.volume, item.entry_id, 'search');
 }
@@ -6509,9 +6618,9 @@ function renderDnResultCard() {
    CacheStorage contains public app/corpus bytes only. IndexedDB settings holds
    the user-visible completion record; it is not itself the offline payload.
 ═══════════════════════════════════════════════════════ */
-const OFFLINE_CACHE_VERSION = 'ldc-le-livre-du-ciel-offline-v2.19.15-R1B';
+const OFFLINE_CACHE_VERSION = 'ldc-le-livre-du-ciel-offline-v2.19.17-R1B';
 const OFFLINE_MANIFEST_SCHEMA = 'ldc-offline-manifest-v2';
-const OFFLINE_CONTENT_BINDING = '108f514979df88d298f8c3d4a7d548577b52eacdf71780a79e99f58fa43f4189';
+const OFFLINE_CONTENT_BINDING = 'a00469f1949c3faf3fb80aa09befab08b52c024abeee43937cb9d77a9334e16b';
 const OFFLINE_CORPUS_MANIFEST_SHA256 = '6c04cc4f21e9c18475b27c43d14a1bfa787112e659306f668874d22b7d49ae54';
 const OFFLINE_STATES = Object.freeze(['NOT_PREPARED','CHECKING','DOWNLOADING','READY','PARTIAL','ERROR','CANCELLED']);
 let offlineUiState = {state:'NOT_PREPARED',completed:0,total:0,failed:[],total_bytes:0,job_id:null,message:'',content_binding_sha256:OFFLINE_CONTENT_BINDING,corpus_manifest_sha256:OFFLINE_CORPUS_MANIFEST_SHA256};
