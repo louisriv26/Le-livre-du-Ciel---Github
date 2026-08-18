@@ -1,12 +1,12 @@
-const VERSION = 'ldc-v2.19.17-R1B';
+const VERSION = 'ldc-v2.19.23-R1B';
 const CACHE_PREFIX = 'ldc-le-livre-du-ciel-';
-const SHELL_CACHE = `${CACHE_PREFIX}shell-v2.19.17-R1B`;
-const RUNTIME_CACHE = `${CACHE_PREFIX}runtime-v2.19.17-R1B`;
-const OFFLINE_CACHE = 'ldc-le-livre-du-ciel-offline-v2.19.17-R1B';
+const SHELL_CACHE = `${CACHE_PREFIX}shell-v2.19.23-R1B`;
+const RUNTIME_CACHE = `${CACHE_PREFIX}runtime-v2.19.23-R1B`;
+const OFFLINE_CACHE = 'ldc-le-livre-du-ciel-offline-v2.19.23-R1B';
 const OFFLINE_MANIFEST_URL = './offline_manifest.json';
 const OFFLINE_MANIFEST_SCHEMA = 'ldc-offline-manifest-v2';
-const OFFLINE_CONTENT_BINDING = 'a00469f1949c3faf3fb80aa09befab08b52c024abeee43937cb9d77a9334e16b';
-const OFFLINE_CORPUS_MANIFEST_SHA256 = '6c04cc4f21e9c18475b27c43d14a1bfa787112e659306f668874d22b7d49ae54';
+const OFFLINE_CONTENT_BINDING = '09e06c46fd1da0cd419e0578cbc6ae4b2aed6cd4bab791b8f8a73b97aaa3d8a6';
+const OFFLINE_CORPUS_MANIFEST_SHA256 = '9ac593334f1b1d0472f515e1b1d4229434f5fdb13c8c0e94e008c72dd039fbfa';
 const OFFLINE_META_PATH = '__ldc_offline_meta__.json';
 
 // Keep install small and atomic. If any shell/index resource cannot be cached, the
@@ -63,7 +63,7 @@ async function loadOfflineManifest() {
   if(!r){r=await fetch(OFFLINE_MANIFEST_URL,{cache:'reload'});if(r&&r.ok)await shell.put(OFFLINE_MANIFEST_URL,r.clone());}
   if(!r||!r.ok)throw new Error('offline manifest indisponible');
   const m=await r.json();
-  if(m.schema!==OFFLINE_MANIFEST_SCHEMA||m.app_version!=='v2.19.17-R1B'||m.cache_version!==OFFLINE_CACHE)throw new Error('offline manifest incompatible');
+  if(m.schema!==OFFLINE_MANIFEST_SCHEMA||m.app_version!=='v2.19.23-R1B'||m.cache_version!==OFFLINE_CACHE)throw new Error('offline manifest incompatible');
   if(m.content_binding_schema!=='ldc-offline-content-binding-v1'||m.content_binding_sha256!==OFFLINE_CONTENT_BINDING)throw new Error('offline manifest binding incompatible');
   if(m.corpus_manifest_sha256!==OFFLINE_CORPUS_MANIFEST_SHA256)throw new Error('offline corpus manifest binding incompatible');
   const unique=[...new Set((m.assets||[]).map(a=>a.path))];
@@ -174,7 +174,14 @@ self.addEventListener('message',e=>{
   if(e.data&&String(e.data.type||'').startsWith('OFFLINE_'))e.waitUntil(handleOfflineMessage(e));
 });
 
-self.addEventListener('install',e=>{e.waitUntil(caches.open(SHELL_CACHE).then(c=>c.addAll(SHELL)));});
+async function installFreshShell() {
+  await caches.delete(SHELL_CACHE);
+  const c=await caches.open(SHELL_CACHE);
+  const requests=SHELL.map(u=>new Request(new URL(u,self.registration.scope).href,{cache:'reload'}));
+  try{await c.addAll(requests);}
+  catch(e){await caches.delete(SHELL_CACHE);throw e;}
+}
+self.addEventListener('install',e=>{e.waitUntil(installFreshShell());});
 self.addEventListener('activate',e=>{e.waitUntil((async()=>{
   const keep=new Set([SHELL_CACHE,RUNTIME_CACHE,OFFLINE_CACHE]);
   const keys=await caches.keys();
@@ -196,8 +203,12 @@ self.addEventListener('fetch',e=>{
   if(e.request.method!=='GET')return;
   const url=new URL(e.request.url);if(url.origin!==self.location.origin)return;
   const path=url.pathname;
+  if(path.endsWith('/version.json')){
+    e.respondWith(fetch(new Request(e.request,{cache:'no-store'})));return;
+  }
   if(e.request.mode==='navigate'){
-    e.respondWith(fetch(e.request).then(async res=>{if(res&&res.ok){const c=await caches.open(SHELL_CACHE);await c.put('./index.html',res.clone());}return res;}).catch(async()=>{const c=await caches.open(SHELL_CACHE);return (await c.match('./index.html'))||(await c.match('./'));}));return;
+    const freshNav=new Request(e.request,{cache:'reload'});
+    e.respondWith(fetch(freshNav).then(async res=>{if(res&&res.ok){const c=await caches.open(SHELL_CACHE);await c.put('./index.html',res.clone());}return res;}).catch(async()=>{const c=await caches.open(SHELL_CACHE);return (await c.match('./index.html'))||(await c.match('./'));}));return;
   }
   if(path.includes('/corpus/')){
     e.respondWith(cachedCorpusResponse(e.request,false));return;

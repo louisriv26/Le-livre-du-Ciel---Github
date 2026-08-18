@@ -472,6 +472,41 @@
     return out;
   }
 
+  // RA9 — uncoloured direct speech remains normal prose, but semantic run
+  // boundaries must not create accidental visual paragraph boundaries.
+  function isUnstyledDirectRun(r) {
+    return !!r && !r.styled && r.role && r.role !== 'NARRATIVE';
+  }
+  function leadingClosingDelimiterLength(t) {
+    // Return the canonical prefix through the first closing quote when everything
+    // before it is non-lexical punctuation/space. This keeps the closing quote
+    // attached to the direct speech that precedes it.
+    var limit = Math.min(String(t || '').length, 12);
+    for (var i = 0; i < limit; i++) {
+      var ch = t[i];
+      if (/[0-9A-Za-zÀ-ɏ]/.test(ch) || OPEN.indexOf(ch) !== -1) return 0;
+      if (CLOSE.indexOf(ch) !== -1) return i + 1;
+    }
+    return 0;
+  }
+  function paragraphBreakHtml() {
+    return '<span class="speech-paragraph-break" aria-hidden="true"></span>';
+  }
+  function renderNarrativeSlice(r, start, end, prevRun, nextRun, atoms, DM, hideOuter) {
+    var local = { start:start, end:end, text:r.text.slice(start-r.start, end-r.start) };
+    var display = local.text;
+    if (atoms && DM) {
+      var ra = DM.atomsForRange(atoms, start, end);
+      display = '';
+      for (var q = 0; q < ra.length; q++) display += ra[q].text;
+    }
+    var np = splitNarrativeBoundaryDelimiters(display, prevRun, nextRun, hideOuter);
+    var extraHidden = extraNarrativeDelimiterOffsets(local, prevRun, nextRun, hideOuter);
+    var html = atoms ? emitRangeWithExtraHidden(atoms, start, end, np.lead.length, np.trail.length, extraHidden) : null;
+    if (html === null) html = plainNarrativeWithExtraHidden(local.text, np, start, extraHidden);
+    return { html:html, core:np.core };
+  }
+
   // Split a run into [openDelim, core, closeDelim] without dropping anything.
   function splitOuterDelimiters(t) {
     var a = 0, b = t.length;
@@ -543,24 +578,33 @@
       if (!r.styled) {
         var prevRun = i > 0 ? model.runs[i - 1] : null;
         var nextRun = i + 1 < model.runs.length ? model.runs[i + 1] : null;
-        var narDisplay = r.text;
-        if (atoms && DM) {
-          var nra = DM.atomsForRange(atoms, r.start, r.end);
-          narDisplay = '';
-          for (var nq = 0; nq < nra.length; nq++) narDisplay += nra[nq].text;
+
+        // If normal-prose direct speech just ended, keep its closing guillemet
+        // with that speech, then start resumed narration as a new visual paragraph.
+        // No canonical character or semantic run is changed.
+        var closePrefixLen = (r.role === 'NARRATIVE' && isUnstyledDirectRun(prevRun))
+          ? leadingClosingDelimiterLength(r.text) : 0;
+        if (closePrefixLen && /[0-9A-Za-zÀ-ɏ]/.test(r.text.slice(closePrefixLen))) {
+          var closePart = renderNarrativeSlice(r, r.start, r.start + closePrefixLen,
+                                               prevRun, null, atoms, DM, hideOuter);
+          var resumed = renderNarrativeSlice(r, r.start + closePrefixLen, r.end,
+                                             null, nextRun, atoms, DM, hideOuter);
+          html += closePart.html + paragraphBreakHtml() +
+                  '<span class="speech-post-narrative">' + resumed.html + '</span>';
+          continue;
         }
-        var np = splitNarrativeBoundaryDelimiters(narDisplay, prevRun, nextRun, hideOuter);
-        var extraHidden = extraNarrativeDelimiterOffsets(r, prevRun, nextRun, hideOuter);
-        var nar = atoms ? emitRangeWithExtraHidden(atoms, r.start, r.end, np.lead.length, np.trail.length, extraHidden) : null;
-        if (nar === null) {
-          nar = plainNarrativeWithExtraHidden(r.text, np, r.start, extraHidden);
-        }
+
+        var whole = renderNarrativeSlice(r, r.start, r.end, prevRun, nextRun,
+                                         atoms, DM, hideOuter);
         var postSpeechNarrative = prevRun && prevRun.styled && !isNestedEnd(prevRun) &&
           (prevRun.presentation === 'block' || prevRun.isContinuation) &&
-          /[0-9A-Za-zÀ-ɏ]/.test(np.core || '');
+          /[0-9A-Za-zÀ-ɏ]/.test(whole.core || '');
+        // The break marker, rather than a block wrapper, creates the visual
+        // paragraph start. The following normal-prose speaker run therefore
+        // remains inline with an attribution/opening guillemet that precedes it.
         html += postSpeechNarrative
-          ? '<span class="speech-post-narrative">' + nar + '</span>'
-          : nar;
+          ? paragraphBreakHtml() + '<span class="speech-post-narrative">' + whole.html + '</span>'
+          : whole.html;
         continue;
       }
       var cls = M.normSpeaker(r.speaker) === 'marie' ? 'speech-marie' : 'speech-jesus';

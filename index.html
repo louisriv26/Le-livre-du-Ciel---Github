@@ -182,20 +182,31 @@ body{overflow:hidden;overflow-x:hidden;max-width:100vw;min-height:100vh;min-heig
 .scroll::-webkit-scrollbar{width:3px;}
 .scroll::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px;}
 
+
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;scroll-behavior:auto !important;}
+}
+
 /* ═══ SHARED ═══ */
 .btn-icon{background:none;border:none;cursor:pointer;color:var(--muted);font-size:20px;
   padding:6px;display:flex;align-items:center;border-radius:8px;transition:color .15s,background .15s;}
-.btn-icon:hover,.btn-icon:focus-visible{color:var(--night);background:var(--gold-pale);outline:none;}
+.btn-icon:hover{color:var(--night);background:var(--gold-pale);}
+
+
+/* RA12: WCAG 2.4.11 focus indicator. --gold-text passes on both themes. */
+.btn-icon:focus-visible,.parcours-card:focus-visible,.entry-door:focus-visible,.vol-card:focus-visible,.entry-item:focus-visible,
+.source-mode-btn:focus-visible,.supp-registry-item:focus-visible,.search-bar input:focus-visible,.espace-filter input:focus-visible,
+.ci-note-edit:focus-visible,.note-textarea:focus-visible,.col-new-input:focus-visible{outline:2px solid var(--gold-text);outline-offset:2px;}
 
 /* ═══ BOTTOM NAV ═══ */
 #nav{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:9000;height:var(--nav-safe-h);
   background:var(--ivory);border-top:0.5px solid var(--border);padding-bottom:var(--sat-bot);}
 .nav-item{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
   gap:2px;padding:8px 4px 6px;background:none;border:none;cursor:pointer;
-  font-size:10px;font-family:var(--body);color:var(--muted);transition:color .15s;}
+  font-size:12px;font-family:var(--body);color:var(--muted);transition:color .15s;}
 .nav-item i{font-size:20px;}
 .nav-item.active{color:var(--gold);}
-.nav-item:focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
+.nav-item:focus-visible{outline:2px solid var(--gold-text);outline-offset:2px;}
 
 /* ═══ SCREENS ═══ */
 .screen{display:none;flex:1;min-height:0;flex-direction:column;}
@@ -243,8 +254,8 @@ body{overflow:hidden;overflow-x:hidden;max-width:100vw;min-height:100vh;min-heig
 .parcours-card{background:var(--white);border:0.5px solid var(--border);border-radius:14px;
   padding:16px 18px;margin-bottom:10px;cursor:pointer;text-align:left;width:100%;
   transition:all .15s;border-left:3px solid transparent;}
-.parcours-card:hover,.parcours-card:focus-visible{border-left-color:var(--gold);
-  background:rgba(201,168,76,.06);outline:none;}
+.parcours-card:hover{border-left-color:var(--gold);
+  background:rgba(201,168,76,.06);}
 .pc-label{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold-text);margin-bottom:6px;}
 .pc-title{font-family:var(--serif);font-size:16px;color:var(--night);margin-bottom:4px;}
 .pc-desc{font-size:12px;color:var(--muted);line-height:1.5;}
@@ -276,8 +287,8 @@ body{overflow:hidden;overflow-x:hidden;max-width:100vw;min-height:100vh;min-heig
   background:var(--white);border:0.5px solid var(--border);border-radius:14px;
   margin-bottom:12px;cursor:pointer;width:100%;text-align:left;transition:all .15s;
   border-left:3px solid transparent;}
-.entry-door:hover,.entry-door:focus-visible{border-left-color:var(--gold);
-  background:var(--gold-pale);outline:none;}
+.entry-door:hover{border-left-color:var(--gold);
+  background:var(--gold-pale);}
 .door-icon{font-size:22px;color:var(--gold-text);width:28px;flex-shrink:0;}
 .door-text .dt{font-family:var(--serif);font-size:15px;color:var(--night);margin-bottom:2px;}
 .door-text .ds{font-size:12px;color:var(--muted);}
@@ -329,8 +340,8 @@ body{overflow:hidden;overflow-x:hidden;max-width:100vw;min-height:100vh;min-heig
   background:var(--white);border:0.5px solid var(--border);border-radius:12px;
   margin-bottom:8px;cursor:pointer;transition:all .15s;border-left:3px solid transparent;
   width:100%;text-align:left;}
-.vol-card:hover,.vol-card:focus-visible{border-left-color:var(--gold);
-  background:var(--gold-pale);outline:none;}
+.vol-card:hover{border-left-color:var(--gold);
+  background:var(--gold-pale);}
 .vol-card.locked{opacity:.45;cursor:default;pointer-events:none;}
 .vol-card.current{border-left-color:var(--gold);}
 .vc-num{font-size:11px;font-weight:600;color:var(--gold-text);width:32px;flex-shrink:0;
@@ -349,7 +360,7 @@ body{overflow:hidden;overflow-x:hidden;max-width:100vw;min-height:100vh;min-heig
 .entry-item{display:flex;align-items:flex-start;gap:10px;padding:12px 16px;
   border-bottom:0.5px solid var(--border);cursor:pointer;transition:background .1s;
   background:none;width:100%;text-align:left;border-left:2px solid transparent;}
-.entry-item:hover,.entry-item:focus-visible{background:var(--gold-pale);outline:none;}
+.entry-item:hover{background:var(--gold-pale);}
 .ei-seq{font-size:10px;color:var(--muted);width:28px;flex-shrink:0;text-align:right;margin-top:2px;}
 .ei-body{flex:1;min-width:0;}
 .ei-title{font-family:var(--serif);font-size:14px;color:var(--night);
@@ -357,27 +368,27 @@ body{overflow:hidden;overflow-x:hidden;max-width:100vw;min-height:100vh;min-heig
 .ei-date{font-size:11px;color:var(--muted);}
 .ei-supp-badge,.supplement-badge{display:inline-flex;align-items:center;gap:4px;width:max-content;
   border:1px solid var(--supp-border);background:var(--supp-badge-bg);color:var(--supp-badge-ink);
-  border-radius:999px;font-family:var(--body);font-size:9px;font-weight:600;line-height:1.1;
+  border-radius:999px;font-family:var(--body);font-size:12px;font-weight:600;line-height:1.1;
   letter-spacing:.06em;text-transform:uppercase;padding:3px 7px;}
 .ei-supp-badge{margin-top:5px;}
 .corpus-mode-pill{white-space:nowrap;}
 .source-mode-bar{display:flex;justify-content:center;padding:7px 12px 8px;background:var(--ivory);border-bottom:.5px solid var(--border);flex-shrink:0;}
 .source-mode-segment{display:inline-flex;align-items:center;padding:2px;background:var(--white);border:1px solid var(--border);border-radius:999px;box-shadow:0 1px 2px rgba(54,44,26,.04);max-width:100%;}
-.source-mode-btn{min-height:44px;border:0;background:transparent;color:var(--muted);font-family:var(--body);font-size:11px;font-weight:600;letter-spacing:.04em;padding:8px 14px;border-radius:999px;cursor:pointer;white-space:nowrap;}
-.source-mode-btn:hover,.source-mode-btn:focus-visible{color:var(--night);outline:2px solid var(--gold-light);outline-offset:1px;}
+.source-mode-btn{min-height:44px;border:0;background:transparent;color:var(--muted);font-family:var(--body);font-size:12px;font-weight:600;letter-spacing:.04em;padding:8px 14px;border-radius:999px;cursor:pointer;white-space:nowrap;}
+.source-mode-btn:hover{color:var(--night);}
 .source-mode-btn.active{background:var(--gold-pale);color:var(--gold-text);box-shadow:inset 0 0 0 1px var(--gold-light);}
-.source-mode-caption{font-size:10px;color:var(--muted);text-align:center;padding:0 14px 7px;background:var(--ivory);}
+.source-mode-caption{font-size:12px;color:var(--muted);text-align:center;padding:0 14px 7px;background:var(--ivory);}
 .supp-registry-intro{margin:12px 16px 8px;padding:12px 13px;border:1px solid var(--supp-border);border-radius:10px;background:var(--supp-bg);font-size:12px;line-height:1.5;color:var(--ink);}
 .supp-registry-item{display:block;width:calc(100% - 24px);margin:0 12px 8px;padding:12px 13px;text-align:left;border:1px solid var(--border);border-left:3px solid var(--supp-border);border-radius:10px;background:var(--white);cursor:pointer;}
-.supp-registry-item:hover,.supp-registry-item:focus-visible{background:var(--supp-bg);outline:2px solid var(--gold-light);outline-offset:1px;}
-.sri-top{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:5px;font-size:10px;color:var(--muted);}
+.supp-registry-item:hover{background:var(--supp-bg);}
+.sri-top{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:5px;font-size:12px;color:var(--muted);}
 .sri-title{font-family:var(--serif);font-size:14px;line-height:1.35;color:var(--night);margin-bottom:4px;}
 .sri-excerpt{font-size:12px;line-height:1.45;color:var(--muted);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
-.sri-type{display:inline-flex;border:1px solid var(--supp-border);background:var(--supp-badge-bg);color:var(--supp-badge-ink);border-radius:999px;padding:2px 6px;font-size:9px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;}
-.supp-context-card{margin:0 0 12px;padding:10px 12px;border:1px dashed var(--border);border-radius:8px;background:var(--white);color:var(--muted);font-size:11px;line-height:1.5;}
+.sri-type{display:inline-flex;border:1px solid var(--supp-border);background:var(--supp-badge-bg);color:var(--supp-badge-ink);border-radius:999px;padding:2px 6px;font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;}
+.supp-context-card{margin:0 0 12px;padding:10px 12px;border:1px dashed var(--border);border-radius:8px;background:var(--white);color:var(--muted);font-size:12px;line-height:1.5;}
 .supp-context-card.after{margin-top:10px;margin-bottom:0;}
-.supp-context-label{font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold-text);margin-bottom:4px;font-weight:600;}
-@media(max-width:420px){.source-mode-btn{min-height:40px;padding:8px 10px;font-size:10px}.source-mode-bar{padding-left:8px;padding-right:8px}}
+.supp-context-label{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold-text);margin-bottom:4px;font-weight:600;}
+@media(max-width:420px){.source-mode-btn{min-height:44px;padding:10px 10px;font-size:12px}.source-mode-bar{padding-left:8px;padding-right:8px;overflow-x:auto}.source-mode-segment{flex-shrink:0}}
 
 /* ═══ READER ═══ */
 .reader-top{display:flex;align-items:center;justify-content:space-between;
@@ -401,7 +412,7 @@ body{overflow:hidden;overflow-x:hidden;max-width:100vw;min-height:100vh;min-heig
 .reader-info-val{color:var(--ink);overflow-wrap:anywhere;}
 .reader-info-val.mono{font-family:monospace;font-size:11px;color:var(--gold-text);}
 @media(max-width:420px){.reader-top-title{display:none}.reader-tools{margin-left:auto}.reader-info-row{grid-template-columns:1fr}.reader-info-key{font-size:11px}}
-.mode-pill{font-size:11px;padding:3px 10px;border-radius:12px;border:0.5px solid var(--border);
+.mode-pill{font-size:12px;padding:3px 10px;border-radius:12px;border:0.5px solid var(--border);
   background:none;color:var(--muted);cursor:pointer;font-family:var(--body);transition:all .15s;}
 .mode-pill.reperes-active{background:var(--accent-fill);color:var(--accent-fill-ink);border-color:var(--accent-fill);}
 
@@ -482,7 +493,7 @@ body{overflow:hidden;overflow-x:hidden;max-width:100vw;min-height:100vh;min-heig
   color:var(--ink);font-family:var(--body);cursor:pointer;padding:8px 10px;display:flex;
   flex-direction:column;align-items:flex-start;justify-content:center;line-height:1.15;}
 .text-level-btn span{font-size:14px;font-weight:600;}
-.text-level-btn small{font-size:11px;color:var(--muted);margin-top:3px;}
+.text-level-btn small{font-size:12px;color:var(--muted);margin-top:3px;}
 .text-level-btn.active{border-color:var(--gold-text,var(--gold));box-shadow:0 0 0 1px var(--gold-text,var(--gold));}
 .text-level-btn:focus-visible{outline:2px solid var(--gold-text,var(--gold));outline-offset:2px;}
 
@@ -516,7 +527,7 @@ mark.hl-pink{background:#fce7f3;color:inherit;}
 .search-bar-wrap{padding:10px 12px 8px;flex-shrink:0;}
 .search-bar{display:flex;align-items:center;gap:8px;background:var(--white);
   border:0.5px solid var(--border);border-radius:10px;padding:9px 13px;}
-.search-bar input{flex:1;border:none;background:transparent;font-size:15px;
+.search-bar input{flex:1;border:none;background:transparent;font-size:16px;
   font-family:var(--body);color:var(--ink);outline:none;}
 .search-bar input::placeholder{color:var(--muted);}
 .search-bar i{color:var(--muted);font-size:17px;flex-shrink:0;}
@@ -547,7 +558,7 @@ mark.hl-pink{background:#fce7f3;color:inherit;}
 .sugg-label{font-size:11px;color:var(--muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:.08em;}
 .sugg-label-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;}
 .sugg-label-row .sugg-label{margin-bottom:0;}
-.sugg-clear{background:none;border:0;font-size:11px;color:var(--muted);cursor:pointer;
+.sugg-clear{background:none;border:0;font-size:12px;color:var(--muted);cursor:pointer;
   text-decoration:underline;padding:0;}
 .sugg-clear:hover{color:var(--night);}
 .sugg-chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px;}
@@ -575,7 +586,7 @@ mark.search-hl{background:rgba(201,168,76,.35);color:inherit;border-radius:2px;p
   transition:all .15s;}
 .es-tab.active{color:var(--night);border-bottom-color:var(--gold);}
 .espace-filter{display:flex;gap:8px;align-items:center;padding:8px 12px;border-bottom:.5px solid var(--border);flex-shrink:0;background:var(--ivory);}
-.espace-filter input{flex:1;min-width:0;border:.5px solid var(--border);border-radius:9px;background:var(--white);color:var(--ink);font-family:var(--body);font-size:13px;padding:8px 10px;outline:none;}
+.espace-filter input{flex:1;min-width:0;border:.5px solid var(--border);border-radius:9px;background:var(--white);color:var(--ink);font-family:var(--body);font-size:16px;padding:8px 10px;outline:none;}
 .espace-filter input:focus{border-color:var(--gold-light);}
 .espace-filter-clear{border:0;background:none;color:var(--muted);font-family:var(--body);font-size:12px;cursor:pointer;padding:7px 8px;}
 .espace-source-badge{display:inline-flex;align-items:center;margin-top:5px;margin-right:6px;padding:2px 7px;border-radius:999px;border:1px solid var(--gold-light);background:var(--gold-pale);color:var(--gold-text);font-size:10px;font-weight:700;letter-spacing:.035em;line-height:1.4;}
@@ -631,7 +642,7 @@ mark.search-hl{background:rgba(201,168,76,.35);color:inherit;border-radius:2px;p
 .ci-note-edit.show{display:block;}
 .ci-actions{display:flex;gap:5px;flex-wrap:wrap;margin-top:4px;}
 .ci-act{background:none;border:0.5px solid var(--border);border-radius:6px;
-  padding:3px 9px;font-size:11px;color:var(--muted);cursor:pointer;
+  padding:3px 9px;font-size:12px;color:var(--muted);cursor:pointer;
   font-family:var(--body);transition:all .15s;}
 .ci-act:hover{color:var(--night);border-color:var(--gold-light);}
 .ci-act.danger:hover{color:var(--red);border-color:var(--red);}
@@ -913,7 +924,7 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; }
 
 /* Note editor */
 .note-textarea{width:100%;border:0.5px solid var(--border);border-radius:10px;
-  padding:12px;font-size:14px;font-family:var(--body);color:var(--ink);
+  padding:12px;font-size:16px;font-family:var(--body);color:var(--ink);
   background:var(--white);resize:none;outline:none;min-height:100px;}
 .note-textarea:focus{border-color:var(--gold-light);}
 .sheet-actions{display:flex;gap:8px;margin-top:12px;}
@@ -931,7 +942,7 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; }
 .col-pick-icon{font-size:18px;color:var(--gold-text);}
 .col-pick-name{font-size:14px;color:var(--night);font-family:var(--body);}
 .col-new-input{width:100%;border:0.5px solid var(--border);border-radius:10px;
-  padding:10px 12px;font-size:14px;font-family:var(--body);color:var(--ink);
+  padding:10px 12px;font-size:16px;font-family:var(--body);color:var(--ink);
   background:var(--white);outline:none;margin-top:8px;}
 .col-new-input:focus{border-color:var(--gold-light);}
 
@@ -941,6 +952,8 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; }
   padding:8px 18px;border-radius:20px;font-size:13px;font-family:var(--body);
   opacity:0;transition:all .25s;pointer-events:none;z-index:200;white-space:nowrap;}
 #toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+#toast.has-action{pointer-events:auto;display:flex;align-items:center;gap:12px;white-space:normal;max-width:min(92vw,520px);}
+#toast .toast-action{border:0;background:transparent;color:var(--gold);font:600 13px var(--body);cursor:pointer;text-decoration:underline;padding:4px 2px;}
 
 /* Selected-text panel (24 Heures pattern) — sits above the bottom nav, never over the
    selection, so the iOS native menu (Copy / Look Up / Translate) cannot collide with it. */
@@ -953,7 +966,7 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; }
 .stp-actions{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;}
 .stp-btn{flex:1 1 0;display:flex;flex-direction:column;align-items:center;gap:3px;
   min-height:56px;padding:8px 2px;background:none;border:1px solid var(--border);
-  border-radius:10px;font-family:var(--body);font-size:11px;color:var(--ink);cursor:pointer;}
+  border-radius:10px;font-family:var(--body);font-size:12px;color:var(--ink);cursor:pointer;}
 .stp-btn i{font-size:18px;}
 .stp-btn:active{background:var(--gold-pale);}
 .stp-secondary{margin-top:7px;padding-top:7px;border-top:1px solid var(--border);}
@@ -985,7 +998,7 @@ body.android-highlight-platform #reader-body .para-fragment{-webkit-user-select:
 
 /* Tome 1 editorial appendix — presentation only; canonical corpus bytes remain unchanged. */
 .editorial-appendix-entry{margin:14px 16px 22px;padding:14px 16px;border:1px solid var(--gold-border);border-radius:12px;background:var(--gold-pale);width:calc(100% - 32px);text-align:left;cursor:pointer;color:var(--ink);font-family:var(--body);}
-.editorial-appendix-entry .eae-kicker{font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--gold-text);margin-bottom:4px;}
+.editorial-appendix-entry .eae-kicker{font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--gold-text);margin-bottom:4px;}
 .editorial-appendix-entry .eae-title{font-family:var(--serif);font-size:16px;color:var(--night);margin-bottom:4px;}
 .editorial-appendix-entry .eae-sub{font-size:12px;color:var(--muted);line-height:1.45;}
 .editorial-wrap{padding:16px 16px 36px;max-width:760px;width:100%;margin:0 auto;}
@@ -996,7 +1009,7 @@ body.android-highlight-platform #reader-body .para-fragment{-webkit-user-select:
 .editorial-note-text{font-size:var(--reader-size);line-height:1.62;color:var(--ink);}
 .editorial-note-proof{font-size:11px;color:var(--gold-text);margin-top:8px;line-height:1.45;}
 .editorial-marker-link{display:block;margin:8px 0 2px;padding:7px 10px;border:1px solid var(--gold-border);border-radius:9px;background:var(--gold-pale);color:var(--gold-text);font-family:var(--body);font-size:12px;cursor:pointer;min-height:44px;}
-.editorial-marker-link:focus-visible,.editorial-appendix-entry:focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
+.editorial-marker-link:focus-visible,.editorial-appendix-entry:focus-visible{outline:2px solid var(--gold-text);outline-offset:2px;}
 
 /* Empty state */
 .empty-state{padding:48px 20px;text-align:center;color:var(--muted);font-size:13px;line-height:1.7;}
@@ -1130,7 +1143,8 @@ html[data-theme="dark"] .st-luisa{color:#D4A843;}
 
 /* Stage C — run-level speech presentation (one element per RUN) */
 .speech-run.speech-block{display:block;margin:0.3em 0 0.1em 0;padding:2px 0;}
-.speech-post-narrative{display:block;margin-top:.65em;}
+.speech-paragraph-break{display:block;height:0;margin-top:.65em;padding:0;}
+.speech-post-narrative{display:inline;}
 .speech-outer-delimiter[aria-hidden="true"]{display:none;}
 /* structural-dash display map v2 — suppressed source-layout tokens keep their
    canonical [start,end) in the DOM but render at zero width */
@@ -1159,7 +1173,7 @@ html[data-theme="dark"] .st-luisa{color:#D4A843;}
 </div>
 
 <!-- Toast -->
-<div id="toast"></div>
+<div id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
 
 <!-- Selected-text panel (24 Heures pattern): contextual, labelled, anchored above the
      bottom nav so it can never collide with the iOS native selection menu. -->
@@ -1411,13 +1425,13 @@ html[data-theme="dark"] .st-luisa{color:#D4A843;}
     <span class="top-bar-title">Livre du Ciel</span>
     <div style="display:flex;gap:4px;align-items:center;">
       <span class="version-pill" id="version-pill-home"></span>
-      <button class="btn-icon" onclick="openHelp()" title="Aide">
+      <button class="btn-icon" onclick="openHelp()" title="Aide" aria-label="Aide">
         <i class="ti ti-help-circle"></i>
       </button>
-      <button class="btn-icon" onclick="showThemeSheet()" title="Thème" id="theme-btn">
+      <button class="btn-icon" onclick="showThemeSheet()" title="Thème" aria-label="Thème" id="theme-btn">
         <i class="ti ti-moon"></i>
       </button>
-      <button class="btn-icon" onclick="showSizeSheet()" title="Taille du texte">
+      <button class="btn-icon" onclick="showSizeSheet()" title="Taille du texte" aria-label="Taille du texte">
         <i class="ti ti-letter-a"></i>
       </button>
     </div>
@@ -2128,10 +2142,10 @@ html[data-theme="dark"] .st-luisa{color:#D4A843;}
    VERSION — single source of truth
    Update this string on every release.
 ═══════════════════════════════════════════════════════ */
-const APP_VERSION = 'v2.19.17-R1B';
-const APP_BUILD   = '2026-08-17';
-const SW_CACHE_VERSION = 'ldc-v2.19.17-R1B';
-const CORPUS_MANIFEST_SHA256 = '6c04cc4f21e9c18475b27c43d14a1bfa787112e659306f668874d22b7d49ae54';
+const APP_VERSION = 'v2.19.23-R1B';
+const APP_BUILD   = '2026-08-18';
+const SW_CACHE_VERSION = 'ldc-v2.19.23-R1B';
+const CORPUS_MANIFEST_SHA256 = '9ac593334f1b1d0472f515e1b1d4229434f5fdb13c8c0e94e008c72dd039fbfa';
 const DEEP_LINK_SCHEMA = 'ldc-deep-link-v1';
 const READING_POSITION_SCHEMA = 'ldc-reading-position-v2';
 
@@ -2347,6 +2361,7 @@ const USER_DATA_SCHEMA_VERSION = 3;
 const USER_DATA_ENVELOPE_SCHEMA = 'ldc-user-data-envelope';
 const USER_DATA_ENVELOPE_VERSION = 3;
 const USER_DATA_MAX_IMPORT_BYTES = 10 * 1024 * 1024;
+const USER_DATA_MAX_ROWS_PER_STORE = 100000;
 const USER_DATA_STORES = Object.freeze(['reading_pos','highlights','notes','favorites','collections','col_items','settings','read_entries']);
 const USER_DATA_HL_COLORS = Object.freeze(['gold','yellow','blue','green','purple','pink']); // gold remains legacy import/render; active palette follows 24H
 const BACKBONE_ENTRY_COUNT = 2312; // technical corpus records; includes 16 Tome 1 editorial appendix records
@@ -2879,10 +2894,10 @@ document.addEventListener('keydown', async e => {
     }
   }
 
-  if (e.key === 'ArrowRight' || e.key === 'ArrowDown' && e.altKey) {
+  if (e.key === 'ArrowRight' || (e.key === 'ArrowDown' && e.altKey)) {
     e.preventDefault();
     await navEntry(1);
-  } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp' && e.altKey) {
+  } else if (e.key === 'ArrowLeft' || (e.key === 'ArrowUp' && e.altKey)) {
     e.preventDefault();
     await navEntry(-1);
   } else if (e.key === 'r' || e.key === 'R') {
@@ -3721,7 +3736,7 @@ async function openEntry(vol, entryId, backDest, opts={}) {
       const el   = document.getElementById('p_' + pendingParaId);
       const frag = fragmentEl(pendingParaId) || el;
       if (el) {
-        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        el.scrollIntoView({ behavior: reduceMotionPreferred() ? 'auto' : 'smooth', block: 'start' });
         if (frag) {
           frag.classList.add('target');
           setTimeout(() => frag.classList.remove('target'), 2000);
@@ -4189,7 +4204,7 @@ async function deleteHighlightFromReader(id) {
   catch(e){ console.warn('LDC: highlight delete failed',e); showToast('Surlignage non supprimé — stockage local indisponible'); return; }
   parts.forEach(part => document.querySelectorAll('mark.hl[data-hl-id="'+part.id+'"]').forEach(unwrapHighlightMark));
   closeHighlightPicker({restoreFocus:true});
-  showToast('Surlignage supprimé');
+  stageUndo('highlights',parts,parts.length>1?`Surlignage supprimé (${parts.length} parties)`:'Surlignage supprimé',async()=>{if(currentEntry)await openEntry(currentVolume,currentEntry.id,'reader',{preserveNavOrigin:true});await updateEspaceBadges();});
 }
 
 // Walk text nodes of paraEl, skipping .speech-label spans, to get canonical text
@@ -4574,10 +4589,10 @@ async function refreshUserDataStaleness() {
 /* ═══ CALM READER: MORE + INFOS/SOURCE ═══ */
 function openReaderMore() {
   if (!currentEntry) return;
-  document.getElementById('reader-more-overlay').classList.add('show');
+  openModalOverlay('reader-more-overlay','closeReaderMore');
 }
 function closeReaderMore() {
-  document.getElementById('reader-more-overlay').classList.remove('show');
+  closeModalOverlay('reader-more-overlay');
 }
 function openSizeFromReaderMore() { closeReaderMore(); showSizeSheet(); }
 function openThemeFromReaderMore() { closeReaderMore(); showThemeSheet(); }
@@ -4622,11 +4637,30 @@ function openReaderInfo() {
     const extra = [['Note de provenance', currentEntry.provenance_note],['Autorité du texte', currentEntry.body_authority],['Détail d’autorité', currentEntry.body_text_authority],['Corroboration', currentEntry.en_corroboration],['Localisation source', currentEntry.source_locator_type],['Statut du tome', volData.status]].map(x => addInfoExtraRow(x[0],x[1])).join('');
     document.getElementById('info-extra').innerHTML = extra;
   }
-  document.getElementById('reader-info-overlay').classList.add('show');
+  openModalOverlay('reader-info-overlay','closeReaderInfo');
 }
 function closeReaderInfo() {
-  document.getElementById('reader-info-overlay').classList.remove('show');
+  closeModalOverlay('reader-info-overlay');
 }
+
+
+/* RA12: accessible modal focus lifecycle for aria-modal dialogs. */
+const MODAL_FOCUSABLE='a[href],button:not([disabled]),input:not([disabled]),textarea:not([disabled]),select:not([disabled]),[tabindex]:not([tabindex="-1"])';
+const modalFocusState=new WeakMap();
+function modalFocusable(dialog){return Array.from(dialog.querySelectorAll(MODAL_FOCUSABLE)).filter(el=>el.getClientRects().length>0);}
+function trapModalFocus(overlay){
+  if(!overlay)return; const dialog=overlay.querySelector('[role="dialog"][aria-modal="true"]'); if(!dialog)return;
+  const invoker=document.activeElement&&document.activeElement!==document.body?document.activeElement:null;
+  const onKey=e=>{if(e.key==='Escape'){const closer=overlay.dataset.modalClose; if(closer&&typeof window[closer]==='function'){e.preventDefault();window[closer]();}return;} if(e.key!=='Tab')return; const f=modalFocusable(dialog); if(!f.length){e.preventDefault();dialog.focus();return;} const first=f[0],last=f[f.length-1]; if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}};
+  dialog.addEventListener('keydown',onKey); modalFocusState.set(overlay,{dialog,onKey,invoker});
+  const first=modalFocusable(dialog)[0]; if(first){try{first.focus({preventScroll:true});}catch(_){first.focus();}} else {dialog.setAttribute('tabindex','-1');dialog.focus();}
+}
+function releaseModalFocus(overlay){
+  const st=overlay&&modalFocusState.get(overlay); if(!st)return; st.dialog.removeEventListener('keydown',st.onKey); modalFocusState.delete(overlay);
+  if(st.invoker&&st.invoker.isConnected&&typeof st.invoker.focus==='function'){try{st.invoker.focus({preventScroll:true});}catch(_){st.invoker.focus();}}
+}
+function openModalOverlay(id,closeFn){const ov=document.getElementById(id);if(!ov)return;ov.dataset.modalClose=closeFn;ov.classList.add('show');trapModalFocus(ov);}
+function closeModalOverlay(id){const ov=document.getElementById(id);if(!ov)return;releaseModalFocus(ov);ov.classList.remove('show');}
 
 /* ═══ NOTE ═══ */
 function openNoteSheet() {
@@ -5746,20 +5780,20 @@ async function renderNotes(){
   if(!notes.length){el.innerHTML='<div class="empty-state"><i class="ti ti-pencil-off"></i>Aucune note pour l\'instant.</div>';return;}
   notes.forEach(n=>{const d=document.createElement('div');d.className='espace-item';d.dataset.filterText=[n.entry_title,n.stable_ref,n.quote,n.text].join(' ');const quote=n.quote?`<div style="border-left:3px solid var(--gold);padding-left:10px;margin-bottom:6px;font-family:var(--serif);font-size:13px;color:var(--muted);font-style:italic;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">${escapeHtml(n.quote)}</div>`:'';const title=n.entry_title?escapeHtml(n.entry_title.slice(0,60))+' · ':'';d.innerHTML=`<i class="ti ti-pencil ei-icon"></i><div class="ei-content"><div class="ei-ref">${title}${escapeHtml(n.stable_ref||'—')}</div>${quote}<div class="ei-text">${escapeHtml(n.text)}</div><div class="ei-date">${new Date(n.ts).toLocaleDateString('fr-FR',{day:'numeric',month:'long',year:'numeric'})}</div>${supplementBadgeForUserRecord(n)}${staleBadge(n)}</div><button class="ei-del" onclick="deleteNote(${n.id})" aria-label="Supprimer la note"><i class="ti ti-trash"></i></button>`;if(n.entry_id){d.onclick=e=>{if(!e.target.closest('.ei-del'))openUserRecordTarget(n,'espace');};}el.appendChild(d);});applyEspaceFilter();
 }
-async function deleteNote(id){try{await dbDelete('notes',id);}catch(e){showToast('Note non supprimée — stockage local indisponible');return;}await renderNotes();await updateEspaceBadges();showToast('Note supprimée');}
+async function deleteNote(id){const rec=await dbGet('notes',id);if(!rec)return;try{await dbDelete('notes',id);}catch(e){showToast('Note non supprimée — stockage local indisponible');return;}await renderNotes();await updateEspaceBadges();stageUndo('notes',[rec],'Note supprimée',async()=>{await renderNotes();await updateEspaceBadges();});}
 
 async function renderHighlights(){
   const rows=(await dbGetAll('highlights')).sort((a,b)=>b.ts-a.ts),hls=groupedHighlights(rows),el=document.getElementById('ep-highlights');el.innerHTML='';
   if(!hls.length){el.innerHTML='<div class="empty-state"><i class="ti ti-highlight-off"></i>Aucun surlignage pour l\'instant.</div>';return;}
   hls.forEach(h=>{const d=document.createElement('div');d.className='espace-item';d.dataset.filterText=[h.stable_ref,h.text,h.color].join(' ');d.innerHTML=`<i class="ti ti-highlight ei-icon"></i><div class="ei-content"><div class="ei-ref">${escapeHtml(h.stable_ref||'—')}</div><div class="ei-text">${escapeHtml(h.text)}</div><div class="ei-date">${new Date(h.ts).toLocaleDateString('fr-FR')}</div>${supplementBadgeForUserRecord(h)}${h._stale?'<span class="espace-stale-badge"><i class="ti ti-alert-triangle"></i>à vérifier</span>':''}</div><button class="ei-del" onclick="deleteHighlight(${h.id})" aria-label="Supprimer le surlignage"><i class="ti ti-trash"></i></button>`;if(h.entry_id)d.onclick=e=>{if(!e.target.closest('.ei-del'))openUserRecordTarget(h,'espace');};el.appendChild(d);});applyEspaceFilter();
 }
-async function deleteHighlight(id){const hl=await dbGet('highlights',id);if(!hl)return;const parts=await highlightGroupSiblings(hl);try{await dbDeleteManyAtomic('highlights',parts.map(p=>p.id));}catch(e){showToast('Surlignage non supprimé — stockage local indisponible');return;}await renderHighlights();await updateEspaceBadges();showToast('Surlignage supprimé');}
+async function deleteHighlight(id){const hl=await dbGet('highlights',id);if(!hl)return;const parts=await highlightGroupSiblings(hl);try{await dbDeleteManyAtomic('highlights',parts.map(p=>p.id));}catch(e){showToast('Surlignage non supprimé — stockage local indisponible');return;}await renderHighlights();await updateEspaceBadges();stageUndo('highlights',parts,parts.length>1?`Surlignage supprimé (${parts.length} parties)`:'Surlignage supprimé',async()=>{await renderHighlights();await updateEspaceBadges();});}
 
 async function renderFavorites(){
   const favs=(await dbGetAll('favorites')).sort((a,b)=>b.ts-a.ts),el=document.getElementById('ep-favorites');el.innerHTML='';if(!favs.length){el.innerHTML='<div class="empty-state"><i class="ti ti-heart-off"></i>Aucun favori pour l\'instant.</div>';return;}
   favs.forEach(f=>{const d=document.createElement('div');d.className='espace-item';d.dataset.filterText=[f.stable_ref,f.title,f.date_display,'tome '+f.volume].join(' ');d.innerHTML=`<i class="ti ti-heart-filled ei-icon"></i><div class="ei-content"><div class="ei-ref">${escapeHtml(f.stable_ref||'—')} · Tome ${f.volume||'—'}</div><div class="ei-text">${escapeHtml(f.title||'')}</div><div class="ei-date">${escapeHtml(f.date_display||'')}</div>${supplementBadgeForUserRecord(f)}${staleBadge(f)}</div><button class="ei-del" onclick="deleteFav('${f.entry_id}')" aria-label="Retirer des favoris"><i class="ti ti-trash"></i></button>`;d.onclick=async e=>{if(e.target.closest('.ei-del'))return;if(f.supplement_id){await loadSupplementRegistryData();const sp=supplementById(f.supplement_id);if(sp){await openSupplementItem(sp,'espace');return;}}goToEntry(f.volume||volumeOfStableRef(f.stable_ref),f.host_entry_id||f.entry_id,null);};el.appendChild(d);});applyEspaceFilter();
 }
-async function deleteFav(entryId){try{await dbDelete('favorites',entryId);}catch(e){showToast('Favori non supprimé — stockage local indisponible');return;}updateEntryFavoriteIndicator(entryId,false);await renderFavorites();await updateEspaceBadges();showToast('Favori supprimé');}
+async function deleteFav(entryId){const rec=await dbGet('favorites',entryId);if(!rec)return;try{await dbDelete('favorites',entryId);}catch(e){showToast('Favori non supprimé — stockage local indisponible');return;}updateEntryFavoriteIndicator(entryId,false);await renderFavorites();await updateEspaceBadges();stageUndo('favorites',[rec],'Favori supprimé',async()=>{updateEntryFavoriteIndicator(entryId,true);await renderFavorites();await updateEspaceBadges();});}
 
 async function renderCollections(){
   const cols=await dbGetAll('collections'),items=await dbGetAll('col_items'),el=document.getElementById('ep-collections');el.innerHTML='';if(!cols.length){el.innerHTML='<div class="empty-state"><i class="ti ti-bookmark-off"></i>Aucune collection pour l\'instant.<br>Ajoutez des passages depuis le lecteur.</div>';return;}
@@ -5772,7 +5806,7 @@ function buildColItem(item,idx,total){const d=document.createElement('div');d.cl
 function toggleItemNote(itemId){const edit=document.getElementById('ci-note-e-'+itemId),display=document.getElementById('ci-note-d-'+itemId);if(!edit)return;const open=edit.classList.contains('show');edit.classList.toggle('show',!open);if(!open){edit.focus();if(display)display.classList.remove('show');}else if(display&&display.textContent.trim())display.classList.add('show');}
 async function saveItemNote(itemId){const edit=document.getElementById('ci-note-e-'+itemId);if(!edit)return;const text=edit.value.trim(),all=await dbGetAll('col_items'),item=all.find(i=>i.id===itemId);if(!item)return;const next=Object.assign({},item,{note:text});try{await dbPut('col_items',next);}catch(e){edit.value=item.note||'';showToast('Note non enregistrée — stockage local indisponible');return;}edit.classList.remove('show');const display=document.getElementById('ci-note-d-'+itemId);if(display){display.textContent=text;display.classList.toggle('show',!!text);}if(text)showToast('Note enregistrée');}
 async function moveColItem(itemId,dir){const all=await dbGetAll('col_items'),item=all.find(i=>i.id===itemId);if(!item)return;const list=all.filter(i=>i.col_id===item.col_id).sort((a,b)=>a.order-b.order),idx=list.findIndex(i=>i.id===itemId),j=idx+dir;if(j<0||j>=list.length)return;const a=Object.assign({},list[idx]),b=Object.assign({},list[j]),tmp=a.order;a.order=b.order;b.order=tmp;try{await dbPutManyAtomic('col_items',[a,b]);}catch(e){showToast('Ordre non modifié — stockage local indisponible');return;}await renderCollections();showEspaceTab('collections');}
-async function deleteColItem(id){try{await dbDelete('col_items',id);}catch(e){showToast('Passage non retiré — stockage local indisponible');return;}await renderCollections();await updateEspaceBadges();showToast('Passage retiré');}
+async function deleteColItem(id){const rec=await dbGet('col_items',id);if(!rec)return;try{await dbDelete('col_items',id);}catch(e){showToast('Passage non retiré — stockage local indisponible');return;}await renderCollections();await updateEspaceBadges();stageUndo('col_items',[rec],'Passage retiré',async()=>{await renderCollections();await updateEspaceBadges();});}
 async function renameCollection(colId){const col=await dbGet('collections',colId);if(!col)return;const name=prompt('Nouveau nom :',col.name);if(!name||!name.trim())return;const next=Object.assign({},col,{name:name.trim()});try{await dbPut('collections',next);}catch(e){showToast('Collection non renommée — stockage local indisponible');return;}await renderCollections();showToast('Collection renommée');}
 async function deleteCollection(colId){if(!confirm('Supprimer cette collection et tous ses passages ?'))return;const items=await dbGetAll('col_items'),ids=items.filter(i=>i.col_id===colId).map(i=>i.id);try{await dbWriteStoresAtomic(['collections','col_items'],tx=>{tx.objectStore('collections').delete(colId);const os=tx.objectStore('col_items');ids.forEach(id=>os.delete(id));});}catch(e){showToast('Collection non supprimée — stockage local indisponible');return;}await renderCollections();await updateEspaceBadges();showToast('Collection supprimée');}
 
@@ -5788,14 +5822,14 @@ async function exportCollection(colId){const col=await dbGet('collections',colId
 
 async function collectUserDataEnvelope(){const state={};for(const store of USER_DATA_STORES)state[store]=await dbGetAll(store);const settings=state.settings||[],getSetting=key=>settings.find(x=>x.key===key)||null;return{schema:USER_DATA_ENVELOPE_SCHEMA,version:USER_DATA_ENVELOPE_VERSION,app_version:APP_VERSION,corpus_generation:CORPUS_GENERATION,exported_at:new Date().toISOString(),backup_metadata:{db_name:DB_NAME,db_version:DB_VER,authority:'IndexedDB ldc_user_v1 is authoritative for user-owned state; localStorage only stores onboarding acknowledgement; CacheStorage/service-worker caches are not restore data.',coverage:['highlights','notes','favorites','collections','col_items','reading_pos','read_entries','settings.theme','settings.textLevel','settings.showReperes','settings.supplement_mode','settings.offline_completion when present','backup metadata'],theme:getSetting('theme'),text_level:getSetting('textLevel'),reperes:getSetting('showReperes'),offline_completion:getSetting('offline_completion')},state};}
 function downloadBlob(name,type,text){const blob=new Blob([text],{type}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),0);}
-async function exportBackupJson(){try{const env=await collectUserDataEnvelope();downloadBlob(`ldc-backup-${new Date().toISOString().slice(0,10)}.json`,'application/json',JSON.stringify(env,null,2));await dbPut('settings',{key:'last_backup_export_at',val:env.exported_at,ts:Date.now()}).catch(()=>{});showToast('Sauvegarde JSON exportée');}catch(e){console.warn(e);showToast('Sauvegarde impossible');}}
+async function exportBackupJson(){try{const env=await collectUserDataEnvelope();env.backup_metadata.current_single_file_import_ceiling_bytes=USER_DATA_MAX_IMPORT_BYTES;env.backup_metadata.export_bytes=0;let finalJson='',finalBytes=0,stable=false;for(let i=0;i<10;i++){finalJson=JSON.stringify(env,null,2);finalBytes=new Blob([finalJson],{type:'application/json'}).size;if(env.backup_metadata.export_bytes===finalBytes){stable=true;break;}env.backup_metadata.export_bytes=finalBytes;}if(!stable)throw new Error('backup export byte-size metadata did not converge');downloadBlob(`ldc-backup-${new Date().toISOString().slice(0,10)}.json`,'application/json',finalJson);await dbPut('settings',{key:'last_backup_export_at',val:env.exported_at,bytes:finalBytes,ts:Date.now()}).catch(()=>{});if(finalBytes>USER_DATA_MAX_IMPORT_BYTES)showToast('Sauvegarde créée, mais trop volumineuse pour une restauration unique sur cette version — conservez-la et contactez le support.');else if(finalBytes>USER_DATA_MAX_IMPORT_BYTES*.8)showToast('Sauvegarde volumineuse — proche de la limite de restauration de cette version.');else showToast('Sauvegarde JSON exportée');}catch(e){console.warn(e);showToast('Sauvegarde impossible');}}
 async function exportJournalTxt(){const notes=await dbGetAll('notes'),cols=await dbGetAll('collections'),items=await dbGetAll('col_items'),lines=['Livre du Ciel — Journal de lecture','═'.repeat(40),''];for(const n of notes.sort((a,b)=>a.ts-b.ts)){lines.push(`${n.entry_title||''} · ${n.stable_ref||''}${n.supplement_id?' · COMPLÉMENT · IT-PM':''}`.trim(),new Date(n.ts).toLocaleDateString('fr-FR',{day:'numeric',month:'long',year:'numeric'}));if(n.quote)lines.push('',`« ${n.quote} »`);lines.push('',n.text,'','─'.repeat(30),'');}for(const c of cols.sort((a,b)=>a.ts-b.ts)){lines.push('',`COLLECTION — ${c.name}`,'─'.repeat(30));for(const it of items.filter(i=>i.col_id===c.id).sort((a,b)=>a.order-b.order)){lines.push(`${it.stable_ref||''} · ${it.title||''}${it.supplement_id?' · COMPLÉMENT · IT-PM':''}`,`« ${it.text||''} »`);if(it.note)lines.push(`[Note : ${it.note}]`);lines.push('');}}downloadBlob(`ldc-journal-${new Date().toISOString().slice(0,10)}.txt`,'text/plain;charset=utf-8',lines.join('\n'));showToast('Journal lisible exporté');}
 async function exportEspace(){await exportBackupJson();}
 
 function triggerImportEspace(){const i=document.getElementById('espace-import-file');if(i){i.value='';i.click();}}
 function containsDangerousKeys(v,depth=0){if(depth>30)return true;if(!v||typeof v!=='object')return false;for(const k of Object.keys(v)){if(k==='__proto__'||k==='prototype'||k==='constructor')return true;if(containsDangerousKeys(v[k],depth+1))return true;}return false;}
 function normaliseBackupEnvelope(obj){if(obj&&obj.schema===USER_DATA_ENVELOPE_SCHEMA){return obj;}if(obj&&typeof obj==='object'&&(Array.isArray(obj.notes)||Array.isArray(obj.highlights)||Array.isArray(obj.favorites)||Array.isArray(obj.collections))){const settings=Array.isArray(obj.settings)?obj.settings.slice():[];if(typeof obj.showReperes==='boolean')settings.push({key:'showReperes',val:obj.showReperes});if(obj.mode==='etudier'||obj.mode==='study')settings.push({key:'showReperes',val:true});if(obj.mode==='prier'||obj.mode==='pray')settings.push({key:'showReperes',val:false});return{schema:USER_DATA_ENVELOPE_SCHEMA,version:1,app_version:'legacy',corpus_generation:obj.corpus_generation||null,exported_at:obj.exported||null,backup_metadata:{legacy:true},state:{reading_pos:Array.isArray(obj.reading_pos)?obj.reading_pos:[],highlights:Array.isArray(obj.highlights)?obj.highlights:[],notes:Array.isArray(obj.notes)?obj.notes:[],favorites:Array.isArray(obj.favorites)?obj.favorites:[],collections:Array.isArray(obj.collections)?obj.collections:[],col_items:Array.isArray(obj.col_items)?obj.col_items:[],settings,read_entries:Array.isArray(obj.read_entries)?obj.read_entries:[]}};}throw new Error('Format de sauvegarde non reconnu');}
-async function validateBackupEnvelope(env,rawBytes){const errors=[],warnings=[];if(rawBytes>USER_DATA_MAX_IMPORT_BYTES)errors.push('Fichier trop volumineux (maximum 10 Mo).');if(containsDangerousKeys(env))errors.push('Clé dangereuse détectée dans le JSON.');if(env.schema!==USER_DATA_ENVELOPE_SCHEMA)errors.push('Schéma de sauvegarde invalide.');if(!Number.isInteger(env.version)||env.version<1||env.version>USER_DATA_ENVELOPE_VERSION)errors.push('Version de sauvegarde non prise en charge.');const st=env.state;if(!st||typeof st!=='object')errors.push('Bloc state manquant.');const counts={};if(st){for(const store of USER_DATA_STORES){if(!Array.isArray(st[store]))errors.push(`Table ${store} invalide.`);else{counts[store]=st[store].length;if(st[store].length>100000)errors.push(`Table ${store} trop volumineuse.`);}}}if(st){const keyDefs={reading_pos:'key',highlights:'id',notes:'id',favorites:'entry_id',collections:'id',col_items:'id',settings:'key',read_entries:'key'};for(const [store,key] of Object.entries(keyDefs)){if(!Array.isArray(st[store]))continue;const seen=new Set();for(const row of st[store]){if(!row||typeof row!=='object'){errors.push(`Enregistrement invalide dans ${store}.`);continue;}const v=row[key];if(v!=null){const sig=typeof v+':'+String(v);if(seen.has(sig))errors.push(`Identifiant dupliqué dans ${store} : ${String(v)}`);seen.add(sig);}}}}
+async function validateBackupEnvelope(env,rawBytes){const errors=[],warnings=[];if(rawBytes>USER_DATA_MAX_IMPORT_BYTES)errors.push('Fichier trop volumineux pour cette version (maximum 10 Mio).');if(containsDangerousKeys(env))errors.push('Clé dangereuse détectée dans le JSON.');if(env.schema!==USER_DATA_ENVELOPE_SCHEMA)errors.push('Schéma de sauvegarde invalide.');if(!Number.isInteger(env.version)||env.version<1||env.version>USER_DATA_ENVELOPE_VERSION)errors.push('Version de sauvegarde non prise en charge.');const st=env.state;if(!st||typeof st!=='object')errors.push('Bloc state manquant.');const counts={};if(st){for(const store of USER_DATA_STORES){if(!Array.isArray(st[store]))errors.push(`Table ${store} invalide.`);else{counts[store]=st[store].length;if(st[store].length>USER_DATA_MAX_ROWS_PER_STORE)errors.push(`Table ${store} trop volumineuse.`);}}}if(st){const keyDefs={reading_pos:'key',highlights:'id',notes:'id',favorites:'entry_id',collections:'id',col_items:'id',settings:'key',read_entries:'key'};for(const [store,key] of Object.entries(keyDefs)){if(!Array.isArray(st[store]))continue;const seen=new Set();for(const row of st[store]){if(!row||typeof row!=='object'){errors.push(`Enregistrement invalide dans ${store}.`);continue;}const v=row[key];if(v!=null){const sig=typeof v+':'+String(v);if(seen.has(sig))errors.push(`Identifiant dupliqué dans ${store} : ${String(v)}`);seen.add(sig);}}}}
   if(st&&Array.isArray(st.highlights)){for(const h of st.highlights){if(!h.entry_id||typeof h.entry_id!=='string'||!h.para_id||typeof h.para_id!=='string')errors.push('Surlignage sans référence stable entrée/paragraphe.');if(h.color&&!USER_DATA_HL_COLORS.includes(h.color))errors.push('Couleur de surlignage inconnue.');if(h.para_id&&typeof h.para_id!=='string')errors.push('Identifiant de paragraphe invalide.');if(h.start_char!=null&&(!Number.isInteger(h.start_char)||h.start_char<0))errors.push('Début de surlignage invalide.');if(h.end_char!=null&&(!Number.isInteger(h.end_char)||h.end_char<=0||(Number.isInteger(h.start_char)&&h.end_char<=h.start_char)))errors.push('Fin de surlignage invalide.');}}
   if(st&&Array.isArray(st.notes)){for(const n of st.notes){if(!n.entry_id||typeof n.entry_id!=='string')errors.push('Note sans référence d’entrée valide.');if(n.para_id&&typeof n.para_id!=='string')errors.push('Cible de note invalide.');if(typeof n.text!=='string')errors.push('Texte de note invalide.');}}
   if(st&&Array.isArray(st.favorites)){for(const f of st.favorites){if(!f.entry_id||typeof f.entry_id!=='string')errors.push('Favori sans identifiant d’entrée valide.');}}
@@ -5887,8 +5921,8 @@ function buildTextIssueReport(includeSelection,comment){
   const sel=selectedTextForSupport();if(includeSelection&&sel)lines.push(`Passage sélectionné (inclus explicitement) : ${sel}`);
   return lines.join('\n');
 }
-function openReportIssue(){if(!currentEntry){showToast('Ouvrez d’abord un passage');return;}const cb=document.getElementById('report-include-selection'),sel=selectedTextForSupport();cb.checked=false;cb.disabled=!sel;document.getElementById('report-issue-comment').value='';refreshReportIssuePreview();document.getElementById('report-issue-overlay').classList.add('show');}
-function closeReportIssue(){document.getElementById('report-issue-overlay').classList.remove('show');}
+function openReportIssue(){if(!currentEntry){showToast('Ouvrez d’abord un passage');return;}const cb=document.getElementById('report-include-selection'),sel=selectedTextForSupport();cb.checked=false;cb.disabled=!sel;document.getElementById('report-issue-comment').value='';refreshReportIssuePreview();openModalOverlay('report-issue-overlay','closeReportIssue');}
+function closeReportIssue(){closeModalOverlay('report-issue-overlay');}
 function refreshReportIssuePreview(){const cb=document.getElementById('report-include-selection'),comment=document.getElementById('report-issue-comment');document.getElementById('report-issue-preview').textContent=buildTextIssueReport(!!(cb&&cb.checked),comment?comment.value:'');}
 async function copyTextIssueReport(){const cb=document.getElementById('report-include-selection'),comment=document.getElementById('report-issue-comment');const text=buildTextIssueReport(!!(cb&&cb.checked),comment?comment.value:'');const ok=await copyPlainText(text);showToast(ok?'Signalement copié':'Copie indisponible');if(ok)closeReportIssue();}
 async function diagnosticsText(){
@@ -5896,7 +5930,7 @@ async function diagnosticsText(){
   let sw='non contrôlé';try{sw=navigator.serviceWorker&&navigator.serviceWorker.controller?navigator.serviceWorker.controller.scriptURL:'non contrôlé';}catch(e){}
   const theme=document.documentElement.getAttribute('data-theme')||'system';const tl=document.documentElement.getAttribute('data-text-level')||'normal';
   const off=await dbGet('settings','offline_completion').catch(()=>null);
-  return ['Livre du Ciel — diagnostic public',`App : ${APP_VERSION} · ${APP_BUILD}`,`SW attendu : ${SW_CACHE_VERSION}`,`SW contrôleur : ${sw}`,`Caches LDC : ${cachesOwned.join(', ')||'aucun détecté'}`,`Corpus composite : ${CORPUS_GENERATION}`,`Backbone AFLP : ${BACKBONE_GENERATION}`,`Lecture : ${sourceModeLabel()}`,`Backbone manifest SHA-256 : ${CORPUS_MANIFEST_SHA256}`,`Recherche metadata : ${searchMetadataIndex?`chargé · ${searchMetadataIndex.entry_count} entrées / ${searchMetadataIndex.paragraph_count} paragraphes`:'non chargé'}`,`Recherche : métadonnées + lexical/BM25 · sous-système vectoriel retiré`,`Stockage IndexedDB : ${db?'ouvert':'indisponible'}`,`Hors ligne : navigator.onLine=${navigator.onLine!==false} · completion=${off?JSON.stringify(off.val??off.value??off):'non préparé'}`,`Thème : ${theme}`,`Texte : ${tl}`,`Repères : ${showReperes?'ON':'OFF'}`,`Route : ${window.location.pathname}${window.location.search}`].join('\n');
+  return ['Livre du Ciel — diagnostic public',`App : ${APP_VERSION} · ${APP_BUILD}`,`SW attendu : ${SW_CACHE_VERSION}`,`SW contrôleur : ${sw}`,`Caches LDC : ${cachesOwned.join(', ')||'aucun détecté'}`,`Corpus composite : ${CORPUS_GENERATION}`,`Backbone AFLP : ${BACKBONE_GENERATION}`,`Lecture : ${sourceModeLabel()}`,`Backbone manifest SHA-256 : ${CORPUS_MANIFEST_SHA256}`,`Recherche metadata : ${searchMetadataIndex?`chargé · ${searchMetadataIndex.entry_count} entrées / ${searchMetadataIndex.paragraph_count} paragraphes`:'non chargé'}`,`Recherche : métadonnées + lexical/BM25 · sous-système vectoriel retiré`,`Stockage IndexedDB : ${db?'ouvert':'indisponible'}`,`Hors ligne : navigator.onLine=${navigator.onLine!==false} · completion=${off?JSON.stringify(off.val??off.value??off):'non préparé'}`,`Thème : ${theme}`,`Texte : ${tl}`,`Repères : ${showReperes?'ON':'OFF'}`,`Diagnostics locaux récents : ${localDiagnosticBuffer.length}`,...localDiagnosticBuffer.slice(-5).map(x=>`Erreur locale ${x.ts} · ${x.name||x.kind} · ${x.message}`),`Route : ${window.location.pathname}${window.location.search}`].join('\n');
 }
 async function copyDiagnostics(){const text=await diagnosticsText();const ok=await copyPlainText(text);showToast(ok?'Diagnostic copié':'Copie indisponible');return text;}
 async function routeFail(message,fallback){console.warn('LDC deep link:',message);showToast('Lien invalide ou cible introuvable');if(fallback==='search')goSearch();else if(fallback==='espace')goEspace();else goHome();return false;}
@@ -6249,17 +6283,31 @@ async function setTextLevel(level) {
 /* ═══════════════════════════════════════════════════════
    UTILITIES
 ═══════════════════════════════════════════════════════ */
+function reduceMotionPreferred(){return !!(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches);}
+
 function escapeHtml(s) {
   return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
 
 let toastTimer = null;
+function resetToast(){const t=document.getElementById('toast');t.classList.remove('show','has-action');t.replaceChildren();}
 function showToast(msg) {
   const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.classList.add('show');
+  t.classList.remove('has-action'); t.textContent = msg; t.classList.add('show');
   clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => t.classList.remove('show'), 2200);
+  toastTimer = setTimeout(resetToast, 2200);
+}
+function showToastWithAction(msg,actionLabel,fn,timeoutMs=10000){
+  const t=document.getElementById('toast'); clearTimeout(toastTimer); t.replaceChildren(); t.classList.add('has-action','show');
+  const span=document.createElement('span');span.textContent=msg;const btn=document.createElement('button');btn.type='button';btn.className='toast-action';btn.textContent=actionLabel;
+  btn.addEventListener('click',async()=>{btn.disabled=true;try{const result=await fn();if(result===false){span.textContent='Restauration impossible — réessayez';btn.disabled=false;clearTimeout(toastTimer);toastTimer=setTimeout(resetToast,timeoutMs);return;}resetToast();if(typeof result==='string'&&result)showToast(result);}catch(e){console.error('LDC toast action failed',e);span.textContent='Restauration impossible — réessayez';btn.disabled=false;clearTimeout(toastTimer);toastTimer=setTimeout(resetToast,timeoutMs);}});t.append(span,btn);toastTimer=setTimeout(resetToast,timeoutMs);
+}
+let undoBuffer=null; const UNDO_WINDOW_MS=10000;
+function stageUndo(store,records,label,onRestore){
+  if(!Array.isArray(records)||!records.length)return; if(undoBuffer&&undoBuffer.timer)clearTimeout(undoBuffer.timer);
+  const token=Symbol('undo'); const snapshot=records.map(r=>JSON.parse(JSON.stringify(r)));
+  undoBuffer={token,store,records:snapshot,onRestore,timer:setTimeout(()=>{if(undoBuffer&&undoBuffer.token===token)undoBuffer=null;},UNDO_WINDOW_MS)};
+  showToastWithAction(label,'Annuler',async()=>{const u=undoBuffer;if(!u||u.token!==token)return false;try{await dbPutManyAtomic(u.store,u.records);}catch(e){console.error('LDC undo restore failed',e);return false;}undoBuffer=null;try{await u.onRestore();}catch(e){console.warn('LDC undo repaint failed after data restoration',e);return 'Suppression annulée — actualisez si nécessaire';}return 'Suppression annulée';},UNDO_WINDOW_MS);
 }
 
 /* ═══════════════════════════════════════════════════════
@@ -6271,6 +6319,11 @@ function showToast(msg) {
    One 2,312-entry metadata file replaces the former eager loading of all
    36 paragraph search shards. Body shards stay lazy and are streamed on demand.
 ═══════════════════════════════════════════════════════ */
+
+const LOCAL_DIAGNOSTIC_MAX=20; const localDiagnosticBuffer=[];
+function recordLocalDiagnostic(kind,err){const rec={ts:new Date().toISOString(),kind:String(kind||'runtime'),name:String(err&&err.name||''),message:String(err&&err.message||err||'').slice(0,240)};localDiagnosticBuffer.push(rec);while(localDiagnosticBuffer.length>LOCAL_DIAGNOSTIC_MAX)localDiagnosticBuffer.shift();return rec;}
+window.addEventListener('unhandledrejection',e=>{const r=e&&e.reason;if(r&&r.name==='AbortError')return;console.error('LDC unhandled rejection:',r);recordLocalDiagnostic('unhandledrejection',r);});
+
 async function preloadSearchMetadata() {
   try { await loadSearchMetadataIndex(); }
   catch(e) { console.warn('LDC: compact search metadata unavailable', e); }
@@ -6342,20 +6395,22 @@ async function boot() {
     });
     navigator.serviceWorker.register('./sw.js').then(reg => {
       initOfflineState().catch(()=>{});
+      if(reg.waiting&&navigator.serviceWorker.controller)showUpdateAvailable(APP_VERSION,'Une mise à jour est prête à être installée.');
       reg.addEventListener('updatefound', () => {
         const newWorker = reg.installing;
         if (!newWorker) return;
         newWorker.addEventListener('statechange', () => {
           if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
             document.getElementById('update-banner').classList.add('show');
+            setUpdateStatus('Une nouvelle version est prête à être installée.');
           }
         });
       });
-      reg.update().catch(()=>{});
-      document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') reg.update().catch(()=>{}); });
-      window.addEventListener('focus', () => reg.update().catch(()=>{}));
-      window.addEventListener('online', () => { reg.update().catch(()=>{}); requestOfflineStatus().catch(()=>{}); });
-      window.addEventListener('pageshow', () => reg.update().catch(()=>{}));
+      backgroundUpdateCheck(reg).catch(()=>{});
+      document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') backgroundUpdateCheck(reg).catch(()=>{}); });
+      window.addEventListener('focus', () => backgroundUpdateCheck(reg).catch(()=>{}));
+      window.addEventListener('online', () => { backgroundUpdateCheck(reg).catch(()=>{}); requestOfflineStatus().catch(()=>{}); });
+      window.addEventListener('pageshow', () => backgroundUpdateCheck(reg).catch(()=>{}));
     }).catch(e => {
       offlineUiState={...offlineUiState,state:'ERROR',message:'Service Worker non enregistré : '+(e&&e.message?e.message:'erreur')};
       renderOfflineUi();scheduleOfflinePersist();
@@ -6470,7 +6525,7 @@ function renderDnYearStrip() {
   strip.innerHTML = html;
   requestAnimationFrame(() => {
     const sel = strip.querySelector(`[data-year="${dnYear}"]`);
-    if (sel) sel.scrollIntoView({ inline:'center', block:'nearest', behavior:'smooth' });
+    if (sel) sel.scrollIntoView({ inline:'center', block:'nearest', behavior:reduceMotionPreferred()?'auto':'smooth' });
   });
 }
 
@@ -6618,10 +6673,10 @@ function renderDnResultCard() {
    CacheStorage contains public app/corpus bytes only. IndexedDB settings holds
    the user-visible completion record; it is not itself the offline payload.
 ═══════════════════════════════════════════════════════ */
-const OFFLINE_CACHE_VERSION = 'ldc-le-livre-du-ciel-offline-v2.19.17-R1B';
+const OFFLINE_CACHE_VERSION = 'ldc-le-livre-du-ciel-offline-v2.19.23-R1B';
 const OFFLINE_MANIFEST_SCHEMA = 'ldc-offline-manifest-v2';
-const OFFLINE_CONTENT_BINDING = 'a00469f1949c3faf3fb80aa09befab08b52c024abeee43937cb9d77a9334e16b';
-const OFFLINE_CORPUS_MANIFEST_SHA256 = '6c04cc4f21e9c18475b27c43d14a1bfa787112e659306f668874d22b7d49ae54';
+const OFFLINE_CONTENT_BINDING = '09e06c46fd1da0cd419e0578cbc6ae4b2aed6cd4bab791b8f8a73b97aaa3d8a6';
+const OFFLINE_CORPUS_MANIFEST_SHA256 = '9ac593334f1b1d0472f515e1b1d4229434f5fdb13c8c0e94e008c72dd039fbfa';
 const OFFLINE_STATES = Object.freeze(['NOT_PREPARED','CHECKING','DOWNLOADING','READY','PARTIAL','ERROR','CANCELLED']);
 let offlineUiState = {state:'NOT_PREPARED',completed:0,total:0,failed:[],total_bytes:0,job_id:null,message:'',content_binding_sha256:OFFLINE_CONTENT_BINDING,corpus_manifest_sha256:OFFLINE_CORPUS_MANIFEST_SHA256};
 const offlineStatusWaiters = new Map();
@@ -6633,7 +6688,7 @@ function offlineStateLabel(s) {
   const map={NOT_PREPARED:'Non préparé',CHECKING:'Vérification…',DOWNLOADING:'Téléchargement…',READY:'Prêt hors ligne',PARTIAL:'Préparation partielle',ERROR:'Erreur',CANCELLED:'Préparation annulée'};
   return map[s] || s;
 }
-function offlineMb(n){return n ? `${(n/1024/1024).toFixed(1).replace('.',',')} Mo` : 'taille en cours de calcul';}
+function offlineMb(n){return n ? `${(n/1e6).toFixed(1).replace('.',',')} Mo` : 'taille en cours de calcul';}
 function renderOfflineUi(){
   const label=document.getElementById('offline-state-label'), detail=document.getElementById('offline-progress-detail'), bar=document.getElementById('offline-progress-bar');
   const prep=document.getElementById('offline-prepare-btn'), cancel=document.getElementById('offline-cancel-btn'), clear=document.getElementById('offline-clear-btn'), failedEl=document.getElementById('offline-failed-list');
@@ -6733,64 +6788,102 @@ async function initOfflineState(){
   catch(e){offlineUiState={...offlineUiState,state:'ERROR',message:e.message||'Service Worker indisponible'};renderOfflineUi();scheduleOfflinePersist();}
 }
 
-function reloadForUpdate() {
-  if (!('serviceWorker' in navigator)) { window.location.reload(); return; }
+const UPDATE_CHECK_TIMEOUT_MS = 15000;
+function setUpdateStatus(text, toastText=null) {
   const statusEl=document.getElementById('update-check-status');
-  if(statusEl)statusEl.textContent='Installation de la nouvelle version…';
-  navigator.serviceWorker.ready.then(reg => {
-    if (reg.waiting) reg.waiting.postMessage({ type:'SKIP_WAITING' });
-    else reg.update().catch(()=>{});
-  }).catch(()=>{ if(statusEl)statusEl.textContent='Mise à jour impossible pour le moment.'; });
-  // No immediate reload: controllerchange below is the authority. This prevents a
-  // race where the old worker serves a stale shell while the replacement activates.
+  if(statusEl)statusEl.textContent=text;
+  if(toastText)showToast(toastText);
 }
-
-// Manual "check for update" — for users who don't want to wait for the automatic
-// focus/visibility/online checks (e.g. right after they know a new version shipped).
-// Reuses the registration already set up at boot: calling reg.update() re-triggers
-// the same 'updatefound'/'statechange' listeners, which populate reg.waiting exactly
-// as the automatic path does — no separate detection logic to keep in sync.
-async function manualCheckForUpdate() {
-  const statusEl = document.getElementById('update-check-status');
-  const btn = document.getElementById('update-check-btn');
-  if (!statusEl || !btn) return;
-
-  if (!('serviceWorker' in navigator)) {
-    statusEl.textContent = 'Les mises à jour automatiques ne sont pas prises en charge sur ce navigateur.';
-    return;
-  }
-
-  const originalBtnHtml = btn.innerHTML;
-  btn.disabled = true;
-  btn.innerHTML = '<i class="ti ti-refresh"></i> Vérification…';
-  statusEl.textContent = 'Vérification en cours…';
-
+function showUpdateAvailable(version, detail='') {
+  const b=document.getElementById('update-banner');if(b)b.classList.add('show');
+  setUpdateStatus(detail || `Une nouvelle version (${version}) est disponible.`);
+}
+function updateProbeUrl() {
+  const u=new URL('./version.json', window.location.href);
+  u.searchParams.set('ldc_update_probe', `${Date.now().toString(36)}-${Math.random().toString(36).slice(2)}`);
+  return u.href;
+}
+async function fetchPublishedVersion() {
+  const res=await fetch(updateProbeUrl(),{cache:'no-store',headers:{'cache-control':'no-cache'}});
+  if(!res||!res.ok)throw new Error(`version HTTP ${res&&res.status}`);
+  const meta=await res.json();
+  const version=String(meta&&meta.app_version||'').trim();
+  if(!/^v\d+\.\d+\.\d+-R1B$/.test(version))throw new Error('version publiée invalide');
+  return {version,meta};
+}
+function waitForRegistrationUpdate(reg, timeoutMs=UPDATE_CHECK_TIMEOUT_MS) {
+  return new Promise(resolve=>{
+    let settled=false,timer=null;const tracked=new Map();
+    const cleanup=()=>{try{reg.removeEventListener('updatefound',onUpdateFound);}catch(e){};for(const [w,fn] of tracked){try{w.removeEventListener('statechange',fn);}catch(e){}}if(timer)clearTimeout(timer);};
+    const finish=(worker,reason)=>{if(settled)return;settled=true;cleanup();resolve({worker:worker||null,reason});};
+    const track=(w)=>{if(!w||tracked.has(w))return;const fn=()=>{if(reg.waiting)return finish(reg.waiting,'waiting');if(w.state==='installed'&&navigator.serviceWorker.controller)return finish(w,'installed');if(w.state==='redundant'&&!reg.installing&&!reg.waiting)return;};tracked.set(w,fn);w.addEventListener('statechange',fn);fn();};
+    const inspect=()=>{if(reg.waiting)return finish(reg.waiting,'waiting');track(reg.installing);};
+    const onUpdateFound=()=>inspect();
+    reg.addEventListener('updatefound',onUpdateFound);inspect();
+    timer=setTimeout(()=>finish(reg.waiting||null,reg.waiting?'waiting':'timeout'),timeoutMs);
+  });
+}
+async function backgroundUpdateCheck(reg) {
   try {
-    const reg = await navigator.serviceWorker.getRegistration();
-    if (!reg) {
-      statusEl.textContent = 'Impossible de vérifier pour le moment.';
+    const published=await fetchPublishedVersion();
+    if(published.version!==APP_VERSION)showUpdateAvailable(published.version,`Version publiée : ${published.version}. Cette page exécute encore ${APP_VERSION}.`);
+    await reg.update();
+    if(reg.waiting&&navigator.serviceWorker.controller)showUpdateAvailable(published.version,'Une nouvelle version est prête à être installée.');
+    return published;
+  } catch(e) { return null; }
+}
+async function reloadForUpdate() {
+  if (!('serviceWorker' in navigator)) { window.location.reload(); return; }
+  setUpdateStatus('Installation de la nouvelle version…');
+  try {
+    const reg=(await navigator.serviceWorker.getRegistration()) || (await navigator.serviceWorker.ready);
+    if(reg.waiting){reg.waiting.postMessage({type:'SKIP_WAITING'});return;}
+    let published=null;try{published=await fetchPublishedVersion();}catch(e){}
+    await reg.update();
+    const result=await waitForRegistrationUpdate(reg);
+    const waiting=reg.waiting||result.worker;
+    if(waiting){waiting.postMessage({type:'SKIP_WAITING'});return;}
+    if(published&&published.version!==APP_VERSION){
+      showUpdateAvailable(published.version,`La version ${published.version} est publiée, mais son installation n’est pas encore terminée. Réessayez Actualiser.`);
       return;
     }
-    await reg.update();
-    // Give the browser a moment to evaluate/install the new worker before checking reg.waiting
-    await new Promise(r => setTimeout(r, 1200));
-    if (reg.waiting) {
-      statusEl.textContent = 'Une nouvelle version est disponible.';
-      document.getElementById('update-banner').classList.add('show');
-      showToast('Nouvelle version disponible');
-    } else {
-      statusEl.textContent = 'Vous avez déjà la dernière version (' + APP_VERSION + ').';
-      showToast('Vous avez déjà la dernière version');
+    if(published&&published.version===APP_VERSION){setUpdateStatus(`Version courante confirmée (${APP_VERSION}).`);return;}
+    setUpdateStatus('Mise à jour impossible à confirmer pour le moment.');
+  } catch(e) { setUpdateStatus(navigator.onLine===false?'Mise à jour impossible hors ligne.':'Mise à jour impossible à confirmer pour le moment.'); }
+  // controllerchange is the only automatic reload authority when a replacement worker activates.
+}
+
+async function manualCheckForUpdate() {
+  const statusEl=document.getElementById('update-check-status');
+  const btn=document.getElementById('update-check-btn');
+  if(!statusEl||!btn)return;
+  if(!('serviceWorker' in navigator)){statusEl.textContent='Les mises à jour automatiques ne sont pas prises en charge sur ce navigateur.';return;}
+  const originalBtnHtml=btn.innerHTML;btn.disabled=true;btn.innerHTML='<i class="ti ti-refresh"></i> Vérification…';statusEl.textContent='Vérification de la version publiée…';
+  try {
+    const published=await fetchPublishedVersion();
+    const reg=(await navigator.serviceWorker.getRegistration()) || (await navigator.serviceWorker.ready);
+    if(published.version===APP_VERSION){
+      await reg.update();
+      statusEl.textContent=`Vous avez la dernière version publiée (${APP_VERSION}).`;
+      showToast('Version publiée confirmée');
+      return;
     }
-  } catch (e) {
-    statusEl.textContent = navigator.onLine === false
-      ? 'Vérification impossible hors ligne.'
-      : 'Vérification impossible pour le moment.';
-    showToast('Vérification impossible pour le moment');
-  } finally {
-    btn.disabled = false;
-    btn.innerHTML = originalBtnHtml;
-  }
+    showUpdateAvailable(published.version,`Version publiée : ${published.version}. Installation en cours de vérification…`);
+    await reg.update();
+    const result=await waitForRegistrationUpdate(reg);
+    if(reg.waiting||result.worker){
+      statusEl.textContent=`La version ${published.version} est prête à être installée.`;
+      document.getElementById('update-banner').classList.add('show');
+      showToast('Nouvelle version prête');
+    } else {
+      statusEl.textContent=`La version ${published.version} est publiée, mais cette page exécute encore ${APP_VERSION}. Installation non terminée — réessayez.`;
+      document.getElementById('update-banner').classList.add('show');
+      showToast('Mise à jour publiée mais non installée');
+    }
+  } catch(e) {
+    statusEl.textContent=navigator.onLine===false?'Vérification impossible hors ligne.':'Impossible de confirmer la version publiée pour le moment.';
+    showToast('Version publiée non vérifiable');
+  } finally {btn.disabled=false;btn.innerHTML=originalBtnHtml;}
 }
 
 boot();

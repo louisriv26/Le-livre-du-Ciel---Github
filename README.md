@@ -1,4 +1,93 @@
-# Le Livre du Ciel — v2.19.17-R1B
+# Livre du Ciel — RA13 four-pass corrective candidate
+
+- Version: **v2.19.23-R1B**
+- Stage: **LDC-AFLP-SUP-T1-RA13-FOUR-PASS-CORRECTIVE-RECHECK**
+- Baseline: **v2.19.22-R1B / RA12** — SHA-256 `658758dd09ace331b488f6150e2f295121b80fbf97ed779f709769379e7676b2`
+- Package role: **controlled-test/static candidate**. Wide public release remains **NOT AUTHORIZED** until the external device/PWA/AT/textual-fidelity/rights/deployment-binding gates pass.
+- Final package authority: the separate RA13 immutable reopened-ZIP audit, independent audit, four-pass audit and final decision lock.
+- RA13 corrections: service-worker/current offline-binding trust repair; deterministic ZIP builder made executable/reproducible; F8 report count reconciliation; exact F12 export-byte metadata; current vector-retirement manifest cleanup; last-live hash-field semantics; expanded stale/contradiction scans.
+- Protected: canonical corpus text/IDs, all paragraph/search/speaker/display/flow/volume shards, supplements and lexical/BM25 semantic index.
+
+> The RA12 README content below is retained as historical provenance and is superseded by this RA13 authority block.
+
+---
+
+# Livre du Ciel — RA12 static remediation candidate
+
+- Version: **v2.19.22-R1B**
+- Stage: **LDC-AFLP-SUP-T1-RA12-PUBLIC-RELEASE-REMEDIATION-CERTIFICATION**
+- Baseline: **v2.19.21-R1B / RA11** — SHA-256 `e3fb1de9d4b75f1e8f0e9133ab0ec4da9172c0102a58a561af3fa187f418ff84`
+- Static package status target: **LIMITED_PASS_STATIC** until immutable reopened-ZIP audits complete.
+- Wide public release: **NOT AUTHORIZED** until physical iPhone/iPad/Samsung, installed-PWA update, true offline, assistive-technology, textual-fidelity/provenance, rights and served-byte binding gates pass.
+- RA12 scope: public-release safety/accessibility, Undo, iOS input sizing, focus visibility, modal focus, reduced motion, microtype/touch target fixes, local diagnostics, backup-limit honesty, metadata consistency and release evidence.
+- Protected: canonical corpus text/IDs, 36 paragraph/search/speaker/display/flow/volume shards, supplement content, semantic index and RA9–RA11 flow/speech decisions.
+- F11 manifest identity: deliberately deferred because the current production path is stable; no `id`/`scope` migration is introduced in this static remediation candidate.
+- F12: current 10 MiB single-file import ceiling retained pending required physical-device stress testing; row cap is now named and exports disclose/warn about restorability limits.
+
+> The RA11 README content below is retained as historical provenance and is superseded by this RA12 authority block.
+
+---
+
+# Livre du Ciel — RA11 current deploy authority
+
+- Version: **v2.19.21-R1B**
+- Stage: **LDC-AFLP-SUP-T1-RA11-BROADER-BOUNDARY-ADJUDICATION**
+- Baseline: RA10 v2.19.20-R1B, SHA-256 `af33a3fd14be8ffe17f3e52ffd26921928c4dac3554707fc038ed4b8d2c015ac`
+- Broader boundary inventory adjudicated: **226/226**
+- Display joins added: **210 boundaries** in **204 flow groups**
+- Intentional-structure boundaries retained: **14**
+- Tome-10 source-proven boundaries retained: **2**
+- Remaining unclassified cases from the RA10 226-case inventory: **0**
+- Canonical devotional paragraph text/IDs/search/speaker/display shards: protected unchanged
+- Corpus manifest SHA-256: `ef4adece54ee4ed52ed6c1fe2c075ab0519868a69c74b7a4e5b719788d3c4af9`
+- Offline assets: **224**, **168207301 bytes**
+- Offline content binding: `a9572242ee9e991872021224c8adb84b542ad789d0f50cc54ff628fbebe52555`
+- Static/package status: **LIMITED_PASS_STATIC** pending physical-device/live-origin validation.
+
+> The RA10 README content below is retained as historical provenance and is superseded by this RA11 authority block.
+
+---
+
+# Le Livre du Ciel — v2.19.20-R1B
+
+## RA10 — audit 36 tomes des fausses coupures de paragraphe (2026-08-17)
+
+RA10 part exactement du paquet RA9 v2.19.19-R1B (`39eaab8a9aa81f922cc4bcf42b6a512cfb777a42d17d232de9914526ae05947f`). Il achève la classe de coupures visuelles de mise en page qui avait historiquement été repérée mais laissée non fusionnée pour préserver les identifiants. La couche `flow_NN.json` permet maintenant de corriger l'affichage sans réécrire le texte canonique.
+
+- **131 frontières** ajoutées dans **127 groupes** de flux, sur **26 tomes**.
+- **126 frontières** appartiennent à la classe stricte réauditée (fragment sans ponctuation terminale ou court fragment finissant par une virgule, suivi d'une continuation en minuscule).
+- **5 frontières supplémentaires** sont individuellement appuyées par source/ledger approuvé (T6, T14, T25 ×2, T36).
+- Les 79 paragraphes de compléments ont été scannés : **0** candidat de cette classe.
+- Aucun texte canonique, ID, shard de recherche, shard de locuteur sémantique ni transform d'affichage n'est modifié.
+- La valeur obsolète `version.json.offline_total_bytes` héritée de RA8 a été corrigée pour correspondre exactement au manifeste hors ligne recomputé.
+- Les cas plus larges `virgule + majuscule`, `point-virgule + majuscule`, `deux-points + minuscule` et frontières rhétoriques/listes restent inventoriés séparément lorsqu'ils ne disposent pas d'une preuve équivalente ; RA10 ne les convertit pas automatiquement en prose.
+
+Agrégat de flux après RA10 : **11,628 groupes · 35,349 membres · 23,721 frontières · 187 groupes non-tiret**.
+
+Le statut reste **LIMITED_PASS_STATIC** tant que l'origine GitHub Pages et les appareils physiques ne sont pas validés sur ces octets exacts.
+
+
+## RA9 — paragraphing des paroles non colorées + flux source Tome 4 (2026-08-17)
+
+RA9 part exactement du paquet RA8 v2.19.18-R1B (`0d4230982b8bde9f5b30cbf0c37bd019446ad1eddd3a37893f8cea39fca62cc1`). Il corrige des coupures visuelles observées sur iPad sans réécrire le texte canonique.
+
+- Les paroles directes non colorées (Luisa, anges et autres locuteurs validés) restent en prose normale, mais ne sont plus séparées visuellement de leur attribution et du guillemet ouvrant par une frontière interne du modèle de locuteur.
+- Après le guillemet fermant d’une telle parole directe, la narration qui reprend commence dans un nouveau paragraphe visuel; le guillemet fermant reste attaché à la parole.
+- Trois coupures Tome 4, prouvées comme artefacts de mise en page/source, sont jointes dans la couche `flow_04.json` uniquement : 10 septembre 1900 P002→P003, 18 septembre 1900 P008→P009 et 19 septembre 1900 P006→P007.
+- Aucun texte de `paragraphs_*.json`, aucun ID stable, aucun offset de locuteur, aucune recherche et aucune donnée utilisateur ne change. Le style Jésus/Marie reste inchangé.
+
+
+## RA8 — fiabilité des mises à jour PWA (2026-08-17)
+
+RA8 part exactement du paquet RA7C v2.19.17-R1B (`2d9808ad065365e206935d504e6a791e91b716367189c207b7d194abc5bcaac9`) et corrige uniquement le chemin de mise à jour. Le corpus, les icônes, la navigation, les interactions de lecture et les données personnelles ne sont pas modifiés.
+
+- La vérification manuelle lit maintenant `version.json` par une requête réseau sans cache et ne peut plus conclure « dernière version » simplement parce qu'aucun worker `waiting` n'est visible après un délai fixe.
+- Les états `installing` / `waiting` / `statechange` sont suivis avec une borne de temps ; si la version publiée diffère encore de la page courante, l'interface indique explicitement que l'installation n'est pas terminée.
+- L'installation du Service Worker remplit le nouveau shell avec des requêtes `cache: reload`, afin qu'un nouveau cache ne puisse pas être construit à partir d'un ancien `index.html` du cache HTTP.
+- Les navigations en ligne utilisent également une requête fraîche avant d'actualiser le repli du shell. `version.json` est servi réseau-sans-cache par le Service Worker.
+- `controllerchange` reste l'autorité de rechargement après activation ; aucune réussite n'est annoncée avant convergence entre la version publiée et la version réellement exécutée.
+- Les 224 actifs de préparation hors ligne restent byte-identical ; seuls l'identité/version du cache et le content binding sont rebondés à v2.19.18-R1B.
+
 
 ## RA7 — identité finale Collection Luisa / icône Livre du Ciel (2026-08-17)
 
