@@ -1024,13 +1024,21 @@ body.android-highlight-platform #reader-body .para-fragment{-webkit-user-select:
   border-top-color:var(--gold);border-radius:50%;animation:spin .8s linear infinite;}
 @keyframes spin{to{transform:rotate(360deg);}}
 
-/* Date nav entry row in Search */
-.date-nav-entry{display:flex;align-items:center;gap:10px;padding:10px 16px;
-  border-top:1px solid var(--border);border-bottom:1px solid var(--border);
-  background:var(--ivory);color:var(--ink);font-family:var(--body);font-size:14px;
-  cursor:pointer;width:100%;text-align:left;box-sizing:border-box;
-  -webkit-appearance:none;min-width:0;}
-.date-nav-entry:active{background:var(--gold-pale);}
+/* Date navigation — secondary action card.
+   Intentionally distinct from section headings and selected filter pills. */
+.date-nav-entry{display:flex;align-items:center;gap:11px;padding:12px 14px;
+  margin:12px 16px 10px;width:calc(100% - 32px);box-sizing:border-box;
+  border:1px solid var(--gold-border);border-radius:12px;
+  background:var(--white);color:var(--ink);font-family:var(--body);font-size:15px;
+  line-height:1.2;cursor:pointer;text-align:left;-webkit-appearance:none;min-width:0;min-height:44px;
+  box-shadow:0 1px 2px rgba(44,24,16,.05);
+  transition:background .16s ease,border-color .16s ease,box-shadow .16s ease,transform .08s ease;}
+.date-nav-entry:hover{background:var(--gold-pale);border-color:var(--gold);}
+.date-nav-entry:active{background:var(--gold-pale);transform:translateY(1px);box-shadow:none;}
+.date-nav-entry:focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
+.date-nav-icon{font-size:17px;color:var(--gold-text);flex:0 0 auto;}
+.date-nav-label{font-weight:600;}
+.date-nav-chevron{font-size:15px;margin-left:auto;color:var(--gold-text);opacity:.9;flex:0 0 auto;}
 
 /* ═══ DATE NAVIGATOR ═══ */
 .dn-wrap{padding:12px 16px 32px;display:flex;flex-direction:column;gap:20px;}
@@ -1378,7 +1386,7 @@ html[data-theme="dark"] .st-luisa{color:#D4A843;}
       <div class="ob-slide" id="ob-slide-1">
         <div class="ob-icon" style="font-size:32px;margin-bottom:16px;"><i class="ti ti-message-circle" style="color:#D4A060;"></i></div>
         <div class="ob-title">Les paroles de Jésus</div>
-        <div class="ob-body">Dans cette édition numérique, la typographie suit le locuteur principal. Quand Jésus tient la parole, son passage apparaît en couleur ; s’Il cite quelqu’un d’autre, la citation conserve le style de Jésus. Inversement, quand Luisa cite des paroles de Jésus, la citation reste dans le style de Luisa. Les 65 110 segments conservent séparément leur attribution sémantique pour l’audit et la recherche.</div>
+        <div class="ob-body">Dans cette édition numérique, la typographie suit le locuteur principal. Quand Jésus tient directement la parole, son passage apparaît en couleur ; s’Il cite quelqu’un d’autre, la citation conserve le style de Jésus. Inversement, quand Luisa cite Jésus à l’intérieur de son propre tour de parole, la citation reste dans le style de Luisa. Ces attributions sémantiques servent aussi à la recherche.</div>
         <div class="ob-speech-demo">
           <div style="font-size:13px;color:rgba(255,255,255,.5);margin-bottom:8px;">Luisa écrit:</div>
           <div style="font-size:14px;color:rgba(255,255,255,.75);margin-bottom:12px;font-style:italic;">Ce matin, mon aimable Jésus est venu et Il m'a dit:</div>
@@ -1389,13 +1397,13 @@ html[data-theme="dark"] .st-luisa{color:#D4A843;}
       <div class="ob-slide" id="ob-slide-2">
         <div class="ob-icon" style="font-size:32px;margin-bottom:16px;"><i class="ti ti-compass" style="color:#D4A060;"></i></div>
         <div class="ob-title">Par où commencer?</div>
-        <div class="ob-body">Vous pouvez lire depuis le début, lire uniquement les paroles de Jésus, ou utiliser la recherche pour trouver un thème qui vous touche.</div>
+        <div class="ob-body">Vous pouvez lire depuis le début, commencer par un passage où Jésus parle, ou utiliser la recherche pour trouver un thème qui vous touche.</div>
         <div style="display:flex;flex-direction:column;gap:10px;margin-top:20px;">
           <button class="ob-choice-btn" onclick="finishOnboarding();startReading();">
             <i class="ti ti-book-2"></i> Commencer au Tome I
           </button>
           <button class="ob-choice-btn" onclick="finishOnboarding();openJesusSpeech();">
-            <i class="ti ti-message-circle" style="color:#D4A060;"></i> Lire les paroles de Jésus
+            <i class="ti ti-message-circle" style="color:#D4A060;"></i> Commencer par un passage où Jésus parle
           </button>
           <button class="ob-choice-btn" onclick="finishOnboarding();goSearch();">
             <i class="ti ti-search"></i> Chercher un thème
@@ -1458,7 +1466,7 @@ html[data-theme="dark"] .st-luisa{color:#D4A843;}
       <i class="ti ti-message-circle door-icon" style="color:#C9A84C;"></i>
       <div class="door-text">
         <div class="dt">Paroles de Jésus</div>
-        <div class="ds">65 110 segments de parole · lecture directe</div>
+        <div class="ds">Commencer par un passage où Jésus parle</div>
       </div>
     </button>
     <button class="home-lib-link" onclick="goTomes()">
@@ -1604,10 +1612,10 @@ html[data-theme="dark"] .st-luisa{color:#D4A843;}
   </div>
   <div class="filter-row" id="speaker-filter-row"></div>
   <div class="filter-row" id="vol-filter-row"></div>
-  <button class="date-nav-entry" onclick="openDateNav()">
-    <i class="ti ti-calendar" style="font-size:15px;"></i>
-    <span>Parcourir par date</span>
-    <i class="ti ti-arrow-right" style="font-size:13px;margin-left:auto;opacity:0.5;"></i>
+  <button class="date-nav-entry" type="button" onclick="openDateNav()" aria-label="Parcourir les textes par date">
+    <i class="ti ti-calendar date-nav-icon" aria-hidden="true"></i>
+    <span class="date-nav-label">Parcourir par date</span>
+    <i class="ti ti-chevron-right date-nav-chevron" aria-hidden="true"></i>
   </button>
   <div id="search-meta" class="search-meta" style="display:none;"></div>
   <div id="trust-notice" class="trust-notice" style="display:none;">
@@ -1676,405 +1684,123 @@ html[data-theme="dark"] .st-luisa{color:#D4A843;}
 <!-- HELP -->
 <div class="screen" id="screen-help">
   <div class="top-bar">
-    <button class="btn-back" onclick="closeHelp()">
-      <i class="ti ti-arrow-left"></i> Retour
-    </button>
-    <span class="top-bar-title">Aide</span>
-    <span style="width:44px;" aria-hidden="true"></span>
+    <button class="btn-back" onclick="closeHelp()"><i class="ti ti-arrow-left"></i> Retour</button>
+    <span class="top-bar-title">Aide</span><span style="width:44px;" aria-hidden="true"></span>
   </div>
   <div class="scroll">
-
-    <!-- ── LECTURE ── -->
     <div class="help-section">
-      <div class="help-section-head">
-        <div class="help-section-icon hsi-amber"><i class="ti ti-book-2"></i></div>
-        <span class="help-section-title">Lire le texte</span>
-      </div>
+      <div class="help-section-head"><div class="help-section-icon hsi-amber"><i class="ti ti-book-2"></i></div><span class="help-section-title">Lire</span></div>
       <div class="help-card">
-        <div class="help-row">
-          <span class="help-chip">Lecture</span>
-          <span class="help-text">Le lecteur reste le même pour la prière et l'étude. Les couleurs de locuteur restent disponibles sans imposer un mode spirituel.</span>
-        </div>
+        <div class="help-row"><span class="help-chip light">ALIGNÉ</span><span class="help-text">Affiche le corpus français aligné sur le périmètre de l’édition AFLP de référence. « Aligné » décrit le périmètre des textes et dates retenus ; cela ne signifie pas que chaque phrase affichée reproduit mot pour mot la traduction imprimée AFLP.</span></div>
+        <div class="help-row"><span class="help-chip">COMPLÉMENT</span><span class="help-text">Isole les 14 compléments approuvés de Translation Set 1 : 12 entrées datées complètes et 2 compléments internes, traduits directement depuis IT-PM. Queen et Hugh Owen servent uniquement de traductions comparatives.</span></div>
+        <div class="help-row"><span class="help-chip light">ENRICHI</span><span class="help-text">Réunit ALIGNÉ et les COMPLÉMENTS à leur position de lecture. Le choix est mémorisé et ne supprime ni favoris, ni notes, ni surlignages.</span></div>
         <div class="help-divider"></div>
-        <div class="help-row">
-          <span class="help-chip">Repères</span>
-          <span class="help-text">Affiche ou masque uniquement les informations techniques : références de paragraphes, source, statut et étiquettes de locuteur avec leur niveau de confiance. Les outils personnels restent disponibles dans les deux états.</span>
-        </div>
-        <div class="help-divider"></div>
-        <div class="help-row">
-          <span class="help-chip">COMPLÉMENT · IT-PM</span>
-          <span class="help-text">Signale un <b>complément au corpus aligné</b> : un passage ou une entrée absent de l’édition AFLP de référence et traduit en français directement depuis IT-PM dans le programme LDC-AFLP-SUP-T1. Queen et Hugh Owen servent uniquement de traductions comparatives. La couleur et la police du locuteur restent celles de Jésus, Luisa ou Marie selon le tour de parole.</span>
-        </div>
-        <div class="help-divider"></div>
-        <div class="help-row">
-          <span class="help-chip light">ALIGNÉ · COMPLÉMENT · ENRICHI</span>
-          <span class="help-text"><b>ALIGNÉ</b> affiche le corpus français aligné sur le périmètre de l’édition AFLP de référence, notamment les textes et dates retenus comme appartenant à cette édition. « Aligné » ne signifie pas que la formulation française affichée est nécessairement identique mot pour mot à la traduction imprimée AFLP. <b>COMPLÉMENT</b> isole les 14 compléments approuvés de Translation Set 1 : 12 entrées datées complètes et 2 compléments internes, traduits directement depuis IT-PM. <b>ENRICHI</b> réunit le corpus ALIGNÉ et les COMPLÉMENTS à leur position de lecture. Votre choix est mémorisé. Les favoris, notes et surlignages restent conservés lorsque vous changez de vue.</span>
-        </div>
-        <div class="help-divider"></div>
-        <div class="help-row">
-          <span class="help-chip light">⋯</span>
-          <span class="help-text">Ouvre les outils d’entrée : Favori, Autour, Partager, <b>Infos et source</b>, taille du texte et thème. Le lecteur reste ainsi visuellement calme.</span>
-        </div>
-        <div class="help-divider"></div>
-        <div class="help-row">
-          <span class="help-chip light">Aa</span>
-          <span class="help-text">Ajuste la taille du texte. La préférence est mémorisée pour toutes vos sessions.</span>
-        </div>
-        <div class="help-divider"></div>
-        <div class="help-row">
-          <span class="help-chip light">◂ ▸</span>
-          <span class="help-text">Naviguer entre les entrées sans revenir à la liste. En bas du lecteur.</span>
-        </div>
-        <div class="help-divider"></div>
-        <div class="help-row">
-          <span class="help-chip light">☾ / ☀</span>
-          <span class="help-text">Mode jour / mode nuit. Bascule l'apparence de toute l'application. La préférence est mémorisée.</span>
-        </div>
+        <div class="help-row"><span class="help-chip">Repères</span><span class="help-text">Affiche ou masque les références, la provenance et les étiquettes de locuteur. Les outils personnels restent disponibles dans les deux états.</span></div>
+        <div class="help-row"><span class="help-chip" style="background:rgba(201,168,76,.15);color:#7A5A20;">Paroles de Jésus</span><span class="help-text">Quand Jésus est le locuteur principal d’une prise de parole directe, le passage apparaît en or/brun. Une citation imbriquée conserve le style du locuteur principal : Jésus citant quelqu’un reste en style Jésus ; Luisa citant Jésus reste en style Luisa. Le filtre de recherche utilise l’attribution sémantique enregistrée dans le corpus.</span></div>
+        <div class="help-row"><span class="help-chip light">♥</span><span class="help-text">Ajoute ou retire l’entrée des Favoris. Le cœur est rempli lorsque l’entrée est déjà enregistrée ; elle apparaît aussi dans <b>Mon Espace → Favoris</b> et dans la liste du Tome.</span></div>
+        <div class="help-row"><span class="help-chip light">Lu / ✓ Lu</span><span class="help-text">Marque explicitement l’entrée comme lue. Appuyez de nouveau sur <b>✓ Lu</b> pour retirer ce marquage. L’ouverture seule d’une entrée ne la marque pas comme lue.</span></div>
+        <div class="help-row"><span class="help-chip light">◂ ▸</span><span class="help-text">Passe à l’entrée précédente ou suivante sans revenir à la liste.</span></div>
+        <div class="help-row"><span class="help-chip light">⋯</span><span class="help-text">Ouvre les outils du lecteur : Favori, Autour de ce passage, Partager la référence, Copier le lien, Signaler un problème de texte, Copier le diagnostic, Infos et source, Version du texte, Taille du texte et Thème.</span></div>
+        <div class="help-row"><span class="help-chip light">Taille</span><span class="help-text">Dans les outils, choisissez <b>Petit · Normal · Grand · Très grand</b>. La préférence est mémorisée.</span></div>
+        <div class="help-row"><span class="help-chip light">Thème</span><span class="help-text">Choisissez <b>Automatique · Clair · Sombre</b>. La préférence est mémorisée.</span></div>
       </div>
-      <div class="help-tip">
-        L'application mémorise votre position exacte — au paragraphe près, pas à la position d'écran. Elle retrouve votre place même après un redémarrage.
+      <div class="help-tip">L’application mémorise la position de lecture à partir du paragraphe et d’une position interne afin de retrouver au mieux votre place après un retour ou un redémarrage.</div>
+    </div>
+
+    <div class="help-section">
+      <div class="help-section-head"><div class="help-section-icon hsi-gold"><i class="ti ti-highlight"></i></div><span class="help-section-title">Surligner, noter et conserver</span></div>
+      <div class="help-card">
+        <div class="help-row"><span class="help-chip light">Sélection</span><span class="help-text">Sur iPhone, iPad et ordinateur, sélectionnez exactement le passage voulu. Le panneau contextuel propose <b>Surligner · Note · Copier · Fermer</b>.</span></div>
+        <div class="help-row"><span class="help-chip light">Paragraphe</span><span class="help-text">Sur Samsung/Android, activez le mode <b>Paragraphe</b> puis touchez le paragraphe à surligner en entier, sans dépendre de la sélection native Android.</span></div>
+        <div class="help-row"><span class="help-chip light">Surligner</span><span class="help-text">Palette active : <b>Jaune · Bleu · Vert · Violet · Rose</b>. Les anciens surlignages Or restent lisibles et peuvent être recolorés.</span></div>
+        <div class="help-row"><span class="help-chip light">Note</span><span class="help-text">Ajoute une note au passage sélectionné et conserve son contexte pour pouvoir y revenir depuis <b>Mon Espace → Notes</b>.</span></div>
+        <div class="help-row"><span class="help-chip light">＋ Collection</span><span class="help-text">Sous les actions du passage, <b>Ajouter à une collection</b> enregistre le passage dans une collection existante ou nouvelle. Dans Mon Espace, vous pouvez réordonner les passages, leur ajouter une note, copier les références/liens et exporter la collection.</span></div>
+        <div class="help-row"><span class="help-chip light">Annuler</span><span class="help-text">Après la suppression d’un surlignage, d’une note, d’un favori ou d’un passage de collection, une action <b>Annuler</b> reste disponible pendant un court moment. La suppression d’une collection entière demande une confirmation.</span></div>
       </div>
     </div>
 
-    <!-- ── SURLIGNAGE ── -->
     <div class="help-section">
-      <div class="help-section-head">
-        <div class="help-section-icon hsi-gold"><i class="ti ti-highlight"></i></div>
-        <span class="help-section-title">Surligner et annoter</span>
-      </div>
+      <div class="help-section-head"><div class="help-section-icon hsi-blue"><i class="ti ti-search"></i></div><span class="help-section-title">Rechercher</span></div>
       <div class="help-card">
-        <div class="help-row">
-          <span class="help-chip light">Sélection</span>
-          <span class="help-text">Sur iPhone, iPad et ordinateur, sélectionnez exactement le passage voulu. La barre contextuelle commune propose <b>Surligner · Note · Copier · Fermer</b>. <b>Copier le lien</b> et <b>Partager la référence</b> restent dans les outils du lecteur. La fonction propre au Livre du Ciel <b>Ajouter à une collection</b> reste disponible séparément sous ces actions.</span>
-        </div>
+        <div class="help-row"><span class="help-chip light">Texte libre</span><span class="help-text">Saisissez un mot, une phrase, un thème ou une idée. La recherche choisit automatiquement les correspondances utiles.</span></div>
+        <div class="help-row"><span class="help-chip light">Paroles de Jésus</span><span class="help-text">Le filtre <b>Paroles de Jésus</b> restreint les résultats aux paragraphes contenant une attribution sémantique à Jésus. La couleur du lecteur suit toutefois le locuteur principal du passage.</span></div>
+        <div class="help-row"><span class="help-chip light">Tomes</span><span class="help-text">Limitez la recherche avec les groupes <b>T1–6 · T7–12 · T13–18 · T19–24 · T25–30 · T31–36</b>, ou laissez <b>Tous</b>.</span></div>
+        <div class="help-row"><span class="help-chip light">Date</span><span class="help-text">Quand la zone de recherche est vide, <b>Parcourir par date</b> ouvre la navigation chronologique.</span></div>
         <div class="help-divider"></div>
-        <div class="help-row">
-          <span class="help-chip light">Surlignage</span>
-          <span class="help-text">Palette commune : <b>Jaune · Bleu · Vert · Violet · Rose</b>. Sur Samsung/Android, activez <b>Paragraphe</b> puis touchez un paragraphe : il est ciblé visuellement et surligné en entier, sans dépendre de la sélection native Android. Les anciens surlignages Or restent lisibles et peuvent être recolorés, mais Or n’est plus proposé pour les nouveaux surlignages.</span>
-        </div>
-        <div class="help-divider"></div>
-        <div class="help-row">
-          <span class="help-chip light">Note ✎</span>
-          <span class="help-text">Écrivez une note personnelle sur l'entrée. Retrouvez toutes vos notes dans <b>Mon Espace → Notes</b>. Appuyez sur une note pour revenir au passage.</span>
-        </div>
+        <div class="help-row"><span class="help-chip outline">Phrase exacte</span><span class="help-text">La formulation a été retrouvée directement dans le corpus.</span></div>
+        <div class="help-row"><span class="help-chip outline">Mots exacts</span><span class="help-text">Les mots recherchés sont présents, sans nécessairement former la même phrase.</span></div>
+        <div class="help-row"><span class="help-chip outline">Titre · Date · Référence</span><span class="help-text">Les résultats de métadonnées peuvent préciser <b>Titre exact · Date exacte · Titre · Date · Référence · Métadonnée</b> selon la correspondance trouvée.</span></div>
+        <div class="help-row"><span class="help-chip outline">Idée proche</span><span class="help-text">La formulation diffère mais le passage est lexicalement proche de l’idée recherchée.</span></div>
+        <div class="help-row"><span class="help-chip outline">Thème approché</span><span class="help-text">Une partie seulement des mots significatifs de la requête correspond au passage. C’est une correspondance lexicale plus faible : vérifiez le texte avant de le citer.</span></div>
+        <div class="help-row"><span class="help-chip outline">Thème lié</span><span class="help-text">Le passage appartient à une famille d’images ou d’idées spirituelles liée à la requête.</span></div>
+        <div class="help-row"><span class="help-chip outline">Badges de contexte</span><span class="help-text"><b>Éditorial</b> signale une explication éditoriale du Tome 1 ; <b>COMPLÉMENT · IT-PM</b> signale un complément ; <b>Paroles de Jésus</b> apparaît quand le filtre correspondant est actif.</span></div>
+      </div>
+      <div class="help-tip">Pour les résultats approximatifs ou thématiques, vérifiez toujours le texte du passage avant de le citer.</div>
+    </div>
+
+    <div class="help-section">
+      <div class="help-section-head"><div class="help-section-icon hsi-purple"><i class="ti ti-circles-relation"></i></div><span class="help-section-title">Autour de ce passage</span></div>
+      <div class="help-card">
+        <div class="help-row"><span class="help-chip">Accès</span><span class="help-text">Dans le lecteur, ouvrez <b>⋯ → Autour de ce passage</b>.</span></div>
+        <div class="help-row"><span class="help-chip light">Même tome</span><span class="help-text">Propose des entrées proches dans le même Tome.</span></div>
+        <div class="help-row"><span class="help-chip light">Thème proche</span><span class="help-text">Propose d’autres passages du corpus partageant des idées ou mots clés, dans ce Tome ou dans d’autres Tomes.</span></div>
+        <div class="help-row"><span class="help-chip light">Même image</span><span class="help-text">Propose des passages de la même famille d’images spirituelles, par exemple lumière, feu, mer, croix ou voile.</span></div>
       </div>
     </div>
 
-    <!-- ── COLLECTIONS ── -->
     <div class="help-section">
-      <div class="help-section-head">
-        <div class="help-section-icon hsi-teal"><i class="ti ti-bookmark"></i></div>
-        <span class="help-section-title">Collections — préparer un cénacle</span>
-      </div>
+      <div class="help-section-head"><div class="help-section-icon hsi-teal"><i class="ti ti-bookmark"></i></div><span class="help-section-title">Mon Espace</span></div>
       <div class="help-card">
-        <div class="help-row">
-          <span class="help-chip">＋ Collection</span>
-          <span class="help-text">Dans la barre du lecteur. Choisissez une collection existante ou créez-en une nouvelle en tapant son nom. Un seul geste depuis n'importe quel passage.</span>
-        </div>
-        <div class="help-divider"></div>
-        <div class="help-row">
-          <span class="help-chip light">Réordonner</span>
-          <span class="help-text">Dans <b>Mon Espace → Collections</b>, glissez-déposez les passages pour changer l'ordre, ou utilisez les flèches <b>▲ ▼</b>.</span>
-        </div>
-        <div class="help-divider"></div>
-        <div class="help-row">
-          <span class="help-chip light">Note par passage</span>
-          <span class="help-text">Appuyez sur <b>+ Note</b> sur un passage de collection pour ajouter une annotation privée — idéale pour noter un commentaire à présenter au cénacle.</span>
-        </div>
-        <div class="help-divider"></div>
-        <div class="help-row">
-          <span class="help-chip light">Exporter</span>
-          <span class="help-text">Copie le texte propre avec références dans le presse-papier. Sans logo ni mise en forme commerciale. Collez directement dans un e-mail ou document.</span>
-        </div>
-      </div>
-      <div class="help-tip">
-        Conseil cénacle : créez une collection par réunion. Ajoutez les passages au fil de votre préparation, réordonnez-les dans l'ordre de présentation, puis exportez pour partager avec les participants.
+        <div class="help-row"><span class="help-chip light">Notes</span><span class="help-text">Retrouvez vos notes et revenez au passage auquel elles sont liées.</span></div>
+        <div class="help-row"><span class="help-chip light">Surlignages</span><span class="help-text">Retrouvez tous vos surlignages ; un surlignage continu sur plusieurs paragraphes reste une seule action utilisateur.</span></div>
+        <div class="help-row"><span class="help-chip light">Favoris</span><span class="help-text">Retrouvez les entrées enregistrées avec ♥.</span></div>
+        <div class="help-row"><span class="help-chip light">Collections</span><span class="help-text">Préparez et réordonnez des ensembles de passages, avec notes, références, liens et export.</span></div>
+        <div class="help-row"><span class="help-chip light">Lu</span><span class="help-text">Le suivi de lecture repose uniquement sur votre marquage explicite <b>Lu</b> ; il est réversible.</span></div>
+        <div class="help-row"><span class="help-chip light">À vérifier</span><span class="help-text">Un élément dont l’ancrage ne correspond plus exactement au corpus courant est conservé et signalé au lieu d’être supprimé silencieusement.</span></div>
+        <div class="help-row"><span class="help-chip light">Filtrer</span><span class="help-text">Le champ de filtre recherche dans l’onglet ouvert.</span></div>
       </div>
     </div>
 
-    <!-- ── RECHERCHE ── -->
     <div class="help-section">
-      <div class="help-section-head">
-        <div class="help-section-icon hsi-blue"><i class="ti ti-search"></i></div>
-        <span class="help-section-title">Recherche</span>
-      </div>
+      <div class="help-section-head"><div class="help-section-icon hsi-teal"><i class="ti ti-lock"></i></div><span class="help-section-title">Sauvegarde et données</span></div>
       <div class="help-card">
-        <div class="help-row">
-          <span class="help-chip light" style="min-width:72px;">Tapez librement</span>
-          <span class="help-text">Entrez un mot, une idée ou une phrase. L'application détecte l'intention — pas besoin de choisir un mode avant de taper.</span>
-        </div>
-        <div class="help-divider"></div>
-        <div class="help-row">
-          <span class="help-chip outline">Phrase exacte</span>
-          <span class="help-text">La formulation a été trouvée mot pour mot dans le corpus.</span>
-        </div>
-        <div class="help-row">
-          <span class="help-chip outline">Idée proche</span>
-          <span class="help-text">Vos mots ne correspondent pas exactement mais l'idée est présente. <b>Vérifiez toujours le texte source avant de citer.</b></span>
-        </div>
-        <div class="help-row">
-          <span class="help-chip outline">Idée proche</span>
-          <span class="help-text">Vos mots ne correspondent pas exactement mais l'idée est présente dans le passage. <b>Vérifiez toujours le texte avant de citer.</b></span>
-        </div>
-        <div class="help-row">
-          <span class="help-chip outline">Thème lié</span>
-          <span class="help-text">Le passage appartient à la même famille d'images spirituelles — lumière, filet, feu, mer, croix, amour-propre… — même sans mots communs avec votre requête.</span>
-        </div>
-        <div class="help-divider"></div>
-        <div class="help-row">
-          <span class="help-chip light">T1–6 · T7–12…</span>
-          <span class="help-text">Limitez la recherche à un groupe de tomes via les chips sous la barre de recherche. Utile pour cibler une période de la vie de Luisa.</span>
-        </div>
+        <div class="help-row"><span class="help-chip light">Journal</span><span class="help-text">Exporte un texte lisible de vos notes et collections. Ce fichier n’est pas une sauvegarde restaurable.</span></div>
+        <div class="help-row"><span class="help-chip light">↓ Sauvegarde JSON</span><span class="help-text">Crée une sauvegarde restaurable de vos données personnelles prises en charge par l’application, notamment notes, surlignages, favoris, collections, lecture, position et préférences.</span></div>
+        <div class="help-row"><span class="help-chip light">⇧ Restaurer</span><span class="help-text">Le fichier est vérifié avant écriture et un aperçu précède la restauration. Une erreur de restauration ne doit pas remplacer silencieusement les données existantes.</span></div>
       </div>
-      <div class="help-tip">
-        Conseil : utilisez les mots distinctifs dont vous vous souvenez. Les badges « Idée proche » et « Thème lié » indiquent une correspondance lexicale/thématique moins exacte. La recherche repose sur les métadonnées et le moteur lexical/BM25 du corpus composite.
-      </div>
+      <div class="help-tip">Vos données personnelles restent locales à l’application sur cet appareil. Le cache hors ligne n’est pas une sauvegarde de Mon Espace. Les diagnostics et signalements n’incluent pas vos notes privées.</div>
     </div>
 
-    <!-- ── AUTOUR ── -->
     <div class="help-section">
-      <div class="help-section-head">
-        <div class="help-section-icon hsi-purple"><i class="ti ti-circles-relation"></i></div>
-        <span class="help-section-title">Autour de ce passage</span>
-      </div>
+      <div class="help-section-head"><div class="help-section-icon hsi-amber"><i class="ti ti-wifi-off"></i></div><span class="help-section-title">Hors ligne et mises à jour</span></div>
       <div class="help-card">
-        <div class="help-row">
-          <span class="help-chip">Autour</span>
-          <span class="help-text">Bouton dans la barre du lecteur. Ouvre un panneau avec jusqu'à trois sections de passages liés, sans avoir à retourner à la recherche.</span>
-        </div>
-        <div class="help-divider"></div>
-        <div class="help-row">
-          <span class="help-chip light">Même tome</span>
-          <span class="help-text">Les entrées les plus proches dans le même tome — utile pour suivre le fil d'une période.</span>
-        </div>
-        <div class="help-row">
-          <span class="help-chip light">Thème proche</span>
-          <span class="help-text">Passages d'autres tomes partageant des idées et mots clés avec l'entrée en cours.</span>
-        </div>
-        <div class="help-row">
-          <span class="help-chip light">Même image</span>
-          <span class="help-text">Passages de la même famille d'images spirituelles — filet, voile, lumière, feu, mer, croix…</span>
-        </div>
-
-      </div>
-      <div class="help-tip">
-        Autour recherche les passages liés à partir de références stables et charge les shards nécessaires à la demande. Le bouton de lien d’un résultat copie une URL qui rouvre directement la cible.
-      </div>
-    </div>
-
-    <!-- ── LOCUTEUR ── -->
-    <div class="help-section">
-      <div class="help-section-head">
-        <div class="help-section-icon hsi-coral"><i class="ti ti-user"></i></div>
-        <span class="help-section-title">Tags de locuteur</span>
-      </div>
-      <div class="help-card">
-        <div class="help-row">
-          <span class="help-chip" style="background:#E6F1FB;color:#185FA5;">Jésus parle</span>
-          <span class="help-text">Attribution à haute confiance. Le discours est identifié comme direct dans la source.</span>
-        </div>
-        <div class="help-row">
-          <span class="help-chip" style="background:#F0EAF8;color:#5B3A8C;">Marie parle</span>
-          <span class="help-text">Attribution à haute confiance.</span>
-        </div>
-        <div class="help-row">
-          <span class="help-chip light">Luisa écrit</span>
-          <span class="help-text">Texte narratif de Luisa elle-même.</span>
-        </div>
-        <div class="help-divider"></div>
-        <div class="help-row">
-          <span class="help-chip outline">(probable)</span>
-          <span class="help-text">Confiance moyenne — l'attribution est probable mais pas certaine. Visible lorsque les <b>Repères</b> sont activés, avec un niveau de confiance détaillé.</span>
-        </div>
-      </div>
-      <div class="help-tip">
-        Les attributions à confiance basse ne sont jamais affichées — même avec les Repères. L'application ne présente jamais une attribution incertaine comme un fait établi.
-      </div>
-    </div>
-
-    <!-- ── MON ESPACE ── -->
-    <div class="help-section">
-      <div class="help-section-head">
-        <div class="help-section-icon hsi-teal"><i class="ti ti-bookmark"></i></div>
-        <span class="help-section-title">Mon Espace</span>
-      </div>
-      <div class="help-card">
-        <div class="help-row"><span class="help-chip light">Notes</span><span class="help-text">Toutes vos notes. Appuyez pour revenir au passage.</span></div>
-        <div class="help-row"><span class="help-chip light">Surlignages</span><span class="help-text">Tous vos surlignages. Un surlignage continu sur plusieurs paragraphes reste une seule action utilisateur.</span></div>
-        <div class="help-row"><span class="help-chip light">Favoris</span><span class="help-text">Entrées ajoutées via ♥ dans le lecteur. Dans chaque Tome, un petit cœur plein apparaît à droite des textes déjà enregistrés en Favoris pour les retrouver immédiatement.</span></div>
-        <div class="help-row"><span class="help-chip light">Collections</span><span class="help-text">Espace de travail visible dans <b>Mon Espace → Collections</b>, jamais caché dans À propos. Les passages utilisent des références stables; les boutons <b>Réfs</b> et <b>Lien</b> copient respectivement les références et un lien local.</span></div>
-        <div class="help-row"><span class="help-chip light">Retour</span><span class="help-text">Après une entrée ouverte depuis un Tome, la Recherche, les Favoris, une Collection ou Autour, <b>Retour</b> restaure le contexte d’origine et sa position. Dans le lecteur, la reprise s’appuie sur le paragraphe et une fraction interne, avec un secours au niveau de l’entrée.</span></div>
-        <div class="help-row"><span class="help-chip light">À vérifier</span><span class="help-text">Éléments dont l’ancrage ne correspond plus exactement au corpus actuel. Ils sont conservés et signalés, jamais supprimés silencieusement.</span></div>
-        <div class="help-row"><span class="help-chip light">Filtrer</span><span class="help-text">Le champ de filtre recherche dans l’onglet ouvert. Les listes ne sont pas tronquées silencieusement.</span></div>
-        <div class="help-row"><span class="help-chip light">Statistiques</span><span class="help-text">La vue <b>ENRICHI</b> contient 2 324 entrées visibles ; <b>ALIGNÉ</b> en contient 2 312. La vue <b>COMPLÉMENT</b> présente un registre de 14 compléments : 12 entrées datées et 2 compléments internes. Dans la vue <b>ENRICHI</b>, ces 2 compléments internes restent intégrés à leurs entrées alignées hôtes et ne créent donc pas de nouvelles dates autonomes.</span></div>
-        <div class="help-divider"></div>
-        <div class="help-row"><span class="help-chip light">Liens</span><span class="help-text">Les liens stables peuvent ouvrir un tome, une entrée, un paragraphe, une date, une recherche, une collection locale ou une cible d’Autour. Un lien de collection ne transfère aucune donnée personnelle.</span></div>
-        <div class="help-row"><span class="help-chip light">Support</span><span class="help-text">Dans les outils du lecteur : <b>Signaler un problème de texte</b> prépare un signalement avec les métadonnées publiques. Le passage sélectionné n’est ajouté que si vous cochez explicitement la case. <b>Copier le diagnostic</b> exclut notes et autres contenus privés.</span></div>
-        <div class="help-divider"></div>
-        <div class="help-row"><span class="help-chip light">Journal</span><span class="help-text">Export texte lisible de vos notes et collections. Ce fichier n’est pas un fichier de restauration.</span></div>
-        <div class="help-row"><span class="help-chip light">↓ Sauvegarde JSON</span><span class="help-text">Sauvegarde restaurable : notes, surlignages, favoris, collections, positions de lecture, historique de lecture et préférences.</span></div>
-        <div class="help-row"><span class="help-chip light">⇧ Restaurer</span><span class="help-text">Le fichier est contrôlé avant écriture : schéma/version, taille, clés dangereuses, IDs/plages, couleurs, relations de collections et compatibilité du corpus. Un aperçu précède la restauration.</span></div>
-      </div>
-      <div class="help-tip">Mon Espace est autoritaire dans IndexedDB sur cet appareil. Le localStorage ne contient que l’accusé d’accueil initial ; les caches PWA ne sont pas une sauvegarde de vos données personnelles. Une restauration est appliquée dans une transaction : si elle échoue, les données existantes ne sont pas remplacées.</div>
-    </div>
-
-    <!-- ── OFFLINE ── -->
-    <div class="help-section">
-      <div class="help-section-head">
-        <div class="help-section-icon hsi-amber"><i class="ti ti-wifi-off"></i></div>
-        <span class="help-section-title">Utilisation hors ligne</span>
-      </div>
-      <div class="help-card">
-        <div class="help-text" style="padding:2px 0 10px;">
-          <b>Préparer hors ligne</b> met en cache les 36 tomes, le corpus aligné, les compléments LDC-AFLP-SUP-T1, les repères de locuteur, les couches d’affichage et la recherche textuelle/métadonnées. Le sous-système vectoriel/embeddings a été retiré de cette version ; la recherche textuelle, métadonnées et BM25 reste disponible.
-        </div>
+        <div class="help-text" style="padding:2px 0 10px;"><b>Préparer hors ligne</b> met en cache les 36 Tomes, les compléments et les données nécessaires à la lecture et à la recherche disponibles dans cette version.</div>
         <div id="offline-state-label" class="help-text" role="status" aria-live="polite">Vérification de l’état hors ligne…</div>
         <div style="height:8px;background:var(--border);border-radius:999px;overflow:hidden;margin:9px 0 5px;" aria-hidden="true"><div id="offline-progress-bar" style="height:100%;width:0;background:var(--gold-text);transition:width .15s ease;"></div></div>
         <div id="offline-progress-detail" class="help-text" style="font-size:12px;color:var(--muted);margin-bottom:10px;">—</div>
         <div id="offline-failed-list" class="help-text" style="display:none;font-size:12px;color:var(--muted);margin:-2px 0 10px;white-space:pre-wrap;"></div>
-        <div style="display:flex;gap:8px;flex-wrap:wrap;">
-          <button class="btn-secondary" style="flex:1;min-width:160px;" onclick="startOfflinePreparation()" id="offline-prepare-btn"><i class="ti ti-download"></i> Préparer hors ligne</button>
-          <button class="btn-secondary" style="display:none;" onclick="cancelOfflinePreparation()" id="offline-cancel-btn"><i class="ti ti-x"></i> Annuler</button>
-          <button class="btn-secondary" style="display:none;" onclick="clearOfflinePreparation()" id="offline-clear-btn"><i class="ti ti-trash"></i> Effacer</button>
-        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;"><button class="btn-secondary" style="flex:1;min-width:160px;" onclick="startOfflinePreparation()" id="offline-prepare-btn"><i class="ti ti-download"></i> Préparer hors ligne</button><button class="btn-secondary" style="display:none;" onclick="cancelOfflinePreparation()" id="offline-cancel-btn"><i class="ti ti-x"></i> Annuler</button><button class="btn-secondary" style="display:none;" onclick="clearOfflinePreparation()" id="offline-clear-btn"><i class="ti ti-trash"></i> Effacer</button></div>
+        <div class="help-divider"></div>
+        <div class="help-text" style="padding:2px 0 10px;" id="update-check-status">L’application vérifie automatiquement les mises à jour à l’ouverture. Vous pouvez aussi vérifier manuellement.</div>
+        <button class="btn-secondary" style="width:100%;" onclick="manualCheckForUpdate()" id="update-check-btn"><i class="ti ti-refresh"></i> Vérifier les mises à jour</button>
       </div>
-      <div class="help-tip">La préparation est reprise sans retélécharger les fichiers déjà présents. Elle est liée à la version du cache et à la génération du corpus : après une mise à jour incompatible, l’app demande une nouvelle préparation. Mon Espace reste une donnée locale IndexedDB indépendante des caches PWA.</div>
+      <div class="help-tip">Après une mise à jour incompatible avec le cache précédent, l’application peut demander une nouvelle préparation hors ligne. Mon Espace reste indépendant du cache PWA.</div>
     </div>
 
-    <!-- ── MISES À JOUR ── -->
     <div class="help-section">
-      <div class="help-section-head">
-        <div class="help-section-icon hsi-amber"><i class="ti ti-refresh"></i></div>
-        <span class="help-section-title">Mises à jour</span>
-      </div>
+      <div class="help-section-head"><div class="help-section-icon hsi-amber"><i class="ti ti-info-circle"></i></div><span class="help-section-title">À propos, sources et version</span></div>
       <div class="help-card">
-        <div class="help-text" style="padding:2px 0 10px;" id="update-check-status">
-          L'application vérifie automatiquement les mises à jour à l'ouverture. Vous pouvez aussi vérifier manuellement.
-        </div>
-        <button class="btn-secondary" style="width:100%;" onclick="manualCheckForUpdate()" id="update-check-btn">
-          <i class="ti ti-refresh"></i> Vérifier les mises à jour
-        </button>
+        <div class="help-text">Cette application propose les 36 Tomes du <b>Livre du Ciel</b> de Luisa Piccarreta dans une édition française de lecture et d’étude. Le corpus aligné est conservé séparément des compléments afin que leur provenance reste visible et réversible.</div>
+        <div class="help-divider"></div>
+        <div class="help-row"><span class="help-chip">COMPLÉMENT · IT-PM</span><span class="help-text">Signale un texte absent de l’édition AFLP de référence et intégré comme complément. Le français a été établi directement d’après IT-PM ; Queen et Hugh Owen servent de traductions comparatives et ne sont pas la source du français.</span></div>
+        <div class="help-row"><span class="help-chip light">Translation Set 1</span><span class="help-text">Comprend 14 compléments approuvés : 12 entrées complètes et 2 compléments internes. Cette intégration n’affirme pas que toutes les différences possibles entre les témoins des 36 Tomes sont résolues.</span></div>
+        <div class="help-divider"></div>
+        <div class="help-row"><span class="help-chip outline">Version</span><span class="help-text" id="about-app-version">—</span></div>
+        <div class="help-divider"></div>
+        <div class="help-row"><span></span><button class="btn-secondary" onclick="closeHelp();showOnboarding();" style="font-size:13px;padding:8px 16px;">Revoir la présentation →</button></div>
       </div>
     </div>
-
     <div class="help-version" id="help-version-footer"></div>
-
-    <!-- ── PAROLES DE JÉSUS ── -->
-    <div class="help-section">
-      <div class="help-section-head">
-        <div class="help-section-icon" style="background:rgba(92,58,16,.12);color:#5C3A10;"><i class="ti ti-message-circle"></i></div>
-        <span class="help-section-title">Paroles de Jésus</span>
-      </div>
-      <div class="help-card">
-        <div class="help-row">
-          <span class="help-chip" style="background:rgba(201,168,76,.15);color:#7A5A20;">Couleur or</span>
-          <span class="help-text">La couleur or/brun indique une prise de parole de Jésus. Une citation imbriquée ne change pas la typographie du locuteur principal : Jésus citant quelqu’un reste en style Jésus ; Luisa citant Jésus reste en style Luisa.</span>
-        </div>
-        <div class="help-divider"></div>
-        <div class="help-row">
-          <span class="help-chip">Accueil</span>
-          <span class="help-text">Le bouton <b>Paroles de Jésus</b> sur l'écran d'accueil ouvre directement un tome avec les paroles en couleur.</span>
-        </div>
-        <div class="help-divider"></div>
-        <div class="help-row">
-          <span class="help-chip">Recherche</span>
-          <span class="help-text">Dans Chercher, activez le filtre <b>Paroles de Jésus</b> pour retrouver les passages contenant des paroles sémantiquement attribuées à Jésus, y compris lorsqu’elles sont citées.</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- ── RECHERCHE ── -->
-    <div class="help-section">
-      <div class="help-section-head">
-        <div class="help-section-icon hsi-amber"><i class="ti ti-search"></i></div>
-        <span class="help-section-title">Chercher</span>
-      </div>
-      <div class="help-card">
-        <div class="help-row">
-          <span class="help-chip">Filtre locuteur</span>
-          <span class="help-text"><b>Tous les textes</b> ou <b>Paroles de Jésus</b> — restreint la recherche aux passages attribués à Jésus.</span>
-        </div>
-        <div class="help-divider"></div>
-        <div class="help-row">
-          <span class="help-chip">Filtre tome</span>
-          <span class="help-text">Limitez la recherche à un tome spécifique (T1 à T36) ou laissez sur <b>Tous</b> pour chercher dans l'ensemble du corpus.</span>
-        </div>
-        <div class="help-divider"></div>
-        <div class="help-row">
-          <span class="help-chip">Clavier</span>
-          <span class="help-text">Dans le lecteur: <b>←</b> / <b>→</b> pour naviguer entre entrées · <b>R</b> pour afficher/masquer les Repères · <b>Échap</b> pour revenir</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- ── ONBOARDING ── -->
-    <div class="help-section">
-      <div class="help-section-head">
-        <div class="help-section-icon" style="background:rgba(201,168,76,.12);color:#7A5A20;"><i class="ti ti-info-circle"></i></div>
-        <span class="help-section-title">Présentation de l'application</span>
-      </div>
-      <div class="help-card">
-        <div class="help-row">
-          <span></span>
-          <button class="btn-secondary" onclick="closeHelp();showOnboarding();" style="font-size:13px;padding:8px 16px;">
-            Revoir la présentation →
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <div class="help-section">
-      <div class="help-section-head">
-        <div class="help-section-icon hsi-amber"><i class="ti ti-book-2"></i></div>
-        <span class="help-section-title">À propos et sources</span>
-      </div>
-      <div class="help-card">
-        <div class="help-text">Cette application propose les 36 tomes du <b>Livre du Ciel</b> de Luisa Piccarreta dans une édition française de lecture et d’étude. Le corpus de référence est conservé séparément des compléments afin que leur provenance reste visible et réversible.</div>
-      </div>
-    </div>
-    <div class="help-section">
-      <div class="help-section-head">
-        <div class="help-section-icon hsi-gold"><i class="ti ti-layers-intersect"></i></div>
-        <span class="help-section-title">ALIGNÉ · COMPLÉMENT · ENRICHI</span>
-      </div>
-      <div class="help-card">
-        <div class="help-row"><span class="help-chip light">ALIGNÉ</span><span class="help-text">Désigne le corpus français <b>aligné sur le périmètre de l’édition AFLP de référence</b>, notamment les textes et dates retenus comme appartenant à cette édition. Le mot « aligné » ne signifie pas que chaque phrase française reproduit nécessairement mot pour mot la traduction imprimée AFLP.</span></div>
-        <div class="help-divider"></div>
-        <div class="help-row"><span class="help-chip">COMPLÉMENT</span><span class="help-text">Affiche uniquement les <b>14 compléments</b> actuellement approuvés : 12 entrées datées complètes et 2 compléments internes. Leur traduction française a été établie directement depuis <b>IT-PM</b>. Queen et Hugh Owen sont utilisés uniquement comme traductions comparatives.</span></div>
-        <div class="help-divider"></div>
-        <div class="help-row"><span class="help-chip light">ENRICHI</span><span class="help-text">Réunit le corpus ALIGNÉ et les COMPLÉMENTS approuvés à leurs positions de lecture. Cette vue facilite une lecture continue tout en conservant la distinction de provenance.</span></div>
-      </div>
-    </div>
-    <div class="help-section">
-      <div class="help-section-head">
-        <div class="help-section-icon hsi-coral"><i class="ti ti-info-circle"></i></div>
-        <span class="help-section-title">Provenance des compléments</span>
-      </div>
-      <div class="help-card">
-        <div class="help-row"><span class="help-chip">COMPLÉMENT · IT-PM</span><span class="help-text">Ce badge signale un texte absent de l’édition AFLP de référence et intégré comme complément. La traduction française est établie directement d’après IT-PM ; Queen et Hugh Owen servent de contrôles comparatifs et ne sont pas la source du français.</span></div>
-        <div class="help-divider"></div>
-        <div class="help-text">Les 14 compléments constituent <b>Translation Set 1</b>. Leur intégration améliore la complétude de lecture, mais ne signifie pas que toutes les différences possibles entre les 36 tomes et les autres témoins ont été résolues.</div>
-      </div>
-    </div>
-    <div class="help-section">
-      <div class="help-section-head">
-        <div class="help-section-icon hsi-teal"><i class="ti ti-lock"></i></div>
-        <span class="help-section-title">Vos données</span>
-      </div>
-      <div class="help-card"><div class="help-text">Favoris, notes, surlignages, état de lecture, position et préférences sont conservés localement dans <b>Mon Espace</b> sur cet appareil. Changer entre ALIGNÉ, COMPLÉMENT et ENRICHI ne supprime pas ces données.</div></div>
-    </div>
-    <div class="help-section">
-      <div class="help-section-head">
-        <div class="help-section-icon hsi-blue"><i class="ti ti-code"></i></div>
-        <span class="help-section-title">Version et corpus</span>
-      </div>
-      <div class="help-card">
-        <div class="help-row"><span class="help-chip outline">Application</span><span class="help-text" id="about-app-version">—</span></div>
-        <div class="help-row"><span class="help-chip outline">Corpus enrichi</span><span class="help-text" id="about-corpus-generation">—</span></div>
-        <div class="help-row"><span class="help-chip outline">Backbone</span><span class="help-text" id="about-backbone-generation">—</span></div>
-      </div>
-    </div>
-
   </div><!-- end scroll -->
 </div>
 
@@ -2142,10 +1868,12 @@ html[data-theme="dark"] .st-luisa{color:#D4A843;}
    VERSION — single source of truth
    Update this string on every release.
 ═══════════════════════════════════════════════════════ */
-const APP_VERSION = 'v2.19.23-R1B';
-const APP_BUILD   = '2026-08-18';
-const SW_CACHE_VERSION = 'ldc-v2.19.23-R1B';
-const CORPUS_MANIFEST_SHA256 = '9ac593334f1b1d0472f515e1b1d4229434f5fdb13c8c0e94e008c72dd039fbfa';
+const APP_VERSION = 'v2.19.26-R1B'; // technical update/audit identifier
+const PUBLIC_VERSION = '26';        // single user-facing release number
+const APP_VERSION_LABEL = `Version ${PUBLIC_VERSION}`;
+const APP_BUILD   = '2026-08-19';
+const SW_CACHE_VERSION = 'ldc-v2.19.26-R1B';
+const CORPUS_MANIFEST_SHA256 = 'e35b1cc7b3c614167daa2c77356867159d2756b44110898969ab0982022990e6';
 const DEEP_LINK_SCHEMA = 'ldc-deep-link-v1';
 const READING_POSITION_SCHEMA = 'ldc-reading-position-v2';
 
@@ -6189,11 +5917,7 @@ function openHelp() {
   const current = document.querySelector('.screen.active');
   if (current) previousScreen = current.id.replace('screen-','');
   const av=document.getElementById('about-app-version');
-  const cg=document.getElementById('about-corpus-generation');
-  const bg=document.getElementById('about-backbone-generation');
-  if(av) av.textContent=APP_VERSION+' · '+APP_BUILD;
-  if(cg) cg.textContent=CORPUS_GENERATION;
-  if(bg) bg.textContent=BACKBONE_GENERATION;
+  if(av) av.textContent=APP_VERSION_LABEL;
   showScreen('help');
 }
 
@@ -6365,11 +6089,11 @@ async function boot() {
 
   // Set version strings
   const vb = document.getElementById('version-badge');
-  if (vb) vb.textContent = APP_VERSION + ' · ' + APP_BUILD;
+  if (vb) vb.textContent = APP_VERSION_LABEL;
   const vf = document.getElementById('help-version-footer');
-  if (vf) vf.textContent = 'Livre du Ciel PWA · ' + APP_VERSION + ' · ' + APP_BUILD + ' · 36 tomes';
+  if (vf) vf.textContent = 'Livre du Ciel · ' + APP_VERSION_LABEL + ' · 36 tomes';
   const vp = document.getElementById('version-pill-home');
-  if (vp) vp.textContent = APP_VERSION;
+  if (vp) vp.textContent = 'v' + PUBLIC_VERSION;
 
   renderSpeakerFilterRow();
   renderVolFilterRow();
@@ -6673,10 +6397,10 @@ function renderDnResultCard() {
    CacheStorage contains public app/corpus bytes only. IndexedDB settings holds
    the user-visible completion record; it is not itself the offline payload.
 ═══════════════════════════════════════════════════════ */
-const OFFLINE_CACHE_VERSION = 'ldc-le-livre-du-ciel-offline-v2.19.23-R1B';
+const OFFLINE_CACHE_VERSION = 'ldc-le-livre-du-ciel-offline-v2.19.26-R1B';
 const OFFLINE_MANIFEST_SCHEMA = 'ldc-offline-manifest-v2';
-const OFFLINE_CONTENT_BINDING = '09e06c46fd1da0cd419e0578cbc6ae4b2aed6cd4bab791b8f8a73b97aaa3d8a6';
-const OFFLINE_CORPUS_MANIFEST_SHA256 = '9ac593334f1b1d0472f515e1b1d4229434f5fdb13c8c0e94e008c72dd039fbfa';
+const OFFLINE_CONTENT_BINDING = '43756b961e5ebbdc9684eb00a1b4d514daaa430f00a527a4ff36d1b34a21772a';
+const OFFLINE_CORPUS_MANIFEST_SHA256 = 'e35b1cc7b3c614167daa2c77356867159d2756b44110898969ab0982022990e6';
 const OFFLINE_STATES = Object.freeze(['NOT_PREPARED','CHECKING','DOWNLOADING','READY','PARTIAL','ERROR','CANCELLED']);
 let offlineUiState = {state:'NOT_PREPARED',completed:0,total:0,failed:[],total_bytes:0,job_id:null,message:'',content_binding_sha256:OFFLINE_CONTENT_BINDING,corpus_manifest_sha256:OFFLINE_CORPUS_MANIFEST_SHA256};
 const offlineStatusWaiters = new Map();
@@ -6809,7 +6533,10 @@ async function fetchPublishedVersion() {
   const meta=await res.json();
   const version=String(meta&&meta.app_version||'').trim();
   if(!/^v\d+\.\d+\.\d+-R1B$/.test(version))throw new Error('version publiée invalide');
-  return {version,meta};
+  const explicitPublic=String(meta&&meta.public_version||'').trim();
+  const patchMatch=version.match(/^v\d+\.\d+\.(\d+)-R1B$/);
+  const publicVersion=/^\d+$/.test(explicitPublic)?explicitPublic:(patchMatch?patchMatch[1]:version);
+  return {version,publicVersion,meta};
 }
 function waitForRegistrationUpdate(reg, timeoutMs=UPDATE_CHECK_TIMEOUT_MS) {
   return new Promise(resolve=>{
@@ -6826,9 +6553,10 @@ function waitForRegistrationUpdate(reg, timeoutMs=UPDATE_CHECK_TIMEOUT_MS) {
 async function backgroundUpdateCheck(reg) {
   try {
     const published=await fetchPublishedVersion();
-    if(published.version!==APP_VERSION)showUpdateAvailable(published.version,`Version publiée : ${published.version}. Cette page exécute encore ${APP_VERSION}.`);
+    const publishedLabel=`Version ${published.publicVersion}`;
+    if(published.version!==APP_VERSION)showUpdateAvailable(publishedLabel,`${publishedLabel} est publiée. Cette page exécute encore ${APP_VERSION_LABEL}.`);
     await reg.update();
-    if(reg.waiting&&navigator.serviceWorker.controller)showUpdateAvailable(published.version,'Une nouvelle version est prête à être installée.');
+    if(reg.waiting&&navigator.serviceWorker.controller)showUpdateAvailable(publishedLabel,'Une nouvelle version est prête à être installée.');
     return published;
   } catch(e) { return null; }
 }
@@ -6844,10 +6572,10 @@ async function reloadForUpdate() {
     const waiting=reg.waiting||result.worker;
     if(waiting){waiting.postMessage({type:'SKIP_WAITING'});return;}
     if(published&&published.version!==APP_VERSION){
-      showUpdateAvailable(published.version,`La version ${published.version} est publiée, mais son installation n’est pas encore terminée. Réessayez Actualiser.`);
+      showUpdateAvailable(`Version ${published.publicVersion}`,`Version ${published.publicVersion} est publiée, mais son installation n’est pas encore terminée. Réessayez Actualiser.`);
       return;
     }
-    if(published&&published.version===APP_VERSION){setUpdateStatus(`Version courante confirmée (${APP_VERSION}).`);return;}
+    if(published&&published.version===APP_VERSION){setUpdateStatus(`Version courante confirmée (${APP_VERSION_LABEL}).`);return;}
     setUpdateStatus('Mise à jour impossible à confirmer pour le moment.');
   } catch(e) { setUpdateStatus(navigator.onLine===false?'Mise à jour impossible hors ligne.':'Mise à jour impossible à confirmer pour le moment.'); }
   // controllerchange is the only automatic reload authority when a replacement worker activates.
@@ -6862,21 +6590,22 @@ async function manualCheckForUpdate() {
   try {
     const published=await fetchPublishedVersion();
     const reg=(await navigator.serviceWorker.getRegistration()) || (await navigator.serviceWorker.ready);
+    const publishedLabel=`Version ${published.publicVersion}`;
     if(published.version===APP_VERSION){
       await reg.update();
-      statusEl.textContent=`Vous avez la dernière version publiée (${APP_VERSION}).`;
+      statusEl.textContent=`Vous avez la dernière version publiée (${APP_VERSION_LABEL}).`;
       showToast('Version publiée confirmée');
       return;
     }
-    showUpdateAvailable(published.version,`Version publiée : ${published.version}. Installation en cours de vérification…`);
+    showUpdateAvailable(publishedLabel,`${publishedLabel} est publiée. Installation en cours de vérification…`);
     await reg.update();
     const result=await waitForRegistrationUpdate(reg);
     if(reg.waiting||result.worker){
-      statusEl.textContent=`La version ${published.version} est prête à être installée.`;
+      statusEl.textContent=`${publishedLabel} est prête à être installée.`;
       document.getElementById('update-banner').classList.add('show');
       showToast('Nouvelle version prête');
     } else {
-      statusEl.textContent=`La version ${published.version} est publiée, mais cette page exécute encore ${APP_VERSION}. Installation non terminée — réessayez.`;
+      statusEl.textContent=`${publishedLabel} est publiée, mais cette page exécute encore ${APP_VERSION_LABEL}. Installation non terminée — réessayez.`;
       document.getElementById('update-banner').classList.add('show');
       showToast('Mise à jour publiée mais non installée');
     }

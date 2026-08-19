@@ -45,11 +45,11 @@
     36
   ],
   "volumes_total": 36,
-  "status": "R1B_CANONICAL_CORPUS__RA11_FLOW_ADJUDICATED__RA13_RELEASE_CORRECTIVE_METADATA__EXTERNAL_PUBLIC_RELEASE_GATES_OPEN",
+  "status": "R1B_CANONICAL_CORPUS__RA11_FLOW_ADJUDICATED__RA14_SUPPLEMENT_SPEAKER_HELP_REPAIRED__RA15_HELP_REPORT_CORRESPONDENCE_RECHECK__RA16_UI_VERSION_SIMPLIFICATION__EXTERNAL_PUBLIC_RELEASE_GATES_OPEN",
   "speech_resynced": true,
   "notes": "All 36 tomes structurally reconciled. EB-17 completed the two provenance corrections identified by EB-16; Tome 17 23 November 1924 remains PDF-title-only/body-not-proven. EB-20 normalised three source-page ranges from direct PDF evidence. RA11 adjudicates all 226 RA10 broader structural/discourse cases: 210 display-flow joins, 14 intentional-structure keeps, 2 Tome-10 source-proven keeps, 0 unresolved. RA12 reconciles stale duplicated flow-summary metadata; flow shard bytes remain unchanged.",
   "speech_layer_note": "RA5C source-backed targeted reconciliation: three Tome 11 offsets mechanically resynchronised after later canonical punctuation/quotation repairs; Tome 23 P117-P118 outer Jesus continuity restored while preserving embedded illustrative quotations as depth-2 structure; Tome 25 P040 missing lexical “seule” restored inside the existing Jesus quoted term; Tome 20 P073 restored as outer JESUS plus the previously source-adjudicated complete PERSONIFIED_VOICE Fiat prayer at depth 2. Canonical devotional text and all speaker identities outside these seven paragraphs are unchanged.",
-  "app_version": "v2.19.23-R1B",
+  "app_version": "v2.19.26-R1B",
   "speaker_layer": {
     "total_segments": 65110,
     "jesus": 59009,
@@ -296,5 +296,57 @@
     "speaker_shards_changed": false,
     "display_shards_changed": false,
     "flow_shards_changed": false
+  },
+  "ra14_speaker_help_correspondence": {
+    "date": "2026-08-18",
+    "baseline_app_version": "v2.19.23-R1B",
+    "baseline_zip_sha256": "1944a3e92b1703badf6a22fbdc8127b037b152df3f8e3f022c43cba9af37f8d8",
+    "semantic_target": "LDCSUP.T03.1900-02-12.E001.P003.S01",
+    "semantic_change": "OTHER_TO_JESUS__WORDS_OF_OTHER_TO_WORDS_OF_JESUS",
+    "authority": "OWNER_CONFIRMED_DIRECT_JESUS_2026-08-18__SOURCE_CONTEXT_AND_TRANSLATION_SET_CORROBORATION",
+    "supplement_speaker_counts": {
+      "jesus": 44,
+      "luisa": 8,
+      "other": 0,
+      "total": 52
+    },
+    "translation_text_changed": false,
+    "canonical_backbone_changed": false,
+    "paragraph_ids_changed": false,
+    "backbone_speaker_shards_changed": false,
+    "search_shards_changed": false,
+    "display_shards_changed": false,
+    "flow_shards_changed": false,
+    "help_user_guidance": "RECONCILED_TO_CURRENT_UI__8_TASK_ORIENTED_SECTIONS__NO_NEW_JESUS_ONLY_READER",
+    "external_public_release_gates_open": true
+  },
+  "ra15_four_pass_corrective_recheck": {
+    "date": "2026-08-19",
+    "baseline_app_version": "v2.19.24-R1B",
+    "baseline_zip_sha256": "8fb501d4a841dfcfe5f62da684419e1c2794fc6e04903c113b025bfb491dc228",
+    "corpus_content_changed": false,
+    "supplement_semantics_changed": false,
+    "flow_changed": false,
+    "search_changed": false,
+    "help_ui_correspondence": "RECONCILED_TO_EXECUTABLE_SEARCH_AND_AUTOUR_BEHAVIOUR",
+    "report_integrity": "RA14_STALE_REDO_COUNT_AND_WEAK_LINE_AUDIT_SUPERSEDED",
+    "external_public_release_gates_open": true
+  },
+  "ra16_search_date_affordance_version_simplification": {
+    "date": "2026-08-19",
+    "baseline_app_version": "v2.19.25-R1B",
+    "baseline_zip_sha256": "c63a29387df707a13bd35753d0314eb623032df38a99e3b6f2816956a85b6d73",
+    "public_version": "26",
+    "search_date_affordance": "OUTLINED_SECONDARY_ACTION_CARD",
+    "user_facing_version_contract": "SINGLE_PUBLIC_RELEASE_NUMBER_ONLY__TECHNICAL_APP_CORPUS_BACKBONE_IDENTIFIERS_RETAINED_IN_DIAGNOSTICS_AND_METADATA",
+    "runtime_search_algorithms_changed": false,
+    "runtime_date_navigation_algorithm_changed": false,
+    "canonical_text_changed": false,
+    "paragraph_ids_changed": false,
+    "search_shards_changed": false,
+    "speaker_shards_changed": false,
+    "display_shards_changed": false,
+    "flow_shards_changed": false,
+    "external_public_release_gates_open": true
   }
 }

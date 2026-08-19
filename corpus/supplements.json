@@ -42,7 +42,7 @@
         ],
         "has_speech": true,
         "speakers": [
-          "OTHER"
+          "JESUS"
         ],
         "speaker_confidence_max": "high",
         "source_edition": "IT-PM · traduction française LDC-AFLP-SUP-T1",
@@ -151,17 +151,18 @@
           "paragraph_id": "ldcsup_t03_1900_02_12_e001_p003",
           "stable_ref": "LDCSUP.T03.1900-02-12.E001.P003",
           "volume": 3,
-          "speaker": "OTHER",
+          "speaker": "JESUS",
           "start_char": 1,
           "end_char": 598,
           "confidence": "high",
-          "display_role": "words_of_other",
+          "display_role": "words_of_jesus",
           "quotation_depth": 1,
-          "review_status": "APPROVED_SUP_T1",
+          "review_status": "OWNER_CONFIRMED_DIRECT_JESUS_RA14",
           "source": "LDC-AFLP-SUP-T1",
           "is_supplement": true,
           "supplement_id": "LDCSUP.T03.1900-02-12.E001",
-          "text_preview": "La vérité est la lumière que le Verbe a apportée sur la terre. Comme le soleil éclaire, vivifie et féconde la terre, ainsi la lumière de la vérité donne vie et lumière et rend les âmes fécon"
+          "text_preview": "La vérité est la lumière que le Verbe a apportée sur la terre. Comme le soleil éclaire, vivifie et féconde la terre, ainsi la lumière de la vérité donne vie et lumière et rend les âmes fécon",
+          "speaker_revision": "RA14_OWNER_CONFIRMED_2026-08-18"
         }
       ],
       "search_records": [
@@ -274,7 +275,15 @@
       "backbone_generation": "G036-AFLP-R1B-UWR2",
       "insertion_plan_sha256": "136c844461ac5b0e830bf4da3833db17df5bc415ef7779a0f163055e35ae39ab",
       "source_evidence_contract": "ITPM_PRIMARY__QUEEN_HUGH_COMPARATIVE_ONLY",
-      "title_provenance": "ITPM_HEADING_DIRECT_FRENCH_TRANSLATION"
+      "title_provenance": "ITPM_HEADING_DIRECT_FRENCH_TRANSLATION",
+      "speaker_revision": {
+        "stage": "LDC-AFLP-SUP-T1-RA14-SPEAKER-HELP-CORRESPONDENCE",
+        "date": "2026-08-18",
+        "target_segment": "LDCSUP.T03.1900-02-12.E001.P003.S01",
+        "decision": "OWNER_CONFIRMED_DIRECT_JESUS",
+        "translation_text_changed": false,
+        "offsets_changed": false
+      }
     },
     {
       "supplement_id": "LDCSUP.T04.1901-01-30.U0003",

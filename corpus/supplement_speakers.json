@@ -9,17 +9,18 @@
       "paragraph_id": "ldcsup_t03_1900_02_12_e001_p003",
       "stable_ref": "LDCSUP.T03.1900-02-12.E001.P003",
       "volume": 3,
-      "speaker": "OTHER",
+      "speaker": "JESUS",
       "start_char": 1,
       "end_char": 598,
       "confidence": "high",
-      "display_role": "words_of_other",
+      "display_role": "words_of_jesus",
       "quotation_depth": 1,
-      "review_status": "APPROVED_SUP_T1",
+      "review_status": "OWNER_CONFIRMED_DIRECT_JESUS_RA14",
       "source": "LDC-AFLP-SUP-T1",
       "is_supplement": true,
       "supplement_id": "LDCSUP.T03.1900-02-12.E001",
-      "text_preview": "La vérité est la lumière que le Verbe a apportée sur la terre. Comme le soleil éclaire, vivifie et féconde la terre, ainsi la lumière de la vérité donne vie et lumière et rend les âmes fécon"
+      "text_preview": "La vérité est la lumière que le Verbe a apportée sur la terre. Comme le soleil éclaire, vivifie et féconde la terre, ainsi la lumière de la vérité donne vie et lumière et rend les âmes fécon",
+      "speaker_revision": "RA14_OWNER_CONFIRMED_2026-08-18"
     },
     {
       "segment_id": "LDCSUP.T04.1901-01-30.U0003.P001.S01",

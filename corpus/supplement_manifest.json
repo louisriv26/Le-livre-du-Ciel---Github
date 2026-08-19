@@ -1,7 +1,7 @@
 {
   "schema": "ldc-supplement-manifest-v1",
   "programme": "LDC-AFLP-SUP-T1",
-  "status": "APPROVED_TRANSLATION_SET_1_RA2_REACCEPTED_AMENDED",
+  "status": "APPROVED_TRANSLATION_SET_1_RA2_REACCEPTED_AMENDED__RA14_SEMANTIC_SPEAKER_CORRECTED",
   "backbone_generation": "G036-AFLP-R1B-UWR2",
   "composite_generation": "G036-AFLP-R1B-SUP-T1",
   "translation_freeze_sha256": "f4ec5a3eaad057cfe8bc3acdcf92f98e482870d61cc060a14186fcbd58860f4d",
@@ -15,20 +15,30 @@
   },
   "files": {
     "supplements.json": {
-      "bytes": 360978,
-      "sha256": "7ab5cad2f7a938423badb7589470630f638427da3b8876ac890a859bee6ed083"
+      "bytes": 361390,
+      "sha256": "4ffb71033200b4717567d5330cee6578928f3de7da7c15e9a941c687e9b729a6"
     },
     "supplement_search.json": {
       "bytes": 123596,
       "sha256": "e09c5930c4ba13ead9aa8d414ba3231dac0fca176ee878103892e83c971c9acf"
     },
     "supplement_speakers.json": {
-      "bytes": 40765,
-      "sha256": "64d21d6628ad9da1fc83ad73848c97068a978ee913e4ad699207b816d6a4c885"
+      "bytes": 40844,
+      "sha256": "6f2e1bb5ec1ae9e8a75582cdac5de047e93961c8d4532ac23c17f69a4cc5d288"
     }
   },
   "provenance_fields_embedded": true,
   "provenance_contract": "ITPM_PRIMARY__QUEEN_HUGH_COMPARATIVE_ONLY__AFLP_BACKBONE_IMMUTABLE",
   "translation_freeze_amendment_sha256": "1f726a4e9a246aaa1aa5424cda244064211b836227acd2124deff92ad940acc1",
-  "translation_revision": "RA2_CURRENT__2_ITEMS_AMENDED"
+  "translation_revision": "RA2_CURRENT__2_ITEMS_AMENDED",
+  "speaker_semantic_revision": {
+    "stage": "LDC-AFLP-SUP-T1-RA14-SPEAKER-HELP-CORRESPONDENCE",
+    "date": "2026-08-18",
+    "target_segment": "LDCSUP.T03.1900-02-12.E001.P003.S01",
+    "old_speaker": "OTHER",
+    "new_speaker": "JESUS",
+    "owner_decision": "OWNER_CONFIRMED_DIRECT_JESUS",
+    "translation_freeze_unchanged": true,
+    "segment_count_unchanged": 52
+  }
 }

@@ -1,3 +1,46 @@
+# Livre du Ciel — RA16 search-date affordance + simplified public version
+
+- Public version shown to users: **Version 26**.
+- Technical app/update identifier: **v2.19.26-R1B** (kept for update integrity, diagnostics and audit only).
+- Stage: **LDC-AFLP-SUP-T1-RA16-SEARCH-DATE-AFFORDANCE-VERSION-SIMPLIFICATION**.
+- Baseline: **v2.19.25-R1B / RA15** — SHA-256 `c63a29387df707a13bd35753d0314eb623032df38a99e3b6f2816956a85b6d73`.
+- Search UI: **Parcourir par date** is now an outlined rounded secondary-action card with visible calendar icon, chevron, hover/active/focus feedback and a 44px+ touch target.
+- Version UX: normal users now see one sequential release number only. The former separate application/corpus/backbone technical identifiers are no longer displayed together in Help; they remain available in diagnostic/metadata evidence.
+- Search/date algorithms: unchanged.
+- Canonical devotional text, paragraph IDs, speaker/search/display/flow shards: unchanged.
+- Package role: controlled-test/static candidate. Wide public release remains **NOT AUTHORIZED** while external device/PWA/AT/textual-fidelity/rights/deployment-binding gates remain open.
+
+> The RA15 README content below is retained as historical provenance and is superseded by this RA16 authority block.
+
+---
+
+# Livre du Ciel — RA15 four-pass corrective recheck candidate
+
+- Version: **v2.19.25-R1B**
+- Stage: **LDC-AFLP-SUP-T1-RA15-FOUR-PASS-CORRECTIVE-RECHECK**
+- Baseline: **v2.19.24-R1B / RA14** — SHA-256 `8fb501d4a841dfcfe5f62da684419e1c2794fc6e04903c113b025bfb491dc228`
+- Help/UI corrections: `Thème approché` now describes the actual weaker lexical-match path; `Autour → Thème proche` now truthfully permits same-Tome or other-Tome results; current metadata/context result badges are documented. Search/Autour algorithms are unchanged.
+- Report-integrity correction: RA14's active Pass-1 report said “three” harness corrections while the locked redo ledger contained seven. RA14 Pass-3/Pass-4/report-integrity claims are therefore historical/superseded; RA15 uses an evidence-aware claim audit.
+- Protected: RA14's Tome-3 `OTHER→JESUS` semantic correction and every supplement/canonical/search/speaker/display/flow shard remain unchanged.
+- Package role: controlled-test/static candidate. Wide public release remains **NOT AUTHORIZED** while external device/PWA/AT/textual-fidelity/rights/deployment-binding gates remain open.
+
+> The RA14 README content below is historical provenance and is superseded by this RA15 authority block.
+
+---
+
+# Livre du Ciel — RA14 speaker/help correspondence candidate
+
+- Version: **v2.19.24-R1B**
+- Stage: **LDC-AFLP-SUP-T1-RA14-SPEAKER-HELP-CORRESPONDENCE**
+- Baseline: **v2.19.23-R1B / RA13** — SHA-256 `1944a3e92b1703badf6a22fbdc8127b037b152df3f8e3f022c43cba9af37f8d8`
+- Semantic correction: `LDCSUP.T03.1900-02-12.E001.P003.S01` corrected from OTHER to JESUS on the owner-confirmed direct-Jesus attribution. Translation/devotional text and offsets are unchanged.
+- User-facing reconciliation: Help consolidated into 8 task-oriented sections; onboarding/home copy now accurately describes the existing Jesus shortcut and current controls. No new Jesus-only reader was introduced.
+- Package role: controlled-test/static candidate. Wide public release remains **NOT AUTHORIZED** while external device/PWA/AT/textual-fidelity/rights/deployment-binding gates remain open.
+
+> The RA13 README content below is historical provenance and is superseded by this RA14 authority block.
+
+---
+
 # Livre du Ciel — RA13 four-pass corrective candidate
 
 - Version: **v2.19.23-R1B**

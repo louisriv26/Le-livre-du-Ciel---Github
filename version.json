@@ -1,12 +1,13 @@
 {
-  "app_version": "v2.19.23-R1B",
-  "build_date": "2026-08-18",
+  "app_version": "v2.19.26-R1B",
+  "public_version": "26",
+  "build_date": "2026-08-19",
   "corpus_version": "G036-AFLP-R1B-SUP-T1",
-  "stage": "LDC-AFLP-SUP-T1-RA13-FOUR-PASS-CORRECTIVE-RECHECK",
+  "stage": "LDC-AFLP-SUP-T1-RA16-SEARCH-DATE-AFFORDANCE-VERSION-SIMPLIFICATION",
   "candidate_status": "LIMITED_PASS_STATIC_PENDING_EXTERNAL_PUBLIC_RELEASE_CERTIFICATION",
   "device_validation": "NOT_TESTED__PHYSICAL_IPHONE_IPAD_SAMSUNG_INSTALLED_PWA_LIVE_ORIGIN_RETEST_REQUIRED",
-  "baseline_candidate_version": "v2.19.22-R1B",
-  "baseline_candidate_sha256": "658758dd09ace331b488f6150e2f295121b80fbf97ed779f709769379e7676b2",
+  "baseline_candidate_version": "v2.19.25-R1B",
+  "baseline_candidate_sha256": "c63a29387df707a13bd35753d0314eb623032df38a99e3b6f2816956a85b6d73",
   "owner_stage_start_authorisation": "Execute LDC-AFLP-SUP-T1 strict script: translate and visibly integrate the authorised 2 internal supplements + 12 complete external-only entries while preserving R1B as the immutable AFLP backbone.",
   "owner_override_note": "Owner explicitly authorised a separately provenance-labelled French supplement layer translated directly from IT-PM and reversible to AFLP-only reading.",
   "reader_contract": "ONE_CALM_READER_PLUS_OPTIONAL_REPERES",
@@ -31,11 +32,11 @@
   "owner_user_acceptance": "NOT_A_DEPLOYMENT_AUTHORITY__EXTERNAL_DEVICE_VALIDATION_PENDING",
   "offline_state_schema": "ldc-offline-state-v2",
   "offline_manifest_schema": "ldc-offline-manifest-v2",
-  "offline_cache_version": "ldc-le-livre-du-ciel-offline-v2.19.23-R1B",
+  "offline_cache_version": "ldc-le-livre-du-ciel-offline-v2.19.26-R1B",
   "offline_scope": "COMPLETE_36_TOME_READING_PLUS_LDC_AFLP_SUP_T1_PLUS_LEXICAL_METADATA_SPEAKER_SEARCH__VECTOR_EMBEDDING_SUBSYSTEM_RETIRED",
   "volume_lru_max": 4,
-  "offline_content_binding_sha256": "09e06c46fd1da0cd419e0578cbc6ae4b2aed6cd4bab791b8f8a73b97aaa3d8a6",
-  "offline_corpus_manifest_sha256": "9ac593334f1b1d0472f515e1b1d4229434f5fdb13c8c0e94e008c72dd039fbfa",
+  "offline_content_binding_sha256": "43756b961e5ebbdc9684eb00a1b4d514daaa430f00a527a4ff36d1b34a21772a",
+  "offline_corpus_manifest_sha256": "e35b1cc7b3c614167daa2c77356867159d2756b44110898969ab0982022990e6",
   "offline_integrity_contract": "EVERY_OFFLINE_ASSET_BYTE_LENGTH_AND_SHA256_VERIFIED_BEFORE_CACHE_ACCEPTANCE__READY_REQUIRES_VERIFIED_CACHE_MARKERS_AND_EXACT_CONTENT_BINDING",
   "owner_acceptance_findings_2026_08_12": [
     "existing-highlight palette inconsistent with original highlight palette",
@@ -109,7 +110,7 @@
   "reading_source_mode_contract": "THREE_STATE_PERSISTED__ALIGNE_AFLP_SCOPE__COMPLEMENT_14_ITEM_SUPPLEMENT_REGISTRY_AND_SUPPLEMENT_ONLY_READER__ENRICHI_ALIGNE_PLUS_SUPPLEMENTS__DEFAULT_ENRICHI",
   "vector_search_authorised": false,
   "offline_asset_count": 224,
-  "offline_total_bytes": 168208785,
+  "offline_total_bytes": 168212157,
   "supplement_provenance_fields_embedded": true,
   "supplement_runtime_schema": "ldc-supplement-registry-v1",
   "static_audit_scope": "CODE_DATA_PACKAGE_REOPENED_ZIP__NO_PHYSICAL_DEVICE_OR_LIVE_ORIGIN_CLAIM",
@@ -516,5 +517,57 @@
     "F12_export_bytes": "FIXED_POINT_EXACT_ACTUAL_UTF8_BLOB_BYTES",
     "vector_manifest": "CURRENT_DEPLOY_METADATA_RETIRED",
     "last_verified_live_hash_semantics": "PREFIX_AND_NULL_FULL_SEPARATED"
+  },
+  "ra14_speaker_help_correspondence": {
+    "target_segment": "LDCSUP.T03.1900-02-12.E001.P003.S01",
+    "speaker": "JESUS",
+    "display_role": "words_of_jesus",
+    "offsets": [
+      1,
+      598
+    ],
+    "supplement_speaker_counts": {
+      "JESUS": 44,
+      "LUISA": 8,
+      "OTHER": 0,
+      "TOTAL": 52
+    },
+    "help_ui_correspondence": "RECONCILED_STATIC__8_SECTIONS",
+    "new_jesus_only_reader": false,
+    "canonical_text_changed": false,
+    "stable_ids_changed": false
+  },
+  "ra15_four_pass_corrective_recheck": {
+    "date": "2026-08-19",
+    "baseline_app_version": "v2.19.24-R1B",
+    "baseline_zip_sha256": "8fb501d4a841dfcfe5f62da684419e1c2794fc6e04903c113b025bfb491dc228",
+    "scope": "HELP_UI_CORRESPONDENCE_AND_REPORT_INTEGRITY_CORRECTION_ONLY",
+    "help_corrections": [
+      "AUTOUR_THEME_PROXIMITY_SCOPE",
+      "WEAK_LEXICAL_BADGE_DESCRIPTION",
+      "SEARCH_METADATA_AND_CONTEXT_BADGE_DOCUMENTATION"
+    ],
+    "runtime_search_algorithms_changed": false,
+    "runtime_autour_algorithm_changed": false,
+    "supplement_semantic_files_changed": false,
+    "canonical_corpus_changed": false,
+    "stable_ids_changed": false,
+    "report_integrity_note": "RA14_PASS3_PASS4_REPORT_INTEGRITY_OVERCLAIM_SUPERSEDED_BY_RA15_EVIDENCE_AWARE_AUDIT",
+    "external_public_release_gates_open": true
+  },
+  "ra16_search_date_affordance_version_simplification": {
+    "date": "2026-08-19",
+    "baseline_app_version": "v2.19.25-R1B",
+    "baseline_zip_sha256": "c63a29387df707a13bd35753d0314eb623032df38a99e3b6f2816956a85b6d73",
+    "public_version": "26",
+    "search_date_affordance": "OUTLINED_SECONDARY_ACTION_CARD",
+    "public_version_policy": "USERS_SEE_ONE_SEQUENTIAL_RELEASE_NUMBER__INTERNAL_TECHNICAL_VERSION_RETAINED_FOR_UPDATE_AUDIT_AND_SUPPORT_DIAGNOSTICS",
+    "help_version_rows": "SINGLE_VERSION_ROW__CORPUS_AND_BACKBONE_TECHNICAL_IDENTIFIERS_REMOVED_FROM_NORMAL_HELP_UI",
+    "runtime_search_algorithms_changed": false,
+    "runtime_date_navigation_algorithm_changed": false,
+    "canonical_corpus_changed": false,
+    "speaker_offsets_changed": false,
+    "user_data_schema_changed": false,
+    "external_public_release_gates_open": true
   }
 }
