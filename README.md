@@ -1,15 +1,16 @@
-# Livre du Ciel — RA18 explicit flow-boundary action repair
+# Livre du Ciel — RA19B multi-source source-backed flow adjudication
 
-- Public version shown to users: **Version 28**.
-- Technical app/update identifier: **v2.19.28-R1B**.
-- Stage: **LDC-AFLP-SUP-T1-RA18-EXPLICIT-FLOW-BOUNDARY-ACTIONS**.
+- Public version shown to users: **Version 29**.
+- Technical app/update identifier: **v2.19.29-R1B**.
+- Stage: **LDC-AFLP-SUP-T1-RA19B-MULTI-SOURCE-FLOW-ADJUDICATION**.
 - Build date: **2026-08-21**.
-- Scope: mechanical reader/speech boundary-action enforcement only. Canonical paragraph text, paragraph IDs, flow classifications/shards, display shards, search shards and speaker shards are protected and unchanged.
-- RA18 keeps RA17 semantic same-speaker linking and its visual-policy classifier unchanged, but makes every linked boundary action explicit: `continuous_prose -> join_inline`, `preserve_break_ambiguous -> preserve_break`, `preserve_break_enumeration -> preserve_list_break`. Preserved boundaries no longer depend on the preceding speech span being block-level.
-- The broader source/editorial adjudication of pending inherited-dash/list-like flow classifications is **not performed in RA18** and remains a separate corpus-structure review item.
-- External physical iPhone/iPad/Samsung installed-PWA and live-origin validation remains required.
+- Immutable baseline: **Version 28 / v2.19.28-R1B / RA18**, deploy ZIP SHA-256 `cbe48143dd41661a3bbe1da6cf8f1213c705ff9d15527848969587723affe3cc`.
+- Frozen source-backed decision ledger: **20,811/20,811** linked boundaries; **20,062 JOIN_CERTAIN**, **749 KEEP_BREAK_CERTAIN**, **0 KEEP_LIST_CERTAIN**, **0 REVIEW**; ledger SHA-256 `d3acc508e1264811916b3c456952a53ebc5b95ccd80d09316bea619769175484`.
+- RA19B stores the final source-backed visual policy/action and evidence hash on every active linked `boundary_after`; the RA18 heuristic remains only as a legacy compatibility fallback and is not used by any active linked boundary.
+- Canonical devotional text, paragraph IDs/order/stable refs, search shards, speaker identities/offsets, display transforms, supplement data and user anchor semantics are protected and unchanged.
+- Physical iPhone/iPad/Samsung, assistive-technology, live GitHub Pages, installed-PWA update and true-offline reopening gates remain external and must not be inferred from static/package checks.
 
-> RA17 is a failed corrective candidate (`FAIL_REPORT_INTEGRITY`) because preserve-break policies were not mechanically enforced at 6,527 chained boundaries. Its current-facing claims are superseded by this RA18 authority block; older RA16-and-earlier blocks below remain historical provenance.
+> Historical provenance: Version 28 / RA18 and earlier authority blocks below are retained only as superseded history; they do not govern current Version 29 boundary decisions.
 
 # Livre du Ciel — RA16 search-date affordance + simplified public version
 

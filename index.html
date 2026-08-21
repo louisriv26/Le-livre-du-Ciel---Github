@@ -827,7 +827,7 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; }
 .para-anchor { display:inline; width:0; height:0; overflow:hidden; }
 .para-fragment { display:inline; margin:0; padding:0; }
 .flow-joiner { display:inline; white-space:pre; }
-/* RA18: explicit boundary actions. Preserved boundaries are block boundaries
+/* RA19B: source-backed explicit boundary actions. Preserved boundaries are block boundaries
    themselves and never depend on the previous speech run being block-level. */
 .flow-joiner-action-inline { display:inline; white-space:pre; }
 .flow-joiner-action-break,
@@ -1875,12 +1875,12 @@ html[data-theme="dark"] .st-luisa{color:#D4A843;}
    VERSION — single source of truth
    Update this string on every release.
 ═══════════════════════════════════════════════════════ */
-const APP_VERSION = 'v2.19.28-R1B'; // technical update/audit identifier
-const PUBLIC_VERSION = '28';        // single user-facing release number
+const APP_VERSION = 'v2.19.29-R1B'; // technical update/audit identifier
+const PUBLIC_VERSION = '29';        // single user-facing release number
 const APP_VERSION_LABEL = `Version ${PUBLIC_VERSION}`;
 const APP_BUILD   = '2026-08-21';
-const SW_CACHE_VERSION = 'ldc-v2.19.28-R1B';
-const CORPUS_MANIFEST_SHA256 = 'b3dd09c9a8b688c263118ce8a7c5df6092dbdcfd6e3750614821f271d89995b6';
+const SW_CACHE_VERSION = 'ldc-v2.19.29-R1B';
+const CORPUS_MANIFEST_SHA256 = '86105e38147ad315303659f935b3fc5e21633b2d9ff2de7f123860b54a6154fb';
 const DEEP_LINK_SCHEMA = 'ldc-deep-link-v1';
 const READING_POSITION_SCHEMA = 'ldc-reading-position-v2';
 
@@ -6412,10 +6412,10 @@ function renderDnResultCard() {
    CacheStorage contains public app/corpus bytes only. IndexedDB settings holds
    the user-visible completion record; it is not itself the offline payload.
 ═══════════════════════════════════════════════════════ */
-const OFFLINE_CACHE_VERSION = 'ldc-le-livre-du-ciel-offline-v2.19.28-R1B';
+const OFFLINE_CACHE_VERSION = 'ldc-le-livre-du-ciel-offline-v2.19.29-R1B';
 const OFFLINE_MANIFEST_SCHEMA = 'ldc-offline-manifest-v2';
-const OFFLINE_CONTENT_BINDING = '29f2aabc5e83a21312cb7a93785bd0443f988a3abdbfd42bb0d70f3eee21b3c5';
-const OFFLINE_CORPUS_MANIFEST_SHA256 = 'b3dd09c9a8b688c263118ce8a7c5df6092dbdcfd6e3750614821f271d89995b6';
+const OFFLINE_CONTENT_BINDING = 'e04fec1271bfcdcda070ae686d02f1cb5cf4114c904ca136d4c357fbaff7be61';
+const OFFLINE_CORPUS_MANIFEST_SHA256 = '86105e38147ad315303659f935b3fc5e21633b2d9ff2de7f123860b54a6154fb';
 const OFFLINE_STATES = Object.freeze(['NOT_PREPARED','CHECKING','DOWNLOADING','READY','PARTIAL','ERROR','CANCELLED']);
 let offlineUiState = {state:'NOT_PREPARED',completed:0,total:0,failed:[],total_bytes:0,job_id:null,message:'',content_binding_sha256:OFFLINE_CONTENT_BINDING,corpus_manifest_sha256:OFFLINE_CORPUS_MANIFEST_SHA256};
 const offlineStatusWaiters = new Map();

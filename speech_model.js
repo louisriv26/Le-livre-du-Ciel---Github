@@ -183,6 +183,27 @@
   }
   function flowBoundaryVisualPolicy(members, index, meta) {
     meta = meta || {};
+    // RA19B — source-backed boundary metadata is authoritative. The RA18
+    // heuristic remains only as a compatibility fallback for legacy/non-active
+    // boundaries that do not carry an RA19B adjudication record.
+    var explicitBoundary = members && members[index] && members[index].boundaryAfter || null;
+    if (explicitBoundary && explicitBoundary.adjudication_generation === 'RA19B_MULTI_SOURCE') {
+      var explicitPolicy = String(explicitBoundary.visual_policy || '');
+      var explicitAction = String(explicitBoundary.visual_action || '');
+      var expectedAction = explicitPolicy === 'continuous_prose' ? 'join_inline'
+        : (explicitPolicy === 'preserve_break_enumeration' ? 'preserve_list_break'
+        : (explicitPolicy === 'preserve_break_ambiguous' ? 'preserve_break' : ''));
+      if (explicitBoundary.adjudication_status !== 'SOURCE_BACKED_CERTAIN' ||
+          !expectedAction || explicitAction !== expectedAction ||
+          !explicitBoundary.evidence_ref || !/^[0-9a-f]{64}$/i.test(String(explicitBoundary.evidence_sha256 || ''))) {
+        throw new Error('LDC_INVALID_RA19B_EXPLICIT_FLOW_BOUNDARY:' +
+          String(members[index] && members[index].paraId || index));
+      }
+      return { policy: explicitPolicy, reason: 'ra19b_source_backed_explicit_boundary',
+               action: explicitAction, explicit: true,
+               evidence_ref: String(explicitBoundary.evidence_ref),
+               evidence_sha256: String(explicitBoundary.evidence_sha256) };
+    }
     if (isStrongColonDashEnumeration(members)) {
       return { policy:'preserve_break_enumeration', reason:'strong_colon_dash_enumeration' };
     }
@@ -276,10 +297,10 @@
       cr.runId = runId;
       nr.runId = runId;
       nr.isContinuation = true;
-      // RA18: logical same-speaker continuation and visual boundary action are
+      // RA19B: logical same-speaker continuation and source-backed visual action are
       // independent. Every linked boundary receives one explicit action.
-      var visualAction = visual.policy === 'continuous_prose' ? 'join_inline'
-        : (visual.policy === 'preserve_break_enumeration' ? 'preserve_list_break' : 'preserve_break');
+      var visualAction = visual.action || (visual.policy === 'continuous_prose' ? 'join_inline'
+        : (visual.policy === 'preserve_break_enumeration' ? 'preserve_list_break' : 'preserve_break'));
       cur.visualBoundaryActionAfter = visualAction;
       nxt.visualBoundaryActionFromPrevious = visualAction;
       if (visualAction === 'join_inline') {
@@ -289,7 +310,8 @@
       links.push({ run_id: runId, from_paragraph: cur.paraId, to_paragraph: nxt.paraId,
                    speaker: normSpeaker(cr.speaker), joiner: b.display_joiner,
                    visual_policy: visual.policy, visual_reason: visual.reason,
-                   visual_action: visualAction,
+                   visual_action: visualAction, explicit_source_backed: !!visual.explicit,
+                   evidence_ref: visual.evidence_ref || '', evidence_sha256: visual.evidence_sha256 || '',
                    suppressed_leading: JSON.stringify(b.suppress_next_leading_ranges || []) });
     }
     return links;
