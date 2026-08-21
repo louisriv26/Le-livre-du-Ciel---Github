@@ -1,3 +1,16 @@
+# Livre du Ciel — RA18 explicit flow-boundary action repair
+
+- Public version shown to users: **Version 28**.
+- Technical app/update identifier: **v2.19.28-R1B**.
+- Stage: **LDC-AFLP-SUP-T1-RA18-EXPLICIT-FLOW-BOUNDARY-ACTIONS**.
+- Build date: **2026-08-21**.
+- Scope: mechanical reader/speech boundary-action enforcement only. Canonical paragraph text, paragraph IDs, flow classifications/shards, display shards, search shards and speaker shards are protected and unchanged.
+- RA18 keeps RA17 semantic same-speaker linking and its visual-policy classifier unchanged, but makes every linked boundary action explicit: `continuous_prose -> join_inline`, `preserve_break_ambiguous -> preserve_break`, `preserve_break_enumeration -> preserve_list_break`. Preserved boundaries no longer depend on the preceding speech span being block-level.
+- The broader source/editorial adjudication of pending inherited-dash/list-like flow classifications is **not performed in RA18** and remains a separate corpus-structure review item.
+- External physical iPhone/iPad/Samsung installed-PWA and live-origin validation remains required.
+
+> RA17 is a failed corrective candidate (`FAIL_REPORT_INTEGRITY`) because preserve-break policies were not mechanically enforced at 6,527 chained boundaries. Its current-facing claims are superseded by this RA18 authority block; older RA16-and-earlier blocks below remain historical provenance.
+
 # Livre du Ciel — RA16 search-date affordance + simplified public version
 
 - Public version shown to users: **Version 26**.

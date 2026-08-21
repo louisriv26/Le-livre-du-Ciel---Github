@@ -1,13 +1,13 @@
 {
-  "app_version": "v2.19.26-R1B",
-  "public_version": "26",
-  "build_date": "2026-08-19",
+  "app_version": "v2.19.28-R1B",
+  "public_version": "28",
+  "build_date": "2026-08-21",
   "corpus_version": "G036-AFLP-R1B-SUP-T1",
-  "stage": "LDC-AFLP-SUP-T1-RA16-SEARCH-DATE-AFFORDANCE-VERSION-SIMPLIFICATION",
-  "candidate_status": "LIMITED_PASS_STATIC_PENDING_EXTERNAL_PUBLIC_RELEASE_CERTIFICATION",
+  "stage": "LDC-AFLP-SUP-T1-RA18-EXPLICIT-FLOW-BOUNDARY-ACTIONS",
+  "candidate_status": "CANDIDATE_PENDING_FINAL_REOPEN_AND_EXTERNAL_VALIDATION",
   "device_validation": "NOT_TESTED__PHYSICAL_IPHONE_IPAD_SAMSUNG_INSTALLED_PWA_LIVE_ORIGIN_RETEST_REQUIRED",
-  "baseline_candidate_version": "v2.19.25-R1B",
-  "baseline_candidate_sha256": "c63a29387df707a13bd35753d0314eb623032df38a99e3b6f2816956a85b6d73",
+  "baseline_candidate_version": "v2.19.27-R1B",
+  "baseline_candidate_sha256": "edf15f2e0b3c688db7de812084908203f6008b7e9531f1e7b7b7ccc83907ab31",
   "owner_stage_start_authorisation": "Execute LDC-AFLP-SUP-T1 strict script: translate and visibly integrate the authorised 2 internal supplements + 12 complete external-only entries while preserving R1B as the immutable AFLP backbone.",
   "owner_override_note": "Owner explicitly authorised a separately provenance-labelled French supplement layer translated directly from IT-PM and reversible to AFLP-only reading.",
   "reader_contract": "ONE_CALM_READER_PLUS_OPTIONAL_REPERES",
@@ -32,11 +32,11 @@
   "owner_user_acceptance": "NOT_A_DEPLOYMENT_AUTHORITY__EXTERNAL_DEVICE_VALIDATION_PENDING",
   "offline_state_schema": "ldc-offline-state-v2",
   "offline_manifest_schema": "ldc-offline-manifest-v2",
-  "offline_cache_version": "ldc-le-livre-du-ciel-offline-v2.19.26-R1B",
+  "offline_cache_version": "ldc-le-livre-du-ciel-offline-v2.19.28-R1B",
   "offline_scope": "COMPLETE_36_TOME_READING_PLUS_LDC_AFLP_SUP_T1_PLUS_LEXICAL_METADATA_SPEAKER_SEARCH__VECTOR_EMBEDDING_SUBSYSTEM_RETIRED",
   "volume_lru_max": 4,
-  "offline_content_binding_sha256": "43756b961e5ebbdc9684eb00a1b4d514daaa430f00a527a4ff36d1b34a21772a",
-  "offline_corpus_manifest_sha256": "e35b1cc7b3c614167daa2c77356867159d2756b44110898969ab0982022990e6",
+  "offline_content_binding_sha256": "29f2aabc5e83a21312cb7a93785bd0443f988a3abdbfd42bb0d70f3eee21b3c5",
+  "offline_corpus_manifest_sha256": "b3dd09c9a8b688c263118ce8a7c5df6092dbdcfd6e3750614821f271d89995b6",
   "offline_integrity_contract": "EVERY_OFFLINE_ASSET_BYTE_LENGTH_AND_SHA256_VERIFIED_BEFORE_CACHE_ACCEPTANCE__READY_REQUIRES_VERIFIED_CACHE_MARKERS_AND_EXACT_CONTENT_BINDING",
   "owner_acceptance_findings_2026_08_12": [
     "existing-highlight palette inconsistent with original highlight palette",
@@ -222,7 +222,7 @@
     "user_data_schema_changed": false,
     "external_validation": "NOT_TESTED"
   },
-  "speech_boundary_display_contract": "ALL_VALIDATED_VISIBLE_JESUS_MARY_DIRECT_SPEECH_RUNS_START_AS_BLOCKS__ALL_FOLLOWING_NARRATION_STARTS_AS_NEW_VISUAL_PARAGRAPH__OUTER_DIRECT_GUILLEMETS_DISPLAY_SUPPRESSED__NESTED_QUOTATIONS_KEEP_SEMANTIC_IDENTITY_AND_INHERIT_OUTER_DISPLAY__CANONICAL_TEXT_UNCHANGED__RA5C_SEVEN_TARGET_SPEAKER_GEOMETRIES_RECONCILED",
+  "speech_boundary_display_contract": "RA18_LOGICAL_SPEAKER_RUN_CONTINUITY_INDEPENDENT_FROM_VISUAL_BOUNDARY_ACTION__CONTINUOUS_PROSE_JOIN_INLINE__AMBIGUOUS_PRESERVE_BREAK_EXPLICIT__ENUMERATION_PRESERVE_LIST_BREAK_EXPLICIT__DIRECT_SPEECH_PARAGRAPH_START_ONE_SIDED_WHERE_REQUIRED__OUTER_DIRECT_GUILLEMETS_DISPLAY_SUPPRESSED__CANONICAL_TEXT_AND_OFFSETS_UNCHANGED",
   "toast_contrast_contract": "THEME_AWARE_TOAST_TOKENS_PRESERVED_FROM_RA4__DARK_MODE_STATIC_CONTRAST_12_17_TO_1__LIGHT_MODE_13_21_TO_1",
   "ra4_speech_boundary_dark_toast_hardening": {
     "baseline_version": "v2.19.9-R1B",
@@ -569,5 +569,7 @@
     "speaker_offsets_changed": false,
     "user_data_schema_changed": false,
     "external_public_release_gates_open": true
-  }
+  },
+  "flow_boundary_action_contract": "POLICY_TO_ACTION_EXACT_MAPPING__continuous_prose_TO_join_inline__preserve_break_ambiguous_TO_preserve_break__preserve_break_enumeration_TO_preserve_list_break",
+  "ra17_failure_superseded": "RA17_FAIL_REPORT_INTEGRITY__6527_PRESERVE_BREAK_BOUNDARIES_NOT_EXPLICITLY_ENFORCED__RA18_MECHANICAL_ACTION_REPAIR"
 }

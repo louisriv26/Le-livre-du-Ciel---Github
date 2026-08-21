@@ -162,7 +162,72 @@
      A link is created ONLY when all seven conditions hold. Sharing a speaker is
      never sufficient — the flow decision and its boundary metadata are
      mandatory. Mutates member models in place and returns the link ledger. */
-  function linkFlowRuns(members) {
+  // RA17 — visual continuity is a separate concern from semantic same-speaker
+  // linking.  A logical speech run may cross a flow boundary while the visible
+  // structure still needs a break (for example a genuine enumeration).
+  function stripLeadingFlowDash(text) {
+    return String(text || '').replace(/^\s*[-–—]\s+/, '').trim();
+  }
+  function effectiveTail(text) {
+    return String(text || '').trim().replace(/[\s»”"\)\]\}]+$/g, '');
+  }
+  function isStrongColonDashEnumeration(members) {
+    if (!members || members.length < 3) return false;
+    var head = effectiveTail(members[0].text || '');
+    if (!/:$/.test(head)) return false;
+    var n = 0;
+    for (var i = 1; i < members.length; i++) {
+      if (/^\s*[-–—]\s+/.test(String(members[i].text || ''))) n++;
+    }
+    return n >= 2;
+  }
+  function flowBoundaryVisualPolicy(members, index, meta) {
+    meta = meta || {};
+    if (isStrongColonDashEnumeration(members)) {
+      return { policy:'preserve_break_enumeration', reason:'strong_colon_dash_enumeration' };
+    }
+    var cls = String(meta.classification || '');
+    var confidence = String(meta.confidence || '');
+    if (confidence === 'high' ||
+        /(?:sentence_continuation|source_quotation_continuation|source_page_break_quote_continuation)/.test(cls)) {
+      return { policy:'continuous_prose', reason:'adjudicated_flow_continuation' };
+    }
+    var cur = effectiveTail(members[index] && members[index].text || '');
+    var nxt = stripLeadingFlowDash(members[index + 1] && members[index + 1].text || '');
+    // A terminal sentence/list delimiter is intentionally conservative here.
+    // Inherited dash groups are not promoted merely because the next line begins
+    // lower-case or because the previous one ends in a comma.
+    if (/[.?!…:;]$/.test(cur)) {
+      return { policy:'preserve_break_ambiguous', reason:'terminal_or_list_delimiter' };
+    }
+    if (/^(?:que\b|qu[’']|qui\b|dont\b|où\b|lequel\b|laquelle\b|lesquels\b|lesquelles\b|auquel\b|auxquels\b|auxquelles\b|duquel\b|desquels\b|desquelles\b|afin\s+que\b|parce\s+que\b|pour\s+que\b|de\s+sorte\s+que\b|si\s+bien\s+que\b)/i.test(nxt)) {
+      return { policy:'continuous_prose', reason:'dependent_clause_starter' };
+    }
+    if (/^en\s+(?:(?:me|te|se|nous|vous|le|la|les|lui|leur|y)\s+)?[A-Za-zÀ-ÿŒœÆæ’'\-]+(?:ant|issant)\b/i.test(nxt)) {
+      return { policy:'continuous_prose', reason:'gerund_clause' };
+    }
+    if (/(?:^|[\s«“"'\(])(?:de|du|des|ce|cet|cette|ces|que|qu[’']|qui|dont|où|et|ou|ni|à|au|aux|en|pour|par|avec|sans|sur|sous|dans|comme|si|afin|lorsque|quand)\s*$/i.test(cur)) {
+      return { policy:'continuous_prose', reason:'syntactically_incomplete_head' };
+    }
+    return { policy:'preserve_break_ambiguous', reason:'pending_flow_not_safely_joinable' };
+  }
+
+  function flowJoinerPresentation(action, joinerText) {
+    action = String(action || 'baseline_joiner');
+    if (action === 'preserve_break') {
+      return { action:action, className:'flow-joiner flow-joiner-action-break', text:'' };
+    }
+    if (action === 'preserve_list_break') {
+      return { action:action, className:'flow-joiner flow-joiner-action-list-break', text:'' };
+    }
+    if (action === 'join_inline') {
+      return { action:action, className:'flow-joiner flow-joiner-action-inline', text:String(joinerText == null ? '' : joinerText) };
+    }
+    return { action:'baseline_joiner', className:'flow-joiner', text:String(joinerText == null ? '' : joinerText) };
+  }
+
+  function linkFlowRuns(members, opts) {
+    opts = opts || {};
     var links = [];
     // display-visible length of a canonical range, so an approved suppressed
     // extraction dash does not stop a run from counting as fragment-initial
@@ -201,13 +266,30 @@
       }
       // (6) the joiner must be explicit
       if (!b.display_joiner) continue;
-      // (7) the continuation inherits the logical run id
+      // (7) the continuation inherits the logical run id. Visual continuity is
+      // deliberately classified separately so genuine/potential list structure
+      // is not flattened merely because the speaker remains the same.
+      var visual = flowBoundaryVisualPolicy(members, k, opts);
+      cur.visualPolicyAfter = visual.policy;
+      cur.visualPolicyReason = visual.reason;
       var runId = cr.runId || (cur.paraId + '#R' + (cur.model.runs.length - 1));
       cr.runId = runId;
       nr.runId = runId;
       nr.isContinuation = true;
+      // RA18: logical same-speaker continuation and visual boundary action are
+      // independent. Every linked boundary receives one explicit action.
+      var visualAction = visual.policy === 'continuous_prose' ? 'join_inline'
+        : (visual.policy === 'preserve_break_enumeration' ? 'preserve_list_break' : 'preserve_break');
+      cur.visualBoundaryActionAfter = visualAction;
+      nxt.visualBoundaryActionFromPrevious = visualAction;
+      if (visualAction === 'join_inline') {
+        cr.visualContinuesToNext = true;
+        nr.visualContinuesFromPrevious = true;
+      }
       links.push({ run_id: runId, from_paragraph: cur.paraId, to_paragraph: nxt.paraId,
                    speaker: normSpeaker(cr.speaker), joiner: b.display_joiner,
+                   visual_policy: visual.policy, visual_reason: visual.reason,
+                   visual_action: visualAction,
                    suppressed_leading: JSON.stringify(b.suppress_next_leading_ranges || []) });
     }
     return links;
@@ -324,6 +406,9 @@
     normSpeaker: normSpeaker,
     isStyled: isStyled,
     linkFlowRuns: linkFlowRuns,
+    flowBoundaryVisualPolicy: flowBoundaryVisualPolicy,
+    isStrongColonDashEnumeration: isStrongColonDashEnumeration,
+    flowJoinerPresentation: flowJoinerPresentation,
     resolveNestedQuotationPresentation: resolveNestedQuotationPresentation
   };
 })(typeof window !== 'undefined' ? window : globalThis);
@@ -570,6 +655,7 @@
     var showLabels = !!opts.showLabels;         // labels emitted; Repères CSS controls visibility
     var hideOuter  = opts.hideOuterDelimiters !== false;
     var paraId     = opts.paraId || '';
+    var flowMemberIndex = Number.isInteger(opts.flowMemberIndex) ? opts.flowMemberIndex : 0;
     var atoms      = opts.atoms || null;        // display projection, may be absent
     var DM         = root.LDCDisplayMap;
     var html = '';
@@ -613,6 +699,12 @@
       // fragment emits the speaker label and block-start spacing (§6.4).
       var runId = r.runId || (paraId + '#R' + i);
       var isCont = !!r.isContinuation;
+      var isInlineFlowHead = !!r.visualContinuesToNext && !isCont;
+      // A flow-linked head that must continue visually cannot itself be a block:
+      // a block would create an unwanted END boundary.  If visible material
+      // precedes the head, preserve the required speech START boundary with the
+      // existing one-sided paragraph-break marker instead.
+      if (isInlineFlowHead && (i > 0 || flowMemberIndex > 0)) html += paragraphBreakHtml();
       // outer delimiters are decided on the DISPLAY text, since a mapped token
       // may change what the run visually starts or ends with
       var runDisplay = r.text;
@@ -645,9 +737,10 @@
                                   (hideTrailDelim ? ' aria-hidden="true"' : '') + '>' + esc(parts.trail) + '</span>';
       }
       html += '<span class="' + cls + ' speech-run speech-' +
-              (isCont ? 'inline speech-run-continuation' : r.presentation) + '"' +
+              (isCont ? 'inline speech-run-continuation' : (isInlineFlowHead ? 'inline speech-run-flow-head' : r.presentation)) + '"' +
               ' data-speech-run-id="' + esc(runId) + '"' +
               (isCont ? ' data-run-continuation="1"' : '') +
+              (isInlineFlowHead ? ' data-run-flow-head="1" data-visual-policy="continuous_prose"' : '') +
               ' data-run-start="' + r.start + '" data-run-end="' + r.end + '">' +
               (showLabels && !isCont ? '<span class="speech-label lbl-' +
                  (M.normSpeaker(r.speaker) === 'marie' ? 'marie' : 'jesus') + '">' + label + '</span>' +

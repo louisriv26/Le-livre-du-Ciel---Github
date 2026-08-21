@@ -1,12 +1,12 @@
-const VERSION = 'ldc-v2.19.26-R1B';
+const VERSION = 'ldc-v2.19.28-R1B';
 const CACHE_PREFIX = 'ldc-le-livre-du-ciel-';
-const SHELL_CACHE = `${CACHE_PREFIX}shell-v2.19.26-R1B`;
-const RUNTIME_CACHE = `${CACHE_PREFIX}runtime-v2.19.26-R1B`;
-const OFFLINE_CACHE = 'ldc-le-livre-du-ciel-offline-v2.19.26-R1B';
+const SHELL_CACHE = `${CACHE_PREFIX}shell-v2.19.28-R1B`;
+const RUNTIME_CACHE = `${CACHE_PREFIX}runtime-v2.19.28-R1B`;
+const OFFLINE_CACHE = 'ldc-le-livre-du-ciel-offline-v2.19.28-R1B';
 const OFFLINE_MANIFEST_URL = './offline_manifest.json';
 const OFFLINE_MANIFEST_SCHEMA = 'ldc-offline-manifest-v2';
-const OFFLINE_CONTENT_BINDING = '43756b961e5ebbdc9684eb00a1b4d514daaa430f00a527a4ff36d1b34a21772a';
-const OFFLINE_CORPUS_MANIFEST_SHA256 = 'e35b1cc7b3c614167daa2c77356867159d2756b44110898969ab0982022990e6';
+const OFFLINE_CONTENT_BINDING = '29f2aabc5e83a21312cb7a93785bd0443f988a3abdbfd42bb0d70f3eee21b3c5';
+const OFFLINE_CORPUS_MANIFEST_SHA256 = 'b3dd09c9a8b688c263118ce8a7c5df6092dbdcfd6e3750614821f271d89995b6';
 const OFFLINE_META_PATH = '__ldc_offline_meta__.json';
 
 // Keep install small and atomic. If any shell/index resource cannot be cached, the
@@ -63,7 +63,7 @@ async function loadOfflineManifest() {
   if(!r){r=await fetch(OFFLINE_MANIFEST_URL,{cache:'reload'});if(r&&r.ok)await shell.put(OFFLINE_MANIFEST_URL,r.clone());}
   if(!r||!r.ok)throw new Error('offline manifest indisponible');
   const m=await r.json();
-  if(m.schema!==OFFLINE_MANIFEST_SCHEMA||m.app_version!=='v2.19.26-R1B'||m.cache_version!==OFFLINE_CACHE)throw new Error('offline manifest incompatible');
+  if(m.schema!==OFFLINE_MANIFEST_SCHEMA||m.app_version!=='v2.19.28-R1B'||m.cache_version!==OFFLINE_CACHE)throw new Error('offline manifest incompatible');
   if(m.content_binding_schema!=='ldc-offline-content-binding-v1'||m.content_binding_sha256!==OFFLINE_CONTENT_BINDING)throw new Error('offline manifest binding incompatible');
   if(m.corpus_manifest_sha256!==OFFLINE_CORPUS_MANIFEST_SHA256)throw new Error('offline corpus manifest binding incompatible');
   const unique=[...new Set((m.assets||[]).map(a=>a.path))];

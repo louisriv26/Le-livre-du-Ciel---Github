@@ -827,8 +827,15 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; }
 .para-anchor { display:inline; width:0; height:0; overflow:hidden; }
 .para-fragment { display:inline; margin:0; padding:0; }
 .flow-joiner { display:inline; white-space:pre; }
+/* RA18: explicit boundary actions. Preserved boundaries are block boundaries
+   themselves and never depend on the previous speech run being block-level. */
+.flow-joiner-action-inline { display:inline; white-space:pre; }
+.flow-joiner-action-break,
+.flow-joiner-action-list-break { display:block; height:0; margin:0; padding:0; overflow:hidden; white-space:normal; }
 /* a run continued from the previous fragment never restarts block spacing */
 .speech-run-continuation { display:inline !important; margin:0 !important; padding:0 !important; }
+/* RA17: a safe flow-spanning speech HEAD stays inline; paragraph-start spacing, when required, is emitted separately. */
+.speech-run-flow-head { display:inline !important; margin:0 !important; padding:0 !important; }
 .para-fragment.target { background:rgba(200,160,60,.20); border-radius:3px; transition:background .5s; }
 
 
@@ -1868,12 +1875,12 @@ html[data-theme="dark"] .st-luisa{color:#D4A843;}
    VERSION — single source of truth
    Update this string on every release.
 ═══════════════════════════════════════════════════════ */
-const APP_VERSION = 'v2.19.26-R1B'; // technical update/audit identifier
-const PUBLIC_VERSION = '26';        // single user-facing release number
+const APP_VERSION = 'v2.19.28-R1B'; // technical update/audit identifier
+const PUBLIC_VERSION = '28';        // single user-facing release number
 const APP_VERSION_LABEL = `Version ${PUBLIC_VERSION}`;
-const APP_BUILD   = '2026-08-19';
-const SW_CACHE_VERSION = 'ldc-v2.19.26-R1B';
-const CORPUS_MANIFEST_SHA256 = 'e35b1cc7b3c614167daa2c77356867159d2756b44110898969ab0982022990e6';
+const APP_BUILD   = '2026-08-21';
+const SW_CACHE_VERSION = 'ldc-v2.19.28-R1B';
+const CORPUS_MANIFEST_SHA256 = 'b3dd09c9a8b688c263118ce8a7c5df6092dbdcfd6e3750614821f271d89995b6';
 const DEEP_LINK_SCHEMA = 'ldc-deep-link-v1';
 const READING_POSITION_SCHEMA = 'ldc-reading-position-v2';
 
@@ -3291,10 +3298,10 @@ async function openEntry(vol, entryId, backDest, opts={}) {
     const members = grp ? grp.members.filter(m => paraById[m.paragraph_id]) : null;
     if (grp && members.length === grp.members.length && members.length > 1) {
       members.forEach(m => placed.add(m.paragraph_id));
-      units.push({ flowId: grp.flow_id, classification: grp.classification, members });
+      units.push({ flowId: grp.flow_id, classification: grp.classification, confidence: grp.confidence || '', reviewStatus: grp.review_status || '', members });
     } else {
       placed.add(p.id);
-      units.push({ flowId: null, classification: 'single',
+      units.push({ flowId: null, classification: 'single', confidence: '', reviewStatus: '',
                    members: [{ paragraph_id: p.id, boundary_after: null }] });
     }
   });
@@ -3334,7 +3341,7 @@ async function openEntry(vol, entryId, backDest, opts={}) {
                boundaryAfter: m.boundary_after || null, para: p };
     });
     if (window.LDCSpeechModel && LDCSpeechModel.linkFlowRuns) {
-      const links = LDCSpeechModel.linkFlowRuns(mem);
+      const links = LDCSpeechModel.linkFlowRuns(mem, { classification: unit.classification || '', confidence: unit.confidence || '', review_status: unit.reviewStatus || '' });
       if (links.length) window.__ldcFlowLinks.push(...links);
     }
 
@@ -3366,7 +3373,7 @@ async function openEntry(vol, entryId, backDest, opts={}) {
       frag.innerHTML = (m.model && m.model.ok)
         ? LDCSpeechModel.renderSpeechModel(m.model, {
             showLabels: true, hideOuterDelimiters: true,
-            paraId: m.paraId, atoms: m.atoms })
+            paraId: m.paraId, atoms: m.atoms, flowMemberIndex: i })
         : escapeHtml(m.text);
       div.appendChild(frag);
       // §8.1 explicit canonical map for this fragment — built from canonical
@@ -3386,11 +3393,19 @@ async function openEntry(vol, entryId, backDest, opts={}) {
         // no canonical offset, so it is marked and excluded from selection maths
         const b = m.boundaryAfter || {};
         const j = document.createElement('span');
-        j.className = 'flow-joiner';
         j.setAttribute('aria-hidden', 'true');
         j.dataset.joiner = b.display_joiner || 'space';
-        j.textContent = JOINER_CHAR[b.display_joiner] !== undefined
+        j.dataset.visualPolicy = m.visualPolicyAfter || 'not_linked_or_preserved';
+        if (m.visualPolicyReason) j.dataset.visualReason = m.visualPolicyReason;
+        const joinerText = JOINER_CHAR[b.display_joiner] !== undefined
           ? JOINER_CHAR[b.display_joiner] : ' ';
+        const boundaryAction = m.visualBoundaryActionAfter || 'baseline_joiner';
+        const joinerPresentation = (window.LDCSpeechModel && LDCSpeechModel.flowJoinerPresentation)
+          ? LDCSpeechModel.flowJoinerPresentation(boundaryAction, joinerText)
+          : { action:'baseline_joiner', className:'flow-joiner', text:joinerText };
+        j.className = joinerPresentation.className;
+        j.dataset.visualAction = joinerPresentation.action;
+        j.textContent = joinerPresentation.text;
         div.appendChild(j);
       }
     });
@@ -6397,10 +6412,10 @@ function renderDnResultCard() {
    CacheStorage contains public app/corpus bytes only. IndexedDB settings holds
    the user-visible completion record; it is not itself the offline payload.
 ═══════════════════════════════════════════════════════ */
-const OFFLINE_CACHE_VERSION = 'ldc-le-livre-du-ciel-offline-v2.19.26-R1B';
+const OFFLINE_CACHE_VERSION = 'ldc-le-livre-du-ciel-offline-v2.19.28-R1B';
 const OFFLINE_MANIFEST_SCHEMA = 'ldc-offline-manifest-v2';
-const OFFLINE_CONTENT_BINDING = '43756b961e5ebbdc9684eb00a1b4d514daaa430f00a527a4ff36d1b34a21772a';
-const OFFLINE_CORPUS_MANIFEST_SHA256 = 'e35b1cc7b3c614167daa2c77356867159d2756b44110898969ab0982022990e6';
+const OFFLINE_CONTENT_BINDING = '29f2aabc5e83a21312cb7a93785bd0443f988a3abdbfd42bb0d70f3eee21b3c5';
+const OFFLINE_CORPUS_MANIFEST_SHA256 = 'b3dd09c9a8b688c263118ce8a7c5df6092dbdcfd6e3750614821f271d89995b6';
 const OFFLINE_STATES = Object.freeze(['NOT_PREPARED','CHECKING','DOWNLOADING','READY','PARTIAL','ERROR','CANCELLED']);
 let offlineUiState = {state:'NOT_PREPARED',completed:0,total:0,failed:[],total_bytes:0,job_id:null,message:'',content_binding_sha256:OFFLINE_CONTENT_BINDING,corpus_manifest_sha256:OFFLINE_CORPUS_MANIFEST_SHA256};
 const offlineStatusWaiters = new Map();
