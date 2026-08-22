@@ -30,6 +30,7 @@
   --body:'Crimson Text',Georgia,serif;
   --reader-size:19px;
   --accent:#7a5c10;
+  --onboarding-bg:#1A2A4A; --onboarding-ink:#F9F6F0; --onboarding-muted:#D8D3C8; --onboarding-accent:#D4A060;
   --accent-fill:#1A2A4A; --accent-fill-ink:#D4A060; --toast-bg:#1A2A4A; --toast-ink:#F9F6F0;
   --supp-bg:rgba(110,84,16,.055); --supp-border:#B89432; --supp-badge-bg:#F2E6C6; --supp-badge-ink:#5C4610;
   --sat-top:env(safe-area-inset-top,0px);
@@ -175,7 +176,7 @@ html[data-theme="light"]{
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html,body{height:100%;background:var(--ivory);font-family:var(--body);color:var(--ink);}
 html{overflow-x:hidden;max-width:100vw;height:-webkit-fill-available;}
-body{overflow:hidden;overflow-x:hidden;max-width:100vw;min-height:100vh;min-height:-webkit-fill-available;display:flex;flex-direction:column;padding-bottom:var(--nav-safe-h);}
+body{overflow:hidden;overflow-x:hidden;max-width:100vw;min-height:100vh;min-height:100dvh;min-height:-webkit-fill-available;display:flex;flex-direction:column;padding-bottom:var(--nav-safe-h);}
 
 /* ═══ SCROLL ═══ */
 .scroll{flex:1;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;}
@@ -201,6 +202,9 @@ body{overflow:hidden;overflow-x:hidden;max-width:100vw;min-height:100vh;min-heig
 /* ═══ BOTTOM NAV ═══ */
 #nav{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:9000;height:var(--nav-safe-h);
   background:var(--ivory);border-top:0.5px solid var(--border);padding-bottom:var(--sat-bot);}
+/* RA19D semantic shell lifecycle: boot blocks the underlying app until initialization completes. */
+body.app-state-boot #nav,body.app-state-boot .screen,body.app-state-onboarding #nav,body.app-state-onboarding .screen{visibility:hidden;pointer-events:none;}
+body.app-state-boot,body.app-state-onboarding{overflow:hidden;}
 .nav-item{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
   gap:2px;padding:8px 4px 6px;background:none;border:none;cursor:pointer;
   font-size:12px;font-family:var(--body);color:var(--muted);transition:color .15s;}
@@ -225,23 +229,35 @@ body{overflow:hidden;overflow-x:hidden;max-width:100vw;min-height:100vh;min-heig
 .ob-slide{position:absolute;inset:0;padding:32px 28px 0;opacity:0;pointer-events:none;
   transition:opacity .3s;display:flex;flex-direction:column;align-items:center;text-align:center;}
 .ob-slide.active{opacity:1;pointer-events:auto;}
-.ob-icon{color:var(--gold);}
-.ob-title{font-family:var(--serif);font-size:26px;font-style:italic;color:#fff;
+.ob-icon{color:var(--onboarding-accent);}
+.ob-title{font-family:var(--serif);font-size:26px;font-style:italic;color:var(--onboarding-ink);
   margin-bottom:16px;line-height:1.3;}
-.ob-body{font-size:15px;color:rgba(255,255,255,.75);line-height:1.7;max-width:340px;}
-.ob-sub{font-size:12px;color:rgba(255,255,255,.4);margin-top:12px;}
+.ob-body{font-size:15px;color:var(--onboarding-ink);line-height:1.7;max-width:340px;}
+.ob-sub{font-size:12px;color:var(--onboarding-muted);margin-top:12px;}
 .ob-speech-demo{background:rgba(255,255,255,.06);border-radius:12px;padding:16px;
   margin-top:20px;text-align:left;max-width:340px;width:100%;border-left:3px solid #D4A060;}
 .ob-choice-btn{display:flex;align-items:center;gap:10px;padding:14px 18px;
-  background:rgba(255,255,255,.08);border:0.5px solid rgba(255,255,255,.15);
-  border-radius:12px;font-size:14px;color:#fff;font-family:var(--body);cursor:pointer;
+  background:rgba(255,255,255,.08);border:0.5px solid rgba(255,255,255,.22);
+  border-radius:12px;font-size:14px;color:var(--onboarding-ink);font-family:var(--body);cursor:pointer;
   transition:all .15s;text-align:left;width:100%;}
 .ob-choice-btn:hover{background:rgba(255,255,255,.14);}
-.ob-choice-btn i{font-size:18px;color:rgba(255,255,255,.6);flex-shrink:0;}
-.ob-skip{background:none;border:none;font-size:13px;color:rgba(255,255,255,.4);
+.ob-choice-btn i{font-size:18px;color:var(--onboarding-muted);flex-shrink:0;}
+.ob-skip{background:none;border:none;font-size:13px;color:var(--onboarding-muted);
   cursor:pointer;padding:8px;}
 .ob-next{background:var(--gold);border:none;color:#1A1612;font-size:14px;font-weight:500;
   padding:10px 20px;border-radius:10px;cursor:pointer;font-family:var(--body);}
+/* RA19D mobile first-launch geometry: dynamic viewport + vertically scrollable active slide. */
+#onboarding-overlay{height:100vh;height:100dvh;}
+#onboarding-inner{height:100%;height:100dvh;max-height:100dvh;min-height:0;display:flex;flex-direction:column;}
+#onboarding-slides{flex:1;min-height:0;overflow:hidden;position:relative;}
+#onboarding-slides .ob-slide{overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;overscroll-behavior-y:contain;padding-bottom:24px;}
+#onboarding-footer{display:flex;justify-content:space-between;align-items:center;flex-shrink:0;padding:16px 24px calc(20px + var(--sat-bot));}
+@media(max-height:600px){
+  #onboarding-slides .ob-slide{padding-top:18px;}
+  #onboarding-footer{padding-top:10px;padding-bottom:calc(12px + var(--sat-bot));}
+  .ob-title{margin-bottom:10px;}
+  .ob-speech-demo{margin-top:12px;}
+}
 /* ═══ END ONBOARDING ═══ */
 /* ═══ NOTE QUOTE PREVIEW ═══ */
 .note-quote-preview{background:rgba(201,168,76,.08);border-left:3px solid var(--gold);
@@ -619,8 +635,8 @@ mark.search-hl{background:rgba(201,168,76,.35);color:inherit;border-radius:2px;p
   display:flex;align-items:center;justify-content:space-between;flex-shrink:0;}
 .col-name{font-family:var(--serif);font-size:16px;color:var(--night);}
 .col-count{font-size:12px;color:var(--muted);}
-.col-export-btn{display:flex;align-items:center;gap:5px;background:var(--night);
-  color:var(--gold);border:none;border-radius:8px;padding:7px 14px;
+.col-export-btn{display:flex;align-items:center;gap:5px;background:var(--accent-fill);
+  color:var(--accent-fill-ink);border:none;border-radius:8px;padding:7px 14px;
   font-size:12px;font-family:var(--body);cursor:pointer;}
 
 .col-item{padding:11px 14px 11px 10px;border-bottom:0.5px solid var(--border);
@@ -669,7 +685,7 @@ mark.search-hl{background:rgba(201,168,76,.35);color:inherit;border-radius:2px;p
 
 /* ═══ VERSION BADGE ═══ */
 #version-badge{position:fixed;bottom:calc(var(--nav-safe-h) + 6px);right:10px;
-  background:var(--night);color:var(--gold);font-size:10px;font-family:var(--body);
+  background:var(--accent-fill);color:var(--accent-fill-ink);font-size:10px;font-family:var(--body);
   padding:3px 9px;border-radius:10px;opacity:0;pointer-events:none;
   transition:opacity .3s;z-index:50;letter-spacing:.04em;}
 #version-badge.show{opacity:1;pointer-events:auto;}
@@ -874,8 +890,8 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; }
   border-radius:10px;padding:12px 14px;margin-bottom:8px;}
 .help-row{display:flex;gap:10px;align-items:flex-start;margin-bottom:8px;}
 .help-row:last-child{margin-bottom:0;}
-.help-chip{display:inline-flex;align-items:center;gap:4px;background:var(--night);
-  color:var(--gold);border-radius:6px;padding:3px 9px;font-size:11px;
+.help-chip{display:inline-flex;align-items:center;gap:4px;background:var(--accent-fill);
+  color:var(--accent-fill-ink);border-radius:6px;padding:3px 9px;font-size:11px;
   font-family:var(--body);flex-shrink:0;margin-top:1px;white-space:nowrap;}
 .help-chip.light{background:var(--gold-pale);color:#7A5A20;}
 .help-chip.outline{background:none;color:var(--muted);border:0.5px solid var(--border);}
@@ -889,7 +905,7 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; }
 
 /* ═══ AUTOUR DE CE PASSAGE PANEL ═══ */
 #autour-overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);
-  z-index:120;display:none;align-items:flex-end;}
+  z-index:9200;display:none;align-items:flex-end;}
 #autour-overlay.show{display:flex;}
 #autour-sheet{background:var(--ivory);border-radius:20px 20px 0 0;
   width:100%;max-height:82vh;display:flex;flex-direction:column;
@@ -920,7 +936,7 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; }
 .autour-loading .spinner{width:20px;height:20px;margin:0 auto;}
 
 /* ═══ OVERLAYS ═══ */
-.overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:100;
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:9200;
   display:none;align-items:flex-end;}
 .overlay.show{display:flex;}
 .sheet{background:var(--ivory);border-radius:20px 20px 0 0;padding:20px;
@@ -1024,7 +1040,7 @@ body.android-highlight-platform #reader-body .para-fragment{-webkit-user-select:
 
 /* Loading */
 #loading{position:fixed;inset:0;background:var(--ivory);display:flex;
-  flex-direction:column;align-items:center;justify-content:center;gap:12px;z-index:300;}
+  flex-direction:column;align-items:center;justify-content:center;gap:12px;z-index:12000;}
 #loading .l-title{font-family:var(--serif);font-style:italic;font-size:22px;color:var(--night);}
 #loading .l-sub{font-size:13px;color:var(--muted);}
 .spinner{width:28px;height:28px;border:2px solid var(--border);
@@ -1154,6 +1170,9 @@ html[data-theme="dark"] .st-luisa{color:#D4A843;}
    theme-aware accent pair. */
 :is(.rh-vol,.reader-date,.btn-back,.nav-item,.nav-item.active,.collection-add,.mode-pill:not(.reperes-active)),
 :is(.rh-vol,.reader-date,.btn-back,.nav-item,.nav-item.active,.collection-add,.mode-pill:not(.reperes-active)) *{color:var(--gold-text) !important;}
+/* RA19D: keep bottom navigation inactive/active states visually distinct after the broad gold-text accessibility rule. */
+#nav .nav-item,#nav .nav-item *{color:var(--muted) !important;}
+#nav .nav-item.active,#nav .nav-item.active *{color:var(--gold-text) !important;}
 .mode-pill.reperes-active,.mode-pill.reperes-active *{color:var(--accent-fill-ink) !important;}
 
 /* Stage C — run-level speech presentation (one element per RUN) */
@@ -1178,7 +1197,7 @@ html[data-theme="dark"] .st-luisa{color:#D4A843;}
 <script src="speech_model.js"></script>
 <script src="search_normalizer.js"></script>
 </head>
-<body>
+<body class="app-state-boot">
 
 <!-- Loading -->
 <div id="loading">
@@ -1229,7 +1248,7 @@ html[data-theme="dark"] .st-luisa{color:#D4A843;}
 
 <!-- Autour de ce passage -->
 <div id="autour-overlay" onclick="if(event.target===this)closeAutour()">
-  <div id="autour-sheet">
+  <div id="autour-sheet" role="dialog" aria-modal="true" aria-label="Autour de ce passage">
     <div class="autour-top">
       <div>
         <div class="autour-title">Autour de ce passage</div>
@@ -1245,7 +1264,7 @@ html[data-theme="dark"] .st-luisa{color:#D4A843;}
 
 <!-- Overlay: Note sheet -->
 <div class="overlay" id="note-overlay" onclick="if(event.target===this)closeNoteSheet()">
-  <div class="sheet">
+  <div class="sheet" role="dialog" aria-modal="true" aria-label="Ajouter une note">
     <div class="sheet-handle"></div>
     <div class="sheet-title">Ajouter une note</div>
     <div class="note-quote-preview" id="note-quote-preview" style="display:none;">
@@ -1262,7 +1281,7 @@ html[data-theme="dark"] .st-luisa{color:#D4A843;}
 
 <!-- Overlay: Collection picker -->
 <div class="overlay" id="col-overlay" onclick="if(event.target===this)closeColSheet()">
-  <div class="sheet">
+  <div class="sheet" role="dialog" aria-modal="true" aria-label="Ajouter à une collection">
     <div class="sheet-handle"></div>
     <div class="sheet-title">Ajouter à une collection</div>
     <div id="col-list"></div>
@@ -1330,7 +1349,7 @@ html[data-theme="dark"] .st-luisa{color:#D4A843;}
 
 <!-- Overlay: Text size — LDC-A semantic four-level contract -->
 <div class="overlay" id="size-overlay" onclick="if(event.target===this)closeSizeSheet()">
-  <div class="sheet">
+  <div class="sheet" role="dialog" aria-modal="true" aria-label="Taille du texte">
     <div class="sheet-handle"></div>
     <div class="sheet-title">Taille du texte</div>
     <div class="text-level-preview" id="text-level-preview">Le texte du Livre du Ciel</div>
@@ -1348,7 +1367,7 @@ html[data-theme="dark"] .st-luisa{color:#D4A843;}
 
 <!-- THEME SHEET — explicit labeled options, not a blind icon-cycle -->
 <div class="overlay" id="theme-overlay" onclick="if(event.target===this)closeThemeSheet()">
-  <div class="sheet">
+  <div class="sheet" role="dialog" aria-modal="true" aria-label="Thème">
     <div class="sheet-handle"></div>
     <div class="sheet-title">Thème</div>
     <div style="display:flex;gap:8px;padding:8px 0 16px;justify-content:center;">
@@ -1371,9 +1390,9 @@ html[data-theme="dark"] .st-luisa{color:#D4A843;}
 <!-- ══════════════ SCREENS ══════════════ -->
 
 <!-- ONBOARDING OVERLAY -->
-<div id="onboarding-overlay" style="display:none;position:fixed;inset:0;z-index:999;
-  background:var(--night);overflow:hidden;">
-  <div id="onboarding-inner" style="height:100%;display:flex;flex-direction:column;">
+<div id="onboarding-overlay" role="dialog" aria-modal="true" aria-label="Présentation du Livre du Ciel" tabindex="-1" style="display:none;position:fixed;inset:0;z-index:11000;
+  background:var(--onboarding-bg);overflow:hidden;">
+  <div id="onboarding-inner">
     <!-- Progress dots -->
     <div style="display:flex;justify-content:center;gap:8px;padding:20px 0 0;">
       <div class="ob-dot active" id="ob-dot-0"></div>
@@ -1381,7 +1400,7 @@ html[data-theme="dark"] .st-luisa{color:#D4A843;}
       <div class="ob-dot" id="ob-dot-2"></div>
     </div>
     <!-- Slides container -->
-    <div style="flex:1;overflow:hidden;position:relative;">
+    <div id="onboarding-slides">
       <!-- Slide 0: What it is -->
       <div class="ob-slide active" id="ob-slide-0">
         <div class="ob-icon" style="font-size:48px;margin-bottom:24px;">✦</div>
@@ -1391,18 +1410,18 @@ html[data-theme="dark"] .st-luisa{color:#D4A843;}
       </div>
       <!-- Slide 1: Speech layer -->
       <div class="ob-slide" id="ob-slide-1">
-        <div class="ob-icon" style="font-size:32px;margin-bottom:16px;"><i class="ti ti-message-circle" style="color:#D4A060;"></i></div>
+        <div class="ob-icon" style="font-size:32px;margin-bottom:16px;"><i class="ti ti-message-circle" style="color:var(--onboarding-accent);"></i></div>
         <div class="ob-title">Les paroles de Jésus</div>
         <div class="ob-body">Dans cette édition numérique, la typographie suit le locuteur principal. Quand Jésus tient directement la parole, son passage apparaît en couleur ; s’Il cite quelqu’un d’autre, la citation conserve le style de Jésus. Inversement, quand Luisa cite Jésus à l’intérieur de son propre tour de parole, la citation reste dans le style de Luisa. Ces attributions sémantiques servent aussi à la recherche.</div>
         <div class="ob-speech-demo">
-          <div style="font-size:13px;color:rgba(255,255,255,.5);margin-bottom:8px;">Luisa écrit:</div>
-          <div style="font-size:14px;color:rgba(255,255,255,.75);margin-bottom:12px;font-style:italic;">Ce matin, mon aimable Jésus est venu et Il m'a dit:</div>
-          <div style="font-size:15px;color:#D4A060;font-style:italic;line-height:1.65;font-family:var(--serif);">«Ma fille, viens souvent dans Ma Volonté et prodigue-Moi de l'Adoration au nom de toute la Création.»</div>
+          <div style="font-size:13px;color:var(--onboarding-muted);margin-bottom:8px;">Luisa écrit:</div>
+          <div style="font-size:14px;color:var(--onboarding-ink);margin-bottom:12px;font-style:italic;">Ce matin, mon aimable Jésus est venu et Il m'a dit:</div>
+          <div style="font-size:15px;color:var(--onboarding-accent);font-style:italic;line-height:1.65;font-family:var(--serif);">«Ma fille, viens souvent dans Ma Volonté et prodigue-Moi de l'Adoration au nom de toute la Création.»</div>
         </div>
       </div>
       <!-- Slide 2: Where to start -->
       <div class="ob-slide" id="ob-slide-2">
-        <div class="ob-icon" style="font-size:32px;margin-bottom:16px;"><i class="ti ti-compass" style="color:#D4A060;"></i></div>
+        <div class="ob-icon" style="font-size:32px;margin-bottom:16px;"><i class="ti ti-compass" style="color:var(--onboarding-accent);"></i></div>
         <div class="ob-title">Par où commencer?</div>
         <div class="ob-body">Vous pouvez lire depuis le début, commencer par un passage où Jésus parle, ou utiliser la recherche pour trouver un thème qui vous touche.</div>
         <div style="display:flex;flex-direction:column;gap:10px;margin-top:20px;">
@@ -1419,8 +1438,7 @@ html[data-theme="dark"] .st-luisa{color:#D4A843;}
       </div>
     </div>
     <!-- Navigation -->
-    <div style="display:flex;justify-content:space-between;align-items:center;
-      padding:16px 24px 32px;">
+    <div id="onboarding-footer">
       <button class="ob-skip" onclick="finishOnboarding()" id="ob-skip-btn">Passer</button>
       <button class="ob-next" onclick="obNext()" id="ob-next-btn">Suivant →</button>
     </div>
@@ -1677,7 +1695,7 @@ html[data-theme="dark"] .st-luisa{color:#D4A843;}
 </div>
 
 <div class="overlay" id="backup-preview-overlay" onclick="if(event.target===this)closeImportPreview()">
-  <div class="sheet" style="max-width:520px;">
+  <div class="sheet" role="dialog" aria-modal="true" aria-label="Vérifier la sauvegarde" style="max-width:520px;">
     <div class="sheet-handle"></div>
     <div class="sheet-title">Vérifier la sauvegarde</div>
     <div id="backup-preview-body" style="font-size:13px;line-height:1.55;"></div>
@@ -1802,6 +1820,9 @@ html[data-theme="dark"] .st-luisa{color:#D4A843;}
         <div class="help-row"><span class="help-chip">COMPLÉMENT · IT-PM</span><span class="help-text">Signale un texte absent de l’édition AFLP de référence et intégré comme complément. Le français a été établi directement d’après IT-PM ; Queen et Hugh Owen servent de traductions comparatives et ne sont pas la source du français.</span></div>
         <div class="help-row"><span class="help-chip light">Translation Set 1</span><span class="help-text">Comprend 14 compléments approuvés : 12 entrées complètes et 2 compléments internes. Cette intégration n’affirme pas que toutes les différences possibles entre les témoins des 36 Tomes sont résolues.</span></div>
         <div class="help-divider"></div>
+        <div class="help-row"><span class="help-chip light"><i class="ti ti-share"></i></span><span class="help-text"><b>Partager l’application</b> ouvre le partage natif de votre appareil pour envoyer le lien du Livre du Ciel à un proche.</span></div>
+        <div class="help-row"><span></span><button class="btn-secondary" type="button" onclick="shareApplication()" style="font-size:13px;padding:8px 16px;"><i class="ti ti-share" aria-hidden="true"></i> Partager l’application</button></div>
+        <div class="help-divider"></div>
         <div class="help-row"><span class="help-chip outline">Version</span><span class="help-text" id="about-app-version">—</span></div>
         <div class="help-divider"></div>
         <div class="help-row"><span></span><button class="btn-secondary" onclick="closeHelp();showOnboarding();" style="font-size:13px;padding:8px 16px;">Revoir la présentation →</button></div>
@@ -1875,12 +1896,12 @@ html[data-theme="dark"] .st-luisa{color:#D4A843;}
    VERSION — single source of truth
    Update this string on every release.
 ═══════════════════════════════════════════════════════ */
-const APP_VERSION = 'v2.19.29-R1B'; // technical update/audit identifier
-const PUBLIC_VERSION = '29';        // single user-facing release number
+const APP_VERSION = 'v2.19.31-R1B'; // technical update/audit identifier
+const PUBLIC_VERSION = '31';        // single user-facing release number
 const APP_VERSION_LABEL = `Version ${PUBLIC_VERSION}`;
-const APP_BUILD   = '2026-08-21';
-const SW_CACHE_VERSION = 'ldc-v2.19.29-R1B';
-const CORPUS_MANIFEST_SHA256 = '86105e38147ad315303659f935b3fc5e21633b2d9ff2de7f123860b54a6154fb';
+const APP_BUILD   = '2026-08-22';
+const SW_CACHE_VERSION = 'ldc-v2.19.31-R1B';
+const CORPUS_MANIFEST_SHA256 = 'fd980be6bba9deb48ccd334797532fdbab67c98c52d83d437e0ba862fd2eddc4';
 const DEEP_LINK_SCHEMA = 'ldc-deep-link-v1';
 const READING_POSITION_SCHEMA = 'ldc-reading-position-v2';
 
@@ -2749,15 +2770,23 @@ async function openParcoursEntry(parcours, idx) {
 ═══════════════════════════════════════════════════════ */
 let obStep = 0;
 
+function safeOnboardingStorageGet(key){try{return window.localStorage.getItem(key);}catch(e){console.warn('LDC: onboarding storage read unavailable',e);return null;}}
+function safeOnboardingStorageSet(key,value){try{window.localStorage.setItem(key,value);return true;}catch(e){console.warn('LDC: onboarding storage write unavailable',e);return false;}}
+
 function showOnboarding() {
   obStep = 0;
-  document.getElementById('onboarding-overlay').style.display = 'block';
+  const overlay=document.getElementById('onboarding-overlay');
+  setShellState('onboarding');
+  overlay.style.display = 'block';
   updateObSlide();
+  requestAnimationFrame(()=>overlay.focus({preventScroll:true}));
 }
 
 function finishOnboarding() {
-  document.getElementById('onboarding-overlay').style.display = 'none';
-  localStorage.setItem('ldc_onboarding_done', '1');
+  const overlay=document.getElementById('onboarding-overlay');
+  overlay.style.display = 'none';
+  setShellState('normal');
+  safeOnboardingStorageSet('ldc_onboarding_done', '1');
 }
 
 function obNext() {
@@ -4402,8 +4431,14 @@ function releaseModalFocus(overlay){
   const st=overlay&&modalFocusState.get(overlay); if(!st)return; st.dialog.removeEventListener('keydown',st.onKey); modalFocusState.delete(overlay);
   if(st.invoker&&st.invoker.isConnected&&typeof st.invoker.focus==='function'){try{st.invoker.focus({preventScroll:true});}catch(_){st.invoker.focus();}}
 }
-function openModalOverlay(id,closeFn){const ov=document.getElementById(id);if(!ov)return;ov.dataset.modalClose=closeFn;ov.classList.add('show');trapModalFocus(ov);}
-function closeModalOverlay(id){const ov=document.getElementById(id);if(!ov)return;releaseModalFocus(ov);ov.classList.remove('show');}
+function syncModalShellLock(){
+  const nav=document.getElementById('nav');if(!nav)return;
+  const modalOpen=!!document.querySelector('.overlay.show,#autour-overlay.show');
+  if(modalOpen){nav.setAttribute('inert','');document.body.classList.add('app-state-modal');}
+  else if(!document.body.classList.contains('app-state-boot')&&!document.body.classList.contains('app-state-onboarding')){nav.removeAttribute('inert');document.body.classList.remove('app-state-modal');}
+}
+function openModalOverlay(id,closeFn){const ov=document.getElementById(id);if(!ov)return;ov.dataset.modalClose=closeFn;ov.classList.add('show');syncModalShellLock();trapModalFocus(ov);}
+function closeModalOverlay(id){const ov=document.getElementById(id);if(!ov)return;releaseModalFocus(ov);ov.classList.remove('show');syncModalShellLock();}
 
 /* ═══ NOTE ═══ */
 function openNoteSheet() {
@@ -4417,7 +4452,7 @@ function openNoteSheet() {
   } else {
     preview.style.display = 'none';
   }
-  document.getElementById('note-overlay').classList.add('show');
+  openModalOverlay('note-overlay','closeNoteSheet');
 }
 
 function showNoteSheet() {
@@ -4425,7 +4460,7 @@ function showNoteSheet() {
 }
 
 function closeNoteSheet() {
-  document.getElementById('note-overlay').classList.remove('show');
+  closeModalOverlay('note-overlay');
 }
 
 async function saveNote() {
@@ -4549,11 +4584,11 @@ async function openColSheet(paraId) {
     list.appendChild(btn);
   });
   document.getElementById('col-new-input').value = '';
-  document.getElementById('col-overlay').classList.add('show');
+  openModalOverlay('col-overlay','closeColSheet');
 }
 
 function closeColSheet() {
-  document.getElementById('col-overlay').classList.remove('show');
+  closeModalOverlay('col-overlay');
 }
 
 async function buildCollectionItem(colId) {
@@ -4589,6 +4624,29 @@ function addToCollectionFromSelection() {
 }
 
 /* ═══ SHARE ═══ */
+function appHomeUrl() {
+  // Always share the clean application root, never the current Tome/search/deep-link route.
+  return new URL('./', deepBaseUrl()).toString();
+}
+
+async function shareApplication() {
+  const url = appHomeUrl();
+  const title = 'Le Livre du Ciel — Luisa Piccarreta';
+  const message = 'Je te partage l’application Le Livre du Ciel — Luisa Piccarreta. Elle permet de lire et rechercher les 36 tomes.';
+  try {
+    if (navigator.share) {
+      await navigator.share({ title, text: message, url });
+      return;
+    }
+    const ok = await copyPlainText(`${message}\n${url}`);
+    showToast(ok ? 'Lien de l’application copié' : 'Partage indisponible');
+  } catch(e) {
+    if (e && e.name === 'AbortError') return;
+    const ok = await copyPlainText(`${message}\n${url}`);
+    showToast(ok ? 'Lien de l’application copié' : 'Partage indisponible');
+  }
+}
+
 async function shareCitation() {
   if (!currentEntry) return;
   const hasSelection = selectionRange && selectionRange.text;
@@ -5581,8 +5639,8 @@ async function validateBackupEnvelope(env,rawBytes){const errors=[],warnings=[];
   const targetWarnings=[];if(st){const targets=[];for(const h of st.highlights||[])targets.push(['Surlignage',h]);for(const n of st.notes||[])if(n.para_id)targets.push(['Note',n]);for(const it of st.col_items||[])targets.push(['Collection',it]);for(const [kind,r] of targets){const vol=r.volume||volumeOfStableRef(r.stable_ref),p=await currentParagraph(vol,r.entry_id,r.para_id);if(!p)targetWarnings.push(`${kind}: cible introuvable ${r.para_id||'—'}`);else if(kind==='Surlignage'&&Number.isInteger(r.start_char)&&Number.isInteger(r.end_char)&&r.end_char>p.text.length)errors.push(`Surlignage hors limites : ${r.para_id}`);}}
   if(targetWarnings.length)warnings.push(`${targetWarnings.length} cible(s) devront être vérifiées après restauration.`);return{ok:errors.length===0,errors:[...new Set(errors)],warnings:[...new Set(warnings)],counts,targetWarnings};}
 
-async function handleImportFile(input){const file=input&&input.files&&input.files[0];if(!file)return;if(file.size>USER_DATA_MAX_IMPORT_BYTES){showToast('Sauvegarde trop volumineuse');return;}let env;try{const raw=JSON.parse(await file.text());if(containsDangerousKeys(raw)){showToast('Sauvegarde refusée — clé dangereuse');return;}env=normaliseBackupEnvelope(raw);}catch(e){showToast('Sauvegarde JSON invalide');return;}const validation=await validateBackupEnvelope(env,file.size);pendingBackupImport={env,validation,fileName:file.name};const body=document.getElementById('backup-preview-body'),confirmBtn=document.getElementById('backup-import-confirm');const c=validation.counts||{};body.innerHTML=`<div><b>${escapeHtml(file.name)}</b><br>Schéma v${env.version} · corpus ${escapeHtml(env.corpus_generation||'non indiqué')}</div><div class="backup-preview-summary"><div class="backup-preview-card"><b>${c.notes||0}</b>notes</div><div class="backup-preview-card"><b>${highlightUserCount((env.state&&env.state.highlights)||[])}</b>surlignages</div><div class="backup-preview-card"><b>${c.favorites||0}</b>favoris</div><div class="backup-preview-card"><b>${c.collections||0}</b>collections</div></div>${validation.errors.map(x=>`<div class="backup-warning">${escapeHtml(x)}</div>`).join('')}${validation.warnings.map(x=>`<div class="backup-warning">${escapeHtml(x)}</div>`).join('')}${validation.ok?'<div class="backup-ok">Validation terminée. La restauration remplacera Mon Espace dans une seule transaction ; en cas d’échec, les données existantes restent intactes.</div>':''}`;confirmBtn.disabled=!validation.ok;document.getElementById('backup-preview-overlay').classList.add('show');}
-function closeImportPreview(){document.getElementById('backup-preview-overlay').classList.remove('show');pendingBackupImport=null;}
+async function handleImportFile(input){const file=input&&input.files&&input.files[0];if(!file)return;if(file.size>USER_DATA_MAX_IMPORT_BYTES){showToast('Sauvegarde trop volumineuse');return;}let env;try{const raw=JSON.parse(await file.text());if(containsDangerousKeys(raw)){showToast('Sauvegarde refusée — clé dangereuse');return;}env=normaliseBackupEnvelope(raw);}catch(e){showToast('Sauvegarde JSON invalide');return;}const validation=await validateBackupEnvelope(env,file.size);pendingBackupImport={env,validation,fileName:file.name};const body=document.getElementById('backup-preview-body'),confirmBtn=document.getElementById('backup-import-confirm');const c=validation.counts||{};body.innerHTML=`<div><b>${escapeHtml(file.name)}</b><br>Schéma v${env.version} · corpus ${escapeHtml(env.corpus_generation||'non indiqué')}</div><div class="backup-preview-summary"><div class="backup-preview-card"><b>${c.notes||0}</b>notes</div><div class="backup-preview-card"><b>${highlightUserCount((env.state&&env.state.highlights)||[])}</b>surlignages</div><div class="backup-preview-card"><b>${c.favorites||0}</b>favoris</div><div class="backup-preview-card"><b>${c.collections||0}</b>collections</div></div>${validation.errors.map(x=>`<div class="backup-warning">${escapeHtml(x)}</div>`).join('')}${validation.warnings.map(x=>`<div class="backup-warning">${escapeHtml(x)}</div>`).join('')}${validation.ok?'<div class="backup-ok">Validation terminée. La restauration remplacera Mon Espace dans une seule transaction ; en cas d’échec, les données existantes restent intactes.</div>':''}`;confirmBtn.disabled=!validation.ok;openModalOverlay('backup-preview-overlay','closeImportPreview');}
+function closeImportPreview(){closeModalOverlay('backup-preview-overlay');pendingBackupImport=null;}
 function dbReplaceUserDataAtomic(state){return dbWriteStoresAtomic(USER_DATA_STORES,(tx,fail)=>{for(const store of USER_DATA_STORES)tx.objectStore(store).clear();for(const store of USER_DATA_STORES){const os=tx.objectStore(store);for(const row of (state[store]||[])){const r=os.put(row);r.onerror=()=>fail(r.error);}}});}
 async function applyImportedPreferences(){const theme=await dbGet('settings','theme').catch(()=>null);const tv=theme&&THEME_VALUES.includes(theme.val)?theme.val:'system';document.documentElement.setAttribute('data-theme',tv);updateThemeBtn(tv);const level=await dbGet('settings','textLevel').catch(()=>null);applyTextLevel(level&&TEXT_LEVELS[level.val]?level.val:'normal');const rp=await dbGet('settings','showReperes').catch(()=>null);showReperes=!!(rp&&rp.val===true);applyReperesState();await initialiseSupplementMode();}
 async function confirmImportBackup(){if(!pendingBackupImport||!pendingBackupImport.validation.ok)return;const env=pendingBackupImport.env;try{await dbReplaceUserDataAtomic(env.state);await dbPut('settings',{key:'user_data_schema_version',value:2,ts:Date.now()});await migrateUserDataV3();await dbPut('settings',{key:'last_backup_import_at',val:new Date().toISOString(),source_version:env.version,ts:Date.now()});await refreshUserDataStaleness();await applyImportedPreferences();closeImportPreview();await renderEspace();showToast('Sauvegarde restaurée');}catch(e){console.error('LDC: import rolled back',e);showToast('Restauration annulée — aucune donnée remplacée');}}
@@ -5701,12 +5759,12 @@ async function openAutour() {
     ? `${sp.supplement_id} · ${sp.display_date||sp.date_iso||''} · COMPLÉMENT · IT-PM`
     : currentEntry.stable_ref + ' · ' + (currentEntry.date_display || currentEntry.title || '');
   scroll.innerHTML = '<div class="autour-loading"><div class="spinner"></div></div>';
-  overlay.classList.add('show');
+  openModalOverlay('autour-overlay','closeAutour');
   await buildAutourContent(scroll);
 }
 
 function closeAutour() {
-  document.getElementById('autour-overlay').classList.remove('show');
+  closeModalOverlay('autour-overlay');
 }
 
 async function buildAutourContent(container) {
@@ -5890,11 +5948,11 @@ function showThemeSheet() {
     chip.classList.toggle('active', active);
     chip.setAttribute('aria-pressed', active ? 'true' : 'false');
   });
-  document.getElementById('theme-overlay').classList.add('show');
+  openModalOverlay('theme-overlay','closeThemeSheet');
 }
 
 function closeThemeSheet() {
-  document.getElementById('theme-overlay').classList.remove('show');
+  closeModalOverlay('theme-overlay');
 }
 
 async function setThemePreference(theme) {
@@ -5997,11 +6055,11 @@ async function showSizeSheet() {
   let level = 'normal';
   try { level = await ensureTextLevelSetting(); } catch(e) { console.warn('LDC: text-level setting unavailable', e); }
   applyTextLevel(level);
-  document.getElementById('size-overlay').classList.add('show');
+  openModalOverlay('size-overlay','closeSizeSheet');
 }
 
 function closeSizeSheet() {
-  document.getElementById('size-overlay').classList.remove('show');
+  closeModalOverlay('size-overlay');
 }
 
 async function setTextLevel(level) {
@@ -6068,7 +6126,19 @@ async function preloadSearchMetadata() {
   catch(e) { console.warn('LDC: compact search metadata unavailable', e); }
 }
 
+function setShellState(state){
+  const body=document.body;if(!body)return;
+  body.classList.remove('app-state-boot','app-state-onboarding');
+  if(state==='boot')body.classList.add('app-state-boot');
+  if(state==='onboarding')body.classList.add('app-state-onboarding');
+  const lock=state==='boot'||state==='onboarding';
+  document.querySelectorAll('.screen,#nav,#update-banner,#seltext-panel,#cp-overlay,#autour-overlay,.overlay').forEach(el=>{
+    if(lock)el.setAttribute('inert',''); else el.removeAttribute('inert');
+  });
+}
+
 async function boot() {
+  setShellState('boot');
   await openDB();
   await initialiseSupplementMode();
 
@@ -6115,12 +6185,13 @@ async function boot() {
   await renderHome();
 
   document.getElementById('loading').style.display = 'none';
+  setShellState('normal');
 
   // LDC-E: resolve validated static-host deep links only after DB/settings/home are ready.
   await applyInitialDeepLink();
 
   // Show onboarding on first launch
-  if (!localStorage.getItem('ldc_onboarding_done')) {
+  if (!safeOnboardingStorageGet('ldc_onboarding_done')) {
     showOnboarding();
   }
 
@@ -6412,10 +6483,10 @@ function renderDnResultCard() {
    CacheStorage contains public app/corpus bytes only. IndexedDB settings holds
    the user-visible completion record; it is not itself the offline payload.
 ═══════════════════════════════════════════════════════ */
-const OFFLINE_CACHE_VERSION = 'ldc-le-livre-du-ciel-offline-v2.19.29-R1B';
+const OFFLINE_CACHE_VERSION = 'ldc-le-livre-du-ciel-offline-v2.19.31-R1B';
 const OFFLINE_MANIFEST_SCHEMA = 'ldc-offline-manifest-v2';
-const OFFLINE_CONTENT_BINDING = 'e04fec1271bfcdcda070ae686d02f1cb5cf4114c904ca136d4c357fbaff7be61';
-const OFFLINE_CORPUS_MANIFEST_SHA256 = '86105e38147ad315303659f935b3fc5e21633b2d9ff2de7f123860b54a6154fb';
+const OFFLINE_CONTENT_BINDING = '1bfa785936d68d2f8caf38e89c12d27f9eb7db5c6400b97c97c89f5e2e3e359e';
+const OFFLINE_CORPUS_MANIFEST_SHA256 = 'fd980be6bba9deb48ccd334797532fdbab67c98c52d83d437e0ba862fd2eddc4';
 const OFFLINE_STATES = Object.freeze(['NOT_PREPARED','CHECKING','DOWNLOADING','READY','PARTIAL','ERROR','CANCELLED']);
 let offlineUiState = {state:'NOT_PREPARED',completed:0,total:0,failed:[],total_bytes:0,job_id:null,message:'',content_binding_sha256:OFFLINE_CONTENT_BINDING,corpus_manifest_sha256:OFFLINE_CORPUS_MANIFEST_SHA256};
 const offlineStatusWaiters = new Map();

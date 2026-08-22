@@ -1,16 +1,39 @@
-# Livre du Ciel — RA19B multi-source source-backed flow adjudication
+# Livre du Ciel — RA19D mobile-shell/theme/modal integrity repair on RA19B corpus authority
 
-- Public version shown to users: **Version 29**.
-- Technical app/update identifier: **v2.19.29-R1B**.
-- Stage: **LDC-AFLP-SUP-T1-RA19B-MULTI-SOURCE-FLOW-ADJUDICATION**.
-- Build date: **2026-08-21**.
-- Immutable baseline: **Version 28 / v2.19.28-R1B / RA18**, deploy ZIP SHA-256 `cbe48143dd41661a3bbe1da6cf8f1213c705ff9d15527848969587723affe3cc`.
+- Public version shown to users: **Version 31**.
+- Technical app/update identifier: **v2.19.31-R1B**.
+- Stage: **LDC-AFLP-SUP-T1-RA19D-MOBILE-SHELL-THEME-MODAL-INTEGRITY**.
+- Build date: **2026-08-22**.
+- Immediate code baseline: **Version 30 / v2.19.30-R1B / RA19C**, never deployed, SHA-256 `15965d17ffd09f840e8e629fb8893987933a949270277d83e5ec03dc95ef104b`.
+- Deployed historical baseline: **Version 29 / v2.19.29-R1B / RA19B**, SHA-256 `eb2fa6abce1525399547f469ad1c2d64e818ff8685fe11cc20a57571c59f92fc`.
+- Version 29 physical Samsung gate: **FAIL** — direct first-launch evidence exposed onboarding/nav layering and dark-theme contrast defects.
+- Version 31 scope: mobile shell only — boot isolation, onboarding lifecycle/contrast/responsiveness, modal/nav stacking, residual surface-token repair, active-nav feedback and onboarding storage resilience.
+- Version 30 **Partager l’application** behaviour is preserved.
+- RA19B remains the unchanged corpus/display-flow authority: 74,348 canonical paragraphs and 20,811 active source-backed visual boundaries (20,062 joins; 749 preserved breaks).
+- Canonical devotional text, paragraph IDs/order/stable refs, search/speaker/display/flow/supplement payloads and user-data schema are unchanged.
+- Candidate status: **STATIC_PACKAGE_CANDIDATE — PHYSICAL DEVICE RETEST REQUIRED**.
+- Physical Samsung/iPhone/iPad, live GitHub Pages, installed-PWA and true-offline release gates are not passed by static/emulated evidence.
+- Wide public release: **NOT AUTHORIZED**.
+
+> Version 30 / RA19C below is retained as historical provenance only. It was audited but never deployed.
+
+---
+
+# Historical provenance — Livre du Ciel — RA19C app sharing on RA19B corpus authority
+
+- Public version shown to users: **Version 30**.
+- Technical app/update identifier: **v2.19.30-R1B**.
+- Stage: **LDC-AFLP-SUP-T1-RA19C-APP-SHARING**.
+- Build date: **2026-08-22**.
+- Immediate RA19C app baseline: **Version 29 / v2.19.29-R1B / RA19B**, deploy ZIP SHA-256 `eb2fa6abce1525399547f469ad1c2d64e818ff8685fe11cc20a57571c59f92fc`.
+- RA19B corpus-flow editing baseline: **Version 28 / v2.19.28-R1B / RA18**, deploy ZIP SHA-256 `cbe48143dd41661a3bbe1da6cf8f1213c705ff9d15527848969587723affe3cc`.
 - Frozen source-backed decision ledger: **20,811/20,811** linked boundaries; **20,062 JOIN_CERTAIN**, **749 KEEP_BREAK_CERTAIN**, **0 KEEP_LIST_CERTAIN**, **0 REVIEW**; ledger SHA-256 `d3acc508e1264811916b3c456952a53ebc5b95ccd80d09316bea619769175484`.
-- RA19B stores the final source-backed visual policy/action and evidence hash on every active linked `boundary_after`; the RA18 heuristic remains only as a legacy compatibility fallback and is not used by any active linked boundary.
+- RA19C changes only the app shell: **Aide → À propos → Partager l’application** now uses the device native share sheet with a clean app-home URL and a copy-link fallback.
+- RA19B remains the unchanged corpus/display-flow authority: it stores the final source-backed visual policy/action and evidence hash on every active linked `boundary_after`; the RA18 heuristic remains only as a legacy compatibility fallback and is not used by any active linked boundary.
 - Canonical devotional text, paragraph IDs/order/stable refs, search shards, speaker identities/offsets, display transforms, supplement data and user anchor semantics are protected and unchanged.
 - Physical iPhone/iPad/Samsung, assistive-technology, live GitHub Pages, installed-PWA update and true-offline reopening gates remain external and must not be inferred from static/package checks.
 
-> Historical provenance: Version 28 / RA18 and earlier authority blocks below are retained only as superseded history; they do not govern current Version 29 boundary decisions.
+> Corpus provenance: Version 29 / RA19B remains the governing source-backed boundary authority. Version 30 / RA19C changes the app-sharing shell only; it does not reopen the 20,811 RA19B boundary decisions.
 
 # Livre du Ciel — RA16 search-date affordance + simplified public version
 

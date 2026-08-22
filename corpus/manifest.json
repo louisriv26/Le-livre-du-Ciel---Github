@@ -49,7 +49,7 @@
   "speech_resynced": true,
   "notes": "All 36 tomes structurally reconciled. EB-17 completed the two provenance corrections identified by EB-16; Tome 17 23 November 1924 remains PDF-title-only/body-not-proven. EB-20 normalised three source-page ranges from direct PDF evidence. RA11 adjudicates all 226 RA10 broader structural/discourse cases: 210 display-flow joins, 14 intentional-structure keeps, 2 Tome-10 source-proven keeps, 0 unresolved. RA12 reconciles stale duplicated flow-summary metadata; flow shard bytes remain unchanged. RA19B replaces active linked-boundary heuristic visual decisions with a frozen 20,811-row multi-source source-backed ledger; canonical paragraph text/IDs/order/search/speaker/display transforms are unchanged.",
   "speech_layer_note": "RA5C source-backed targeted reconciliation: three Tome 11 offsets mechanically resynchronised after later canonical punctuation/quotation repairs; Tome 23 P117-P118 outer Jesus continuity restored while preserving embedded illustrative quotations as depth-2 structure; Tome 25 P040 missing lexical “seule” restored inside the existing Jesus quoted term; Tome 20 P073 restored as outer JESUS plus the previously source-adjudicated complete PERSONIFIED_VOICE Fiat prayer at depth 2. Canonical devotional text and all speaker identities outside these seven paragraphs are unchanged.",
-  "app_version": "v2.19.29-R1B",
+  "app_version": "v2.19.31-R1B",
   "speaker_layer": {
     "total_segments": 65110,
     "jesus": 59009,
