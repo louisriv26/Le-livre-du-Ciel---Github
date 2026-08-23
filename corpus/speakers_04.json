@@ -23338,7 +23338,7 @@
   {
     "_vol": 4,
     "confidence": "high",
-    "display_role": "generic_soul_voice",
+    "display_role": "demonic_direct_speech",
     "end_char": 365,
     "entry_id": "ldc_t04_1903_02_23_e001",
     "paragraph_id": "ldc_t04_1903_02_23_e001_p008",
@@ -23349,15 +23349,16 @@
     },
     "quotation_depth": 0,
     "quote_depth": 1,
-    "review_status": "r3a31_phase_A_verified",
-    "segment_id": "LDC.T04.1903-02-23.E001.P008.S02",
-    "source": "INHERITED_FROZEN_BATCH",
+    "review_status": "APPROVED_RA19E",
+    "segment_id": "ldc_t04_1903_02_23_e001_p008.RA19E.0215.0365.DEMON.C0175",
+    "source": "RA19E_COMPLETE_ENTRY_SPEAKER_INTEGRITY_RECONCILIATION",
     "source_quote_index": 3,
-    "speaker": "GENERIC_SOUL",
+    "speaker": "DEMON",
     "stable_ref": "LDC.T04.1903-02-23.E001.P008",
     "start_char": 215,
     "text_preview": "L'Église sera détruite. Les fonctions publiques n'existeront plus. Au plus, il restera quelques fonctions cachées. Et la Madone ne sera plus reconnue.",
-    "volume": 4
+    "volume": 4,
+    "evidence": "RA19E RA19E-C0175; complete-entry adjudication; frozen ledger sha256=b3f809d3d08c4623c23c7a49e57ce180ca3ab2d89eaf6cbab71925eb6c437878"
   },
   {
     "_vol": 4,

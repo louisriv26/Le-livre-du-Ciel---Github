@@ -1,19 +1,23 @@
-# Livre du Ciel — RA19D mobile-shell/theme/modal integrity repair on RA19B corpus authority
+# Livre du Ciel — RA19E exhaustive speaker-integrity reconciliation on exact RA19D Version 31 baseline
 
-- Public version shown to users: **Version 31**.
-- Technical app/update identifier: **v2.19.31-R1B**.
-- Stage: **LDC-AFLP-SUP-T1-RA19D-MOBILE-SHELL-THEME-MODAL-INTEGRITY**.
-- Build date: **2026-08-22**.
-- Immediate code baseline: **Version 30 / v2.19.30-R1B / RA19C**, never deployed, SHA-256 `15965d17ffd09f840e8e629fb8893987933a949270277d83e5ec03dc95ef104b`.
-- Deployed historical baseline: **Version 29 / v2.19.29-R1B / RA19B**, SHA-256 `eb2fa6abce1525399547f469ad1c2d64e818ff8685fe11cc20a57571c59f92fc`.
-- Version 29 physical Samsung gate: **FAIL** — direct first-launch evidence exposed onboarding/nav layering and dark-theme contrast defects.
-- Version 31 scope: mobile shell only — boot isolation, onboarding lifecycle/contrast/responsiveness, modal/nav stacking, residual surface-token repair, active-nav feedback and onboarding storage resilience.
-- Version 30 **Partager l’application** behaviour is preserved.
-- RA19B remains the unchanged corpus/display-flow authority: 74,348 canonical paragraphs and 20,811 active source-backed visual boundaries (20,062 joins; 749 preserved breaks).
-- Canonical devotional text, paragraph IDs/order/stable refs, search/speaker/display/flow/supplement payloads and user-data schema are unchanged.
-- Candidate status: **STATIC_PACKAGE_CANDIDATE — PHYSICAL DEVICE RETEST REQUIRED**.
-- Physical Samsung/iPhone/iPad, live GitHub Pages, installed-PWA and true-offline release gates are not passed by static/emulated evidence.
-- Wide public release: **NOT AUTHORIZED**.
+- Public version shown to users: **Version 32**.
+- Technical app/update identifier: **v2.19.32-R1B**.
+- Stage: **LDC-AFLP-SUP-T1-RA19E-SPEAKER-INTEGRITY-RECONCILIATION**.
+- Build date: **2026-08-23**.
+- Exact immediate baseline: **Version 31 / v2.19.31-R1B / RA19D**, SHA-256 `b91aabf84803685cb5a86379c2a76c6239c2882bc1fa8b4277479f978c025441`.
+- RA19E scope: exhaustive speaker-integrity reconciliation of the frozen 2,611-candidate universe; **483 correction rows** applied to **20 speaker shards** after `REVIEW_BLOCKING=0`.
+- Final speaker inventory: **65,004 segments**; canonical devotional paragraph text, paragraph IDs/order/stable refs, search, display, flow and supplement shards are unchanged.
+- Nested semantic voices remain distinct from presentation: RA19E explicitly reconciles quotation depth where required so approved outer-speaker styling remains intact.
+- RA19B remains the unchanged source-backed flow authority; flow shards are byte-identical and runtime semantic links are recomputed from corrected speaker data.
+- Candidate status: **STATIC PACKAGE CANDIDATE — FINAL REOPEN AUDITS EXTERNAL — PHYSICAL DEVICE RETEST REQUIRED**.
+- Physical Samsung/iPhone/iPad, live GitHub Pages, installed-PWA and true-offline release gates are not claimed by this static/package build.
+- Wide public release remains subject to the external final decision lock.
+
+## RA19E evidence binding
+
+- Adjudication ledger SHA-256: `6b40bddc43b562537ec8d7102c31535375443e8740a10a59458cb186900b0c21`.
+- Frozen correction ledger SHA-256: `b3f809d3d08c4623c23c7a49e57ce180ca3ab2d89eaf6cbab71925eb6c437878`.
+- Final deploy ZIP intentionally contains no audit reports; reopened-ZIP and independent audit evidence is maintained externally.
 
 > Version 30 / RA19C below is retained as historical provenance only. It was audited but never deployed.
 

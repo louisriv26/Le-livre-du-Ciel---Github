@@ -1896,12 +1896,12 @@ html[data-theme="dark"] .st-luisa{color:#D4A843;}
    VERSION — single source of truth
    Update this string on every release.
 ═══════════════════════════════════════════════════════ */
-const APP_VERSION = 'v2.19.31-R1B'; // technical update/audit identifier
-const PUBLIC_VERSION = '31';        // single user-facing release number
+const APP_VERSION = 'v2.19.32-R1B'; // technical update/audit identifier
+const PUBLIC_VERSION = '32';        // single user-facing release number
 const APP_VERSION_LABEL = `Version ${PUBLIC_VERSION}`;
-const APP_BUILD   = '2026-08-22';
-const SW_CACHE_VERSION = 'ldc-v2.19.31-R1B';
-const CORPUS_MANIFEST_SHA256 = 'fd980be6bba9deb48ccd334797532fdbab67c98c52d83d437e0ba862fd2eddc4';
+const APP_BUILD   = '2026-08-23';
+const SW_CACHE_VERSION = 'ldc-v2.19.32-R1B';
+const CORPUS_MANIFEST_SHA256 = 'b711a701b8b94b8fcacfcbb5bb6561fd9d7235fe4b99033f5d2bb8951235cc76';
 const DEEP_LINK_SCHEMA = 'ldc-deep-link-v1';
 const READING_POSITION_SCHEMA = 'ldc-reading-position-v2';
 
@@ -6483,10 +6483,10 @@ function renderDnResultCard() {
    CacheStorage contains public app/corpus bytes only. IndexedDB settings holds
    the user-visible completion record; it is not itself the offline payload.
 ═══════════════════════════════════════════════════════ */
-const OFFLINE_CACHE_VERSION = 'ldc-le-livre-du-ciel-offline-v2.19.31-R1B';
+const OFFLINE_CACHE_VERSION = 'ldc-le-livre-du-ciel-offline-v2.19.32-R1B';
 const OFFLINE_MANIFEST_SCHEMA = 'ldc-offline-manifest-v2';
-const OFFLINE_CONTENT_BINDING = '1bfa785936d68d2f8caf38e89c12d27f9eb7db5c6400b97c97c89f5e2e3e359e';
-const OFFLINE_CORPUS_MANIFEST_SHA256 = 'fd980be6bba9deb48ccd334797532fdbab67c98c52d83d437e0ba862fd2eddc4';
+const OFFLINE_CONTENT_BINDING = 'cea0ce684ca1eba146ed130bbc42a1843d064593d1b2f890f26730b4f8b62e73';
+const OFFLINE_CORPUS_MANIFEST_SHA256 = 'b711a701b8b94b8fcacfcbb5bb6561fd9d7235fe4b99033f5d2bb8951235cc76';
 const OFFLINE_STATES = Object.freeze(['NOT_PREPARED','CHECKING','DOWNLOADING','READY','PARTIAL','ERROR','CANCELLED']);
 let offlineUiState = {state:'NOT_PREPARED',completed:0,total:0,failed:[],total_bytes:0,job_id:null,message:'',content_binding_sha256:OFFLINE_CONTENT_BINDING,corpus_manifest_sha256:OFFLINE_CORPUS_MANIFEST_SHA256};
 const offlineStatusWaiters = new Map();
