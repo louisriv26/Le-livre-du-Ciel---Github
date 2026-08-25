@@ -1,13 +1,13 @@
 {
   "schema": "ldc-offline-manifest-v2",
-  "app_version": "v2.19.41-R1B",
-  "cache_version": "ldc-le-livre-du-ciel-offline-v2.19.41-R1B",
+  "app_version": "v2.19.42-R1B",
+  "cache_version": "ldc-le-livre-du-ciel-offline-v2.19.42-R1B",
   "corpus_generation": "G036-AFLP-R1B-SUP-T1",
   "scope": "COMPLETE_36_TOME_READING_PLUS_LDC_AFLP_SUP_T1_PLUS_LEXICAL_METADATA_SPEAKER_SEARCH__VECTOR_EMBEDDING_SUBSYSTEM_RETIRED",
   "semantic_vector_search_included": false,
   "semantic_vector_search_note": "Sous-système vectoriel/embeddings retiré de ce build. La recherche métadonnées + lexicale/BM25 reste autoritative sur le corpus composite; toute future recherche vectorielle exigera une reconstruction complète et une exécution bundlée/auto-hébergée séparément autorisée.",
   "asset_count": 224,
-  "total_bytes": 191939638,
+  "total_bytes": 191940115,
   "families": {
     "display": 36,
     "display_titles": 1,
@@ -392,8 +392,8 @@
     },
     {
       "path": "corpus/manifest.json",
-      "bytes": 23460,
-      "sha256": "6a4c9dd408469ae6e7e1f42433a6c4fe9ee741ebc563389a6107dd63e679a6a9"
+      "bytes": 23937,
+      "sha256": "45b5a86eabacc4a5e2b8a6ad49f032a7d859b344a61030d7445b3629a6c3d55e"
     },
     {
       "path": "corpus/paragraphs_01.json",
@@ -1147,6 +1147,6 @@
     }
   ],
   "content_binding_schema": "ldc-offline-content-binding-v1",
-  "corpus_manifest_sha256": "6a4c9dd408469ae6e7e1f42433a6c4fe9ee741ebc563389a6107dd63e679a6a9",
-  "content_binding_sha256": "c9a745098723f4f2b21c26600e04eefd2b59acae35a74157a0bbfef4c9c0fcc4"
+  "corpus_manifest_sha256": "45b5a86eabacc4a5e2b8a6ad49f032a7d859b344a61030d7445b3629a6c3d55e",
+  "content_binding_sha256": "5118ef47b7fb43a3b2323cd890ac7311976cc7fe62b12d9536a80fe0fc511885"
 }

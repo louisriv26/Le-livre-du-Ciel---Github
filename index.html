@@ -213,6 +213,10 @@ body.app-state-boot,body.app-state-onboarding{overflow:hidden;}
 .nav-item:focus-visible{outline:2px solid var(--gold-text);outline-offset:2px;}
 
 /* ═══ SCREENS ═══ */
+/* V42 desktop scroll containment: Stage A introduced the semantic <main> wrapper.
+   It must inherit the body flex-height contract so screen-level .scroll panes have
+   a bounded height on desktop while preserving the existing touch scroll model. */
+#main-content{display:flex;flex:1 1 auto;min-height:0;min-width:0;flex-direction:column;overflow:hidden;width:100%;}
 .screen{display:none;flex:1;min-height:0;flex-direction:column;}
 .screen.active{display:flex;}
 /* Stage A semantic structure/accessibility: one main landmark and visually stable semantic headings. */
@@ -1920,12 +1924,12 @@ html[data-theme="dark"] .st-luisa{color:#D4A843;}
    VERSION — single source of truth
    Update this string on every release.
 ═══════════════════════════════════════════════════════ */
-const APP_VERSION = 'v2.19.41-R1B'; // technical update/audit identifier
-const PUBLIC_VERSION = '41';        // single user-facing release number
+const APP_VERSION = 'v2.19.42-R1B'; // technical update/audit identifier
+const PUBLIC_VERSION = '42';        // single user-facing release number
 const APP_VERSION_LABEL = `Version ${PUBLIC_VERSION}`;
 const APP_BUILD   = '2026-08-25';
-const SW_CACHE_VERSION = 'ldc-v2.19.41-R1B';
-const CORPUS_MANIFEST_SHA256 = '6a4c9dd408469ae6e7e1f42433a6c4fe9ee741ebc563389a6107dd63e679a6a9';
+const SW_CACHE_VERSION = 'ldc-v2.19.42-R1B';
+const CORPUS_MANIFEST_SHA256 = '45b5a86eabacc4a5e2b8a6ad49f032a7d859b344a61030d7445b3629a6c3d55e';
 const DEEP_LINK_SCHEMA = 'ldc-deep-link-v1';
 const READING_POSITION_SCHEMA = 'ldc-reading-position-v2';
 
@@ -2186,7 +2190,7 @@ function isStaleRecord(r) {
 /* ═══════════════════════════════════════════════════════
    CORPUS LOADING
 ═══════════════════════════════════════════════════════ */
-const CORPUS_CV = 'cv=cm-6a4c9dd408469ae6'; // derived from corpus/manifest.json SHA-256
+const CORPUS_CV = 'cv=cm-45b5a86eabacc4a5'; // derived from corpus/manifest.json SHA-256
 
 function sourceModeShowsBackbone() { return supplementMode !== 'additions'; }
 function sourceModeShowsSupplements() { return supplementMode !== 'aflp'; }
@@ -6576,10 +6580,10 @@ function renderDnResultCard() {
    CacheStorage contains public app/corpus bytes only. IndexedDB settings holds
    the user-visible completion record; it is not itself the offline payload.
 ═══════════════════════════════════════════════════════ */
-const OFFLINE_CACHE_VERSION = 'ldc-le-livre-du-ciel-offline-v2.19.41-R1B';
+const OFFLINE_CACHE_VERSION = 'ldc-le-livre-du-ciel-offline-v2.19.42-R1B';
 const OFFLINE_MANIFEST_SCHEMA = 'ldc-offline-manifest-v2';
-const OFFLINE_CONTENT_BINDING = 'c9a745098723f4f2b21c26600e04eefd2b59acae35a74157a0bbfef4c9c0fcc4';
-const OFFLINE_CORPUS_MANIFEST_SHA256 = '6a4c9dd408469ae6e7e1f42433a6c4fe9ee741ebc563389a6107dd63e679a6a9';
+const OFFLINE_CONTENT_BINDING = '5118ef47b7fb43a3b2323cd890ac7311976cc7fe62b12d9536a80fe0fc511885';
+const OFFLINE_CORPUS_MANIFEST_SHA256 = '45b5a86eabacc4a5e2b8a6ad49f032a7d859b344a61030d7445b3629a6c3d55e';
 const OFFLINE_STATES = Object.freeze(['NOT_PREPARED','CHECKING','DOWNLOADING','READY','PARTIAL','ERROR','CANCELLED']);
 let offlineUiState = {state:'NOT_PREPARED',completed:0,total:0,failed:[],total_bytes:0,job_id:null,message:'',content_binding_sha256:OFFLINE_CONTENT_BINDING,corpus_manifest_sha256:OFFLINE_CORPUS_MANIFEST_SHA256};
 let runtimeCacheUiState = {entries:0,bytes:0,max_entries:48,max_bytes:50331648};

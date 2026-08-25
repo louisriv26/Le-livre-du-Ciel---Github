@@ -1,3 +1,20 @@
+# Livre du Ciel — Version 42 / Stage C.1 desktop scroll containment
+
+- Public version: **42**. Technical identifier: **v2.19.42-R1B**.
+- Stage: **LDC-AFLP-SUP-T1-RA19E1-V42-STAGE-C1-DESKTOP-SCROLL-FLEX-CONTAINMENT**. Build date: **2026-08-25**.
+- Immutable immediate baseline: Version 41 SHA-256 `aa3f5d3bb848847ba1b2d01f77ed2d1bf84c9e56fca3dd739cc1608ef7b12929`.
+- Trigger: external desktop feedback reported that the reader and Bibliothèque/Tome list could no longer scroll, while iPhone/iPad scrolling remained functional.
+- Root cause: the Stage A semantic `<main id="main-content">` wrapper inserted an extra element between the flex-column body and `.screen`, but the wrapper itself had no flex/`min-height:0` containment. Desktop `.scroll` children therefore lost a bounded viewport while `body` remained `overflow:hidden`.
+- Fix: restore the missing shell contract on `#main-content` only: `display:flex; flex:1 1 auto; min-height:0; min-width:0; flex-direction:column; overflow:hidden; width:100%`. Existing `.screen` and `.scroll` rules are unchanged.
+- Protected: canonical corpus, paragraph IDs/order, A17/B-v7.10, RA19B flow, all search/speaker/display/flow payloads, Stage B search logic, Stage C F1/F3 runtime-cache algorithm, F8 Android handler and user-data schema.
+- Corpus manifest SHA-256: `45b5a86eabacc4a5e2b8a6ad49f032a7d859b344a61030d7445b3629a6c3d55e`; corpus cache epoch: `cm-45b5a86eabacc4a5`.
+- Offline content binding SHA-256: `5118ef47b7fb43a3b2323cd890ac7311976cc7fe62b12d9536a80fe0fc511885`; assets: **224**; bytes: **191940115**.
+- **Package state at freeze:** candidate bytes only. Desktop browser validation, iPhone/iPad regression confirmation, reopened-ZIP audits and final decision lock are external authorities written after freeze. No post-freeze PASS is claimed inside this deploy package.
+
+> Version 41 below remains the immutable Stage C runtime-storage/PWA baseline and historical evidence.
+
+---
+
 # Livre du Ciel — Version 41 / Stage C runtime storage + PWA
 
 - Public version: **41**. Technical identifier: **v2.19.41-R1B**.
