@@ -390,30 +390,13 @@
   function resolveNestedQuotationPresentation(segments, paragraphOrder) {
     paragraphOrder = paragraphOrder || {};
 
-    /* RA19E.1 / Version 33: main-corpus speaker shards carry an explicit,
-       build-generated presentation_parent for every semantic segment. This is
-       the fixed-point parent projection and is authoritative over quotation
-       depth. Supplement records intentionally remain on the legacy fallback
-       below because they are outside the RA19E.1 evidence universe. */
+    /* RA19E.1 / Version 45 mixed-entry hardening.
+       Main-corpus presentation_parent is authoritative PER SEGMENT. Supplement
+       records intentionally have no presentation_parent and therefore use the
+       legacy contextual fallback. A parentless supplement must never force an
+       explicitly adjudicated backbone segment back through legacy inference. */
     var sourceSegments = segments || [];
-    if (sourceSegments.length && sourceSegments.every(function (x) { return !!x.presentation_parent; })) {
-      var explicit = [], explicitLedger = [], explicitErrors = [];
-      for (var ex = 0; ex < sourceSegments.length; ex++) {
-        var src = sourceSegments[ex], c = {};
-        for (var ck in src) if (Object.prototype.hasOwnProperty.call(src, ck)) c[ck] = src[ck];
-        var parent = String(src.presentation_parent || '').toUpperCase();
-        if (parent !== 'JESUS' && parent !== 'MARY' && parent !== 'LUISA') {
-          explicitErrors.push({code:'INVALID_EXPLICIT_PRESENTATION_PARENT',segment_id:src.segment_id,presentation_parent:src.presentation_parent});
-          parent = src.speaker;
-        }
-        c.display_speaker = parent;
-        c.display_resolution = 'explicit_ra19e1_parent';
-        explicit.push(c);
-        explicitLedger.push({scheme:'ra19e1_explicit_parent',segment_id:src.segment_id,paragraph_id:src.paragraph_id,semantic_speaker:src.speaker,display_speaker:parent,resolution:c.display_resolution});
-      }
-      return {ok:explicitErrors.length===0,segments:explicit,ledger:explicitLedger,errors:explicitErrors};
-    }
-    var arr = (segments || []).map(function (s, ix) {
+    var arr = sourceSegments.map(function (s, ix) {
       var c = {};
       for (var k in s) if (Object.prototype.hasOwnProperty.call(s, k)) c[k] = s[k];
       c.__ix = ix;
@@ -429,6 +412,8 @@
       return ao - bo || a.start_char - b.start_char || a.end_char - b.end_char || a.__ix - b.__ix;
     });
 
+    /* Compute the historical contextual fallback over the whole entry. This
+       remains the only authority for parentless supplement records. */
     var prevParent = new Array(arr.length), nextParent = new Array(arr.length);
     var active = null;
     for (var i = 0; i < arr.length; i++) {
@@ -445,34 +430,26 @@
       nextParent[j] = active;
     }
 
-    var ledger = [], errors = [];
+    var fallbackLedger = [], fallbackErrors = [];
     for (var n = 0; n < arr.length; n++) {
       var s = arr[n];
       if (Number(s.quotation_depth || 0) !== 2) continue;
       var prev = prevParent[n], next = nextParent[n];
-      // No preceding depth-1 turn means the nested quotation is embedded in
-      // Luisa's narrative presentation. Do NOT borrow a later Jesus/Mary turn.
       var parent = prev || 'LUISA';
       s.display_speaker = parent;
       s.display_resolution = prev
         ? (next && next !== prev ? 'outer_prev_conflict_resolved' : 'outer_prev')
         : 'narrative_luisa_default';
-      ledger.push({ scheme: 'quotation_depth', segment_id: s.segment_id, paragraph_id: s.paragraph_id,
+      fallbackLedger.push({ scheme: 'quotation_depth', segment_id: s.segment_id, paragraph_id: s.paragraph_id,
                     semantic_speaker: s.speaker, display_speaker: parent,
                     previous_depth1: prev, next_depth1: next,
                     resolution: s.display_resolution });
     }
 
-    /* GR8 — legacy nested-quotation compatibility.
-       Fourteen inherited Tome 4 records use the older `quote_depth` field while
-       `quotation_depth` is zero. They are semantically valid nested quotations,
-       but GR5's presentation projection did not see them. Resolve them from the
-       nearest PRECEDING legacy depth-1 speaking turn, across paragraph boundaries
-       within the same entry. Never borrow a later turn. The semantic `speaker`
-       remains immutable; only display_speaker changes. */
+    /* GR8 legacy quote_depth fallback. */
     var legacyParent = null;
-    for (var q = 0; q < arr.length; q++) {
-      var ls = arr[q];
+    for (var qx = 0; qx < arr.length; qx++) {
+      var ls = arr[qx];
       var ld = Number(ls.quote_depth || 0);
       if (ld === 1) {
         legacyParent = ls.speaker;
@@ -483,19 +460,57 @@
       ls.display_speaker = legacyDisplay;
       ls.display_resolution = legacyParent ? 'legacy_outer_prev' : 'legacy_narrative_luisa_default';
       if (!legacyParent) {
-        errors.push({ code: 'LEGACY_NESTED_WITHOUT_PRECEDING_DEPTH1',
+        fallbackErrors.push({ code: 'LEGACY_NESTED_WITHOUT_PRECEDING_DEPTH1',
                       segment_id: ls.segment_id, paragraph_id: ls.paragraph_id });
       }
-      ledger.push({ scheme: 'legacy_quote_depth', segment_id: ls.segment_id,
+      fallbackLedger.push({ scheme: 'legacy_quote_depth', segment_id: ls.segment_id,
                     paragraph_id: ls.paragraph_id, semantic_speaker: ls.speaker,
                     display_speaker: legacyDisplay, previous_depth1: legacyParent,
                     next_depth1: null, resolution: ls.display_resolution });
     }
 
-    // Restore original source order for paragraph indexing. Remove private sort key.
+    /* Overlay explicit RA19E.1 parent authority PER SEGMENT. Invalid explicit
+       values are blocking. Fallback errors are relevant only to records that
+       actually depend on fallback; an explicit segment is never invalidated by
+       an unused legacy path. */
+    var explicitLedger = [], fallbackUseLedger = [], explicitErrors = [];
+    var explicitIds = {}, parentlessIds = {};
+    for (var ex = 0; ex < arr.length; ex++) {
+      var x = arr[ex];
+      if (x.presentation_parent != null && String(x.presentation_parent).trim() !== '') {
+        var ep = String(x.presentation_parent).toUpperCase();
+        if (ep !== 'JESUS' && ep !== 'MARY' && ep !== 'LUISA') {
+          explicitErrors.push({code:'INVALID_EXPLICIT_PRESENTATION_PARENT',segment_id:x.segment_id,presentation_parent:x.presentation_parent});
+          parentlessIds[x.segment_id] = true;
+          continue;
+        }
+        explicitIds[x.segment_id] = true;
+        x.display_speaker = ep;
+        x.display_resolution = 'explicit_ra19e1_parent_overlay';
+        explicitLedger.push({scheme:'ra19e1_explicit_parent_overlay',segment_id:x.segment_id,paragraph_id:x.paragraph_id,
+          semantic_speaker:x.speaker,display_speaker:ep,resolution:x.display_resolution});
+      } else {
+        parentlessIds[x.segment_id] = true;
+        fallbackUseLedger.push({scheme:'legacy_fallback_missing_explicit_parent',segment_id:x.segment_id,paragraph_id:x.paragraph_id,
+          semantic_speaker:x.speaker,display_speaker:x.display_speaker,resolution:x.display_resolution});
+      }
+    }
+    var relevantFallbackErrors = fallbackErrors.filter(function (e) { return !!parentlessIds[e.segment_id]; });
+    var errors = explicitErrors.concat(relevantFallbackErrors);
+    var ledger = fallbackUseLedger.concat(explicitLedger);
+
+    // Restore source order and remove private sort key.
     arr.sort(function (a, b) { return a.__ix - b.__ix; });
     for (var z = 0; z < arr.length; z++) delete arr[z].__ix;
-    return { ok: errors.length === 0, segments: arr, ledger: ledger, errors: errors };
+    return {
+      ok: errors.length === 0,
+      segments: arr,
+      ledger: ledger,
+      errors: errors,
+      explicit_parent_count: explicitLedger.length,
+      fallback_parent_count: fallbackUseLedger.length,
+      mixed_parent_mode: explicitLedger.length > 0 && fallbackUseLedger.length > 0
+    };
   }
 
   root.LDCSpeechModel = {

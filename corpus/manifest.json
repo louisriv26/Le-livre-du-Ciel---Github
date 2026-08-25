@@ -45,11 +45,11 @@
     36
   ],
   "volumes_total": 36,
-  "status": "R1B_CANONICAL_CORPUS__RA19E1_A17_BV7_10_FIXED_POINT__V42_STAGE_C1_DESKTOP_SCROLL_APP_SHELL_ONLY__EXTERNAL_DECISION_LOCK_REQUIRED",
+  "status": "R1B_CANONICAL_CORPUS__BV7_11_PARENT_FIXED_POINT__V45_MIXED_ENTRY_RUNTIME_OVERLAY_HARDENING__V46_HELP_ONBOARDING_TRUST_COMPREHENSION__V47_REPORT_INTEGRITY_METADATA_RECONCILIATION__EXTERNAL_DECISION_LOCK_REQUIRED",
   "speech_resynced": true,
   "notes": "All 36 tomes structurally reconciled. EB-17 completed the two provenance corrections identified by EB-16; Tome 17 23 November 1924 remains PDF-title-only/body-not-proven. EB-20 normalised three source-page ranges from direct PDF evidence. RA11 adjudicates all 226 RA10 broader structural/discourse cases: 210 display-flow joins, 14 intentional-structure keeps, 2 Tome-10 source-proven keeps, 0 unresolved. RA12 reconciles stale duplicated flow-summary metadata; flow shard bytes remain unchanged. RA19B replaces active linked-boundary heuristic visual decisions with a frozen 20,811-row multi-source source-backed ledger; canonical paragraph text/IDs/order/search/speaker/display transforms are unchanged.",
-  "speech_layer_note": "Current authority: RA19E.1 A17 semantic fixed point and B-v7.10 explicit presentation-parent projection. Historical RA19E/V32 speaker evidence is retained separately as provenance. Canonical devotional paragraph text is unchanged.",
-  "app_version": "v2.19.42-R1B",
+  "speech_layer_note": "V45 runtime hardening only: explicit main-corpus presentation_parent overlays per segment; parentless supplement segments use legacy contextual fallback. No speaker/corpus/search/flow/display data changed from locked V44.",
+  "app_version": "v2.19.47-R1B",
   "speaker_layer": {
     "total_segments": 65012,
     "speaker_counts": {
@@ -67,12 +67,12 @@
       "SAINT": 24
     },
     "presentation_counts": {
-      "JESUS": 59981,
-      "LUISA": 4822,
+      "JESUS": 59972,
+      "LUISA": 4831,
       "MARY": 209
     },
-    "verification_scope": "RA19E.1 A17 semantic fixed point + B-v7.10 explicit presentation-parent fixed point; canonical paragraph/search/display/flow text unchanged",
-    "presentation_parent_authority": "BUILD_GENERATED_EXPLICIT_PARENT__QUOTATION_DEPTH_DISCOVERY_ONLY"
+    "verification_scope": "V44 B-v7.11 data fixed point preserved byte-for-byte; V45 changes runtime resolver only so parentless supplements cannot demote explicit backbone parent authority.",
+    "presentation_parent_authority": "BV7_11_EXPLICIT_MAIN_CORPUS_PARENT__QUOTATION_DEPTH_DISCOVERY_ONLY"
   },
   "t17_23nov1924_status": "Body retained: title-only in supplied FR PDF but full entry (incl. Jesus discourse) present and materially matching both English witnesses (QDW, Hugh Owen); FR is compressed. Provenance recorded as legacy/English-corroborated, pending controlled FR reconstruction.",
   "search_norm": {
@@ -600,5 +600,103 @@
     "speaker_shards_changed": false,
     "flow_shards_changed": false,
     "display_shards_changed": false
-  }
+  },
+  "ra19e1_v43_stage_c1a_scroll_containing_block_closure": {
+    "date": "2026-08-25",
+    "baseline_app_version": "v2.19.42-R1B",
+    "baseline_zip_sha256": "c1cc7996119d1d76bb744c21c270104b1bd19cbedf018e488db07849c97a3d55",
+    "app_shell_css_changed": true,
+    "substantive_css_change": "MAIN_CONTENT_POSITION_RELATIVE_ONLY",
+    "trigger": "V42_REAUDIT_MEASURED_AIDE_DOCUMENT_SCROLL_FROM_ABSOLUTELY_POSITIONED_OFFLINE_AT_STATUS_ESCAPING_INTENDED_CLIPPING_CONTAINER",
+    "canonical_text_changed": false,
+    "paragraph_ids_changed": false,
+    "search_logic_changed": false,
+    "search_shards_changed": false,
+    "semantic_index_changed": false,
+    "speaker_shards_changed": false,
+    "presentation_parent_changed": false,
+    "flow_changed": false,
+    "display_changed": false,
+    "user_data_schema_changed": false,
+    "runtime_storage_algorithm_changed": false,
+    "f8_handler_changed": false
+  },
+  "ra19e1_bv7_11_luisa_reset_challenge": {
+    "date": "2026-08-25",
+    "baseline_app_version": "v2.19.43-R1B",
+    "baseline_zip_sha256": "8c416449a5754fa683029f1015a845bb9e12f91316809ba4df91de726ca438dc",
+    "challenge_universe": "semantic_speaker=LUISA__quotation_depth=0__presentation_parent=JESUS",
+    "challenge_rows": 17,
+    "keep_jesus_owned_formula": 8,
+    "reset_to_luisa": 9,
+    "review_blocking": 0,
+    "adjudication_csv_sha256": "9ee5958cc99f72301c2a92fb4ee0aa8a0a3e9e932297f81de326602cc77ee973",
+    "seed39_fixture_rows": 39,
+    "seed39_result": "39/39 PASS",
+    "seed39_expected_jesus": 18,
+    "seed39_expected_luisa": 21,
+    "changed_speaker_shards": [
+      1,
+      2,
+      5,
+      7,
+      11
+    ],
+    "presentation_counts_before": {
+      "JESUS": 59981,
+      "LUISA": 4822,
+      "MARY": 209
+    },
+    "presentation_counts_after": {
+      "JESUS": 59972,
+      "LUISA": 4831,
+      "MARY": 209
+    },
+    "semantic_speaker_changed": false,
+    "segment_geometry_changed": false,
+    "canonical_text_changed": false,
+    "paragraph_ids_changed": false,
+    "search_changed": false,
+    "flow_changed": false,
+    "display_changed": false,
+    "supplements_changed": false,
+    "reset_segment_ids": [
+      "LDC.T02.R3A.S0159",
+      "LDC.T02.R3A.S0209",
+      "LDC.T02.R3A.S0537",
+      "LDC.T02.R3A.S0626",
+      "LDC.T05.INTRO.PREFACE.001.P017.S02",
+      "LDC.T07.1906-07-10.E001.P002.S01",
+      "LDC.T07.1906-11-06.E001.P004.S02",
+      "LDC.T11.11-2.P017.R3A31.0058.0097.LUISA",
+      "R3A.T01.ldc_t01_sec094_p005.S02"
+    ],
+    "keep_segment_ids": [
+      "LDC.T02.R3A.PA.S0071",
+      "LDC.T04.1902-08-10.E001.P004.S02",
+      "LDC.T28.E0021.P038.R3A31.0000.0077.LUISA.01",
+      "LDC.T29.E0023.P073.R3A31.0000.0048.LUISA.01",
+      "LDC.T29.E0035.P015.R3A31.0000.0034.LUISA.01",
+      "LDC.T29.E0035.P016.R3A31.0000.0046.LUISA.01",
+      "T01.FINALRECHECK.SEC011.P008.LUISA",
+      "T01.FINALRECHECK.SEC017.P006.LUISA"
+    ]
+  },
+  "mixed_entry_parent_runtime_hardening": {
+    "date": "2026-08-25",
+    "baseline_app_version": "v2.19.44-R1B",
+    "baseline_zip_sha256": "8e1e58899750a42a0d32caa7570f631e36ab70996b148b4d4df289677c3e84ae",
+    "main_corpus_parent_policy": "VALID_EXPLICIT_PARENT_OVERLAYS_PER_SEGMENT",
+    "supplement_parent_policy": "PARENTLESS_SUPPLEMENT_USES_LEGACY_CONTEXTUAL_FALLBACK",
+    "fallback_may_override_explicit_parent": false,
+    "supplement_presentation_parent_fields_added": 0,
+    "speaker_shards_changed": 0,
+    "canonical_text_changed": false,
+    "semantic_speaker_changed": false,
+    "search_changed": false,
+    "flow_changed": false,
+    "display_changed": false
+  },
+  "help_layer_note": "V46 changes Help/onboarding wording, information architecture and semantic Help headings only. Canonical corpus, speaker/presentation data, search, flow, display, supplements, user-state schemas and runtime behaviour are unchanged from locked V45.",
+  "release_metadata_note": "V47 is a package/report-integrity metadata successor to frozen V46. Help/onboarding content and all canonical/runtime data are inherited unchanged from V46; V47 corrects stale current package-state metadata and restarts the release evidence chain."
 }

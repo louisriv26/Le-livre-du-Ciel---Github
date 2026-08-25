@@ -1,3 +1,86 @@
+# Livre du Ciel — Version 47 / report-integrity & release-metadata reconciliation
+
+- Public version: **47**. Technical identifier: **v2.19.47-R1B**.
+- Stage: **LDC-AFLP-SUP-T1-RA19E1-V47-REPORT-INTEGRITY-METADATA-RECONCILIATION**. Build date: **2026-08-25**.
+- Immutable immediate baseline: Version 46 SHA-256 `0e7a9c1eed2d104d7c6d9ce316126dccf68cea4adf4936e0325d3c8e1e627831`.
+- Trigger: the post-freeze deep four-pass re-audit found two evidence/release-metadata integrity defects in frozen Version 46: `version.json.package_state_at_freeze` still described V45 as the current freeze candidate, and `V46_FOUR_PASS_REAUDIT.json` encoded `failures=true` / `blocking_current_contradictions=true` while its Markdown and decision lock claimed zero failures/contradictions.
+- Version 46 is therefore **FAIL_REPORT_INTEGRITY / SUPERSEDED** as a release authority. Its Help/onboarding content remains valid and is inherited byte-for-byte in Version 47.
+- V47 substantive change: current release metadata/report-integrity reconciliation only. Canonical text, Help/onboarding wording, paragraph/search/speaker/flow/display/supplement payloads, `speech_model.js`, search logic, user-state schemas, highlighting/storage/navigation logic and service-worker algorithm are unchanged.
+- Corpus manifest SHA-256: `1d61468afb5fc5e0a52d71113b8d9bdb1b3e9468e09caf11f9a998c901edb43c`; cache epoch: `cm-1d61468afb5fc5e0`; offline binding: `e617677684cbb8316a860e1f49500c788db99d1242f37ca590895ba6419f6541`.
+- **Package state at freeze:** candidate bytes only. Post-freeze audits and decision lock are external evidence.
+- Version 47 external validation has not started. Version 45 E1/E2 evidence does **not** transfer to V47. Begin with V47 E1, then E2, then E3–E11.
+- Wide public release is not authorized.
+
+> Everything below this line is historical predecessor documentation. Any older wording such as “current”, “governing”, “PASS”, “next stage” or release instruction applies only to its historical version and is superseded by the V47 section above.
+
+---
+
+# Livre du Ciel — Version 46 / Help & onboarding trust/comprehension successor
+
+- Public version: **46**. Technical identifier: **v2.19.46-R1B**.
+- Stage: **LDC-AFLP-SUP-T1-RA19E1-V46-HELP-ONBOARDING-TRUST-COMPREHENSION**. Build date: **2026-08-25**.
+- Immutable immediate baseline: Version 45 SHA-256 `65220058924d3fe1823e3d7fe5f1dcee2010fa5a4270a725b0de8ea2c679b4bc`.
+- Substantive scope: Help information architecture, semantic Help headings, plain-language explanations, trust boundaries, copy/share/support clarification, local-data no-sync explanation, update-banner guidance, and narrower onboarding wording.
+- Protected and byte-unchanged from Version 45: canonical paragraph/search/speaker/flow/display/supplement payloads, `speech_model.js`, user-data schemas, highlighting/storage logic, navigation logic and service-worker runtime algorithm.
+- Corpus manifest SHA-256: `f649b3ebd0c231ddce02202f84d40a4ecafc7dde4bab9d59ad2ea05a9f574e66`; cache epoch: `cm-f649b3ebd0c231dd`; offline binding: `f8ff9ac1bbcf5f0abe7e30b5dfe6c06b44989339b3a6ca8f10d0d5e39bff81de`.
+- **Package state at freeze:** candidate bytes only. Reopened-ZIP audits and decision lock are external evidence written after freeze.
+- Version 45 E1/E2 evidence is historical for Version 45 bytes and does **not** transfer to Version 46. Version 46 external validation must restart at E1 controlled origin, then E2 exact served-byte binding, before E3–E11.
+- Wide public release is not authorized by this package.
+
+> Version 45 below remains the immutable mixed-entry runtime-hardening and external E1/E2 historical authority.
+
+---
+
+# Livre du Ciel — Version 45 / mixed-entry explicit-parent runtime hardening
+
+- Public version: **45**. Technical identifier: **v2.19.45-R1B**.
+- Immutable immediate baseline: Version 44 SHA-256 `8e1e58899750a42a0d32caa7570f631e36ab70996b148b4d4df289677c3e84ae`.
+- Substantive change: `speech_model.js` now computes legacy context once, then overlays every valid explicit `presentation_parent` per segment. Parentless supplement segments alone depend on fallback.
+- The 52 supplement speaker records remain parentless by design; no `presentation_parent` is invented for them.
+- The locked V44 B-v7.11 speaker data, presentation counts, canonical text, search, flow, display and paragraph geometry are byte-identical.
+- Mixed-entry fallback usage is exposed through resolver counts/ledger.
+- Corpus manifest SHA-256: `b66766990e5c5ab3877eb34f960769c4f9b58a12ea716d6e2fb3dfb4b64995b9`; cache epoch: `cm-b66766990e5c5ab3`; offline binding: `0fc9ce5a20c142566661c2cb6764710a46c592ce3c9f5360d93589f65eabe71e`.
+- **Package state at freeze:** candidate bytes only. No post-freeze PASS is claimed inside this deploy package.
+- External physical-device/PWA validation remains not authorized at this stage.
+
+> Version 44 below remains the immutable B-v7.11 data authority.
+
+---
+
+# Livre du Ciel — Version 44 / B-v7.11 Luisa-reset presentation-parent reconciliation
+
+- Public version: **44**. Technical identifier: **v2.19.44-R1B**.
+- Stage: **LDC-AFLP-SUP-T1-RA19E1-V44-BV7_11-LUISA-RESET-PRESENTATION-PARENT-RECONCILIATION**. Build date: **2026-08-25**.
+- Immutable immediate baseline: Version 43 SHA-256 `8c416449a5754fa683029f1015a845bb9e12f91316809ba4df91de726ca438dc`.
+- Evidence authority: exact 17-row `LUISA / depth-0 / JESUS-parent` challenge closed at **8 KEEP / 9 RESET / 0 REVIEW_BLOCKING**.
+- Data mutation only: exactly nine `presentation_parent` values change from `JESUS` to `LUISA`, with provenance `RA19E1_BV7_11_LUISA_RESET_EVIDENCE_FIXED_POINT`. Semantic speaker, offsets/geometry, canonical text, paragraph IDs/order, RA19B flow, search, display, supplements and user-state schemas are unchanged.
+- Presentation counts: **JESUS 59,972 / LUISA 4,831 / MARY 209 = 65,012**.
+- Final governing seed fixture: **39/39** controls, using the explicitly corrected Seed #22 expectation (`Comme Je suis fatigué.` → JESUS).
+- Corpus manifest SHA-256: `3ee2dc93278c195e4a6d15449c6474682c6bbf3bd36d09733cd59ce327551794`; cache epoch: `cm-3ee2dc93278c195e`. Offline binding: `01dc1fbbaaa9273f8bc63558f7cc1572cdc68c283876f362b881cb7a65ed72ae`.
+- **Package state at freeze:** candidate bytes only. Primary reopened-ZIP, separately implemented independent reopened-ZIP, adversary/runtime checks, stale/report-integrity audit and final decision lock are external authorities written after freeze. No post-freeze PASS is claimed inside this deploy package.
+- External physical-device/PWA validation remains **not authorized** at this stage.
+
+> Version 43 below remains the immutable V42-A scroll-containment baseline and historical evidence.
+
+---
+
+# Livre du Ciel — Version 43 / Stage C.1A scroll containing-block closure
+
+- Public version: **43**. Technical identifier: **v2.19.43-R1B**.
+- Stage: **LDC-AFLP-SUP-T1-RA19E1-V43-STAGE-C1A-DESKTOP-SCROLL-CONTAINING-BLOCK-CLOSURE**. Build date: **2026-08-25**.
+- Immutable immediate baseline: Version 42 SHA-256 `c1cc7996119d1d76bb744c21c270104b1bd19cbedf018e488db07849c97a3d55`.
+- Trigger: the independent V42 re-audit measured residual document-level scrolling on Aide. The cause was the visually hidden, absolutely positioned `#offline-at-status` whose containing block could escape the intended clipped flex shell.
+- Substantive fix only: add `position:relative` to the existing `#main-content` containment rule. Existing flex sizing, screen-level `.scroll` rules, AT live-region semantics, speaker attribution, highlight anchoring, search logic, F1/F3 runtime-cache logic and F8 Android targeting are not changed.
+- Protected: canonical corpus, paragraph IDs/order, A17 semantic speakers, B-v7.10 presentation parents, RA19B flow, all search/speaker/display/flow payloads, user-state schemas and all runtime algorithms outside mechanically required release/cache bindings.
+- Corpus manifest SHA-256: `c88095cef0e8d3dce43d9c0103c69ae889003edd2193dc3f241cb6465f4b3420`; corpus cache epoch: `cm-c88095cef0e8d3dc`.
+- Offline content binding SHA-256: `ae67d24d63fe4a002a7563e2ef5cd527c8cb33ab8ef8aedb979b417183521635`; assets: **224**; bytes: **191941037**.
+- **Package state at freeze:** candidate bytes only. Primary reopened-ZIP, separately implemented independent reopened-ZIP, runtime browser evidence, stale/report-integrity audit and final decision lock are external authorities written after freeze. No post-freeze PASS is claimed inside this deploy package.
+- External physical-device/PWA validation remains **not authorized** at this stage.
+
+> Version 42 below remains the immutable Stage C.1 baseline and historical evidence.
+
+---
+
 # Livre du Ciel — Version 42 / Stage C.1 desktop scroll containment
 
 - Public version: **42**. Technical identifier: **v2.19.42-R1B**.

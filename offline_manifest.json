@@ -1,13 +1,13 @@
 {
   "schema": "ldc-offline-manifest-v2",
-  "app_version": "v2.19.42-R1B",
-  "cache_version": "ldc-le-livre-du-ciel-offline-v2.19.42-R1B",
+  "app_version": "v2.19.47-R1B",
+  "cache_version": "ldc-le-livre-du-ciel-offline-v2.19.47-R1B",
   "corpus_generation": "G036-AFLP-R1B-SUP-T1",
   "scope": "COMPLETE_36_TOME_READING_PLUS_LDC_AFLP_SUP_T1_PLUS_LEXICAL_METADATA_SPEAKER_SEARCH__VECTOR_EMBEDDING_SUBSYSTEM_RETIRED",
   "semantic_vector_search_included": false,
   "semantic_vector_search_note": "Sous-système vectoriel/embeddings retiré de ce build. La recherche métadonnées + lexicale/BM25 reste autoritative sur le corpus composite; toute future recherche vectorielle exigera une reconstruction complète et une exécution bundlée/auto-hébergée séparément autorisée.",
   "asset_count": 224,
-  "total_bytes": 191940115,
+  "total_bytes": 191944490,
   "families": {
     "display": 36,
     "display_titles": 1,
@@ -392,8 +392,8 @@
     },
     {
       "path": "corpus/manifest.json",
-      "bytes": 23937,
-      "sha256": "45b5a86eabacc4a5e2b8a6ad49f032a7d859b344a61030d7445b3629a6c3d55e"
+      "bytes": 28159,
+      "sha256": "1d61468afb5fc5e0a52d71113b8d9bdb1b3e9468e09caf11f9a998c901edb43c"
     },
     {
       "path": "corpus/paragraphs_01.json",
@@ -767,13 +767,13 @@
     },
     {
       "path": "corpus/speakers_01.json",
-      "bytes": 549527,
-      "sha256": "e731b6078e7c96bf64b06b631921a200bb093d7c45487b0aa141a57851a8f03d"
+      "bytes": 549544,
+      "sha256": "c333d1b78154e44c37f033f33a652d34dc9f306d6008f3af7c64d50dadc37d08"
     },
     {
       "path": "corpus/speakers_02.json",
-      "bytes": 530536,
-      "sha256": "5533df163db485a70ae0024a8ff1168f4aa0e2f2a60e8ecb3c1c3f22dc43bb75"
+      "bytes": 530604,
+      "sha256": "999a6d1648d3fe3618c140d339f7fa86230e22eac04ea44eda11c34f50cbe7e8"
     },
     {
       "path": "corpus/speakers_03.json",
@@ -787,8 +787,8 @@
     },
     {
       "path": "corpus/speakers_05.json",
-      "bytes": 206099,
-      "sha256": "52992a46cfd76f31d3b8a550b910bc93de75e71abfdaec0563136967475ce485"
+      "bytes": 206116,
+      "sha256": "50d745f4340f1e5aff8bfcbead2495c52122833728e803f1835414af47018d22"
     },
     {
       "path": "corpus/speakers_06.json",
@@ -797,8 +797,8 @@
     },
     {
       "path": "corpus/speakers_07.json",
-      "bytes": 319306,
-      "sha256": "0ce82a5fe21a143fe2bb5c45879d7ea38c2a970b54e8ab64baa66e59b7d36d92"
+      "bytes": 319340,
+      "sha256": "a2d2c8a1274fe93ca637d2f57069d1c3f9a76d54b2aa6dc4193c5c2e6cf01fe1"
     },
     {
       "path": "corpus/speakers_08.json",
@@ -817,8 +817,8 @@
     },
     {
       "path": "corpus/speakers_11.json",
-      "bytes": 1221399,
-      "sha256": "9f66c5f09055a20002de849c384adcb98041edabf232046fec9fe0959f8f73d4"
+      "bytes": 1221416,
+      "sha256": "d162371bfb8790d3b9221d276b720fa4af3c6f58c1b88f7612fafd319f25f694"
     },
     {
       "path": "corpus/speakers_12.json",
@@ -1147,6 +1147,6 @@
     }
   ],
   "content_binding_schema": "ldc-offline-content-binding-v1",
-  "corpus_manifest_sha256": "45b5a86eabacc4a5e2b8a6ad49f032a7d859b344a61030d7445b3629a6c3d55e",
-  "content_binding_sha256": "5118ef47b7fb43a3b2323cd890ac7311976cc7fe62b12d9536a80fe0fc511885"
+  "corpus_manifest_sha256": "1d61468afb5fc5e0a52d71113b8d9bdb1b3e9468e09caf11f9a998c901edb43c",
+  "content_binding_sha256": "e617677684cbb8316a860e1f49500c788db99d1242f37ca590895ba6419f6541"
 }
