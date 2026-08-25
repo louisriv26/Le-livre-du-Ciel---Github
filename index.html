@@ -215,6 +215,12 @@ body.app-state-boot,body.app-state-onboarding{overflow:hidden;}
 /* ═══ SCREENS ═══ */
 .screen{display:none;flex:1;min-height:0;flex-direction:column;}
 .screen.active{display:flex;}
+/* Stage A semantic structure/accessibility: one main landmark and visually stable semantic headings. */
+.sr-only,.speech-attribution-sr{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important;}
+h1.top-bar-title,h1.rh-title,h2.dn-section-title{margin-top:0;font-weight:400;}
+h1.top-bar-title{margin-bottom:0;line-height:1.2;}
+h1.rh-title{margin-top:0;}
+h2.dn-section-title{margin-bottom:0;}
 
 /* ═══ TOP BAR ═══ */
 .top-bar{display:flex;align-items:center;justify-content:space-between;
@@ -730,10 +736,23 @@ html[data-theme="dark"] .speech-marie { color:#8AB8D8; }
   opacity: .85;
   font-family: var(--body);
 }
-/* Repères reveal explicit speaker labels without changing the speech colours. */
+/* Repères reveal explicit presentation labels without changing speech colours. */
 .reperes-on .speech-label { display: block; }
 .speech-label.lbl-jesus { color: var(--gold-text); margin-left: 0; }
 .speech-label.lbl-marie { color: #2A5070; }
+/* Version 36: when semantic speaker differs from the Jesus/Mary presentation
+   parent, Repères adds a second study-only line.  It is outside canonical text,
+   non-selectable, and never changes speech styling or quotation punctuation. */
+.speech-quoted-voice {
+  display:none;
+  -webkit-user-select:none;user-select:none;
+  font-size:10px;
+  color:var(--muted);
+  font-style:italic;
+  margin:0 0 2px 0;
+  font-family:var(--body);
+}
+.reperes-on .speech-quoted-voice { display:block; }
 /* Repères reveal confidence metadata; low-confidence speech remains governed by the speech model. */
 .speech-conf {
   display: none;
@@ -1211,7 +1230,7 @@ html[data-theme="dark"] .st-luisa{color:#D4A843;}
 
 <!-- Selected-text panel (24 Heures pattern): contextual, labelled, anchored above the
      bottom nav so it can never collide with the iOS native selection menu. -->
-<div id="seltext-panel" aria-live="polite" role="region" aria-label="Actions du passage">
+<div id="seltext-panel" role="region" aria-label="Actions du passage">
   <div class="stp-label" id="context-panel-label">PASSAGE</div>
   <div class="stp-actions">
     <button type="button" class="stp-btn" id="ctx-highlight" onclick="contextHighlight()">
@@ -1452,10 +1471,12 @@ html[data-theme="dark"] .st-luisa{color:#D4A843;}
   <button class="ub-dismiss" onclick="document.getElementById('update-banner').classList.remove('show')" aria-label="Fermer">×</button>
 </div>
 
+<!-- MAIN APPLICATION CONTENT -->
+<main id="main-content">
 <!-- HOME -->
 <div class="screen active" id="screen-home">
   <div class="top-bar">
-    <span class="top-bar-title">Livre du Ciel</span>
+    <h1 class="top-bar-title">Livre du Ciel</h1>
     <div style="display:flex;gap:4px;align-items:center;">
       <span class="version-pill" id="version-pill-home"></span>
       <button class="btn-icon" onclick="openHelp()" title="Aide" aria-label="Aide">
@@ -1501,7 +1522,7 @@ html[data-theme="dark"] .st-luisa{color:#D4A843;}
   <!-- Returning -->
   <div id="home-return" class="scroll" style="display:none;">
     <!-- Featured Jesus quote -->
-    <div class="featured-quote" id="featured-quote" onclick="openJesusSpeech()">
+    <div class="featured-quote" id="featured-quote" onclick="openFeaturedQuote()">
       <div class="fq-label"><i class="ti ti-message-circle" style="font-size:11px;"></i> Paroles de Jésus</div>
       <div class="fq-text" id="fq-text">—</div>
       <div class="fq-ref" id="fq-ref">—</div>
@@ -1532,7 +1553,7 @@ html[data-theme="dark"] .st-luisa{color:#D4A843;}
     <button class="btn-back" onclick="goHome()">
       <i class="ti ti-arrow-left"></i> Accueil
     </button>
-    <span class="top-bar-title">Parcours guidés</span>
+    <h1 class="top-bar-title">Parcours guidés</h1>
     <span style="width:32px;"></span>
   </div>
   <div class="scroll parcours-list" id="parcours-list"></div>
@@ -1541,7 +1562,7 @@ html[data-theme="dark"] .st-luisa{color:#D4A843;}
 <!-- TOMES -->
 <div class="screen" id="screen-tomes">
   <div class="top-bar">
-    <span class="top-bar-title">Bibliothèque</span>
+    <h1 class="top-bar-title">Bibliothèque</h1>
     <span class="top-bar-sub" id="tomes-count"></span>
   </div>
   <div class="source-mode-bar"><div class="source-mode-segment" role="group" aria-label="Source affichée">
@@ -1559,7 +1580,7 @@ html[data-theme="dark"] .st-luisa{color:#D4A843;}
     <button class="btn-back" onclick="backToTomes()">
       <i class="ti ti-arrow-left"></i> Tomes
     </button>
-    <span class="top-bar-title" id="entries-title">Tome I</span>
+    <h1 class="top-bar-title" id="entries-title">Tome I</h1>
     <span style="width:44px" aria-hidden="true"></span>
   </div>
   <div class="source-mode-bar"><div class="source-mode-segment" role="group" aria-label="Source affichée">
@@ -1595,7 +1616,7 @@ html[data-theme="dark"] .st-luisa{color:#D4A843;}
   <div class="scroll" id="reader-scroll" onscroll="onReaderScroll()">
     <div class="reader-header">
       <div class="rh-vol" id="rh-vol"></div>
-      <div class="rh-title" id="rh-title"></div>
+      <h1 class="rh-title" id="rh-title"></h1>
       <div class="rh-date" id="rh-date"></div>
       <div class="supplement-badge supplement-header-badge" id="rh-supplement-badge" style="display:none">COMPLÉMENT · IT-PM</div>
       <div class="rh-divider"></div>
@@ -1622,7 +1643,7 @@ html[data-theme="dark"] .st-luisa{color:#D4A843;}
 <!-- SEARCH -->
 <div class="screen" id="screen-search">
   <div class="top-bar">
-    <span class="top-bar-title">Recherche</span>
+    <h1 class="top-bar-title">Recherche</h1>
     <button class="btn-icon" type="button" onclick="copySearchLink()" aria-label="Copier le lien de cette recherche" title="Copier le lien"><i class="ti ti-link"></i></button>
   </div>
   <div class="search-bar-wrap">
@@ -1666,7 +1687,7 @@ html[data-theme="dark"] .st-luisa{color:#D4A843;}
 <!-- MON ESPACE -->
 <div class="screen" id="screen-espace">
   <div class="top-bar">
-    <span class="top-bar-title">Mon Espace</span>
+    <h1 class="top-bar-title">Mon Espace</h1>
     <div style="display:flex;align-items:center;gap:2px;">
       <button class="btn-icon" onclick="exportJournalTxt()" aria-label="Exporter le journal lisible" title="Journal lisible"><i class="ti ti-file-text"></i></button>
       <button class="btn-icon" onclick="exportBackupJson()" aria-label="Sauvegarder les données" title="Sauvegarde JSON"><i class="ti ti-download"></i></button>
@@ -1710,7 +1731,7 @@ html[data-theme="dark"] .st-luisa{color:#D4A843;}
 <div class="screen" id="screen-help">
   <div class="top-bar">
     <button class="btn-back" onclick="closeHelp()"><i class="ti ti-arrow-left"></i> Retour</button>
-    <span class="top-bar-title">Aide</span><span style="width:44px;" aria-hidden="true"></span>
+    <h1 class="top-bar-title">Aide</h1><span style="width:44px;" aria-hidden="true"></span>
   </div>
   <div class="scroll">
     <div class="help-section">
@@ -1720,7 +1741,7 @@ html[data-theme="dark"] .st-luisa{color:#D4A843;}
         <div class="help-row"><span class="help-chip">COMPLÉMENT</span><span class="help-text">Isole les 14 compléments approuvés de Translation Set 1 : 12 entrées datées complètes et 2 compléments internes, traduits directement depuis IT-PM. Queen et Hugh Owen servent uniquement de traductions comparatives.</span></div>
         <div class="help-row"><span class="help-chip light">ENRICHI</span><span class="help-text">Réunit ALIGNÉ et les COMPLÉMENTS à leur position de lecture. Le choix est mémorisé et ne supprime ni favoris, ni notes, ni surlignages.</span></div>
         <div class="help-divider"></div>
-        <div class="help-row"><span class="help-chip">Repères</span><span class="help-text">Affiche ou masque les références, la provenance et les étiquettes de locuteur. Les outils personnels restent disponibles dans les deux états.</span></div>
+        <div class="help-row"><span class="help-chip">Repères</span><span class="help-text">Affiche les références et les attributions. JÉSUS ou MARIE indique le locuteur de présentation ; lorsqu’une citation intérieure appartient à une autre voix, une seconde ligne « voix citée : … » précise à qui appartiennent ces mots. Le texte, les guillemets et les couleurs ne sont pas modifiés.</span></div>
         <div class="help-row"><span class="help-chip" style="background:rgba(201,168,76,.15);color:#7A5A20;">Paroles de Jésus</span><span class="help-text">Quand Jésus est le locuteur principal d’une prise de parole directe, le passage apparaît en or/brun. Une citation imbriquée conserve le style du locuteur principal : Jésus citant quelqu’un reste en style Jésus ; Luisa citant Jésus reste en style Luisa. Le filtre de recherche utilise l’attribution sémantique enregistrée dans le corpus.</span></div>
         <div class="help-row"><span class="help-chip light">♥</span><span class="help-text">Ajoute ou retire l’entrée des Favoris. Le cœur est rempli lorsque l’entrée est déjà enregistrée ; elle apparaît aussi dans <b>Mon Espace → Favoris</b> et dans la liste du Tome.</span></div>
         <div class="help-row"><span class="help-chip light">Lu / ✓ Lu</span><span class="help-text">Marque explicitement l’entrée comme lue. Appuyez de nouveau sur <b>✓ Lu</b> pour retirer ce marquage. L’ouverture seule d’une entrée ne la marque pas comme lue.</span></div>
@@ -1748,7 +1769,7 @@ html[data-theme="dark"] .st-luisa{color:#D4A843;}
       <div class="help-section-head"><div class="help-section-icon hsi-blue"><i class="ti ti-search"></i></div><span class="help-section-title">Rechercher</span></div>
       <div class="help-card">
         <div class="help-row"><span class="help-chip light">Texte libre</span><span class="help-text">Saisissez un mot, une phrase, un thème ou une idée. La recherche choisit automatiquement les correspondances utiles.</span></div>
-        <div class="help-row"><span class="help-chip light">Paroles de Jésus</span><span class="help-text">Le filtre <b>Paroles de Jésus</b> restreint les résultats aux paragraphes contenant une attribution sémantique à Jésus. La couleur du lecteur suit toutefois le locuteur principal du passage.</span></div>
+        <div class="help-row"><span class="help-chip light">Passages contenant des paroles de Jésus</span><span class="help-text">Ce filtre restreint les résultats aux paragraphes contenant au moins un segment sémantique attribué à Jésus avec confiance élevée. La recherche porte ensuite sur le paragraphe entier : le résultat peut donc inclure aussi du texte de Luisa ou d’une autre voix. La couleur du lecteur suit le locuteur de présentation du passage.</span></div>
         <div class="help-row"><span class="help-chip light">Tomes</span><span class="help-text">Limitez la recherche avec les groupes <b>T1–6 · T7–12 · T13–18 · T19–24 · T25–30 · T31–36</b>, ou laissez <b>Tous</b>.</span></div>
         <div class="help-row"><span class="help-chip light">Date</span><span class="help-text">Quand la zone de recherche est vide, <b>Parcourir par date</b> ouvre la navigation chronologique.</span></div>
         <div class="help-divider"></div>
@@ -1758,7 +1779,7 @@ html[data-theme="dark"] .st-luisa{color:#D4A843;}
         <div class="help-row"><span class="help-chip outline">Idée proche</span><span class="help-text">La formulation diffère mais le passage est lexicalement proche de l’idée recherchée.</span></div>
         <div class="help-row"><span class="help-chip outline">Thème approché</span><span class="help-text">Une partie seulement des mots significatifs de la requête correspond au passage. C’est une correspondance lexicale plus faible : vérifiez le texte avant de le citer.</span></div>
         <div class="help-row"><span class="help-chip outline">Thème lié</span><span class="help-text">Le passage appartient à une famille d’images ou d’idées spirituelles liée à la requête.</span></div>
-        <div class="help-row"><span class="help-chip outline">Badges de contexte</span><span class="help-text"><b>Éditorial</b> signale une explication éditoriale du Tome 1 ; <b>COMPLÉMENT · IT-PM</b> signale un complément ; <b>Paroles de Jésus</b> apparaît quand le filtre correspondant est actif.</span></div>
+        <div class="help-row"><span class="help-chip outline">Badges de contexte</span><span class="help-text"><b>Éditorial</b> signale une explication éditoriale du Tome 1 ; <b>COMPLÉMENT · IT-PM</b> signale un complément ; <b>Passages contenant des paroles de Jésus</b> apparaît quand ce filtre est actif.</span></div>
       </div>
       <div class="help-tip">Pour les résultats approximatifs ou thématiques, vérifiez toujours le texte du passage avant de le citer.</div>
     </div>
@@ -1799,17 +1820,19 @@ html[data-theme="dark"] .st-luisa{color:#D4A843;}
     <div class="help-section">
       <div class="help-section-head"><div class="help-section-icon hsi-amber"><i class="ti ti-wifi-off"></i></div><span class="help-section-title">Hors ligne et mises à jour</span></div>
       <div class="help-card">
-        <div class="help-text" style="padding:2px 0 10px;"><b>Préparer hors ligne</b> met en cache les 36 Tomes, les compléments et les données nécessaires à la lecture et à la recherche disponibles dans cette version.</div>
-        <div id="offline-state-label" class="help-text" role="status" aria-live="polite">Vérification de l’état hors ligne…</div>
+        <div class="help-text" style="padding:2px 0 10px;"><b>Préparer hors ligne</b> met en cache les 36 Tomes, les compléments et les données nécessaires à la lecture et à la recherche disponibles dans cette version. Le cache temporaire utilisé pendant la lecture et la recherche est limité automatiquement pour éviter une croissance indéfinie.</div>
+        <div id="offline-state-label" class="help-text">Vérification de l’état hors ligne…</div>
+        <div id="offline-at-status" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
         <div style="height:8px;background:var(--border);border-radius:999px;overflow:hidden;margin:9px 0 5px;" aria-hidden="true"><div id="offline-progress-bar" style="height:100%;width:0;background:var(--gold-text);transition:width .15s ease;"></div></div>
         <div id="offline-progress-detail" class="help-text" style="font-size:12px;color:var(--muted);margin-bottom:10px;">—</div>
+        <div id="runtime-cache-detail" class="help-text" style="font-size:12px;color:var(--muted);margin:-4px 0 10px;">Cache temporaire lecture/recherche : vérification…</div>
         <div id="offline-failed-list" class="help-text" style="display:none;font-size:12px;color:var(--muted);margin:-2px 0 10px;white-space:pre-wrap;"></div>
-        <div style="display:flex;gap:8px;flex-wrap:wrap;"><button class="btn-secondary" style="flex:1;min-width:160px;" onclick="startOfflinePreparation()" id="offline-prepare-btn"><i class="ti ti-download"></i> Préparer hors ligne</button><button class="btn-secondary" style="display:none;" onclick="cancelOfflinePreparation()" id="offline-cancel-btn"><i class="ti ti-x"></i> Annuler</button><button class="btn-secondary" style="display:none;" onclick="clearOfflinePreparation()" id="offline-clear-btn"><i class="ti ti-trash"></i> Effacer</button></div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;"><button class="btn-secondary" style="flex:1;min-width:160px;" onclick="startOfflinePreparation()" id="offline-prepare-btn"><i class="ti ti-download"></i> Préparer hors ligne</button><button class="btn-secondary" style="display:none;" onclick="cancelOfflinePreparation()" id="offline-cancel-btn"><i class="ti ti-x"></i> Annuler</button><button class="btn-secondary" style="display:none;" onclick="clearOfflinePreparation()" id="offline-clear-btn"><i class="ti ti-trash"></i> Effacer les caches</button></div>
         <div class="help-divider"></div>
         <div class="help-text" style="padding:2px 0 10px;" id="update-check-status">L’application vérifie automatiquement les mises à jour à l’ouverture. Vous pouvez aussi vérifier manuellement.</div>
         <button class="btn-secondary" style="width:100%;" onclick="manualCheckForUpdate()" id="update-check-btn"><i class="ti ti-refresh"></i> Vérifier les mises à jour</button>
       </div>
-      <div class="help-tip">Après une mise à jour incompatible avec le cache précédent, l’application peut demander une nouvelle préparation hors ligne. Mon Espace reste indépendant du cache PWA.</div>
+      <div class="help-tip">Après une mise à jour incompatible avec le cache précédent, l’application peut demander une nouvelle préparation hors ligne. <b>Effacer les caches</b> supprime la préparation hors ligne et le cache temporaire de lecture/recherche, mais ne supprime pas Mon Espace, vos favoris, notes ou surlignages.</div>
     </div>
 
     <div class="help-section">
@@ -1839,7 +1862,7 @@ html[data-theme="dark"] .st-luisa{color:#D4A843;}
     <button class="btn-back" type="button" onclick="closeTome1EditorialAppendix()">
       <i class="ti ti-arrow-left"></i> Retour
     </button>
-    <span class="top-bar-title">Explications éditoriales</span>
+    <h1 class="top-bar-title">Explications éditoriales</h1>
     <span style="width:44px" aria-hidden="true"></span>
   </div>
   <div class="scroll" id="tome1-editorial-scroll">
@@ -1853,24 +1876,25 @@ html[data-theme="dark"] .st-luisa{color:#D4A843;}
     <button class="btn-icon" onclick="goSearch()" aria-label="Retour">
       <i class="ti ti-arrow-left"></i>
     </button>
-    <span class="top-bar-title">Navigateur de dates</span>
+    <h1 class="top-bar-title">Navigateur de dates</h1>
   </div>
   <div class="scroll dn-wrap">
     <div>
-      <div class="dn-section-title">Année</div>
+      <h2 class="dn-section-title">Année</h2>
       <div class="dn-year-strip" id="dn-year-strip"></div>
     </div>
     <div>
-      <div class="dn-section-title">Mois</div>
+      <h2 class="dn-section-title">Mois</h2>
       <div class="dn-month-grid" id="dn-month-grid"></div>
     </div>
     <div>
-      <div class="dn-section-title">Jour</div>
+      <h2 class="dn-section-title">Jour</h2>
       <div class="dn-day-grid" id="dn-day-grid"></div>
     </div>
     <div id="dn-result"></div>
   </div>
 </div>
+</main>
 
 <!-- BOTTOM NAV -->
 <nav id="nav">
@@ -1896,12 +1920,12 @@ html[data-theme="dark"] .st-luisa{color:#D4A843;}
    VERSION — single source of truth
    Update this string on every release.
 ═══════════════════════════════════════════════════════ */
-const APP_VERSION = 'v2.19.32-R1B'; // technical update/audit identifier
-const PUBLIC_VERSION = '32';        // single user-facing release number
+const APP_VERSION = 'v2.19.41-R1B'; // technical update/audit identifier
+const PUBLIC_VERSION = '41';        // single user-facing release number
 const APP_VERSION_LABEL = `Version ${PUBLIC_VERSION}`;
-const APP_BUILD   = '2026-08-23';
-const SW_CACHE_VERSION = 'ldc-v2.19.32-R1B';
-const CORPUS_MANIFEST_SHA256 = 'b711a701b8b94b8fcacfcbb5bb6561fd9d7235fe4b99033f5d2bb8951235cc76';
+const APP_BUILD   = '2026-08-25';
+const SW_CACHE_VERSION = 'ldc-v2.19.41-R1B';
+const CORPUS_MANIFEST_SHA256 = '6a4c9dd408469ae6e7e1f42433a6c4fe9ee741ebc563389a6107dd63e679a6a9';
 const DEEP_LINK_SCHEMA = 'ldc-deep-link-v1';
 const READING_POSITION_SCHEMA = 'ldc-reading-position-v2';
 
@@ -2162,7 +2186,7 @@ function isStaleRecord(r) {
 /* ═══════════════════════════════════════════════════════
    CORPUS LOADING
 ═══════════════════════════════════════════════════════ */
-const CORPUS_CV = 'cv=29';
+const CORPUS_CV = 'cv=cm-6a4c9dd408469ae6'; // derived from corpus/manifest.json SHA-256
 
 function sourceModeShowsBackbone() { return supplementMode !== 'additions'; }
 function sourceModeShowsSupplements() { return supplementMode !== 'aflp'; }
@@ -2838,7 +2862,7 @@ function captureSemanticReadingPosition(){
   const r=hit.getBoundingClientRect();
   const frac=r.height>0?clamp01((sr.top+8-r.top)/r.height):0;
   const canonLen=Math.max(0,Number(hit.dataset.canonicalLength)||0);
-  return {schema:READING_POSITION_SCHEMA,vol:currentVolume,entry_id:currentEntry.id,supplement_id:activeSupp&&activeSupp.supplement_id||null,para_id:hit.dataset.paraId||null,fraction_within_paragraph:frac,fallback_entry_fraction:entryFraction,approx_char:canonLen?Math.round(frac*canonLen):null,label:currentReaderLabel(),excerpt:String(hit.textContent||'').slice(0,80)+(String(hit.textContent||'').length>80?'…':''),updated_at:Date.now()};
+  return {schema:READING_POSITION_SCHEMA,vol:currentVolume,entry_id:currentEntry.id,supplement_id:activeSupp&&activeSupp.supplement_id||null,para_id:hit.dataset.paraId||null,fraction_within_paragraph:frac,fallback_entry_fraction:entryFraction,approx_char:canonLen?Math.round(frac*canonLen):null,label:currentReaderLabel(),excerpt:(()=>{const rec=window.LDCAnchor&&LDCAnchor.recordFor(hit);const t=rec?rec.text:canonicalParaText(hit);return String(t||'').slice(0,80)+(String(t||'').length>80?'…':'');})(),updated_at:Date.now()};
 }
 
 function restoreSemanticReadingPosition(pos){
@@ -2937,22 +2961,22 @@ if(window.visualViewport)window.visualViewport.addEventListener('resize',schedul
    HOME
 ═══════════════════════════════════════════════════════ */
 
-// Curated featured quotes (Jesus speech, verified)
+// Curated featured quotes — Stage A binds every card to its frozen exact paragraph target.
 const FEATURED_QUOTES = [
-  { t: '«Ma fille, si Tu veux adoucir Ma souffrance, viens souvent dans Ma Volonté et prodigue-Moi de l\'Adoration, de l\'Amour, de la Gratitude et des Remerciements au nom de toute la Création.»', ref: 'Tome 12' },
-  { t: '«Vivre dans Ma Volonté est le sommet de la Sainteté. Elle entraîne une évolution continuelle dans la grâce.»', ref: 'Tome 5' },
-  { t: '«Cesse de Me faire pleurer et échangeons le baiser de paix. Aimons-nous, et tous nous serons heureux, le Créateur et la créature.»', ref: 'Tome 25' },
-  { t: '«Je suis avec vous depuis si longtemps, et vous ne Me connaissez pas encore!»', ref: 'Tome 29' },
-  { t: '«Vois, ma fille, J\'ai fait cela pour toi, J\'ai souffert cela pour toi. Viens reconnaître les propriétés de ton Jésus, qui sont aussi les tiennes.»', ref: 'Tome 28' },
-  { t: '«Ici, on n\'entre pas. Cet endroit est réservé à la créature qui agit et vit dans notre Volonté.»', ref: 'Tome 30' },
-  { t: '«Reconnais dans ma lumière le grand don de ton Père qui t\'aime tellement qu\'Il veut que tu possèdes cette lumière.»', ref: 'Tome 29' },
-  { t: '«Qui peut résister à la Force de notre Amour infini qui sort de la créature et Nous aime?»', ref: 'Tome 30' },
-  { t: '«La petite fille de notre Volonté Divine ne marche pas et Nous ne ressentons pas en Nous le doux enchantement de ses actes.»', ref: 'Tome 27' },
-  { t: '«Ce qui est à Moi est à toi, et J\'ai tout fait pour toi.»', ref: 'Tome 31' },
-  { t: '«Je n\'ai rien de plus à lui donner. Je suis heureux de lui avoir tout donné.»', ref: 'Tome 29' },
-  { t: '«Je puis dire que Mon Amour a prévu pour l\'homme des avantages surpassant même les bienfaits de la Création.»', ref: 'Tome 15' },
-  { t: '«Mon désir à ce sujet est si grand que Je mettrai tout le reste de côté pour réaliser mon objectif. Par conséquent, sois attentive et reste-Moi fidèle.»', ref: 'Tome 14' },
-  { t: '«Il s\'agit là d\'un Royaume de paix auquel tous Mes fils devraient aspirer.»', ref: 'Tome 15' },
+  { t: '«Ma fille, si Tu veux adoucir Ma souffrance, viens souvent dans Ma Volonté et prodigue-Moi de l\'Adoration, de l\'Amour, de la Gratitude et des Remerciements au nom de toute la Création.»', ref: 'Tome 12', vol: 12, entry: 'ldc_t12_1920_01_09_e001', para: 'ldc_t12_1920_01_09_e001_p015', stable: 'LDC.T12.1920-01-09.E001.P015' },
+  { t: '«Vivre dans Ma Volonté est le sommet de la Sainteté. Elle entraîne une évolution continuelle dans la grâce.»', ref: 'Tome 5', vol: 5, entry: 'ldc_t05_1903_10_25_e001', para: 'ldc_t05_1903_10_25_e001_p015', stable: 'LDC.T05.1903-10-25.E001.P015' },
+  { t: '«Cesse de Me faire pleurer et échangeons le baiser de paix. Aimons-nous, et tous nous serons heureux, le Créateur et la créature.»', ref: 'Tome 25', vol: 25, entry: 'LDC.T25.E0016', para: 'LDC.T25.E0016.P041', stable: 'LDC.T25.E0016.P041' },
+  { t: '«Je suis avec vous depuis si longtemps, et vous ne Me connaissez pas encore!»', ref: 'Tome 29', vol: 29, entry: 'LDC.T29.E0028', para: 'LDC.T29.E0028.P072', stable: 'LDC.T29.E0028.P072' },
+  { t: '«Vois, ma fille, J\'ai fait cela pour toi, J\'ai souffert cela pour toi. Viens reconnaître les propriétés de ton Jésus, qui sont aussi les tiennes.»', ref: 'Tome 28', vol: 28, entry: 'LDC.T28.E0004', para: 'LDC.T28.E0004.P067', stable: 'LDC.T28.E0004.P067' },
+  { t: '«Ici, on n\'entre pas. Cet endroit est réservé à la créature qui agit et vit dans notre Volonté.»', ref: 'Tome 30', vol: 30, entry: 'LDC.T30.E0005', para: 'LDC.T30.E0005.P097', stable: 'LDC.T30.E0005.P097' },
+  { t: '«Reconnais dans ma lumière le grand don de ton Père qui t\'aime tellement qu\'Il veut que tu possèdes cette lumière.»', ref: 'Tome 29', vol: 29, entry: 'LDC.T29.E0023', para: 'LDC.T29.E0023.P064', stable: 'LDC.T29.E0023.P064' },
+  { t: '«Qui peut résister à la Force de notre Amour infini qui sort de la créature et Nous aime?»', ref: 'Tome 30', vol: 30, entry: 'LDC.T30.E0012', para: 'LDC.T30.E0012.P078', stable: 'LDC.T30.E0012.P078' },
+  { t: '«La petite fille de notre Volonté Divine ne marche pas et Nous ne ressentons pas en Nous le doux enchantement de ses actes.»', ref: 'Tome 27', vol: 27, entry: 'LDC.T27.E0016', para: 'LDC.T27.E0016.P055', stable: 'LDC.T27.E0016.P055' },
+  { t: '«Ce qui est à Moi est à toi, et J\'ai tout fait pour toi.»', ref: 'Tome 31', vol: 31, entry: 'LDC.T31.E0020', para: 'LDC.T31.E0020.P030', stable: 'LDC.T31.E0020.P030' },
+  { t: '«Je n\'ai rien de plus à lui donner. Je suis heureux de lui avoir tout donné.»', ref: 'Tome 29', vol: 29, entry: 'LDC.T29.E0019', para: 'LDC.T29.E0019.P030', stable: 'LDC.T29.E0019.P030' },
+  { t: '«Je puis dire que Mon Amour a prévu pour l\'homme des avantages surpassant même les bienfaits de la Création.»', ref: 'Tome 15', vol: 15, entry: 'LDC.T15.E0017', para: 'LDC.T15.E0017.P013', stable: 'LDC.T15.E0017.P013' },
+  { t: '«Mon désir à ce sujet est si grand que Je mettrai tout le reste de côté pour réaliser mon objectif. Par conséquent, sois attentive et reste-Moi fidèle.»', ref: 'Tome 14', vol: 14, entry: 'LDC.T14.E0022', para: 'LDC.T14.E0022.P027', stable: 'LDC.T14.E0022.P027' },
+  { t: '«Il s\'agit là d\'un Royaume de paix auquel tous Mes fils devraient aspirer.»', ref: 'Tome 15', vol: 15, entry: 'LDC.T15.E0036', para: 'LDC.T15.E0036.P064', stable: 'LDC.T15.E0036.P064' },
 ];
 
 function getDailyQuote() {
@@ -2995,6 +3019,15 @@ async function resumeReading() {
   pendingSemanticPosition = pos;
   await ensureVolumeIndex(pos.vol);
   openEntry(pos.vol, pos.entry_id, 'home', { restorePosition:pos, supplementId:pos.supplement_id||null });
+}
+
+// Open the featured quote at its frozen exact paragraph target.
+async function openFeaturedQuote() {
+  const q = getDailyQuote();
+  if (!q || !q.vol || !q.entry || !q.para) return;
+  showReperes = false; applyReperesState();
+  pendingParaId = q.para;
+  await openEntry(q.vol, q.entry, 'home');
 }
 
 // Open reader with calm defaults (Repères off) on first Jesus-speech entry of T02
@@ -3694,13 +3727,18 @@ function onParaClick(e) {
     showExistingHighlightPopup(e.target);
     return;
   }
-  const frag = e.target.closest('.para-fragment') || e.currentTarget.querySelector('.para-fragment');
-  if (isAndroidHighlightPlatform() && androidParagraphHighlightMode && frag && frag.dataset.paraId) {
+  const directFrag = e.target.closest('.para-fragment');
+  if (isAndroidHighlightPlatform() && androidParagraphHighlightMode) {
+    // F8: never guess a paragraph from a flow-level tap. Joiners and Repères
+    // metadata are not paragraph targets; ignoring them is safer than silently
+    // highlighting the first fragment in the flow group.
+    if (!directFrag || !e.currentTarget.contains(directFrag) || !directFrag.dataset.paraId) return;
     e.preventDefault();
     try { window.getSelection().removeAllRanges(); } catch (err) {}
-    startAndroidParagraphHighlight(frag.dataset.paraId);
+    startAndroidParagraphHighlight(directFrag.dataset.paraId);
     return;
   }
+  const frag = directFrag || e.currentTarget.querySelector('.para-fragment');
   const sel = window.getSelection();
   if (sel && !sel.isCollapsed && String(sel).trim().length > 0) {
     checkAndShowHighlightPopup(e.currentTarget);
@@ -3993,7 +4031,7 @@ function canonicalParaText(paraEl) {
   const walker = document.createTreeWalker(paraEl, NodeFilter.SHOW_TEXT);
   let text = '', tn;
   while ((tn = walker.nextNode())) {
-    if (tn.parentElement && tn.parentElement.closest('.speech-label,.speech-conf')) continue;
+    if (tn.parentElement && tn.parentElement.closest('.speech-label,.speech-conf,.speech-quoted-voice,.speech-attribution-sr')) continue;
     text += tn.textContent;
   }
   return text;
@@ -4003,7 +4041,7 @@ function canonicalOffset(paraEl, targetNode, targetOffset) {
   const walker = document.createTreeWalker(paraEl, NodeFilter.SHOW_TEXT);
   let len = 0, tn;
   while ((tn = walker.nextNode())) {
-    if (tn.parentElement && tn.parentElement.closest('.speech-label,.speech-conf')) continue;
+    if (tn.parentElement && tn.parentElement.closest('.speech-label,.speech-conf,.speech-quoted-voice,.speech-attribution-sr')) continue;
     if (tn === targetNode) return len + targetOffset;
     len += tn.length;
   }
@@ -4751,7 +4789,7 @@ function paintHighlightsInPara(paraEl, hls) {
         if (!n.nodeValue) return NodeFilter.FILTER_REJECT;
         let el = n.parentElement;
         while (el && el !== paraEl) {
-          if (el.classList && (el.classList.contains('speech-label') || el.tagName === 'MARK'))
+          if (el.classList && (el.classList.contains('speech-label') || el.classList.contains('speech-conf') || el.classList.contains('speech-quoted-voice') || el.classList.contains('speech-attribution-sr') || el.tagName === 'MARK'))
             return NodeFilter.FILTER_REJECT;
           el = el.parentElement;
         }
@@ -4886,7 +4924,7 @@ function buildSpeakerTag(speaker, confidence) {
 ═══════════════════════════════════════════════════════ */
 let searchVolFilter = 0; // 0 = all, or min of group
 let searchVolFilterMax = 0; // max of group (0 = all)
-let searchSpeakerFilter = false; // false = all, true = Jesus speech only
+let searchSpeakerFilter = false; // false = all; true = paragraphs containing at least one high-confidence JESUS semantic segment
 let semanticIndex = null;        // lexical/BM25 thematic metadata index; not vector embeddings
 let semanticIndexLoading = false;
 let searchMetadataIndex = null, searchMetadataLoading = null;
@@ -4916,7 +4954,7 @@ function renderSpeakerFilterRow() {
   row.appendChild(allBtn);
   const jesusBtn = document.createElement('button');
   jesusBtn.className = 'speech-filter-chip' + (searchSpeakerFilter ? ' active' : '');
-  jesusBtn.innerHTML = '<i class="ti ti-message-circle"></i> Paroles de Jésus';
+  jesusBtn.innerHTML = '<i class="ti ti-message-circle"></i> Passages contenant des paroles de Jésus';
   jesusBtn.onclick = () => { searchSpeakerFilter = true; renderSpeakerFilterRow(); if (document.getElementById('search-input').value) runSearch(); };
   row.appendChild(jesusBtn);
 }
@@ -5054,12 +5092,24 @@ function excerptAround(text, rawQuery, windowSize=220) {
 }
 
 function highlightMatches(text, rawQuery) {
-  const escaped = escapeHtml(text);
-  const words = rawQuery.trim().split(/\s+/).filter(w => w.length > 2)
+  const source = String(text == null ? '' : text);
+  const words = [...new Set(rawQuery.trim().split(/\s+/).filter(w => w.length > 2))]
+    .sort((a,b) => b.length - a.length)
     .map(w => w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
-  if (!words.length) return escaped;
-  const pattern = new RegExp('(' + words.join('|') + ')', 'gi');
-  return escaped.replace(pattern, '<mark class="search-hl">$1</mark>');
+  if (!words.length) return escapeHtml(source);
+  // F12: match against raw text, then escape each unmatched/matched slice separately.
+  // Never run the query regex against escapeHtml(text): a query such as "quot"
+  // must not turn the HTML entity &quot; into broken markup.
+  const pattern = new RegExp(words.join('|'), 'gi');
+  let html = '', last = 0, match;
+  while ((match = pattern.exec(source)) !== null) {
+    html += escapeHtml(source.slice(last, match.index));
+    html += '<mark class="search-hl">' + escapeHtml(match[0]) + '</mark>';
+    last = match.index + match[0].length;
+    if (!match[0].length) pattern.lastIndex += 1;
+  }
+  html += escapeHtml(source.slice(last));
+  return html;
 }
 
 function searchFor(term) {
@@ -5142,12 +5192,27 @@ const THEME_FAMILIES = [
   },
 ];
 
+const THEME_TERM_NORM_CACHE = new Map();
+function containsNormalisedTokenOrPhrase(normText, rawTerm) {
+  const hay = String(normText || '').trim();
+  let needle = THEME_TERM_NORM_CACHE.get(rawTerm);
+  if (needle === undefined) { needle = normalise(rawTerm); THEME_TERM_NORM_CACHE.set(rawTerm, needle); }
+  if (!hay || !needle) return false;
+  // Exact token/phrase boundaries without allocating a padded copy of every
+  // paragraph on every check. Normalisation guarantees single ASCII spaces.
+  let from = 0, at;
+  while ((at = hay.indexOf(needle, from)) !== -1) {
+    const end = at + needle.length;
+    if ((at === 0 || hay.charCodeAt(at-1) === 32) && (end === hay.length || hay.charCodeAt(end) === 32)) return true;
+    from = at + 1;
+  }
+  return false;
+}
+
 function findThemeMatches(normQuery) {
   const matched = [];
   for (const family of THEME_FAMILIES) {
-    if (family.terms.some(t => normQuery.includes(t) || t.includes(normQuery))) {
-      matched.push(family);
-    }
+    if (family.terms.some(t => containsNormalisedTokenOrPhrase(normQuery, t))) matched.push(family);
   }
   return matched;
 }
@@ -5155,9 +5220,7 @@ function findThemeMatches(normQuery) {
 function getThemeBoost(normItemText, matchedFamilies) {
   let boost = 0;
   for (const family of matchedFamilies) {
-    if (family.terms.some(t => normItemText.includes(t))) {
-      boost = Math.max(boost, 35);
-    }
+    if (family.terms.some(t => containsNormalisedTokenOrPhrase(normItemText, t))) boost = Math.max(boost, 35);
   }
   return boost;
 }
@@ -5384,7 +5447,8 @@ async function scanBodyKeyword(raw, vols, token, signal, speakerFilter) {
   const avgdl = (sem && sem.avgdl) || 30;
   const qtok = idf ? semTokenise(raw) : [];
   const qImpTotal = words.reduce((a,w)=>a+((idf&&idf[w])||2.5),0)||1;
-  let prelim = [], totalMatches = 0;
+  let prelim = [];
+  const matchCounts = {exact:0,words:0,partial:0,weak:0,thematic:0};
   const metaEl = document.getElementById('search-meta');
   for (let vi=0; vi<vols.length; vi++) {
     if (!isSearchActive(token)) throw new DOMException('Search cancelled','AbortError');
@@ -5398,39 +5462,67 @@ async function scanBodyKeyword(raw, vols, token, signal, speakerFilter) {
     for (const item of shard) {
       if (speechIds && !speechIds.has(item.id)) continue;
       const itemNorm = searchHay(item);
-      if (itemNorm.includes(norm)) { prelim.push({item, exact:true, cov:1e9, matched:words, themeBoost:0}); totalMatches++; continue; }
+      if (containsNormalisedTokenOrPhrase(itemNorm, norm)) {
+        prelim.push({item, exact:true, cov:1e9, matched:words, themeBoost:0, populationType:'exact'});
+        matchCounts.exact++;
+        continue;
+      }
       let cov=0; const matched=[];
-      for (const w of words) if (itemNorm.includes(w)) { cov += (idf&&idf[w])||2.5; matched.push(w); }
+      for (const w of words) if (containsNormalisedTokenOrPhrase(itemNorm, w)) { cov += (idf&&idf[w])||2.5; matched.push(w); }
       let themeBoost=0;
       if (matchedFamilies.length) themeBoost=getThemeBoost(itemNorm,matchedFamilies);
-      if (cov>0 || themeBoost>0) { prelim.push({item,exact:false,cov,matched,themeBoost}); totalMatches++; }
+      if (cov>0 || themeBoost>0) {
+        let populationType='thematic';
+        if (matched.length) {
+          const covFrac=cov/qImpTotal;
+          populationType=matched.length===words.length?'words':covFrac>=.5?'partial':'weak';
+        }
+        prelim.push({item,exact:false,cov,matched,themeBoost,populationType});
+        matchCounts[populationType]++;
+      }
     }
     if (prelim.length > SEARCH_POOL_CAP*3) {
-      prelim.sort((a,b)=>b.cov-a.cov);
+      prelim.sort((a,b)=>b.cov-a.cov || b.themeBoost-a.themeBoost);
       prelim.length=SEARCH_POOL_CAP*2;
     }
     if (metaEl && isSearchActive(token)) metaEl.textContent=`Recherche dans le texte… Tome ${vi+1}/${vols.length}`;
     await new Promise(r=>setTimeout(r,0));
   }
-  prelim.sort((a,b)=>b.cov-a.cov);
+  const totalMatches=Object.values(matchCounts).reduce((a,b)=>a+b,0);
+  prelim.sort((a,b)=>b.cov-a.cov || b.themeBoost-a.themeBoost);
   const pool=prelim.slice(0,SEARCH_POOL_CAP), scored=[];
   for (const c of pool) {
-    let score=0, matchType='';
-    if (c.exact) { score=1000+(idf?bm25Score(qtok,c.item.norm,idf,avgdl)*10:0); matchType='exact'; }
+    let score=0, matchType=c.populationType;
+    if (c.exact) score=1000+(idf?bm25Score(qtok,c.item.norm,idf,avgdl)*10:0);
     else if (c.matched.length) {
       if (idf) score=bm25Score(qtok,c.item.norm,idf,avgdl)*10;
       if (score<=0) score=c.matched.length===words.length?80:c.matched.length>=Math.ceil(words.length*.6)?50+(c.matched.length/words.length)*20:20+c.matched.length*5;
-      const covFrac=c.cov/qImpTotal;
-      matchType=c.matched.length===words.length?'words':covFrac>=.5?'partial':'weak';
     }
-    if (c.themeBoost>0) { if(score===0){score=c.themeBoost;matchType='thematic';} else score+=c.themeBoost*.2; }
+    if (c.themeBoost>0) { if(score===0) score=c.themeBoost; else score+=c.themeBoost*.2; }
     if (score>0) scored.push({...c.item,score,matchType});
   }
   scored.sort((a,b)=>b.score-a.score);
-  return {results:scored.slice(0,SEARCH_RESULT_CAP), totalMatches};
+  return {results:scored.slice(0,SEARCH_RESULT_CAP), totalMatches, matchCounts};
 }
 
-function renderSearchResults(results, raw, totalMatches, metadataMode=false) {
+function searchPopulationSummary(matchCounts) {
+  if (!matchCounts) return {mode:'', detail:''};
+  const modeLabels={exact:'phrase exacte',words:'mots correspondants',partial:'idée proche',weak:'thème approché',thematic:'thème lié'};
+  const detailLabel=(k,n)=>{
+    const num=Number(n).toLocaleString('fr-FR');
+    if(k==='exact')return `${num} phrase${n===1?'':'s'} exacte${n===1?'':'s'}`;
+    if(k==='words')return `${num} avec tous les mots`;
+    if(k==='partial')return `${num} idée${n===1?'':'s'} proche${n===1?'':'s'}`;
+    if(k==='weak')return `${num} thème${n===1?'':'s'} approché${n===1?'':'s'}`;
+    return `${num} thème${n===1?'':'s'} lié${n===1?'':'s'}`;
+  };
+  const active=Object.entries(matchCounts).filter(([,n])=>Number(n)>0);
+  const mode=active.length===1 ? modeLabels[active[0][0]] : 'correspondances mixtes';
+  const detail=active.map(([k,n])=>detailLabel(k,Number(n))).join(' · ');
+  return {mode,detail};
+}
+
+function renderSearchResults(results, raw, totalMatches, metadataMode=false, matchCounts=null) {
   if (!results.length) {
     const meta=document.getElementById('search-meta'); meta.style.display='block'; meta.textContent='0 résultat';
     document.getElementById('trust-notice').style.display='none';
@@ -5440,8 +5532,9 @@ function renderSearchResults(results, raw, totalMatches, metadataMode=false) {
   const shown=results.length;
   const meta=document.getElementById('search-meta'); meta.style.display='block';
   const capText = totalMatches > shown ? `${shown} affiché${shown!==1?'s':''} sur ${totalMatches} correspondances` : `${shown} résultat${shown!==1?'s':''}`;
-  const modeLabel = metadataMode ? 'Titre / date / référence' : (results[0]&&results[0].matchType==='exact'?'Phrase exacte':results.some(r=>r.matchType==='words')?'Mots correspondants':'Idée proche');
-  meta.innerHTML=`${capText} <span class="search-mode-badge">${modeLabel}</span>`;
+  const population=metadataMode?{mode:'titre / date / référence',detail:''}:searchPopulationSummary(matchCounts);
+  const modeLabel=population.mode || 'résultats';
+  meta.innerHTML=`${capText} <span class="search-mode-badge">${escapeHtml(modeLabel)}</span>${population.detail?` · ${escapeHtml(population.detail)}`:''}`;
   document.getElementById('trust-notice').style.display = results.some(r=>!['exact','metadata'].includes(r.matchType)) ? 'block':'none';
   const sug=document.getElementById('search-suggestions'); if(sug)sug.style.display='none';
   const container=document.getElementById('search-results'); container.innerHTML='';
@@ -5453,7 +5546,7 @@ function renderSearchResults(results, raw, totalMatches, metadataMode=false) {
     const tagLabel=editorialNo?'Éditorial':(r.matchType==='metadata'?(r._metaKind||'Titre / date'):({exact:'Phrase exacte',words:'Mots exacts',partial:'Idée proche',weak:'Thème approché',thematic:'Thème lié'}[r.matchType]||'Résultat'));
     const excerpt=r.matchType==='metadata'?(r.text||r.title||''):excerptAround(r.text||'',raw);
     const displayTitle=editorialNo?`Explication éditoriale — note ${editorialNo}`:(r.title||'');
-    const speechTag=searchSpeakerFilter?`<span class="rc-tag" style="background:rgba(92,58,16,.12);color:#5C3A10;border-color:rgba(92,58,16,.2);"><i class="ti ti-message-circle" style="font-size:10px;"></i> Paroles de Jésus</span>`:'';
+    const speechTag=searchSpeakerFilter?`<span class="rc-tag" style="background:rgba(92,58,16,.12);color:#5C3A10;border-color:rgba(92,58,16,.2);"><i class="ti ti-message-circle" style="font-size:10px;"></i> Passages contenant des paroles de Jésus</span>`:'';
     const supplementTag=r.is_supplement?`<span class="rc-tag exact">COMPLÉMENT · IT-PM</span>`:'';
     card.innerHTML=`<div class="rc-stable">${escapeHtml(r.stable_ref||r.entry_id||r.id)} · Tome ${r.volume}</div>
       ${displayTitle?`<div class="rc-title">${escapeHtml(displayTitle)}</div>`:''}
@@ -5492,7 +5585,7 @@ async function runSearch() {
     }
     const body=await scanBodyKeyword(raw,vols,token,signal,searchSpeakerFilter);
     if (!isSearchActive(token)) return;
-    renderSearchResults(body.results,raw,body.totalMatches,false);
+    renderSearchResults(body.results,raw,body.totalMatches,false,body.matchCounts);
     activeSearchAbort=null;
   } catch(e) {
     if (e && e.name==='AbortError') return;
@@ -6268,7 +6361,7 @@ async function buildDateIndex() {
   if (dnBuilt) return;
   await loadSupplementRegistryData();
   const pushRow=(entry)=>{
-    const parsed=parseEntryDate(entry);if(!parsed){const dd=(entry.date_display||'').trim();if(dd)DN_UNDATED.push(entry);return;}
+    const parsed=parseEntryDate(entry);if(!parsed){DN_UNDATED.push(entry);return;}
     const [y,mo,d]=parsed,ymd=`${y}-${mo}-${d}`,ym=`${y}-${mo}`;
     if(!DN_BY_YMD[ymd])DN_BY_YMD[ymd]=[];DN_BY_YMD[ymd].push(entry);DN_YEAR_COUNTS[y]=(DN_YEAR_COUNTS[y]||0)+1;DN_MONTH_COUNTS[ym]=(DN_MONTH_COUNTS[ym]||0)+1;
   };
@@ -6483,37 +6576,68 @@ function renderDnResultCard() {
    CacheStorage contains public app/corpus bytes only. IndexedDB settings holds
    the user-visible completion record; it is not itself the offline payload.
 ═══════════════════════════════════════════════════════ */
-const OFFLINE_CACHE_VERSION = 'ldc-le-livre-du-ciel-offline-v2.19.32-R1B';
+const OFFLINE_CACHE_VERSION = 'ldc-le-livre-du-ciel-offline-v2.19.41-R1B';
 const OFFLINE_MANIFEST_SCHEMA = 'ldc-offline-manifest-v2';
-const OFFLINE_CONTENT_BINDING = 'cea0ce684ca1eba146ed130bbc42a1843d064593d1b2f890f26730b4f8b62e73';
-const OFFLINE_CORPUS_MANIFEST_SHA256 = 'b711a701b8b94b8fcacfcbb5bb6561fd9d7235fe4b99033f5d2bb8951235cc76';
+const OFFLINE_CONTENT_BINDING = 'c9a745098723f4f2b21c26600e04eefd2b59acae35a74157a0bbfef4c9c0fcc4';
+const OFFLINE_CORPUS_MANIFEST_SHA256 = '6a4c9dd408469ae6e7e1f42433a6c4fe9ee741ebc563389a6107dd63e679a6a9';
 const OFFLINE_STATES = Object.freeze(['NOT_PREPARED','CHECKING','DOWNLOADING','READY','PARTIAL','ERROR','CANCELLED']);
 let offlineUiState = {state:'NOT_PREPARED',completed:0,total:0,failed:[],total_bytes:0,job_id:null,message:'',content_binding_sha256:OFFLINE_CONTENT_BINDING,corpus_manifest_sha256:OFFLINE_CORPUS_MANIFEST_SHA256};
+let runtimeCacheUiState = {entries:0,bytes:0,max_entries:48,max_bytes:50331648};
 const offlineStatusWaiters = new Map();
 let offlineLastMessageAt = 0;
 let offlineWatchdog = null;
 let offlinePersistTimer = null;
+let offlineAtLastState = '';
+let offlineAtLastBucket = -1;
+let offlineAtLastAt = 0;
 
 function offlineStateLabel(s) {
   const map={NOT_PREPARED:'Non préparé',CHECKING:'Vérification…',DOWNLOADING:'Téléchargement…',READY:'Prêt hors ligne',PARTIAL:'Préparation partielle',ERROR:'Erreur',CANCELLED:'Préparation annulée'};
   return map[s] || s;
 }
 function offlineMb(n){return n ? `${(n/1e6).toFixed(1).replace('.',',')} Mo` : 'taille en cours de calcul';}
+function announceOfflineMilestone(st,pct,total,completed,failedCount){
+  const live=document.getElementById('offline-at-status'); if(!live)return;
+  const now=Date.now(), state=String(st.state||'');
+  let msg='', force=false;
+  if(state!==offlineAtLastState){
+    force=true;
+    if(state==='CHECKING')msg='Vérification de la préparation hors ligne.';
+    else if(state==='DOWNLOADING')msg='Téléchargement hors ligne commencé.';
+    else if(state==='READY')msg='Préparation hors ligne terminée.';
+    else if(state==='PARTIAL')msg='Préparation hors ligne partielle.';
+    else if(state==='ERROR')msg='Erreur pendant la préparation hors ligne.';
+    else if(state==='CANCELLED')msg='Préparation hors ligne annulée.';
+    else if(state==='NOT_PREPARED')msg='Contenu hors ligne non préparé.';
+  }
+  if(state==='DOWNLOADING'&&total){
+    const bucket=pct>=100?100:Math.floor(pct/25)*25;
+    if(bucket>=25&&bucket!==offlineAtLastBucket&&(force||now-offlineAtLastAt>=4000)){
+      msg=`Téléchargement hors ligne : ${bucket} %.`; offlineAtLastBucket=bucket;
+    }
+  }
+  if((failedCount>0)&&(state==='PARTIAL'||state==='ERROR'))msg+=` ${failedCount} fichier${failedCount>1?'s':''} en échec.`;
+  offlineAtLastState=state;
+  if(msg&&(force||now-offlineAtLastAt>=4000)){live.textContent=msg;offlineAtLastAt=now;}
+}
 function renderOfflineUi(){
   const label=document.getElementById('offline-state-label'), detail=document.getElementById('offline-progress-detail'), bar=document.getElementById('offline-progress-bar');
-  const prep=document.getElementById('offline-prepare-btn'), cancel=document.getElementById('offline-cancel-btn'), clear=document.getElementById('offline-clear-btn'), failedEl=document.getElementById('offline-failed-list');
-  if(!label||!detail||!bar||!prep||!cancel||!clear||!failedEl)return;
+  const prep=document.getElementById('offline-prepare-btn'), cancel=document.getElementById('offline-cancel-btn'), clear=document.getElementById('offline-clear-btn'), failedEl=document.getElementById('offline-failed-list'), runtimeEl=document.getElementById('runtime-cache-detail');
+  if(!label||!detail||!bar||!prep||!cancel||!clear||!failedEl||!runtimeEl)return;
   const st=offlineUiState, total=Number(st.total||0), completed=Number(st.completed||0), failed=Array.isArray(st.failed)?st.failed:[];
   const pct=total?Math.max(0,Math.min(100,Math.round(completed/total*100))):0;
   label.textContent=`${offlineStateLabel(st.state)}${st.message?' — '+st.message:''}`;
   detail.textContent=total?`${completed}/${total} fichiers · ${pct}% · ${offlineMb(st.total_bytes)}${failed.length?' · '+failed.length+' échec(s)':''}`:`Périmètre : 36 tomes + compléments LDC-AFLP-SUP-T1 + recherche textuelle/BM25.`;
+  const rt=runtimeCacheUiState||{}, rtEntries=Number(rt.entries||0), rtBytes=Number(rt.bytes||0), rtMaxEntries=Number(rt.max_entries||48), rtMaxBytes=Number(rt.max_bytes||50331648);
+  runtimeEl.textContent=`Cache temporaire lecture/recherche : ${rtEntries} fichier${rtEntries===1?'':'s'} · ${offlineMb(rtBytes)} · limite ${rtMaxEntries} fichiers / ${offlineMb(rtMaxBytes)}.`;
   if(failed.length){failedEl.style.display='block';failedEl.textContent='Fichiers en échec :\n'+failed.map(f=>`• ${f.path||'fichier inconnu'}${f.error?' — '+f.error:''}`).join('\n');}else{failedEl.style.display='none';failedEl.textContent='';}
   bar.style.width=pct+'%';
+  announceOfflineMilestone(st,pct,total,completed,failed.length);
   const busy=st.state==='CHECKING'||st.state==='DOWNLOADING';
   prep.disabled=busy;
   prep.innerHTML=st.state==='READY'?'<i class="ti ti-check"></i> Vérifier':(st.state==='PARTIAL'||st.state==='ERROR'||st.state==='CANCELLED'?'<i class="ti ti-refresh"></i> Reprendre':'<i class="ti ti-download"></i> Préparer hors ligne');
   cancel.style.display=busy?'inline-flex':'none';
-  clear.style.display=(completed>0&&!busy)?'inline-flex':'none';
+  clear.style.display=((completed>0||Number(runtimeCacheUiState.entries||0)>0)&&!busy)?'inline-flex':'none';
 }
 function scheduleOfflinePersist(){
   clearTimeout(offlinePersistTimer);
@@ -6569,7 +6693,7 @@ async function cancelOfflinePreparation(){
 }
 async function clearOfflinePreparation(){
   try{await postOfflineMessage('OFFLINE_CLEAR');}
-  catch(e){showToast('Nettoyage impossible pour le moment');}
+  catch(e){showToast('Effacement des caches impossible pour le moment');}
 }
 function handleOfflineSwMessage(event){
   const d=event.data||{}; if(d.type!=='LDC_OFFLINE_STATUS')return;
@@ -6580,6 +6704,7 @@ function handleOfflineSwMessage(event){
   let message=d.message||'';
   if(!bindingOk&&state!=='ERROR'){state='ERROR';message='Réponse hors ligne incompatible avec cette version.';}
   const previous=offlineUiState.state;
+  if(d.runtime&&typeof d.runtime==='object')runtimeCacheUiState={entries:Number(d.runtime.entries||0),bytes:Number(d.runtime.bytes||0),max_entries:Number(d.runtime.max_entries||48),max_bytes:Number(d.runtime.max_bytes||50331648)};
   offlineUiState={state,completed:Number(d.completed||0),total:Number(d.total||0),failed:Array.isArray(d.failed)?d.failed:[],total_bytes:Number(d.total_bytes||0),job_id:d.job_id||offlineUiState.job_id||null,message,content_binding_sha256:d.content_binding_sha256||null,corpus_manifest_sha256:d.corpus_manifest_sha256||null};
   renderOfflineUi();scheduleOfflinePersist();armOfflineWatchdog();
   if(waiter){if(bindingOk||state==='ERROR')waiter.resolve(offlineUiState);else waiter.reject(new Error(message||'Réponse hors ligne incompatible'));}

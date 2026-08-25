@@ -45,19 +45,34 @@
     36
   ],
   "volumes_total": 36,
-  "status": "R1B_CANONICAL_CORPUS__RA19B_MULTI_SOURCE_FLOW_ADJUDICATED__RA19E_SPEAKER_INTEGRITY_RECONCILED__EXTERNAL_RELEASE_GATES_OPEN",
+  "status": "R1B_CANONICAL_CORPUS__RA19E1_A17_BV7_10_FIXED_POINT__V41_STAGE_C_RUNTIME_STORAGE_PWA_APP_SHELL_ONLY__EXTERNAL_DECISION_LOCK_REQUIRED",
   "speech_resynced": true,
   "notes": "All 36 tomes structurally reconciled. EB-17 completed the two provenance corrections identified by EB-16; Tome 17 23 November 1924 remains PDF-title-only/body-not-proven. EB-20 normalised three source-page ranges from direct PDF evidence. RA11 adjudicates all 226 RA10 broader structural/discourse cases: 210 display-flow joins, 14 intentional-structure keeps, 2 Tome-10 source-proven keeps, 0 unresolved. RA12 reconciles stale duplicated flow-summary metadata; flow shard bytes remain unchanged. RA19B replaces active linked-boundary heuristic visual decisions with a frozen 20,811-row multi-source source-backed ledger; canonical paragraph text/IDs/order/search/speaker/display transforms are unchanged.",
-  "speech_layer_note": "RA5C source-backed targeted reconciliation: three Tome 11 offsets mechanically resynchronised after later canonical punctuation/quotation repairs; Tome 23 P117-P118 outer Jesus continuity restored while preserving embedded illustrative quotations as depth-2 structure; Tome 25 P040 missing lexical “seule” restored inside the existing Jesus quoted term; Tome 20 P073 restored as outer JESUS plus the previously source-adjudicated complete PERSONIFIED_VOICE Fiat prayer at depth 2. Canonical devotional text and all speaker identities outside these seven paragraphs are unchanged. RA19E reconciles semantic speaker identity, role, exact geometry and nested quotation depth for the frozen 483-row correction surface; 107 false narration segments removed, one segment split into two; canonical paragraph/search/display/flow text and identities unchanged.",
-  "app_version": "v2.19.32-R1B",
+  "speech_layer_note": "Current authority: RA19E.1 A17 semantic fixed point and B-v7.10 explicit presentation-parent projection. Historical RA19E/V32 speaker evidence is retained separately as provenance. Canonical devotional paragraph text is unchanged.",
+  "app_version": "v2.19.41-R1B",
   "speaker_layer": {
-    "total_segments": 65004,
-    "jesus": 59046,
-    "marie": 0,
-    "mary": 227,
-    "luisa": 4380,
-    "verification_scope": "R1B governing checkpoint + RA5C source-backed speaker reconciliation + RA19E exhaustive 2,611-candidate complete-entry speaker-integrity reconciliation; canonical text unchanged",
-    "personified_voice": 480
+    "total_segments": 65012,
+    "speaker_counts": {
+      "ANGEL": 10,
+      "CONFESSOR": 69,
+      "DEMON": 12,
+      "FATHER": 9,
+      "GENERIC_SOUL": 461,
+      "JESUS": 58799,
+      "LUISA": 4445,
+      "MARY": 230,
+      "OTHER": 391,
+      "PERSONIFIED_VOICE": 543,
+      "PRIEST": 19,
+      "SAINT": 24
+    },
+    "presentation_counts": {
+      "JESUS": 59981,
+      "LUISA": 4822,
+      "MARY": 209
+    },
+    "verification_scope": "RA19E.1 A17 semantic fixed point + B-v7.10 explicit presentation-parent fixed point; canonical paragraph/search/display/flow text unchanged",
+    "presentation_parent_authority": "BUILD_GENERATED_EXPLICIT_PARENT__QUOTATION_DEPTH_DISCOVERY_ONLY"
   },
   "t17_23nov1924_status": "Body retained: title-only in supplied FR PDF but full entry (incl. Jesus discourse) present and materially matching both English witnesses (QDW, Hugh Owen); FR is compressed. Provenance recorded as legacy/English-corroborated, pending controlled FR reconstruction.",
   "search_norm": {
@@ -364,7 +379,7 @@
     "action_changes_vs_ra18": 14460,
     "canonical_text_mutations": 0
   },
-  "ra19e_speaker_integrity": {
+  "historical_v32_ra19e_speaker_integrity": {
     "date": "2026-08-23",
     "baseline_app_version": "v2.19.31-R1B",
     "baseline_zip_sha256": "b91aabf84803685cb5a86379c2a76c6239c2882bc1fa8b4277479f978c025441",
@@ -424,5 +439,154 @@
       "flow",
       "supplements"
     ]
+  },
+  "ra19e1_speaker_parent_integrity": {
+    "date": "2026-08-24",
+    "baseline_app_version": "v2.19.32-R1B",
+    "baseline_zip_sha256": "a5e6a0d76e4e7e7e93eff5583c304d5be9c64fc6370449a2f0634cb067a6aa78",
+    "A17_status": "PASS_EVIDENCE_FIXED_POINT",
+    "A17_semantic_segments": 65012,
+    "A17_shadow_sha256": "03765ad706d24a572094fdc5895255decf3c8b2111a7cc9a96a0f71b35d50498",
+    "B_status": "PASS_EVIDENCE_FIXED_POINT",
+    "B_parent_ledger_rows": 2086,
+    "B_parent_ledger_sha256": "3ed75874f8005e7ab059bfe41bc6537e051ff7d0cec2e80f344c33810adc6ed0",
+    "B_projection_rows": 65012,
+    "B_projection_sha256": "6ae18ac94ea1cdf9f28418371d0ab93ca0d0f6fc79377af85a4e5c0c4fb5a943",
+    "review_blocking_final": 0,
+    "seed_controls": "39/39 PASS",
+    "semantic_exact_relabels": 298,
+    "semantic_source_segments_split": 6,
+    "semantic_split_pieces": 14,
+    "final_total_segments": 65012,
+    "speaker_counts": {
+      "ANGEL": 10,
+      "CONFESSOR": 69,
+      "DEMON": 12,
+      "FATHER": 9,
+      "GENERIC_SOUL": 461,
+      "JESUS": 58799,
+      "LUISA": 4445,
+      "MARY": 230,
+      "OTHER": 391,
+      "PERSONIFIED_VOICE": 543,
+      "PRIEST": 19,
+      "SAINT": 24
+    },
+    "presentation_counts": {
+      "JESUS": 59981,
+      "LUISA": 4822,
+      "MARY": 209
+    },
+    "presentation_parent_model": "EXPLICIT_BUILD_GENERATED_ALL_MAIN_CORPUS_SEGMENTS__QUOTATION_DEPTH_NOT_PARENT_AUTHORITY",
+    "canonical_paragraph_mutations": 0,
+    "search_shard_mutations": 0,
+    "display_shard_mutations": 0,
+    "flow_shard_mutations": 0,
+    "protected_layers": [
+      "paragraphs",
+      "search",
+      "display",
+      "flow",
+      "volume",
+      "supplements"
+    ]
+  },
+  "ra19e1_v35_f8_android_targeting": {
+    "date": "2026-08-25",
+    "baseline_app_version": "v2.19.33-R1B",
+    "baseline_zip_sha256": "97d117fc6ebf0cd8dc03f2962f43f702fe1134db1dafffe5459faea9362ed0bd",
+    "finding": "ANDROID_PARAGRAPH_MODE_FLOW_JOINER_OR_REPERES_TAP_COULD_FALL_BACK_TO_FIRST_FLOW_FRAGMENT",
+    "repair": "NON_FRAGMENT_TAPS_IGNORED__ONLY_DIRECT_PARA_FRAGMENT_CAN_START_ANDROID_PARAGRAPH_HIGHLIGHT",
+    "geometry_guessing": false,
+    "canonical_text_changed": false,
+    "paragraph_ids_changed": false,
+    "search_shards_changed": false,
+    "speaker_shards_changed": false,
+    "display_shards_changed": false,
+    "flow_shards_changed": false,
+    "ios_ipad_exact_selection_changed": false
+  },
+  "ra19e1_v36_reperes_dual_attribution": {
+    "date": "2026-08-25",
+    "baseline_app_version": "v2.19.35-R1B",
+    "baseline_zip_sha256": "87e138759eb8a4402785ebce8dd63ca246c813f36691bd389d5263185339070c",
+    "owner_product_approval": "APPROVED_2026_08_25",
+    "rule": "OUTER_PRESENTATION_LABEL_PLUS_NATURAL_FRENCH_QUOTED_SEMANTIC_VOICE_WHEN_DIFFERENT",
+    "multi_voice_rule": "LIST_UNIQUE_DIFFERING_SEMANTIC_VOICES_IN_OCCURRENCE_ORDER",
+    "raw_taxonomy_exposed_to_user": false,
+    "canonical_text_changed": false,
+    "paragraph_ids_changed": false,
+    "semantic_speaker_records_changed": false,
+    "presentation_parent_records_changed": false,
+    "speaker_offsets_changed": false,
+    "quotation_depth_changed": false,
+    "search_shards_changed": false,
+    "display_shards_changed": false,
+    "flow_shards_changed": false,
+    "highlighting_logic_changed": false,
+    "normal_reader_reperes_off_changed": false
+  },
+  "ra19e1_v38_stage_a": {
+    "date": "2026-08-25",
+    "baseline_app_version": "v2.19.36-R1B",
+    "baseline_zip_sha256": "c6eda0803fafe6fc005ced2fe673b4aa2004cbeffe0b342d82e291453c30a4ef",
+    "scope": "ACCESSIBILITY_SEMANTICS__DATE_NAV_COMPLETENESS__FEATURED_QUOTE_TARGET_BINDING__PACKAGE_FREEZE_METADATA_CONTRACT",
+    "canonical_text_changed": false,
+    "paragraph_ids_changed": false,
+    "semantic_speaker_records_changed": false,
+    "presentation_parent_records_changed": false,
+    "speaker_shards_changed": false,
+    "search_shards_changed": false,
+    "display_shards_changed": false,
+    "flow_shards_changed": false,
+    "supplement_payload_changed": false,
+    "f1_algorithm_changed": false,
+    "f8_handler_changed": false,
+    "user_data_schema_changed": false,
+    "package_state_at_freeze": "CANDIDATE_BYTES_ONLY__POST_FREEZE_AUDITS_EXTERNAL",
+    "external_decision_authority": "EXTERNAL_FINAL_DECISION_LOCK_WRITTEN_AFTER_REOPEN_AND_INDEPENDENT_REOPEN_AUDITS"
+  },
+  "ra19e1_v37_stage_a_rejected_candidate": {
+    "app_version": "v2.19.37-R1B",
+    "zip_sha256": "0e26740387911fe15a9a275c3ff04d08ba9cbb28f46c2ec74670eb795fbe22d6",
+    "status": "FAIL_HIGHLIGHT_ANCHOR_COMPATIBILITY",
+    "reason": "DEEP_REGRESSION_FOUND_LEGACY_CANONICAL_TEXT_AND_FALLBACK_HIGHLIGHT_PATHS_COUNTING_INJECTED_REPERES_ACCESSIBILITY_METADATA",
+    "deploy_authorized": false
+  },
+  "ra19e1_v39_stage_a1_cache_epoch_reconciliation": {
+    "date": "2026-08-25",
+    "baseline_app_version": "v2.19.38-R1B",
+    "baseline_zip_sha256": "6d9c5d37aa7e885a923e27eb0c1d8fbaffeb69543948329513d677fc6be5ded3",
+    "scope": "CURRENT_CORPUS_MANIFEST_DIGEST_TO_RUNTIME_CACHE_EPOCH_BINDING_RECONCILIATION_ONLY",
+    "canonical_text_changed": false,
+    "paragraph_ids_changed": false,
+    "search_shards_changed": false,
+    "semantic_index_changed": false,
+    "speaker_shards_changed": false,
+    "display_shards_changed": false,
+    "flow_shards_changed": false
+  },
+  "ra19e1_v40_stage_b_search_trust": {
+    "date": "2026-08-25",
+    "baseline_app_version": "v2.19.39-R1B",
+    "baseline_zip_sha256": "a2daae6334a63352983d0680748be16fcf9dc399a5a7b687657f652ee77c7e79",
+    "search_logic_changed": true,
+    "search_shards_changed": false,
+    "semantic_index_changed": false,
+    "search_metadata_index_changed": false,
+    "canonical_text_changed": false,
+    "speaker_shards_changed": false,
+    "flow_shards_changed": false
+  },
+  "ra19e1_v41_stage_c_runtime_storage_pwa": {
+    "date": "2026-08-25",
+    "baseline_app_version": "v2.19.40-R1B",
+    "baseline_zip_sha256": "15d9b2bc926583a2e68fa67eb505966a47aaf8f74fe459ff2830d2bd5fa345c9",
+    "runtime_storage_logic_changed": true,
+    "canonical_text_changed": false,
+    "search_shards_changed": false,
+    "semantic_index_changed": false,
+    "speaker_shards_changed": false,
+    "flow_shards_changed": false
   }
 }

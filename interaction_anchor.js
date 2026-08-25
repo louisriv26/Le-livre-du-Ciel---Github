@@ -21,7 +21,7 @@
   function isLabel(node, stop) {
     var el = node.parentElement;
     while (el && el !== stop) {
-      if (el.classList && (el.classList.contains('speech-label') || el.classList.contains('speech-conf'))) return true;
+      if (el.classList && (el.classList.contains('speech-label') || el.classList.contains('speech-conf') || el.classList.contains('speech-quoted-voice') || el.classList.contains('speech-attribution-sr'))) return true;
       el = el.parentElement;
     }
     return false;

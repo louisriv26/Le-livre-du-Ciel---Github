@@ -1,13 +1,13 @@
 {
   "schema": "ldc-offline-manifest-v2",
-  "app_version": "v2.19.32-R1B",
-  "cache_version": "ldc-le-livre-du-ciel-offline-v2.19.32-R1B",
+  "app_version": "v2.19.41-R1B",
+  "cache_version": "ldc-le-livre-du-ciel-offline-v2.19.41-R1B",
   "corpus_generation": "G036-AFLP-R1B-SUP-T1",
   "scope": "COMPLETE_36_TOME_READING_PLUS_LDC_AFLP_SUP_T1_PLUS_LEXICAL_METADATA_SPEAKER_SEARCH__VECTOR_EMBEDDING_SUBSYSTEM_RETIRED",
   "semantic_vector_search_included": false,
   "semantic_vector_search_note": "Sous-système vectoriel/embeddings retiré de ce build. La recherche métadonnées + lexicale/BM25 reste autoritative sur le corpus composite; toute future recherche vectorielle exigera une reconstruction complète et une exécution bundlée/auto-hébergée séparément autorisée.",
   "asset_count": 224,
-  "total_bytes": 184847444,
+  "total_bytes": 191939638,
   "families": {
     "display": 36,
     "display_titles": 1,
@@ -392,8 +392,8 @@
     },
     {
       "path": "corpus/manifest.json",
-      "bytes": 17511,
-      "sha256": "b711a701b8b94b8fcacfcbb5bb6561fd9d7235fe4b99033f5d2bb8951235cc76"
+      "bytes": 23460,
+      "sha256": "6a4c9dd408469ae6e7e1f42433a6c4fe9ee741ebc563389a6107dd63e679a6a9"
     },
     {
       "path": "corpus/paragraphs_01.json",
@@ -767,183 +767,183 @@
     },
     {
       "path": "corpus/speakers_01.json",
-      "bytes": 468296,
-      "sha256": "f5f5be395852dd7037c74bd9a5b72b8f8c35223bdc059697bf05341d7a955738"
+      "bytes": 549527,
+      "sha256": "e731b6078e7c96bf64b06b631921a200bb093d7c45487b0aa141a57851a8f03d"
     },
     {
       "path": "corpus/speakers_02.json",
-      "bytes": 448098,
-      "sha256": "3ac408fe275a2d0e71fa43f8012c3a7a71b203b311a8878e49d67f8a0135ec9d"
+      "bytes": 530536,
+      "sha256": "5533df163db485a70ae0024a8ff1168f4aa0e2f2a60e8ecb3c1c3f22dc43bb75"
     },
     {
       "path": "corpus/speakers_03.json",
-      "bytes": 422873,
-      "sha256": "8173052924b31f69dc9aeffa5bd06a7704dd342a8bc83dc6e08d3caeb5d2fdc3"
+      "bytes": 496878,
+      "sha256": "33dce6e2b3c35236540b718945c3963040c603aac908de05c27d88a822ecbdf6"
     },
     {
       "path": "corpus/speakers_04.json",
-      "bytes": 902720,
-      "sha256": "cf2cc7f79cfa82f10cdb300a4140b2a5cd01b4dcc2afc3bd483abfedbf4db1e4"
+      "bytes": 1049375,
+      "sha256": "0e2774dd19c753a21094d8345918de4cd6cd08bf1c13d265b3a8693008d1c062"
     },
     {
       "path": "corpus/speakers_05.json",
-      "bytes": 181241,
-      "sha256": "0615c9efc71e4e2b8941f3490a820d7f996c7b42d06d52df691f2c9e10d25686"
+      "bytes": 206099,
+      "sha256": "52992a46cfd76f31d3b8a550b910bc93de75e71abfdaec0563136967475ce485"
     },
     {
       "path": "corpus/speakers_06.json",
-      "bytes": 730880,
-      "sha256": "4b9667c417ca940c354d2d5fa42f24c9ef82a29b120eed50f7ae86368edb066c"
+      "bytes": 826871,
+      "sha256": "f1b91482cbfbc77e5bf9a7baa2fe45bc57f48c6a3d6a5fef337f5a8bdf9415e0"
     },
     {
       "path": "corpus/speakers_07.json",
-      "bytes": 272538,
-      "sha256": "009b37c310478db4b0fc168a47ca65250306ab2150394d9853c2f1d25adb3623"
+      "bytes": 319306,
+      "sha256": "0ce82a5fe21a143fe2bb5c45879d7ea38c2a970b54e8ab64baa66e59b7d36d92"
     },
     {
       "path": "corpus/speakers_08.json",
-      "bytes": 378010,
-      "sha256": "6649fc8ee85d6172832d71976253fe168592690b59da5db821c83fea2dd150cb"
+      "bytes": 434634,
+      "sha256": "7a346494c2ef0fec2c15136075fcba67f58338efdc2c76a3b07303d8f8d81b07"
     },
     {
       "path": "corpus/speakers_09.json",
-      "bytes": 299706,
-      "sha256": "f90c6c43782d498f5ae1761a35962ce3b0acaa7d3cc16d7173cfecc00cbd8780"
+      "bytes": 346441,
+      "sha256": "abf2d496660418735c009c6f584492e05de33157d4180e681a657d7b87a133a0"
     },
     {
       "path": "corpus/speakers_10.json",
-      "bytes": 412947,
-      "sha256": "79ab1f7960bafca4a6183038533c298cf755af5f55780dae6f3ee97e15e1c40f"
+      "bytes": 476196,
+      "sha256": "1c47ac85af4d29d5e93c45c8ddfffc6354632abaed335cd19785a6cd3f0e4e8f"
     },
     {
       "path": "corpus/speakers_11.json",
-      "bytes": 1065150,
-      "sha256": "ba705e91ec7179fbc52d6086c0fc8b6274ce5c4b296bc2d4421892ef921c9eb7"
+      "bytes": 1221399,
+      "sha256": "9f66c5f09055a20002de849c384adcb98041edabf232046fec9fe0959f8f73d4"
     },
     {
       "path": "corpus/speakers_12.json",
-      "bytes": 1428608,
-      "sha256": "35466fa44c57fcd36569107e630932ff864cea9c31e126fd623a8fdb6eb4db88"
+      "bytes": 1645043,
+      "sha256": "fc6f48f215cf8aa4ca502bd4970c5af8130e269507d7bbbeb89afddd806c70dc"
     },
     {
       "path": "corpus/speakers_13.json",
-      "bytes": 1176157,
-      "sha256": "a9419bbc9d186a07ded52fd27114b57ec828b0265e8f0d3ee3f35220bc582567"
+      "bytes": 1365905,
+      "sha256": "be710a1d0b0298336fd7bdc2eb8d8f1b2a5bc4f8af4dc8b337c95a3cf40d8e63"
     },
     {
       "path": "corpus/speakers_14.json",
-      "bytes": 1161051,
-      "sha256": "486edd6006b3f07d0e3fcb567574d379e031a907c7685cdcf7a6dddcc70f40c1"
+      "bytes": 1348650,
+      "sha256": "770897398b18643b2ceb9d816c3545e0b9b64e4f6b1485f1f3d6f0ee1f660b35"
     },
     {
       "path": "corpus/speakers_15.json",
-      "bytes": 915077,
-      "sha256": "932a0b35afb7f81f0458714fa2bf70025a4290f5f0fd400e2d7c6b1c96f6de83"
+      "bytes": 1060355,
+      "sha256": "29c395617ad5db306428abe8da1b3ac6d0e1b50eff52653ba8aa23d397dfa7eb"
     },
     {
       "path": "corpus/speakers_16.json",
-      "bytes": 1751722,
-      "sha256": "6f2e2e0db077e11d2e7b974ef1a9455762f8e9de31b2753308108e6f5c873ce4"
+      "bytes": 2029641,
+      "sha256": "a9e2c1bb95d8362b19dbae8915f10b7f4836dbc21309fe36d7e58ef5eed481e6"
     },
     {
       "path": "corpus/speakers_17.json",
-      "bytes": 1339152,
-      "sha256": "c12e9aa23f574047c006dfe1b64f6ad9415aec29543f994df4c7ff5589f12d11"
+      "bytes": 1554401,
+      "sha256": "afb91cc3f94cb1cfaf9cd79d3634a1b8370816c4e9b9766068e0002893529235"
     },
     {
       "path": "corpus/speakers_18.json",
-      "bytes": 766319,
-      "sha256": "024e34e980defafc3a217e2f2e2abe53b295728d5b363681c052e033436b4436"
+      "bytes": 889839,
+      "sha256": "caa360b16d4e7f4511c04d678c6ab3d70096132127d1cc631d9b4bb082301371"
     },
     {
       "path": "corpus/speakers_19.json",
-      "bytes": 2974115,
-      "sha256": "aab5f1d2e53101afb6ea6d6b3d51be51400cacf3514f2b1ce8326404ffa93d43"
+      "bytes": 3434261,
+      "sha256": "eec0b9654d0df48a61e4fe9956ed91ae03671236862509f902e1dc104af707f4"
     },
     {
       "path": "corpus/speakers_20.json",
-      "bytes": 3193165,
-      "sha256": "fce83db1a5c467b0c1502ed4e50733c39829330f85b70b9f27220a43daa716df"
+      "bytes": 3709564,
+      "sha256": "35a0e7a1f618b577ae460df42655630001ec07ff63d82bd7b3ae3653e8c0cd8f"
     },
     {
       "path": "corpus/speakers_21.json",
-      "bytes": 1277415,
-      "sha256": "8d4833148f650e2e890773611810e155ab30e5abcbcaf3947bcc288bb6b33d93"
+      "bytes": 1484198,
+      "sha256": "e39c551bce69908ee9b3213f9af9caa4c68c6939a62fd519e3c2d7ea4250125b"
     },
     {
       "path": "corpus/speakers_22.json",
-      "bytes": 1269808,
-      "sha256": "ffea0a3ac5e03033fac3cbd2f90ae6105ed485e8ad09e620606b9ea54130758e"
+      "bytes": 1475530,
+      "sha256": "f3276c1e0d837c4ea7a7d100e0bc7db8ffc34e4599be2db2e6c81ac2ca6dcdc2"
     },
     {
       "path": "corpus/speakers_23.json",
-      "bytes": 2381813,
-      "sha256": "0b11973c3870015a0d3ec49973b4a264547a8dd9efcaff99e0901ba274ad03e4"
+      "bytes": 2779343,
+      "sha256": "4090de78ac6f78cfae2467ac69caaf87583f0ee08a942a43dcb6e44a98fc364c"
     },
     {
       "path": "corpus/speakers_24.json",
-      "bytes": 2553251,
-      "sha256": "9b667b133c81c7d72e3e745350f23bdd8b17f2446253b38b6d765cbf4cbb0a6c"
+      "bytes": 2960052,
+      "sha256": "45503d2692e810c30685a91de05a74ae24fba83581ec178b456078da328b03f4"
     },
     {
       "path": "corpus/speakers_25.json",
-      "bytes": 1551866,
-      "sha256": "520d1a3ede7fda594e16c920faec07e07ea3e9ad69cf658482d0a67a3030b982"
+      "bytes": 1798257,
+      "sha256": "38226a31f61560abc1dc097460df3dd0d09dc289f573f9f08ce93718f917df9e"
     },
     {
       "path": "corpus/speakers_26.json",
-      "bytes": 1391540,
-      "sha256": "e8647e17bfeb4072eee9c0a7775087a208cc8354d40a8e9e18d762ead6d93802"
+      "bytes": 1611489,
+      "sha256": "ec013225e25f7bbceb88617aa9a423d907840a435508a830d1c374bdc7f4ec15"
     },
     {
       "path": "corpus/speakers_27.json",
-      "bytes": 1672472,
-      "sha256": "bc95bf19322aa0bc7daf1753d0a5959c078691a85d68b132b02d82c12e99859c"
+      "bytes": 1937450,
+      "sha256": "07aba12ec6baed90fab406ad8cf18cec814ce923563677a8e84966c0b24a7a1b"
     },
     {
       "path": "corpus/speakers_28.json",
-      "bytes": 1798671,
-      "sha256": "df1057390ba0f996039a6cd2d26f5ee76a9dbe488c4ad1deb56204129c934ea1"
+      "bytes": 2048222,
+      "sha256": "e5c0e404ff395dd4cb72c9541e7f1a8730c0c2f6957a5b0b4b3ea1eb14aa9ef0"
     },
     {
       "path": "corpus/speakers_29.json",
-      "bytes": 2669117,
-      "sha256": "5159d65841f590dcd153f7c96b7f4e1ac31362fcef3559030c39a6d1c525072f"
+      "bytes": 3040490,
+      "sha256": "87de1dcdc58ac1bdabe1db85823b0785b1f4fcd8c8bb6dfb2291175f7bd28f95"
     },
     {
       "path": "corpus/speakers_30.json",
-      "bytes": 2772675,
-      "sha256": "2d523037b0b4075faf5242d4fa1d95a4ec93b9e7257c6054c9ebd50114c5f3af"
+      "bytes": 3159373,
+      "sha256": "5b9f0c681771dc3e19741363aff3f8c0f3feac2de37a3da7da4e4e44d4cb4e5d"
     },
     {
       "path": "corpus/speakers_31.json",
-      "bytes": 633060,
-      "sha256": "aa6db168e8d1f00fa09a8b5b90ab88ef0b496db3a7dffa7138806ca681db9408"
+      "bytes": 732351,
+      "sha256": "a2c523b1e9d0c1058ea5de327fdc195b0cb5fd0a02489549ff167adcd71cc9ec"
     },
     {
       "path": "corpus/speakers_32.json",
-      "bytes": 586499,
-      "sha256": "5141e051ffbc132eb01e993f8701cdd800e01df66941a8a6b3cf40b5492e900e"
+      "bytes": 678941,
+      "sha256": "4185e784d9b678fb917849a9ce476abc993e99eea9cc170f69b8282b92f38381"
     },
     {
       "path": "corpus/speakers_33.json",
-      "bytes": 1025954,
-      "sha256": "a8632cf71cc93783c85d7027c840cefc4877561f06b1a6671fb74c52f9fbfbd9"
+      "bytes": 1178033,
+      "sha256": "056877f73b6dd0230d33fd0c39b6cfd238029fe0f159713d0422d5b6d7c006a6"
     },
     {
       "path": "corpus/speakers_34.json",
-      "bytes": 1149640,
-      "sha256": "ed9ea45b55e9db63ebd01012b1cc79930525f383294fe58bc47ceba48614578a"
+      "bytes": 1319125,
+      "sha256": "106bfff6fc78a1eb03f8e1d83ef4e64628456f48ae4c4ecbf7316bb72ed9c839"
     },
     {
       "path": "corpus/speakers_35.json",
-      "bytes": 1171139,
-      "sha256": "45cd31c378cde875bd93880d81a930c4f11b874628f469a60d1d945bf933571c"
+      "bytes": 1349375,
+      "sha256": "952c220a864757d368b92d4457c318a23ffdda754379c3af8746ccbf3ce9735d"
     },
     {
       "path": "corpus/speakers_36.json",
-      "bytes": 1565601,
-      "sha256": "1f3a997b2df84b97b0e2335fe275241c2d95e10c9227205129bc8c8506691c1e"
+      "bytes": 1797441,
+      "sha256": "82112d1b609401adb384f6a811be2eb8d44aeb07dafeb9141d5344e3eb784143"
     },
     {
       "path": "corpus/volume_01.json",
@@ -1147,6 +1147,6 @@
     }
   ],
   "content_binding_schema": "ldc-offline-content-binding-v1",
-  "corpus_manifest_sha256": "b711a701b8b94b8fcacfcbb5bb6561fd9d7235fe4b99033f5d2bb8951235cc76",
-  "content_binding_sha256": "cea0ce684ca1eba146ed130bbc42a1843d064593d1b2f890f26730b4f8b62e73"
+  "corpus_manifest_sha256": "6a4c9dd408469ae6e7e1f42433a6c4fe9ee741ebc563389a6107dd63e679a6a9",
+  "content_binding_sha256": "c9a745098723f4f2b21c26600e04eefd2b59acae35a74157a0bbfef4c9c0fcc4"
 }

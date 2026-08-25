@@ -1,4 +1,129 @@
-# Livre du Ciel — RA19E exhaustive speaker-integrity reconciliation on exact RA19D Version 31 baseline
+# Livre du Ciel — Version 41 / Stage C runtime storage + PWA
+
+- Public version: **41**. Technical identifier: **v2.19.41-R1B**.
+- Stage: **LDC-AFLP-SUP-T1-RA19E1-V41-STAGE-C-RUNTIME-STORAGE-PWA**. Build date: **2026-08-25**.
+- Immutable immediate baseline: Version 40 SHA-256 `15d9b2bc926583a2e68fa67eb505966a47aaf8f74fe459ff2830d2bd5fa345c9`.
+- Stage C scope only: F3 bounds the integrity-verified temporary runtime corpus cache to **48 entries / 50331648 bytes (~48 MiB)**; completed full offline preparation clears the now-redundant runtime cache; **Effacer les caches** deletes both the full offline preparation cache and the temporary reading/search runtime cache while leaving Mon Espace/user data untouched; runtime-cache usage is reported separately in the offline UI.
+- F1 integrity rule remains mandatory: no network corpus response is adopted until byte length + SHA-256 verification succeeds; cached corpus hits still require the verified SHA/byte/content-binding headers. A fresh poison-cache adversary is required for this successor because service-worker cache-management code changed.
+- Corpus/search protection: all 36 search shards, semantic/search metadata indexes, canonical paragraph shards, all 36 speaker shards, A17/B-v7.10, RA19B flow data and Stage B search-trust logic are byte-unchanged from Version 40.
+- Corpus manifest SHA-256: `6a4c9dd408469ae6e7e1f42433a6c4fe9ee741ebc563389a6107dd63e679a6a9`; corpus cache epoch: `cm-6a4c9dd408469ae6`.
+- Offline content binding SHA-256: `c9a745098723f4f2b21c26600e04eefd2b59acae35a74157a0bbfef4c9c0fcc4`; assets: **224**; bytes: **191939638**.
+- **Package state at freeze:** candidate bytes only. Primary reopened-ZIP, independent reopened-ZIP, F1 adversary, installed-PWA/update/offline tests and final decision lock are external authorities written after package freeze. This deploy ZIP contains no post-freeze PASS claim.
+- Native HTTP/PWA navigation is known to be blocked by administrator policy in the current execution environment unless later evidence proves otherwise; such gates must be `NOT_TESTED_ENVIRONMENT`, not package FAIL or PASS.
+
+> Version 40 below remains the immutable Stage B search-trust baseline.
+
+---
+
+# Livre du Ciel — Version 40 / Stage B search trust
+
+- Public version: **40**. Technical identifier: **v2.19.40-R1B**.
+- Stage: **LDC-AFLP-SUP-T1-RA19E1-V40-STAGE-B-SEARCH-TRUST**. Build date: **2026-08-25**.
+- Immutable immediate baseline: Version 39 SHA-256 `a2daae6334a63352983d0680748be16fcf9dc399a5a7b687657f652ee77c7e79`.
+- Stage B scope only: F5 replaces raw substring admission with exact normalised token/phrase boundaries in both thematic-family matching and the core phrase/word lexical checks; F4 makes displayed counts/categories describe the same accepted result population; F12 highlights raw text before HTML escaping so entity names cannot be corrupted; the Jesus search filter is truthfully labelled **Passages contenant des paroles de Jésus**; F6 receives a fresh host-side full-corpus algorithmic benchmark.
+- Search corpus/index protection: all 36 search shards, `semantic_index.json`, `search_metadata_index.json`, all canonical paragraph shards, all 36 speaker shards and A17/B-v7.10 authorities are byte-unchanged from Version 39. No BM25/IDF/index rebuild is performed.
+- Corpus manifest SHA-256: `03c28d07abdf93ea436ee6b3c3ccbb5f53856fe4ed6dd5cd3040e7d0ac84947f`; corpus cache epoch: `cm-03c28d07abdf93ea`.
+- Offline content binding SHA-256: `02986a86f7838b0d8cb5dbaf74ea95abb71363faa1c5e849d70422c5831c1e6a`; assets: **224**; bytes: **191939192**.
+- **Package state at freeze:** candidate bytes only. Primary reopened-ZIP, independent reopened-ZIP and final decision lock are external authorities written after package freeze. This deploy ZIP contains no post-freeze PASS claim.
+- Physical-device browser/PWA/offline/accessibility behaviour and live-origin binding are not claimed by package metadata.
+
+> Version 39 below remains the cache-epoch-corrected immutable baseline. Version 38 remains historical but its Stage A release-integrity PASS was superseded after the cache-epoch contradiction was discovered.
+
+---
+
+# Livre du Ciel — Version 39 / Stage A.1 cache-epoch reconciliation
+
+- Public version: **39**. Technical identifier: **v2.19.39-R1B**.
+- Stage: **LDC-AFLP-SUP-T1-RA19E1-V39-STAGE-A1-CACHE-EPOCH-RECONCILIATION**. Build date: **2026-08-25**.
+- Immutable immediate baseline: Version 38 SHA-256 `6d9c5d37aa7e885a923e27eb0c1d8fbaffeb69543948329513d677fc6be5ded3`.
+- Trigger: pre-Stage-B evidence recheck found a genuine Version 38 release-binding contradiction. Its current `corpus/manifest.json` digest was `c9c296…` while runtime `CORPUS_CV` still used the older Version 36 epoch `cm-2fb4a1…`, and the active `version.json` `corpus_cache_epoch` still carried the Version 33 epoch. This means the Version 38 Stage A PASS decision is superseded for release authority by this correction.
+- Stage A.1 scope only: restore the F1 contract that the runtime corpus cache epoch is mechanically derived from the current frozen corpus-manifest digest. No search logic, canonical text, paragraph IDs, semantic/BM25 index, search shards, speakers, presentation parents, flow/display data or user-state schema are changed.
+- Corpus manifest SHA-256: `ba92e2a4c3f581a6a3e5218804dea3e6883b568339eaa9cb455fad95dcb7e56d`; corpus cache epoch: `cm-ba92e2a4c3f581a6`.
+- Offline content binding SHA-256: `6ce3b4ec874c473ac941d31049fbb32779fd32368043fd70ff8ae2b77e8441fd`; assets: **224**; bytes: **191938725**.
+- **Package state at freeze:** candidate bytes only. Primary reopened-ZIP, independent reopened-ZIP and final decision lock are external authorities written after package freeze. This deploy ZIP contains no post-freeze PASS claim.
+- Physical Samsung/iPhone/iPad, installed-PWA, true-offline, live-origin and VoiceOver/TalkBack results are not claimed by package metadata.
+
+> Version 38 below is retained as immutable historical evidence but is **not deployment-authoritative** because the newly discovered cache-epoch binding contradiction invalidated its release-integrity PASS claim.
+
+---
+
+# Livre du Ciel — Version 38 / Stage A accessibility + date + featured-quote correctness
+
+- Public version: **38**. Technical identifier: **v2.19.38-R1B**.
+- Stage: **LDC-AFLP-SUP-T1-RA19E1-V38-STAGE-A-ACCESSIBILITY-DATE-QUOTE-FREEZE-METADATA-ANCHOR-HARDENED**. Build date: **2026-08-25**.
+- Immutable immediate baseline: Version 36 SHA-256 `c6eda0803fafe6fc005ced2fe673b4aa2004cbeffe0b342d82e291453c30a4ef`.
+- Stage A scope only: F15 accessible Jesus/Mary speaker equivalent independent of colour/Repères; F16 semantic screen headings + one main landmark; F17 one shared visual/AT attribution model; F18 throttled offline live announcements + non-live selection action panel; F22 all 137 formerly omitted visible entries routed to `Sans date`; F11 all 14 featured quotes bound to frozen exact paragraph targets; package freeze-state metadata contract.
+- Protected bytes: all 36 speaker shards, canonical paragraph/search/display/flow/supplement payloads and user-state schema are unchanged except `corpus/manifest.json` release metadata. Semantic speaker and `presentation_parent` values are unchanged. `interaction_anchor.js` changes only its injected-metadata exclusion list so accessibility/Repères labels cannot enter canonical selection offsets.
+- F1 cache-integrity algorithm and F8 Android non-fragment targeting handler are preserved; release/cache identifiers are mechanically rebound to Version 38.
+- Corpus manifest SHA-256: `c9c296300508048e1b2a52a2c751faf3b187db4ee27ad14ddf2f8899102b98eb`; corpus cache epoch: `cm-c9c296300508048e`.
+- Offline content binding SHA-256: `dc1954bec2302d788a8dba05df9f17fa7769c45419a8f07d41f6fef3d68580c4`; assets: **224**; bytes: **191938140**.
+- **Package state at freeze:** candidate bytes only. Primary reopened-ZIP, independently implemented reopened-ZIP and final decision lock are external authorities written after package freeze. This deploy ZIP contains no post-freeze PASS claim.
+- Physical Samsung/iPhone/iPad, installed-PWA, true-offline, live-origin and VoiceOver/TalkBack results are not claimed by package metadata.
+
+> Version 36 below is retained as immutable historical provenance and is superseded only for Stage A validation by this Version 38 candidate.
+> The frozen Version 37 candidate (`0e26740387911fe15a9a275c3ff04d08ba9cbb28f46c2ec74670eb795fbe22d6`) remains rejected historical evidence: deep regression found that legacy canonical-text/fallback highlight paths still counted injected Repères/accessibility metadata.
+
+---
+
+# Livre du Ciel — Version 36 / Repères dual attribution
+
+- Public version: **36**. Technical identifier: **v2.19.36-R1B**.
+- Stage: **LDC-AFLP-SUP-T1-RA19E1-V36-REPERES-DUAL-ATTRIBUTION**. Build date: **2026-08-25**.
+- Immutable immediate baseline: Version 35 SHA-256 `87e138759eb8a4402785ebce8dd63ca246c813f36691bd389d5263185339070c`.
+- Owner-approved product rule: Repères keeps the outer presentation label `JÉSUS`/`MARIE`; when nested quoted words have a different semantic speaker, a second non-canonical line identifies that quoted voice in natural French. Multiple differing voices are listed uniquely in occurrence order.
+- Examples: `JÉSUS` alone for ordinary direct Jesus; `JÉSUS / voix citée : créatures`; `JÉSUS / voix citée : Luisa`; `MARIE / voix citée : Entité Suprême`.
+- Repères OFF normal reader is unchanged. Canonical devotional text, paragraph IDs/order, all 36 speaker shards, semantic speakers, presentation parents, offsets, guillemets, search, display/flow shards, F8 Android targeting and iPhone/iPad exact-selection behavior are unchanged from Version 35.
+- Corpus manifest SHA-256: `2fb4a1c5cb4c7e9407e0cc14880dbf6ebe456d13caa18b70dc8c1c5b64de57a0`; corpus cache epoch: `cm-2fb4a1c5cb4c7e94`.
+- Offline content binding SHA-256: `5323695121d727d0a3de0d7a6d521fedd9c57bdef659bfb4d6ff761d3e651a02`; assets: **224**; bytes: **191936747**.
+- Final reopened-ZIP, independent reopened-ZIP, Repères browser matrix, inherited F8 browser regression and F1 cache-integrity regression remain external authorities. Physical Samsung/iPhone/iPad and live-origin/PWA/offline/AT gates are not claimed by this package.
+
+> Version 35 below is retained as historical provenance and is superseded by this Version 36 authority block.
+
+---
+
+# Livre du Ciel — Version 35 / F8 Android non-fragment highlight targeting (clean rebuild)
+
+- Public version: **35**. Technical identifier: **v2.19.35-R1B**.
+- Stage: **LDC-AFLP-SUP-T1-RA19E1-V35-F8-ANDROID-NONFRAGMENT-HIGHLIGHT-REBUILD**. Build date: **2026-08-25**.
+- Immutable immediate baseline: Version 33 SHA-256 `97d117fc6ebf0cd8dc03f2962f43f702fe1134db1dafffe5459faea9362ed0bd`.
+- Rejected intermediate candidate: Version 34 SHA-256 `a2d973d8951e5241eb5849624f6e31aa2b8cb28f740b16edce8df12b46dfc902` — **FAIL_PACKAGE_CONSISTENCY**, never deploy; its index offline constants were not fully rebound from Version 33.
+- F8 repair: in Android/Samsung whole-paragraph mode, only a direct `.para-fragment` tap can start highlighting; taps on `.flow-joiner`, `.reperes-flow-meta`, or other flow-level surfaces are ignored rather than mapped to the first paragraph.
+- iPhone/iPad exact selected-text highlighting is unchanged. Canonical devotional text, paragraph IDs/order, search, all 36 speaker shards, display and flow shards are unchanged from Version 33.
+- Corpus manifest SHA-256: `ca5494ccd20f7baca50d105cb2f87ee17487488e5dc3b3dbb9bff7c7c47c8f09`; corpus cache epoch: `cm-ca5494ccd20f7bac`.
+- Offline content binding SHA-256: `0baff4d489d07ce85c91b418ee2b04bf8d7e8abd786b40fe763aabe67e4a8b58`; assets: **224**; bytes: **191935811**.
+- Final reopened-ZIP, independent reopened-ZIP, F8 browser regression and F1 cache-integrity regression remain external authorities. Physical Samsung/iPhone/iPad and live-origin/PWA/offline/AT gates are not claimed by this package.
+
+> Version 33 below is retained as historical provenance and is superseded by this Version 35 authority block.
+
+---
+
+# Livre du Ciel — Version 33 / RA19E.1 semantic + presentation-parent fixed point
+
+- Public version shown to users: **Version 33**.
+- Technical app/update identifier: **v2.19.33-R1B**.
+- Stage: **LDC-AFLP-SUP-T1-RA19E1-A17-BV7_10-SPEAKER-PARENT-F1-F7**.
+- Build date: **2026-08-24**.
+- Immutable immediate baseline: **Version 32 / v2.19.32-R1B**, SHA-256 `a5e6a0d76e4e7e7e93eff5583c304d5be9c64fc6370449a2f0634cb067a6aa78`.
+- Semantic authority: **A17 PASS_EVIDENCE_FIXED_POINT**, 65,012 main-corpus speaker segments.
+- Presentation-parent authority: **B-v7.10/A17 PASS_EVIDENCE_FIXED_POINT**, 65,012 explicit build-generated parent projections; `REVIEW_BLOCKING = 0`.
+- Seed controls: **39/39 PASS** after one explicitly re-adjudicated stale control fixture from exact Version 32 context.
+- F1: corpus cache epoch is mechanically derived from the frozen corpus-manifest digest; runtime corpus misses use `cache: reload` and size/SHA-256 verification before runtime-cache adoption.
+- F7: current release counts and offline bindings are generated after corpus payload freeze; superseded Version 32 values are retained only as historical provenance.
+- Canonical devotional paragraphs, paragraph IDs/order/stable refs, search, display, flow, volume and supplement layers remain byte-identical to Version 32.
+- Final package/reopen and independent reopen audits remain external release authority; physical Samsung/iPhone/iPad, installed-PWA, live-origin and true-offline tests are not claimed by this static build.
+
+## Current generated bindings
+
+- Corpus manifest SHA-256: `ae456d2c95939ba0a187de281917d006eac7a031d31164bea27fce2c4f4c06f4`.
+- Corpus cache epoch: `cm-ae456d2c95939ba0`.
+- Offline content binding SHA-256: `1821ea56f67a802c629c53f7c152695d6537662cd2ea3b9ba7828c42b7b22afd`.
+- Offline asset count: **224**; total bytes: **191935128**.
+
+> The Version 32 / RA19E block below is retained as historical provenance only and is superseded by this Version 33 authority block.
+
+---
+
+# Historical provenance — Version 32 / RA19E exhaustive speaker-integrity reconciliation
 
 - Public version shown to users: **Version 32**.
 - Technical app/update identifier: **v2.19.32-R1B**.

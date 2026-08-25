@@ -34,6 +34,30 @@
     return (CONF_RANK[a] <= CONF_RANK[b]) ? a : b;
   }
 
+
+  // RA19E.1 / Version 36 — Repères dual-attribution support.  These descriptors
+  // are study-layer metadata only.  They never alter canonical text, segment
+  // offsets, semantic speaker identity, or presentation-parent styling.
+  function semanticVoiceKey(v) {
+    return String((v && v.speaker) || '').toUpperCase() + '|' +
+           String((v && v.subrole) || '').toLowerCase();
+  }
+  function appendSemanticVoice(list, speaker, subrole) {
+    list = list || [];
+    var v = {speaker:String(speaker || '').toUpperCase(), subrole:String(subrole || '').toLowerCase()};
+    if (!v.speaker) return list;
+    var key = semanticVoiceKey(v);
+    for (var i = 0; i < list.length; i++) if (semanticVoiceKey(list[i]) === key) return list;
+    list.push(v);
+    return list;
+  }
+  function mergeSemanticVoices(target, source) {
+    target = target || [];
+    source = source || [];
+    for (var i = 0; i < source.length; i++) appendSemanticVoice(target, source[i].speaker, source[i].subrole);
+    return target;
+  }
+
   /* -- validation: report, never mutate ----------------------------------- */
   function validateSegments(text, segments) {
     var errs = [];
@@ -76,6 +100,7 @@
       intervals.push({ start: s.start_char, end: s.end_char,
                        text: text.slice(s.start_char, s.end_char),
                        role: s.speaker, semantic_speaker: s.speaker,
+                       semantic_subrole: s.semantic_subrole_normalized || s.semantic_subrole || null,
                        speaker: displaySpeaker,
                        styled: isStyled(displaySpeaker),
                        confidence: s.confidence || null,
@@ -105,6 +130,7 @@
         last.end = iv.end;
         last.text += iv.text;
         last.segment_ids = last.segment_ids.concat(iv.segment_ids);
+        last.semantic_voices = mergeSemanticVoices(last.semantic_voices, iv.semantic_speaker ? [{speaker:iv.semantic_speaker,subrole:iv.semantic_subrole}] : []);
         last.confidence = mergeConfidence(last.confidence, iv.confidence);
         last.end_quotation_depth = iv.quotation_depth;
         last.end_quote_depth = iv.quote_depth;
@@ -120,6 +146,7 @@
           last.end = nxt.end;
           last.text += iv.text + nxt.text;
           last.segment_ids = last.segment_ids.concat(nxt.segment_ids);
+          last.semantic_voices = mergeSemanticVoices(last.semantic_voices, nxt.semantic_speaker ? [{speaker:nxt.semantic_speaker,subrole:nxt.semantic_subrole}] : []);
           last.confidence = mergeConfidence(last.confidence, nxt.confidence);
           last.end_quotation_depth = nxt.quotation_depth;
           last.end_quote_depth = nxt.quote_depth;
@@ -130,6 +157,7 @@
       }
       runs.push({ start: iv.start, end: iv.end, text: iv.text,
                   role: iv.role, speaker: iv.speaker, styled: iv.styled,
+                  semantic_voices: iv.semantic_speaker ? [{speaker:String(iv.semantic_speaker).toUpperCase(),subrole:String(iv.semantic_subrole || '').toLowerCase()}] : [],
                   confidence: iv.confidence, segment_ids: iv.segment_ids.slice(),
                   start_quotation_depth: iv.quotation_depth, end_quotation_depth: iv.quotation_depth,
                   start_quote_depth: iv.quote_depth, end_quote_depth: iv.quote_depth,
@@ -314,6 +342,31 @@
                    evidence_ref: visual.evidence_ref || '', evidence_sha256: visual.evidence_sha256 || '',
                    suppressed_leading: JSON.stringify(b.suppress_next_leading_ranges || []) });
     }
+
+    // A linked visual run may cross several paragraph fragments.  Repères emits
+    // its attribution only on the first fragment, so aggregate the semantic
+    // voices across the complete linked run and copy that ordered unique list to
+    // every fragment before rendering.  This prevents later quoted voices from
+    // disappearing merely because they begin in a continuation paragraph.
+    var linkedVoices = {};
+    for (var mi = 0; mi < members.length; mi++) {
+      var mm = members[mi];
+      if (!mm.model || !mm.model.ok) continue;
+      for (var ri = 0; ri < mm.model.runs.length; ri++) {
+        var rr = mm.model.runs[ri];
+        if (!rr.styled || !rr.runId) continue;
+        if (!linkedVoices[rr.runId]) linkedVoices[rr.runId] = [];
+        mergeSemanticVoices(linkedVoices[rr.runId], rr.semantic_voices || []);
+      }
+    }
+    for (var mj = 0; mj < members.length; mj++) {
+      var m2 = members[mj];
+      if (!m2.model || !m2.model.ok) continue;
+      for (var rj = 0; rj < m2.model.runs.length; rj++) {
+        var r2 = m2.model.runs[rj];
+        if (r2.styled && r2.runId && linkedVoices[r2.runId]) r2.semantic_voices = linkedVoices[r2.runId].slice();
+      }
+    }
     return links;
   }
 
@@ -336,6 +389,30 @@
   -------------------------------------------------------------------------- */
   function resolveNestedQuotationPresentation(segments, paragraphOrder) {
     paragraphOrder = paragraphOrder || {};
+
+    /* RA19E.1 / Version 33: main-corpus speaker shards carry an explicit,
+       build-generated presentation_parent for every semantic segment. This is
+       the fixed-point parent projection and is authoritative over quotation
+       depth. Supplement records intentionally remain on the legacy fallback
+       below because they are outside the RA19E.1 evidence universe. */
+    var sourceSegments = segments || [];
+    if (sourceSegments.length && sourceSegments.every(function (x) { return !!x.presentation_parent; })) {
+      var explicit = [], explicitLedger = [], explicitErrors = [];
+      for (var ex = 0; ex < sourceSegments.length; ex++) {
+        var src = sourceSegments[ex], c = {};
+        for (var ck in src) if (Object.prototype.hasOwnProperty.call(src, ck)) c[ck] = src[ck];
+        var parent = String(src.presentation_parent || '').toUpperCase();
+        if (parent !== 'JESUS' && parent !== 'MARY' && parent !== 'LUISA') {
+          explicitErrors.push({code:'INVALID_EXPLICIT_PRESENTATION_PARENT',segment_id:src.segment_id,presentation_parent:src.presentation_parent});
+          parent = src.speaker;
+        }
+        c.display_speaker = parent;
+        c.display_resolution = 'explicit_ra19e1_parent';
+        explicit.push(c);
+        explicitLedger.push({scheme:'ra19e1_explicit_parent',segment_id:src.segment_id,paragraph_id:src.paragraph_id,semantic_speaker:src.speaker,display_speaker:parent,resolution:c.display_resolution});
+      }
+      return {ok:explicitErrors.length===0,segments:explicit,ledger:explicitLedger,errors:explicitErrors};
+    }
     var arr = (segments || []).map(function (s, ix) {
       var c = {};
       for (var k in s) if (Object.prototype.hasOwnProperty.call(s, k)) c[k] = s[k];
@@ -447,6 +524,86 @@
 (function (root) {
   'use strict';
   var M = root.LDCSpeechModel;
+
+  function semanticVoiceLabel(speaker, subrole) {
+    var sp = String(speaker || '').toUpperCase();
+    var sr = String(subrole || '').toLowerCase();
+    if (sp === 'LUISA') return 'Luisa';
+    if (sp === 'MARY' || sp === 'MARIE') return 'Marie';
+    if (sp === 'FATHER') return 'Père';
+    if (sp === 'ANGEL') return 'ange';
+    if (sp === 'CONFESSOR') return 'confesseur';
+    if (sp === 'PRIEST') return 'prêtre';
+    if (sp === 'DEMON') return 'démons';
+    if (sp === 'SAINT') return sr.indexOf('blessed') >= 0 ? 'Bienheureux' : 'saint';
+    if (sp === 'GENERIC_SOUL') {
+      if (sr.indexOf('future_blessed') >= 0) return 'bienheureux';
+      if (sr.indexOf('human_will') >= 0) return 'volonté humaine';
+      if (sr.indexOf('worker') >= 0) return 'ouvrier';
+      if (sr.indexOf('observer') >= 0) return 'observateur';
+      if (sr.indexOf('child') >= 0) return 'enfant';
+      if (sr.indexOf('creatures') >= 0 || sr.indexOf('collective') >= 0 || sr.indexOf('future_creatures') >= 0) return 'créatures';
+      if (sr.indexOf('creature') >= 0 || sr.indexOf('created_voice') >= 0) return 'créature';
+      return 'âme';
+    }
+    if (sp === 'PERSONIFIED_VOICE') {
+      if (sr.indexOf('sun') >= 0) return 'soleil';
+      if (sr.indexOf('divine_will') >= 0 || sr.indexOf('divine_will_personified') >= 0) return 'Volonté Divine';
+      if (sr.indexOf('divine_love') >= 0) return 'Amour divin';
+      if (sr.indexOf('sufferings') >= 0) return 'souffrances';
+      if (sr.indexOf('attributes') >= 0) return 'attributs divins';
+      if (sr.indexOf('good_acts') >= 0 || sr.indexOf('created_acts') >= 0 || sr.indexOf('created_act') >= 0 || sr.indexOf('divine_acts') >= 0) return 'actes';
+      if (sr.indexOf('created_works') >= 0 || sr.indexOf('created_work') >= 0 || sr.indexOf('divine_works') >= 0) return 'œuvres';
+      if (sr.indexOf('created_things') >= 0 || sr.indexOf('creation') >= 0 || sr.indexOf('celestial_orchestra') >= 0) return 'Création';
+      if (sr.indexOf('created_soul') >= 0) return 'âme créée';
+      if (sr.indexOf('collective_divinity') >= 0) return 'Divinité';
+      return 'voix personnifiée';
+    }
+    if (sp === 'OTHER') {
+      if (sr.indexOf('collective_divinity') >= 0) return 'Entité Suprême';
+      if (sr.indexOf('adam') >= 0) return 'Adam';
+      if (sr.indexOf('angelic') >= 0) return 'anges';
+      if (sr.indexOf('blessed') >= 0) return 'Bienheureux';
+      if (sr.indexOf('celestial') >= 0) return 'cour céleste';
+      if (sr.indexOf('church_leaders') >= 0) return 'responsables de l’Église';
+      if (sr.indexOf('church') >= 0) return 'voix ecclésiale';
+      if (sr.indexOf('future_readers') >= 0) return 'lecteurs futurs';
+      if (sr.indexOf('humanity') >= 0) return 'humanité';
+      if (sr.indexOf('hypothetical_father') >= 0) return 'père';
+      if (sr.indexOf('creator_response') >= 0) return 'Créateur';
+      if (sr.indexOf('creator_creature') >= 0 || sr.indexOf('joint_creator') >= 0 || sr.indexOf('mutual_creator') >= 0) return 'Créateur et créature';
+      if (sr.indexOf('created') >= 0) return 'Création';
+      if (sr.indexOf('prayer') >= 0) return 'voix collective';
+      if (sr.indexOf('interlocutor') >= 0) return 'interlocuteur';
+      return 'autre voix';
+    }
+    return 'autre voix';
+  }
+
+  function quotedVoiceLabels(run) {
+    var display = String((run && run.speaker) || '').toUpperCase();
+    if (display === 'MARIE') display = 'MARY';
+    var out = [], seen = {};
+    var voices = (run && run.semantic_voices) || [];
+    for (var i = 0; i < voices.length; i++) {
+      var sem = String(voices[i].speaker || '').toUpperCase();
+      if (sem === 'MARIE') sem = 'MARY';
+      if (!sem || sem === display) continue;
+      var label = semanticVoiceLabel(sem, voices[i].subrole || '');
+      if (!seen[label]) { seen[label] = true; out.push(label); }
+    }
+    return out;
+  }
+
+  // Stage A accessibility authority: AT attribution is derived from the exact same
+  // presentation speaker + natural-language quoted-voice model used by Repères.
+  // This does not widen Repères product scope and does not mutate semantic metadata.
+  function attributionText(run, quotedLabels) {
+    var display = M.normSpeaker(run && run.speaker) === 'marie' ? 'Marie' : 'Jésus';
+    var labels = Array.isArray(quotedLabels) ? quotedLabels : quotedVoiceLabels(run);
+    if (!labels.length) return display + '.';
+    return display + '. ' + (labels.length === 1 ? 'Voix citée : ' : 'Voix citées : ') + labels.join(' · ') + '.';
+  }
 
   function esc(s) {
     return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;')
@@ -758,15 +915,27 @@
         if (parts.trail) inner += '<span class="speech-outer-delimiter"' +
                                   (hideTrailDelim ? ' aria-hidden="true"' : '') + '>' + esc(parts.trail) + '</span>';
       }
+      var quotedLabels = quotedVoiceLabels(r);
+      var quotedVoiceHtml = '';
+      var attributionSrHtml = !isCont
+        ? '<span class="speech-attribution-sr">' + esc(attributionText(r, quotedLabels)) + '</span>'
+        : '';
+      if (showLabels && !isCont && quotedLabels.length) {
+        var prefix = quotedLabels.length === 1 ? 'voix citée : ' : 'voix citées : ';
+        quotedVoiceHtml = '<span class="speech-quoted-voice" aria-hidden="true" data-quoted-voices="' + esc(quotedLabels.join('|')) + '">' +
+                          prefix + esc(quotedLabels.join(' · ')) + '</span>';
+      }
       html += '<span class="' + cls + ' speech-run speech-' +
               (isCont ? 'inline speech-run-continuation' : (isInlineFlowHead ? 'inline speech-run-flow-head' : r.presentation)) + '"' +
               ' data-speech-run-id="' + esc(runId) + '"' +
               (isCont ? ' data-run-continuation="1"' : '') +
               (isInlineFlowHead ? ' data-run-flow-head="1" data-visual-policy="continuous_prose"' : '') +
               ' data-run-start="' + r.start + '" data-run-end="' + r.end + '">' +
+              attributionSrHtml +
               (showLabels && !isCont ? '<span class="speech-label lbl-' +
-                 (M.normSpeaker(r.speaker) === 'marie' ? 'marie' : 'jesus') + '">' + label + '</span>' +
-                 (r.confidence ? '<span class="speech-conf" data-confidence="' + esc(r.confidence) + '">' +
+                 (M.normSpeaker(r.speaker) === 'marie' ? 'marie' : 'jesus') + '" aria-hidden="true">' + label + '</span>' +
+                 quotedVoiceHtml +
+                 (r.confidence ? '<span class="speech-conf" aria-hidden="true" data-confidence="' + esc(r.confidence) + '">' +
                    (r.confidence === 'high' ? 'confiance élevée' : r.confidence === 'medium' ? 'confiance moyenne' : 'confiance faible') +
                   '</span>' : '') : '') +
               inner + '</span>';
@@ -775,6 +944,9 @@
   }
 
   M.renderSpeechModel = renderSpeechModel;
+  M.semanticVoiceLabel = semanticVoiceLabel;
+  M.quotedVoiceLabels = quotedVoiceLabels;
+  M.attributionText = attributionText;
   M.splitOuterDelimiters = splitOuterDelimiters;
   M.splitNarrativeBoundaryDelimiters = splitNarrativeBoundaryDelimiters;
   M.escapeForRender = esc;
