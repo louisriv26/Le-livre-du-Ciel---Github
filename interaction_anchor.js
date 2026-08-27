@@ -28,8 +28,13 @@
   }
 
   /* -- §8.1 explicit map, built from canonical text + display atoms --------- */
-  function indexFragment(fragEl, paraId, canonicalText, atoms) {
+  function indexFragment(fragEl, paraId, canonicalText, atoms, opts) {
     if (!fragEl) return null;
+    opts = opts || {};
+    var canonicalStart = Number.isFinite(opts.canonicalStart) ? opts.canonicalStart : 0;
+    var canonicalEnd = Number.isFinite(opts.canonicalEnd) ? opts.canonicalEnd : canonicalText.length;
+    canonicalStart = Math.max(0, Math.min(canonicalStart, canonicalText.length));
+    canonicalEnd = Math.max(canonicalStart, Math.min(canonicalEnd, canonicalText.length));
     var nodes = [], ds = 0;
     var w = document.createTreeWalker(fragEl, NodeFilter.SHOW_TEXT, null, false);
     var n;
@@ -40,9 +45,12 @@
       ds += n.nodeValue.length;
     }
     var rec = { paraId: paraId, text: canonicalText, atoms: atoms || null,
+                canonicalStart: canonicalStart, canonicalEnd: canonicalEnd,
                 nodes: nodes, displayLen: ds };
     REG.set(fragEl, rec);
     fragEl.dataset.displayLength = String(ds);
+    fragEl.dataset.canonicalStart = String(canonicalStart);
+    fragEl.dataset.canonicalEnd = String(canonicalEnd);
     return rec;
   }
 
@@ -96,11 +104,12 @@
   /* -- display offset -> canonical offset, via the display map -------------- */
   function toCanonical(rec, dispOffset) {
     if (dispOffset === null || dispOffset === undefined) return null;
-    if (!rec.atoms || !root.LDCDisplayMap) return Math.min(dispOffset, rec.text.length);
+    if (!rec.atoms || !root.LDCDisplayMap) return Math.min(rec.canonicalStart + dispOffset, rec.canonicalEnd);
     return root.LDCDisplayMap.displayToCanonical(rec.atoms, dispOffset);
   }
   function toDisplay(rec, canOffset) {
-    if (!rec.atoms || !root.LDCDisplayMap) return Math.min(canOffset, rec.displayLen);
+    canOffset = Math.max(rec.canonicalStart, Math.min(canOffset, rec.canonicalEnd));
+    if (!rec.atoms || !root.LDCDisplayMap) return Math.max(0, Math.min(canOffset - rec.canonicalStart, rec.displayLen));
     return root.LDCDisplayMap.canonicalToDisplay(rec.atoms, canOffset);
   }
 
@@ -137,8 +146,8 @@
       if (!rec) continue;
       var s = (f === startFrag) ? canonicalPosition(range.startContainer, range.startOffset) : null;
       var e = (f === endFrag)   ? canonicalPosition(range.endContainer,   range.endOffset)   : null;
-      var sc = (s && s.fragment === f) ? s.canonical : 0;
-      var ec = (e && e.fragment === f) ? e.canonical : rec.text.length;
+      var sc = (s && s.fragment === f) ? s.canonical : rec.canonicalStart;
+      var ec = (e && e.fragment === f) ? e.canonical : rec.canonicalEnd;
       if (sc > ec) { var q = sc; sc = ec; ec = q; }
       sc = Math.max(0, Math.min(sc, rec.text.length));
       ec = Math.max(0, Math.min(ec, rec.text.length));   // never exceed paragraph length
@@ -184,8 +193,13 @@
         if (want && got !== want) usable = false;
       }
       if (!usable) { fallback.push(h); return; }
-      var ds = toDisplay(rec, s), de = toDisplay(rec, e);
-      if (de <= ds) { fallback.push(h); return; }
+      // A canonical paragraph may be projected into multiple display slices around
+      // an exact within-paragraph COMPLÉMENT. Paint only the intersection owned by
+      // this slice while keeping the persisted offsets relative to the unsplit text.
+      var ps = Math.max(s, rec.canonicalStart), pe = Math.min(e, rec.canonicalEnd);
+      if (pe <= ps) return;
+      var ds = toDisplay(rec, ps), de = toDisplay(rec, pe);
+      if (de <= ds) return;
       rec.nodes.forEach(function (nd) {
         var a = Math.max(ds, nd.ds), b = Math.min(de, nd.de);
         if (b > a) pieces.push({ node: nd.node, start: a - nd.ds, end: b - nd.ds, h: h });

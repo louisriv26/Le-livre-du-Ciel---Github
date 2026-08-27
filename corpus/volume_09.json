@@ -2087,12 +2087,12 @@
     }
   ],
   "entry_count": 55,
-  "generation": "G036-AFLP-R1B-UWR2",
+  "generation": "G036-AFLP-R2-UWR2",
   "label": "Tome 9",
   "para_count": 448,
-  "predecessor_generation": "G036-AFLP-R1A-UWR2",
+  "predecessor_generation": "G036-AFLP-R1B-UWR2",
   "r3ait_status": "terminal_harmonisation_r2_prepared",
   "speaker_segment_count": 390,
-  "status": "AFLP_R1B_NARROW_LINGUISTIC_REVIEWED",
+  "status": "AFLP_R2_CRITICAL_RECONCILIATION_M4",
   "volume": 9
 }

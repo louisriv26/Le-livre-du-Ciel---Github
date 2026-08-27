@@ -1201,12 +1201,12 @@
     }
   ],
   "entry_count": 28,
-  "generation": "G036-AFLP-R1B-UWR2",
+  "generation": "G036-AFLP-R2-UWR2",
   "label": "Tome 5",
   "para_count": 337,
-  "predecessor_generation": "G036-AFLP-R1A-UWR2",
+  "predecessor_generation": "G036-AFLP-R1B-UWR2",
   "r3_status": "blind_adversarial_verified",
   "r3ait_status": "terminal_harmonisation_r2_prepared",
-  "status": "AFLP_R1B_NARROW_LINGUISTIC_REVIEWED",
+  "status": "AFLP_R2_CRITICAL_RECONCILIATION_M4",
   "volume": 5
 }

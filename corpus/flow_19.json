@@ -1,7 +1,7 @@
 {
   "schema_version": "ldc-display-flow-v2",
   "volume": 19,
-  "corpus_version": "G036-AFLP-R1B-UWR2",
+  "corpus_version": "G036-AFLP-R2-UWR2",
   "group_count": 977,
   "groups": [
     {
@@ -44011,8 +44011,8 @@
         {
           "paragraph_id": "LDC.T19.E0049.P044",
           "stable_ref": "LDC.T19.E0049.P044",
-          "source_text_sha256": "3a7416eb1c91d994857ed57a52c4fecadcaad083af04bb5e9605691981d63a42",
-          "canonical_length": 37,
+          "source_text_sha256": "24f6f6fdaac83a4b9256a053eccc594f179faf1039c5cee5445b3c34bb4b039e",
+          "canonical_length": 38,
           "boundary_after": {
             "display_joiner": "space",
             "speech_run_policy": "continue_same_speaker_only",
@@ -44034,8 +44034,8 @@
         {
           "paragraph_id": "LDC.T19.E0049.P045",
           "stable_ref": "LDC.T19.E0049.P045",
-          "source_text_sha256": "bfa3be054ffd69e0158701e8ddd439fdeef6dd1443ecc9d008321ae6d46c9be2",
-          "canonical_length": 62,
+          "source_text_sha256": "c1ab2c4afd0df0ad5f20fc71eedf081638274bf06dbec778b0b27c5a90e1021b",
+          "canonical_length": 49,
           "boundary_after": null
         }
       ]

@@ -3134,11 +3134,11 @@
     }
   ],
   "entry_count": 54,
-  "generation": "G036-AFLP-R1B-UWR2",
+  "generation": "G036-AFLP-R2-UWR2",
   "label": "Tome 33",
   "para_count": 1338,
-  "predecessor_generation": "G036-AFLP-R1A-UWR2",
+  "predecessor_generation": "G036-AFLP-R1B-UWR2",
   "r3ait_status": "SUPERSEDED_BY_B06_LING_R2",
-  "status": "AFLP_R1B_NARROW_LINGUISTIC_REVIEWED",
+  "status": "AFLP_R2_CRITICAL_RECONCILIATION_M4",
   "volume": 33
 }

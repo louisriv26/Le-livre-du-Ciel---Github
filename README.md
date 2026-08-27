@@ -1,3 +1,67 @@
+# Livre du Ciel — v2.19.54-R1B / Public 54 — Protected Ma lecture suivie successor
+
+**Current candidate:** v2.19.54-R1B · Public version 54 · build date 2026-08-27.
+
+**Baseline:** immutable locked v2.19.53-R1B ZIP SHA-256 `8eb546ceb9c8bc9d778c2c4d3912be1736d523dd94d427ade713a20f2cdb28d7`.
+
+**v54 functional scope:** protected `Ma lecture suivie` state machine only: explicit SEQUENTIAL/CONSULTATION reader intent, session-scoped immutable position snapshots, ordered/atomic persistence, stale-callback rejection, navigation flush/invalidation, immediate sequential persistence, lifecycle safety flushes, journey source-mode binding, v2→v3 reading-position migration/confirmation, explicit confirmed/undoable relocation, minimal journey/consultation UX, and backup/import compatibility.
+
+**Protected content:** canonical corpus/search/speaker/display/flow/SUP-T1/SUP-T2 content, paragraph IDs/order, notes semantics, highlight anchoring semantics, favourites semantics, Lu semantics, and Collection Luisa architecture are not intentionally changed.
+
+**Release status inside package:** candidate bytes only; no final PASS claim. Final authority requires deterministic Build A/B, primary and independent reopened-ZIP audits, executable state-machine evidence, report/stale-reference reconciliation, reopened evidence ZIP, and final decision lock written last. Physical Samsung/iPhone/iPad/PWA/offline/VoiceOver/TalkBack gates remain external.
+
+> Everything below this line is historical predecessor documentation. Any older wording such as “current”, “governing”, “PASS”, “next stage” or release instruction applies only to its historical version and is superseded by the current v54 authority section above.
+
+---
+
+# Historical predecessor — Livre du Ciel v2.19.53-R1B / Public 53 — package-binding & current-metadata reconciliation successor
+
+**Historical v53 status:** locked `LIMITED_PASS`; package/binding consistency repaired. Superseded as the functional baseline by v54.
+
+# Livre du Ciel — v2.19.53-R1B / Public 53 — package-binding & current-metadata reconciliation successor
+
+**Current candidate:** v2.19.53-R1B · Public version 53 · build date 2026-08-27.
+
+**Baseline:** immutable failed-evidence v2.19.52-R1B ZIP SHA-256 `c49da37d61e83164071fad4f8596233aac479dfe74ea07b05b687beb56d27025`.
+
+**v53 repair scope:** release/package metadata and binding consistency only. No intentional change to corpus wording, paragraph IDs/order, search text/IDs, speaker data/offsets, display/flow/SUP payloads, user-data restore logic, reading-position runtime logic, highlights, notes, favourites, Lu semantics, or Collection Luisa architecture.
+
+**Release status inside package:** candidate bytes only; no final PASS claim. Final authority requires deterministic Build A/B, reopened-ZIP audit, separately implemented independent reopen, report/evidence reconciliation, reopened evidence ZIP, and decision lock written last. Physical Samsung/iPhone/iPad/PWA/offline/VoiceOver/TalkBack gates remain external.
+
+> Everything below this line is historical predecessor documentation. Any older wording such as “current”, “governing”, “PASS”, “next stage” or release instruction applies only to its historical version and is superseded by the current v53 authority section above.
+
+---
+
+# Historical immediate predecessor — Livre du Ciel v2.19.52-R1B / Public 52 — user-data restore compatibility + active binding repair successor
+
+**Historical status:** frozen failed evidence. Deep reconciliation found active `version.json` binding contradictions; v52 must not be deployed.
+
+**Historical v52 scope:** backward-compatible restore of older valid user-data backups, safe multi-paragraph highlight re-anchoring, fail-closed preservation of unresolved anchors, restore rollback protection, and attempted current binding reconciliation. Canonical corpus/search/speaker/display/flow/SUP payloads were preserved.
+
+---
+
+# Historical predecessor — Livre du Ciel v2.19.51-R1B / Public 51 — final four-pass metadata-binding reconciliation successor
+
+**Current candidate:** v2.19.51-R1B · Public version 51 · build date 2026-08-26.
+
+**Current corpus architecture**
+
+- ALIGNÉ: `G036-AFLP-R2-UWR2` — 2,312 entries / 74,348 paragraphs.
+- COMPLÉMENT: 58 active supplement items — 14 historical SUP-T1 + 44 M3-authorised SUP-T2; 149 paragraphs total.
+- ENRICHI: `G036-AFLP-R2-SUP-T2` — 2,324 entries / 74,497 paragraphs.
+- Active supplement speakers: 117 segments; total backbone + supplement speaker segments: 65,129.
+- User-data schema: v4. Eight corrected ALIGNÉ paragraphs retain stable IDs; exact selections migrate only by exact/context/unique-normalized evidence, otherwise remain preserved as stale/unresolved.
+- Within-paragraph complements use display slicing while preserving the unsplit canonical ALIGNÉ paragraph identity and offsets.
+- Historical `G036-AFLP-R1B-UWR2` and the original 14-item SUP-T1 layer remain immutable evidence snapshots.
+
+**v51 metadata-binding repair:** canonical corpus wording, paragraph IDs, search, speaker, display, flow, SUP-T1/SUP-T2 content and user-state migration data are unchanged from locked v50. This successor corrects the final stale active binding found by Pass 4 (`corpus/manifest.json → reader_architecture.version`) and rebinds version/cache/offline metadata.
+
+**Evidence status:** all package/report evidence must be regenerated from v51 bytes. No public release PASS is claimed until the frozen v51 ZIP is reopened from disk and independently audited. Physical iPhone/iPad/Samsung/PWA/accessibility tests remain external unless explicitly recorded in the final decision.
+
+## Historical release lineage below — non-governing
+
+The following inherited sections document superseded versions and historical audit stages. Version/count/PASS statements below are historical unless explicitly marked current.
+
 # Livre du Ciel — Version 47 / report-integrity & release-metadata reconciliation
 
 - Public version: **47**. Technical identifier: **v2.19.47-R1B**.
@@ -11,7 +75,7 @@
 - Version 47 external validation has not started. Version 45 E1/E2 evidence does **not** transfer to V47. Begin with V47 E1, then E2, then E3–E11.
 - Wide public release is not authorized.
 
-> Everything below this line is historical predecessor documentation. Any older wording such as “current”, “governing”, “PASS”, “next stage” or release instruction applies only to its historical version and is superseded by the V47 section above.
+> Everything below this line is historical predecessor documentation. Any older wording such as “current”, “governing”, “PASS”, “next stage” or release instruction applies only to its historical version and is superseded by the current v51 authority section at the top of this README.
 
 ---
 
