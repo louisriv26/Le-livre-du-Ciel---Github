@@ -1,7 +1,7 @@
 {
   "schema": "ldc-search-metadata-index-v1",
-  "generated": "2026-08-28",
-  "corpus_generation": "G036-AFLP-R3-UWR2",
+  "generated": "2026-08-26",
+  "corpus_generation": "G036-AFLP-R2-UWR2",
   "normalizer": "ldc-search-normalizer-v1",
   "entry_count": 2312,
   "paragraph_count": 74348,
