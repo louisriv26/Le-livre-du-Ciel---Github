@@ -1,22 +1,21 @@
 {
   "schema": "ldc-supplement-registry-v2",
-  "programme": "LDC-AFLP-SUP-T1-SUP-T2-SUP-T3",
+  "programme": "LDC-AFLP-SUP-T1-SUP-T2",
   "status": "M4_SUP_T2_CANONICAL_AND_SPEAKER_DATA_FROZEN",
   "backbone_generation": "G036-AFLP-R2-UWR2",
-  "composite_generation": "G036-AFLP-R2-SUP-T3",
+  "composite_generation": "G036-AFLP-R2-SUP-T2",
   "default_mode": "enriched",
   "counts": {
-    "items": 59,
+    "items": 58,
     "sup_t1_items": 14,
     "sup_t2_items": 44,
-    "complete_entries": 13,
+    "complete_entries": 12,
     "internal_supplements": 46,
     "legacy_sup_t1_inline_supplements": 2,
-    "paragraphs": 154,
-    "search_records": 154,
-    "speaker_segments": 120,
-    "sup_t2_speaker_segments": 65,
-    "sup_t3_items": 1
+    "paragraphs": 149,
+    "search_records": 149,
+    "speaker_segments": 117,
+    "sup_t2_speaker_segments": 65
   },
   "supplements": [
     {
@@ -12332,7 +12331,7 @@
       }
     },
     {
-      "supplement_id": "LDCSUP.T20.1927-01-04.SUPT2.M2-0105",
+      "supplement_id": "LDCSUP.T20.1927-01-01.SUPT2.M2-0105",
       "supplement_type": "INTERNAL_SUPPLEMENT",
       "supplement_set": "SUP-T2",
       "volume": 20,
@@ -12376,7 +12375,7 @@
           "source_generation": "LDC-AFLP-SUP-T2",
           "source_batch": "SUP-T2",
           "is_supplement": true,
-          "supplement_id": "LDCSUP.T20.1927-01-04.SUPT2.M2-0105",
+          "supplement_id": "LDCSUP.T20.1927-01-01.SUPT2.M2-0105",
           "supplement_set": "SUP-T2",
           "case_id": "M2-0105",
           "fragment_id": "M2-0105.F01",
@@ -12386,9 +12385,7 @@
           "source_origin": "ITPM",
           "decision_id": "M3::M2-0105::M2-0105.F01::APPROVED_FOR_M4",
           "translation_hash": "54edc04b056ca62d54817161443e46ead2d404062a5af70e0487b56bcd50f764",
-          "provenance_badge": "COMPLÉMENT",
-          "canonical_supplement_id": "LDCSUP.T20.1927-01-04.SUPT2.M2-0105",
-          "legacy_supplement_id": "LDCSUP.T20.1927-01-01.SUPT2.M2-0105"
+          "provenance_badge": "COMPLÉMENT"
         }
       ],
       "speakers": [
@@ -12452,10 +12449,8 @@
           "line_end": 3318,
           "line_start": 3234
         },
-        "primary_source_unit_key": "ITPM.T20.1927-01-04.045",
-        "primary_source_unit_sha256": "7c1107a5625f68eabd9c895fa0ec19067fbeb22c09166429a45ef0afcead9fcb",
-        "legacy_primary_source_unit_key": "ITPM.T20.1927-01-01.044",
-        "m6_metadata_reconciliation": "M2-0105__DATE_4_JAN_1927__SOURCE_UNIT_045__TEXT_AND_PLACEMENT_UNCHANGED"
+        "primary_source_unit_key": "ITPM.T20.1927-01-01.044",
+        "primary_source_unit_sha256": "7c1107a5625f68eabd9c895fa0ec19067fbeb22c09166429a45ef0afcead9fcb"
       },
       "french_wording_provenance": {
         "adequate_french_body_span_found": false,
@@ -12475,7 +12470,7 @@
       "enabled": true,
       "decision_id": "M3::M2-0105::M4_AUTHORIZED",
       "source_evidence_ids": [
-        "ITPM.T20.1927-01-04.045"
+        "ITPM.T20.1927-01-01.044"
       ],
       "translation_hash": "54edc04b056ca62d54817161443e46ead2d404062a5af70e0487b56bcd50f764",
       "translation_status": "CONTROLLED_TRANSLATION_COMPLETE__INDEPENDENT_M3_RECHECK_PASS",
@@ -12488,15 +12483,7 @@
         "aflp": false,
         "additions": true,
         "enriched": true
-      },
-      "legacy_supplement_ids": [
-        "LDCSUP.T20.1927-01-01.SUPT2.M2-0105"
-      ],
-      "identifier_authority": "M6_CANONICAL_DATE_KEY_1927-01-04__LEGACY_ID_ALIAS_PRESERVED_FOR_USER_STATE",
-      "source_evidence_ids_legacy": [
-        "ITPM.T20.1927-01-01.044"
-      ],
-      "paragraph_identifier_contract": "PARAGRAPH_IDS_AND_STABLE_REFS_RETAIN_1927-01-01_LEGACY_DATE_KEY_FOR_USER_STATE_BACKWARD_COMPATIBILITY__PARENT_SUPPLEMENT_ID_CANONICAL_1927-01-04"
+      }
     },
     {
       "supplement_id": "LDCSUP.T31.1932-10-30.SUPT2.M2-0107",
@@ -13908,9 +13895,9 @@
           "host": "LDC.T33.E0030.P002",
           "host_stable_ref": "LDC.T33.E0030.P002",
           "host_text_hash": "d5d0bf4edf9dadd5f83bbf72462db6602c7acd41df071cc6039e4274b2cad3e9",
-          "insertion_offset": 112,
+          "insertion_offset": 114,
           "intervening_text": " ",
-          "left_context": "« C’est pour toi que Je fais cela. »",
+          "left_context": "« C'est pour toi que J'ai fait cela. »",
           "left_context_sha256": "cd184a980c315c30eef4a586b58a85e502fcda0a3d97052740b0da9ed3650cc8",
           "right_context": "J'ai fait mon tour",
           "right_context_sha256": "6d6840e42a1ffff2fbf2405e4dce0af7285e81ddd133cd37fe342641fb78cd3f",
@@ -13934,16 +13921,7 @@
           "resolved_left_context": "« C’est pour toi que Je fais cela. »",
           "resolved_left_context_sha256": "f2aa1eadfd537a2d5bdd3db48245ac505644bf8ff243b60b3305f1fc5304154c",
           "resolved_right_context": "J'ai fait mon tour",
-          "resolved_right_context_sha256": "6d6840e42a1ffff2fbf2405e4dce0af7285e81ddd133cd37fe342641fb78cd3f",
-          "legacy_pre_r2_anchor": {
-            "host_text_sha256": null,
-            "insertion_offset": 114,
-            "left_context": "« C'est pour toi que J'ai fait cela. »",
-            "right_context": "J'ai fait mon tour"
-          },
-          "host_text_sha256": "2a1e47624546d9f408df7ce0858fcb9e5b33928b45d91e7a718dfef329d13c77",
-          "anchor_authority": "POST_R2_RESOLVED_ANCHOR_AUTHORITATIVE__M6_M2-0113",
-          "legacy_pre_r2_anchor_status": "PRESERVED_AS_PROVENANCE__NOT_RUNTIME_AUTHORITY"
+          "resolved_right_context_sha256": "6d6840e42a1ffff2fbf2405e4dce0af7285e81ddd133cd37fe342641fb78cd3f"
         }
       ],
       "paragraphs": [
@@ -14227,205 +14205,6 @@
         "additions": true,
         "enriched": true
       }
-    },
-    {
-      "supplement_id": "LDCSUP.T15.1922-12-02.E001",
-      "supplement_type": "COMPLETE_ENTRY",
-      "volume": 15,
-      "date_iso": "1922-12-02",
-      "display_date": "2 décembre 1922",
-      "entry": {
-        "id": "ldcsup_t15_1922_12_02_e001",
-        "stable_ref": "LDCSUP.T15.1922-12-02.E001",
-        "section": "ldcsup_t15_1922_12_02_e001",
-        "volume": 15,
-        "seq": null,
-        "sequence": null,
-        "volume_entry_order": null,
-        "date_iso": "1922-12-02",
-        "date_display": "2 décembre 1922",
-        "date_precision": "day",
-        "title": "Jésus travaille en silence en Luisa pour ajouter, aux deux colonnes — Lui-même et la Reine céleste — une troisième colonne, Luisa, sur laquelle Il puisse s’appuyer et se reposer.",
-        "para_count": 5,
-        "para_ids": [
-          "ldcsup_t15_1922_12_02_e001_p001",
-          "ldcsup_t15_1922_12_02_e001_p002",
-          "ldcsup_t15_1922_12_02_e001_p003",
-          "ldcsup_t15_1922_12_02_e001_p004",
-          "ldcsup_t15_1922_12_02_e001_p005"
-        ],
-        "has_speech": true,
-        "speakers": [
-          "JESUS"
-        ],
-        "speaker_confidence_max": "high",
-        "source_edition": "IT-PM Vol.16 17-07-1923 · placement IT-DV Vol.15 02-12-1922 · traduction française LDC-M6-SUP-T3",
-        "source_page_start": null,
-        "source_page_end": null,
-        "verification_status": "M6_SUP_T3_SOURCE_BOUND_TRANSLATION_APPROVED",
-        "is_supplement": true,
-        "supplement_id": "LDCSUP.T15.1922-12-02.E001",
-        "translation_version": "1.0.0",
-        "aflp_status": "ABSENT_FROM_AFLP",
-        "source_origin": "ITPM/ITDV",
-        "provenance_badge": "AJOUT · IT-PM / IT-DV",
-        "title_provenance": "ITPM_HEADING_DIRECT_FRENCH_TRANSLATION",
-        "decision_id": "LDC-M6-SUP-T3::T15-1922-12-02::ITEM_PASS"
-      },
-      "paragraphs": [
-        {
-          "id": "ldcsup_t15_1922_12_02_e001_p001",
-          "entry_id": "ldcsup_t15_1922_12_02_e001",
-          "stable_ref": "LDCSUP.T15.1922-12-02.E001.P001",
-          "volume": 15,
-          "display_order": 1,
-          "entry_order": 1,
-          "volume_order": null,
-          "text": "Je me sentais très affligée par la privation de mon adorable Jésus et, s’Il Se faisait voir, Il était tout silencieux. Or, ce matin, Il Se faisait voir en mon intérieur, au milieu de deux colonnes, et Il en formait une troisième entre les deux. Tantôt Il S’appuyait sur l’une, tantôt sur l’autre, et tantôt sur la colonne du milieu qu’Il élevait. Surprise, je Lui dis : «Mon Amour et ma Vie, quand as-Tu placé ces colonnes dans mon intérieur ? Maintenant Tu es plus à l’aise ; si Tu es fatigué, Tu peux T’appuyer sur elles.» Sans m’écouter, Il continuait à élever la colonne et gardait le silence. Alors je Lui dis : «Mais dis-moi, pourquoi ne me parles-Tu pas ? Qu’y a-t-il ? Où T’ai-je offensé ? Est-ce peut-être à cause de mes répugnances à faire connaître les vérités que Tu me dis que, pour me punir, Tu gardes le silence ? Mais je T’ai promis que je ne le ferais plus ; souviens-Toi que nous sommes restés en paix.»",
-          "fingerprint": "fnv1a32:921:80664bf4",
-          "source_generation": "LDC-AFLP-SUP-T3",
-          "source_batch": "SUP-T3",
-          "is_supplement": true,
-          "supplement_id": "LDCSUP.T15.1922-12-02.E001",
-          "translation_version": "1.0.0",
-          "aflp_status": "ABSENT_FROM_AFLP",
-          "source_origin": "ITPM_T16_1923-07-17__PLACEMENT_ITDV_T15_1922-12-02",
-          "decision_id": "LDC-M6-SUP-T3::T15-1922-12-02::ITEM_PASS",
-          "translation_hash": "3cb2cabfd343d711ad65fe4339f4ed0529c4bef8f243d4e1f07dc03d5d900ab6",
-          "provenance_badge": "AJOUT · IT-PM / IT-DV",
-          "supplement_set": "SUP-T3"
-        },
-        {
-          "id": "ldcsup_t15_1922_12_02_e001_p002",
-          "entry_id": "ldcsup_t15_1922_12_02_e001",
-          "stable_ref": "LDCSUP.T15.1922-12-02.E001.P002",
-          "volume": 15,
-          "display_order": 2,
-          "entry_order": 2,
-          "volume_order": null,
-          "text": "Et Jésus, me regardant et poussant un profond soupir, me dit : «Ma fille, Je travaille, J’élargis, Je prépare ; et lorsque Je travaille, Je n’ai pas envie de parler. Je veux d’abord opérer, puis parler. De tes répugnances, Je ne Me soucie pas, parce que la puissance de Ma Volonté qui agit en toi est si grande qu’Elle t’écrase si tu ne fais pas ce que Je veux ; au point qu’après une répugnance tu es forcée de courir dans Mes bras pour Me dire : “Jésus, je T’en prie, fais-moi faire ce que Tu veux. Tu le veux ? Moi aussi, je le veux.” Et tu ne Me laisses pas tant que tu ne vois pas que ta volonté et la Mienne n’en forment qu’une seule.",
-          "fingerprint": "fnv1a32:640:fa7ebcc3",
-          "source_generation": "LDC-AFLP-SUP-T3",
-          "source_batch": "SUP-T3",
-          "is_supplement": true,
-          "supplement_id": "LDCSUP.T15.1922-12-02.E001",
-          "translation_version": "1.0.0",
-          "aflp_status": "ABSENT_FROM_AFLP",
-          "source_origin": "ITPM_T16_1923-07-17__PLACEMENT_ITDV_T15_1922-12-02",
-          "decision_id": "LDC-M6-SUP-T3::T15-1922-12-02::ITEM_PASS",
-          "translation_hash": "3cb2cabfd343d711ad65fe4339f4ed0529c4bef8f243d4e1f07dc03d5d900ab6",
-          "provenance_badge": "AJOUT · IT-PM / IT-DV",
-          "supplement_set": "SUP-T3"
-        },
-        {
-          "id": "ldcsup_t15_1922_12_02_e001_p003",
-          "entry_id": "ldcsup_t15_1922_12_02_e001",
-          "stable_ref": "LDCSUP.T15.1922-12-02.E001.P003",
-          "volume": 15,
-          "display_order": 3,
-          "entry_order": 3,
-          "volume_order": null,
-          "text": "Mon silence est donc le travail. Afin que le travail que Je fais en toi soit plus beau, plus sûr et plus stable, Je l’ai placé entre deux colonnes plus fortes et plus hautes : l’une est Mon Humanité et l’autre Ma Maman ; ce sont les seules sur lesquelles Je peux M’appuyer. Mais deux appuis ne Me suffisent pas ; J’en veux un troisième. Mais si Je ne Me le forme pas, comment puis-Je l’avoir ? Voilà pourquoi Mon travail est nécessaire. Tu Me fourniras les matériaux : ce sont tous tes actes accomplis dans Mon Vouloir. Plus tu en feras, plus tu Me fourniras de matériaux ; et Je Me fatiguerai à le former, puis Je Me reposerai et Je te parlerai. Tout ce que J’ai fait et tout ce qu’a fait Ma chère Maman sera relié ensemble dans cette troisième colonne. Mon unique but est qu’elle soit travaillée avec un Vouloir éternel, le seul qui puisse Me servir d’appui, et que ce Vouloir soit connu. J’y mettrai tant de grâce qu’elle ne Me donnera pas seulement du repos, mais Me servira de chaire et de voix pour enseigner, par les moyens les plus attrayants, pénétrants et convaincants, ce que signifie vivre dans Mon Vouloir, afin que Je ne demeure plus comme exilé au milieu de Mes enfants, mais que Ma Volonté y règne comme sur Son propre trône. C’est pourquoi, laisse-Moi faire et suis-Moi.»",
-          "fingerprint": "fnv1a32:1288:d1f38343",
-          "source_generation": "LDC-AFLP-SUP-T3",
-          "source_batch": "SUP-T3",
-          "is_supplement": true,
-          "supplement_id": "LDCSUP.T15.1922-12-02.E001",
-          "translation_version": "1.0.0",
-          "aflp_status": "ABSENT_FROM_AFLP",
-          "source_origin": "ITPM_T16_1923-07-17__PLACEMENT_ITDV_T15_1922-12-02",
-          "decision_id": "LDC-M6-SUP-T3::T15-1922-12-02::ITEM_PASS",
-          "translation_hash": "3cb2cabfd343d711ad65fe4339f4ed0529c4bef8f243d4e1f07dc03d5d900ab6",
-          "provenance_badge": "AJOUT · IT-PM / IT-DV",
-          "supplement_set": "SUP-T3"
-        },
-        {
-          "id": "ldcsup_t15_1922_12_02_e001_p004",
-          "entry_id": "ldcsup_t15_1922_12_02_e001",
-          "stable_ref": "LDCSUP.T15.1922-12-02.E001.P004",
-          "volume": 15,
-          "display_order": 4,
-          "entry_order": 4,
-          "volume_order": null,
-          "text": "Puis Il revint et continuait à Se faire voir dans mon intérieur, tout appliqué à Son travail ; et nous nous regardions en silence. Je levai les yeux et je vis, au sommet d’une colonne, la tête de Notre-Seigneur et, au sommet de l’autre, celle de la Reine céleste, toutes deux couronnées. Sur la troisième colonne qu’Il formait, ma tête était destinée à être placée au sommet ; et la couronne qui devait la couronner sortait pour moitié de la couronne de Notre-Seigneur et pour moitié de celle de la Très Sainte Vierge. Ces deux moitiés, en s’unissant, formaient une seule couronne.",
-          "fingerprint": "fnv1a32:581:7d51cca6",
-          "source_generation": "LDC-AFLP-SUP-T3",
-          "source_batch": "SUP-T3",
-          "is_supplement": true,
-          "supplement_id": "LDCSUP.T15.1922-12-02.E001",
-          "translation_version": "1.0.0",
-          "aflp_status": "ABSENT_FROM_AFLP",
-          "source_origin": "ITPM_T16_1923-07-17__PLACEMENT_ITDV_T15_1922-12-02",
-          "decision_id": "LDC-M6-SUP-T3::T15-1922-12-02::ITEM_PASS",
-          "translation_hash": "3cb2cabfd343d711ad65fe4339f4ed0529c4bef8f243d4e1f07dc03d5d900ab6",
-          "provenance_badge": "AJOUT · IT-PM / IT-DV",
-          "supplement_set": "SUP-T3"
-        },
-        {
-          "id": "ldcsup_t15_1922_12_02_e001_p005",
-          "entry_id": "ldcsup_t15_1922_12_02_e001",
-          "stable_ref": "LDCSUP.T15.1922-12-02.E001.P005",
-          "volume": 15,
-          "display_order": 5,
-          "entry_order": 5,
-          "volume_order": null,
-          "text": "Je restai émerveillée et enchantée, et mon doux Jésus me dit : «Ma fille, as-tu vu combien Je dois travailler pour Me former le troisième appui, comment tu dois préparer les matériaux pour Me faire travailler, à quelle hauteur il doit parvenir pour accomplir le travail de Mon Vouloir en toi, et quelle couronne doit ceindre ton front ? C’est pourquoi, ne perds pas une minute de temps, et que ton vol dans Mon Vouloir soit continuel.»",
-          "fingerprint": "fnv1a32:435:72292d0b",
-          "source_generation": "LDC-AFLP-SUP-T3",
-          "source_batch": "SUP-T3",
-          "is_supplement": true,
-          "supplement_id": "LDCSUP.T15.1922-12-02.E001",
-          "translation_version": "1.0.0",
-          "aflp_status": "ABSENT_FROM_AFLP",
-          "source_origin": "ITPM_T16_1923-07-17__PLACEMENT_ITDV_T15_1922-12-02",
-          "decision_id": "LDC-M6-SUP-T3::T15-1922-12-02::ITEM_PASS",
-          "translation_hash": "3cb2cabfd343d711ad65fe4339f4ed0529c4bef8f243d4e1f07dc03d5d900ab6",
-          "provenance_badge": "AJOUT · IT-PM / IT-DV",
-          "supplement_set": "SUP-T3"
-        }
-      ],
-      "chronological_anchor_before": "LDC.T15.E0002",
-      "chronological_anchor_after": "LDC.T15.E0003",
-      "source_origin": "ITPM/ITDV",
-      "aflp_status": "ABSENT_FROM_AFLP",
-      "translation_version": "1.0.0",
-      "enabled": true,
-      "supplement_set": "SUP-T3",
-      "historical_binding_ids": [
-        "M2-0270",
-        "M2-0282"
-      ],
-      "primary_text_authority": {
-        "source": "IT-PM Volume 16",
-        "date": "1923-07-17",
-        "identity_role": "SAME_SUBSTANTIVE_UNIT",
-        "source_sha256": "3719d463622e3e4f1ce3814d36d8ba34d4ad8522a20142f2fa345678959b9dec",
-        "bound_span_sha256": "fb97214d74e04f5a579050927749e5e28535313096dc2553d4faefe298c34dc6"
-      },
-      "placement_authority": {
-        "canonical_supplement_date": "1922-12-02",
-        "basis": "IT-DV Vol15 explicit 2 Dec unit cross-references Vol16 17 Jul; IT-DV Vol16 17 Jul reciprocally cross-references Vol15 2 Dec",
-        "itdv15_sha256": "5aed734a304deebbdba8547ee6a6db5e8be3698085bb5a196c7e9c13ffc52d37",
-        "itdv16_sha256": "c405aca3cb956f6feadad7f858c92684889120037d9fb30792f0919ac44e3b16",
-        "competing_variant": {
-          "source": "IT-PM Volume 16 editorial table",
-          "date": "1922-12-08",
-          "disposition": "APPARATUS_PLACEMENT_VARIANT_REJECTED_FOR_CANONICAL_SUPPLEMENT_PLACEMENT__CONFLICTS_WITH_ITPM_VOL15_BODY_WHERE_8_DEC_IS_DISTINCT_IMMACULATE_CONCEPTION_UNIT"
-        }
-      },
-      "comparative_translation_family": {
-        "family": "Queen/Hugh English family",
-        "role": "translation cross-check only; not an independent vote",
-        "queen_sha256": "5a50cd640795394e1cb067ec8b4b25f0ed1c9241ff9eeccdea08fce6abe7820f",
-        "hugh_sha256": "8ae57d06fa170c5fe75ed56f4491d6434ce1e062b451113e3f3a28ed57b6a728"
-      },
-      "translation_hash": "3cb2cabfd343d711ad65fe4339f4ed0529c4bef8f243d4e1f07dc03d5d900ab6",
-      "translation_status": "APPROVED_M6_SUP_T3",
-      "translation_confidence": "VERY_HIGH",
-      "provenance_badge": "AJOUT · IT-PM / IT-DV",
-      "provenance_text": "Passage absent de l’édition AFLP. Texte français traduit directement d’après l’unité IT-PM du 17 juillet 1923, identifiée comme le même discours. Placement complémentaire au 2 décembre 1922 fondé sur les renvois explicites et réciproques IT-DV Vol.15/Vol.16. La table éditoriale IT-PM indiquant le 8 décembre est conservée comme variante d’appareil et n’est pas utilisée pour remplacer l’entrée distincte de l’Immaculée Conception du 8 décembre.",
-      "source_evidence_contract": "ITPM_PRIMARY_TEXT__ITDV_EXPLICIT_RECIPROCAL_PLACEMENT__QUEEN_HUGH_ONE_COMPARATIVE_FAMILY",
-      "title_provenance": "ITPM_HEADING_DIRECT_FRENCH_TRANSLATION"
     }
   ],
   "m3_decision_lock_sha256": "bb4a5c772b3eafdfe6eb857bc303a724a4bdb0cb0cef97c0ee5f088dfd65ab83",

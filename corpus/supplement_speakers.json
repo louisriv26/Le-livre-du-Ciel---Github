@@ -1,7 +1,7 @@
 {
   "schema": "ldc-supplement-speakers-v2",
-  "programme": "LDC-AFLP-SUP-T1-SUP-T2-SUP-T3",
-  "composite_generation": "G036-AFLP-R2-SUP-T3",
+  "programme": "LDC-AFLP-SUP-T1-SUP-T2",
+  "composite_generation": "G036-AFLP-R2-SUP-T2",
   "segments": [
     {
       "segment_id": "LDCSUP.T03.1900-02-12.E001.P003.S01",
@@ -2033,7 +2033,7 @@
       "review_status": "M3_SEMANTIC_IMPACT__M4_OFFSET_REBUILT",
       "source": "LDC-AFLP-SUP-T2",
       "is_supplement": true,
-      "supplement_id": "LDCSUP.T20.1927-01-04.SUPT2.M2-0105",
+      "supplement_id": "LDCSUP.T20.1927-01-01.SUPT2.M2-0105",
       "supplement_set": "SUP-T2",
       "case_id": "M2-0105",
       "fragment_id": "M2-0105.F01",
@@ -2369,67 +2369,12 @@
       "fragment_id": "M2-0114.F01",
       "text_preview": "Dans Ma Volonté, qui possède la vertu créatrice, tout ce que veut la créature devient un fait accompli et une œuvre pleine de vie. D’autant plus qu’en vivant dans notre Volonté, elle est déjà consciente de ce que Nous fa",
       "m4_basis": "single semantic speaker"
-    },
-    {
-      "segment_id": "LDCSUP.T15.1922-12-02.E001.P002.S01",
-      "entry_id": "ldcsup_t15_1922_12_02_e001",
-      "paragraph_id": "ldcsup_t15_1922_12_02_e001_p002",
-      "stable_ref": "LDCSUP.T15.1922-12-02.E001.P002",
-      "volume": 15,
-      "speaker": "JESUS",
-      "start_char": 64,
-      "end_char": 640,
-      "confidence": "high",
-      "display_role": "words_of_jesus",
-      "quotation_depth": 1,
-      "review_status": "APPROVED_SUP_T3_M6",
-      "source": "LDC-AFLP-SUP-T3",
-      "is_supplement": true,
-      "supplement_id": "LDCSUP.T15.1922-12-02.E001",
-      "text_preview": "Ma fille, Je travaille, J’élargis, Je prépare ; et lorsque Je travaille, Je n’ai pas envie de parler. Je veux d’abord opérer, puis parler. De tes répugnances, Je ne Me soucie pas, parce que la puissan"
-    },
-    {
-      "segment_id": "LDCSUP.T15.1922-12-02.E001.P003.S01",
-      "entry_id": "ldcsup_t15_1922_12_02_e001",
-      "paragraph_id": "ldcsup_t15_1922_12_02_e001_p003",
-      "stable_ref": "LDCSUP.T15.1922-12-02.E001.P003",
-      "volume": 15,
-      "speaker": "JESUS",
-      "start_char": 0,
-      "end_char": 1287,
-      "confidence": "high",
-      "display_role": "words_of_jesus",
-      "quotation_depth": 1,
-      "review_status": "APPROVED_SUP_T3_M6",
-      "source": "LDC-AFLP-SUP-T3",
-      "is_supplement": true,
-      "supplement_id": "LDCSUP.T15.1922-12-02.E001",
-      "text_preview": "Mon silence est donc le travail. Afin que le travail que Je fais en toi soit plus beau, plus sûr et plus stable, Je l’ai placé entre deux colonnes plus fortes et plus hautes : l’une est Mon Humanité e"
-    },
-    {
-      "segment_id": "LDCSUP.T15.1922-12-02.E001.P005.S01",
-      "entry_id": "ldcsup_t15_1922_12_02_e001",
-      "paragraph_id": "ldcsup_t15_1922_12_02_e001_p005",
-      "stable_ref": "LDCSUP.T15.1922-12-02.E001.P005",
-      "volume": 15,
-      "speaker": "JESUS",
-      "start_char": 64,
-      "end_char": 434,
-      "confidence": "high",
-      "display_role": "words_of_jesus",
-      "quotation_depth": 1,
-      "review_status": "APPROVED_SUP_T3_M6",
-      "source": "LDC-AFLP-SUP-T3",
-      "is_supplement": true,
-      "supplement_id": "LDCSUP.T15.1922-12-02.E001",
-      "text_preview": "Ma fille, as-tu vu combien Je dois travailler pour Me former le troisième appui, comment tu dois préparer les matériaux pour Me faire travailler, à quelle hauteur il doit parvenir pour accomplir le tr"
     }
   ],
   "counts": {
     "sup_t1": 52,
     "sup_t2": 65,
-    "total": 120,
-    "sup_t3": 3
+    "total": 117
   },
   "m4_status": "PASS_REBUILT_FROM_FINAL_SUP_T2_PARAGRAPHS",
   "backbone_generation": "G036-AFLP-R2-UWR2"

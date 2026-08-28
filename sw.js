@@ -1,12 +1,12 @@
-const VERSION = 'ldc-v2.19.55-R1B';
+const VERSION = 'ldc-v2.19.54-R1B';
 const CACHE_PREFIX = 'ldc-le-livre-du-ciel-';
-const SHELL_CACHE = `${CACHE_PREFIX}shell-v2.19.55-R1B`;
-const RUNTIME_CACHE = `${CACHE_PREFIX}runtime-v2.19.55-R1B`;
-const OFFLINE_CACHE = 'ldc-le-livre-du-ciel-offline-v2.19.55-R1B';
+const SHELL_CACHE = `${CACHE_PREFIX}shell-v2.19.54-R1B`;
+const RUNTIME_CACHE = `${CACHE_PREFIX}runtime-v2.19.54-R1B`;
+const OFFLINE_CACHE = 'ldc-le-livre-du-ciel-offline-v2.19.54-R1B';
 const OFFLINE_MANIFEST_URL = './offline_manifest.json';
 const OFFLINE_MANIFEST_SCHEMA = 'ldc-offline-manifest-v2';
-const OFFLINE_CONTENT_BINDING = '9f1c8496e616f6fbc941b0ed47c36e1ce425de3d724e78d5bb0496f1062044d4';
-const OFFLINE_CORPUS_MANIFEST_SHA256 = '98681c2a3b4712cf4fdf1290245f35f7629c9fb6e01f458725a663178f475aee';
+const OFFLINE_CONTENT_BINDING = '4fa504084722700c317576a4935f96e2a1324d43e454e3fbf2c4ff56a1b0c893';
+const OFFLINE_CORPUS_MANIFEST_SHA256 = 'd461f5e69c888f3416405f03b9853573ae70a5a5d8886582fca4fda137ced78c';
 const OFFLINE_META_PATH = '__ldc_offline_meta__.json';
 const RUNTIME_META_PATH = '__ldc_runtime_meta__.json';
 const RUNTIME_MAX_ENTRIES = 48;
@@ -67,7 +67,7 @@ async function loadOfflineManifest() {
   if(!r){r=await fetch(OFFLINE_MANIFEST_URL,{cache:'reload'});if(r&&r.ok)await shell.put(OFFLINE_MANIFEST_URL,r.clone());}
   if(!r||!r.ok)throw new Error('offline manifest indisponible');
   const m=await r.json();
-  if(m.schema!==OFFLINE_MANIFEST_SCHEMA||m.app_version!=='v2.19.55-R1B'||m.cache_version!==OFFLINE_CACHE)throw new Error('offline manifest incompatible');
+  if(m.schema!==OFFLINE_MANIFEST_SCHEMA||m.app_version!=='v2.19.54-R1B'||m.cache_version!==OFFLINE_CACHE)throw new Error('offline manifest incompatible');
   if(m.content_binding_schema!=='ldc-offline-content-binding-v1'||m.content_binding_sha256!==OFFLINE_CONTENT_BINDING)throw new Error('offline manifest binding incompatible');
   if(m.corpus_manifest_sha256!==OFFLINE_CORPUS_MANIFEST_SHA256)throw new Error('offline corpus manifest binding incompatible');
   const unique=[...new Set((m.assets||[]).map(a=>a.path))];

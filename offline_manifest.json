@@ -1,13 +1,13 @@
 {
   "schema": "ldc-offline-manifest-v2",
-  "app_version": "v2.19.55-R1B",
-  "cache_version": "ldc-le-livre-du-ciel-offline-v2.19.55-R1B",
-  "corpus_generation": "G036-AFLP-R2-SUP-T3",
-  "scope": "36 tomes ALIGNÉ R2 + active SUP-T1/SUP-T2/SUP-T3 complements + lexical/BM25 search + user-state migration map",
+  "app_version": "v2.19.54-R1B",
+  "cache_version": "ldc-le-livre-du-ciel-offline-v2.19.54-R1B",
+  "corpus_generation": "G036-AFLP-R2-SUP-T2",
+  "scope": "36 tomes ALIGNÉ R2 + active SUP-T1/SUP-T2 complements + lexical/BM25 search + user-state migration map",
   "semantic_vector_search_included": false,
   "semantic_vector_search_note": "Vector/embedding search remains retired; semantic_index.json is lexical BM25 metadata.",
   "asset_count": 225,
-  "total_bytes": 193300830,
+  "total_bytes": 193269355,
   "families": {
     "display": 36,
     "display_titles": 1,
@@ -393,8 +393,8 @@
     },
     {
       "path": "corpus/manifest.json",
-      "bytes": 32499,
-      "sha256": "98681c2a3b4712cf4fdf1290245f35f7629c9fb6e01f458725a663178f475aee"
+      "bytes": 30934,
+      "sha256": "d461f5e69c888f3416405f03b9853573ae70a5a5d8886582fca4fda137ced78c"
     },
     {
       "path": "corpus/paragraphs_01.json",
@@ -603,8 +603,8 @@
     },
     {
       "path": "corpus/search_06.json",
-      "bytes": 862846,
-      "sha256": "7dec9997b603e03e9a4090be0bbaa2471012e3a1b703d6cdbb314bbec34b7d84"
+      "bytes": 862840,
+      "sha256": "40585d043f30a0d244349cbe464c73e8a2ba30913da00cffc6d1bdbc2f843376"
     },
     {
       "path": "corpus/search_07.json",
@@ -634,7 +634,7 @@
     {
       "path": "corpus/search_12.json",
       "bytes": 1780754,
-      "sha256": "036ab685e784a4b3d93a594099936880fe79e00fd2171df4450fd8724ab0dad0"
+      "sha256": "e168f9864a406386c83b9fc55fa24f79778ce30b580963397068afb7a1242fa0"
     },
     {
       "path": "corpus/search_13.json",
@@ -758,8 +758,8 @@
     },
     {
       "path": "corpus/search_metadata_index.json",
-      "bytes": 3389364,
-      "sha256": "746967e0057e039cfc1c0128217df78c987970f56d8044f200aa92173a3d9368"
+      "bytes": 3389363,
+      "sha256": "6ee58112ca9372935e451336a31224f20bbe9f4b884e9cfbcae1964a78344a4b"
     },
     {
       "path": "corpus/semantic_index.json",
@@ -948,23 +948,23 @@
     },
     {
       "path": "corpus/supplement_manifest.json",
-      "bytes": 1962,
-      "sha256": "c7678501ec437fb04e9c4f043926ab1992c86d700ef4a0cc01b1f427ad17b11c"
+      "bytes": 1880,
+      "sha256": "a44d568a641758411299c98d97451000dce555d398c657ecb8f293a8a1f90b50"
     },
     {
       "path": "corpus/supplement_search.json",
-      "bytes": 258786,
-      "sha256": "c076b952194a41ac2e4410055ffd31af975bca56fc20cd9d9cb42247551501d0"
+      "bytes": 247585,
+      "sha256": "2eb2b3a5d22d3663359fe84cd74d4b39d7ef047e57878776d7f8fd99e95aaec7"
     },
     {
       "path": "corpus/supplement_speakers.json",
-      "bytes": 107338,
-      "sha256": "a58a3c267156d65f2d8b5b83146989467b7056ec1348d8d7001682d1e0bbadd8"
+      "bytes": 104869,
+      "sha256": "4cbd8f0676d035a423800f3309ca1e2bf694c86034e7b53cbc9692eda88c98c2"
     },
     {
       "path": "corpus/supplements.json",
-      "bytes": 886718,
-      "sha256": "c80731cbdc7a7d3657bb15d6d4b40605e4eb2034ac5fe4476dbc26221f2af7c9"
+      "bytes": 871840,
+      "sha256": "e55ada67191a4971423026a4c46f05e88091cd9e8bceef5671bb2e069261492e"
     },
     {
       "path": "corpus/user_state_migration_v4.json",
@@ -998,8 +998,8 @@
     },
     {
       "path": "corpus/volume_06.json",
-      "bytes": 176454,
-      "sha256": "f2e52c76f23b4e6a9176c92938d7bf6b5451e7a991c0dea6002cc5bc37d42576"
+      "bytes": 176027,
+      "sha256": "584b13f417a1a3ddb633ef46daf89fab65cea44cd5ed792fe5080e87a2bc2b56"
     },
     {
       "path": "corpus/volume_07.json",
@@ -1028,8 +1028,8 @@
     },
     {
       "path": "corpus/volume_12.json",
-      "bytes": 233338,
-      "sha256": "085443cd2c22ab6a069c0ca424fe2b0be51ad8d9e0de1a0677f7c629514ab1bb"
+      "bytes": 232492,
+      "sha256": "3bf7efcc9073ef95dac30a9cca2c69ea6f6515c183f154f8dd093477e9386245"
     },
     {
       "path": "corpus/volume_13.json",
@@ -1153,7 +1153,7 @@
     }
   ],
   "content_binding_schema": "ldc-offline-content-binding-v1",
-  "corpus_manifest_sha256": "98681c2a3b4712cf4fdf1290245f35f7629c9fb6e01f458725a663178f475aee",
-  "rebuild_status": "V55_M6_BOUNDED_RECONCILIATION_REBUILT_FROM_FINAL_STAGE_BYTES",
-  "content_binding_sha256": "9f1c8496e616f6fbc941b0ed47c36e1ce425de3d724e78d5bb0496f1062044d4"
+  "corpus_manifest_sha256": "d461f5e69c888f3416405f03b9853573ae70a5a5d8886582fca4fda137ced78c",
+  "rebuild_status": "V54_PROTECTED_LECTURE_SUIVIE_REBUILT_FROM_FINAL_STAGE_BYTES",
+  "content_binding_sha256": "4fa504084722700c317576a4935f96e2a1324d43e454e3fbf2c4ff56a1b0c893"
 }
