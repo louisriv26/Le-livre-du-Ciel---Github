@@ -1,3 +1,39 @@
+# Livre du Ciel — v2.19.56-R1B / Public 56 — M9 bounded R3 + SUP-T4 successor
+
+**Current candidate:** v2.19.56-R1B · Public version 56 · build date 2026-08-28.
+
+**Baseline:** exact locked v55 deploy SHA-256 `a7ac741f28b243c86c7c58d21ea5ae24120cd45a287ae8384fddc2df0bd76dc4`.
+
+**M9 authorised scope:** exactly 6 R3 fidelity cases / 10 existing paragraphs plus 15 SUP-T4 cases / 22 internal complement fragments, as locked by M8. No other corpus mutation is authorised.
+
+**Current corpus architecture:** ALIGNÉ `G036-AFLP-R3-UWR2` = 2,312 entries / 74,348 paragraphs; COMPLÉMENT = 74 items / 176 paragraphs / 142 speaker segments; ENRICHI `G036-AFLP-R3-SUP-T4` = 2,325 entries / 74,524 paragraphs.
+
+**Protected:** existing paragraph IDs/order, user-data schema v4, `ldc-reading-position-v3`, Ma lecture suivie SEQUENTIAL/CONSULTATION model, Lu independence, inherited SUP-T1/SUP-T2/SUP-T3 payloads/placements, and excluded/held M8 cases.
+
+**External status:** real browser/physical/PWA/accessibility validation remains successor-specific and is not inherited from v54/v55.
+
+> Everything below this line is the byte-preserved v55 README and inherited historical release documentation. Older “current”/PASS/count/version wording below is historical only.
+
+---
+
+# Livre du Ciel — v2.19.55-R1B / Public 55 — M6 bounded corpus-metadata successor
+
+**Current candidate:** v2.19.55-R1B · Public version 55 · build date 2026-08-28.
+
+**Baseline:** exact locked v54 deploy SHA-256 `c860ee3c1f722135a84abdd66d5f0b9bea2ca611fd6b3a1cb7121cc83f66e0fc`.
+
+**M6 authorised scope:** exactly the six M5/G17 bounded candidates: three AFLP display-date restorations; one COMPLÉMENT-only SUP-T3 recovery of the historically bound T15/T16 “three columns” discourse at 2 December 1922; M2-0105 identifier/provenance reconciliation with legacy alias; M2-0113 post-R2 anchor-authority reconciliation.
+
+**Current corpus architecture:** ALIGNÉ `G036-AFLP-R2-UWR2` = 2,312 entries / 74,348 paragraphs; COMPLÉMENT = 59 items / 154 paragraphs / 120 speaker segments; ENRICHI `G036-AFLP-R2-SUP-T3` = 2,325 entries / 74,502 paragraphs.
+
+**Protected:** ALIGNÉ paragraph wording/IDs/order, R2 speaker layer, display/flow topology, all inherited SUP-T1/SUP-T2 textual payloads/placements, user-data schema v4, `ldc-reading-position-v3`, protected Ma lecture suivie state machine, notes/highlights/favourites/Lu and Collection Luisa contracts.
+
+**Physical/browser authority:** not promoted by this package. Real browser IndexedDB and physical Samsung/iPhone/iPad/PWA/offline/accessibility tests remain external gates.
+
+> Everything below this line is the byte-preserved v54 README and its inherited historical release documentation. Any older “current”, PASS, release, count, generation, or next-stage wording below is historical only and is not current v55 authority.
+
+---
+
 # Livre du Ciel — v2.19.54-R1B / Public 54 — Protected Ma lecture suivie successor
 
 **Current candidate:** v2.19.54-R1B · Public version 54 · build date 2026-08-27.
