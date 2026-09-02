@@ -1,7 +1,7 @@
 {
   "schema_version": "ldc-display-flow-v2",
   "volume": 15,
-  "corpus_version": "G036-AFLP-R3-UWR2",
+  "corpus_version": "G036-AFLP-R5-UWR2",
   "group_count": 357,
   "groups": [
     {
@@ -6492,8 +6492,8 @@
         {
           "paragraph_id": "LDC.T15.E0014.P020",
           "stable_ref": "LDC.T15.E0014.P020",
-          "source_text_sha256": "e48554f3c0eba2d2dd8e42e73bea8449e37c39e96e1c4d623d11a822949b1ccb",
-          "canonical_length": 147,
+          "source_text_sha256": "1698d8d2ddfe928d6fb5cd7154aacf07a288a6c0cffd9fa5c2286ff0646656cb",
+          "canonical_length": 148,
           "boundary_after": {
             "display_joiner": "space",
             "speech_run_policy": "continue_same_speaker_only",
@@ -6538,8 +6538,8 @@
         {
           "paragraph_id": "LDC.T15.E0014.P022",
           "stable_ref": "LDC.T15.E0014.P022",
-          "source_text_sha256": "d982af4c1fcb4bfd0beb29617780c9d512f16c9d27bf181df3059ab84817360e",
-          "canonical_length": 44,
+          "source_text_sha256": "3abf209bd8c6060bb569d1a9fa96a4e84b7105548325ef48ef4e0e234ace3236",
+          "canonical_length": 45,
           "boundary_after": {
             "display_joiner": "space",
             "speech_run_policy": "continue_same_speaker_only",
@@ -6607,8 +6607,8 @@
         {
           "paragraph_id": "LDC.T15.E0014.P025",
           "stable_ref": "LDC.T15.E0014.P025",
-          "source_text_sha256": "0a0c3120f672bcf7cd7903775fd61db37724115b0dc2081f0c990467dd922457",
-          "canonical_length": 33,
+          "source_text_sha256": "c2c89f7eede970308b648b277719b8496e4bd282c09d242cc23b67516856feb6",
+          "canonical_length": 28,
           "boundary_after": {
             "display_joiner": "space",
             "speech_run_policy": "continue_same_speaker_only",
@@ -6653,8 +6653,8 @@
         {
           "paragraph_id": "LDC.T15.E0014.P027",
           "stable_ref": "LDC.T15.E0014.P027",
-          "source_text_sha256": "61f8fa903d8416573fe8d7d7aa2dd7bd1086ef2144dcd99a413d7bf7ef9d77ad",
-          "canonical_length": 46,
+          "source_text_sha256": "19ed77f816e66b77ff85e445cb5241142716f44e86f99f3b5da46d002c7fcfb3",
+          "canonical_length": 45,
           "boundary_after": {
             "display_joiner": "space",
             "speech_run_policy": "continue_same_speaker_only",

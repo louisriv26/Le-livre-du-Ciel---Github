@@ -1,7 +1,7 @@
 {
   "schema": "ldc-supplement-speakers-v2",
   "programme": "LDC-AFLP-SUP-T1-SUP-T2-SUP-T3-SUP-T4",
-  "composite_generation": "G036-AFLP-R3-SUP-T4",
+  "composite_generation": "G036-AFLP-R5-SUP-T4",
   "segments": [
     {
       "segment_id": "LDCSUP.T03.1900-02-12.E001.P003.S01",
@@ -2895,5 +2895,5 @@
     "total": 142
   },
   "m4_status": "PASS_REBUILT_FROM_FINAL_SUP_T2_PARAGRAPHS",
-  "backbone_generation": "G036-AFLP-R3-UWR2"
+  "backbone_generation": "G036-AFLP-R5-UWR2"
 }

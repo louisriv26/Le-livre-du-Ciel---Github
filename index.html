@@ -1957,12 +1957,12 @@ html[data-theme="dark"] .st-luisa{color:#D4A843;}
    VERSION — single source of truth
    Update this string on every release.
 ═══════════════════════════════════════════════════════ */
-const APP_VERSION = 'v2.19.60-R1B'; // technical update/audit identifier
-const PUBLIC_VERSION = '60';        // single user-facing release number
+const APP_VERSION = 'v2.19.64-R1B'; // technical update/audit identifier
+const PUBLIC_VERSION = '64';        // single user-facing release number
 const APP_VERSION_LABEL = `Version ${PUBLIC_VERSION}`;
-const APP_BUILD   = '2026-08-28';
-const SW_CACHE_VERSION = 'ldc-v2.19.60-R1B';
-const CORPUS_MANIFEST_SHA256 = '2aa33eb3e96ca719a7e4778e1505b075a3a6bd6d283b1f63c95552bead31f9c1';
+const APP_BUILD   = '2026-08-31';
+const SW_CACHE_VERSION = 'ldc-v2.19.64-R1B';
+const CORPUS_MANIFEST_SHA256 = '91894ea9cde5f6fc134dd7afff9d6cf8525f9707e15a78c933846cbf96c2a9e2';
 const DEEP_LINK_SCHEMA = 'ldc-deep-link-v1';
 const READING_POSITION_SCHEMA = 'ldc-reading-position-v3';
 
@@ -2259,7 +2259,7 @@ function isStaleRecord(r) {
 /* ═══════════════════════════════════════════════════════
    CORPUS LOADING
 ═══════════════════════════════════════════════════════ */
-const CORPUS_CV = 'cv=cm-2aa33eb3e96ca719'; // derived from corpus/manifest.json SHA-256
+const CORPUS_CV = 'cv=cm-91894ea9cde5f6fc'; // derived from corpus/manifest.json SHA-256
 
 function sourceModeShowsBackbone() { return supplementMode !== 'additions'; }
 function sourceModeShowsSupplements() { return supplementMode !== 'aflp'; }
@@ -4869,6 +4869,54 @@ async function migrateUserDataR3Once(){
   await dbPut('settings',{key:markerKey,to_generation:CORPUS_GENERATION,value:'done',ts:Date.now()});await dbPut('settings',{key:'user_data_migration_log_r3',value:JSON.stringify(log).slice(0,60000),ts:Date.now()});window.__ldcUserDataMigrationR3=log;return log;
 }
 
+/* ALIGNÉ R4 targeted user-state migration — schema remains 4. */
+let __ldcUserStateR4MapPromise=null;
+async function loadUserStateR4Map(){
+  if(__ldcUserStateR4MapPromise)return __ldcUserStateR4MapPromise;
+  __ldcUserStateR4MapPromise=fetch(`corpus/user_state_migration_r4.json?${CORPUS_CV}`)
+    .then(r=>{if(!r.ok)throw new Error('R4 migration map HTTP '+r.status);return r.json();})
+    .then(m=>{if(!m||m.schema!=='ldc-user-state-r4-migration-v1'||m.changed_paragraph_count!==21||!Array.isArray(m.paragraphs)||m.paragraphs.length!==21)throw new Error('R4 migration map integrity');const ids=new Set();m.paragraphs.forEach(x=>{if(!x.paragraph_id||ids.has(x.paragraph_id))throw new Error('R4 migration duplicate/missing paragraph id');ids.add(x.paragraph_id);});return m;});
+  return __ldcUserStateR4MapPromise;
+}
+async function migrateUserDataR4Once(){
+  const markerKey='user_data_aligne_r4_migration_v1';
+  const marker=await dbGet('settings',markerKey);if(marker&&marker.to_generation===CORPUS_GENERATION)return{skipped:true,reason:'already '+CORPUS_GENERATION};
+  const map=await loadUserStateR4Map(),byId=new Map(map.paragraphs.map(x=>[x.paragraph_id,x]));
+  const log={schema:4,migration:'ALIGNÉ_R4',from_generation:map.from_generation,to_generation:map.to_generation,highlights:0,notes:0,col_items:0,reading_pos:0,android_whole_paragraph:0,exact_reanchored:0,context_reanchored:0,normalized_reanchored:0,paragraph_identity:0,stale_unresolved:0,entries:[]};
+  for(const h of await dbGetAll('highlights')){const spec=byId.get(h.para_id);if(!spec)continue;const oldText=spec.old_text,newText=spec.new_text,before={start_char:h.start_char,end_char:h.end_char,text:h.text||h.selected_text_snapshot||'',stale_status:h.stale_status||null};
+    if(migrationV4IsWholeParagraphHighlight(h,oldText)){Object.assign(h,{start_char:0,end_char:newText.length,text:newText,selected_text_snapshot:newText,para_fingerprint:newText.slice(0,32),para_fingerprint_v3:paragraphFingerprint(newText),corpus_generation:CORPUS_GENERATION,anchor_schema:4,stale_status:'active',needs_reanchor:false,migrated_reason:'r4_android_whole_paragraph_stable_identity'});log.android_whole_paragraph++;}
+    else{const start=Number.isInteger(h.start_char)?h.start_char:0,end=Number.isInteger(h.end_char)?h.end_char:start,snap=String(h.text||h.selected_text_snapshot||oldText.slice(start,end)),hit=migrationV4FindSelection(oldText,newText,start,end,snap);if(hit){Object.assign(h,{start_char:hit.start,end_char:hit.end,text:newText.slice(hit.start,hit.end),selected_text_snapshot:newText.slice(hit.start,hit.end),para_fingerprint:newText.slice(0,32),para_fingerprint_v3:paragraphFingerprint(newText),corpus_generation:CORPUS_GENERATION,anchor_schema:4,stale_status:'active',needs_reanchor:false,migrated_reason:'r4_'+hit.method});if(hit.method.startsWith('exact_selected'))log.exact_reanchored++;else if(hit.method.startsWith('exact_text'))log.context_reanchored++;else log.normalized_reanchored++;}else{Object.assign(h,{corpus_generation:CORPUS_GENERATION,anchor_schema:4,stale_status:'stale_unresolved_r3_to_r4',needs_reanchor:true,migrated_reason:'r4_preserved_unresolved_no_silent_move'});log.stale_unresolved++;}}
+    await dbPut('highlights',h);log.highlights++;log.entries.push({store:'highlights',id:h.id,para_id:h.para_id,before,after:{start_char:h.start_char,end_char:h.end_char,stale_status:h.stale_status,reason:h.migrated_reason}});}
+  for(const n of await dbGetAll('notes')){const spec=byId.get(n.para_id);if(!spec)continue;const q=String(n.quote||'').trim();if(!q){Object.assign(n,{corpus_generation:CORPUS_GENERATION,para_fingerprint_v3:paragraphFingerprint(spec.new_text),anchor_schema:4,stale_status:'active',needs_reanchor:false,migrated_reason:'r4_paragraph_note_stable_identity'});log.paragraph_identity++;}else{let os=spec.old_text.indexOf(q);if(os<0&&Array.isArray(n.anchor_parts)&&n.anchor_parts.length){const a=n.anchor_parts[0];if(a.para_id===n.para_id&&Number.isInteger(a.start_char))os=a.start_char;}const oe=os>=0?os+q.length:0,hit=os>=0?migrationV4FindSelection(spec.old_text,spec.new_text,os,oe,q):migrationV4UniqueRaw(spec.new_text,q);if(hit){n.quote=spec.new_text.slice(hit.start,hit.end);Object.assign(n,{corpus_generation:CORPUS_GENERATION,para_fingerprint_v3:paragraphFingerprint(spec.new_text),anchor_schema:4,stale_status:'active',needs_reanchor:false,migrated_reason:'r4_note_'+hit.method});if(Array.isArray(n.anchor_parts)&&n.anchor_parts.length===1&&n.anchor_parts[0].para_id===n.para_id)n.anchor_parts[0]={...n.anchor_parts[0],start_char:hit.start,end_char:hit.end,text:n.quote};}else{Object.assign(n,{corpus_generation:CORPUS_GENERATION,anchor_schema:4,stale_status:'stale_unresolved_r3_to_r4',needs_reanchor:true,migrated_reason:'r4_note_preserved_unresolved_no_silent_move'});log.stale_unresolved++;}}await dbPut('notes',n);log.notes++;}
+  for(const it of await dbGetAll('col_items')){const spec=byId.get(it.para_id);if(!spec)continue;const snap=String(it.text||'');if(!snap){Object.assign(it,{corpus_generation:CORPUS_GENERATION,para_fingerprint_v3:paragraphFingerprint(spec.new_text),stale_status:'active',migrated_reason:'r4_collection_paragraph_identity'});log.paragraph_identity++;}else{const os=spec.old_text.indexOf(snap),hit=os>=0?migrationV4FindSelection(spec.old_text,spec.new_text,os,os+snap.length,snap):migrationV4UniqueRaw(spec.new_text,snap);if(hit){it.text=spec.new_text.slice(hit.start,hit.end);Object.assign(it,{corpus_generation:CORPUS_GENERATION,para_fingerprint_v3:paragraphFingerprint(spec.new_text),stale_status:'active',migrated_reason:'r4_collection_'+hit.method});}else{Object.assign(it,{corpus_generation:CORPUS_GENERATION,stale_status:'stale_unresolved_r3_to_r4',migrated_reason:'r4_collection_preserved_unresolved_no_silent_move'});log.stale_unresolved++;}}await dbPut('col_items',it);log.col_items++;}
+  for(const r of await dbGetAll('reading_pos')){const spec=byId.get(r.para_id);if(!spec)continue;const frac=clamp01(r.fraction_within_paragraph);Object.assign(r,{corpus_generation:CORPUS_GENERATION,approx_char:Math.round(frac*spec.new_text.length),excerpt:spec.new_text.slice(0,80)+(spec.new_text.length>80?'…':''),migrated_reason:'r4_reading_position_stable_paragraph_fraction'});if(r.stale_status!=='entry_missing')r.stale_status='active';await dbPut('reading_pos',r);log.reading_pos++;}
+  await dbPut('settings',{key:markerKey,to_generation:CORPUS_GENERATION,value:'done',ts:Date.now()});await dbPut('settings',{key:'user_data_migration_log_r4',value:JSON.stringify(log).slice(0,60000),ts:Date.now()});window.__ldcUserDataMigrationR4=log;return log;
+}
+
+/* ALIGNÉ R5 targeted user-state migration — formal OP-L17-218 authority reopen. */
+let __ldcUserStateR5MapPromise=null;
+async function loadUserStateR5Map(){
+  if(__ldcUserStateR5MapPromise)return __ldcUserStateR5MapPromise;
+  __ldcUserStateR5MapPromise=fetch(`corpus/user_state_migration_r5.json?${CORPUS_CV}`)
+    .then(r=>{if(!r.ok)throw new Error('R5 migration map HTTP '+r.status);return r.json();})
+    .then(m=>{if(!m||m.schema!=='ldc-user-state-r5-migration-v1'||m.changed_paragraph_count!==1||!Array.isArray(m.paragraphs)||m.paragraphs.length!==1)throw new Error('R5 migration map integrity');const ids=new Set();m.paragraphs.forEach(x=>{if(!x.paragraph_id||ids.has(x.paragraph_id))throw new Error('R5 migration duplicate/missing paragraph id');ids.add(x.paragraph_id);});return m;});
+  return __ldcUserStateR5MapPromise;
+}
+async function migrateUserDataR5Once(){
+  const markerKey='user_data_aligne_r5_migration_v1';
+  const marker=await dbGet('settings',markerKey);if(marker&&marker.to_generation===CORPUS_GENERATION)return{skipped:true,reason:'already '+CORPUS_GENERATION};
+  const map=await loadUserStateR5Map(),byId=new Map(map.paragraphs.map(x=>[x.paragraph_id,x]));
+  const log={schema:4,migration:'ALIGNÉ_R5',from_generation:map.from_generation,to_generation:map.to_generation,highlights:0,notes:0,col_items:0,reading_pos:0,android_whole_paragraph:0,exact_reanchored:0,context_reanchored:0,normalized_reanchored:0,paragraph_identity:0,stale_unresolved:0,entries:[]};
+  for(const h of await dbGetAll('highlights')){const spec=byId.get(h.para_id);if(!spec)continue;const oldText=spec.old_text,newText=spec.new_text,before={start_char:h.start_char,end_char:h.end_char,text:h.text||h.selected_text_snapshot||'',stale_status:h.stale_status||null};
+    if(migrationV4IsWholeParagraphHighlight(h,oldText)){Object.assign(h,{start_char:0,end_char:newText.length,text:newText,selected_text_snapshot:newText,para_fingerprint:newText.slice(0,32),para_fingerprint_v3:paragraphFingerprint(newText),corpus_generation:CORPUS_GENERATION,anchor_schema:4,stale_status:'active',needs_reanchor:false,migrated_reason:'r5_android_whole_paragraph_stable_identity'});log.android_whole_paragraph++;}
+    else{const start=Number.isInteger(h.start_char)?h.start_char:0,end=Number.isInteger(h.end_char)?h.end_char:start,snap=String(h.text||h.selected_text_snapshot||oldText.slice(start,end)),hit=migrationV4FindSelection(oldText,newText,start,end,snap);if(hit){Object.assign(h,{start_char:hit.start,end_char:hit.end,text:newText.slice(hit.start,hit.end),selected_text_snapshot:newText.slice(hit.start,hit.end),para_fingerprint:newText.slice(0,32),para_fingerprint_v3:paragraphFingerprint(newText),corpus_generation:CORPUS_GENERATION,anchor_schema:4,stale_status:'active',needs_reanchor:false,migrated_reason:'r5_'+hit.method});if(hit.method.startsWith('exact_selected'))log.exact_reanchored++;else if(hit.method.startsWith('exact_text'))log.context_reanchored++;else log.normalized_reanchored++;}else{Object.assign(h,{corpus_generation:CORPUS_GENERATION,anchor_schema:4,stale_status:'stale_unresolved_r4_to_r5',needs_reanchor:true,migrated_reason:'r5_preserved_unresolved_no_silent_move'});log.stale_unresolved++;}}
+    await dbPut('highlights',h);log.highlights++;log.entries.push({store:'highlights',id:h.id,para_id:h.para_id,before,after:{start_char:h.start_char,end_char:h.end_char,stale_status:h.stale_status,reason:h.migrated_reason}});}
+  for(const n of await dbGetAll('notes')){const spec=byId.get(n.para_id);if(!spec)continue;const q=String(n.quote||'').trim();if(!q){Object.assign(n,{corpus_generation:CORPUS_GENERATION,para_fingerprint_v3:paragraphFingerprint(spec.new_text),anchor_schema:4,stale_status:'active',needs_reanchor:false,migrated_reason:'r5_paragraph_note_stable_identity'});log.paragraph_identity++;}else{let os=spec.old_text.indexOf(q);if(os<0&&Array.isArray(n.anchor_parts)&&n.anchor_parts.length){const a=n.anchor_parts[0];if(a.para_id===n.para_id&&Number.isInteger(a.start_char))os=a.start_char;}const oe=os>=0?os+q.length:0,hit=os>=0?migrationV4FindSelection(spec.old_text,spec.new_text,os,oe,q):migrationV4UniqueRaw(spec.new_text,q);if(hit){n.quote=spec.new_text.slice(hit.start,hit.end);Object.assign(n,{corpus_generation:CORPUS_GENERATION,para_fingerprint_v3:paragraphFingerprint(spec.new_text),anchor_schema:4,stale_status:'active',needs_reanchor:false,migrated_reason:'r5_note_'+hit.method});if(Array.isArray(n.anchor_parts)&&n.anchor_parts.length===1&&n.anchor_parts[0].para_id===n.para_id)n.anchor_parts[0]={...n.anchor_parts[0],start_char:hit.start,end_char:hit.end,text:n.quote};}else{Object.assign(n,{corpus_generation:CORPUS_GENERATION,anchor_schema:4,stale_status:'stale_unresolved_r4_to_r5',needs_reanchor:true,migrated_reason:'r5_note_preserved_unresolved_no_silent_move'});log.stale_unresolved++;}}await dbPut('notes',n);log.notes++;}
+  for(const it of await dbGetAll('col_items')){const spec=byId.get(it.para_id);if(!spec)continue;const snap=String(it.text||'');if(!snap){Object.assign(it,{corpus_generation:CORPUS_GENERATION,para_fingerprint_v3:paragraphFingerprint(spec.new_text),stale_status:'active',migrated_reason:'r5_collection_paragraph_identity'});log.paragraph_identity++;}else{const os=spec.old_text.indexOf(snap),hit=os>=0?migrationV4FindSelection(spec.old_text,spec.new_text,os,os+snap.length,snap):migrationV4UniqueRaw(spec.new_text,snap);if(hit){it.text=spec.new_text.slice(hit.start,hit.end);Object.assign(it,{corpus_generation:CORPUS_GENERATION,para_fingerprint_v3:paragraphFingerprint(spec.new_text),stale_status:'active',migrated_reason:'r5_collection_'+hit.method});}else{Object.assign(it,{corpus_generation:CORPUS_GENERATION,stale_status:'stale_unresolved_r4_to_r5',migrated_reason:'r5_collection_preserved_unresolved_no_silent_move'});log.stale_unresolved++;}}await dbPut('col_items',it);log.col_items++;}
+  for(const r of await dbGetAll('reading_pos')){const spec=byId.get(r.para_id);if(!spec)continue;const frac=clamp01(r.fraction_within_paragraph);Object.assign(r,{corpus_generation:CORPUS_GENERATION,approx_char:Math.round(frac*spec.new_text.length),excerpt:spec.new_text.slice(0,80)+(spec.new_text.length>80?'…':''),migrated_reason:'r5_reading_position_stable_paragraph_fraction'});if(r.stale_status!=='entry_missing')r.stale_status='active';await dbPut('reading_pos',r);log.reading_pos++;}
+  await dbPut('settings',{key:markerKey,to_generation:CORPUS_GENERATION,value:'done',ts:Date.now()});await dbPut('settings',{key:'user_data_migration_log_r5',value:JSON.stringify(log).slice(0,60000),ts:Date.now()});window.__ldcUserDataMigrationR5=log;return log;
+}
+
 async function refreshUserDataStaleness() {
   const result={checked:0,recovered:0,stale:0};
   const hls=await dbGetAll('highlights');
@@ -5466,8 +5514,8 @@ let searchMetadataByEntry = new Map();
 let searchRunSeq = 0, activeSearchAbort = null;
 const SEARCH_RESULT_CAP = 30;
 const SEARCH_POOL_CAP = 500;
-const BACKBONE_GENERATION = 'G036-AFLP-R3-UWR2';
-const CORPUS_GENERATION = 'G036-AFLP-R3-SUP-T4';
+const BACKBONE_GENERATION = 'G036-AFLP-R5-UWR2';
+const CORPUS_GENERATION = 'G036-AFLP-R5-SUP-T4';
 const SUPPLEMENT_PROGRAMME = 'LDC-AFLP-SUP-T1-SUP-T2-SUP-T3-SUP-T4';
 const SUPPLEMENT_MODE_KEY = 'supplement_mode';
 const SUPPLEMENT_BADGE = 'COMPLÉMENT';
@@ -6336,7 +6384,7 @@ async function handleImportFile(input){const file=input&&input.files&&input.file
 function closeImportPreview(){closeModalOverlay('backup-preview-overlay');pendingBackupImport=null;}
 function dbReplaceUserDataAtomic(state){return dbWriteStoresAtomic(USER_DATA_STORES,(tx,fail)=>{for(const store of USER_DATA_STORES)tx.objectStore(store).clear();for(const store of USER_DATA_STORES){const os=tx.objectStore(store);for(const row of (state[store]||[])){const r=os.put(row);r.onerror=()=>fail(r.error);}}});}
 async function applyImportedPreferences(){const theme=await dbGet('settings','theme').catch(()=>null);const tv=theme&&THEME_VALUES.includes(theme.val)?theme.val:'system';document.documentElement.setAttribute('data-theme',tv);updateThemeBtn(tv);const level=await dbGet('settings','textLevel').catch(()=>null);applyTextLevel(level&&TEXT_LEVELS[level.val]?level.val:'normal');const rp=await dbGet('settings','showReperes').catch(()=>null);showReperes=!!(rp&&rp.val===true);applyReperesState();await initialiseSupplementMode();}
-async function confirmImportBackup(){if(!pendingBackupImport||!pendingBackupImport.validation.ok)return;const env=pendingBackupImport.env,previous=await snapshotUserDataState();let replaced=false;try{await dbReplaceUserDataAtomic(env.state);replaced=true;readingPositionV3MigrationDone=false;await migrateReadingPositionsV3();await dbPut('settings',{key:'user_data_schema_version',value:2,ts:Date.now()});await migrateUserDataV4();await migrateUserDataR3Once();await dbPut('settings',{key:'last_backup_import_at',val:new Date().toISOString(),source_version:env.version,reading_position_schema:READING_POSITION_SCHEMA,ts:Date.now()});await refreshUserDataStaleness();await applyImportedPreferences();closeImportPreview();await renderEspace();await renderHome();showToast('Sauvegarde restaurée');}catch(e){console.error('LDC: import failed',e);if(replaced){try{await dbReplaceUserDataAtomic(previous);readingPositionV3MigrationDone=false;await applyImportedPreferences();await renderHome();}catch(rollbackError){console.error('LDC: import rollback failed',rollbackError);showToast('Échec critique de restauration — conservez votre fichier de sauvegarde');return;}}showToast('Restauration annulée — données précédentes rétablies');}}
+async function confirmImportBackup(){if(!pendingBackupImport||!pendingBackupImport.validation.ok)return;const env=pendingBackupImport.env,previous=await snapshotUserDataState();let replaced=false;try{await dbReplaceUserDataAtomic(env.state);replaced=true;readingPositionV3MigrationDone=false;await migrateReadingPositionsV3();await dbPut('settings',{key:'user_data_schema_version',value:2,ts:Date.now()});await migrateUserDataV4();await migrateUserDataR3Once();await migrateUserDataR4Once();await migrateUserDataR5Once();await dbPut('settings',{key:'last_backup_import_at',val:new Date().toISOString(),source_version:env.version,reading_position_schema:READING_POSITION_SCHEMA,ts:Date.now()});await refreshUserDataStaleness();await applyImportedPreferences();closeImportPreview();await renderEspace();await renderHome();showToast('Sauvegarde restaurée');}catch(e){console.error('LDC: import failed',e);if(replaced){try{await dbReplaceUserDataAtomic(previous);readingPositionV3MigrationDone=false;await applyImportedPreferences();await renderHome();}catch(rollbackError){console.error('LDC: import rollback failed',rollbackError);showToast('Échec critique de restauration — conservez votre fichier de sauvegarde');return;}}showToast('Restauration annulée — données précédentes rétablies');}}
 
 async function goToEntry(vol,entryId,paraId){if(paraId)pendingParaId=paraId;return openEntry(vol,entryId,'espace',{intent:READER_INTENT.CONSULTATION});}
 
@@ -6991,7 +7039,9 @@ async function boot() {
   // unresolved records and never silently relocates an ambiguous exact-text anchor.
   migrateUserDataV4()
     .then(r => { if (r && !r.skipped) console.info('LDC: user data migrated to schema 4', r); return migrateUserDataR3Once(); })
-    .then(r => { if (r && !r.skipped) console.info('LDC: user data migrated across ALIGNÉ R3', r); })
+    .then(r => { if (r && !r.skipped) console.info('LDC: user data migrated across ALIGNÉ R3', r); return migrateUserDataR4Once(); })
+    .then(r => { if (r && !r.skipped) console.info('LDC: user data migrated across ALIGNÉ R4', r); return migrateUserDataR5Once(); })
+    .then(r => { if (r && !r.skipped) console.info('LDC: user data migrated across ALIGNÉ R5', r); })
     .catch(e => console.warn('LDC: user-data migration deferred', e));
 
   // LDC-A: migrate the legacy 14–22 slider once, then restore one of the
@@ -7334,8 +7384,8 @@ function renderDnResultCard() {
 ═══════════════════════════════════════════════════════ */
 const OFFLINE_CACHE_VERSION = 'ldc-le-livre-du-ciel-offline-v2.19.60-R1B';
 const OFFLINE_MANIFEST_SCHEMA = 'ldc-offline-manifest-v2';
-const OFFLINE_CONTENT_BINDING = '704dd1aa51805c1b4bb9a569b63e7f8db44c9c3d2bb8099f1b15b2d539ee487c';
-const OFFLINE_CORPUS_MANIFEST_SHA256 = '2aa33eb3e96ca719a7e4778e1505b075a3a6bd6d283b1f63c95552bead31f9c1';
+const OFFLINE_CONTENT_BINDING = 'b5be7f5a9d53eb3b226de0776cca837b5f7033898fc51a2a24b2d1a788bf04cb';
+const OFFLINE_CORPUS_MANIFEST_SHA256 = '91894ea9cde5f6fc134dd7afff9d6cf8525f9707e15a78c933846cbf96c2a9e2';
 const OFFLINE_STATES = Object.freeze(['NOT_PREPARED','CHECKING','DOWNLOADING','READY','PARTIAL','ERROR','CANCELLED']);
 let offlineUiState = {state:'NOT_PREPARED',completed:0,total:0,failed:[],total_bytes:0,job_id:null,message:'',content_binding_sha256:OFFLINE_CONTENT_BINDING,corpus_manifest_sha256:OFFLINE_CORPUS_MANIFEST_SHA256};
 let runtimeCacheUiState = {entries:0,bytes:0,max_entries:48,max_bytes:50331648};

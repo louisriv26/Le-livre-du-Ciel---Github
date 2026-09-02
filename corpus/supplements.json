@@ -1,9 +1,9 @@
 {
   "schema": "ldc-supplement-registry-v2",
   "programme": "LDC-AFLP-SUP-T1-SUP-T2-SUP-T3-SUP-T4",
-  "status": "M9_R3_SUPT4_MUTATION_STATIC_SUCCESSOR_CANDIDATE__EXTERNAL_VALIDATION_REQUIRED",
-  "backbone_generation": "G036-AFLP-R3-UWR2",
-  "composite_generation": "G036-AFLP-R3-SUP-T4",
+  "status": "R5_OP_L17_218_AUTHORITY_REOPEN_CANONICAL_BOUNDARY__SUP_T4_PRESERVED__EXTERNAL_VALIDATION_REQUIRED",
+  "backbone_generation": "G036-AFLP-R5-UWR2",
+  "composite_generation": "G036-AFLP-R5-SUP-T4",
   "default_mode": "enriched",
   "counts": {
     "items": 74,

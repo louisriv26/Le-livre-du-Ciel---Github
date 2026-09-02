@@ -1,9 +1,9 @@
 {
   "schema": "ldc-supplement-manifest-v2",
   "programme": "LDC-AFLP-SUP-T1-SUP-T2-SUP-T3-SUP-T4",
-  "status": "M9_R3_SUPT4_MUTATION_STATIC_SUCCESSOR_CANDIDATE__EXTERNAL_VALIDATION_REQUIRED",
-  "backbone_generation": "G036-AFLP-R3-UWR2",
-  "composite_generation": "G036-AFLP-R3-SUP-T4",
+  "status": "R5_OP_L17_218_AUTHORITY_REOPEN_CANONICAL_BOUNDARY__SUP_T4_PRESERVED__EXTERNAL_VALIDATION_REQUIRED",
+  "backbone_generation": "G036-AFLP-R5-UWR2",
+  "composite_generation": "G036-AFLP-R5-SUP-T4",
   "counts": {
     "items": 74,
     "sup_t1_items": 14,
@@ -21,16 +21,16 @@
   },
   "files": {
     "supplements.json": {
-      "bytes": 1071669,
-      "sha256": "7ee4c17c289903a4df850e20b921130b8c5db36676017471d12d8942ec72aa3e"
+      "bytes": 1071689,
+      "sha256": "0476bad3ecbf93d37830adabcb2e7ca371557dad0b87ca8ea96af911fbf9e4a5"
     },
     "supplement_search.json": {
       "bytes": 284559,
-      "sha256": "a115d3960538b77f4464428c238cd9c8cde44e28914d3ca298c727d931262ebd"
+      "sha256": "ea619de188a6779934bd27aeaea4c26b075f9a4b9ba3de1237b8db225e26c1f1"
     },
     "supplement_speakers.json": {
       "bytes": 126739,
-      "sha256": "7f2e71063592cd6704e0016dbb03c45644b22960df3d929aac854e8f5bc2bb80"
+      "sha256": "41ca61649b841a9e648c3d53b68f71993eccfb7f1c6ec99007932c132f718884"
     }
   },
   "sup_t1_snapshot_sha256": "ee568d8857b3e38b4a2b536de146c3b54f876ab93478e66f327bdaaf0768a1e0",

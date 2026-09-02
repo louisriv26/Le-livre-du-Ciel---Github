@@ -1,3 +1,67 @@
+# Livre du Ciel — v2.19.64-R1B / Public 64 — R5 final four-pass metadata-namespace successor
+
+**Current candidate:** v2.19.64-R1B · Public version 64 · build date 2026-08-31.
+
+**Immutable predecessor:** v2.19.63-R1B · SHA-256 `f67b9a6bf889e12628416dc45b9c6343ee8395c7b7a63d6e4bda40de191ccd7d` · 262 members.
+
+**Corrective scope:** no canonical/devotional text change and no speaker/search/display/flow/supplement/user-state payload change. An adversarial Pass-4 field-name sweep found one remaining unqualified historical key, `current_m4_authorised_scope`; v64 renames it to `historical_m4_authorised_scope`. Release/cache trust bindings are regenerated for v64.
+
+**Genealogy:** ALIGNÉ `G036-AFLP-R5-UWR2`; ENRICHI `G036-AFLP-R5-SUP-T4`; all 15 governed R5 canonical corrections and the single v63 speaker-preview repair remain byte-identical.
+
+**Release status:** static/package fixed point only. Physical iPhone/iPad/Samsung, installed-PWA transition, true offline cold reopen, accessibility and live-host exact-byte validation remain external.
+
+> Everything below this line is inherited predecessor/historical documentation. Older current/PASS/count/version/generation wording below is historical only and superseded by this v64 section.
+
+---
+
+# Livre du Ciel — v2.19.63-R1B / Public 63 — R5 active-metadata integrity successor
+
+**Current candidate:** v2.19.63-R1B · Public version 63 · build date 2026-08-31.
+
+**Immutable predecessor:** v2.19.62-R1B · SHA-256 `3e1d234c2de11ea8032cb7d56c3e5eb0d5faac1c8858e227fd730db61481eb50` · 262 members.
+
+**Four-pass corrective scope:** no canonical/devotional text change. One inherited backbone `text_preview` at `LDC.T21.E0009.P043` is expanded from 220 to the exact first 240 characters of its unchanged 303-character Jesus segment; speaker identity, range and presentation are unchanged. Eight unqualified inherited v60/M13 current-state fields in `version.json` are rebound to v63.
+
+**Genealogy:** ALIGNÉ `G036-AFLP-R5-UWR2`; ENRICHI `G036-AFLP-R5-SUP-T4`; all 15 governed R5 canonical corrections remain byte-identical to v62. SUP-T1/T2/T3/T4 content and user-data schema v4 are unchanged.
+
+**Release status:** static/package corrective successor only. Physical iPhone/iPad/Samsung, installed-PWA transition, true offline cold reopen, accessibility and live-host exact-byte validation remain external.
+
+> Everything below this line is inherited predecessor/historical documentation. Older current/PASS/count/version/generation wording below is historical only and superseded by this v63 section.
+
+---
+
+# Livre du Ciel — v2.19.62-R1B / Public 62 — ALIGNÉ R5 authority-reopen successor
+
+**Current candidate:** v2.19.62-R1B · Public version 62 · build date 2026-08-31.
+
+**Immutable predecessor:** v2.19.61-R1B · SHA-256 `8ac34c3778035b4e3a08f7b140d84afeaaf77ea8ed7ae40521c8e94720345f97` · 261 members.
+
+**R5 mutation:** exactly one formally reopened canonical operation, `OP-L17-218-01`, in `LDC.T24.E0048.P045`: `nausée S’il prend` → `nausée. S’il prend`. No other v61 canonical wording is changed. Relative to locked v60, the final governed LDC result contains 15 authorised canonical operations.
+
+**Genealogy:** ALIGNÉ `G036-AFLP-R5-UWR2`; ENRICHI `G036-AFLP-R5-SUP-T4`. SUP-T1/T2/T3/T4 content genealogy and user-data schema v4 are preserved. The R3 and R4 migration maps remain present; R5 adds a one-paragraph migration map.
+
+**Release status:** static package validation only. Physical/browser/PWA/accessibility validation and wide/public deployment remain separate.
+
+> Everything below this line is inherited predecessor/historical documentation. Older current/PASS/count/version/generation wording below is historical only and superseded by this v62 section.
+
+---
+
+# Livre du Ciel — v2.19.61-R1B / Public 61 — ALIGNÉ R4 bounded dual-successor Phase A
+
+**Current candidate:** v2.19.61-R1B · Public version 61 · build date 2026-08-31.
+
+**Immutable predecessor:** v2.19.60-R1B · SHA-256 `9ebce26ad5bf2e4baf927e82e029c79062ddbf7268f37206ed20487aac643811` · 260 members.
+
+**Authorised Phase-A scope:** exactly 14 governed LDC canonical operations, changing 21 existing paragraph records without changing paragraph IDs/order. ALIGNÉ is `G036-AFLP-R4-UWR2`; ENRICHI is `G036-AFLP-R4-SUP-T4`. SUP-T1/T2/T3/T4 content genealogy and user-data schema v4 are preserved.
+
+**Explicit restraints:** `OP-L17-109-01` is unchanged. `OP-L17-218-01` is unchanged in LDC because its frozen R4 downstream-only classification conflicts with the actual v60 canonical bytes; that evidence conflict requires a formal reopen before any upstream mutation or complete dual-successor fixed-point claim.
+
+**Release status:** static package work only. Physical/browser/PWA/accessibility validation and wide/public deployment remain separate and are not authorized by this package.
+
+> Everything below this line is inherited predecessor/historical documentation. Any older “current”, PASS, count, version, generation, release, or next-stage wording below is historical only and is superseded by this v61 section.
+
+---
+
 # Livre du Ciel — v2.19.60-R1B / Public 60 — M13 supplement provenance validator repair
 
 **Current candidate:** v2.19.60-R1B · Public version 60 · build date 2026-08-29.

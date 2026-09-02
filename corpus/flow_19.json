@@ -1,7 +1,7 @@
 {
   "schema_version": "ldc-display-flow-v2",
   "volume": 19,
-  "corpus_version": "G036-AFLP-R3-UWR2",
+  "corpus_version": "G036-AFLP-R5-UWR2",
   "group_count": 977,
   "groups": [
     {
@@ -27669,8 +27669,8 @@
         {
           "paragraph_id": "LDC.T19.E0029.P036",
           "stable_ref": "LDC.T19.E0029.P036",
-          "source_text_sha256": "a2ca578fe4e3b87519aa35d43cef52a706f88bd0bacb54c5b5a4d6d52ec1d2c2",
-          "canonical_length": 32,
+          "source_text_sha256": "568036bdc5f61c5ea4d0932b2f361ac4d63538a1ed992d95f64e56f72bff82d3",
+          "canonical_length": 35,
           "boundary_after": {
             "display_joiner": "space",
             "speech_run_policy": "continue_same_speaker_only",
@@ -27751,8 +27751,8 @@
         {
           "paragraph_id": "LDC.T19.E0029.P041",
           "stable_ref": "LDC.T19.E0029.P041",
-          "source_text_sha256": "969477654ef6c1168f7f5dbb0dcc9a9e249c73365909ea0b928c78816d990b28",
-          "canonical_length": 58,
+          "source_text_sha256": "cf2522586ba84a36ab69d18abeaf6369a79feaaa15a42a87afdd69ae9fd67ed4",
+          "canonical_length": 57,
           "boundary_after": {
             "display_joiner": "space",
             "speech_run_policy": "continue_same_speaker_only",
@@ -27774,8 +27774,8 @@
         {
           "paragraph_id": "LDC.T19.E0029.P042",
           "stable_ref": "LDC.T19.E0029.P042",
-          "source_text_sha256": "36eb110b1c34c41e5573eb3b371663032acc1176626d7ca25e54cfa4f54b6d3b",
-          "canonical_length": 49,
+          "source_text_sha256": "5d06275e963f486935bcefadb5ad6a395ca3be1dae60bdaaa37ef442fd0f13f6",
+          "canonical_length": 53,
           "boundary_after": null
         }
       ]
@@ -27838,8 +27838,8 @@
         {
           "paragraph_id": "LDC.T19.E0029.P045",
           "stable_ref": "LDC.T19.E0029.P045",
-          "source_text_sha256": "08425384c009afa3d841902f461f53b3136fd8d925efce63875c5b073f48af7b",
-          "canonical_length": 54,
+          "source_text_sha256": "a6d591a759b2f6820e2fbd34df9fa1f76c32d532b56c5c366ec1dc7bae8eb6f3",
+          "canonical_length": 52,
           "boundary_after": null
         }
       ]
@@ -34659,7 +34659,7 @@
         {
           "paragraph_id": "LDC.T19.E0037.P077",
           "stable_ref": "LDC.T19.E0037.P077",
-          "source_text_sha256": "76dfd68cde77c2fd1835a58320ab32929fbdec99b5105d5ab46d0fe950bbb523",
+          "source_text_sha256": "5dd1f3c4bbd943182c751297bf5cafe34d68d2cb4d6a2208ec8ccaab8201b0e9",
           "canonical_length": 68,
           "boundary_after": {
             "display_joiner": "space",
@@ -34682,8 +34682,8 @@
         {
           "paragraph_id": "LDC.T19.E0037.P078",
           "stable_ref": "LDC.T19.E0037.P078",
-          "source_text_sha256": "15e1be8cf7f3200de333821cbeeff9506bb222d376617a6c16c6a4fada1e25d4",
-          "canonical_length": 22,
+          "source_text_sha256": "78ffb6fdbc50f28e16d4c3b271806076f0b25902bcfa9256877fe538d35eda72",
+          "canonical_length": 23,
           "boundary_after": {
             "display_joiner": "space",
             "speech_run_policy": "continue_same_speaker_only",
@@ -34705,8 +34705,8 @@
         {
           "paragraph_id": "LDC.T19.E0037.P079",
           "stable_ref": "LDC.T19.E0037.P079",
-          "source_text_sha256": "550235c32b948cf81075ae196ef5f990651eb80a9ecf1ba485f1341997c9b102",
-          "canonical_length": 38,
+          "source_text_sha256": "42364a392debddb59ed12bbf4193abc259fff5fc36f469495198a820a6dbb76c",
+          "canonical_length": 58,
           "boundary_after": {
             "display_joiner": "space",
             "speech_run_policy": "continue_same_speaker_only",
@@ -34728,8 +34728,8 @@
         {
           "paragraph_id": "LDC.T19.E0037.P080",
           "stable_ref": "LDC.T19.E0037.P080",
-          "source_text_sha256": "55cb5911e7b7c6144fcee1a3a10415db45c6570cf2213d82f9a467cf3a6d2414",
-          "canonical_length": 63,
+          "source_text_sha256": "ffd9db23136edd293f333bbde9c21a9d9a87dc517039b5aedaa1501690706bef",
+          "canonical_length": 48,
           "boundary_after": null
         }
       ]

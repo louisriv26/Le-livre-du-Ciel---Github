@@ -1,7 +1,7 @@
 {
   "schema": "ldc-supplement-search-v2",
   "programme": "LDC-AFLP-SUP-T1-SUP-T2-SUP-T3-SUP-T4",
-  "composite_generation": "G036-AFLP-R3-SUP-T4",
+  "composite_generation": "G036-AFLP-R5-SUP-T4",
   "records": [
     {
       "id": "ldcsup_t03_1900_02_12_e001_p001",
@@ -3188,5 +3188,5 @@
       "placement_class": "AFTER_PARAGRAPH"
     }
   ],
-  "backbone_generation": "G036-AFLP-R3-UWR2"
+  "backbone_generation": "G036-AFLP-R5-UWR2"
 }
