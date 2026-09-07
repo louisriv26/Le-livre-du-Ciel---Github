@@ -29,8 +29,8 @@
       "sha256": "9846f708baebe27466b82df1ff6400e9f9d8714ae4aa935801be00ab143dd284"
     },
     "supplements.json": {
-      "bytes": 1115190,
-      "sha256": "bb2ec2a001aec35a83ef055c1fcdbd41307cc1b1f8a9970ecfd43aaf53777f0b"
+      "bytes": 1115203,
+      "sha256": "d32a0b824783ddba37e0bef7db6c855d9f053aa7492a77de58c6020ba1626df9"
     }
   },
   "m3_decision_lock_sha256": "bb4a5c772b3eafdfe6eb857bc303a724a4bdb0cb0cef97c0ee5f088dfd65ab83",
@@ -40,9 +40,9 @@
   "programme": "LDC-AFLP-SUP-T1-SUP-T2-SUP-T3-SUP-T4-SUP-T5",
   "provenance_contract": "SUP-T1..SUP-T4_PRESERVED__SUP-T5_SOURCE_CRITICAL_AUTHORIZED__NO_MAJORITY_VOTE",
   "r6_authority": "AUTHORIZED_RUNTIME_LEDGER_SHA256_5ec25e997fc68e24eb18cd27180bb2b87aa153f9e3c976dab7b36ddef11b7906__OFFICIAL_R6_PREDECESSOR",
-  "release_status": "V72_PROVENANCE_PRESENTATION_SUCCESSOR__EXTERNAL_FINAL_CERTIFICATION_AUTHORITY__PUBLIC_DEPLOYMENT_NOT_AUTHORIZED_BY_PACKAGE",
+  "release_status": "V73_DEEP_FOUR_PASS_REPORT_RECONCILIATION__EXTERNAL_FINAL_CERTIFICATION_AUTHORITY__PUBLIC_DEPLOYMENT_NOT_AUTHORIZED_BY_PACKAGE",
   "schema": "ldc-supplement-manifest-v2",
-  "status": "LDC_V72_PROVENANCE_PRESENTATION_SUCCESSOR__STATIC_PACKAGE_CERTIFICATION_EXTERNAL_TO_ZIP__NOT_PUBLICLY_DEPLOYED",
+  "status": "LDC_V73_REPORT_METADATA_SUCCESSOR__V72_PROVENANCE_PRESENTATION_SEMANTICS_UNCHANGED__NOT_PUBLICLY_DEPLOYED",
   "sup_t1_snapshot_sha256": "ee568d8857b3e38b4a2b536de146c3b54f876ab93478e66f327bdaaf0768a1e0",
   "sup_t2_segmentation_ledger_sha256": "f3345d58d2c12625c46cb92466012755c070fa84aef04da8cbcf2f9caa705f77",
   "user_state_schema": 4,
@@ -92,6 +92,18 @@
       "NONE": 19
     },
     "speaker_semantic_mutations": 0,
+    "user_state_schema_mutations": 0
+  },
+  "v73_deep_four_pass_report_repair": {
+    "canonical_or_devotional_text_mutations": 0,
+    "direct_predecessor_app_version": "v2.19.72-R1B",
+    "direct_predecessor_zip_sha256": "825e08ea96a8cf6a245cd56c47e30f3eb4a04bb838fc2e4d3940f8bd2f3f974c",
+    "reader_provenance_fields_changed": false,
+    "schema": "ldc-v73-deep-four-pass-report-repair-v1",
+    "search_semantic_mutations": 0,
+    "semantic_authority_sha256": "d1a7450adf36368cc8609e21ccde3c51e0b3c90dc4f3c3305534cb40104d56f4",
+    "speaker_semantic_mutations": 0,
+    "supplement_object_semantics_changed": false,
     "user_state_schema_mutations": 0
   },
   "within_paragraph_contract": {

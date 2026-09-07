@@ -1,3 +1,18 @@
+# CURRENT — LDC v2.19.73-R1B DEEP FOUR-PASS REPORT RECONCILIATION
+
+- direct predecessor: certified v2.19.72-R1B `825e08ea96a8cf6a245cd56c47e30f3eb4a04bb838fc2e4d3940f8bd2f3f974c`
+- semantic authority: `d1a7450adf36368cc8609e21ccde3c51e0b3c90dc4f3c3305534cb40104d56f4` unchanged
+- four-pass finding repaired: active Tome 17 / 23 November 1924 provenance statements now agree with the governed direct AFLP hard-copy body authority on printed pages 48–49
+- speaker/current-lineage note now explicitly carries the zero-semantic-delta chain through v73
+- v72 reader provenance model, 75/75 complement reader fields and 43/13/19 source-reference policy: unchanged
+- devotional/canonical text, paragraph IDs/order, SEARCH-V2 semantics/assets, speaker semantics/offsets, display/flow, supplement body text, user-state schema, migrations, stored source-mode values and 24H: unchanged
+- live GitHub / installed PWA / true offline / physical iPhone-iPad-Samsung / VoiceOver-TalkBack: OPEN / NOT YET CERTIFIED
+- public deployment: NOT AUTHORIZED
+
+---
+
+> Everything below this line is predecessor/historical documentation. Older current/PASS/FAIL/count/version wording below is historical only and is superseded for current interpretation by this v73 section and external R25/current-state receipts.
+
 # CURRENT — LDC v2.19.72-R1B PROVENANCE PRESENTATION SUCCESSOR
 
 - direct predecessor: certified v2.19.71-R1B `ed925239f570293b54a4565a2666dc50ac71e43aa149b3567d8a55364e550d8c`

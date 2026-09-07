@@ -1,6 +1,6 @@
 {
-  "app_version": "v2.19.72-R1B",
-  "classification_policy": "EXHAUSTIVE_CURRENT_TOP_LEVEL_PARTITION__V72_PROVENANCE_PRESENTATION_SUCCESSOR_CURRENT__V71_AND_OLDER_NAMED_PHASE_OBJECTS_HISTORICAL__FINAL_ZIP_SHA_EXTERNAL_RECEIPT",
+  "app_version": "v2.19.73-R1B",
+  "classification_policy": "EXHAUSTIVE_CURRENT_TOP_LEVEL_PARTITION__V73_REPORT_METADATA_REPAIR_CURRENT__V72_PROVENANCE_MODEL_REMAINS_CURRENT__V71_AND_OLDER_NAMED_PHASE_OBJECTS_HISTORICAL__FINAL_ZIP_SHA_EXTERNAL_RECEIPT",
   "corpus_manifest_current_field_keys": [
     "app_version",
     "corpus",
@@ -26,6 +26,7 @@
     "total_entries",
     "total_paragraphs",
     "v72_provenance_presentation_successor",
+    "v73_deep_four_pass_report_repair",
     "version",
     "volumes_available",
     "volumes_total"
@@ -88,15 +89,15 @@
   ],
   "current_active_reports": {
     "CURRENT_REPORT_AUTHORITY_INDEX.json": "Current package-local authority boundary; exact final ZIP hash is certified externally because a ZIP cannot contain its own SHA-256 non-circularly.",
-    "README.md": "Current v72 provenance-presentation package scope and external-gate status; older embedded sections are historical.",
-    "corpus/manifest.json": "Current corpus identity plus v72 reader-provenance presentation wrapper; canonical generation remains G036-AFLP-R7-UWR2 / G036-AFLP-R7-SUP-T5.",
-    "corpus/supplement_manifest.json": "Current supplement registry/hash binding plus v72 reader-provenance presentation wrapper.",
-    "corpus/supplements.json": "Current 75-item supplement registry; pre-existing evidence/body fields preserved, two additive reader-facing provenance fields per item.",
-    "offline_manifest.json": "Current offline integrity binding including v72 changed supplement registry/manifest and corpus-manifest binding.",
-    "version.json": "Current release/runtime binding and v72 provenance-presentation authority."
+    "README.md": "Current v73 report-metadata corrective scope and external-gate status; everything below its historical marker is historical.",
+    "corpus/manifest.json": "Current corpus identity plus v72 reader-provenance model and v73 stale-current-evidence repair; canonical generation remains G036-AFLP-R7-UWR2 / G036-AFLP-R7-SUP-T5.",
+    "corpus/supplement_manifest.json": "Current supplement registry/hash binding; v72 provenance semantics unchanged; v73 wrapper records report-metadata successor.",
+    "corpus/supplements.json": "Current 75-item supplement registry; all 75 supplement objects and v72 reader provenance fields semantically unchanged; top-level status rebound to v73.",
+    "offline_manifest.json": "Current offline integrity binding including v73 current corpus-report bindings.",
+    "version.json": "Current v73 release/runtime binding, v72 provenance model inheritance, and report-repair authority."
   },
-  "external_gate_authority": "External receipts/state only; immutable v72 makes no physical-device/live-browser/public-release PASS assertion.",
-  "historical_policy": "Historical predecessor files and named historical objects may retain older current/PASS/FAIL/count/version/ALIGNÉ/AFLP wording valid at their own freeze point. They do not override the v72 current section, current index or external current-state receipt.",
+  "external_gate_authority": "External receipts/state only; immutable v73 makes no physical-device/live-browser/public-release PASS assertion.",
+  "historical_policy": "Historical predecessor files and explicitly historical named objects may retain older current/PASS/FAIL/count/version/ALIGNÉ/AFLP wording valid at their own freeze point. They do not override v73 current fields, the still-active v72 reader-provenance model, current index, or external current-state receipt.",
   "historical_predecessor_reports_byte_preserved": [
     "INTERIM_SUCCESSOR_AUTHORIZED_BUILD_README.md",
     "POST_R6_DATE_ID_A2_PREAUTH_GATE.txt",
@@ -115,11 +116,13 @@
   "predecessor_v69_zip_sha256": "5e3896468c6d822760fcd555c59e0042d3ed217ee7f389e8b2ab7a60d2b7d6dd",
   "predecessor_v70_zip_sha256": "c4a4e35208ed8a40368137bea7303bf773cd5cc0d6192f54c3a5cc94dc8cb399",
   "predecessor_v71_zip_sha256": "ed925239f570293b54a4565a2666dc50ac71e43aa149b3567d8a55364e550d8c",
-  "public_version": 72,
-  "schema": "ldc-v72-current-report-authority-index-v1",
+  "predecessor_v72_zip_sha256": "825e08ea96a8cf6a245cd56c47e30f3eb4a04bb838fc2e4d3940f8bd2f3f974c",
+  "public_version": 73,
+  "schema": "ldc-v73-current-report-authority-index-v1",
   "semantic_authority_sha256": "d1a7450adf36368cc8609e21ccde3c51e0b3c90dc4f3c3305534cb40104d56f4",
   "version_current_authority_objects": [
-    "v72_provenance_presentation_successor"
+    "v72_provenance_presentation_successor",
+    "v73_deep_four_pass_report_repair"
   ],
   "version_current_field_keys": [
     "app_version",
@@ -216,6 +219,7 @@
     "user_data_envelope_version",
     "user_data_schema_version",
     "v72_provenance_presentation_successor",
+    "v73_deep_four_pass_report_repair",
     "vector_binding",
     "vector_order_clarification",
     "vector_search_authorised",

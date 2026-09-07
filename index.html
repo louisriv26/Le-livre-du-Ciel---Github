@@ -1958,12 +1958,12 @@ html[data-theme="dark"] .st-luisa{color:#D4A843;}
    VERSION — single source of truth
    Update this string on every release.
 ═══════════════════════════════════════════════════════ */
-const APP_VERSION = 'v2.19.72-R1B'; // technical update/audit identifier
-const PUBLIC_VERSION = '72';        // single user-facing release number
+const APP_VERSION = 'v2.19.73-R1B'; // technical update/audit identifier
+const PUBLIC_VERSION = '73';        // single user-facing release number
 const APP_VERSION_LABEL = `Version ${PUBLIC_VERSION}`;
 const APP_BUILD   = '2026-09-08';
-const SW_CACHE_VERSION = 'ldc-v2.19.72-R1B-provenance-r1';
-const CORPUS_MANIFEST_SHA256 = '79b57f9971eb1e7064081f49b9f466a15d6b7088d450c5bb8d25d00d3f01dd29';
+const SW_CACHE_VERSION = 'ldc-v2.19.73-R1B-four-pass-r1';
+const CORPUS_MANIFEST_SHA256 = 'fc855e7abce2e4e8e1a0e7a5c4a7f047322d65960e0349fc02552ed04de50f89';
 const DEEP_LINK_SCHEMA = 'ldc-deep-link-v1';
 const READING_POSITION_SCHEMA = 'ldc-reading-position-v3';
 
@@ -2260,7 +2260,7 @@ function isStaleRecord(r) {
 /* ═══════════════════════════════════════════════════════
    CORPUS LOADING
 ═══════════════════════════════════════════════════════ */
-const CORPUS_CV = 'cv=cm-79b57f9971eb1e70'; // derived from corpus/manifest.json SHA-256
+const CORPUS_CV = 'cv=cm-fc855e7abce2e4e8'; // derived from corpus/manifest.json SHA-256
 
 function sourceModeShowsBackbone() { return supplementMode !== 'additions'; }
 function sourceModeShowsSupplements() { return supplementMode !== 'aflp'; }
@@ -7499,10 +7499,10 @@ function renderDnResultCard() {
    CacheStorage contains public app/corpus bytes only. IndexedDB settings holds
    the user-visible completion record; it is not itself the offline payload.
 ═══════════════════════════════════════════════════════ */
-const OFFLINE_CACHE_VERSION = 'ldc-le-livre-du-ciel-offline-v2.19.72-R1B-provenance-r1';
+const OFFLINE_CACHE_VERSION = 'ldc-le-livre-du-ciel-offline-v2.19.73-R1B-four-pass-r1';
 const OFFLINE_MANIFEST_SCHEMA = 'ldc-offline-manifest-v2';
-const OFFLINE_CONTENT_BINDING = '2cfe0bccc982b80c5157aada7314a785fc42fce37fe82ae8fd32d3d268ca91ee';
-const OFFLINE_CORPUS_MANIFEST_SHA256 = '79b57f9971eb1e7064081f49b9f466a15d6b7088d450c5bb8d25d00d3f01dd29';
+const OFFLINE_CONTENT_BINDING = '9a3221fbc8e01a55fbdbbbee0a1547c4f7dc2147ffd50ead5a55b81bd1e33538';
+const OFFLINE_CORPUS_MANIFEST_SHA256 = 'fc855e7abce2e4e8e1a0e7a5c4a7f047322d65960e0349fc02552ed04de50f89';
 const OFFLINE_STATES = Object.freeze(['NOT_PREPARED','CHECKING','DOWNLOADING','READY','PARTIAL','ERROR','CANCELLED']);
 let offlineUiState = {state:'NOT_PREPARED',completed:0,total:0,failed:[],total_bytes:0,job_id:null,message:'',content_binding_sha256:OFFLINE_CONTENT_BINDING,corpus_manifest_sha256:OFFLINE_CORPUS_MANIFEST_SHA256};
 let runtimeCacheUiState = {entries:0,bytes:0,max_entries:48,max_bytes:50331648};

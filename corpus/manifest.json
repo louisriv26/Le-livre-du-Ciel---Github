@@ -1,8 +1,8 @@
 {
-  "app_version": "v2.19.72-R1B",
+  "app_version": "v2.19.73-R1B",
   "corpus": "livre_du_ciel",
   "corpus_generation_source_app_version_historical": "v2.13.0-R1B",
-  "correction_ledger": "All 36 tomes completed source-boundary reconciliation. EB-17 corrects only two source-page provenance records: Tome 3 / 10 June 1900 ends at PDF page 102, and Tome 5 preface spans pages 1–6 with pages 1;3;5;6 evidenced. Tome 17 23 November 1924 remains title-only/body-not-proven. EB-20 normalises three malformed semicolon source-page records: T3 16 April 1900 = 77–79; T3 27 April 1900 = 82–84; T17 17 May 1925 = 113–119. M4/R2 applies exactly 8 M3-authorised ALIGNÉ paragraph rewrites under stable IDs and introduces no other backbone paragraph mutation. M6/V55 restores three AFLP display-layer dates under stable IDs, preserves IT-PM alternatives as provenance, reconciles M2-0105/M2-0113 metadata, and adds one source-bound SUP-T3 complete entry for the historically bound T15/T16 three-columns discourse at 2 Dec 1922; ALIGNÉ paragraph wording remains unchanged. M9/V56 applies exactly 10 M8-authorized same-slot R3 paragraph replacements across 6 cases and 22 SUP-T4 controlled fragments across 15 cases. Existing paragraph IDs/order remain stable; M2-0021/M2-0134/M2-0351/M2-0364 remain held, M2-0366 no-change, M2-0052 historical hold. Official R6 subsequently applied the exact authorized 169-operation source-critical successor. The post-R6 Date/ID+A2 fixed point made zero French-text mutations. REV6 then applied exactly 16 retained paragraph text changes, 2 governed deletions, 6 speaker reattributions, 1 title update, 34 first-Jesus pointer rebuilds and the governed migration/derived-state rebuilds under authority d1a7450adf36368cc8609e21ccde3c51e0b3c90dc4f3c3305534cb40104d56f4. v67 adds zero corpus/semantic mutations and only reconciles active report/release metadata. v68 changes only reader-facing PRINCIPAL terminology/release bindings; v69 changes only the verified onboarding-count and supplement-speaker summary metadata; v70 replaces the active search retrieval runtime with SEARCH-V2 while preserving canonical/devotional text and governed corpus semantics; v71 repairs SEARCH-V2 displayed-date/reference parsing plus current report/release metadata, with zero canonical/devotional, paragraph-ID/order, speaker, display/flow, supplement-content, user-state-schema, stored-source-mode or migration-algorithm mutation.",
+  "correction_ledger": "All 36 tomes completed source-boundary reconciliation. EB-17 corrects only two source-page provenance records: Tome 3 / 10 June 1900 ends at PDF page 102, and Tome 5 preface spans pages 1–6 with pages 1;3;5;6 evidenced. Tome 17 / 23 November 1924 now carries direct AFLP photographed hard-copy body authority on printed pages 48–49; the earlier title-only supplied-French-PDF limitation is historical and superseded for current body authority. EB-20 normalises three malformed semicolon source-page records: T3 16 April 1900 = 77–79; T3 27 April 1900 = 82–84; T17 17 May 1925 = 113–119. M4/R2 applies exactly 8 M3-authorised ALIGNÉ paragraph rewrites under stable IDs and introduces no other backbone paragraph mutation. M6/V55 restores three AFLP display-layer dates under stable IDs, preserves IT-PM alternatives as provenance, reconciles M2-0105/M2-0113 metadata, and adds one source-bound SUP-T3 complete entry for the historically bound T15/T16 three-columns discourse at 2 Dec 1922; ALIGNÉ paragraph wording remains unchanged. M9/V56 applies exactly 10 M8-authorized same-slot R3 paragraph replacements across 6 cases and 22 SUP-T4 controlled fragments across 15 cases. Existing paragraph IDs/order remain stable; M2-0021/M2-0134/M2-0351/M2-0364 remain held, M2-0366 no-change, M2-0052 historical hold. Official R6 subsequently applied the exact authorized 169-operation source-critical successor. The post-R6 Date/ID+A2 fixed point made zero French-text mutations. REV6 then applied exactly 16 retained paragraph text changes, 2 governed deletions, 6 speaker reattributions, 1 title update, 34 first-Jesus pointer rebuilds and the governed migration/derived-state rebuilds under authority d1a7450adf36368cc8609e21ccde3c51e0b3c90dc4f3c3305534cb40104d56f4. v67 adds zero corpus/semantic mutations and only reconciles active report/release metadata. v68 changes only reader-facing PRINCIPAL terminology/release bindings; v69 changes only the verified onboarding-count and supplement-speaker summary metadata; v70 replaces the active search retrieval runtime with SEARCH-V2 while preserving canonical/devotional text and governed corpus semantics; v71 repairs SEARCH-V2 displayed-date/reference parsing plus current report/release metadata, with zero canonical/devotional, paragraph-ID/order, speaker, display/flow, supplement-content, user-state-schema, stored-source-mode or migration-algorithm mutation. v72 centralizes the reader-facing provenance model and adds only reader-facing complement provenance fields with zero devotional/search/speaker/display/flow/user-state/migration semantic delta. v73 corrects stale current report/provenance metadata discovered by an independent four-pass re-audit; it makes zero canonical/devotional, paragraph-ID/order, SEARCH-V2, speaker, display/flow, supplement-body, user-state, stored-source-mode or migration-algorithm mutation.",
   "display_flow_layer": {
     "boundaries": 23930,
     "cross_role_joins_reviewed": 88,
@@ -390,7 +390,7 @@
     "supplement_parent_policy": "PARENTLESS_SUPPLEMENT_USES_LEGACY_CONTEXTUAL_FALLBACK",
     "supplement_presentation_parent_fields_added": 0
   },
-  "notes": "Current v72 is a bounded reader-facing provenance-presentation successor of exact certified v71. It centralizes PRINCIPAL/COMPLÉMENT provenance rendering, adds two reader-facing fields to each of 75 supplement objects, corrects onboarding/About/Help provenance wording, and preserves all devotional/canonical/search/speaker/display/flow/user-state/migration semantics.",
+  "notes": "Current v73 is a bounded report/release-metadata successor of exact certified v72. It corrects stale active Tome 17 provenance/current-lineage statements found by the user-directed independent four-pass audit. The v72 centralized PRINCIPAL/COMPLÉMENT provenance model remains active and unchanged. Devotional/canonical text, paragraph IDs/order, SEARCH-V2 semantics/assets, speaker semantics/offsets, display/flow, supplement devotional/body text, user-state schema, migrations, stored source-mode values and 24H are unchanged.",
   "post_r6_a2_speaker_reconstruction_pre_authorization": {
     "backbone_speaker_segments": 65100,
     "date": "2026-09-05",
@@ -892,7 +892,7 @@
     "post_render_structural_mutation": false,
     "user_data_schema_version": 4,
     "user_state_migration": "schema-v4 + generation-scoped ALIGNÉ R3/R4/R5/R6 + R7 Date/ID/REV6 migration and re-anchor preservation",
-    "version": "R7_REV6_CERTIFIED__V72_CENTRAL_READER_PROVENANCE_MODEL",
+    "version": "R7_REV6_CERTIFIED__V72_CENTRAL_READER_PROVENANCE_MODEL__V73_REPORT_RECONCILED",
     "within_paragraph_complement_contract": "CANONICAL_HOST_UNSPLIT_AUTHORITY__DISPLAY_SLICES_ONLY__CANONICAL_USER_OFFSETS__22_WITHIN_PLACEMENTS"
   },
   "search_norm": {
@@ -961,10 +961,10 @@
     "total_segments": 65099,
     "verification_scope": "INTERIM_REV6_AUTHORIZED__65099_BACKBONE_SEGMENTS__A1_A6_BOUNDED_PROVENANCE_RESTAMP__D1_DELETE"
   },
-  "speech_layer_note": "Final R7 backbone speaker layer contains 65,099 segments. REV6 includes exactly six governed A1-A6 reattributions, exactly two governed entry speaker-array updates, 127 unrelated array mismatches deferred, and 34 first_jesus_para_id changes. v67 changes no speaker identity, offsets, previews, presentation parents or runtime speech logic. v68, v69, v70 and v71 make zero speaker-segment content/offset/classification-semantic changes; v70/v71 SEARCH-V2 use only the independently derived compact Jésus-eligibility bitset at search runtime.",
+  "speech_layer_note": "Final R7 backbone speaker layer contains 65,099 segments. REV6 includes exactly six governed A1-A6 reattributions, exactly two governed entry speaker-array updates, 127 unrelated array mismatches deferred, and 34 first_jesus_para_id changes. v67 changes no speaker identity, offsets, previews, presentation parents or runtime speech logic. v68 through v73 make zero speaker-segment content/offset/classification-semantic changes. SEARCH-V2 uses only the independently derived compact Jésus-eligibility bitset at search runtime; v72/v73 do not mutate that bitset or the governed speaker layer.",
   "speech_resynced": true,
-  "status": "LDC_V72_PROVENANCE_PRESENTATION_SUCCESSOR__STATIC_PACKAGE_CERTIFICATION__EXTERNAL_DEVICE_GATES_OPEN__NOT_PUBLICLY_DEPLOYED",
-  "t17_23nov1924_status": "Body retained: title-only in supplied FR PDF but full entry (incl. Jesus discourse) present and materially matching both English witnesses (QDW, Hugh Owen); FR is compressed. Provenance recorded as legacy/English-corroborated, pending controlled FR reconstruction.",
+  "status": "LDC_V73_DEEP_FOUR_PASS_REPORT_RECONCILIATION__STATIC_PACKAGE_CERTIFICATION__EXTERNAL_DEVICE_GATES_OPEN__NOT_PUBLICLY_DEPLOYED",
+  "t17_23nov1924_status": "Current body authority is direct AFLP photographed French hard-copy, printed pages 48–49, with AFLP_R1_DIRECT_HARDCOPY_BODY_VERIFIED / AFLP_HARDCOPY_VERIFIED status. The earlier supplied-French-PDF title-only limitation is historical and superseded; governing R2 linguistic normalisation was retained after exact proposition and token comparison.",
   "total_corrections": 20900,
   "total_entries": 2312,
   "total_paragraphs": 74346,
@@ -1118,6 +1118,29 @@
     "supplement_devotional_body_text_mutations": 0,
     "supplement_items": 75,
     "supplement_reader_fields_added": 2,
+    "user_state_schema_mutations": 0
+  },
+  "v73_deep_four_pass_report_repair": {
+    "canonical_devotional_text_mutations": 0,
+    "direct_predecessor_app_version": "v2.19.72-R1B",
+    "direct_predecessor_zip_sha256": "825e08ea96a8cf6a245cd56c47e30f3eb4a04bb838fc2e4d3940f8bd2f3f974c",
+    "display_flow_semantic_mutations": 0,
+    "migration_algorithm_mutations": 0,
+    "paragraph_id_order_mutations": 0,
+    "repaired_current_fields": [
+      "correction_ledger",
+      "t17_23nov1924_status",
+      "speech_layer_note"
+    ],
+    "schema": "ldc-v73-deep-four-pass-report-repair-v1",
+    "search_semantic_mutations": 0,
+    "search_v2_asset_mutations": 0,
+    "semantic_authority_sha256": "d1a7450adf36368cc8609e21ccde3c51e0b3c90dc4f3c3305534cb40104d56f4",
+    "speaker_semantic_mutations": 0,
+    "stored_source_mode_value_mutations": 0,
+    "supplement_devotional_body_text_mutations": 0,
+    "supplement_reader_provenance_semantic_mutations": 0,
+    "t17_current_authority": "AFLP photographed French hard-copy pages 48–49",
     "user_state_schema_mutations": 0
   },
   "version": "G036-AFLP-R7-UWR2",
