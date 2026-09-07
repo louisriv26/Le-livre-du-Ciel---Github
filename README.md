@@ -1,3 +1,129 @@
+# CURRENT — LDC v2.19.72-R1B PROVENANCE PRESENTATION SUCCESSOR
+
+- direct predecessor: certified v2.19.71-R1B `ed925239f570293b54a4565a2666dc50ac71e43aa149b3567d8a55364e550d8c`
+- semantic authority: `d1a7450adf36368cc8609e21ccde3c51e0b3c90dc4f3c3305534cb40104d56f4` unchanged
+- reader provenance: one central PRINCIPAL/COMPLÉMENT view model controls header, badges, Infos et source, sharing and support output
+- complements: 75/75 carry additive reader-facing provenance fields; raw technical/historical evidence remains preserved
+- source-reference policy: 43 governed French-wording references + 13 IT-PM source files + 19 unavailable; no locator is invented
+- public complement status: `COMPLÉMENT APPROUVÉ`
+- provenance wording: the PRINCIPAL corpus is described as GE/Lumen-derived, later reconciled with AFLP witnesses and selectively corrected when Italian/other controlled evidence justified it; no claim of universal paragraph-by-paragraph source verification
+- canonical/devotional text, paragraph IDs/order, SEARCH-V2 semantics/assets, speaker/display/flow, supplement devotional/body text, user-state schema, migrations and 24H: unchanged
+- live GitHub / installed PWA / true offline / physical iPhone-iPad-Samsung / VoiceOver-TalkBack: OPEN / NOT YET CERTIFIED
+- public deployment: NOT AUTHORIZED
+
+---
+
+> Everything below this line is predecessor/historical documentation. Older current/PASS/FAIL/count/version wording below is historical only and is superseded for current interpretation by this v72 section and external R24/current-state receipts.
+
+# CURRENT — LDC v2.19.70-R1B SEARCH-V2 CORE
+
+- predecessor: certified v2.19.69-R1B `5e3896468c6d822760fcd555c59e0042d3ed217ee7f389e8b2ab7a60d2b7d6dd`
+- semantic authority: `d1a7450adf36368cc8609e21ccde3c51e0b3c90dc4f3c3305534cb40104d56f4` unchanged
+- corpus: 74,346 PRINCIPAL + 177 COMPLÉMENT = 74,523 searchable paragraphs; canonical text unchanged
+- SEARCH-V2: compact global lexical/BM25 index; body/metadata separated; structured Tome/date/reference parsing; compact Jésus filter; fail-closed asset verification; stale-run generation guard
+- legacy search shards: preserved as validation witnesses, no longer the active main/Autour retrieval path
+- morphology/synonyms/vectors/fuzzy search/pagination: deferred or retired as governed
+- static/package/algorithmic certification: external report/receipt governs exact final ZIP bytes
+- managed Chromium local navigation: ENVIRONMENT_BLOCKED (`ERR_BLOCKED_BY_ADMINISTRATOR`)
+- live GitHub / installed PWA / true offline / physical iPhone-iPad-Samsung / VoiceOver-TalkBack: OPEN / NOT YET CERTIFIED
+- public deployment: NOT AUTHORIZED
+
+---
+
+# Livre du Ciel — v2.19.69-R1B / Public 69 — deep four-pass audit repair successor
+
+**Exact predecessor:** certified v2.19.68-R1B ZIP `58e7eebd7c3a04db53e7a21ea144842aebd36c8e3dd8815f37c8e2f6edc3618d`.
+
+**Semantic authority:** `d1a7450adf36368cc8609e21ccde3c51e0b3c90dc4f3c3305534cb40104d56f4` — unchanged.
+
+**Proven repairs:** visible onboarding count corrected to **74,346** backbone paragraphs; supplement-speaker metadata reconciled to **141** actual segments (**SUP-T1 50 · SUP-T2 63 · SUP-T3 3 · SUP-T4 22 · SUP-T5 3**).
+
+**Mutation boundary:** report/runtime metadata and required release/cache/offline bindings only. Canonical/devotional text, paragraph IDs/order, search semantics, speaker-segment content/offsets, display/flow semantics, supplement content, user-state schemas and migration algorithms are unchanged from v68.
+
+**Source modes:** **PRINCIPAL · COMPLÉMENT · ENRICHI**; stored mode `aflp` and technical `G036-AFLP-*` lineage remain unchanged.
+
+**Public deployment:** **NOT AUTHORIZED BY THIS PACKAGE**. External live/PWA/device/offline/accessibility gates remain separate.
+
+See `CURRENT_REPORT_AUTHORITY_INDEX.json` for the current-vs-historical report boundary.
+
+---
+
+> Everything below this line is predecessor/historical documentation. Any older current/PASS/FAIL/count/version wording below is historical only and is superseded for current interpretation by the v69 section above and external current-state receipts.
+
+# Livre du Ciel — v2.19.68-R1B / Public 68 — PRINCIPAL UI terminology successor
+
+**Exact predecessor:** certified v2.19.67-R1B ZIP `f58a28f6546000c6b17905fa37c0ba74db44de766a11bf2ef5b936ed384919e9`.
+
+**Semantic authority:** `d1a7450adf36368cc8609e21ccde3c51e0b3c90dc4f3c3305534cb40104d56f4` — unchanged.
+
+**User-facing modes:** **PRINCIPAL · COMPLÉMENT · ENRICHI**. `PRINCIPAL` means the governed main French corpus; the internal stored mode remains `aflp` and technical `G036-AFLP-*` generation IDs remain unchanged.
+
+**Provenance:** the main French corpus is GE/Lumen Luminis-derived, was later reconciled with AFLP witnesses, and was later corrected punctually where controlled Italian/other-source evidence justified it. No claim is made that every paragraph was individually source-critically verified or that the current corpus reproduces any one French edition word-for-word.
+
+**Counts:** 2,312 PRINCIPAL entries · 74,346 PRINCIPAL paragraphs · 65,099 backbone speaker segments · 75 COMPLÉMENTS / 177 paragraphs / 141 supplement speaker segments.
+
+**Mutation boundary:** presentation/report terminology plus required release/cache/offline bindings only. Canonical/devotional text, paragraph identity/order, search semantics, speaker semantics, display/flow semantics, supplement content, user-data schemas and migration algorithms are unchanged from v67.
+
+**Certification model:** this immutable ZIP does not self-promote external live/device gates. Public deployment is **NOT AUTHORIZED BY THIS PACKAGE** and requires a separate user decision.
+
+See `CURRENT_REPORT_AUTHORITY_INDEX.json` for the machine-readable current-vs-historical report boundary.
+
+---
+
+> Everything below this line is predecessor/historical documentation. Any older current/PASS/FAIL/count/version/source-mode wording below is historical only and is superseded for current interpretation by the v68 section above and external current-state receipts.
+
+# Livre du Ciel — v2.19.67-R1B / Public 67 — four-pass report/metadata reconciliation successor
+
+**Exact predecessor:** certified v2.19.66-R1B ZIP `4317d041ec9475b52850c7ec7cd374eb0b2b980e115f841eebaafe10df7ddcd6`.
+
+**Semantic authority:** `d1a7450adf36368cc8609e21ccde3c51e0b3c90dc4f3c3305534cb40104d56f4` — unchanged from v66.
+
+**Corrective scope:** report/release metadata only. Canonical/devotional text, paragraph/search/speaker/display/flow semantics, supplements content and user-data migration/runtime logic are unchanged from v66.
+
+**Counts:** 2,312 entries · 74,346 ALIGNÉ paragraphs · 65,099 backbone speaker segments · 75 COMPLÉMENTS / 177 paragraphs / 141 supplement speaker segments.
+
+**Certification model:** this immutable ZIP does not self-promote external live/device gates. Current package certification and live/device results are governed by external receipts/state. Public deployment is **NOT AUTHORIZED BY THIS PACKAGE** and requires a separate user decision.
+
+See `CURRENT_REPORT_AUTHORITY_INDEX.json` for the machine-readable current-vs-historical report boundary.
+
+---
+
+> Everything below this line is predecessor/historical documentation. Any older current/PASS/FAIL/count/version/generation/release wording below is historical only and is superseded for current interpretation by the v67 section above and the external current-state receipt.
+
+# Livre du Ciel — v2.19.66-R1B / Public 66 — authorized interim R7 successor
+
+**Build authority:** `d1a7450adf36368cc8609e21ccde3c51e0b3c90dc4f3c3305534cb40104d56f4`.
+
+**Immutable predecessor:** official R6 ZIP `35ee5c69fe0468d2e3ee2d963a7fa6667169c24d6c8023da2726b4cd8b50ed20`.
+
+**Scope:** closed Date/ID + A2 state plus exactly 24 independent findings / 25 primitive actions; 119 authority-level actions total. Partial targeted linguistic QA is excluded.
+
+**Counts:** 2,312 entries · 74,346 ALIGNÉ paragraphs · 65,099 backbone speaker segments.
+
+**Public deployment:** NOT AUTHORIZED. This exact package requires post-build/reopen/runtime/device certification.
+
+---
+
+> Everything below is inherited predecessor/historical documentation and is superseded where it conflicts with this header.
+
+# Livre du Ciel — v2.19.65-R1B / Public 65 — R6 authorized source-critical successor
+
+**Official build state:** authorized post-v64 successor; public deployment not yet authorized.
+
+**Immutable predecessor:** v2.19.64-R1B · SHA-256 `ec575a70f1e09599816d6cbd463fb1e2e2d4b6cd354195cabfa97386a760d62e`.
+
+**Exact authorization:** runtime-complete ledger SHA-256 `5ec25e997fc68e24eb18cd27180bb2b87aa153f9e3c976dab7b36ddef11b7906`.
+
+**Authorized textual scope:** exactly 169 operations — 155 ALIGNÉ paragraph replacements, 9 existing COMPLÉMENT paragraph replacements, 3 new COMPLÉMENTS, and 2 retirements of redundant supplements. No date/ID mutation and no A2 speaker-programme expansion is included.
+
+**Genealogy:** ALIGNÉ `G036-AFLP-R6-UWR2`; ENRICHI `G036-AFLP-R6-SUP-T5`. The final T20 source-state repair is included at HIGH confidence after the all-source reopen.
+
+**Release status:** official R6 build created after owner authorization. Full post-build certification is required on these exact bytes. Physical/live-origin/PWA/accessibility validation and public deployment remain separate gates.
+
+> Everything below this line is inherited predecessor/historical documentation. Older current/PASS/count/version/generation wording below is historical only and superseded by this R6 section.
+
+---
+
 # Livre du Ciel — v2.19.64-R1B / Public 64 — R5 final four-pass metadata-namespace successor
 
 **Current candidate:** v2.19.64-R1B · Public version 64 · build date 2026-08-31.

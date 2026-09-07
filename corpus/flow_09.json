@@ -1,7 +1,7 @@
 {
   "schema_version": "ldc-display-flow-v2",
   "volume": 9,
-  "corpus_version": "G036-AFLP-R5-UWR2",
+  "corpus_version": "G036-AFLP-R7-UWR2",
   "group_count": 23,
   "groups": [
     {
@@ -268,8 +268,8 @@
         {
           "paragraph_id": "ldc_t09_1909_10_14_e001_p008",
           "stable_ref": "LDC.T09.1909-10-14.E001.P008",
-          "source_text_sha256": "f33a865fdbb26b27a44b378603869510b56ffc314951915c683ca38ce2a5cbcd",
-          "canonical_length": 370,
+          "source_text_sha256": "bfce2029341dbceb36debb28bace15745ee4842133d9f8a2982476c1c38f0ff7",
+          "canonical_length": 371,
           "boundary_after": null
         }
       ]

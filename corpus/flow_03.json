@@ -1,7 +1,7 @@
 {
   "schema_version": "ldc-display-flow-v2",
   "volume": 3,
-  "corpus_version": "G036-AFLP-R5-UWR2",
+  "corpus_version": "G036-AFLP-R7-UWR2",
   "group_count": 10,
   "groups": [
     {
@@ -290,8 +290,8 @@
       ]
     },
     {
-      "flow_id": "FLOW.RA11.T03.ldc_t03_1900_07_23_e001.P006-P007",
-      "entry_id": "ldc_t03_1900_07_23_e001",
+      "flow_id": "FLOW.RA11.T03.ldc_t03_1900_07_25_e001.P006-P007",
+      "entry_id": "ldc_t03_1900_07_25_e001",
       "classification": "ra11_broader_boundary_high_confidence_continuation",
       "confidence": "high",
       "origin": "RA11_226_CASE_ADJUDICATION",
@@ -299,8 +299,8 @@
       "reason": "RA11 broader-boundary adjudication: canonical punctuation/grammar proves continuous prose; display-flow repair preserves canonical records.",
       "members": [
         {
-          "paragraph_id": "ldc_t03_1900_07_23_e001_p006",
-          "stable_ref": "LDC.T03.1900-07-23.E001.P006",
+          "paragraph_id": "ldc_t03_1900_07_25_e001_p006",
+          "stable_ref": "LDC.T03.1900-07-25.E001.P006",
           "source_text_sha256": "d5a51c340e16404461a22e5ac472098cc3e6c4bf08586908e59070ade94a79f2",
           "canonical_length": 226,
           "boundary_after": {
@@ -309,8 +309,8 @@
           }
         },
         {
-          "paragraph_id": "ldc_t03_1900_07_23_e001_p007",
-          "stable_ref": "LDC.T03.1900-07-23.E001.P007",
+          "paragraph_id": "ldc_t03_1900_07_25_e001_p007",
+          "stable_ref": "LDC.T03.1900-07-25.E001.P007",
           "source_text_sha256": "d7eaef213177135c8790c51c86fbadb42c004d9e437aad83ae00c5e014600cc8",
           "canonical_length": 542
         }

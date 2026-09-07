@@ -1,5 +1,5 @@
 {
-  "corpus_version": "v-final-standard-harmonisation-r2-g036-tome09",
+  "corpus_version": "G036-AFLP-R7-UWR2",
   "cross_batch_schema": "final-r2-common-derived-and-source-envelope-v1",
   "entries": [
     {
@@ -1480,22 +1480,22 @@
       "date_iso": "1910-08-12",
       "date_precision": "day",
       "has_speech": true,
-      "id": "ldc_t09_1910_08_17_e001",
+      "id": "ldc_t09_1910_08_12_e001",
       "para_count": 10,
       "para_ids": [
-        "ldc_t09_1910_08_17_e001_p001",
-        "ldc_t09_1910_08_17_e001_p002",
-        "ldc_t09_1910_08_17_e001_p003",
-        "ldc_t09_1910_08_17_e001_p004",
-        "ldc_t09_1910_08_17_e001_p005",
-        "ldc_t09_1910_08_17_e001_p006",
-        "ldc_t09_1910_08_17_e001_p007",
-        "ldc_t09_1910_08_17_e001_p008",
-        "ldc_t09_1910_08_17_e001_p009",
-        "ldc_t09_1910_08_17_e001_p010"
+        "ldc_t09_1910_08_12_e001_p001",
+        "ldc_t09_1910_08_12_e001_p002",
+        "ldc_t09_1910_08_12_e001_p003",
+        "ldc_t09_1910_08_12_e001_p004",
+        "ldc_t09_1910_08_12_e001_p005",
+        "ldc_t09_1910_08_12_e001_p006",
+        "ldc_t09_1910_08_12_e001_p007",
+        "ldc_t09_1910_08_12_e001_p008",
+        "ldc_t09_1910_08_12_e001_p009",
+        "ldc_t09_1910_08_12_e001_p010"
       ],
       "r3a_status": "revision_3_1_permanently_accepted",
-      "section": "ldc_t09_1910_08_17_e001",
+      "section": "ldc_t09_1910_08_12_e001",
       "seq": 40,
       "sequence": 40,
       "source_date_iso_legacy": "12 août 1910",
@@ -1506,7 +1506,7 @@
       "speakers": [
         "JESUS"
       ],
-      "stable_ref": "LDC.T09.1910-08-17",
+      "stable_ref": "LDC.T09.1910-08-12",
       "title": "L'origine de tout le mal chez certains prêtres est qu'ils dirigent les âmes sur les choses humaines.",
       "verification_status": "global_itpm_r5_date_corrected_legacy_ids_preserved",
       "volume": 9,
@@ -2087,12 +2087,12 @@
     }
   ],
   "entry_count": 55,
-  "generation": "G036-AFLP-R5-UWR2",
+  "generation": "G036-AFLP-R7-UWR2",
   "label": "Tome 9",
   "para_count": 448,
-  "predecessor_generation": "G036-AFLP-R1B-UWR2",
+  "predecessor_generation": "G036-AFLP-R6-UWR2",
   "r3ait_status": "terminal_harmonisation_r2_prepared",
   "speaker_segment_count": 390,
-  "status": "AFLP_R2_CRITICAL_RECONCILIATION_M4",
+  "status": "LDC_V69_DEEP_FOUR_PASS_METADATA_REPAIR__FINAL_CERTIFICATION_AUTHORITY_EXTERNAL_TO_ZIP__NOT_PUBLICLY_DEPLOYED",
   "volume": 9
 }

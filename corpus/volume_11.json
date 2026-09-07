@@ -1,5 +1,5 @@
 {
-  "corpus_version": "v-final-standard-harmonisation-r2-g036-tome11",
+  "corpus_version": "G036-AFLP-R7-UWR2",
   "cross_batch_schema": "final-r2-common-derived-and-source-envelope-v1",
   "entries": [
     {
@@ -1299,20 +1299,20 @@
       "volume_order_start": 316
     },
     {
-      "date_display": "2 septembre 1912",
-      "date_iso": "1912-09-02",
+      "date_display": "6 septembre 1912",
+      "date_iso": "1912-09-06",
       "date_precision": "day",
       "has_speech": true,
-      "id": "ldc_t11_1912_09_02_e002",
+      "id": "ldc_t11_1912_09_06_e001",
       "para_count": 5,
       "para_ids": [
-        "ldc_t11_1912_09_02_e002_p001",
-        "ldc_t11_1912_09_02_e002_p002",
-        "ldc_t11_1912_09_02_e002_p003",
-        "ldc_t11_1912_09_02_e002_p004",
-        "ldc_t11_1912_09_02_e002_p005"
+        "ldc_t11_1912_09_06_e001_p001",
+        "ldc_t11_1912_09_06_e001_p002",
+        "ldc_t11_1912_09_06_e001_p003",
+        "ldc_t11_1912_09_06_e001_p004",
+        "ldc_t11_1912_09_06_e001_p005"
       ],
-      "section": "ldc_t11_1912_09_02_e002",
+      "section": "ldc_t11_1912_09_06_e001",
       "seq": 35,
       "sequence": 35,
       "source_date_iso_legacy": "2 septembre 1912",
@@ -1323,7 +1323,7 @@
       "speakers": [
         "JESUS"
       ],
-      "stable_ref": "LDC.T11.1912-09-02",
+      "stable_ref": "LDC.T11.1912-09-06",
       "title": "Jésus est à l'intérieur et à l'extérieur des âmes. Qui en expérimente les effets ?",
       "verification_status": "r3a31_tome11_permanently_accepted",
       "volume": 11,
@@ -5521,11 +5521,11 @@
     }
   ],
   "entry_count": 144,
-  "generation": "G036-AFLP-R5-UWR2",
+  "generation": "G036-AFLP-R7-UWR2",
   "label": "Tome 11",
   "para_count": 1414,
-  "predecessor_generation": "G036-AFLP-R1B-UWR2",
+  "predecessor_generation": "G036-AFLP-R6-UWR2",
   "r3ait_status": "terminal_harmonisation_r2_prepared",
-  "status": "AFLP_R2_CRITICAL_RECONCILIATION_M4",
+  "status": "LDC_V69_DEEP_FOUR_PASS_METADATA_REPAIR__FINAL_CERTIFICATION_AUTHORITY_EXTERNAL_TO_ZIP__NOT_PUBLICLY_DEPLOYED",
   "volume": 11
 }

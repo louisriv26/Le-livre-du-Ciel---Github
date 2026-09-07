@@ -1,12 +1,12 @@
-const VERSION = 'ldc-v2.19.64-R1B';
+const VERSION = 'ldc-v2.19.72-R1B-provenance-r1';
 const CACHE_PREFIX = 'ldc-le-livre-du-ciel-';
-const SHELL_CACHE = `${CACHE_PREFIX}shell-v2.19.64-R1B`;
-const RUNTIME_CACHE = `${CACHE_PREFIX}runtime-v2.19.64-R1B`;
-const OFFLINE_CACHE = 'ldc-le-livre-du-ciel-offline-v2.19.64-R1B';
+const SHELL_CACHE = `${CACHE_PREFIX}shell-v2.19.72-R1B-provenance-r1`;
+const RUNTIME_CACHE = `${CACHE_PREFIX}runtime-v2.19.72-R1B-provenance-r1`;
+const OFFLINE_CACHE = 'ldc-le-livre-du-ciel-offline-v2.19.72-R1B-provenance-r1';
 const OFFLINE_MANIFEST_URL = './offline_manifest.json';
 const OFFLINE_MANIFEST_SCHEMA = 'ldc-offline-manifest-v2';
-const OFFLINE_CONTENT_BINDING = 'b5be7f5a9d53eb3b226de0776cca837b5f7033898fc51a2a24b2d1a788bf04cb';
-const OFFLINE_CORPUS_MANIFEST_SHA256 = '91894ea9cde5f6fc134dd7afff9d6cf8525f9707e15a78c933846cbf96c2a9e2';
+const OFFLINE_CONTENT_BINDING = '2cfe0bccc982b80c5157aada7314a785fc42fce37fe82ae8fd32d3d268ca91ee';
+const OFFLINE_CORPUS_MANIFEST_SHA256 = '79b57f9971eb1e7064081f49b9f466a15d6b7088d450c5bb8d25d00d3f01dd29';
 const OFFLINE_META_PATH = '__ldc_offline_meta__.json';
 const RUNTIME_META_PATH = '__ldc_runtime_meta__.json';
 const RUNTIME_MAX_ENTRIES = 48;
@@ -16,7 +16,7 @@ let runtimeMutationQueue = Promise.resolve();
 // Keep install small and atomic. If any shell/index resource cannot be cached, the
 // installation fails and the previous active worker remains in control.
 const SHELL = [
-  './', './index.html', './manifest.json', './offline_manifest.json', './sw.js', './speech_model.js', './display_map.js', './interaction_anchor.js', './search_normalizer.js', './icons/favicon-16.png', './icons/favicon-32.png', './icons/favicon.ico', './icons/icon-60.png', './icons/icon-120.png', './icons/apple-touch-icon.png', './icons/icon-192.png', './icons/icon-512.png', './icons/icon-maskable-512.png', './assets/fonts/fonts.css', './assets/fonts/im-fell-english-latin-400-normal.woff2', './assets/fonts/im-fell-english-latin-400-italic.woff2', './assets/fonts/crimson-text-latin-400-normal.woff2', './assets/fonts/crimson-text-latin-400-italic.woff2', './assets/fonts/crimson-text-latin-600-normal.woff2', './assets/icons/tabler-icons.min.css', './assets/icons/tabler-icons.woff2', './assets/js/sortable.min.js'
+  './', './index.html', './manifest.json', './offline_manifest.json', './sw.js', './speech_model.js', './display_map.js', './interaction_anchor.js', './search_normalizer.js', './search_engine_v2.js', './search_worker_v2.js', './interim_user_state_migration.js', './icons/favicon-16.png', './icons/favicon-32.png', './icons/favicon.ico', './icons/icon-60.png', './icons/icon-120.png', './icons/apple-touch-icon.png', './icons/icon-192.png', './icons/icon-512.png', './icons/icon-maskable-512.png', './assets/fonts/fonts.css', './assets/fonts/im-fell-english-latin-400-normal.woff2', './assets/fonts/im-fell-english-latin-400-italic.woff2', './assets/fonts/crimson-text-latin-400-normal.woff2', './assets/fonts/crimson-text-latin-400-italic.woff2', './assets/fonts/crimson-text-latin-600-normal.woff2', './assets/icons/tabler-icons.min.css', './assets/icons/tabler-icons.woff2', './assets/js/sortable.min.js'
 ];
 
 let offlineJob = null;
@@ -58,7 +58,7 @@ async function loadOfflineManifest() {
   if(!r){r=await fetch(OFFLINE_MANIFEST_URL,{cache:'reload'});if(r&&r.ok)await shell.put(OFFLINE_MANIFEST_URL,r.clone());}
   if(!r||!r.ok)throw new Error('offline manifest indisponible');
   const m=await r.json();
-  if(m.schema!==OFFLINE_MANIFEST_SCHEMA||m.app_version!=='v2.19.64-R1B'||m.cache_version!==OFFLINE_CACHE)throw new Error('offline manifest incompatible');
+  if(m.schema!==OFFLINE_MANIFEST_SCHEMA||m.app_version!=='v2.19.72-R1B'||m.cache_version!==OFFLINE_CACHE)throw new Error('offline manifest incompatible');
   if(m.content_binding_schema!=='ldc-offline-content-binding-v1'||m.content_binding_sha256!==OFFLINE_CONTENT_BINDING)throw new Error('offline manifest binding incompatible');
   if(m.corpus_manifest_sha256!==OFFLINE_CORPUS_MANIFEST_SHA256)throw new Error('offline corpus manifest binding incompatible');
   const unique=[...new Set((m.assets||[]).map(a=>a.path))];

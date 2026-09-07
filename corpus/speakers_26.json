@@ -5481,7 +5481,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 205,
+    "end_char": 214,
     "entry_id": "LDC.T26.E0005",
     "evidence": "Complete French entry + Queen Volume 26 + Hugh Owen Volume 26",
     "paragraph_id": "LDC.T26.E0005.P071",
@@ -5493,7 +5493,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T26.E0005.P071",
     "start_char": 0,
-    "text_preview": "Notre Création elle-même, tous les biens de la Rédemption, sont intermittents. Parce qu’ils ne trouvent pas le Règne de notre Fiat dans la famille humaine. Ainsi, ils ne peuvent pas donner les mêmes biens.",
+    "text_preview": "Notre Création elle-même, tous les biens de la Rédemption, sont intermittents. Parce qu’ils ne trouvent pas le Règne de notre Fiat dans la famille humaine. Ainsi, ils ne peuvent pas toujours donner les mêmes biens.",
     "volume": 26,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"

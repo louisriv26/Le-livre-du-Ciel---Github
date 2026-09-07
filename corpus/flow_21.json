@@ -1,7 +1,7 @@
 {
   "schema_version": "ldc-display-flow-v2",
   "volume": 21,
-  "corpus_version": "G036-AFLP-R5-UWR2",
+  "corpus_version": "G036-AFLP-R7-UWR2",
   "group_count": 462,
   "groups": [
     {
@@ -5793,8 +5793,8 @@
         {
           "paragraph_id": "LDC.T21.E0006.P067",
           "stable_ref": "LDC.T21.E0006.P067",
-          "source_text_sha256": "e0101c4635ccc85e2eee4389ca26b22ebb7f76597d1fd65071bc5907c2fa30f7",
-          "canonical_length": 34,
+          "source_text_sha256": "7170f65bffc63511fd11cc907f3f8df96b6d9f4a9ed1e4240af6bfd4616d202d",
+          "canonical_length": 35,
           "boundary_after": null
         }
       ]
@@ -5834,8 +5834,8 @@
         {
           "paragraph_id": "LDC.T21.E0006.P070",
           "stable_ref": "LDC.T21.E0006.P070",
-          "source_text_sha256": "2f5220f0a360967d2b1d8163a02a49876218ae9256693b8966b888cbe8db1f30",
-          "canonical_length": 81,
+          "source_text_sha256": "77bdd344867c056c5e623bf80b501fb9297063b5922d53a025f0551f013ce884",
+          "canonical_length": 107,
           "boundary_after": null
         }
       ]
@@ -5898,8 +5898,8 @@
         {
           "paragraph_id": "LDC.T21.E0006.P078",
           "stable_ref": "LDC.T21.E0006.P078",
-          "source_text_sha256": "bc201b51044df921c8297d81ecea5634ad1a968cc4ba9598fdc50c4aaa339a43",
-          "canonical_length": 70,
+          "source_text_sha256": "4eaa51e5dfef731bc8f922265691eefad0c95826d698dac5b66c5d9de7d38d4f",
+          "canonical_length": 83,
           "boundary_after": null
         }
       ]
@@ -5939,8 +5939,8 @@
         {
           "paragraph_id": "LDC.T21.E0006.P080",
           "stable_ref": "LDC.T21.E0006.P080",
-          "source_text_sha256": "02253f7ad15abb5fdcb209030e5ea4cb03946af3a7900c4c6cc10ce63b8ce29d",
-          "canonical_length": 81,
+          "source_text_sha256": "18add9a2f8b28567b126a4d05a7fe40310cd327944e2cd7294c797ccef5db4dc",
+          "canonical_length": 79,
           "boundary_after": null
         }
       ]
@@ -6802,8 +6802,8 @@
         {
           "paragraph_id": "LDC.T21.E0007.P046",
           "stable_ref": "LDC.T21.E0007.P046",
-          "source_text_sha256": "9843946cabcb896c345ab1d4d7c7aa3b3b0c17651925c75f7487aaa3357958c4",
-          "canonical_length": 53,
+          "source_text_sha256": "22b62614c772c0e1ea99364675af95196f3cbc0b8a335a9e119dc299059c503f",
+          "canonical_length": 52,
           "boundary_after": null
         }
       ]
@@ -8349,8 +8349,8 @@
         {
           "paragraph_id": "LDC.T21.E0008.P041",
           "stable_ref": "LDC.T21.E0008.P041",
-          "source_text_sha256": "7820f7be04ebfbbe93204622ced86f988bb63f9595cb396857671a6f53a95e82",
-          "canonical_length": 70,
+          "source_text_sha256": "5ef227071cc7b9214943164cc33ce8d9c4401e2e4b4c044177a3f64be7cd64b1",
+          "canonical_length": 137,
           "boundary_after": null
         }
       ]
@@ -9002,8 +9002,8 @@
         {
           "paragraph_id": "LDC.T21.E0009.P023",
           "stable_ref": "LDC.T21.E0009.P023",
-          "source_text_sha256": "675d83fefc001c1c69f38f600bd8b2c35031f587c18d3371ead859b8d734b5ff",
-          "canonical_length": 44,
+          "source_text_sha256": "7b993c2fcaa5e5a4e073481647611faff927b33336573f615f8d687b63ceb3b2",
+          "canonical_length": 35,
           "boundary_after": {
             "display_joiner": "space",
             "speech_run_policy": "continue_same_speaker_only",
@@ -9729,8 +9729,8 @@
         {
           "paragraph_id": "LDC.T21.E0010.P026",
           "stable_ref": "LDC.T21.E0010.P026",
-          "source_text_sha256": "eb3398e18aee0858d73d1f5bb7db55a3a209ed5e91afd5e07c8875573f00e014",
-          "canonical_length": 46,
+          "source_text_sha256": "c70f3e190cc75b13f0de3be90e371dd79d7960807821d3781c8c13f8a6d860bf",
+          "canonical_length": 60,
           "boundary_after": {
             "display_joiner": "space",
             "speech_run_policy": "continue_same_speaker_only",
@@ -9843,8 +9843,8 @@
         {
           "paragraph_id": "LDC.T21.E0010.P034",
           "stable_ref": "LDC.T21.E0010.P034",
-          "source_text_sha256": "669b83de7acb8b9fc3372b2e4d73d54538fd9cdb51907aab354ecda9b2f17411",
-          "canonical_length": 35,
+          "source_text_sha256": "b4f8bf799e7faa5d2f86b5f866ad7c834850bf31f162dfe6972c21ab05e9404c",
+          "canonical_length": 38,
           "boundary_after": null
         }
       ]
@@ -10473,8 +10473,8 @@
         {
           "paragraph_id": "LDC.T21.E0011.P005",
           "stable_ref": "LDC.T21.E0011.P005",
-          "source_text_sha256": "ebe394b5ff7ede9d3644966713b122538d4831372bb7734d1763de9b6d00874e",
-          "canonical_length": 73,
+          "source_text_sha256": "85fb23c6c1a0f2bb1b6a964aaf037ba0d2bcb6b8847235e8ca9ec1c1bc165480",
+          "canonical_length": 85,
           "boundary_after": null
         }
       ]
@@ -10514,8 +10514,8 @@
         {
           "paragraph_id": "LDC.T21.E0011.P007",
           "stable_ref": "LDC.T21.E0011.P007",
-          "source_text_sha256": "19ea5825deb8332b9f1b8ea4614ae55b98dd4036f8249b8c49557527c7e904e0",
-          "canonical_length": 74,
+          "source_text_sha256": "79668c5d06a29e20dde0c981956262ae25fb90445c8c3c2bdc2fad55b181d7d7",
+          "canonical_length": 77,
           "boundary_after": null
         }
       ]
@@ -11502,7 +11502,7 @@
         {
           "paragraph_id": "LDC.T21.E0012.P018",
           "stable_ref": "LDC.T21.E0012.P018",
-          "source_text_sha256": "1dd6017d6ac504694839db7b914cfcbb66ddf43a88cef605e753b8ee5b0f90ae",
+          "source_text_sha256": "9d7458eef9114f00e5129333766b7088ef970855c806ad525fb8e8ed636f6b0e",
           "canonical_length": 104,
           "boundary_after": null
         }
@@ -15776,7 +15776,7 @@
         {
           "paragraph_id": "LDC.T21.E0016.P032",
           "stable_ref": "LDC.T21.E0016.P032",
-          "source_text_sha256": "b089095e439c5cd0094b8dc44766182f0cf0d59ca6d69e376e3ea0eeffad7d49",
+          "source_text_sha256": "e520c9c04e73caef6437ed138cf78be54f19153cf664fa4c28d20450acb16649",
           "canonical_length": 45,
           "boundary_after": null
         }
@@ -26877,8 +26877,8 @@
         {
           "paragraph_id": "LDC.T21.E0011.P058",
           "stable_ref": "LDC.T21.E0011.P058",
-          "source_text_sha256": "9f9541a44ffea61973448d925d901cc85147fd84f2e39cd1d44dc9a8ab6d95e6",
-          "canonical_length": 107,
+          "source_text_sha256": "cb8b5f9253fca09c6c851d9acf96f56c5979bdd4825705e56f8ad0289574b599",
+          "canonical_length": 109,
           "boundary_after": {
             "display_joiner": "space",
             "speech_run_policy": "continue_same_speaker_only",

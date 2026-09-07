@@ -1,5 +1,5 @@
 {
-  "corpus_version": "v-final-standard-harmonisation-r2-g036-tome07",
+  "corpus_version": "G036-AFLP-R7-UWR2",
   "cross_batch_schema": "final-r2-common-derived-and-source-envelope-v1",
   "entries": [
     {
@@ -655,26 +655,26 @@
       "volume_order_start": 113
     },
     {
-      "date_display": "18 juin 1906",
-      "date_iso": "1906-06-18",
+      "date_display": "15 juin 1906",
+      "date_iso": "1906-06-15",
       "date_precision": "day",
       "has_speech": true,
-      "id": "ldc_t07_1906_06_18_e001",
+      "id": "ldc_t07_1906_06_15_e001",
       "para_count": 10,
       "para_ids": [
-        "ldc_t07_1906_06_18_e001_p001",
-        "ldc_t07_1906_06_18_e001_p002",
-        "ldc_t07_1906_06_18_e001_p003",
-        "ldc_t07_1906_06_18_e001_p004",
-        "ldc_t07_1906_06_18_e001_p005",
-        "ldc_t07_1906_06_18_e001_p006",
-        "ldc_t07_1906_06_18_e001_p007",
-        "ldc_t07_1906_06_18_e001_p008",
-        "ldc_t07_1906_06_18_e001_p009",
-        "ldc_t07_1906_06_18_e001_p010"
+        "ldc_t07_1906_06_15_e001_p001",
+        "ldc_t07_1906_06_15_e001_p002",
+        "ldc_t07_1906_06_15_e001_p003",
+        "ldc_t07_1906_06_15_e001_p004",
+        "ldc_t07_1906_06_15_e001_p005",
+        "ldc_t07_1906_06_15_e001_p006",
+        "ldc_t07_1906_06_15_e001_p007",
+        "ldc_t07_1906_06_15_e001_p008",
+        "ldc_t07_1906_06_15_e001_p009",
+        "ldc_t07_1906_06_15_e001_p010"
       ],
       "r3a_status": "r3ait_v3.5_revalidated_prepared",
-      "section": "ldc_t07_1906_06_18_e001",
+      "section": "ldc_t07_1906_06_15_e001",
       "seq": 19,
       "sequence": 19,
       "source_date_iso_legacy": "18 juin 1906",
@@ -685,8 +685,8 @@
       "speakers": [
         "JESUS"
       ],
-      "stable_ref": "LDC.T07.1906-06-18",
-      "title": "La Divinité est la conséquence de l’Amour. À partir de sa petite étincelle issue du grand feu de l’Amour de Dieu, Luisa doit faire un feu pour donner une cible à l’Amour de Dieu.",
+      "stable_ref": "LDC.T07.1906-06-15",
+      "title": "Toute la Vie divine reçoit sa vie de l’Amour. À partir de sa petite étincelle issue du grand feu de l’Amour de Dieu, Luisa doit faire un feu pour donner une cible à l’Amour de Dieu.",
       "verification_status": "tome07_r3ait_v3.5_prepared",
       "volume": 7,
       "volume_entry_order": 19,
@@ -1143,26 +1143,26 @@
       "volume_order_start": 196
     },
     {
-      "date_display": "30 juillet 1906",
-      "date_iso": "1906-07-30",
+      "date_display": "31 juillet 1906",
+      "date_iso": "1906-07-31",
       "date_precision": "day",
       "has_speech": true,
-      "id": "ldc_t07_1906_07_30_e001",
+      "id": "ldc_t07_1906_07_31_e001",
       "para_count": 10,
       "para_ids": [
-        "ldc_t07_1906_07_30_e001_p001",
-        "ldc_t07_1906_07_30_e001_p002",
-        "ldc_t07_1906_07_30_e001_p003",
-        "ldc_t07_1906_07_30_e001_p004",
-        "ldc_t07_1906_07_30_e001_p005",
-        "ldc_t07_1906_07_30_e001_p006",
-        "ldc_t07_1906_07_30_e001_p007",
-        "ldc_t07_1906_07_30_e001_p008",
-        "ldc_t07_1906_07_30_e001_p009",
-        "ldc_t07_1906_07_30_e001_p010"
+        "ldc_t07_1906_07_31_e001_p001",
+        "ldc_t07_1906_07_31_e001_p002",
+        "ldc_t07_1906_07_31_e001_p003",
+        "ldc_t07_1906_07_31_e001_p004",
+        "ldc_t07_1906_07_31_e001_p005",
+        "ldc_t07_1906_07_31_e001_p006",
+        "ldc_t07_1906_07_31_e001_p007",
+        "ldc_t07_1906_07_31_e001_p008",
+        "ldc_t07_1906_07_31_e001_p009",
+        "ldc_t07_1906_07_31_e001_p010"
       ],
       "r3a_status": "r3ait_v3.5_revalidated_prepared",
-      "section": "ldc_t07_1906_07_30_e001",
+      "section": "ldc_t07_1906_07_31_e001",
       "seq": 33,
       "sequence": 33,
       "source_date_iso_legacy": "30 juillet 1906",
@@ -1173,7 +1173,7 @@
       "speakers": [
         "JESUS"
       ],
-      "stable_ref": "LDC.T07.1906-07-30",
+      "stable_ref": "LDC.T07.1906-07-31",
       "title": "Jésus parle de la simplicité. Comme la lumière, l'âme simple n'est pas affectée par la saleté qu'elle rencontre. L'âme simple se fond dans la Lumière divine.",
       "verification_status": "tome07_r3ait_v3.5_prepared",
       "volume": 7,
@@ -2926,12 +2926,12 @@
     }
   ],
   "entry_count": 81,
-  "generation": "G036-AFLP-R5-UWR2",
+  "generation": "G036-AFLP-R7-UWR2",
   "label": "Tome 7",
   "para_count": 542,
-  "predecessor_generation": "G036-AFLP-R1B-UWR2",
+  "predecessor_generation": "G036-AFLP-R6-UWR2",
   "r3ait_status": "terminal_harmonisation_r2_prepared",
   "speaker_segment_count": 404,
-  "status": "AFLP_R2_CRITICAL_RECONCILIATION_M4",
+  "status": "LDC_V69_DEEP_FOUR_PASS_METADATA_REPAIR__FINAL_CERTIFICATION_AUTHORITY_EXTERNAL_TO_ZIP__NOT_PUBLICLY_DEPLOYED",
   "volume": 7
 }

@@ -1,5 +1,5 @@
 {
-  "corpus_version": "v-final-standard-harmonisation-r2-g036-tome18",
+  "corpus_version": "G036-AFLP-R7-UWR2",
   "cross_batch_schema": "final-r2-common-derived-and-source-envelope-v1",
   "entries": [
     {
@@ -1913,8 +1913,8 @@
       "volume_order_start": 1215
     },
     {
-      "date_display": "6 février 1926",
-      "date_iso": "1926-02-06",
+      "date_display": "7 février 1926",
+      "date_iso": "1926-02-07",
       "date_precision": "day",
       "has_speech": true,
       "id": "LDC.T18.E0022",
@@ -2164,13 +2164,13 @@
     }
   ],
   "entry_count": 26,
-  "generation": "G036-AFLP-R5-UWR2",
+  "generation": "G036-AFLP-R7-UWR2",
   "governing_generation": "G036-B03-LING-R6-UWR2",
   "label": "Tome 18",
   "para_count": 1385,
-  "predecessor_generation": "G036-AFLP-R1B-UWR2",
+  "predecessor_generation": "G036-AFLP-R6-UWR2",
   "r3ait_status": "terminal_harmonisation_r2_prepared",
-  "status": "AFLP_R2_CRITICAL_RECONCILIATION_M4",
+  "status": "LDC_V69_DEEP_FOUR_PASS_METADATA_REPAIR__FINAL_CERTIFICATION_AUTHORITY_EXTERNAL_TO_ZIP__NOT_PUBLICLY_DEPLOYED",
   "verification_status": "b03_ling_r6_final_exhaustive_verified",
   "volume": 18
 }

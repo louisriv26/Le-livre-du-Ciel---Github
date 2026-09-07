@@ -1,7 +1,7 @@
 {
   "schema_version": "ldc-display-flow-v2",
   "volume": 1,
-  "corpus_version": "G036-AFLP-R5-UWR2",
+  "corpus_version": "G036-AFLP-R7-UWR2",
   "group_count": 13,
   "groups": [
     {
@@ -249,8 +249,8 @@
         {
           "paragraph_id": "ldc_t01_sec077_p001",
           "stable_ref": "LDC.T01.SEC077.P001",
-          "source_text_sha256": "fe3735dd30e70a54855f3e2f35648f710a2560951ffb7233cc94158a1f3260c8",
-          "canonical_length": 86,
+          "source_text_sha256": "a7b09b19c14eb3fe56a94ea6e674ae683b13b83e833c5ea1b9728ec63194d59b",
+          "canonical_length": 87,
           "boundary_after": {
             "display_joiner": "space",
             "speech_run_policy": "continue_same_speaker_only",

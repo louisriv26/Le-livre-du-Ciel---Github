@@ -20878,7 +20878,7 @@
     "_vol": 18,
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 110,
+    "end_char": 239,
     "entry_id": "LDC.T18.E0022",
     "evidence": "Complete French entry + aligned Queen Volume 18 + aligned Hugh Owen Volume 18 where present",
     "paragraph_id": "LDC.T18.E0022.P031",
@@ -20889,7 +20889,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T18.E0022.P031",
     "start_char": 0,
-    "text_preview": "Les créatures ont rejeté Ma Volonté, alors qu'à l'origine elles vivaient en Elle. Bien que rejetée, Ma Volonté",
+    "text_preview": "Ma Volonté fut le premier acte de la créature, et la créature eut son premier acte dans Ma Volonté. C'est pourquoi Elle veut poursuivre le cours de sa Vie en elle. Bien qu'elle ait été étouffée dès sa naissance dans la créature, Ma Volonté",
     "volume": 18,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"

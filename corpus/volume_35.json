@@ -1,5 +1,5 @@
 {
-  "corpus_version": "v-final-standard-harmonisation-r2-g036-tome35",
+  "corpus_version": "G036-AFLP-R7-UWR2",
   "cross_batch_schema": "final-r2-common-derived-and-source-envelope-v1",
   "entries": [
     {
@@ -1492,11 +1492,12 @@
       "source_page_start": "90",
       "source_sequence_printed": "35-22",
       "speaker_confidence_max": "high",
-      "speaker_segment_count": 30,
+      "speaker_segment_count": 32,
       "speakers": [
         "JESUS",
         "OTHER",
-        "PERSONIFIED_VOICE"
+        "PERSONIFIED_VOICE",
+        "LUISA"
       ],
       "stable_ref": "LDC.T35.E0022",
       "title": "Pour celle qui vit en Elle, la Divine Volonté forme la répétition de la Vie et de l’Amour de Jésus. Elle forme et étend en elle toute la Création et tout ce que Jésus a fait. Il lui donnera un nom nouveau en l’appelant : Mon Fiat.",
@@ -1632,7 +1633,7 @@
       "source_page_start": "98",
       "source_sequence_printed": "35-24",
       "speaker_confidence_max": "high",
-      "speaker_segment_count": 40,
+      "speaker_segment_count": 44,
       "speakers": [
         "JESUS",
         "LUISA",
@@ -1743,7 +1744,7 @@
       "source_page_start": "107",
       "source_sequence_printed": "35-26",
       "speaker_confidence_max": "high",
-      "speaker_segment_count": 22,
+      "speaker_segment_count": 23,
       "speakers": [
         "JESUS"
       ],
@@ -2862,11 +2863,11 @@
     }
   ],
   "entry_count": 44,
-  "generation": "G036-AFLP-R5-UWR2",
+  "generation": "G036-AFLP-R7-UWR2",
   "label": "Tome 35",
   "para_count": 1404,
-  "predecessor_generation": "G036-AFLP-R1B-UWR2",
+  "predecessor_generation": "G036-AFLP-R6-UWR2",
   "r3ait_status": "SUPERSEDED_BY_B06_LING_R2",
-  "status": "AFLP_R2_CRITICAL_RECONCILIATION_M4",
+  "status": "LDC_V69_DEEP_FOUR_PASS_METADATA_REPAIR__FINAL_CERTIFICATION_AUTHORITY_EXTERNAL_TO_ZIP__NOT_PUBLICLY_DEPLOYED",
   "volume": 35
 }

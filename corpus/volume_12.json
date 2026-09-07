@@ -1,5 +1,5 @@
 {
-  "corpus_version": "v-final-standard-harmonisation-r2-g036-tome12",
+  "corpus_version": "G036-AFLP-R7-UWR2",
   "cross_batch_schema": "final-r2-common-derived-and-source-envelope-v1",
   "entries": [
     {
@@ -7,21 +7,21 @@
       "date_iso": "1917-03-16",
       "date_precision": "day",
       "has_speech": true,
-      "id": "ldc_t12_1917_03_06_e001",
+      "id": "ldc_t12_1917_03_16_e001",
       "para_count": 10,
       "para_ids": [
-        "ldc_t12_1917_03_06_e001_p001",
-        "ldc_t12_1917_03_06_e001_p002",
-        "ldc_t12_1917_03_06_e001_p003",
-        "ldc_t12_1917_03_06_e001_p004",
-        "ldc_t12_1917_03_06_e001_p005",
-        "ldc_t12_1917_03_06_e001_p006",
-        "ldc_t12_1917_03_06_e001_p007",
-        "ldc_t12_1917_03_06_e001_p008",
-        "ldc_t12_1917_03_06_e001_p009",
-        "ldc_t12_1917_03_06_e001_p010"
+        "ldc_t12_1917_03_16_e001_p001",
+        "ldc_t12_1917_03_16_e001_p002",
+        "ldc_t12_1917_03_16_e001_p003",
+        "ldc_t12_1917_03_16_e001_p004",
+        "ldc_t12_1917_03_16_e001_p005",
+        "ldc_t12_1917_03_16_e001_p006",
+        "ldc_t12_1917_03_16_e001_p007",
+        "ldc_t12_1917_03_16_e001_p008",
+        "ldc_t12_1917_03_16_e001_p009",
+        "ldc_t12_1917_03_16_e001_p010"
       ],
-      "section": "ldc_t12_1917_03_06_e001",
+      "section": "ldc_t12_1917_03_16_e001",
       "seq": 1,
       "sequence": 1,
       "source_date_iso_legacy": "16 mars 1917",
@@ -33,7 +33,7 @@
         "JESUS",
         "LUISA"
       ],
-      "stable_ref": "LDC.T12.1917-03-06",
+      "stable_ref": "LDC.T12.1917-03-16",
       "title": "L'étroite union entre l'âme et Dieu n'est jamais rompue.",
       "verification_status": "global_itpm_r5_date_corrected_legacy_ids_preserved",
       "volume": 12,
@@ -2014,7 +2014,8 @@
       "source_page_start": "59",
       "speaker_confidence_max": "high",
       "speakers": [
-        "JESUS"
+        "JESUS",
+        "LUISA"
       ],
       "stable_ref": "LDC.T12.1918-06-12",
       "title": "Jésus a mis les créatures à l'abri en les recouvrant de son Humanité. Mais elles se placent à l'extérieur, exposées aux coups.",
@@ -6844,11 +6845,11 @@
     }
   ],
   "entry_count": 163,
-  "generation": "G036-AFLP-R5-UWR2",
+  "generation": "G036-AFLP-R7-UWR2",
   "label": "Tome 12",
   "para_count": 2163,
-  "predecessor_generation": "G036-AFLP-R1B-UWR2",
+  "predecessor_generation": "G036-AFLP-R6-UWR2",
   "r3ait_status": "terminal_harmonisation_r2_prepared",
-  "status": "AFLP_R2_CRITICAL_RECONCILIATION_M4",
+  "status": "LDC_V69_DEEP_FOUR_PASS_METADATA_REPAIR__FINAL_CERTIFICATION_AUTHORITY_EXTERNAL_TO_ZIP__NOT_PUBLICLY_DEPLOYED",
   "volume": 12
 }

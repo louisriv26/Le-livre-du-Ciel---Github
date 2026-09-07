@@ -1,5 +1,5 @@
 {
-  "corpus_version": "v-g036-b04-ling-r2-uwr2-tome20",
+  "corpus_version": "G036-AFLP-R7-UWR2",
   "cross_batch_schema": "final-r2-common-derived-and-source-envelope-v1",
   "entries": [
     {
@@ -6962,7 +6962,7 @@
       "date_precision": "day",
       "has_speech": true,
       "id": "LDC.T20.E0058",
-      "para_count": 94,
+      "para_count": 93,
       "para_ids": [
         "LDC.T20.E0058.P001",
         "LDC.T20.E0058.P002",
@@ -6995,7 +6995,6 @@
         "LDC.T20.E0058.P029",
         "LDC.T20.E0058.P030",
         "LDC.T20.E0058.P031",
-        "LDC.T20.E0058.P032",
         "LDC.T20.E0058.P033",
         "LDC.T20.E0058.P034",
         "LDC.T20.E0058.P035",
@@ -7396,11 +7395,11 @@
     }
   ],
   "entry_count": 62,
-  "generation": "G036-AFLP-R5-UWR2",
+  "generation": "G036-AFLP-R7-UWR2",
   "label": "Tome 20",
-  "para_count": 5543,
-  "predecessor_generation": "G036-AFLP-R1B-UWR2",
+  "para_count": 5542,
+  "predecessor_generation": "G036-AFLP-R6-UWR2",
   "r3ait_status": "terminal_harmonisation_r2_prepared",
-  "status": "AFLP_R2_CRITICAL_RECONCILIATION_M4",
+  "status": "LDC_V69_DEEP_FOUR_PASS_METADATA_REPAIR__FINAL_CERTIFICATION_AUTHORITY_EXTERNAL_TO_ZIP__NOT_PUBLICLY_DEPLOYED",
   "volume": 20
 }

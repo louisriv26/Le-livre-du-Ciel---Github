@@ -1,5 +1,5 @@
 {
-  "corpus_version": "v-final-standard-harmonisation-r2-g036-tome08",
+  "corpus_version": "G036-AFLP-R7-UWR2",
   "cross_batch_schema": "final-r2-common-derived-and-source-envelope-v1",
   "entries": [
     {
@@ -7,17 +7,17 @@
       "date_iso": "1907-06-23",
       "date_precision": "day",
       "has_speech": true,
-      "id": "ldc_t08_1907_06_03_e001",
+      "id": "ldc_t08_1907_06_23_e001",
       "para_count": 5,
       "para_ids": [
-        "ldc_t08_1907_06_03_e001_p001",
-        "ldc_t08_1907_06_03_e001_p002",
-        "ldc_t08_1907_06_03_e001_p003",
-        "ldc_t08_1907_06_03_e001_p004",
-        "ldc_t08_1907_06_03_e001_p005"
+        "ldc_t08_1907_06_23_e001_p001",
+        "ldc_t08_1907_06_23_e001_p002",
+        "ldc_t08_1907_06_23_e001_p003",
+        "ldc_t08_1907_06_23_e001_p004",
+        "ldc_t08_1907_06_23_e001_p005"
       ],
       "r3a_status": "revision_3_1_permanently_accepted",
-      "section": "ldc_t08_1907_06_03_e001",
+      "section": "ldc_t08_1907_06_23_e001",
       "seq": 1,
       "sequence": 1,
       "source_date_iso_legacy": "23 juin 1907",
@@ -28,7 +28,7 @@
       "speakers": [
         "JESUS"
       ],
-      "stable_ref": "LDC.T08.1907-06-03",
+      "stable_ref": "LDC.T08.1907-06-23",
       "title": "L'acte le plus beau consiste à s'abandonner dans la Volonté de Dieu.",
       "verification_status": "global_itpm_r5_date_corrected_legacy_ids_preserved",
       "volume": 8,
@@ -977,7 +977,9 @@
       "source_page_start": "30",
       "speaker_confidence_max": "high",
       "speakers": [
-        "JESUS"
+        "JESUS",
+        "LUISA",
+        "MARY"
       ],
       "stable_ref": "LDC.T08.1908-03-09",
       "title": "Les battements de cœur de Jésus contiennent les battements de cœur de toutes les créatures.",
@@ -2450,12 +2452,12 @@
     }
   ],
   "entry_count": 65,
-  "generation": "G036-AFLP-R5-UWR2",
+  "generation": "G036-AFLP-R7-UWR2",
   "label": "Tome 8",
   "para_count": 515,
-  "predecessor_generation": "G036-AFLP-R1B-UWR2",
+  "predecessor_generation": "G036-AFLP-R6-UWR2",
   "r3ait_status": "terminal_harmonisation_r2_prepared",
-  "speaker_segment_count": 478,
-  "status": "AFLP_R2_CRITICAL_RECONCILIATION_M4",
+  "speaker_segment_count": 480,
+  "status": "LDC_V69_DEEP_FOUR_PASS_METADATA_REPAIR__FINAL_CERTIFICATION_AUTHORITY_EXTERNAL_TO_ZIP__NOT_PUBLICLY_DEPLOYED",
   "volume": 8
 }

@@ -1,5 +1,5 @@
 {
-  "corpus_version": "v-final-standard-harmonisation-r2-g036-tome34",
+  "corpus_version": "G036-AFLP-R7-UWR2",
   "cross_batch_schema": "final-r2-common-derived-and-source-envelope-v1",
   "entries": [
     {
@@ -39,10 +39,11 @@
       "source_page_start": "3",
       "source_sequence_printed": "34-1",
       "speaker_confidence_max": "high",
-      "speaker_segment_count": 15,
+      "speaker_segment_count": 17,
       "speakers": [
         "JESUS",
-        "LUISA"
+        "LUISA",
+        "PERSONIFIED_VOICE"
       ],
       "stable_ref": "LDC.T34.E0001",
       "title": "La Volonté Divine darde la créature pour y agir en actrice, former la noblesse divine et rendre inséparables Dieu et la créature. Exemple : le soleil.",
@@ -2994,11 +2995,11 @@
     }
   ],
   "entry_count": 45,
-  "generation": "G036-AFLP-R5-UWR2",
+  "generation": "G036-AFLP-R7-UWR2",
   "label": "Tome 34",
   "para_count": 1509,
-  "predecessor_generation": "G036-AFLP-R1B-UWR2",
+  "predecessor_generation": "G036-AFLP-R6-UWR2",
   "r3ait_status": "SUPERSEDED_BY_B06_LING_R2",
-  "status": "AFLP_R2_CRITICAL_RECONCILIATION_M4",
+  "status": "LDC_V69_DEEP_FOUR_PASS_METADATA_REPAIR__FINAL_CERTIFICATION_AUTHORITY_EXTERNAL_TO_ZIP__NOT_PUBLICLY_DEPLOYED",
   "volume": 34
 }

@@ -11737,7 +11737,7 @@
     "_vol": 16,
     "confidence": "high",
     "display_role": "none",
-    "end_char": 242,
+    "end_char": 241,
     "entry_id": "LDC.T16.E0020",
     "evidence": "Complete French entry + aligned Queen Volume 16 + aligned Hugh Owen Volume 16 where present",
     "paragraph_id": "LDC.T16.E0020.P005",
@@ -11748,7 +11748,7 @@
     "speaker": "LUISA",
     "stable_ref": "LDC.T16.E0020.P005",
     "start_char": 0,
-    "text_preview": "Je n'ai personne d'autre que Toi à qui crier ma peine de T'avoir perdu. Cela devrait Te pousser encore plus à ne pas me laisser, à tenir compagnie à la pauvre abandonnée qui vit la mort dans son dur exil. Toi qui est le Prêtre par excellenc",
+    "text_preview": "Je n'ai personne d'autre que Toi à qui crier ma peine de T'avoir perdu. Cela devrait Te pousser encore plus à ne pas me laisser, à tenir compagnie à la pauvre abandonnée qui vit la mort dans son dur exil. Toi qui es le Prêtre par excellence",
     "volume": 16,
     "presentation_parent": "LUISA",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -27600,7 +27600,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T16.E0034.P005",
     "start_char": 0,
-    "text_preview": "Pendant que tu dors, Je fais pour toi ce que nous ferions ensemble si tu étais éveillée, vu que ce n'est pas toi qui veut dormir, mais Moi-même qui te plonge dans le sommeil. Vois-tu combien Je t'aime ? Si tu savais combien Je souffre",
+    "text_preview": "Pendant que tu dors, Je fais pour toi ce que nous ferions ensemble si tu étais éveillée, vu que ce n'est pas toi qui veux dormir, mais Moi-même qui te plonge dans le sommeil. Vois-tu combien Je t'aime ? Si tu savais combien Je souffre",
     "volume": 16,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"

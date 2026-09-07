@@ -7685,7 +7685,7 @@
     "_vol": 14,
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 254,
+    "end_char": 255,
     "entry_id": "LDC.T14.E0016",
     "evidence": "Complete French entry + aligned Queen Volume 14 + aligned Hugh Owen Volume 14 where present",
     "paragraph_id": "LDC.T14.E0016.P007",
@@ -7696,7 +7696,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T14.E0016.P007",
     "start_char": 0,
-    "text_preview": "- non inertes comme les hosties sacramentelles avant leur consécration - afin que Ma Volonté puisse s'inclure dans ces actes. Ainsi, Je suis reproduit dans chaque acte d'une âme quand ils sont réalisés dans Ma Volonté. Pour cette raison, Mo",
+    "text_preview": "- non inertes comme les hosties sacramentelles avant leur consécration - et dans lesquels Ma Volonté Me consacre et M'enferme. Ainsi, Je suis reproduit dans chaque acte d'une âme quand ils sont réalisés dans Ma Volonté. Pour cette raison, M",
     "volume": 14,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"

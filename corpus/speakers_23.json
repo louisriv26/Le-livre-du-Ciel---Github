@@ -20648,7 +20648,7 @@
   {
     "confidence": "high",
     "display_role": "none",
-    "end_char": 67,
+    "end_char": 78,
     "entry_id": "LDC.T23.E0011",
     "evidence": "Complete French entry + Queen Volume 23 + Hugh Owen Volume 23",
     "paragraph_id": "LDC.T23.E0011.P008",
@@ -20660,7 +20660,7 @@
     "speaker": "LUISA",
     "stable_ref": "LDC.T23.E0011.P008",
     "start_char": 0,
-    "text_preview": "Ton Règne est un Royaume qui a le pouvoir de me débarrasser de tout",
+    "text_preview": "Ton Règne est un Royaume de Lumière qui a le pouvoir de me débarrasser de tout",
     "volume": 23,
     "presentation_parent": "LUISA",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -22557,7 +22557,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 126,
+    "end_char": 129,
     "entry_id": "LDC.T23.E0011",
     "evidence": "Complete French entry + Queen Volume 23 + Hugh Owen Volume 23",
     "paragraph_id": "LDC.T23.E0011.P109",
@@ -22568,7 +22568,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T23.E0011.P109",
     "start_char": 0,
-    "text_preview": "Oh ! Ta Beauté enchanteresse ravit toutes choses, ravit la terre ton doux enchantement, enchante toutes les créatures afin que",
+    "text_preview": "Oh ! Ta Beauté enchanteresse, ravis toute chose, ravis la terre par ton doux enchantement, enchante toutes les créatures afin que",
     "volume": 23,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
