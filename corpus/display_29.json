@@ -1,7 +1,7 @@
 {
   "schema_version": "ldc-display-transform-v2",
   "volume": 29,
-  "corpus_version": "G036-AFLP-R7-UWR2",
+  "corpus_version": "G036-AFLP-R7-UWR2-FAST1",
   "paragraph_count": 1947,
   "paragraphs": {
     "LDC.T29.E0001.P003": [
@@ -5276,8 +5276,8 @@
     "LDC.T29.E0013.P030": [
       {
         "s": 0,
-        "e": 2,
-        "t": "- ",
+        "e": 3,
+        "t": "- N",
         "r": "",
         "a": "SUPPRESS_LAYOUT_MARKER",
         "d": "LEAD-20408",
@@ -9181,8 +9181,8 @@
     "LDC.T29.E0020.P069": [
       {
         "s": 0,
-        "e": 2,
-        "t": "- ",
+        "e": 3,
+        "t": "- e",
         "r": "",
         "a": "SUPPRESS_LAYOUT_MARKER",
         "d": "LEAD-20763",
@@ -9192,8 +9192,8 @@
     "LDC.T29.E0020.P070": [
       {
         "s": 0,
-        "e": 2,
-        "t": "- ",
+        "e": 3,
+        "t": "- e",
         "r": "",
         "a": "SUPPRESS_LAYOUT_MARKER",
         "d": "LEAD-20764",

@@ -1,7 +1,7 @@
 {
   "schema": "ldc-supplement-search-v2",
   "programme": "LDC-AFLP-SUP-T1-SUP-T2-SUP-T3-SUP-T4-SUP-T5",
-  "composite_generation": "G036-AFLP-R7-SUP-T5",
+  "composite_generation": "G036-AFLP-R7-SUP-T5-FAST1",
   "records": [
     {
       "id": "ldcsup_t03_1900_02_12_e001_p001",
@@ -3200,5 +3200,5 @@
       "source_origin": "ITPM_MULTI_WITNESS_SOURCE_CRITICAL"
     }
   ],
-  "backbone_generation": "G036-AFLP-R7-UWR2"
+  "backbone_generation": "G036-AFLP-R7-UWR2-FAST1"
 }

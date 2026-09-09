@@ -1,8 +1,8 @@
 'use strict';
 importScripts('./search_engine_v2.js');
 const EXPECTED_PREDECESSOR='5e3896468c6d822760fcd555c59e0042d3ed217ee7f389e8b2ab7a60d2b7d6dd';
-const EXPECTED_MANIFEST_SHA256='8ddd47c403794ac1e03553edd5d971dbd80de5291826580f3bead343dd7999b8';
-const CV='LDC-V71-SEARCH-V2-FOUR-PASS-REPAIR';
+const EXPECTED_MANIFEST_SHA256='21948b20a8028bf5da3c51bcf58643196c902ecd8e359cbb296136784f910db7';
+const CV='LDC-V74-FAST1-CERTIFIED-MUTATION';
 let enginePromise=null;
 function hex(buf){return [...new Uint8Array(buf)].map(b=>b.toString(16).padStart(2,'0')).join('');}
 async function sha256(bytes){return hex(await crypto.subtle.digest('SHA-256',bytes));}

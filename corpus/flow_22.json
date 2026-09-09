@@ -1,8 +1,8 @@
 {
   "schema_version": "ldc-display-flow-v2",
   "volume": 22,
-  "corpus_version": "G036-AFLP-R7-UWR2",
-  "group_count": 375,
+  "corpus_version": "G036-AFLP-R7-UWR2-FAST1",
+  "group_count": 374,
   "groups": [
     {
       "flow_id": "FLOW.T22.P010-P013..E0001",
@@ -3858,6 +3858,35 @@
       ]
     },
     {
+      "flow_id": "FLOW.T22.RA10.001.LDC_T22_E0004_P053__LDC_T22_E0004_P054",
+      "entry_id": "LDC.T22.E0004",
+      "classification": "source_layout_sentence_continuation",
+      "confidence": "high",
+      "origin": "RA10_HISTORICAL_125_CLASS_REVALIDATED_CURRENT_LINEAGE",
+      "review_status": "approved_for_display",
+      "reason": "previous fragment has no terminal punctuation and next begins lowercase",
+      "members": [
+        {
+          "paragraph_id": "LDC.T22.E0004.P053",
+          "stable_ref": "LDC.T22.E0004.P053",
+          "source_text_sha256": "b651edd09ee953330fe6ac319ee17019a50f30f3d61fd7861bb4f9d8b8699fb5",
+          "canonical_length": 35,
+          "boundary_after": {
+            "display_joiner": "space",
+            "speech_run_policy": "continue_same_speaker_only",
+            "suppress_next_leading_ranges": []
+          }
+        },
+        {
+          "paragraph_id": "LDC.T22.E0004.P054",
+          "stable_ref": "LDC.T22.E0004.P054",
+          "source_text_sha256": "95929b3944498a83c82d59286c58dd1f56020b3521487432975672660fe1dae6",
+          "canonical_length": 58,
+          "boundary_after": null
+        }
+      ]
+    },
+    {
       "flow_id": "FLOW.T22.P058-P059..E0004",
       "entry_id": "LDC.T22.E0004",
       "classification": "inherited_dash_continuation",
@@ -5624,8 +5653,8 @@
         {
           "paragraph_id": "LDC.T22.E0006.P021",
           "stable_ref": "LDC.T22.E0006.P021",
-          "source_text_sha256": "a352a1be2f572d24bbae815d342133cb902ef2db0e4ee19fa7f337795b6d8282",
-          "canonical_length": 62,
+          "source_text_sha256": "5de47e3cc67e149e8e9ab33248d9a39dd22e4854661956e2947b463eb0f192ad",
+          "canonical_length": 61,
           "boundary_after": {
             "display_joiner": "space",
             "speech_run_policy": "continue_same_speaker_only",
@@ -6251,7 +6280,7 @@
         {
           "paragraph_id": "LDC.T22.E0006.P054",
           "stable_ref": "LDC.T22.E0006.P054",
-          "source_text_sha256": "d6c4a28eae98a47b42cf68bbd1da81607306e8c017e07aca7940f70c55b940d2",
+          "source_text_sha256": "dcadaf3d47e4a4406636ea03492f55f14f0df5a3ce48519af023a1dae0854fe9",
           "canonical_length": 117,
           "boundary_after": null
         }
@@ -6561,8 +6590,8 @@
         {
           "paragraph_id": "LDC.T22.E0006.P077",
           "stable_ref": "LDC.T22.E0006.P077",
-          "source_text_sha256": "0805c9478d71c87eef765e7ba78ceb730d714e3311051254a639ec2a02338678",
-          "canonical_length": 86,
+          "source_text_sha256": "6b95990ab93d22cf9136adab15eccc04227ba2637ff920a63fea0fc554132d25",
+          "canonical_length": 87,
           "boundary_after": null
         }
       ]
@@ -6760,6 +6789,42 @@
       ]
     },
     {
+      "flow_id": "FLOW.T22.RA10.002.LDC_T22_E0006_P094__LDC_T22_E0006_P095",
+      "entry_id": "LDC.T22.E0006",
+      "classification": "source_layout_sentence_continuation",
+      "confidence": "high",
+      "origin": "RA10_HISTORICAL_125_CLASS_REVALIDATED_CURRENT_LINEAGE",
+      "review_status": "approved_for_display",
+      "reason": "short comma-ended fragment continues into lowercase next fragment",
+      "members": [
+        {
+          "paragraph_id": "LDC.T22.E0006.P094",
+          "stable_ref": "LDC.T22.E0006.P094",
+          "source_text_sha256": "eead24b98c9ec5db17307f6edc6a41f77afc7850fc368eaaa0c57dd53f827853",
+          "canonical_length": 32,
+          "boundary_after": {
+            "display_joiner": "space",
+            "speech_run_policy": "continue_same_speaker_only",
+            "suppress_next_leading_ranges": [],
+            "visual_policy": "continuous_prose",
+            "visual_action": "join_inline",
+            "adjudication_generation": "RA19B_MULTI_SOURCE",
+            "adjudication_status": "SOURCE_BACKED_CERTAIN",
+            "adjudication_rule_id": "RA19B.JOIN.DIRECT_ITPM_CONTINUITY",
+            "evidence_ref": "RA19B:B22.09262.LDC.T22.E0006.P094__LDC.T22.E0006.P095",
+            "evidence_sha256": "66bbe8f78fb07aaaede468f1db81e484819b3e6bdfaff02f44e7fbe798ab5b7f"
+          }
+        },
+        {
+          "paragraph_id": "LDC.T22.E0006.P095",
+          "stable_ref": "LDC.T22.E0006.P095",
+          "source_text_sha256": "27cf1264161bffbc89300e03e64c78a4f9fffc137107e913afd59af77b81fe5b",
+          "canonical_length": 210,
+          "boundary_after": null
+        }
+      ]
+    },
+    {
       "flow_id": "FLOW.T22.P096-P098..E0006",
       "entry_id": "LDC.T22.E0006",
       "classification": "inherited_dash_continuation",
@@ -6817,13 +6882,13 @@
       ]
     },
     {
-      "flow_id": "FLOW.T22.P002-P003..E0007",
+      "flow_id": "FLOW.T22.FAST1.001.LDC_T22_E0007_P002__LDC_T22_E0007_P005",
       "entry_id": "LDC.T22.E0007",
       "classification": "inherited_dash_continuation",
       "confidence": "inherited_not_source_verified",
-      "origin": "legacy_runtime_inference",
+      "origin": "FAST_MODE_CERTIFIED_CORPUS_MUTATION_BODY0277_0854",
       "review_status": "preserved_pending_structural_review",
-      "reason": "runtime dash-merger inheritance",
+      "reason": "Certified correction-certain FAST Mode boundary repair; stable paragraph records preserved",
       "members": [
         {
           "paragraph_id": "LDC.T22.E0007.P002",
@@ -6851,21 +6916,21 @@
         {
           "paragraph_id": "LDC.T22.E0007.P003",
           "stable_ref": "LDC.T22.E0007.P003",
-          "source_text_sha256": "d0c02154bad138dd7a28c021ce4ebd8b15cabd695852cbdfd598680760e89428",
+          "source_text_sha256": "0959bbc29a0031869cc6edfd6f36757b11190f9882d25c9f1a6b6f88aa9974e8",
           "canonical_length": 69,
-          "boundary_after": null
-        }
-      ]
-    },
-    {
-      "flow_id": "FLOW.T22.P004-P005..E0007",
-      "entry_id": "LDC.T22.E0007",
-      "classification": "inherited_dash_continuation",
-      "confidence": "inherited_not_source_verified",
-      "origin": "legacy_runtime_inference",
-      "review_status": "preserved_pending_structural_review",
-      "reason": "runtime dash-merger inheritance",
-      "members": [
+          "boundary_after": {
+            "display_joiner": "space",
+            "speech_run_policy": "continue_same_speaker_only",
+            "suppress_next_leading_ranges": [],
+            "visual_policy": "continuous_prose",
+            "visual_action": "join_inline",
+            "adjudication_generation": "FAST_MODE_BODY0277_0854",
+            "adjudication_status": "CERTIFIED_CORRECTION_CERTAIN",
+            "adjudication_rule_id": "FAST_MODE.BOUNDARY.JOIN",
+            "evidence_ref": "FAST:BOUNDARY_REPAIR:LDC.T22.E0007.P004:LDC.T22.E0007.P003__LDC.T22.E0007.P004",
+            "evidence_sha256": "dc6eff07a1d3dfc3a50fab937290f26b4ccc3bebb6999f2f1ef7187a8efcb463"
+          }
+        },
         {
           "paragraph_id": "LDC.T22.E0007.P004",
           "stable_ref": "LDC.T22.E0007.P004",
@@ -6979,8 +7044,8 @@
         {
           "paragraph_id": "LDC.T22.E0007.P010",
           "stable_ref": "LDC.T22.E0007.P010",
-          "source_text_sha256": "06c94c5f1895a017a9e5261176bb6a07c58992c52830aa35bfca5134bf0d99b5",
-          "canonical_length": 60,
+          "source_text_sha256": "44cbe02d17d2bd7f32b550dc2c6492dfe67c72eb8d1a41896e6e46d4f604a4eb",
+          "canonical_length": 64,
           "boundary_after": null
         }
       ]
@@ -7125,8 +7190,8 @@
         {
           "paragraph_id": "LDC.T22.E0007.P021",
           "stable_ref": "LDC.T22.E0007.P021",
-          "source_text_sha256": "908148c39e14834a971e2ea87153f34d2c446af1b4e2553108e50aaa6a7cfbcc",
-          "canonical_length": 100,
+          "source_text_sha256": "9951cbe18211c8b3dc90671b67fd9d3d4a04aea569b316f0d59320db3f535426",
+          "canonical_length": 101,
           "boundary_after": {
             "display_joiner": "space",
             "speech_run_policy": "continue_same_speaker_only",
@@ -7537,6 +7602,42 @@
           "stable_ref": "LDC.T22.E0007.P041",
           "source_text_sha256": "bc76befebcf3d84ced7243607c9c05e040142dd23028f27eff072ede831b413c",
           "canonical_length": 81,
+          "boundary_after": null
+        }
+      ]
+    },
+    {
+      "flow_id": "FLOW.T22.RA10.003.LDC_T22_E0007_P043__LDC_T22_E0007_P044",
+      "entry_id": "LDC.T22.E0007",
+      "classification": "source_layout_sentence_continuation",
+      "confidence": "high",
+      "origin": "RA10_HISTORICAL_125_CLASS_REVALIDATED_CURRENT_LINEAGE",
+      "review_status": "approved_for_display",
+      "reason": "short comma-ended fragment continues into lowercase next fragment",
+      "members": [
+        {
+          "paragraph_id": "LDC.T22.E0007.P043",
+          "stable_ref": "LDC.T22.E0007.P043",
+          "source_text_sha256": "2e61fadbd13f22f4fdaa6675e6b254a05579666b6f7dac5e0246f9e997b3248f",
+          "canonical_length": 57,
+          "boundary_after": {
+            "display_joiner": "space",
+            "speech_run_policy": "continue_same_speaker_only",
+            "suppress_next_leading_ranges": [],
+            "visual_policy": "continuous_prose",
+            "visual_action": "join_inline",
+            "adjudication_generation": "RA19B_MULTI_SOURCE",
+            "adjudication_status": "SOURCE_BACKED_CERTAIN",
+            "adjudication_rule_id": "RA19B.JOIN.DIRECT_ITPM_CONTINUITY",
+            "evidence_ref": "RA19B:B22.09287.LDC.T22.E0007.P043__LDC.T22.E0007.P044",
+            "evidence_sha256": "362cad00e150f933aab1925ee0a5d2dabe4db3077296e617e06aae8f4888afa5"
+          }
+        },
+        {
+          "paragraph_id": "LDC.T22.E0007.P044",
+          "stable_ref": "LDC.T22.E0007.P044",
+          "source_text_sha256": "0e0f7c81b6a7c4f66a1c84445182eee2ae297f58e76f977d43afbd9f49b23b4b",
+          "canonical_length": 174,
           "boundary_after": null
         }
       ]
@@ -8916,8 +9017,8 @@
         {
           "paragraph_id": "LDC.T22.E0008.P069",
           "stable_ref": "LDC.T22.E0008.P069",
-          "source_text_sha256": "0bd725d627d14b4e40f4bdc39d60124c0191db49581d1c6d8ac920b14f28f595",
-          "canonical_length": 29,
+          "source_text_sha256": "37725399948ae7db79877e7fd4d9d543a67574fd68469776fed3be8b584b6409",
+          "canonical_length": 28,
           "boundary_after": {
             "display_joiner": "space",
             "speech_run_policy": "continue_same_speaker_only",
@@ -8985,8 +9086,8 @@
         {
           "paragraph_id": "LDC.T22.E0008.P072",
           "stable_ref": "LDC.T22.E0008.P072",
-          "source_text_sha256": "8aba21aabf4750c3051953054ab879cff8bf550cadb983bed155ee99a6b95f9e",
-          "canonical_length": 122,
+          "source_text_sha256": "39d656c1561992bb01318677ad418a61c543195597b3135926b1d03d02d83105",
+          "canonical_length": 121,
           "boundary_after": {
             "display_joiner": "space",
             "speech_run_policy": "continue_same_speaker_only",
@@ -9563,6 +9664,42 @@
       ]
     },
     {
+      "flow_id": "FLOW.T22.RA10.004.LDC_T22_E0009_P042__LDC_T22_E0009_P043",
+      "entry_id": "LDC.T22.E0009",
+      "classification": "source_layout_sentence_continuation",
+      "confidence": "high",
+      "origin": "RA10_HISTORICAL_125_CLASS_REVALIDATED_CURRENT_LINEAGE",
+      "review_status": "approved_for_display",
+      "reason": "short comma-ended fragment continues into lowercase next fragment",
+      "members": [
+        {
+          "paragraph_id": "LDC.T22.E0009.P042",
+          "stable_ref": "LDC.T22.E0009.P042",
+          "source_text_sha256": "e999f601d3fb78b26b58186c24bdaf2bed56e4259920935bb66f84be651c4008",
+          "canonical_length": 45,
+          "boundary_after": {
+            "display_joiner": "space",
+            "speech_run_policy": "continue_same_speaker_only",
+            "suppress_next_leading_ranges": [],
+            "visual_policy": "continuous_prose",
+            "visual_action": "join_inline",
+            "adjudication_generation": "RA19B_MULTI_SOURCE",
+            "adjudication_status": "SOURCE_BACKED_CERTAIN",
+            "adjudication_rule_id": "RA19B.JOIN.DIRECT_ITPM_CONTINUITY",
+            "evidence_ref": "RA19B:B22.09347.LDC.T22.E0009.P042__LDC.T22.E0009.P043",
+            "evidence_sha256": "5b51dba5b32feace01eb1d82dea5ccf6cabc769c2d5100917187dc27e91b80b3"
+          }
+        },
+        {
+          "paragraph_id": "LDC.T22.E0009.P043",
+          "stable_ref": "LDC.T22.E0009.P043",
+          "source_text_sha256": "faca5cbee6ca96b6f2651aa9774f9f6f408dd5e18f4b6ddb021a9a2a7b4e9fd0",
+          "canonical_length": 98,
+          "boundary_after": null
+        }
+      ]
+    },
+    {
       "flow_id": "FLOW.T22.P044-P046..E0009",
       "entry_id": "LDC.T22.E0009",
       "classification": "inherited_dash_continuation",
@@ -9998,7 +10135,7 @@
         {
           "paragraph_id": "LDC.T22.E0010.P035",
           "stable_ref": "LDC.T22.E0010.P035",
-          "source_text_sha256": "fed1cc7279ef9267e6429a818fe282a57b8bda89e39288ef126d36fe4e18c8ac",
+          "source_text_sha256": "766aff689c5153a90c4f4fac5acb75a152326dae0aa9fe018f6d0fd17c2ec3dc",
           "canonical_length": 60,
           "boundary_after": {
             "display_joiner": "space",
@@ -11389,7 +11526,7 @@
         {
           "paragraph_id": "LDC.T22.E0011.P041",
           "stable_ref": "LDC.T22.E0011.P041",
-          "source_text_sha256": "825574bf4eff6a70fd3fcc0f1f1c18da62f94bae759b1ff4080f61aeed65d294",
+          "source_text_sha256": "1b96a5c8dfb13fccd42cddc594d0bf3098c93faf176dcb52b2de48489d1e022b",
           "canonical_length": 31,
           "boundary_after": {
             "display_joiner": "space",
@@ -12943,8 +13080,8 @@
         {
           "paragraph_id": "LDC.T22.E0014.P048",
           "stable_ref": "LDC.T22.E0014.P048",
-          "source_text_sha256": "03bc2c176533104eb727fe1e3c24f0e9cf41989cf3e52811cc9875bac538b80f",
-          "canonical_length": 88,
+          "source_text_sha256": "9e67177b8378a314f86a356d6360d42f3081758cb4c08637a02d237bb76dd16f",
+          "canonical_length": 87,
           "boundary_after": null
         }
       ]
@@ -16496,6 +16633,42 @@
       ]
     },
     {
+      "flow_id": "FLOW.T22.RA10.005.LDC_T22_E0019_P057__LDC_T22_E0019_P058",
+      "entry_id": "LDC.T22.E0019",
+      "classification": "source_layout_sentence_continuation",
+      "confidence": "high",
+      "origin": "RA10_HISTORICAL_125_CLASS_REVALIDATED_CURRENT_LINEAGE",
+      "review_status": "approved_for_display",
+      "reason": "short comma-ended fragment continues into lowercase next fragment",
+      "members": [
+        {
+          "paragraph_id": "LDC.T22.E0019.P057",
+          "stable_ref": "LDC.T22.E0019.P057",
+          "source_text_sha256": "2c6fd2a80f56d1886c1148c1e7da4ec28f5ef54453cec3ed463b626ef7ea1ba8",
+          "canonical_length": 68,
+          "boundary_after": {
+            "display_joiner": "space",
+            "speech_run_policy": "continue_same_speaker_only",
+            "suppress_next_leading_ranges": [],
+            "visual_policy": "continuous_prose",
+            "visual_action": "join_inline",
+            "adjudication_generation": "RA19B_MULTI_SOURCE",
+            "adjudication_status": "SOURCE_BACKED_CERTAIN",
+            "adjudication_rule_id": "RA19B.JOIN.DIRECT_ITPM_CONTINUITY",
+            "evidence_ref": "RA19B:B22.09548.LDC.T22.E0019.P057__LDC.T22.E0019.P058",
+            "evidence_sha256": "a100bc299a61b4f561568a1208613b238038008da18df78f8ea3f2ef1fab1903"
+          }
+        },
+        {
+          "paragraph_id": "LDC.T22.E0019.P058",
+          "stable_ref": "LDC.T22.E0019.P058",
+          "source_text_sha256": "637f5aac144c6fe7c9be657aa88e96fb18622c65cbe965a7c70060c4e6d7b22d",
+          "canonical_length": 144,
+          "boundary_after": null
+        }
+      ]
+    },
+    {
       "flow_id": "FLOW.T22.P060-P064..E0019",
       "entry_id": "LDC.T22.E0019",
       "classification": "inherited_dash_continuation",
@@ -17460,8 +17633,8 @@
         {
           "paragraph_id": "LDC.T22.E0021.P042",
           "stable_ref": "LDC.T22.E0021.P042",
-          "source_text_sha256": "e89c20186a23f12790ada0f3e44b5ab9d6fc0f3ee666102dc6797a0c3034ff49",
-          "canonical_length": 93,
+          "source_text_sha256": "40be91f5ce7a323d13e51867a04d70292b3a6a56f7ac12c48eba9422039e2e47",
+          "canonical_length": 94,
           "boundary_after": null
         }
       ]
@@ -20141,8 +20314,8 @@
         {
           "paragraph_id": "LDC.T22.E0024.P002",
           "stable_ref": "LDC.T22.E0024.P002",
-          "source_text_sha256": "9d9164523389c392d0f0066451d556fd311bcd2e0768c0d3869eb8ae2583d22e",
-          "canonical_length": 124,
+          "source_text_sha256": "2ad21516f4bf43356d4183f6b6935389f5edb4ca4c56f2008fbbc0d64d4ffa54",
+          "canonical_length": 125,
           "boundary_after": {
             "display_joiner": "space",
             "speech_run_policy": "continue_same_speaker_only",
@@ -21380,8 +21553,8 @@
         {
           "paragraph_id": "LDC.T22.E0025.P041",
           "stable_ref": "LDC.T22.E0025.P041",
-          "source_text_sha256": "d6f280259a0fcf1ce3954ac733d513454b53c1cd160e241977b97eaf48055cb3",
-          "canonical_length": 29,
+          "source_text_sha256": "4e3ae92695517ebe1fbb04599a469a23826a9561608e39a88247bb2848d0e278",
+          "canonical_length": 30,
           "boundary_after": null
         }
       ]
@@ -22966,7 +23139,7 @@
         {
           "paragraph_id": "LDC.T22.E0026.P038",
           "stable_ref": "LDC.T22.E0026.P038",
-          "source_text_sha256": "cac0b2858ae1e898a7246a9ec4aa4fd1f9e8513fc4e94c615f866999c3f4ab1f",
+          "source_text_sha256": "81a1bb3c26a239b6c716311494879824ecf926e20eeb23da4fb9a7c256976b61",
           "canonical_length": 108,
           "boundary_after": null
         }
@@ -23421,179 +23594,6 @@
           "stable_ref": "LDC.T22.E0026.P063",
           "source_text_sha256": "f5e4ff96f20c477aecca411950a997e082a75bab1e361d9f6edda664083f0b7e",
           "canonical_length": 60,
-          "boundary_after": null
-        }
-      ]
-    },
-    {
-      "flow_id": "FLOW.T22.RA10.001.LDC_T22_E0004_P053__LDC_T22_E0004_P054",
-      "entry_id": "LDC.T22.E0004",
-      "classification": "source_layout_sentence_continuation",
-      "confidence": "high",
-      "origin": "RA10_HISTORICAL_125_CLASS_REVALIDATED_CURRENT_LINEAGE",
-      "review_status": "approved_for_display",
-      "reason": "previous fragment has no terminal punctuation and next begins lowercase",
-      "members": [
-        {
-          "paragraph_id": "LDC.T22.E0004.P053",
-          "stable_ref": "LDC.T22.E0004.P053",
-          "source_text_sha256": "b651edd09ee953330fe6ac319ee17019a50f30f3d61fd7861bb4f9d8b8699fb5",
-          "canonical_length": 35,
-          "boundary_after": {
-            "display_joiner": "space",
-            "speech_run_policy": "continue_same_speaker_only",
-            "suppress_next_leading_ranges": []
-          }
-        },
-        {
-          "paragraph_id": "LDC.T22.E0004.P054",
-          "stable_ref": "LDC.T22.E0004.P054",
-          "source_text_sha256": "95929b3944498a83c82d59286c58dd1f56020b3521487432975672660fe1dae6",
-          "canonical_length": 58,
-          "boundary_after": null
-        }
-      ]
-    },
-    {
-      "flow_id": "FLOW.T22.RA10.002.LDC_T22_E0006_P094__LDC_T22_E0006_P095",
-      "entry_id": "LDC.T22.E0006",
-      "classification": "source_layout_sentence_continuation",
-      "confidence": "high",
-      "origin": "RA10_HISTORICAL_125_CLASS_REVALIDATED_CURRENT_LINEAGE",
-      "review_status": "approved_for_display",
-      "reason": "short comma-ended fragment continues into lowercase next fragment",
-      "members": [
-        {
-          "paragraph_id": "LDC.T22.E0006.P094",
-          "stable_ref": "LDC.T22.E0006.P094",
-          "source_text_sha256": "eead24b98c9ec5db17307f6edc6a41f77afc7850fc368eaaa0c57dd53f827853",
-          "canonical_length": 32,
-          "boundary_after": {
-            "display_joiner": "space",
-            "speech_run_policy": "continue_same_speaker_only",
-            "suppress_next_leading_ranges": [],
-            "visual_policy": "continuous_prose",
-            "visual_action": "join_inline",
-            "adjudication_generation": "RA19B_MULTI_SOURCE",
-            "adjudication_status": "SOURCE_BACKED_CERTAIN",
-            "adjudication_rule_id": "RA19B.JOIN.DIRECT_ITPM_CONTINUITY",
-            "evidence_ref": "RA19B:B22.09262.LDC.T22.E0006.P094__LDC.T22.E0006.P095",
-            "evidence_sha256": "66bbe8f78fb07aaaede468f1db81e484819b3e6bdfaff02f44e7fbe798ab5b7f"
-          }
-        },
-        {
-          "paragraph_id": "LDC.T22.E0006.P095",
-          "stable_ref": "LDC.T22.E0006.P095",
-          "source_text_sha256": "27cf1264161bffbc89300e03e64c78a4f9fffc137107e913afd59af77b81fe5b",
-          "canonical_length": 210,
-          "boundary_after": null
-        }
-      ]
-    },
-    {
-      "flow_id": "FLOW.T22.RA10.003.LDC_T22_E0007_P043__LDC_T22_E0007_P044",
-      "entry_id": "LDC.T22.E0007",
-      "classification": "source_layout_sentence_continuation",
-      "confidence": "high",
-      "origin": "RA10_HISTORICAL_125_CLASS_REVALIDATED_CURRENT_LINEAGE",
-      "review_status": "approved_for_display",
-      "reason": "short comma-ended fragment continues into lowercase next fragment",
-      "members": [
-        {
-          "paragraph_id": "LDC.T22.E0007.P043",
-          "stable_ref": "LDC.T22.E0007.P043",
-          "source_text_sha256": "2e61fadbd13f22f4fdaa6675e6b254a05579666b6f7dac5e0246f9e997b3248f",
-          "canonical_length": 57,
-          "boundary_after": {
-            "display_joiner": "space",
-            "speech_run_policy": "continue_same_speaker_only",
-            "suppress_next_leading_ranges": [],
-            "visual_policy": "continuous_prose",
-            "visual_action": "join_inline",
-            "adjudication_generation": "RA19B_MULTI_SOURCE",
-            "adjudication_status": "SOURCE_BACKED_CERTAIN",
-            "adjudication_rule_id": "RA19B.JOIN.DIRECT_ITPM_CONTINUITY",
-            "evidence_ref": "RA19B:B22.09287.LDC.T22.E0007.P043__LDC.T22.E0007.P044",
-            "evidence_sha256": "362cad00e150f933aab1925ee0a5d2dabe4db3077296e617e06aae8f4888afa5"
-          }
-        },
-        {
-          "paragraph_id": "LDC.T22.E0007.P044",
-          "stable_ref": "LDC.T22.E0007.P044",
-          "source_text_sha256": "0e0f7c81b6a7c4f66a1c84445182eee2ae297f58e76f977d43afbd9f49b23b4b",
-          "canonical_length": 174,
-          "boundary_after": null
-        }
-      ]
-    },
-    {
-      "flow_id": "FLOW.T22.RA10.004.LDC_T22_E0009_P042__LDC_T22_E0009_P043",
-      "entry_id": "LDC.T22.E0009",
-      "classification": "source_layout_sentence_continuation",
-      "confidence": "high",
-      "origin": "RA10_HISTORICAL_125_CLASS_REVALIDATED_CURRENT_LINEAGE",
-      "review_status": "approved_for_display",
-      "reason": "short comma-ended fragment continues into lowercase next fragment",
-      "members": [
-        {
-          "paragraph_id": "LDC.T22.E0009.P042",
-          "stable_ref": "LDC.T22.E0009.P042",
-          "source_text_sha256": "e999f601d3fb78b26b58186c24bdaf2bed56e4259920935bb66f84be651c4008",
-          "canonical_length": 45,
-          "boundary_after": {
-            "display_joiner": "space",
-            "speech_run_policy": "continue_same_speaker_only",
-            "suppress_next_leading_ranges": [],
-            "visual_policy": "continuous_prose",
-            "visual_action": "join_inline",
-            "adjudication_generation": "RA19B_MULTI_SOURCE",
-            "adjudication_status": "SOURCE_BACKED_CERTAIN",
-            "adjudication_rule_id": "RA19B.JOIN.DIRECT_ITPM_CONTINUITY",
-            "evidence_ref": "RA19B:B22.09347.LDC.T22.E0009.P042__LDC.T22.E0009.P043",
-            "evidence_sha256": "5b51dba5b32feace01eb1d82dea5ccf6cabc769c2d5100917187dc27e91b80b3"
-          }
-        },
-        {
-          "paragraph_id": "LDC.T22.E0009.P043",
-          "stable_ref": "LDC.T22.E0009.P043",
-          "source_text_sha256": "faca5cbee6ca96b6f2651aa9774f9f6f408dd5e18f4b6ddb021a9a2a7b4e9fd0",
-          "canonical_length": 98,
-          "boundary_after": null
-        }
-      ]
-    },
-    {
-      "flow_id": "FLOW.T22.RA10.005.LDC_T22_E0019_P057__LDC_T22_E0019_P058",
-      "entry_id": "LDC.T22.E0019",
-      "classification": "source_layout_sentence_continuation",
-      "confidence": "high",
-      "origin": "RA10_HISTORICAL_125_CLASS_REVALIDATED_CURRENT_LINEAGE",
-      "review_status": "approved_for_display",
-      "reason": "short comma-ended fragment continues into lowercase next fragment",
-      "members": [
-        {
-          "paragraph_id": "LDC.T22.E0019.P057",
-          "stable_ref": "LDC.T22.E0019.P057",
-          "source_text_sha256": "2c6fd2a80f56d1886c1148c1e7da4ec28f5ef54453cec3ed463b626ef7ea1ba8",
-          "canonical_length": 68,
-          "boundary_after": {
-            "display_joiner": "space",
-            "speech_run_policy": "continue_same_speaker_only",
-            "suppress_next_leading_ranges": [],
-            "visual_policy": "continuous_prose",
-            "visual_action": "join_inline",
-            "adjudication_generation": "RA19B_MULTI_SOURCE",
-            "adjudication_status": "SOURCE_BACKED_CERTAIN",
-            "adjudication_rule_id": "RA19B.JOIN.DIRECT_ITPM_CONTINUITY",
-            "evidence_ref": "RA19B:B22.09548.LDC.T22.E0019.P057__LDC.T22.E0019.P058",
-            "evidence_sha256": "a100bc299a61b4f561568a1208613b238038008da18df78f8ea3f2ef1fab1903"
-          }
-        },
-        {
-          "paragraph_id": "LDC.T22.E0019.P058",
-          "stable_ref": "LDC.T22.E0019.P058",
-          "source_text_sha256": "637f5aac144c6fe7c9be657aa88e96fb18622c65cbe965a7c70060c4e6d7b22d",
-          "canonical_length": 144,
           "boundary_after": null
         }
       ]

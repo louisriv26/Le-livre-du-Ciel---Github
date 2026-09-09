@@ -1,5 +1,5 @@
 {
-  "corpus_version": "G036-AFLP-R7-UWR2",
+  "corpus_version": "G036-AFLP-R7-UWR2-FAST1",
   "cross_batch_schema": "final-r2-common-derived-and-source-envelope-v1",
   "entries": [
     {
@@ -5372,7 +5372,7 @@
     }
   ],
   "entry_count": 140,
-  "generation": "G036-AFLP-R7-UWR2",
+  "generation": "G036-AFLP-R7-UWR2-FAST1",
   "label": "Tome 1",
   "para_count": 1440,
   "predecessor_generation": "G036-AFLP-R6-UWR2",

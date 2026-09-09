@@ -1,7 +1,7 @@
 {
   "schema_version": "ldc-display-transform-v2",
   "volume": 36,
-  "corpus_version": "G036-AFLP-R7-UWR2",
+  "corpus_version": "G036-AFLP-R7-UWR2-FAST1",
   "paragraph_count": 229,
   "paragraphs": {
     "LDC.T36.E0003.P010": [
@@ -56,8 +56,8 @@
     "LDC.T36.E0024.P008": [
       {
         "s": 48,
-        "e": 84,
-        "t": "La terre, les générations humaines-,",
+        "e": 83,
+        "t": "La terre, les générations humaines,",
         "r": "La terre (les générations humaines),",
         "a": "EXACT_DISPLAY_REPLACEMENT",
         "d": "SVDR-012-OP01",
@@ -224,8 +224,8 @@
     "LDC.T36.E0002.P007": [
       {
         "s": 0,
-        "e": 4,
-        "t": "(3) ",
+        "e": 5,
+        "t": "(3) T",
         "r": "",
         "a": "SUPPRESS_SECTION_MARKER",
         "d": "SECT-00839",
@@ -565,8 +565,8 @@
     "LDC.T36.E0008.P012": [
       {
         "s": 0,
-        "e": 4,
-        "t": "(3) ",
+        "e": 5,
+        "t": "(3) À",
         "r": "",
         "a": "SUPPRESS_SECTION_MARKER",
         "d": "SECT-00870",
@@ -917,8 +917,8 @@
     "LDC.T36.E0011.P022": [
       {
         "s": 0,
-        "e": 4,
-        "t": "(6) ",
+        "e": 5,
+        "t": "(6) T",
         "r": "",
         "a": "SUPPRESS_SECTION_MARKER",
         "d": "SECT-00902",
@@ -1247,8 +1247,8 @@
     "LDC.T36.E0018.P027": [
       {
         "s": 0,
-        "e": 4,
-        "t": "(6) ",
+        "e": 5,
+        "t": "(6) T",
         "r": "",
         "a": "SUPPRESS_SECTION_MARKER",
         "d": "SECT-00932",
@@ -1357,8 +1357,8 @@
     "LDC.T36.E0020.P027": [
       {
         "s": 0,
-        "e": 4,
-        "t": "(4) ",
+        "e": 5,
+        "t": "(4) T",
         "r": "",
         "a": "SUPPRESS_SECTION_MARKER",
         "d": "SECT-00942",
@@ -2061,8 +2061,8 @@
     "LDC.T36.E0034.P023": [
       {
         "s": 0,
-        "e": 4,
-        "t": "(5) ",
+        "e": 5,
+        "t": "(5) T",
         "r": "",
         "a": "SUPPRESS_SECTION_MARKER",
         "d": "SECT-01006",
@@ -2171,8 +2171,8 @@
     "LDC.T36.E0037.P037": [
       {
         "s": 0,
-        "e": 4,
-        "t": "(6) ",
+        "e": 5,
+        "t": "(6) T",
         "r": "",
         "a": "SUPPRESS_SECTION_MARKER",
         "d": "SECT-01016",
@@ -2578,8 +2578,8 @@
     "LDC.T36.E0046.P011": [
       {
         "s": 0,
-        "e": 4,
-        "t": "(3) ",
+        "e": 5,
+        "t": "(3) T",
         "r": "",
         "a": "SUPPRESS_SECTION_MARKER",
         "d": "SECT-01053",

@@ -1,16 +1,20 @@
 {
+  "schema": "ldc-search-v2-independent-verification-v1",
+  "generated": "2026-09-09",
+  "app_version": "v2.19.76-R1B",
   "checks": {
-    "complement": 177,
-    "documents": 74523,
+    "documents": 74522,
     "entries": 2325,
-    "jesus_complement": 114,
-    "jesus_enriched": 57676,
+    "principal": 74345,
+    "complement": 177,
+    "vocabulary": 21351,
+    "postings": 902652,
     "jesus_principal": 57562,
-    "postings": 902655,
-    "principal": 74346,
-    "vocabulary": 21353
+    "jesus_complement": 114,
+    "jesus_enriched": 57676
   },
   "errors": [],
-  "schema": "ldc-search-v2-independent-verification-v1",
-  "status": "PASS"
+  "status": "PASS",
+  "method": "Independent recomputation from search_v2_documents.json of tokenisation, document lengths, dfs, postings and encoded posting lists; independent Jésus bit/count checks and stable-reference structural controls.",
+  "current_binding_note": "v76 current evidence binding; SEARCH-V2 payloads are byte-identical to v74 and counts/postings were independently rechecked against the current package."
 }

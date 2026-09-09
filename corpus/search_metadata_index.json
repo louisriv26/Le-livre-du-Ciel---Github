@@ -1,10 +1,10 @@
 {
   "schema": "ldc-search-metadata-index-v1",
-  "generated": "2026-09-07",
-  "corpus_generation": "G036-AFLP-R7-UWR2",
+  "generated": "2026-09-09",
+  "corpus_generation": "G036-AFLP-R7-UWR2-FAST1",
   "normalizer": "ldc-search-normalizer-v1",
   "entry_count": 2312,
-  "paragraph_count": 74346,
+  "paragraph_count": 74345,
   "volume_counts": {
     "1": 1440,
     "2": 997,
@@ -35712,7 +35712,7 @@
       "first_para_id": "LDC.T17.E0016.P001",
       "first_para_preview": "Je me sentais tout aigrie parce que j'étais privée de mon doux Jésus. Oh ! comme mon exil devient plus pénible et plus amer sans la présence de celui qui est toute ma vie !",
       "first_jesus_para_id": "LDC.T17.E0016.P013",
-      "first_jesus_preview": "Fille de notre Volonté éternelle, prosterne-toi devant notre suprême Majesté Au nom de toutes les créatures, offre-Lui",
+      "first_jesus_preview": "Fille de notre Volonté éternelle, prosterne-toi devant notre suprême Majesté. Au nom de toutes les créatures, offre-Lui",
       "search_blob": "effets de l adoration faite dans la volonte divine avec la puissance du pere la sagesse du fils et l amour du saint esprit 2 octobre 1924 1924 10 02 tome 17 ldc t17 e0016 edition 2021 jesus"
     },
     {
@@ -36021,7 +36021,7 @@
       "first_para_id": "LDC.T17.E0027.P001",
       "first_para_preview": "Ma vie se poursuit dans l'amertume de la privation de mon doux Jésus.",
       "first_jesus_para_id": "LDC.T17.E0027.P016",
-      "first_jesus_preview": "Jésus, ne Me laisse plus jamais ! Ne vois-tu pas que, sans toi, Je ne peux plus supporter cet exil ?",
+      "first_jesus_preview": "Jésus, ne me laisse plus jamais ! Ne vois-tu pas que, sans toi, je ne peux plus supporter cet exil ?",
       "search_blob": "l humanite de jesus est le soleil de l ame 22 janvier 1925 1925 01 22 tome 17 ldc t17 e0027 edition 2021 jesus luisa other"
     },
     {
@@ -41075,7 +41075,7 @@
       "first_para_id": "LDC.T22.E0009.P001",
       "first_para_preview": "Je faisais mon action de grâce, car j’avais reçu la sainte Communion.",
       "first_jesus_para_id": "LDC.T22.E0009.P012",
-      "first_jesus_preview": "Ma fille, Dans l’hostie sacramentelle il y a les petits accidents du pain.",
+      "first_jesus_preview": "Ma fille, dans l’hostie sacramentelle il y a les petits accidents du pain.",
       "search_blob": "l offrande de la communion nos volontes sont les accidents dans lesquels jesus est multiplie l ame qui vit dans la volonte divine contient la source de tous les sacrements 4 juillet 1927 1927 07 04 tome 22 ldc t22 e0009 edition 2021 jesus luisa"
     },
     {
@@ -41269,7 +41269,7 @@
       "first_para_id": "LDC.T22.E0017.P001",
       "first_para_preview": "Je me sentais dans le terrible cauchemar de sa privation.",
       "first_jesus_para_id": "LDC.T22.E0017.P004",
-      "first_jesus_preview": "Pauvre fille, Comme tu souffres !",
+      "first_jesus_preview": "Pauvre fille, comme tu souffres !",
       "search_blob": "une priere incessante conquiert dieu le tumulte de la nature les trois petites fontaines preparations pour des guerres mondiales 12 aout 1927 1927 08 12 tome 22 ldc t22 e0017 edition 2021 jesus luisa"
     },
     {
@@ -41651,7 +41651,7 @@
       ],
       "has_speech": true,
       "first_para_id": "LDC.T23.E0007.P001",
-      "first_para_preview": "Mon pauvre esprit continue de suivre les Actes de Jésus.",
+      "first_para_preview": "Mon pauvre esprit continue de suivre les Actes de Jésus",
       "first_jesus_para_id": "LDC.T23.E0007.P010",
       "first_jesus_preview": "Ma fille, Ma Volonté Divine est multiple dans ses Actes, mais Elle n’en perd aucun.",
       "search_blob": "la volonte divine est multiple dans ses actes dans leur unite les actes ne sont qu un la conception de jesus jesus est concu continuellement dans tous les actes de ceux qui possedent le royaume de sa volonte la volonte divine est plus que le soleil 10 octobre 1927 1927 10 10 tome 23 ldc t23 e0007 edition 2021 jesus luisa"
@@ -41676,7 +41676,7 @@
       ],
       "has_speech": true,
       "first_para_id": "LDC.T23.E0008.P003",
-      "first_para_preview": "Après quelques jours de privation de mon doux Jésus.",
+      "first_para_preview": "Après quelques jours de privation de mon doux Jésus,",
       "first_jesus_para_id": "LDC.T23.E0008.P011",
       "first_jesus_preview": "’aie pas peur, mais regarde en haut.",
       "search_blob": "vivre dans la volonte divine est le plus grand miracle et le developpement parfait de la vie divine dans la creature il semble que l interet de la vierge marie etait seulement pour le royaume de la redemption a l interieur tout etait pour le royaume de la volonte divine la mere celeste dans la volonte divine concut tous les rachetes et forma la vie meme des enfants de la volonte divine 16 octobre 1927 1927 10 16 tome 23 ldc t23 e0008 edition 2021 jesus luisa mary"
@@ -42736,7 +42736,7 @@
       ],
       "has_speech": true,
       "first_para_id": "LDC.T24.E0009.P001",
-      "first_para_preview": "Je faisais ma ronde dans le divin Fiat Selon mon habitude, j’investissais toute la Création de mon refrain : « je T’aime, je T’adore, je Te bénis… »",
+      "first_para_preview": "Je faisais ma ronde dans le divin Fiat. Selon mon habitude, j’investissais toute la Création de mon refrain : « je T’aime, je T’adore, je Te bénis… »",
       "first_jesus_para_id": "LDC.T24.E0009.P004",
       "first_jesus_preview": "Ma fille, un amour pur, saint et droit est une Naissance divine.",
       "search_blob": "ce que l on donne a dieu avec le je t aime le secret prodigieux il a forme de nombreuses naissances divines rien de ce que fit notre seigneur n a echappe a la tres sainte vierge la volonte divine est le souffle de l ame 26 avril 1928 1928 04 26 tome 24 ldc t24 e0009 edition 2021 jesus luisa"
@@ -43124,7 +43124,7 @@
       ],
       "has_speech": true,
       "first_para_id": "LDC.T24.E0025.P001",
-      "first_para_preview": "Poursuivant ma ronde dans le divin Fiat : «À quoi sert de répéter continuellement ces demandes du Royaume de la Volonté Divine ?... Et pourquoi la répétition continuelle de ces rondes",
+      "first_para_preview": "Poursuivant ma ronde dans le divin Fiat : « À quoi sert de répéter continuellement ces demandes du Royaume de la Volonté Divine ?... Et pourquoi la répétition continuelle de ces rondes",
       "first_jesus_para_id": "LDC.T24.E0025.P003",
       "first_jesus_preview": "Ma fille, lorsque quelqu’un veut acheter quelque chose, il verse une avance.",
       "search_blob": "necessite de donner un acompte pour faire l acquisition du royaume de la volonte divine la volonte divine rend toute chose legere comme une plume de sorte que tout peut etre embrasse 4 juillet 1928 1928 07 04 tome 24 ldc t24 e0025 edition 2021 jesus luisa"
@@ -43150,7 +43150,7 @@
       "first_para_id": "LDC.T24.E0026.P001",
       "first_para_preview": "Je suivais mon doux Jésus dans sa vie publique.",
       "first_jesus_para_id": "LDC.T24.E0026.P008",
-      "first_jesus_preview": "Ma fille, tu dois savoir que le corps n’a rien fait de mal.",
+      "first_jesus_preview": "Ma fille, tu dois savoir que le corps n’a rien fait de mal,",
       "search_blob": "les biens produits par la volonte divine les maux produits par la volonte humaine tous les maux cesseront comme par magie si la volonte divine regne la volonte divine regnait dans la maison de nazareth 7 juillet 1928 1928 07 07 tome 24 ldc t24 e0026 edition 2021 jesus luisa"
     },
     {
@@ -43195,7 +43195,7 @@
       ],
       "has_speech": true,
       "first_para_id": "LDC.T24.E0028.P001",
-      "first_para_preview": "J’étais totalement immergée dans le divin Fiat mon adorable Jésus plaça devant mon esprit une interminable mer de Lumière.",
+      "first_para_preview": "J’étais totalement immergée dans le divin Fiat. Mon adorable Jésus plaça devant mon esprit une interminable mer de Lumière.",
       "first_jesus_para_id": "LDC.T24.E0028.P017",
       "first_jesus_preview": "Ma fille, ces petites mers et ces petites rivières",
       "search_blob": "l ame qui vit dans la volonte divine forme ses petites mers en dieu lui meme la volonte divine est lumiere et recherche la lumiere tous les maux se perdent dans sa lumiere prodige du fiat 14 juillet 1928 1928 07 14 tome 24 ldc t24 e0028 edition 2021 jesus"
@@ -43340,7 +43340,7 @@
       ],
       "has_speech": true,
       "first_para_id": "LDC.T24.E0034.P001",
-      "first_para_preview": "Je continuais ma ronde dans la Création je m’arrêtais tantôt ici, tantôt là pour suivre et regarder ce que Dieu avait fait dans la Création.",
+      "first_para_preview": "Je continuais ma ronde dans la Création. Je m’arrêtais tantôt ici, tantôt là pour suivre et regarder ce que Dieu avait fait dans la Création.",
       "first_jesus_para_id": "LDC.T24.E0034.P004",
       "first_jesus_preview": "Ma fille, dans son état d’innocence,",
       "search_blob": "l ame qui vit dans le divin fiat s eleve jusqu aux actes de l adam innocent elle possede la vertu universelle le fiat est ordre la vie de l ame qui vit en lui est precieuse 12 aout 1928 1928 08 12 tome 24 ldc t24 e0034 edition 2021 generic soul jesus luisa other personified voice"
@@ -43390,7 +43390,7 @@
       ],
       "has_speech": true,
       "first_para_id": "LDC.T24.E0036.P001",
-      "first_para_preview": "Je faisais ma ronde habituelle dans les Œuvres de Rédemption je m’arrêta tantôt à l’une, tantôt à l’autre des Souffrances que Jésus et la céleste Reine avaient souffertes.",
+      "first_para_preview": "Je faisais ma ronde habituelle dans les Œuvres de Rédemption. Je m’arrêtai tantôt à l’une, tantôt à l’autre des Souffrances que Jésus et la céleste Reine avaient souffertes.",
       "first_jesus_para_id": "LDC.T24.E0036.P006",
       "first_jesus_preview": "Ma fille, le divin Fiat régnait en Moi et en Ma Mère.",
       "search_blob": "les souffrances dans le fiat sont des gouttes on va jusqu a vouloir les saisir exemple comment les verites sur la volonte divine sont des vies divines qui sont toutes dans l attente d executer leur office 18 aout 1928 1928 08 18 tome 24 ldc t24 e0036 edition 2021 jesus luisa"
@@ -43730,7 +43730,7 @@
       "first_para_id": "LDC.T25.E0002.P001",
       "first_para_preview": "Ma vie se passe devant mon Jésus dans le Sacrement.",
       "first_jesus_para_id": "LDC.T25.E0002.P011",
-      "first_jesus_preview": "Ma fille, crois-Tu que je T’aie gardée en prison pendant quarante ans et plus",
+      "first_jesus_preview": "Ma fille, crois-Tu que Je T’aie gardée en prison pendant quarante ans et plus",
       "search_blob": "quarante ans et plus d exil de vertu et de force d un sacrifice prolonge rassembler des materiaux pour ensuite les mettre en ordre bonheur de jesus en benissant sa petite fille prisonniere baisers dans la volonte divine decision des pretres de preparer les ecrits pour l impression graces surprenantes que jesus accordera aux pretres 10 octobre 1928 1928 10 10 tome 25 ldc t25 e0002 edition 2021 jesus luisa"
     },
     {
@@ -44068,7 +44068,7 @@
       "first_para_id": "LDC.T25.E0016.P001",
       "first_para_preview": "La neuvaine de Noël se poursuit. Continuant à écouter les neuf excès de l’Incarnation, mon bien-aimé Jésus m’attira vers Lui pour me montrer comment chaque excès de son Amour était une Mer sans limites.",
       "first_jesus_para_id": "LDC.T25.E0016.P041",
-      "first_jesus_preview": "Cesse de Me faire pleurer et échangeons le baiser de paix. Aimons-nous, et tous nous serons heureux le Créateur et la créature.",
+      "first_jesus_preview": "Cesse de Me faire pleurer et échangeons le baiser de paix. Aimons-nous, et tous nous serons heureux, le Créateur et la créature.",
       "search_blob": "mer d amour dans les exces de jesus exemple de la mer la volonte divine rayon de soleil qui apporte la vie du ciel la volonte divine a l oeuvre bonheur de jesus 21 decembre 1928 1928 12 21 tome 25 ldc t25 e0016 edition 2021 generic soul jesus"
     },
     {
@@ -44114,7 +44114,7 @@
       ],
       "has_speech": true,
       "first_para_id": "LDC.T25.E0018.P001",
-      "first_para_preview": "Je suivais le divin Fiat dans la Création pour accompagner ses Actes. Mon doux Jésus, se manifestait en moi et Il me dit :",
+      "first_para_preview": "Je suivais le divin Fiat dans la Création pour accompagner ses Actes. Mon doux Jésus se manifestait en moi et Il me dit :",
       "first_jesus_para_id": "LDC.T25.E0018.P002",
       "first_jesus_preview": "Ma fille, regarde, regarde comme elle est belle, Ma Création ! Quel ordre, quelle harmonie elle contient.",
       "search_blob": "cieux et soleils muets cieux et soleils qui parlent dieu reprend sa creation le ciel ne sera plus etranger a la terre 29 decembre 1928 1928 12 29 tome 25 ldc t25 e0018 edition 2021 jesus"
@@ -44255,7 +44255,7 @@
       "first_para_id": "LDC.T25.E0024.P001",
       "first_para_preview": "Je faisais ma ronde dans la Création pour suivre tous les Actes",
       "first_jesus_para_id": "LDC.T25.E0024.P012",
-      "first_jesus_preview": "Ma fille, courage. En celle qui vit dans Ma Volonté Divine et suis ses Actes, Mon Fiat continue sa Création.",
+      "first_jesus_preview": "Ma fille, courage. En celle qui vit dans Ma Volonté Divine et suit ses Actes, Mon Fiat continue sa Création.",
       "search_blob": "celle qui vit dans la volonte divine lui prete son rien qui est vide et que le fiat utilise comme espace ou exercer sa creation 10 fevrier 1929 1929 02 10 tome 25 ldc t25 e0024 edition 2021 jesus"
     },
     {
@@ -44525,7 +44525,7 @@
       "first_para_id": "LDC.T25.E0035.P001",
       "first_para_preview": "Mon abandon est dans la sainte Volonté, qui, tel un puissant aimant, m’attire à Elle afin de m’administrer, gorgée par gorgée,",
       "first_jesus_para_id": "LDC.T25.E0035.P007",
-      "first_jesus_preview": "Ma fille, les premiers qui feront Ma Volonté Divine et vivront en elle seront comme la levure de son Royaume.",
+      "first_jesus_preview": "Ma fille, les premiers qui feront Ma Volonté Divine et vivront en Elle seront comme la levure de son Royaume.",
       "search_blob": "les premiers qui vivront dans le divin fiat seront comme la levure du royaume de la volonte divine 4 avril 1929 1929 04 04 tome 25 ldc t25 e0035 edition 2021 jesus"
     },
     {
@@ -44793,7 +44793,7 @@
       "first_para_id": "LDC.T26.E0011.P001",
       "first_para_preview": "Poursuivant mon abandon habituel dans le Fiat, je me retrouvai en dehors de moi-même. À ma grande surprise, je trouvai près de moi l’ennemi infernal qui semblait vouloir se jeter sur moi.",
       "first_jesus_para_id": "LDC.T26.E0011.P008",
-      "first_jesus_preview": "Ma fille, l’âme qui possède Mon divin Fiat, a une Puissance telle qu’elle est capable de mettre en pièces les puissances diaboliques.",
+      "first_jesus_preview": "Ma fille, l’âme qui possède Mon divin Fiat a une Puissance telle qu’elle est capable de mettre en pièces les puissances diaboliques.",
       "search_blob": "puissance de celle qui vit dans le divin fiat vertu des actes accomplis en lui toutes les generations dependent des actes accomplis par adam 25 mai 1929 1929 05 25 tome 26 ldc t26 e0011 edition 2021 jesus luisa"
     },
     {
@@ -45058,7 +45058,7 @@
       "first_para_id": "LDC.T26.E0022.P001",
       "first_para_preview": "Je pensais au Fiat suprême et je me disais :",
       "first_jesus_para_id": "LDC.T26.E0022.P006",
-      "first_jesus_preview": "Ma fille, Ma Volonté, avec son Immensité, a toujours été présente parmi les créatures.",
+      "first_jesus_preview": "Ma fille, Ma Volonté, avec son Immensité, a toujours été présente parmi les créatures,",
       "search_blob": "la volonte divine maintient l acte premier sur toutes les choses creees il est comme la tete sur les membres 24 juillet 1929 1929 07 24 tome 26 ldc t26 e0022 edition 2021 jesus luisa"
     },
     {
@@ -45200,7 +45200,7 @@
       "first_para_id": "LDC.T26.E0028.P001",
       "first_para_preview": "Je pensais au divin Fiat et à la façon dont son Royaume pourrait un jour se réaliser sur terre.",
       "first_jesus_para_id": "LDC.T26.E0028.P009",
-      "first_jesus_preview": "Ma fille, tu dois savoir que ma Venue sur terre et",
+      "first_jesus_preview": "Ma fille, tu dois savoir que Ma Venue sur terre et",
       "search_blob": "jesus crea le germe du divin fiat en formant le notre pere la vertu que possede la lumiere 25 aout 1929 1929 08 25 tome 26 ldc t26 e0028 edition 2021 jesus"
     },
     {
@@ -45392,7 +45392,7 @@
       ],
       "has_speech": true,
       "first_para_id": "LDC.T27.E0004.P001",
-      "first_para_preview": "Je me sentais immergée dans le divin Fiat Sa Lumière m’entourait de partout, au-dedans comme au-dehors.",
+      "first_para_preview": "Je me sentais immergée dans le divin Fiat. Sa Lumière m’entourait de partout, au-dedans comme au-dehors.",
       "first_jesus_para_id": "LDC.T27.E0004.P007",
       "first_jesus_preview": "Ma fille, tout ce qui sort de nos Mains créatrices contient",
       "search_blob": "le divin fiat est inseparable de ses oeuvres le terrible moment de la chute d adam 7 octobre 1929 1929 10 07 tome 27 ldc t27 e0004 edition 2021 jesus"
@@ -45541,7 +45541,7 @@
       "first_para_id": "LDC.T27.E0010.P001",
       "first_para_preview": "Je faisais ma ronde dans la Création. Je suivais les actes du divin Fiat depuis l’Éden jusqu’à la Descente du Verbe divin sur la terre.",
       "first_jesus_para_id": "LDC.T27.E0010.P011",
-      "first_jesus_preview": "Ma fille, le Règne de Ma Volonté Divine ne pouvait pas venir sur terre avant Ma Venue. Parce qu’il n’y avait pas d’humanité qui possédât,",
+      "first_jesus_preview": "Ma fille, le Règne de Ma Volonté Divine ne pouvait pas venir sur terre avant Ma Venue, parce qu’il n’y avait pas d’humanité qui possédât,",
       "search_blob": "le regne de la volonte divine ne pouvait pas venir avant la venue de notre seigneur sur la terre le greffon de jesus christ et le greffon d adam 27 octobre 1929 1929 10 27 tome 27 ldc t27 e0010 edition 2021 jesus luisa"
     },
     {
@@ -45635,7 +45635,7 @@
       ],
       "has_speech": true,
       "first_para_id": "LDC.T27.E0014.P001",
-      "first_para_preview": "Je suis toujours dans le saint héritage du divin Fiat. Plus je pénètre en Lui, plus je suis portée à L’aimer Plus je me déplace en Lui, plus Il se dévoile, plus Il se fait connaître.",
+      "first_para_preview": "Je suis toujours dans le saint héritage du divin Fiat. Plus je pénètre en Lui, plus je suis portée à L’aimer. Plus je me déplace en Lui, plus Il se dévoile, plus Il se fait connaître.",
       "first_jesus_para_id": "LDC.T27.E0014.P003",
       "first_jesus_preview": "Vis toujours dans le précieux héritage qui te fut donné avec tant d’Amour.",
       "search_blob": "les droits de la creation sont justes et saints exemple du soleil celle qui vit dans la volonte divine est le vrai soleil 14 novembre 1929 1929 11 14 tome 27 ldc t27 e0014 edition 2021 generic soul jesus"
@@ -45661,7 +45661,7 @@
       "first_para_id": "LDC.T27.E0015.P001",
       "first_para_preview": "Je m’inquiétais au sujet de la publication de la Volonté Divine.",
       "first_jesus_para_id": "LDC.T27.E0015.P007",
-      "first_jesus_preview": "*Ma fille, courage, ne perds pas la paix. La paix est",
+      "first_jesus_preview": "Ma fille, courage, ne perds pas la paix. La paix est",
       "search_blob": "la paix est le parfum l air le souffle de jesus toutes les oeuvres de dieu sont ordonnees il fait les petites choses en premier et ensuite les plus grandes exemple de la creation et de la redemption 20 novembre 1929 1929 11 20 tome 27 ldc t27 e0015 edition 2021 jesus luisa"
     },
     {
@@ -45686,7 +45686,7 @@
       "first_para_id": "LDC.T27.E0016.P001",
       "first_para_preview": "Les privations continuelles de mon doux Jésus me peinaient beaucoup. Sans Lui, tout me manquait. Avec Jésus, tout est à moi, tout m’appartient ! Il me semble que je suis dans la maison de Jésus.",
       "first_jesus_para_id": "LDC.T27.E0016.P003",
-      "first_jesus_preview": "Tout ce qui est à Moi est à toi.",
+      "first_jesus_preview": " Tout ce qui est à Moi est à toi.",
       "search_blob": "chaque acte accompli dans la volonte divine est une vie divine que l on acquiert comment les creatures ravissent dieu 26 novembre 1929 1929 11 26 tome 27 ldc t27 e0016 edition 2021 jesus luisa other"
     },
     {
@@ -45708,7 +45708,7 @@
       ],
       "has_speech": true,
       "first_para_id": "LDC.T27.E0017.P001",
-      "first_para_preview": "Je commençais à ma façon habituelle ma Ronde dans la Volonté Divine je voulais réordonner en Dieu toutes les intelligences créées,",
+      "first_para_preview": "Je commençais à ma façon habituelle ma Ronde dans la Volonté Divine. Je voulais réordonner en Dieu toutes les intelligences créées,",
       "first_jesus_para_id": "LDC.T27.E0017.P007",
       "first_jesus_preview": "Ma fille, avec Ma Volonté, tu peux faire et atteindre n’importe quoi.",
       "search_blob": "la condition de l homme avant le peche en chacun de ses actes il cherchait dieu il trouvait son createur il donnait et il recevait la volonte humaine est nuit pour l ame 30 novembre 1929 1929 11 30 tome 27 ldc t27 e0017 edition 2021 jesus luisa"
@@ -45780,7 +45780,7 @@
       "first_para_id": "LDC.T27.E0020.P001",
       "first_para_preview": "Je continuais ma ronde dans le divin Fiat pour m’unir à tous les Actes qu’Il avait accomplis par Amour de nous toutes, ses créatures.",
       "first_jesus_para_id": "LDC.T27.E0020.P012",
-      "first_jesus_preview": "« Ma fille, il est vrai que je n’avais besoin de rien.",
+      "first_jesus_preview": "« Ma fille, il est vrai que Je n’avais besoin de rien.",
       "search_blob": "jesus n avait besoin de rien possedant en lui meme la force creatrice de tous les biens le divin vouloir est porteur de toutes les choses creees la vertu generatrice 16 decembre 1929 1929 12 16 tome 27 ldc t27 e0020 edition 2021 jesus"
     },
     {
@@ -45803,7 +45803,7 @@
       "first_para_id": "LDC.T27.E0021.P001",
       "first_para_preview": "Je pensais à l’Incarnation de mon doux Jésus dans le Sein maternel de la Souveraine Céleste.",
       "first_jesus_para_id": "LDC.T27.E0021.P004",
-      "first_jesus_preview": "Ma fille, La Création fut une ardeur d’Amour si intense et si grande qu’en débordant de notre Être divin,",
+      "first_jesus_preview": "Ma fille, la Création fut une ardeur d’Amour si intense et si grande qu’en débordant de notre Être divin,",
       "search_blob": "ardeur d amour les trois ardeurs de l amour de notre seigneur l amour devorant il devora toutes les ames larmes de l enfant jesus 18 decembre 1929 1929 12 18 tome 27 ldc t27 e0021 edition 2021 jesus"
     },
     {
@@ -45918,7 +45918,7 @@
       ],
       "has_speech": true,
       "first_para_id": "LDC.T27.E0026.P001",
-      "first_para_preview": "Mon abandon dans le Fiat continue. Poursuivant ma ronde dans ses Œuvres, je m’en sentais entourée. Chacune d’elles attendant que je la reconnaisse comme Œuvre de mon Créateur afin de nous unir d’un lien inséparable.",
+      "first_para_preview": "Mon abandon dans le Fiat continue. Poursuivant ma ronde dans ses Œuvres, je m’en sentais entourée. Chacune d’elles attendait que je la reconnaisse comme Œuvre de mon Créateur afin de nous unir d’un lien inséparable.",
       "first_jesus_para_id": "LDC.T27.E0026.P010",
       "first_jesus_preview": "Ma fille, celle qui vit dans notre Volonté Divine",
       "search_blob": "difference entre les actes et les effets du divin fiat combien de bienfaits peut produire un de ses actes exemple du soleil 2 janvier 1930 1930 01 02 tome 27 ldc t27 e0026 edition 2021 jesus"
@@ -45992,7 +45992,7 @@
       "first_para_id": "LDC.T27.E0029.P001",
       "first_para_preview": "Je suivais le divin Fiat dans l’Œuvre de la Création.",
       "first_jesus_para_id": "LDC.T27.E0029.P019",
-      "first_jesus_preview": "Petite fille de Mon Vouloir Éternelle, Je veux que tu saches que",
+      "first_jesus_preview": "Petite fille de Mon Vouloir Éternel, Je veux que tu saches que",
       "search_blob": "dans la creation dans la redemption et dans le royaume de la volonte divine celle qui opere est la volonte divine les trois personnes divines cooperent la creation veut raconter l histoire de la volonte divine celle qui vit dans la volonte divine recoit tout peut tout donner et participe a toutes les qualites divines 16 janvier 1930 1930 01 16 tome 27 ldc t27 e0029 edition 2021 generic soul jesus"
     },
     {
@@ -46089,7 +46089,7 @@
       "first_para_id": "LDC.T27.E0033.P001",
       "first_para_preview": "Je poursuis mon abandon dans le divin Vouloir.",
       "first_jesus_para_id": "LDC.T27.E0033.P014",
-      "first_jesus_preview": "Ma fille, les effets de la Vie dans ma Volonté Divine sont admirables.",
+      "first_jesus_preview": "Ma fille, les effets de la Vie dans Ma Volonté Divine sont admirables.",
       "search_blob": "les effets de la vie dans la volonte divine et ceux dans la volonte humaine la maniere d operer dans l ame symbolise la creation d abord il fait les petites choses puis les plus grandes 6 fevrier 1930 1930 02 06 tome 27 ldc t27 e0033 edition 2021 jesus personified voice"
     },
     {
@@ -46114,7 +46114,7 @@
       "first_para_id": "LDC.T27.E0034.P001",
       "first_para_preview": "Mon pauvre esprit est sous le doux enchantement de l’éclatant Soleil du Fiat éternel. Oh ! combien de scènes magnifiques et touchantes se déroulent en moi, si bien que si je pouvais les décrire comme je les vois, tous se",
       "first_jesus_para_id": "LDC.T27.E0034.P021",
-      "first_jesus_preview": "Ma petite fille de Ma Volonté, ni l’âme, ni le corps de la créature ne peuvent vivre sans Ma Volonté Divine. Puisqu’elle est son acte primordial de Vie. La créature se trouve dans la condition",
+      "first_jesus_preview": "Ma petite fille de Ma Volonté, ni l’âme, ni le corps de la créature ne peuvent vivre sans Ma Volonté Divine, puisqu’elle est son acte primordial de Vie. La créature se trouve dans la condition",
       "search_blob": "l homme a ete cree pour vivre dans l intimite de dieu et dans sa maison apres s etre retire de sa volonte sa part d heritage lui a ete rendue par la bonte de dieu 11 fevrier 1930 1930 02 11 tome 27 ldc t27 e0034 edition 2021 jesus luisa other"
     },
     {
@@ -46832,7 +46832,7 @@
       "first_para_id": "LDC.T28.E0029.P001",
       "first_para_preview": "Je continue dans mon état habituel.",
       "first_jesus_para_id": "LDC.T28.E0029.P005",
-      "first_jesus_preview": "Fille de Mon Vouloir, la valeur des actes de Ma céleste Mère était telle. Parce qu’ils sortaient du Sein immense de Ma Volonté Divine, par où elle possédait son Royaume, sa Vie.",
+      "first_jesus_preview": "Fille de Mon Vouloir, la valeur des actes de Ma céleste Mère était telle, parce qu’ils sortaient du Sein immense de Ma Volonté Divine, par où elle possédait son Royaume, sa Vie.",
       "search_blob": "valeur des baisers et des embrassements de la vierge a l enfant jesus parce qu elle possedait la volonte divine tous ses actes etaient rendus infinis et immenses pour jesus resurrection des actes accomplis dans le vouloir divin effets des je t aime 18 octobre 1930 1930 10 18 tome 28 ldc t28 e0029 edition 2021 jesus luisa"
     },
     {
@@ -46878,7 +46878,7 @@
       ],
       "has_speech": true,
       "first_para_id": "LDC.T28.E0031.P001",
-      "first_para_preview": "Mon abandon dans la Volonté Divine continue, bien qu’avec crainte. Parce qu’en raison de mon infidélité, je pourrais avoir le malheur d’être rejeté du merveilleux Ciel du Fiat Suprême.",
+      "first_para_preview": "Mon abandon dans la Volonté Divine continue, bien qu’avec crainte, parce qu’en raison de mon infidélité, je pourrais avoir le malheur d’être rejeté du merveilleux Ciel du Fiat Suprême.",
       "first_jesus_para_id": "LDC.T28.E0031.P017",
       "first_jesus_preview": "Ma fille, courage. La peur de perdre un bien signifie",
       "search_blob": "la crainte de perdre un bien signifie qu on le possede qui a le droit de demander le royaume de la volonte divine nourriture pour former et faire grandir la vie de la volonte divine dans la creature 20 novembre 1930 1930 11 20 tome 28 ldc t28 e0031 edition 2021 jesus luisa"
@@ -47506,7 +47506,7 @@
       "first_para_id": "LDC.T29.E0022.P001",
       "first_para_preview": "(1) Mon abandon dans la Volonté Divine continue, bien que dans le cauchemar des privations de mon doux Jésus. Combien mon pauvre cœur est torturé et troublé de ne pas trouver Celui dont le Souffle céleste fait battre ce ",
       "first_jesus_para_id": "LDC.T29.E0022.P011",
-      "first_jesus_preview": "Père très saint, Je te prie pour Mes enfants et pour tous ceux que tu M’as donnés parce que Je reconnais qu’ils sont Miens.",
+      "first_jesus_preview": "Père très saint, Je Te prie pour Mes enfants et pour tous ceux que Tu M’as donnés parce que Je reconnais qu’ils sont Miens.",
       "search_blob": "jesus prie necessite de posseder un bien pour pouvoir le communiquer aux autres les petites lumieres forment l entrelace avec la grande lumiere de la volonte divine 16 juin 1931 1931 06 16 tome 29 ldc t29 e0022 edition 2021 jesus luisa"
     },
     {
@@ -47553,7 +47553,7 @@
       ],
       "has_speech": true,
       "first_para_id": "LDC.T29.E0024.P001",
-      "first_para_preview": "Je pense au Vouloir divin. Comment ce Royaume peut-Il jamais venir sur terre ? Étant donné les tempêtes qui nous menacent et la condition triste des générations humaines, cela paraît impossible.",
+      "first_para_preview": "Je pense au Vouloir divin. Comment ce Royaume peut-il jamais venir sur terre ? Étant donné les tempêtes qui nous menacent et la condition triste des générations humaines, cela paraît impossible.",
       "first_jesus_para_id": "LDC.T29.E0024.P007",
       "first_jesus_preview": "Ma fille, ce qui est impossible aux yeux des hommes est possible pour Dieu.",
       "search_blob": "la plus grande grace que dieu ait accordee a l homme etait de le rendre capable de faire ses actes dans la volonte divine ce royaume existe 30 juin 1931 1931 06 30 tome 29 ldc t29 e0024 edition 2021 jesus"
@@ -47752,7 +47752,7 @@
       "first_para_id": "LDC.T29.E0032.P001",
       "first_para_preview": "(1) Mon abandon dans la Volonté Divine continue.",
       "first_jesus_para_id": "LDC.T29.E0032.P014",
-      "first_jesus_preview": "Ma fille, la nature humaine qui vit sans Ma Volonté est laide.",
+      "first_jesus_preview": "Ma fille, la nature humaine qui vit sans Ma Volonté est laide,",
       "search_blob": "laideur de la nature humaine sans la volonte divine beaute de la creature qui vit en elle le sourire du ciel sur la terre 10 aout 1931 1931 08 10 tome 29 ldc t29 e0032 edition 2021 jesus luisa"
     },
     {
@@ -47849,7 +47849,7 @@
       "first_para_id": "LDC.T29.E0036.P001",
       "first_para_preview": "Mon abandon dans la Volonté Divine continue.",
       "first_jesus_para_id": "LDC.T29.E0036.P004",
-      "first_jesus_preview": "Ma fille, un amour interrompu ne peut jamais conduire à l’héroïsme. Parce que n’étant pas continuel, il forme beaucoup de vides dans la créature",
+      "first_jesus_preview": "Ma fille, un amour interrompu ne peut jamais conduire à l’héroïsme, parce que n’étant pas continuel, il forme beaucoup de vides dans la créature",
       "search_blob": "l amour veritable forme le feu ou se consumer soi meme afin de faire revivre celui que l on aime le jour de jesus dans l eucharistie 12 septembre 1931 1931 09 12 tome 29 ldc t29 e0036 edition 2021 jesus luisa"
     },
     {
@@ -47918,7 +47918,7 @@
       ],
       "has_speech": true,
       "first_para_id": "LDC.T29.E0039.P001",
-      "first_para_preview": "Je faisais ma ronde dans la Volonté Divine pour suivre tous ses Actes accomplis par Amour pour nous Arrivée en Éden, je m’arrêtais à l’Acte où Dieu créa l’homme :",
+      "first_para_preview": "Je faisais ma ronde dans la Volonté Divine pour suivre tous ses Actes accomplis par Amour pour nous. Arrivée en Éden, je m’arrêtais à l’Acte où Dieu créa l’homme :",
       "first_jesus_para_id": "LDC.T29.E0039.P014",
       "first_jesus_preview": "Ma fille, la création de l’homme n’était rien d’autre qu’une effusion de notre Amour.",
       "search_blob": "croissance de la creature devant la majeste divine vivre dans la volonte divine est un don que dieu fera a la creature 29 septembre 1931 1931 09 29 tome 29 ldc t29 e0039 edition 2021 jesus"
@@ -48140,7 +48140,7 @@
       "first_para_id": "LDC.T30.E0004.P001",
       "first_para_preview": "Je ressens le saint devoir, la force irrésistible, la nécessité extrême",
       "first_jesus_para_id": "LDC.T30.E0004.P010",
-      "first_jesus_preview": "Ma fille, être dans la Résidence de Ma Volonté Divine, est être à son poste d’honneur donné par Dieu à la créature quand Il lui a donné le jour.",
+      "first_jesus_preview": "Ma fille, être dans la Résidence de Ma Volonté Divine est être à son poste d’honneur donné par Dieu à la créature quand Il lui a donné le jour.",
       "search_blob": "impulsion et empire des actes accomplis dans la volonte divine echange de vie entre le createur et la creature doux murmure de l etre divin 29 novembre 1931 1931 11 29 tome 30 ldc t30 e0004 edition 2021 jesus luisa personified voice"
     },
     {
@@ -49187,7 +49187,7 @@
       ],
       "has_speech": true,
       "first_para_id": "LDC.T31.E0010.P001",
-      "first_para_preview": "Mon abandon dans le Fiat continue Plus je m’abandonne, plus je me sens fortifiée par sa Force. Sa vie anime la mienne. Sa lumière me rassure. Il me révèle avec clarté Celui en qui je m’abandonne totalement. Il me donne l",
+      "first_para_preview": "Mon abandon dans le Fiat continue. Plus je m’abandonne, plus je me sens fortifiée par sa Force. Sa vie anime la mienne. Sa lumière me rassure. Il me révèle avec clarté Celui en qui je m’abandonne totalement. Il me donne ",
       "first_jesus_para_id": "LDC.T31.E0010.P003",
       "first_jesus_preview": "Ma fille, quel doux souvenir : la création de l’homme ! Il a été créé dans une de nos extases d’Amour. Notre Amour était si grand que nous étions en admiration devant l’œuvre que nous avions mise au jour. La beauté dont ",
       "search_blob": "dieu a cree l homme dans une extase d amour la creation est le trousseau de l homme le doux son de la cloche l extase entre le createur et la creature prodige de la conception de la vierge 9 octobre 1932 1932 10 09 tome 31 ldc t31 e0010 edition 2021 jesus"
@@ -49286,7 +49286,7 @@
       "first_para_id": "LDC.T31.E0014.P001",
       "first_para_preview": "Mon petit esprit se sentait rempli des douces leçons de mon aimable Jésus. Inquiet, il voulait provoquer des doutes et des craintes.",
       "first_jesus_para_id": "LDC.T31.E0014.P005",
-      "first_jesus_preview": "Bienheureuse fille, ne t’inquiète pas. Ma Volonté a la vertu : de faire mourir tout ce qui ne lui appartient pas et de changer en lumière les faiblesses et les misères mêmes de la créature.",
+      "first_jesus_preview": "Bienheureuse fille, ne t’inquiète pas. Ma Volonté a la vertu de faire mourir tout ce qui ne lui appartient pas et de changer en lumière les faiblesses et les misères mêmes de la créature.",
       "search_blob": "dieu agit en actes et non en paroles la creature qui oeuvre dans la divine volonte opere dans l eternite celle qui oeuvre en dehors opere dans le temps les paroles de jesus sont des oeuvres 6 novembre 1932 1932 11 06 tome 31 ldc t31 e0014 edition 2021 jesus luisa"
     },
     {
@@ -49376,7 +49376,7 @@
       ],
       "has_speech": true,
       "first_para_id": "LDC.T31.E0018.P001",
-      "first_para_preview": "Mon abandon dans le Fiat continue. Sa force enlevante, investit et absorbe, et ma petite âme se sent si petite, à peine un atome. Et elle sent également son immensité qui ne peut être enclose en un si petit cercle. Mais ",
+      "first_para_preview": "Mon abandon dans le Fiat continue. Sa force enlevante investit et absorbe, et ma petite âme se sent si petite, à peine un atome. Et elle sent également son immensité qui ne peut être enclose en un si petit cercle. Mais e",
       "first_jesus_para_id": "LDC.T31.E0018.P003",
       "first_jesus_preview": "Tu ne veux pas comprendre la valeur que contient un acte accompli dans Ma Divine Volonté. Sa valeur est si élevée et sa grandeur est telle que la créature qui l’a fait ne peut elle-même la contenir. Comme l’âme est elle-",
       "search_blob": "la valeur d un acte accompli dans la divine volonte comment il devient puissant pour tous l ame qui vit dans la divine volonte est la seule administratrice qui fait tout pour faire aimer son createur 6 decembre 1932 1932 12 06 tome 31 ldc t31 e0018 edition 2021 jesus"
@@ -49737,7 +49737,7 @@
       "first_para_id": "LDC.T32.E0004.P001",
       "first_para_preview": "(1) Ma petite âme a le besoin extrême de vivre dans les bras du divin Fiat et comme je suis à peine nouvelle-née, je suis faible et ne sais pas encore faire un pas, et si je voulais m’y essayer, je me tromperais et courr",
       "first_jesus_para_id": "LDC.T32.E0004.P004",
-      "first_jesus_preview": "Fille bénie, tu dois savoir que notre Être divin n’est rien d’autre qu’une substance toute d’Amour, si bien que toute chose, en Nous comme en dehors de Nous est Amour.",
+      "first_jesus_preview": "Fille bénie, tu dois savoir que notre Être divin n’est rien d’autre qu’une substance toute d’Amour, si bien que toute chose, en Nous comme en dehors de Nous, est Amour.",
       "search_blob": "le souffle et le battement de coeur de dieu sont le je t aime son amour est generateur et agissant le plus grand prodige est d enclore sa vie dans la creature 2 avril 1933 1933 04 02 tome 32 ldc t32 e0004 edition 2021 jesus luisa"
     },
     {
@@ -49805,9 +49805,9 @@
       ],
       "has_speech": true,
       "first_para_id": "LDC.T32.E0007.P001",
-      "first_para_preview": "(1) Je continue à penser aux souffrances de mon Jésus passionné, et arrivée au dernier souffle de sa vie, je sentais résonner au plus profond de mon cœur : « Entre tes mains, Père, Je remets Mon esprit.» Ce fut pour moi ",
+      "first_para_preview": "(1) Je continue à penser aux souffrances de mon Jésus passionné, et arrivée au dernier souffle de sa vie, je sentais résonner au plus profond de mon cœur : « Entre tes mains, Père, Je remets Mon esprit. » Ce fut pour moi",
       "first_jesus_para_id": "LDC.T32.E0007.P001",
-      "first_jesus_preview": "Entre tes mains, Père, Je remets Mon esprit.",
+      "first_jesus_preview": "Entre tes mains, Père, Je remets Mon esprit. ",
       "search_blob": "la vie de jesus a ete un abandon continuel entre les mains du pere la creature qui vit dans la divine volonte n interrompt jamais sa marche exemple de l horloge elle prend le ciel d assaut 23 avril 1933 1933 04 23 tome 32 ldc t32 e0007 edition 2021 generic soul jesus"
     },
     {
@@ -50156,7 +50156,7 @@
       "first_para_id": "LDC.T32.E0022.P001",
       "first_para_preview": "(1) Je suis toujours le petit atome dans la Divine Volonté, la nouvelle-née à peine née. Et je ressens le besoin extrême d’être nourrie et élevée dans ses Bras paternels. Sinon le vouloir humain se lève en moi pour forme",
       "first_jesus_para_id": "LDC.T32.E0022.P003",
-      "first_jesus_preview": "Ma bienheureuse fille, courage, bannis la peur de ton cœur. C’est une arme qui peut tuer ou blesser l’Amour et faire perdre la familiarité avec ton Jésus, Et Je ne sais ni ne veux rester sans intimité avec celle qui veut",
+      "first_jesus_preview": "Ma bienheureuse fille, courage, bannis la peur de ton cœur. C’est une arme qui peut tuer ou blesser l’Amour et faire perdre la familiarité avec ton Jésus. Et Je ne sais ni ne veux rester sans intimité avec celle qui veut",
       "search_blob": "canaux relations entre le ciel et la terre commerce de l ame qui vit dans la divine volonte competition d amour entre la creature et le createur 2 septembre 1933 1933 09 02 tome 32 ldc t32 e0022 edition 2021 jesus"
     },
     {
@@ -50467,7 +50467,7 @@
       "first_para_id": "LDC.T33.E0005.P001",
       "first_para_preview": "(1) Bien qu'elle nage dans la mer de la Divine Volonté, ma petite âme est transpercée par les clous de la privation de mon doux Jésus. Quelle terrible souffrance, quelle torture dans ma douloureuse existence !",
       "first_jesus_para_id": "LDC.T33.E0005.P006",
-      "first_jesus_preview": "Ma petite fille de Ma Volonté, on voit que tu es petite Il suffit que Je m'arrête un peu pour que tu te perdes. Tu as peur, tu doutes, tu es opprimée. Mais sais-tu où tu te perds ? Dans Ma Volonté.",
+      "first_jesus_preview": "Ma petite fille de Ma Volonté, on voit que tu es petite. Il suffit que Je m'arrête un peu pour que tu te perdes. Tu as peur, tu doutes, tu es opprimée. Mais sais-tu où tu te perds ? Dans Ma Volonté.",
       "search_blob": "quand l ame fait la divine volonte dieu peut librement faire en elle ce qu il veut et operer de grandes choses parce qu il trouve la capacite et l espace pour ce qu il veut donner a la creature 2 janvier 1934 1934 01 02 tome 33 ldc t33 e0005 edition 2021 jesus luisa"
     },
     {
@@ -50585,7 +50585,7 @@
       ],
       "has_speech": true,
       "first_para_id": "LDC.T33.E0010.P001",
-      "first_para_preview": "(1) Je continuai ma ronde dans la Divine Volonté Son doux Empire, son irrésistible Force, son Amour et sa Lumière inextinguible se déversaient sur ma petitesse. Celle-ci était ravie de trouver dans la mer de la Divine Vo",
+      "first_para_preview": "(1) Je continuai ma ronde dans la Divine Volonté. Son doux Empire, son irrésistible Force, son Amour et sa Lumière inextinguible se déversaient sur ma petitesse. Celle-ci était ravie de trouver dans la mer de la Divine V",
       "first_jesus_para_id": "LDC.T33.E0010.P005",
       "first_jesus_preview": "Ma fille, en faisant sa propre volonté, l’homme a perdu la tête, la divine raison, le régime, l’ordre de son Créateur. Et comme il n'était plus le chef, tous les membres voulaient occuper cette place. Ils n'en ont ni la ",
       "search_blob": "en faisant sa propre volonte la creature perd la tete la divine raison l ordre et le regime jesus est le chef de la creature 24 fevrier 1934 1934 02 24 tome 33 ldc t33 e0010 edition 2021 jesus"
@@ -50705,7 +50705,7 @@
       ],
       "has_speech": true,
       "first_para_id": "LDC.T33.E0015.P001",
-      "first_para_preview": "(1) Je suis sous les plus hautes vagues du divin Fiat qui me fait voir et toucher de la main que les choses et tous les actes divins ont leur origine dans le divin Vouloir et sont tous porteurs d'une Volonté si sainte.",
+      "first_para_preview": "(1) Je suis sous les plus hautes vagues du divin Fiat qui me fait voir et toucher de la main que les choses et tous les actes divins ont leur origine dans le divin Vouloir et sont tous porteurs d'une Volonté si sainte,",
       "first_jesus_para_id": "LDC.T33.E0015.P005",
       "first_jesus_preview": "Ma fille, le but premier de la Rédemption, dans notre esprit, était de faire revivre le Royaume de la Divine Volonté dans la créature.",
       "search_blob": "le premier dessein de la redemption est de restaurer la vie de la divine volonte dans la creature il fait les petites choses avant d accomplir les grandes 6 mai 1934 1934 05 06 tome 33 ldc t33 e0015 edition 2021 jesus"
@@ -50730,7 +50730,7 @@
       ],
       "has_speech": true,
       "first_para_id": "LDC.T33.E0016.P001",
-      "first_para_preview": "(1) Mon pauvre cœur a un besoin extrême, de s’abandonner dans le Fiat, de sentir sa Paternité et sa Maternité divines.",
+      "first_para_preview": "(1) Mon pauvre cœur a un besoin extrême de s’abandonner dans le Fiat, de sentir sa Paternité et sa Maternité divines.",
       "first_jesus_para_id": "LDC.T33.E0016.P007",
       "first_jesus_preview": "Ma bienheureuse fille, plus on comprend Mon Vouloir, mieux on peut profiter de sa Beauté et de sa Sainteté, et participer à ses Biens.",
       "search_blob": "la necessite absolue de l abandon dans le divin vouloir ses vertus toutes les creatures tournent autour de dieu seule la volonte humaine vagabonde et perturbe tout 12 mai 1934 1934 05 12 tome 33 ldc t33 e0016 edition 2021 generic soul jesus luisa"
@@ -50879,7 +50879,7 @@
       "first_para_id": "LDC.T33.E0022.P001",
       "first_para_preview": "(1) Je faisais ma ronde dans la Divine Volonté.",
       "first_jesus_para_id": "LDC.T33.E0022.P005",
-      "first_jesus_preview": "Ma fille, tout appartient à la créature qui fait Ma Volonté et vit en Elle. Lorsque Ma Volonté donne quelque chose à la créature, Elle ne lui apporte pas une seule Œuvre, mais toutes ses Œuvres. Parce qu'Elles sont insép",
+      "first_jesus_preview": "Ma fille, tout appartient à la créature qui fait Ma Volonté et vit en Elle. Lorsque Ma Volonté donne quelque chose à la créature, Elle ne lui apporte pas une seule Œuvre, mais toutes ses Œuvres parce qu'Elles sont insépa",
       "search_blob": "la creature qui vit dans la divine volonte se met en mesure de pouvoir recevoir de son createur et d etre toujours capable de lui donner celle qui prie debourse les pieces de monnaie forme le vide et acquiert la capacite de posseder ce qu elle demande 15 juillet 1934 1934 07 15 tome 33 ldc t33 e0022 edition 2021 jesus luisa personified voice"
     },
     {
@@ -50948,9 +50948,9 @@
       ],
       "has_speech": true,
       "first_para_id": "LDC.T33.E0025.P001",
-      "first_para_preview": "(1) Je faisais ma ronde dans les Actes de la Divine Volonté En passant d'une Œuvre à l'autre, j'en arrivais à la Création de l'homme. Mon doux Jésus m’y retint et avec un inexprimable Amour qu'Il ne pouvait contenir, Il ",
+      "first_para_preview": "(1) Je faisais ma ronde dans les Actes de la Divine Volonté. En passant d'une Œuvre à l'autre, j'en arrivais à la Création de l'homme. Mon doux Jésus m’y retint et avec un inexprimable Amour qu'Il ne pouvait contenir, Il",
       "first_jesus_para_id": "LDC.T33.E0025.P001",
-      "first_jesus_preview": "Ma fille, Mon Amour Me fait ressentir le besoin de parler de la Création de l'homme. Toute la Création est déjà imprégnée de notre Amour. Elle parle, bien qu'avec un langage muet. E si elle ne parle pas, elle le dit par ",
+      "first_jesus_preview": "Ma fille, Mon Amour Me fait ressentir le besoin de parler de la Création de l'homme. Toute la Création est déjà imprégnée de notre Amour. Elle parle, bien qu'avec un langage muet. Et si elle ne parle pas, elle le dit par",
       "search_blob": "l histoire de l amour de dieu et la creation renfermee dans l homme les notes douloureuses dans l amour de dieu 5 aout 1934 1934 08 05 tome 33 ldc t33 e0025 edition 2021 jesus luisa other"
     },
     {
@@ -50973,7 +50973,7 @@
       ],
       "has_speech": true,
       "first_para_id": "LDC.T33.E0026.P001",
-      "first_para_preview": "(1) J'ai impression que je pourrais nager dans l'Abîme immense de la Divine Volonté. Je suis trop petite et je n'arrive à prendre que quelques petites gouttes. Le peu que je prends reste avec moi, mais inséparable du Fia",
+      "first_para_preview": "(1) J'ai l'impression que je pourrais nager dans l'Abîme immense de la Divine Volonté. Je suis trop petite et je n'arrive à prendre que quelques petites gouttes. Le peu que je prends reste avec moi, mais inséparable du F",
       "first_jesus_para_id": "LDC.T33.E0026.P006",
       "first_jesus_preview": "Petite fille de Mon Vouloir, tu dois savoir que l’inséparabilité de Ma Volonté pour la créature qui vit en Elle est si grande que rien de ce qu'Elle fait au Ciel et dans la Création ne se fait sans la participation de ce",
       "search_blob": "la creature qui vit dans la divine volonte en devient membre et acquiert l inseparabilite de toutes les oeuvres de son createur 24 septembre 1934 1934 09 24 tome 33 ldc t33 e0026 edition 2021 jesus luisa personified voice"
@@ -51122,7 +51122,7 @@
       ],
       "has_speech": true,
       "first_para_id": "LDC.T33.E0032.P001",
-      "first_para_preview": "(1) Mon pauvre esprit se perd dans le divin Vouloir, mais à un point tel que je ne sais plus comment répéter, ce que je comprends, ni ce que je ressens dans ce céleste séjour du divin Fiat. Tout ce que je peux dire, c'es",
+      "first_para_preview": "(1) Mon pauvre esprit se perd dans le divin Vouloir, mais à un point tel que je ne sais plus comment répéter ce que je comprends, ni ce que je ressens dans ce céleste séjour du divin Fiat. Tout ce que je peux dire, c'est",
       "first_jesus_para_id": "LDC.T33.E0032.P008",
       "first_jesus_preview": "Ma bienheureuse fille, vivre dans Ma Volonté c'est véritablement acquérir le droit d'être fille. Et Dieu obtient la suprématie, le commandement, le droit du Père. Lui seul sait comment unir les uns et les autres pour ne ",
       "search_blob": "la vie dans la divine volonte fait ressentir a la creature la paternite de son createur et le droit d etre sa fille 20 janvier 1935 1935 01 20 tome 33 ldc t33 e0032 edition 2021 father jesus luisa"
@@ -51169,7 +51169,7 @@
       ],
       "has_speech": true,
       "first_para_id": "LDC.T33.E0034.P001",
-      "first_para_preview": "(1) Je retourne toujours dans la mer interminable de la Divine Volonté pour y prendre ses gouttes qui nourrissent, conserve et font grandir sa Vie que je sens en moi. De sorte que chacune de ses Vérités est un repas céle",
+      "first_para_preview": "(1) Je retourne toujours dans la mer interminable de la Divine Volonté pour y prendre ses gouttes qui nourrissent, conservent et font grandir sa Vie que je sens en moi, de sorte que chacune de ses Vérités est un repas cé",
       "first_jesus_para_id": "LDC.T33.E0034.P004",
       "first_jesus_preview": "Ma bienheureuse fille, le Ciel est toujours ouvert pour celle qui vit dans Ma Volonté. Elle se penche et fait avec la créature ce qu'elle est en train de faire. Elles aiment, travaillent, prient et réparent ensemble.",
       "search_blob": "ce que l on fait dans la divine volonte ne reste pas dans les profondeurs de la terre mais part pour le ciel afin d y occuper un poste royal dans la celeste patrie 10 mars 1935 1935 03 10 tome 33 ldc t33 e0034 edition 2021 jesus"
@@ -51293,7 +51293,7 @@
       "first_para_id": "LDC.T33.E0039.P001",
       "first_para_preview": "(1) Je suis entre les bras de mon aimable Jésus qui m'entoure tellement de son divin Vouloir que je ne saurais comment vivre sans Lui. Je Le sens en moi qui me domine de son doux Empire.",
       "first_jesus_para_id": "LDC.T33.E0039.P003",
-      "first_jesus_preview": "Comme Je suis heureux que tu sentes que Je suis la vie de ta pensée, de ton cœur et de tout ce que tu es. Tu Me sens en toi et Je te sens en Moi Nous sommes tous les deux heureux d'être un et deux.",
+      "first_jesus_preview": "Comme Je suis heureux que tu sentes que Je suis la vie de ta pensée, de ton cœur et de tout ce que tu es. Tu Me sens en toi et Je te sens en Moi. Nous sommes tous les deux heureux d'être un et deux.",
       "search_blob": "comment la puissance divine n a pas de limites certitude que le royaume de la divine volonte doit venir la redemption et son royaume sont inseparables 31 mai 1935 1935 05 31 tome 33 ldc t33 e0039 edition 2021 jesus luisa"
     },
     {
@@ -51821,7 +51821,7 @@
       "first_para_id": "LDC.T34.E0007.P001",
       "first_para_preview": "Je subis la privation de mon doux Jésus et je me sens accablée comme si ma vie voulait s'arrêter. Mais le Vouloir divin triomphe de mon petit être en se levant dans mon âme. Il m'appelle à vivre ma journée dans sa Volont",
       "first_jesus_para_id": "LDC.T34.E0007.P006",
-      "first_jesus_preview": "Ma bienheureuse fille, En M'incarnant dans le sein de Ma céleste Mère, Mon Amour était si grand que le Ciel et la terre ne pouvaient pas Le contenir. L'Acte de Mon Incarnation s'est produit en un Acte unique d'Amour si i",
+      "first_jesus_preview": "Ma bienheureuse fille, en M’incarnant dans le sein de Ma céleste Mère, Mon Amour était si grand que le Ciel et la terre ne pouvaient pas Le contenir. L'Acte de Mon Incarnation s'est produit en un Acte unique d'Amour si i",
       "search_blob": "les prodiges de l incarnation du verbe divin les cieux en sont etonnes et les anges en restent muets les prodiges de l oeuvre de la volonte divine dans la creature la divine trinite appelee en conseil dieu en la creant place une dose de son amour dans la creature 1 mars 1936 1936 03 01 tome 34 ldc t34 e0007 edition 2021 jesus luisa"
     },
     {
@@ -51888,7 +51888,7 @@
       ],
       "has_speech": true,
       "first_para_id": "LDC.T34.E0010.P001",
-      "first_para_preview": "Ma pauvre intelligence suivait la Vie de mon doux Jésus dans la Volonté Divine. Là je Le trouvais dans l’acte de continuer sa Vie lorsqu’Il était sur la terre Oh ! Combien de merveilles, combien de surprises d’Amour inim",
+      "first_para_preview": "Ma pauvre intelligence suivait la Vie de mon doux Jésus dans la Volonté Divine. Là je Le trouvais dans l’acte de continuer sa Vie lorsqu’Il était sur la terre. Oh ! Combien de merveilles, combien de surprises d’Amour ini",
       "first_jesus_para_id": "LDC.T34.E0010.P004",
       "first_jesus_preview": "Ma petite fille de Mon Vouloir, Mon Amour veut s'épancher.",
       "search_blob": "la volonte divine contient tous les actes de jesus comme en acte afin de toujours les repeter par amour pour les creatures la vie de jesus symbolise l appel du royaume de la volonte divine sur la terre 31 mai 1936 1936 05 31 tome 34 ldc t34 e0010 edition 2021 jesus"
@@ -51911,7 +51911,7 @@
       ],
       "has_speech": true,
       "first_para_id": "LDC.T34.E0011.P001",
-      "first_para_preview": "Le Vouloir divin m’appelle avec force dans la mer interminable de sa Volonté Oh ! comme on y est bien !",
+      "first_para_preview": "Le Vouloir divin m’appelle avec force dans la mer interminable de sa Volonté. Oh ! comme on y est bien !",
       "first_jesus_para_id": "LDC.T34.E0011.P004",
       "first_jesus_preview": "Bienheureuse fille de Mon Vouloir, tu dois savoir que",
       "search_blob": "dieu et sa volonte sa volonte et la creation sa volonte et les etres celestes sa volonte en desaccord avec la famille humaine 14 juin 1936 1936 06 14 tome 34 ldc t34 e0011 edition 2021 jesus"
@@ -51987,9 +51987,9 @@
       ],
       "has_speech": true,
       "first_para_id": "LDC.T34.E0014.P001",
-      "first_para_preview": "Je suis toujours entre les bras du Vouloir divin Je sens en moi et en dehors de moi sa Puissance créatrice qui ne me laisse pas le temps de faire autre chose. Je ne veux et ne demande rien d'autre, pour moi comme pour to",
+      "first_para_preview": "Je suis toujours entre les bras du Vouloir divin. Je sens en moi et en dehors de moi sa Puissance créatrice qui ne me laisse pas le temps de faire autre chose. Je ne veux et ne demande rien d'autre, pour moi comme pour t",
       "first_jesus_para_id": "LDC.T34.E0014.P004",
-      "first_jesus_preview": ". Notre Puissance se reflète en elle pour la soutenir. Bref, notre Sagesse se reflète en elle et la dirige Notre Lumière se reflète en elle et l'illumine. Notre bonté se reflète en elle et prend pitié d'elle. Notre Beaut",
+      "first_jesus_preview": ". Notre Puissance se reflète en elle pour la soutenir. Bref, notre Sagesse se reflète en elle et la dirige. Notre Lumière se reflète en elle et l'illumine. Notre bonté se reflète en elle et prend pitié d'elle. Notre Beau",
       "search_blob": "reflexions entre le createur et la creature inseparabilite des deux a chaque instant dieu demande que la creature recoive la vie de sa volonte lorsque la creature decide de vivre de sa volonte dieu couvre tout ce qu elle a fait de sa divine volonte 3 novembre 1936 1936 11 03 tome 34 ldc t34 e0014 edition 2021 jesus other personified voice"
     },
     {
@@ -52206,7 +52206,7 @@
       ],
       "has_speech": true,
       "first_para_id": "LDC.T34.E0023.P001",
-      "first_para_preview": "Je me sentais tout immergée dans le divin Vouloir. Il me semblait que le Ciel et la terre prient, pour que vienne son Royaume sur la terre afin, que la Volonté de tous soit Une et qu'Elle règne sur la terre comme au Ciel",
+      "first_para_preview": "Je me sentais tout immergée dans le divin Vouloir. Il me semblait que le Ciel et la terre prient pour que vienne son Royaume sur la terre afin que la Volonté de tous soit Une et qu'Elle règne sur la terre comme au Ciel.",
       "first_jesus_para_id": "LDC.T34.E0023.P004",
       "first_jesus_preview": "Fille de Mon Vouloir, écoute-Moi. Je suis presque submergé par Mon Amour, Je ne peux plus Le contenir. À n'importe quel prix, même s'il Me fallait bouleverser le Ciel et la terre, Je veux que Ma Volonté vienne régner sur",
       "search_blob": "le royaume de la divine volonte sera le royaume de la reine du ciel ses desirs ardents et ses prieres incessantes les assauts d amour qu elle donne a la divinite pour l obtenir elle met sa vie a la disposition des creatures afin de leur donner la grace de les faire vivre de la divine volonte 10 fevrier 1937 1937 02 10 tome 34 ldc t34 e0023 edition 2021 jesus mary"
@@ -52468,7 +52468,7 @@
       "first_para_id": "LDC.T34.E0034.P001",
       "first_para_preview": "Mon abandon dans le Vouloir divin continue. Mon pauvre esprit est oppressé par les incidents de la vie, trop pénibles pour moi. Je cherche refuge dans le centre du Fiat où je me sens renaître d’une vie nouvelle, rajeunie",
       "first_jesus_para_id": "LDC.T34.E0034.P003",
-      "first_jesus_preview": "Ma fille, fais attention.",
+      "first_jesus_preview": "Ma fille, fais attention,",
       "search_blob": "jesus ne sait que faire d une ame qui ne possede pas la paix a celle qui vit dans le vouloir divin dieu fait le don de toutes ses oeuvres et de sa vie elle meme pour lui montrer combien et comment il veut etre aime 6 mai 1937 1937 05 06 tome 34 ldc t34 e0034 edition 2021 jesus"
     },
     {
@@ -52539,7 +52539,7 @@
       "first_para_id": "LDC.T34.E0037.P001",
       "first_para_preview": "La Mer du Vouloir divin murmure continuellement, avec tellement d'harmonie, d'ordre et de paix que ses vagues pourtant très hautes sont toujours pacifiques. Et en recouvrant les créatures, le ciel et la terre, Elle comme",
       "first_jesus_para_id": "LDC.T34.E0037.P004",
-      "first_jesus_preview": "Ma bienheureuse fille, Ma Volonté est Ordre. Et le signe qu'Elle règne dans l'âme est l'Ordre parfait qui génère la Paix. De sorte que la Paix est fille de l'Ordre. Et l'Ordre est le fils immédiat généré par Mon Fiat.",
+      "first_jesus_preview": "Ma bienheureuse fille, Ma Volonté est Ordre. Et le signe qu'Elle règne dans l'âme est l'Ordre parfait qui génère la Paix, de sorte que la Paix est fille de l'Ordre. Et l'Ordre est le fils immédiat généré par Mon Fiat.",
       "search_blob": "la volonte divine est ordre et paix ceci est un signe qu elle regne celle qui vit dans le vouloir divin est toujours renouvelee en saintete en fraicheur et en amour divins dans ses actes court l acte createur des biens divins 23 mai 1937 1937 05 23 tome 34 ldc t34 e0037 edition 2021 generic soul jesus"
     },
     {
@@ -52588,7 +52588,7 @@
       "first_para_id": "LDC.T34.E0039.P001",
       "first_para_preview": "Je me sentais entre les bras du divin Vouloir et je me disais : Il me semble difficile de pouvoir vivre parfaitement en Lui.",
       "first_jesus_para_id": "LDC.T34.E0039.P005",
-      "first_jesus_preview": "Ma bienheureuse fille, tu dois savoir que l’intérêt premier de notre Être suprême est de vouloir que la créature vive dans notre Volonté. Puisque c'est l’unique raison pour laquelle Nous lui avons donné la vie.",
+      "first_jesus_preview": "Ma bienheureuse fille, tu dois savoir que l’intérêt premier de notre Être suprême est de vouloir que la créature vive dans notre Volonté, puisque c'est l’unique raison pour laquelle Nous lui avons donné la vie.",
       "search_blob": "l interet que dieu prend a ce que la creature vive dans sa volonte la dot qu il lui fera jesus en sentinelle pour fournir ce qui manque a la creature et si besoin est faire aussi des miracles exemple d un roi 6 juin 1937 1937 06 06 tome 34 ldc t34 e0039 edition 2021 jesus luisa"
     },
     {
@@ -52937,7 +52937,7 @@
       "first_para_id": "LDC.T35.E0009.P001",
       "first_para_preview": "(1) Mon envol dans la Volonté Divine continue. Je suis étonnée de voir à quel point Elle veut toujours donner. Je suis petite et je ne peux pas enfermer en moi son Immensité. Alors Elle m'attend avec une Patience et un A",
       "first_jesus_para_id": "LDC.T35.E0009.P003",
-      "first_jesus_preview": "Bienheureuse fille, c'est notre Divinité qui possède par nature le désir de toujours donner. Toi tu possèdes ta respiration et que tu respires toujours, même si tu ne le veux pas Nous possédons également l'Acte continuel",
+      "first_jesus_preview": "Bienheureuse fille, c'est notre Divinité qui possède par nature le désir de toujours donner. Toi tu possèdes ta respiration et tu respires toujours, même si tu ne le veux pas. Nous possédons également l'Acte continuel de",
       "search_blob": "dieu donne sans cesse a la creature les dons qu il fait a celle qui vit dans sa volonte la vie palpitante de dieu la petite gagnante 26 septembre 1937 1937 09 26 tome 35 ldc t35 e0009 edition 2021 jesus"
     },
     {
@@ -52958,7 +52958,7 @@
       ],
       "has_speech": true,
       "first_para_id": "LDC.T35.E0010.P001",
-      "first_para_preview": "(1) Je faisais ma ronde dans la Création pour retracer tous les Actes du divin Vouloir, pour les faire miens, pour les embrasser, les adorer et placer mon petit « je T’aime » en reconnaissance, de l’Amour dont la Volonté",
+      "first_para_preview": "(1) Je faisais ma ronde dans la Création pour retracer tous les Actes du divin Vouloir, pour les faire miens, pour les embrasser, les adorer et placer mon petit « je T’aime » en reconnaissance de l’Amour dont la Volonté ",
       "first_jesus_para_id": "LDC.T35.E0010.P004",
       "first_jesus_preview": "Ma fille, nos Œuvres sont toujours nouvelles et s’harmonisent avec leur Créateur. Il y a tant d’harmonie entre elles et Nous. Elles savent toujours comment dire des choses nouvelles concernant Celui qui les a créées.",
       "search_blob": "les prodiges de la creation la dose de puissance et de saintete generee par dieu par amour pour l homme les actes accomplis dans le fiat seront toujours nouveaux distincts les uns plus beaux que les autres ils renfermeront tout ils formeront les mers les oeuvres et les pas parlants de leur createur 3 octobre 1937 1937 10 03 tome 35 ldc t35 e0010 edition 2021 jesus"
@@ -53004,9 +53004,9 @@
       ],
       "has_speech": true,
       "first_para_id": "LDC.T35.E0012.P001",
-      "first_para_preview": "(1) Le Vouloir divin continue de m’investir. Je sens en moi son Mouvement qui me parle avec tant d’éloquence S’il n’accomplissait pas un miracle pour se faire comprendre, je serais incapable de répéter ce qu’Il dit.",
+      "first_para_preview": "(1) Le Vouloir divin continue de m’investir. Je sens en moi son Mouvement qui me parle avec tant d’éloquence. S’il n’accomplissait pas un miracle pour se faire comprendre, je serais incapable de répéter ce qu’Il dit.",
       "first_jesus_para_id": "LDC.T35.E0012.P004",
-      "first_jesus_preview": "Bienheureuse fille du Vouloir divin, sache que là où règne Ma Volonté avec sa Puissance créatrice, son Mouvement est sa Parole,",
+      "first_jesus_preview": "Bienheureuse fille du Vouloir divin, sache que là où règne Ma Volonté avec sa Puissance créatrice, son Mouvement est sa Parole.",
       "search_blob": "la volonte divine forme la tres sainte trinite dans la creature qui vit en elle les merveilles de ses actes l amour veritable commence a partir d elle la volonte divine feconde et seme la vie divine dans les ames 19 octobre 1937 1937 10 19 tome 35 ldc t35 e0012 edition 2021 jesus"
     },
     {
@@ -53054,7 +53054,7 @@
       "first_para_id": "LDC.T35.E0014.P001",
       "first_para_preview": "(1) Mon pauvre esprit continue à traverser la Mer du Vouloir divin. Il me semble qu’Il veut me dire toujours des choses nouvelles sur ce qu’Il peut et veut faire dans la créature dans laquelle Il règne. Puisque mon doux ",
       "first_jesus_para_id": "LDC.T35.E0014.P002",
-      "first_jesus_preview": "Ma fille, si Je voulais te parler toujours de Mon Fiat, J’aurais toujours de choses nouvelles à te dire parce que son histoire est éternelle, aussi bien à son sujet, qu’à ce qu’Il veut faire dans la créature.",
+      "first_jesus_preview": "Ma fille, si Je voulais te parler toujours de Mon Fiat, J’aurais toujours des choses nouvelles à te dire parce que son histoire est éternelle, aussi bien à son sujet, qu’à ce qu’Il veut faire dans la créature.",
       "search_blob": "un acte de divine volonte contient tant de puissance et d amour que si dieu ne faisait pas un miracle la creature ne serait pas capable de contenir cet acte infini le passeport 31 octobre 1937 1937 10 31 tome 35 ldc t35 e0014 edition 2021 jesus"
     },
     {
@@ -53127,7 +53127,7 @@
       ],
       "has_speech": true,
       "first_para_id": "LDC.T35.E0017.P001",
-      "first_para_preview": "Mon pauvre esprit continue de nager dans la Mer du Vouloir divin. Ses surprises sont si grandes si nombreuses. Son impatience de voir sa Vie dans la créature est telle qu’il m’est impossible de tout répéter.",
+      "first_para_preview": "Mon pauvre esprit continue de nager dans la Mer du Vouloir divin. Ses surprises sont si grandes, si nombreuses. Son impatience de voir sa Vie dans la créature est telle qu’il m’est impossible de tout répéter.",
       "first_jesus_para_id": "LDC.T35.E0017.P003",
       "first_jesus_preview": "Ma bienheureuse fille, c’est pour Moi une grande fête de parler de Ma Volonté. Le Ciel s’unit à Moi dans cette célébration. Comme tous Me voient parler de Ma Volonté, ils se font attentifs et ils écoutent.",
       "search_blob": "la volonte divine fait surgir l amour afin que partout elle se sente aimee par la creature ou que puisse etre notre volonte nous trouvons le materiau adaptable pour la conception la naissance et la croissance de notre vie 20 novembre 1937 1937 11 20 tome 35 ldc t35 e0017 edition 2021 generic soul jesus personified voice"
@@ -53151,7 +53151,7 @@
       ],
       "has_speech": true,
       "first_para_id": "LDC.T35.E0018.P001",
-      "first_para_preview": "(1) Mon pauvre esprit nage dans la mer du Vouloir divin Je Le sens qui respire, palpite et circule, mieux que le sang dans les veines de mon âme.",
+      "first_para_preview": "(1) Mon pauvre esprit nage dans la mer du Vouloir divin. Je Le sens qui respire, palpite et circule, mieux que le sang dans les veines de mon âme.",
       "first_jesus_para_id": "LDC.T35.E0018.P002",
       "first_jesus_preview": "Je suis ici, en toi et en dehors de toi plus que ta propre vie. Je cours en chacun de tes actes. Je rends chaque chose facile pour toi avec Mon Amour, et Je te rends heureuse.",
       "search_blob": "nos souffrances unies aux souffrances de jesus forment sa vie en nous il n y a pas de bien qui ne vienne de ces souffrances le manque d amour martyrise l amour divin 29 novembre 1937 1937 11 29 tome 35 ldc t35 e0018 edition 2021 jesus personified voice"
@@ -53176,7 +53176,7 @@
       ],
       "has_speech": true,
       "first_para_id": "LDC.T35.E0019.P001",
-      "first_para_preview": "(1) Je sens sa Vie en Moi débordante d’Amour Elle déverse des mers d’Amour en disant à chaque cœur : « Je t’en prie, regarde-Moi, connais-Moi et reçois-Moi dans ton cœur ! Laisse-Moi régner ! Je viens chargé de tous Mes ",
+      "first_para_preview": "(1) Je sens sa Vie en Moi débordante d’Amour. Elle déverse des mers d’Amour en disant à chaque cœur : « Je t’en prie, regarde-Moi, connais-Moi et reçois-Moi dans ton cœur ! Laisse-Moi régner ! Je viens chargé de tous Mes",
       "first_jesus_para_id": "LDC.T35.E0019.P005",
       "first_jesus_preview": "Ma bienheureuse fille, si seulement tu savais avec quel amour J’attendais que tu les appelles tous, que tu sentes dans ton acte le retour d’amour pour tous !",
       "search_blob": "lorsque la creature vit dans le divin vouloir jesus fait resonner sa petite sonnette pour appeler les residents du ciel et ceux de la terre l amour divin a un besoin urgent de la compagnie de la creature 6 decembre 1937 1937 12 06 tome 35 ldc t35 e0019 edition 2021 jesus other personified voice"
@@ -53226,7 +53226,7 @@
       "first_para_id": "LDC.T35.E0021.P001",
       "first_para_preview": "(1) Je me sentais immergée dans le divin Vouloir. Il me semblait qu’en faisant mes actes dans le Fiat au milieu de ses vagues de lumière, cette lumière devenait de plus en plus forte et se concentrait de plus en plus sur",
       "first_jesus_para_id": "LDC.T35.E0021.P004",
-      "first_jesus_preview": "Ma bienheureuse fille, tout comme la nature forme son jour dans la vie humaine durant laquelle toutes les actes de la vie sont accomplies, de la même manière Ma Divine Volonté forme son jour dans les profondeurs de la cr",
+      "first_jesus_preview": "Ma bienheureuse fille, tout comme la nature forme son jour dans la vie humaine durant laquelle tous les actes de la vie sont accomplis, de la même manière Ma Divine Volonté forme son jour dans les profondeurs de la créat",
       "search_blob": "la nature a son jour le divin vouloir forme son jour au fond de l ame qui vit en elle les prodiges qui se produisent en lui 14 decembre 1937 1937 12 14 tome 35 ldc t35 e0021 edition 2021 jesus"
     },
     {
@@ -53417,7 +53417,7 @@
       ],
       "has_speech": true,
       "first_para_id": "LDC.T35.E0029.P001",
-      "first_para_preview": "(1) Le divin Vouloir est toujours autour de moi. Tantôt il m’appelle Tantôt il me tient serrée sur son giron de lumière. Si je réponds à son appel, si je l’embrasse à mon tour, Il m’aime tellement, il veut tant me donner",
+      "first_para_preview": "(1) Le divin Vouloir est toujours autour de moi. Tantôt il m’appelle, tantôt il me tient serrée sur son giron de lumière. Si je réponds à son appel, si je l’embrasse à mon tour, Il m’aime tellement, il veut tant me donne",
       "first_jesus_para_id": "LDC.T35.E0029.P003",
       "first_jesus_preview": "Fille de Ma Volonté, tu dois savoir que seul ton Jésus connaît les secrets de Mon Fiat. Parce que, comme Verbe du Père, Je Me glorifie en devenant le narrateur de tout ce qu’il a fait pour la créature. Son Amour est exub",
       "search_blob": "la divine volonte appelle la creature dans ses actes afin de lui donner ses oeuvres si la creature repond elle appelle dieu et recoit le don echange de volontes entre les creatures et dieu 16 janvier 1938 1938 01 16 tome 35 ldc t35 e0029 edition 2021 jesus luisa"
@@ -53467,7 +53467,7 @@
       "first_para_id": "LDC.T35.E0031.P001",
       "first_para_preview": "(1) Mon pauvre esprit nage dans la mer du divin Vouloir. Son murmure est continuel mais que murmure-t-il ? Amour, âmes, et lumière qui veut investir chacun de ses enfants et régner parmi eux. Oh ! combien de stratagèmes ",
       "first_jesus_para_id": "LDC.T35.E0031.P002",
-      "first_jesus_preview": "Ma petite fille de Mon divin Vouloir, si grande est Mon impatience, si nombreux les soupirs. Parce que Ma Volonté veut régner dans l’acte de la créature. Je commence à épier pour voir si l’âme appelle l’acte premier de M",
+      "first_jesus_preview": "Ma petite fille de Mon divin Vouloir, si grande est Mon impatience, si nombreux les soupirs, parce que Ma Volonté veut régner dans l’acte de la créature. Je commence à épier pour voir si l’âme appelle l’acte premier de M",
       "search_blob": "tout ce qui est accompli par celle qui vit dans la divine volonte acquiert une nature divine les prodiges en creant la vie divine dans l acte humain fete pour le ciel tout entier le vrai retour pour la creation 30 janvier 1938 1938 01 30 tome 35 ldc t35 e0031 edition 2021 jesus other personified voice"
     },
     {
@@ -53490,7 +53490,7 @@
       "first_para_id": "LDC.T35.E0032.P001",
       "first_para_preview": "(1) Je suis sous l’empire du divin Vouloir. Sa vertu créatrice a une telle force qu’elle fait sentir son doux empire sur la pauvre créature. Celle-ci, doucement, sans se sentir forcée, s’accorde avec le Fiat, lui donne t",
       "first_jesus_para_id": "LDC.T35.E0032.P004",
-      "first_jesus_preview": "Fille de Ma Volonté, combien Mon Fiat est beau lorsqu’il opère avec sa vertu créatrice ! Tu vois qu’il n’utilise pas la violence, mais la douceur une irrésistible douceur.",
+      "first_jesus_preview": "Fille de Ma Volonté, combien Mon Fiat est beau lorsqu’il opère avec sa vertu créatrice ! Tu vois qu’il n’utilise pas la violence, mais la douceur, une irrésistible douceur.",
       "search_blob": "dieu n aime pas la force mais la spontaneite etalage de magnificence de splendeur et de somptuosite que le divin vouloir accomplira en celles qui vivent en lui la creation n est pas terminee 7 fevrier 1938 1938 02 07 tome 35 ldc t35 e0032 edition 2021 jesus"
     },
     {
@@ -53512,7 +53512,7 @@
       ],
       "has_speech": true,
       "first_para_id": "LDC.T35.E0033.P001",
-      "first_para_preview": "(1) Mon vol continue dans le divin Vouloir. Oh ! combien je me sens perdue dans son immensité. Sa puissance et son activité sont telles que, lorsqu’il opère dans l’acte de la créature, Il veut, donner cet acte à tous, re",
+      "first_para_preview": "(1) Mon vol continue dans le divin Vouloir. Oh ! combien je me sens perdue dans son immensité. Sa puissance et son activité sont telles que, lorsqu’il opère dans l’acte de la créature, Il veut donner cet acte à tous, rem",
       "first_jesus_para_id": "LDC.T35.E0033.P003",
       "first_jesus_preview": "Ma bienheureuse fille, l’Amour de Ma Volonté qui opère dans la créature est tel qu’Il peut sembler incroyable.",
       "search_blob": "les actes de celle qui vit dans la divine volonte sont etendus a tous et deviennent les narrateurs de l etre supreme etalages d amour dieu crea le pardon en creant la vierge 14 fevrier 1938 1938 02 14 tome 35 ldc t35 e0033 edition 2021 jesus other"
@@ -54067,7 +54067,7 @@
       "first_para_id": "LDC.T36.E0012.P001",
       "first_para_preview": "(1) Mon envol continue dans le divin Vouloir. Je Le sens respirer, palpiter, agir et penser en moi.",
       "first_jesus_para_id": "LDC.T36.E0012.P006",
-      "first_jesus_preview": "Ma petite fille de Mon Vouloir, Ma Volonté investit et enveloppe toute chose et toutes les créatures dans son Sein de Lumière, Elle possède tout et personne ne peut Lui échapper.",
+      "first_jesus_preview": "Ma petite fille de Mon Vouloir, Ma Volonté investit et enveloppe toute chose et toutes les créatures dans son Sein de Lumière. Elle possède tout et personne ne peut Lui échapper.",
       "search_blob": "le signe que la creature vit dans le divin vouloir c est qu elle sent la vie du divin vouloir en elle qu elle sent son acte operant qui est le plus grand don que le divin vouloir donne a la creature centralisation de dieu dans la creature et de la creature en dieu tout le monde vit dans le divin vouloir 5 juin 1938 1938 06 05 tome 36 ldc t36 e0012 edition 2021 jesus"
     },
     {
@@ -54090,7 +54090,7 @@
       "first_para_id": "LDC.T36.E0013.P001",
       "first_para_preview": "(1) Je reviens toujours dans le divin Vouloir. Son Immensité est telle que lorsque Je suis dans sa Mer pour y embrasser tous ses Actes, il me faudrait pour cela des siècles et même alors ce ne serait pas suffisant. J’éta",
       "first_jesus_para_id": "LDC.T36.E0013.P002",
-      "first_jesus_preview": "Ma bienheureuse fille, lorsque Je parle de Ma Divine Volonté, Mon Amour devient réconcilié. Il est calmé de ses angoisses et de ses délires. Il trouve un doux repos dans Ma Parole, dans les Vérités que Je manifeste.",
+      "first_jesus_preview": "Ma bienheureuse fille, lorsque Je parle de Ma Divine Volonté, Mon Amour devient réconcilié. Il est calmé de ses angoisses et de ses délires. Il trouve un doux repos dans Ma Parole, dans les Vérités que Je manifeste,",
       "search_blob": "verites porteuses de semences divines les connaissances forment de nouvelles vies divines echange de gloire que l on aura au ciel celle qui vit abandonnee dans les bras de jesus est sa preferee 12 juin 1938 1938 06 12 tome 36 ldc t36 e0013 edition 2021 jesus"
     },
     {
@@ -54234,7 +54234,7 @@
       "first_para_id": "LDC.T36.E0019.P001",
       "first_para_preview": "(1) Je suis toujours dans les bras du Vouloir divin. Je ressens, en écrivant, le poids du grand sacrifice d’avoir à écrire. Je l’offre à mon cher Jésus pour obtenir que la Divine Volonté soit connue, désirée et aimée par",
       "first_jesus_para_id": "LDC.T36.E0019.P003",
-      "first_jesus_preview": "Ma bienheureuse fille, courage, Je suis avec toi. Je suis si heureux que tu écrives cela Pour chaque mot que tu écris, Je te donne un baiser, une étreinte et une de Mes Vies divines en cadeau. Sais-tu pourquoi ?",
+      "first_jesus_preview": "Ma bienheureuse fille, courage, Je suis avec toi. Je suis si heureux que tu écrives cela. Pour chaque mot que tu écris, Je te donne un baiser, une étreinte et une de Mes Vies divines en cadeau. Sais-tu pourquoi ?",
       "search_blob": "lorsque l amour est vrai tout ce que l un veut l autre le veut egalement chaque acte de la volonte divine est un chemin qui s ouvre entre le ciel et la terre le souffle de dieu dans la creature 11 juillet 1938 1938 07 11 tome 36 ldc t36 e0019 edition 2021 jesus luisa"
     },
     {
@@ -54347,7 +54347,7 @@
       ],
       "has_speech": true,
       "first_para_id": "LDC.T36.E0024.P001",
-      "first_para_preview": "(1) Le Vouloir divin est toujours autour de moi. Parce qu’Il veut investir mes actes de sa Lumière, pour y étendre sa Vie. Il semble si attentif qu’Il en arrive, à me poursuivre de son Amour et de sa Lumière. Parce qu’Il",
+      "first_para_preview": "(1) Le Vouloir divin est toujours autour de moi, parce qu’Il veut investir mes actes de sa Lumière, pour y étendre sa Vie. Il semble si attentif qu’Il en arrive à me poursuivre de son Amour et de sa Lumière. Parce qu’Il ",
       "first_jesus_para_id": "LDC.T36.E0024.P003",
       "first_jesus_preview": "Ma fille, tu vois quel excès d’Amour Mon Amour peut atteindre. Il veut que la créature vive dans Mon Vouloir et en arrive à le poursuivre d’Amour et de Lumière.",
       "search_blob": "lorsque la creature entre dans le vouloir divin le ciel se penche et la terre s eleve pour echanger le baiser de paix l amour de dieu en manifestant la verite toutes les choses deviennent vie toutes les choses creees sont membres de jesus diversite de l amour connaissances de la volonte divine la creation n est pas finie elle continue dans les ames qui vivent dans le vouloir divin 12 aout 1938 1938 08 12 tome 36 ldc t36 e0024 edition 2021 jesus"
@@ -54702,9 +54702,9 @@
       ],
       "has_speech": true,
       "first_para_id": "LDC.T36.E0039.P001",
-      "first_para_preview": "(1) Il me semble que le Vouloir divin est à l’intérieur et à l’extérieur de moi dans l’acte de me surprendre lorsque je suis sur le point de faire mes petites actes, de dire mon petit « je T’aime », pour investir mes act",
+      "first_para_preview": "(1) Il me semble que le Vouloir divin est à l’intérieur et à l’extérieur de moi dans l’acte de me surprendre lorsque je suis sur le point de faire mes petits actes, de dire mon petit « je T’aime », pour investir mes acte",
       "first_jesus_para_id": "LDC.T36.E0039.P004",
-      "first_jesus_preview": "Ma bienheureuse fille, Mon Vouloir est le spectateur de l’âme qui veut vivre en Lui. Il attend qu’elle aime pour aimer avec elle. Qu’elle agit, pour devenir Acteur et Spectateur. Mon Vouloir est dans l’attente continuell",
+      "first_jesus_preview": "Ma bienheureuse fille, Mon Vouloir est le spectateur de l’âme qui veut vivre en Lui. Il attend qu’elle aime pour aimer avec elle. Qu’elle agisse, pour devenir Acteur et Spectateur. Mon Vouloir est dans l’attente continue",
       "search_blob": "le vouloir divin spectateur de l ame le vouloir divin forme le materiel adaptable pour les oeuvres de dieu l ame qui vit dans le fiat de dieu est un petit champ divin plus la creature accomplit un acte dans le vouloir divin plus elle entre en dieu la creature genere la bonte et la saintete de la vie de dieu si elle accomplit ses actes bons et saints en possedant la volonte et la vie de dieu 20 novembre 1938 1938 11 20 tome 36 ldc t36 e0039 edition 2021 generic soul jesus"
     },
     {

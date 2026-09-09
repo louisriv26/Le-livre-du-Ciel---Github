@@ -1,8 +1,8 @@
 {
   "schema_version": "ldc-display-flow-v2",
   "volume": 30,
-  "corpus_version": "G036-AFLP-R7-UWR2",
-  "group_count": 953,
+  "corpus_version": "G036-AFLP-R7-UWR2-FAST1",
+  "group_count": 950,
   "groups": [
     {
       "flow_id": "FLOW.T30.P009-P010..E0001",
@@ -144,7 +144,7 @@
         {
           "paragraph_id": "LDC.T30.E0001.P026",
           "stable_ref": "LDC.T30.E0001.P026",
-          "source_text_sha256": "7ec5da503acd4f97ad2bfa7be5cf1a1dce3d70a33edda43bcfbd26efdafea250",
+          "source_text_sha256": "ac3a9bbc4e4bb06accd9c35a9c96f3741f6ddc89a70952fdbeb334ebf32a5bb6",
           "canonical_length": 61,
           "boundary_after": {
             "display_joiner": "space",
@@ -1534,7 +1534,7 @@
         {
           "paragraph_id": "LDC.T30.E0002.P060",
           "stable_ref": "LDC.T30.E0002.P060",
-          "source_text_sha256": "2a503c159d40397cf7442dfd401fe1495deb7fd34ced0f59e69e3d892359f726",
+          "source_text_sha256": "b89a3cf7c9454bd23aba72b8c05d912e4426fb1d7b5b6943c701934184e0b825",
           "canonical_length": 67,
           "boundary_after": null
         }
@@ -1900,8 +1900,8 @@
         {
           "paragraph_id": "LDC.T30.E0002.P077",
           "stable_ref": "LDC.T30.E0002.P077",
-          "source_text_sha256": "c98905a01e045a4b925c4e7024e0e57b07b82e7f25de4c53492aab2204c46639",
-          "canonical_length": 31,
+          "source_text_sha256": "58b2739ae4f9f6f9e30f8e16da60767b76d188b77d668e46153068f736991b84",
+          "canonical_length": 32,
           "boundary_after": null
         }
       ]
@@ -2018,8 +2018,8 @@
         {
           "paragraph_id": "LDC.T30.E0003.P009",
           "stable_ref": "LDC.T30.E0003.P009",
-          "source_text_sha256": "93b0a6c999f0f13984c4283f6a1cf72328b2e8538c52d78f109cba9ab4065c83",
-          "canonical_length": 78,
+          "source_text_sha256": "d4e8f209eaf2102055ab908a64283aef4bae781596db266332d18bd659b9be6a",
+          "canonical_length": 79,
           "boundary_after": null
         }
       ]
@@ -2365,7 +2365,7 @@
         {
           "paragraph_id": "LDC.T30.E0003.P032",
           "stable_ref": "LDC.T30.E0003.P032",
-          "source_text_sha256": "edb6b61fbe5558297784e299720d4e85b28bea8a364b11637b8f4ab55469d93c",
+          "source_text_sha256": "dc9f9ccff2647e1e39ec16efab6f3136258f6301b810437140f8fb2473f6ad45",
           "canonical_length": 123,
           "boundary_after": {
             "display_joiner": "space",
@@ -2559,6 +2559,42 @@
           "stable_ref": "LDC.T30.E0003.P044",
           "source_text_sha256": "35e3b782658fac908ffe1350c22bbea4277bd91d611f0ecdb1cd5187a7c9a73e",
           "canonical_length": 70,
+          "boundary_after": null
+        }
+      ]
+    },
+    {
+      "flow_id": "FLOW.T30.FAST1.001.LDC_T30_E0003_P045__LDC_T30_E0003_P046",
+      "entry_id": "LDC.T30.E0003",
+      "classification": "certified_sentence_continuation",
+      "confidence": "high",
+      "origin": "FAST_MODE_CERTIFIED_CORPUS_MUTATION_BODY0277_0854",
+      "review_status": "approved_for_display",
+      "reason": "Certified correction-certain FAST Mode boundary repair; stable paragraph records preserved",
+      "members": [
+        {
+          "paragraph_id": "LDC.T30.E0003.P045",
+          "stable_ref": "LDC.T30.E0003.P045",
+          "source_text_sha256": "3f6841907b4e579c3ba61dbea69342e05c07488607916fd78824e3b2c64308b5",
+          "canonical_length": 105,
+          "boundary_after": {
+            "display_joiner": "space",
+            "speech_run_policy": "continue_same_speaker_only",
+            "suppress_next_leading_ranges": [],
+            "visual_policy": "continuous_prose",
+            "visual_action": "join_inline",
+            "adjudication_generation": "FAST_MODE_BODY0277_0854",
+            "adjudication_status": "CERTIFIED_CORRECTION_CERTAIN",
+            "adjudication_rule_id": "FAST_MODE.BOUNDARY.JOIN",
+            "evidence_ref": "FAST:BOUNDARY_REPAIR:LDC.T30.E0003.P046:LDC.T30.E0003.P045__LDC.T30.E0003.P046",
+            "evidence_sha256": "d401a20ff1c818101e5d73524058efe75d49040d92f19344fbbdd3555994ec42"
+          }
+        },
+        {
+          "paragraph_id": "LDC.T30.E0003.P046",
+          "stable_ref": "LDC.T30.E0003.P046",
+          "source_text_sha256": "7754b7348d09c63f5b35f050ed42641b705217122d4b856682ae972052760698",
+          "canonical_length": 98,
           "boundary_after": null
         }
       ]
@@ -3140,13 +3176,13 @@
       ]
     },
     {
-      "flow_id": "FLOW.T30.P078-P082..E0003",
+      "flow_id": "FLOW.T30.FAST1.002.LDC_T30_E0003_P078__LDC_T30_E0003_P085",
       "entry_id": "LDC.T30.E0003",
       "classification": "inherited_dash_continuation",
       "confidence": "inherited_not_source_verified",
-      "origin": "legacy_runtime_inference",
+      "origin": "FAST_MODE_CERTIFIED_CORPUS_MUTATION_BODY0277_0854",
       "review_status": "preserved_pending_structural_review",
-      "reason": "runtime dash-merger inheritance",
+      "reason": "Certified correction-certain FAST Mode boundary repair; stable paragraph records preserved",
       "members": [
         {
           "paragraph_id": "LDC.T30.E0003.P078",
@@ -3243,25 +3279,25 @@
         {
           "paragraph_id": "LDC.T30.E0003.P082",
           "stable_ref": "LDC.T30.E0003.P082",
-          "source_text_sha256": "bc593f6a006403d91423d470714709c6c4ed89087f2288a184308d1d6f152b83",
+          "source_text_sha256": "cf0bd7651453b7f373ae129366a28128d298ec9ec39c8a42ea68b0fb7baf87ad",
           "canonical_length": 126,
-          "boundary_after": null
-        }
-      ]
-    },
-    {
-      "flow_id": "FLOW.T30.P083-P085..E0003",
-      "entry_id": "LDC.T30.E0003",
-      "classification": "inherited_dash_continuation",
-      "confidence": "inherited_not_source_verified",
-      "origin": "legacy_runtime_inference",
-      "review_status": "preserved_pending_structural_review",
-      "reason": "runtime dash-merger inheritance",
-      "members": [
+          "boundary_after": {
+            "display_joiner": "space",
+            "speech_run_policy": "continue_same_speaker_only",
+            "suppress_next_leading_ranges": [],
+            "visual_policy": "continuous_prose",
+            "visual_action": "join_inline",
+            "adjudication_generation": "FAST_MODE_BODY0277_0854",
+            "adjudication_status": "CERTIFIED_CORRECTION_CERTAIN",
+            "adjudication_rule_id": "FAST_MODE.BOUNDARY.JOIN",
+            "evidence_ref": "FAST:BOUNDARY_REPAIR:LDC.T30.E0003.P083:LDC.T30.E0003.P082__LDC.T30.E0003.P083",
+            "evidence_sha256": "72a8778e477842e4a30cea5d5088632c88a67c19ff159862726738de52b03204"
+          }
+        },
         {
           "paragraph_id": "LDC.T30.E0003.P083",
           "stable_ref": "LDC.T30.E0003.P083",
-          "source_text_sha256": "d7e93065cefda4d1dbb1b41b80f38c9b296b36364a9f6475293112a42894fa83",
+          "source_text_sha256": "4b339f3a19b123b9cd9bf55a4d81135e636e88c1dafd14df78d6a415f099e201",
           "canonical_length": 34,
           "boundary_after": {
             "display_joiner": "space",
@@ -3801,8 +3837,8 @@
         {
           "paragraph_id": "LDC.T30.E0003.P112",
           "stable_ref": "LDC.T30.E0003.P112",
-          "source_text_sha256": "5184f051096eaaff16ac6d7318e6372c9faa3834a84f5b4454b9611df8bc1728",
-          "canonical_length": 29,
+          "source_text_sha256": "8794a236ab5517b4dc68683909c4f6a9c43115af0fd20a45df822dee24a834a4",
+          "canonical_length": 30,
           "boundary_after": null
         }
       ]
@@ -4491,7 +4527,7 @@
         {
           "paragraph_id": "LDC.T30.E0004.P047",
           "stable_ref": "LDC.T30.E0004.P047",
-          "source_text_sha256": "17237becec567655b2ab28fee7d923f39ef761da43693fc05ffe638d25239535",
+          "source_text_sha256": "c3b9b3ad8735a1d570ee56af4ae84a0edb4197ce6d20d1c222db713163b1560f",
           "canonical_length": 54,
           "boundary_after": null
         }
@@ -4841,18 +4877,36 @@
       ]
     },
     {
-      "flow_id": "FLOW.T30.P069-P070..E0004",
+      "flow_id": "FLOW.T30.FAST1.003.LDC_T30_E0004_P068__LDC_T30_E0004_P070",
       "entry_id": "LDC.T30.E0004",
       "classification": "inherited_dash_continuation",
       "confidence": "inherited_not_source_verified",
-      "origin": "legacy_runtime_inference",
+      "origin": "FAST_MODE_CERTIFIED_CORPUS_MUTATION_BODY0277_0854",
       "review_status": "preserved_pending_structural_review",
-      "reason": "runtime dash-merger inheritance",
+      "reason": "Certified correction-certain FAST Mode boundary repair; stable paragraph records preserved",
       "members": [
+        {
+          "paragraph_id": "LDC.T30.E0004.P068",
+          "stable_ref": "LDC.T30.E0004.P068",
+          "source_text_sha256": "cc72a31bea91c66c2463bcda28aa55e5293e0626e8ee3ecd8c238063277ae0b3",
+          "canonical_length": 163,
+          "boundary_after": {
+            "display_joiner": "space",
+            "speech_run_policy": "continue_same_speaker_only",
+            "suppress_next_leading_ranges": [],
+            "visual_policy": "continuous_prose",
+            "visual_action": "join_inline",
+            "adjudication_generation": "FAST_MODE_BODY0277_0854",
+            "adjudication_status": "CERTIFIED_CORRECTION_CERTAIN",
+            "adjudication_rule_id": "FAST_MODE.BOUNDARY.JOIN",
+            "evidence_ref": "FAST:BOUNDARY_REPAIR:LDC.T30.E0004.P069:LDC.T30.E0004.P068__LDC.T30.E0004.P069",
+            "evidence_sha256": "5ee649914d6830d811771e33b3bd82d60bd65d81839aaae62f848c07ddeb7768"
+          }
+        },
         {
           "paragraph_id": "LDC.T30.E0004.P069",
           "stable_ref": "LDC.T30.E0004.P069",
-          "source_text_sha256": "4e591b2549c73df6a73a7a72c0e454c2df772ee4f2fdae5782f0bc4ccd78a8e4",
+          "source_text_sha256": "2abf629bd8b4e562657ba4aaea0261a2e669b264b1dc6ba6a95474a8bceed7ce",
           "canonical_length": 23,
           "boundary_after": {
             "display_joiner": "space",
@@ -5817,20 +5871,20 @@
         {
           "paragraph_id": "LDC.T30.E0005.P054",
           "stable_ref": "LDC.T30.E0005.P054",
-          "source_text_sha256": "2615b6d323446903788caa86c09b68d42033606d212d64b1dbedf235a3a5eaea",
+          "source_text_sha256": "f2e593c203ba459d58382238f5aedddda28d8fb8eedbbb4bc2e1083cc80e2c17",
           "canonical_length": 75,
           "boundary_after": null
         }
       ]
     },
     {
-      "flow_id": "FLOW.T30.P055-P057..E0005",
+      "flow_id": "FLOW.T30.FAST1.004.LDC_T30_E0005_P055__LDC_T30_E0005_P059",
       "entry_id": "LDC.T30.E0005",
       "classification": "inherited_dash_continuation",
       "confidence": "inherited_not_source_verified",
-      "origin": "legacy_runtime_inference",
+      "origin": "FAST_MODE_CERTIFIED_CORPUS_MUTATION_BODY0277_0854",
       "review_status": "preserved_pending_structural_review",
-      "reason": "runtime dash-merger inheritance",
+      "reason": "Certified correction-certain FAST Mode boundary repair; stable paragraph records preserved",
       "members": [
         {
           "paragraph_id": "LDC.T30.E0005.P055",
@@ -5881,25 +5935,25 @@
         {
           "paragraph_id": "LDC.T30.E0005.P057",
           "stable_ref": "LDC.T30.E0005.P057",
-          "source_text_sha256": "915c26d0bcc752f1573421d9d80ba826e3617e3bfbf73ca6e463fd6aad126f06",
+          "source_text_sha256": "dc3ea6ea98f336ae1a9fcea20700d1c55f7ac80467129a0ffe4593ec662dfc28",
           "canonical_length": 16,
-          "boundary_after": null
-        }
-      ]
-    },
-    {
-      "flow_id": "FLOW.T30.P058-P059..E0005",
-      "entry_id": "LDC.T30.E0005",
-      "classification": "inherited_dash_continuation",
-      "confidence": "inherited_not_source_verified",
-      "origin": "legacy_runtime_inference",
-      "review_status": "preserved_pending_structural_review",
-      "reason": "runtime dash-merger inheritance",
-      "members": [
+          "boundary_after": {
+            "display_joiner": "space",
+            "speech_run_policy": "continue_same_speaker_only",
+            "suppress_next_leading_ranges": [],
+            "visual_policy": "continuous_prose",
+            "visual_action": "join_inline",
+            "adjudication_generation": "FAST_MODE_BODY0277_0854",
+            "adjudication_status": "CERTIFIED_CORRECTION_CERTAIN",
+            "adjudication_rule_id": "FAST_MODE.BOUNDARY.JOIN",
+            "evidence_ref": "FAST:BOUNDARY_REPAIR:LDC.T30.E0005.P058:LDC.T30.E0005.P057__LDC.T30.E0005.P058",
+            "evidence_sha256": "94101b70353e9be571dbfc64acd3d924c5b857ba0bcd8ab7b73464ffbca06097"
+          }
+        },
         {
           "paragraph_id": "LDC.T30.E0005.P058",
           "stable_ref": "LDC.T30.E0005.P058",
-          "source_text_sha256": "c36f336381f5ebb0239d4d1d64631e02becfe4770bd8a5b27447ab0054a028d5",
+          "source_text_sha256": "69eae45e156cf6b122c90635b782da1324320a1e07974fd6178c92986017b848",
           "canonical_length": 38,
           "boundary_after": {
             "display_joiner": "space",
@@ -6447,8 +6501,8 @@
         {
           "paragraph_id": "LDC.T30.E0005.P090",
           "stable_ref": "LDC.T30.E0005.P090",
-          "source_text_sha256": "c5fdcdc15d72600eaf6bf1ca4b40e18fcce72a67bb696dca0998b5324debca2b",
-          "canonical_length": 89,
+          "source_text_sha256": "69091b31277f1dd1a4f753b0fc577a6d124932c2279f0cb8d6bdaa6cb0d8ea83",
+          "canonical_length": 91,
           "boundary_after": {
             "display_joiner": "space",
             "speech_run_policy": "continue_same_speaker_only",
@@ -6523,19 +6577,19 @@
       ]
     },
     {
-      "flow_id": "FLOW.T30.P094-P095..E0005",
+      "flow_id": "FLOW.T30.FAST1.005.LDC_T30_E0005_P094__LDC_T30_E0005_P096",
       "entry_id": "LDC.T30.E0005",
       "classification": "inherited_dash_continuation",
       "confidence": "inherited_not_source_verified",
-      "origin": "legacy_runtime_inference",
+      "origin": "FAST_MODE_CERTIFIED_CORPUS_MUTATION_BODY0277_0854",
       "review_status": "preserved_pending_structural_review",
-      "reason": "runtime dash-merger inheritance",
+      "reason": "Certified correction-certain FAST Mode boundary repair; stable paragraph records preserved",
       "members": [
         {
           "paragraph_id": "LDC.T30.E0005.P094",
           "stable_ref": "LDC.T30.E0005.P094",
-          "source_text_sha256": "10b751f4a68aa471ea30a81d7447261524dfcb22e8ad93a3b73b49f1306397e6",
-          "canonical_length": 112,
+          "source_text_sha256": "e95835cc3b999e2dec9be22aab5962b3ebf1e4e78ff08ccc3d87f4664027ef10",
+          "canonical_length": 113,
           "boundary_after": {
             "display_joiner": "space",
             "speech_run_policy": "continue_same_speaker_only",
@@ -6557,8 +6611,26 @@
         {
           "paragraph_id": "LDC.T30.E0005.P095",
           "stable_ref": "LDC.T30.E0005.P095",
-          "source_text_sha256": "af0b32a7c08eedd4c3f86229d33cd4f81d4e3f311d5660240e365a5741d5faec",
+          "source_text_sha256": "3fb31651b49bae9a3b7f3512634f0f699c3ece1e33c41075e5d28fcf8851e30a",
           "canonical_length": 29,
+          "boundary_after": {
+            "display_joiner": "space",
+            "speech_run_policy": "continue_same_speaker_only",
+            "suppress_next_leading_ranges": [],
+            "visual_policy": "continuous_prose",
+            "visual_action": "join_inline",
+            "adjudication_generation": "FAST_MODE_BODY0277_0854",
+            "adjudication_status": "CERTIFIED_CORRECTION_CERTAIN",
+            "adjudication_rule_id": "FAST_MODE.BOUNDARY.JOIN",
+            "evidence_ref": "FAST:BOUNDARY_REPAIR:LDC.T30.E0005.P096:LDC.T30.E0005.P095__LDC.T30.E0005.P096",
+            "evidence_sha256": "5803b9af9960a07e7bca8d7693370c3d1ef953157518029c8fd4392af88f1a49"
+          }
+        },
+        {
+          "paragraph_id": "LDC.T30.E0005.P096",
+          "stable_ref": "LDC.T30.E0005.P096",
+          "source_text_sha256": "13e13932d915a6b61a4362f1ad283574ae4a07558182782d44e9e0590fab1d96",
+          "canonical_length": 75,
           "boundary_after": null
         }
       ]
@@ -6703,7 +6775,7 @@
         {
           "paragraph_id": "LDC.T30.E0005.P105",
           "stable_ref": "LDC.T30.E0005.P105",
-          "source_text_sha256": "f84f1d57101d5ebf17927c1e34d36b6a73ac50e705168f577c1e154e31fdf100",
+          "source_text_sha256": "0d0cf687e6009bf2377d304328f87fe90486735ea0a27eae47a2e5f1f0398cec",
           "canonical_length": 68,
           "boundary_after": {
             "display_joiner": "space",
@@ -6744,7 +6816,7 @@
         {
           "paragraph_id": "LDC.T30.E0005.P107",
           "stable_ref": "LDC.T30.E0005.P107",
-          "source_text_sha256": "c45f895c5c71a0398956a4777e59e9b0094d3b9361abeb199e99c167ed54cd3f",
+          "source_text_sha256": "bd415b41084cde4d70c0d4152ae167ff8a68ecdb46a1c391451d4660687e6593",
           "canonical_length": 96,
           "boundary_after": {
             "display_joiner": "space",
@@ -8482,7 +8554,7 @@
         {
           "paragraph_id": "LDC.T30.E0006.P086",
           "stable_ref": "LDC.T30.E0006.P086",
-          "source_text_sha256": "f2d8b503e8d154c4f1135d67b995f2a431668a36d2eb9879cf946bc49847e6b2",
+          "source_text_sha256": "ef07320774dd5a56dbc44aeaf49d54d373f0e265d674d3a3349cf1854986f3d5",
           "canonical_length": 118,
           "boundary_after": {
             "display_joiner": "space",
@@ -10066,8 +10138,8 @@
         {
           "paragraph_id": "LDC.T30.E0007.P083",
           "stable_ref": "LDC.T30.E0007.P083",
-          "source_text_sha256": "7b153338badc90ff951a8554e20e8e4f8f3f07ce097ad12a87a2e042015b2940",
-          "canonical_length": 142,
+          "source_text_sha256": "4e03abb859b2bc2a869ce6e672927577c02a6efc1e3c8272c522c6c0ec2a0894",
+          "canonical_length": 143,
           "boundary_after": null
         }
       ]
@@ -11999,7 +12071,7 @@
         {
           "paragraph_id": "LDC.T30.E0008.P116",
           "stable_ref": "LDC.T30.E0008.P116",
-          "source_text_sha256": "d0c09fbcafd39d0307d3ba621ed30740cf068689f8b26a69f71c69c04641e409",
+          "source_text_sha256": "12adbe982aba846fd9c484cb49f19a40acc95e531e67d7a5cea7bed19052caf5",
           "canonical_length": 115,
           "boundary_after": {
             "display_joiner": "space",
@@ -12546,6 +12618,42 @@
       ]
     },
     {
+      "flow_id": "FLOW.T30.FAST1.006.LDC_T30_E0008_P149__LDC_T30_E0008_P150",
+      "entry_id": "LDC.T30.E0008",
+      "classification": "certified_sentence_continuation",
+      "confidence": "high",
+      "origin": "FAST_MODE_CERTIFIED_CORPUS_MUTATION_BODY0277_0854",
+      "review_status": "approved_for_display",
+      "reason": "Certified correction-certain FAST Mode boundary repair; stable paragraph records preserved",
+      "members": [
+        {
+          "paragraph_id": "LDC.T30.E0008.P149",
+          "stable_ref": "LDC.T30.E0008.P149",
+          "source_text_sha256": "6b4cad86cc388ebc3379da285c0f8ec92696590a65d8a6819361fbfb894a6df1",
+          "canonical_length": 54,
+          "boundary_after": {
+            "display_joiner": "space",
+            "speech_run_policy": "continue_same_speaker_only",
+            "suppress_next_leading_ranges": [],
+            "visual_policy": "continuous_prose",
+            "visual_action": "join_inline",
+            "adjudication_generation": "FAST_MODE_BODY0277_0854",
+            "adjudication_status": "CERTIFIED_CORRECTION_CERTAIN",
+            "adjudication_rule_id": "FAST_MODE.BOUNDARY.JOIN",
+            "evidence_ref": "FAST:BOUNDARY_REPAIR:LDC.T30.E0008.P149:LDC.T30.E0008.P149__LDC.T30.E0008.P150",
+            "evidence_sha256": "f4e65834bbfc66ec527f8bfc86a821514420bc17691df503abc1a1892d871054"
+          }
+        },
+        {
+          "paragraph_id": "LDC.T30.E0008.P150",
+          "stable_ref": "LDC.T30.E0008.P150",
+          "source_text_sha256": "54d4f7384a78c2d87aefb0b3638aa141636b57985c19cfe5c9eeeb32ec322703",
+          "canonical_length": 28,
+          "boundary_after": null
+        }
+      ]
+    },
+    {
       "flow_id": "FLOW.T30.P151-P152..E0008",
       "entry_id": "LDC.T30.E0008",
       "classification": "inherited_dash_continuation",
@@ -12557,8 +12665,8 @@
         {
           "paragraph_id": "LDC.T30.E0008.P151",
           "stable_ref": "LDC.T30.E0008.P151",
-          "source_text_sha256": "f5cfd5014021e3a4bf6d2fed3d5e14e6f9473fd86f25dbe1af9f227e6b86991a",
-          "canonical_length": 63,
+          "source_text_sha256": "bcdb7f0373675a20ef2a02dbdfa6d36c0a6182977bd9c144d7e7904dc03f8e2c",
+          "canonical_length": 65,
           "boundary_after": {
             "display_joiner": "space",
             "speech_run_policy": "continue_same_speaker_only",
@@ -13043,18 +13151,36 @@
       ]
     },
     {
-      "flow_id": "FLOW.T30.P011-P015..E0009",
+      "flow_id": "FLOW.T30.FAST1.007.LDC_T30_E0009_P010__LDC_T30_E0009_P015",
       "entry_id": "LDC.T30.E0009",
       "classification": "inherited_dash_continuation",
       "confidence": "inherited_not_source_verified",
-      "origin": "legacy_runtime_inference",
+      "origin": "FAST_MODE_CERTIFIED_CORPUS_MUTATION_BODY0277_0854",
       "review_status": "preserved_pending_structural_review",
-      "reason": "runtime dash-merger inheritance",
+      "reason": "Certified correction-certain FAST Mode boundary repair; stable paragraph records preserved",
       "members": [
+        {
+          "paragraph_id": "LDC.T30.E0009.P010",
+          "stable_ref": "LDC.T30.E0009.P010",
+          "source_text_sha256": "c4445c15e8fdb4dc8fc0d358e5f986e24e4643953c9c9f324ddcb824049e86f7",
+          "canonical_length": 86,
+          "boundary_after": {
+            "display_joiner": "space",
+            "speech_run_policy": "continue_same_speaker_only",
+            "suppress_next_leading_ranges": [],
+            "visual_policy": "continuous_prose",
+            "visual_action": "join_inline",
+            "adjudication_generation": "FAST_MODE_BODY0277_0854",
+            "adjudication_status": "CERTIFIED_CORRECTION_CERTAIN",
+            "adjudication_rule_id": "FAST_MODE.BOUNDARY.JOIN",
+            "evidence_ref": "FAST:BOUNDARY_REPAIR:LDC.T30.E0009.P011:LDC.T30.E0009.P010__LDC.T30.E0009.P011",
+            "evidence_sha256": "df8d4a995c279ea287292f7ec1113c1cf011888ed75c9925d132db3e981146f7"
+          }
+        },
         {
           "paragraph_id": "LDC.T30.E0009.P011",
           "stable_ref": "LDC.T30.E0009.P011",
-          "source_text_sha256": "4824b4c003ec00aacdbf3f9d2e595a785106db1b1b488f9a523673d5c9387f1c",
+          "source_text_sha256": "797b18f45825566de7c3939169cc746ef64dfeb00308c3db3b0393e0fcd394a1",
           "canonical_length": 51,
           "boundary_after": {
             "display_joiner": "space",
@@ -14206,8 +14332,8 @@
         {
           "paragraph_id": "LDC.T30.E0009.P099",
           "stable_ref": "LDC.T30.E0009.P099",
-          "source_text_sha256": "d318cc74378a037533c40ee434c9bc37141dbbf802946129c66400bd8156d16f",
-          "canonical_length": 31,
+          "source_text_sha256": "81d7c92327355f998bf5fae41e46b94b3c07488b8446e4d98b90da3721c1a015",
+          "canonical_length": 32,
           "boundary_after": null
         }
       ]
@@ -14265,7 +14391,7 @@
         {
           "paragraph_id": "LDC.T30.E0010.P008",
           "stable_ref": "LDC.T30.E0010.P008",
-          "source_text_sha256": "05b58ee248814321777a4a3d0b4098e8e06a644acc55cbb5cf82b445321aa98e",
+          "source_text_sha256": "0c225b62e308bcc8330ad9a79844b530971a87539c1ce6ce3db587cfef13b82f",
           "canonical_length": 191,
           "boundary_after": {
             "display_joiner": "space",
@@ -15471,8 +15597,8 @@
         {
           "paragraph_id": "LDC.T30.E0010.P090",
           "stable_ref": "LDC.T30.E0010.P090",
-          "source_text_sha256": "2580dc5c4487540b12ac1984da1fc90ec7e3b221ce28931b569172514c79da74",
-          "canonical_length": 93,
+          "source_text_sha256": "fc0b2920e3c7dfcb79e5f0a02e466c6043a9af5f8b2aeed1156b88d16fcbe595",
+          "canonical_length": 94,
           "boundary_after": null
         }
       ]
@@ -15791,8 +15917,8 @@
         {
           "paragraph_id": "LDC.T30.E0010.P112",
           "stable_ref": "LDC.T30.E0010.P112",
-          "source_text_sha256": "f935761414b15e3caf9a4cb44d7fdc0f2505c7430477099e9590e19032d47d0b",
-          "canonical_length": 60,
+          "source_text_sha256": "f8af4aa2a6180999f7f1515c0c59e5bbe02c1a23c73885c75231621af67bafce",
+          "canonical_length": 61,
           "boundary_after": null
         }
       ]
@@ -16412,13 +16538,13 @@
       ]
     },
     {
-      "flow_id": "FLOW.T30.P052-P053..E0011",
+      "flow_id": "FLOW.T30.FAST1.008.LDC_T30_E0011_P052__LDC_T30_E0011_P055",
       "entry_id": "LDC.T30.E0011",
       "classification": "inherited_dash_continuation",
       "confidence": "inherited_not_source_verified",
-      "origin": "legacy_runtime_inference",
+      "origin": "FAST_MODE_CERTIFIED_CORPUS_MUTATION_BODY0277_0854",
       "review_status": "preserved_pending_structural_review",
-      "reason": "runtime dash-merger inheritance",
+      "reason": "Certified correction-certain FAST Mode boundary repair; stable paragraph records preserved",
       "members": [
         {
           "paragraph_id": "LDC.T30.E0011.P052",
@@ -16446,25 +16572,25 @@
         {
           "paragraph_id": "LDC.T30.E0011.P053",
           "stable_ref": "LDC.T30.E0011.P053",
-          "source_text_sha256": "f21d8d7bda23f0bf1461c450a84874c2faaeccb643b2819e6dacc8d6c7067f95",
+          "source_text_sha256": "f24b85f3cfb73562b8bad9066852cecb744b0ed1047b273cc21bac39e895b5e5",
           "canonical_length": 151,
-          "boundary_after": null
-        }
-      ]
-    },
-    {
-      "flow_id": "FLOW.T30.P054-P055..E0011",
-      "entry_id": "LDC.T30.E0011",
-      "classification": "inherited_dash_continuation",
-      "confidence": "inherited_not_source_verified",
-      "origin": "legacy_runtime_inference",
-      "review_status": "preserved_pending_structural_review",
-      "reason": "runtime dash-merger inheritance",
-      "members": [
+          "boundary_after": {
+            "display_joiner": "space",
+            "speech_run_policy": "continue_same_speaker_only",
+            "suppress_next_leading_ranges": [],
+            "visual_policy": "continuous_prose",
+            "visual_action": "join_inline",
+            "adjudication_generation": "FAST_MODE_BODY0277_0854",
+            "adjudication_status": "CERTIFIED_CORRECTION_CERTAIN",
+            "adjudication_rule_id": "FAST_MODE.BOUNDARY.JOIN",
+            "evidence_ref": "FAST:BOUNDARY_REPAIR:LDC.T30.E0011.P054:LDC.T30.E0011.P053__LDC.T30.E0011.P054",
+            "evidence_sha256": "373e74bf218f222c848561d5ff98dcf14452b9d3ec92d1a25115835800873db2"
+          }
+        },
         {
           "paragraph_id": "LDC.T30.E0011.P054",
           "stable_ref": "LDC.T30.E0011.P054",
-          "source_text_sha256": "7356ca85541d20536b9fd8e121c2b8340b4ba075ad304a2a7ef4fdb400c4a594",
+          "source_text_sha256": "bba16c3497f96424b9dca8834e262aed65de4a8803852cf1868323440424dc54",
           "canonical_length": 49,
           "boundary_after": {
             "display_joiner": "space",
@@ -16494,13 +16620,13 @@
       ]
     },
     {
-      "flow_id": "FLOW.T30.P056-P057..E0011",
+      "flow_id": "FLOW.T30.FAST1.009.LDC_T30_E0011_P056__LDC_T30_E0011_P060",
       "entry_id": "LDC.T30.E0011",
       "classification": "inherited_dash_continuation",
       "confidence": "inherited_not_source_verified",
-      "origin": "legacy_runtime_inference",
+      "origin": "FAST_MODE_CERTIFIED_CORPUS_MUTATION_BODY0277_0854",
       "review_status": "preserved_pending_structural_review",
-      "reason": "runtime dash-merger inheritance",
+      "reason": "Certified correction-certain FAST Mode boundary repair; stable paragraph records preserved",
       "members": [
         {
           "paragraph_id": "LDC.T30.E0011.P056",
@@ -16528,25 +16654,25 @@
         {
           "paragraph_id": "LDC.T30.E0011.P057",
           "stable_ref": "LDC.T30.E0011.P057",
-          "source_text_sha256": "9fbe9cea10dcb38f8be4bd0b294ad26f792985cc9b0a5deed551de6e0c8480e4",
+          "source_text_sha256": "28d6dea0fe97ea15ed75d4bead26cb6dbbfb2bd6b7c0db5fb4aa51edf73e17de",
           "canonical_length": 85,
-          "boundary_after": null
-        }
-      ]
-    },
-    {
-      "flow_id": "FLOW.T30.P058-P060..E0011",
-      "entry_id": "LDC.T30.E0011",
-      "classification": "inherited_dash_continuation",
-      "confidence": "inherited_not_source_verified",
-      "origin": "legacy_runtime_inference",
-      "review_status": "preserved_pending_structural_review",
-      "reason": "runtime dash-merger inheritance",
-      "members": [
+          "boundary_after": {
+            "display_joiner": "space",
+            "speech_run_policy": "continue_same_speaker_only",
+            "suppress_next_leading_ranges": [],
+            "visual_policy": "continuous_prose",
+            "visual_action": "join_inline",
+            "adjudication_generation": "FAST_MODE_BODY0277_0854",
+            "adjudication_status": "CERTIFIED_CORRECTION_CERTAIN",
+            "adjudication_rule_id": "FAST_MODE.BOUNDARY.JOIN",
+            "evidence_ref": "FAST:BOUNDARY_REPAIR:LDC.T30.E0011.P058:LDC.T30.E0011.P057__LDC.T30.E0011.P058",
+            "evidence_sha256": "c5639799c28d2b7fdf6cdfa39691cc848890551b1661d1afe4070350968436b8"
+          }
+        },
         {
           "paragraph_id": "LDC.T30.E0011.P058",
           "stable_ref": "LDC.T30.E0011.P058",
-          "source_text_sha256": "9ff1666ea9d3c079876801e6c03f23e22044a262f4685e12631bf8b828def045",
+          "source_text_sha256": "b0ab01399365c150fbc3e4f7a7bd213992625746ebabff19479994f5a45519c9",
           "canonical_length": 32,
           "boundary_after": {
             "display_joiner": "space",
@@ -16599,13 +16725,13 @@
       ]
     },
     {
-      "flow_id": "FLOW.T30.P061-P063..E0011",
+      "flow_id": "FLOW.T30.FAST1.010.LDC_T30_E0011_P061__LDC_T30_E0011_P065",
       "entry_id": "LDC.T30.E0011",
       "classification": "inherited_dash_continuation",
       "confidence": "inherited_not_source_verified",
-      "origin": "legacy_runtime_inference",
+      "origin": "FAST_MODE_CERTIFIED_CORPUS_MUTATION_BODY0277_0854",
       "review_status": "preserved_pending_structural_review",
-      "reason": "runtime dash-merger inheritance",
+      "reason": "Certified correction-certain FAST Mode boundary repair; stable paragraph records preserved",
       "members": [
         {
           "paragraph_id": "LDC.T30.E0011.P061",
@@ -16656,25 +16782,25 @@
         {
           "paragraph_id": "LDC.T30.E0011.P063",
           "stable_ref": "LDC.T30.E0011.P063",
-          "source_text_sha256": "6ef6d8e5c7d9926f27df90f75f310f50b9f5088d474faee2c274466fa2402737",
+          "source_text_sha256": "db29686cf5612cbba2e1c457b1a2a218fbc34a2e476e3fc33c7e782db5275ea5",
           "canonical_length": 67,
-          "boundary_after": null
-        }
-      ]
-    },
-    {
-      "flow_id": "FLOW.T30.P064-P065..E0011",
-      "entry_id": "LDC.T30.E0011",
-      "classification": "inherited_dash_continuation",
-      "confidence": "inherited_not_source_verified",
-      "origin": "legacy_runtime_inference",
-      "review_status": "preserved_pending_structural_review",
-      "reason": "runtime dash-merger inheritance",
-      "members": [
+          "boundary_after": {
+            "display_joiner": "space",
+            "speech_run_policy": "continue_same_speaker_only",
+            "suppress_next_leading_ranges": [],
+            "visual_policy": "continuous_prose",
+            "visual_action": "join_inline",
+            "adjudication_generation": "FAST_MODE_BODY0277_0854",
+            "adjudication_status": "CERTIFIED_CORRECTION_CERTAIN",
+            "adjudication_rule_id": "FAST_MODE.BOUNDARY.JOIN",
+            "evidence_ref": "FAST:BOUNDARY_REPAIR:LDC.T30.E0011.P064:LDC.T30.E0011.P063__LDC.T30.E0011.P064",
+            "evidence_sha256": "709c4f3c6501bd3caa30eeb1f9884b746875eb522c9155adfaea5909c1f1e02b"
+          }
+        },
         {
           "paragraph_id": "LDC.T30.E0011.P064",
           "stable_ref": "LDC.T30.E0011.P064",
-          "source_text_sha256": "0c13f7a01eece4af5bc54a7f7f38490072b4038b73a6bc20f2c6b25759f8e35c",
+          "source_text_sha256": "770a016830cbc1ccf66690bae770325e4ddef9ae386d96095cd6045d1f862100",
           "canonical_length": 41,
           "boundary_after": {
             "display_joiner": "space",
@@ -17034,8 +17160,8 @@
         {
           "paragraph_id": "LDC.T30.E0012.P022",
           "stable_ref": "LDC.T30.E0012.P022",
-          "source_text_sha256": "f9d8bef7e78818664b014201c3171db47b6f470cb482d19a768d02274a4915c3",
-          "canonical_length": 117,
+          "source_text_sha256": "72d6f86d90bf55cb53f34d58d4cc2b7ab920626e2ab6993b1f252bfa987b1ab8",
+          "canonical_length": 120,
           "boundary_after": {
             "display_joiner": "space",
             "speech_run_policy": "continue_same_speaker_only",
@@ -17497,7 +17623,7 @@
         {
           "paragraph_id": "LDC.T30.E0012.P047",
           "stable_ref": "LDC.T30.E0012.P047",
-          "source_text_sha256": "c041ff09e2cdf505664ae5e65a7c153baa11b58f587d11144cfc0acd6ee1eaf5",
+          "source_text_sha256": "1885d63caf8a0b4e95e69557c4c8aa7ce2e60478ac3dcae27861940d01178bfd",
           "canonical_length": 70,
           "boundary_after": {
             "display_joiner": "space",
@@ -17591,18 +17717,18 @@
       ]
     },
     {
-      "flow_id": "FLOW.T30.P052-P055..E0012",
+      "flow_id": "FLOW.T30.FAST1.011.LDC_T30_E0012_P052__LDC_T30_E0012_P058",
       "entry_id": "LDC.T30.E0012",
       "classification": "inherited_dash_continuation",
       "confidence": "inherited_not_source_verified",
-      "origin": "legacy_runtime_inference",
+      "origin": "FAST_MODE_CERTIFIED_CORPUS_MUTATION_BODY0277_0854",
       "review_status": "preserved_pending_structural_review",
-      "reason": "runtime dash-merger inheritance",
+      "reason": "Certified correction-certain FAST Mode boundary repair; stable paragraph records preserved",
       "members": [
         {
           "paragraph_id": "LDC.T30.E0012.P052",
           "stable_ref": "LDC.T30.E0012.P052",
-          "source_text_sha256": "c20a9ce7e207ae2df4df9583a0cd9a999962e98422c338a7c8102c8d571248cd",
+          "source_text_sha256": "149aad8ebf65254f2c8dfdcd6a9df933c5a778fc686c4568aebb9f08b9515c65",
           "canonical_length": 17,
           "boundary_after": {
             "display_joiner": "space",
@@ -17671,25 +17797,25 @@
         {
           "paragraph_id": "LDC.T30.E0012.P055",
           "stable_ref": "LDC.T30.E0012.P055",
-          "source_text_sha256": "8ca856647bd67905a65af814cc6da98e24147290656181a95042c7823effd6de",
+          "source_text_sha256": "4ac26e6d8b359c77686b2f949b7ccdc01e3780fb4a2e36149de570e5d6cf4d08",
           "canonical_length": 30,
-          "boundary_after": null
-        }
-      ]
-    },
-    {
-      "flow_id": "FLOW.T30.P056-P058..E0012",
-      "entry_id": "LDC.T30.E0012",
-      "classification": "inherited_dash_continuation",
-      "confidence": "inherited_not_source_verified",
-      "origin": "legacy_runtime_inference",
-      "review_status": "preserved_pending_structural_review",
-      "reason": "runtime dash-merger inheritance",
-      "members": [
+          "boundary_after": {
+            "display_joiner": "space",
+            "speech_run_policy": "continue_same_speaker_only",
+            "suppress_next_leading_ranges": [],
+            "visual_policy": "continuous_prose",
+            "visual_action": "join_inline",
+            "adjudication_generation": "FAST_MODE_BODY0277_0854",
+            "adjudication_status": "CERTIFIED_CORRECTION_CERTAIN",
+            "adjudication_rule_id": "FAST_MODE.BOUNDARY.JOIN",
+            "evidence_ref": "FAST:BOUNDARY_REPAIR:LDC.T30.E0012.P056:LDC.T30.E0012.P055__LDC.T30.E0012.P056",
+            "evidence_sha256": "e883f9ac11ba1ec97377bfb752141aea35d1a735ed3609202340eb519e0b9584"
+          }
+        },
         {
           "paragraph_id": "LDC.T30.E0012.P056",
           "stable_ref": "LDC.T30.E0012.P056",
-          "source_text_sha256": "bab98f9f46046e5e8e330ae89cce942cd887939f8fede16192d39e9c752f9d4f",
+          "source_text_sha256": "84820c033056027e1abfcabcf2a654a5f04e118828896f008b390eb4dc8a3be7",
           "canonical_length": 110,
           "boundary_after": {
             "display_joiner": "space",
@@ -17863,7 +17989,7 @@
         {
           "paragraph_id": "LDC.T30.E0012.P066",
           "stable_ref": "LDC.T30.E0012.P066",
-          "source_text_sha256": "e04bb36c6a13cdda770dcac04fefdeb20b854afbda81ae6f737cf91b73fd544a",
+          "source_text_sha256": "bb012660797bef99ff9e3d7592bd9c666e3dc77f9380a01098d0314ba5d9a45f",
           "canonical_length": 26,
           "boundary_after": {
             "display_joiner": "space",
@@ -18078,7 +18204,7 @@
         {
           "paragraph_id": "LDC.T30.E0012.P079",
           "stable_ref": "LDC.T30.E0012.P079",
-          "source_text_sha256": "7459cdb371ec141344c221805825f44b59ab20aae670f2fbc205cd3b4a13e95b",
+          "source_text_sha256": "f161dd5f64004cfc41ede72a3dc9ea9cf7cfdfd754b61fdd7465fc1e1c1d3408",
           "canonical_length": 49,
           "boundary_after": {
             "display_joiner": "space",
@@ -18101,7 +18227,7 @@
         {
           "paragraph_id": "LDC.T30.E0012.P080",
           "stable_ref": "LDC.T30.E0012.P080",
-          "source_text_sha256": "cbcc666c9a41dfcce73a60e5d2e34c996ab9ba70a2e55c6c8d1ff61438dddce1",
+          "source_text_sha256": "4ffe6e88c1aeb7fd9081675a58712547293f6be072d69d78f5c4f4c8ae7eda5e",
           "canonical_length": 91,
           "boundary_after": null
         }
@@ -18316,7 +18442,7 @@
         {
           "paragraph_id": "LDC.T30.E0012.P095",
           "stable_ref": "LDC.T30.E0012.P095",
-          "source_text_sha256": "7a4e4c9276d1e2a1ad222725dd831e1178fddb2b129429bfc275f4826ef797c2",
+          "source_text_sha256": "94e5a30223940dbbf4cef700f77fd5f80e6c4840925f83bbe27bb7b9cf59e24b",
           "canonical_length": 62,
           "boundary_after": {
             "display_joiner": "space",
@@ -18758,18 +18884,36 @@
       ]
     },
     {
-      "flow_id": "FLOW.T30.P128-P130..E0012",
+      "flow_id": "FLOW.T30.FAST1.012.LDC_T30_E0012_P127__LDC_T30_E0012_P130",
       "entry_id": "LDC.T30.E0012",
       "classification": "inherited_dash_continuation",
       "confidence": "inherited_not_source_verified",
-      "origin": "legacy_runtime_inference",
+      "origin": "FAST_MODE_CERTIFIED_CORPUS_MUTATION_BODY0277_0854",
       "review_status": "preserved_pending_structural_review",
-      "reason": "runtime dash-merger inheritance",
+      "reason": "Certified correction-certain FAST Mode boundary repair; stable paragraph records preserved",
       "members": [
+        {
+          "paragraph_id": "LDC.T30.E0012.P127",
+          "stable_ref": "LDC.T30.E0012.P127",
+          "source_text_sha256": "88f8dd7e9c4ab646623e2f231d5f2abe3d3f51bd8c0fd3b6db0b82c4a21cadfe",
+          "canonical_length": 108,
+          "boundary_after": {
+            "display_joiner": "space",
+            "speech_run_policy": "continue_same_speaker_only",
+            "suppress_next_leading_ranges": [],
+            "visual_policy": "continuous_prose",
+            "visual_action": "join_inline",
+            "adjudication_generation": "FAST_MODE_BODY0277_0854",
+            "adjudication_status": "CERTIFIED_CORRECTION_CERTAIN",
+            "adjudication_rule_id": "FAST_MODE.BOUNDARY.JOIN",
+            "evidence_ref": "FAST:BOUNDARY_REPAIR:LDC.T30.E0012.P128:LDC.T30.E0012.P127__LDC.T30.E0012.P128",
+            "evidence_sha256": "dd93a8bc6309c8fe585b6fa9e493786b9365bcc93a81bec08af19ca3ec662c5a"
+          }
+        },
         {
           "paragraph_id": "LDC.T30.E0012.P128",
           "stable_ref": "LDC.T30.E0012.P128",
-          "source_text_sha256": "5de88c6ab8aa2f2686cf97101af299bb39ea0b12e32f1be494d90f4a1162f27e",
+          "source_text_sha256": "843b150b031a99b8f9337b21ea34237affd9cbafb43bbdd8ebb6238eabcd6f1a",
           "canonical_length": 18,
           "boundary_after": {
             "display_joiner": "space",
@@ -19532,7 +19676,7 @@
         {
           "paragraph_id": "LDC.T30.E0013.P049",
           "stable_ref": "LDC.T30.E0013.P049",
-          "source_text_sha256": "1d24c76835285a54d8d7c0a16c49299780f03cf3dfcd7746269e2d4049a1577f",
+          "source_text_sha256": "b457daad638381becb2962949d9374d976f9e0e54a14be10b33b3bf28e174d9f",
           "canonical_length": 61,
           "boundary_after": {
             "display_joiner": "space",
@@ -19788,7 +19932,7 @@
         {
           "paragraph_id": "LDC.T30.E0013.P070",
           "stable_ref": "LDC.T30.E0013.P070",
-          "source_text_sha256": "dd8409bbd10d711788e4284af0147de40cb18e9c59fa22913fb5ff2f874867ab",
+          "source_text_sha256": "cfadf1c44451736cc52a6297210355305e835e87fa9ab21ba411f526877783cc",
           "canonical_length": 38,
           "boundary_after": {
             "display_joiner": "space",
@@ -19834,8 +19978,8 @@
         {
           "paragraph_id": "LDC.T30.E0013.P072",
           "stable_ref": "LDC.T30.E0013.P072",
-          "source_text_sha256": "c47f465d77bce67742d6f69c332223fadd18e92db5407ec347cc7b05f2c47b08",
-          "canonical_length": 106,
+          "source_text_sha256": "717d45663fb4ea57f8201e02d70d9389a0d2b1e2935d035a95047f00add1d941",
+          "canonical_length": 107,
           "boundary_after": null
         }
       ]
@@ -21058,7 +21202,7 @@
         {
           "paragraph_id": "LDC.T30.E0013.P160",
           "stable_ref": "LDC.T30.E0013.P160",
-          "source_text_sha256": "8f8a6ad5227e6d84cbe1ece01d2a9741cb039bf60b3d94373849cb97d9280869",
+          "source_text_sha256": "3d331bcd669a2e875073f250e28125829d5e6faf36196b7a89ab4258bf80b3ce",
           "canonical_length": 113,
           "boundary_after": {
             "display_joiner": "space",
@@ -21973,7 +22117,7 @@
         {
           "paragraph_id": "LDC.T30.E0014.P057",
           "stable_ref": "LDC.T30.E0014.P057",
-          "source_text_sha256": "b50be2687d3b30b22d1a2c124932c15f7fe9edfb4d7ba8647d83c35e45501d26",
+          "source_text_sha256": "07628a686fa870f12b98f35053e757b5eb68bd65dfb2417e6d27443fbd059b66",
           "canonical_length": 98,
           "boundary_after": {
             "display_joiner": "space",
@@ -22526,6 +22670,42 @@
           "stable_ref": "LDC.T30.E0014.P089",
           "source_text_sha256": "dbb832b6c8a249f61e5f01ce68bf3f6f9d3a28b7a0e0fee429ea3b0df9d763f1",
           "canonical_length": 64,
+          "boundary_after": null
+        }
+      ]
+    },
+    {
+      "flow_id": "FLOW.T30.FAST1.013.LDC_T30_E0014_P090__LDC_T30_E0014_P091",
+      "entry_id": "LDC.T30.E0014",
+      "classification": "certified_sentence_continuation",
+      "confidence": "high",
+      "origin": "FAST_MODE_CERTIFIED_CORPUS_MUTATION_BODY0277_0854",
+      "review_status": "approved_for_display",
+      "reason": "Certified correction-certain FAST Mode boundary repair; stable paragraph records preserved",
+      "members": [
+        {
+          "paragraph_id": "LDC.T30.E0014.P090",
+          "stable_ref": "LDC.T30.E0014.P090",
+          "source_text_sha256": "7d572bec11a6487bd2acdaf26c6fb51f2a8c0c3aaf1d8908273d2500765081ec",
+          "canonical_length": 49,
+          "boundary_after": {
+            "display_joiner": "space",
+            "speech_run_policy": "continue_same_speaker_only",
+            "suppress_next_leading_ranges": [],
+            "visual_policy": "continuous_prose",
+            "visual_action": "join_inline",
+            "adjudication_generation": "FAST_MODE_BODY0277_0854",
+            "adjudication_status": "CERTIFIED_CORRECTION_CERTAIN",
+            "adjudication_rule_id": "FAST_MODE.BOUNDARY.JOIN",
+            "evidence_ref": "FAST:BOUNDARY_REPAIR:LDC.T30.E0014.P091:LDC.T30.E0014.P090__LDC.T30.E0014.P091",
+            "evidence_sha256": "1b1f156206db034bff65d2eea1c6295873e8cb0ca2f267124da9c7861586b109"
+          }
+        },
+        {
+          "paragraph_id": "LDC.T30.E0014.P091",
+          "stable_ref": "LDC.T30.E0014.P091",
+          "source_text_sha256": "1d27f72ccdbe3b5adcb93f7fcd732104e24f9760c40be24142c0b712e2e52225",
+          "canonical_length": 73,
           "boundary_after": null
         }
       ]
@@ -23232,8 +23412,8 @@
         {
           "paragraph_id": "LDC.T30.E0014.P135",
           "stable_ref": "LDC.T30.E0014.P135",
-          "source_text_sha256": "38c206f2e7b5ede9c40f9e068d1b4133623294ecf11a786445eae0bc6e4747cc",
-          "canonical_length": 88,
+          "source_text_sha256": "dee00abc237ede4e061a0e334ab469d68121011079657a50863c291d7780d268",
+          "canonical_length": 89,
           "boundary_after": {
             "display_joiner": "space",
             "speech_run_policy": "continue_same_speaker_only",
@@ -23596,8 +23776,8 @@
         {
           "paragraph_id": "LDC.T30.E0015.P011",
           "stable_ref": "LDC.T30.E0015.P011",
-          "source_text_sha256": "3769f94557532709a806b2c4496ac74d1378602761c4543a986bf0c56d25ab8d",
-          "canonical_length": 139,
+          "source_text_sha256": "06215cb01e18ffb160c14770872cf1c95f96d45e92299c239952f4ebeb8fc707",
+          "canonical_length": 140,
           "boundary_after": {
             "display_joiner": "space",
             "speech_run_policy": "continue_same_speaker_only",
@@ -23724,8 +23904,8 @@
         {
           "paragraph_id": "LDC.T30.E0015.P019",
           "stable_ref": "LDC.T30.E0015.P019",
-          "source_text_sha256": "c5ca68e6b0cc193bd1dab49d63d5d39cbcfa74bb587a4f932868896fde9d1c45",
-          "canonical_length": 108,
+          "source_text_sha256": "6092be76a74361b4046b36841fc16360a4f1076dbca5ef9269ad7b2d3309473c",
+          "canonical_length": 109,
           "boundary_after": null
         }
       ]
@@ -24021,8 +24201,8 @@
         {
           "paragraph_id": "LDC.T30.E0015.P040",
           "stable_ref": "LDC.T30.E0015.P040",
-          "source_text_sha256": "d03cfa855a12e2351426dd7249a1e9fb890a0e6cbaaddea019f8dd4ffee258ff",
-          "canonical_length": 185,
+          "source_text_sha256": "41c452cf5b9431db2ee7e015a87a81113ecdf18cf5532e21503c97295516b929",
+          "canonical_length": 184,
           "boundary_after": null
         }
       ]
@@ -24354,8 +24534,8 @@
         {
           "paragraph_id": "LDC.T30.E0015.P060",
           "stable_ref": "LDC.T30.E0015.P060",
-          "source_text_sha256": "371e0802b9405e911d37dde2f31045827c338d1b0c899a2d6ee3a8d68476c439",
-          "canonical_length": 112,
+          "source_text_sha256": "670b65d0753405ace1f28bf4ee4f4e9d1584353ddef145e7d9a92a006fa46eaf",
+          "canonical_length": 110,
           "boundary_after": {
             "display_joiner": "space",
             "speech_run_policy": "continue_same_speaker_only",
@@ -24459,7 +24639,7 @@
         {
           "paragraph_id": "LDC.T30.E0015.P065",
           "stable_ref": "LDC.T30.E0015.P065",
-          "source_text_sha256": "c9687bba6ec3245da1a2a9957d4fe83811cd6e570e5415c9905860ee7c0aebf1",
+          "source_text_sha256": "9959ef41a70dda81e1dae9d7948a7df211fc174fb91cadcdbe307057381d23ec",
           "canonical_length": 79,
           "boundary_after": {
             "display_joiner": "space",
@@ -24505,8 +24685,8 @@
         {
           "paragraph_id": "LDC.T30.E0015.P067",
           "stable_ref": "LDC.T30.E0015.P067",
-          "source_text_sha256": "9e7064007d2febacb7faceac2ba29ef9ca8b83f35588b4d9f53e573a43ca7f19",
-          "canonical_length": 106,
+          "source_text_sha256": "151c8fa87fcb2d6f5e8232fc82f273d45987dfe3381dad633c1936d01e9857dc",
+          "canonical_length": 110,
           "boundary_after": null
         }
       ]
@@ -24861,7 +25041,7 @@
         {
           "paragraph_id": "LDC.T30.E0015.P088",
           "stable_ref": "LDC.T30.E0015.P088",
-          "source_text_sha256": "0ff4f9035aea629292df1fa9325fb8c2cec7df9eb88e75e6d40e47292630e4f2",
+          "source_text_sha256": "587556d7bf49ceffccbac0fb72ae2b746057f194046723e174b7b3a3ae6027b1",
           "canonical_length": 80,
           "boundary_after": {
             "display_joiner": "space",
@@ -24891,13 +25071,13 @@
       ]
     },
     {
-      "flow_id": "FLOW.T30.P090-P093..E0015",
+      "flow_id": "FLOW.T30.FAST1.014.LDC_T30_E0015_P090__LDC_T30_E0015_P094",
       "entry_id": "LDC.T30.E0015",
       "classification": "inherited_dash_continuation",
       "confidence": "inherited_not_source_verified",
-      "origin": "legacy_runtime_inference",
+      "origin": "FAST_MODE_CERTIFIED_CORPUS_MUTATION_BODY0277_0854",
       "review_status": "preserved_pending_structural_review",
-      "reason": "runtime dash-merger inheritance",
+      "reason": "Certified correction-certain FAST Mode boundary repair; stable paragraph records preserved",
       "members": [
         {
           "paragraph_id": "LDC.T30.E0015.P090",
@@ -24971,8 +25151,26 @@
         {
           "paragraph_id": "LDC.T30.E0015.P093",
           "stable_ref": "LDC.T30.E0015.P093",
-          "source_text_sha256": "4ba9fa61aa660fc77543bbb2cc27eced22dbf0f739367b6365057494e8915ed9",
+          "source_text_sha256": "57be5a88a657900e0fff48f762a4e77ddfd66fd3ad1adcd7fe89460f3d5afd63",
           "canonical_length": 20,
+          "boundary_after": {
+            "display_joiner": "space",
+            "speech_run_policy": "continue_same_speaker_only",
+            "suppress_next_leading_ranges": [],
+            "visual_policy": "continuous_prose",
+            "visual_action": "join_inline",
+            "adjudication_generation": "FAST_MODE_BODY0277_0854",
+            "adjudication_status": "CERTIFIED_CORRECTION_CERTAIN",
+            "adjudication_rule_id": "FAST_MODE.BOUNDARY.JOIN",
+            "evidence_ref": "FAST:BOUNDARY_REPAIR:LDC.T30.E0015.P094:LDC.T30.E0015.P093__LDC.T30.E0015.P094",
+            "evidence_sha256": "87d8c77cf1f945f930e0ea9d57f707c77fddf52cf42fb2d2c3aec50261b9cb96"
+          }
+        },
+        {
+          "paragraph_id": "LDC.T30.E0015.P094",
+          "stable_ref": "LDC.T30.E0015.P094",
+          "source_text_sha256": "8e79cfb0544e5c0325775a0bfde057ad9af4f5fd99f903b84474003be7657870",
+          "canonical_length": 127,
           "boundary_after": null
         }
       ]
@@ -25035,7 +25233,7 @@
         {
           "paragraph_id": "LDC.T30.E0015.P098",
           "stable_ref": "LDC.T30.E0015.P098",
-          "source_text_sha256": "aa42867060f574c5e49c008bde1bc308bd2d212f97a14bda6761e1cd03212fce",
+          "source_text_sha256": "d8c5c04339f068fcb63f8dff58a08f4de3c175eae9c8c389bb1af6b8a83872f8",
           "canonical_length": 75,
           "boundary_after": {
             "display_joiner": "space",
@@ -25232,7 +25430,7 @@
         {
           "paragraph_id": "LDC.T30.E0015.P107",
           "stable_ref": "LDC.T30.E0015.P107",
-          "source_text_sha256": "01e1c22d8b6c5a32b7964d9ccfa9854b1c290c86edcac56ede46ad354aa57866",
+          "source_text_sha256": "9ae14802d667d754ad7d887b190bf1a6c460894711294661b1983e998b31daf6",
           "canonical_length": 43,
           "boundary_after": null
         }
@@ -25337,7 +25535,7 @@
         {
           "paragraph_id": "LDC.T30.E0015.P113",
           "stable_ref": "LDC.T30.E0015.P113",
-          "source_text_sha256": "1892d5447a36ceb4c986ce4ddb1bfdba5190dac0f774cb8df217230a90ad6de7",
+          "source_text_sha256": "f8e95c099fd9246d3a4e87727e7355c6ab2214b41365de4d1eb68ba9d824de97",
           "canonical_length": 51,
           "boundary_after": {
             "display_joiner": "space",
@@ -25623,13 +25821,13 @@
       ]
     },
     {
-      "flow_id": "FLOW.T30.P030-P035..E0016",
+      "flow_id": "FLOW.T30.FAST1.015.LDC_T30_E0016_P030__LDC_T30_E0016_P038",
       "entry_id": "LDC.T30.E0016",
       "classification": "inherited_dash_continuation",
       "confidence": "inherited_not_source_verified",
-      "origin": "legacy_runtime_inference",
+      "origin": "FAST_MODE_CERTIFIED_CORPUS_MUTATION_BODY0277_0854",
       "review_status": "preserved_pending_structural_review",
-      "reason": "runtime dash-merger inheritance",
+      "reason": "Certified correction-certain FAST Mode boundary repair; stable paragraph records preserved",
       "members": [
         {
           "paragraph_id": "LDC.T30.E0016.P030",
@@ -25680,8 +25878,8 @@
         {
           "paragraph_id": "LDC.T30.E0016.P032",
           "stable_ref": "LDC.T30.E0016.P032",
-          "source_text_sha256": "e1e16fc653bb6252436dc3b1ba7b5d2abc99f68f32e0376668c72c9d248f7572",
-          "canonical_length": 73,
+          "source_text_sha256": "9ef6a717b95a23afe6147111cd986e448545edcf27edf2338bdbc14832e5ba4e",
+          "canonical_length": 74,
           "boundary_after": {
             "display_joiner": "space",
             "speech_run_policy": "continue_same_speaker_only",
@@ -25749,25 +25947,25 @@
         {
           "paragraph_id": "LDC.T30.E0016.P035",
           "stable_ref": "LDC.T30.E0016.P035",
-          "source_text_sha256": "fa069d777db26356c882a5508abde38a0d2f0d2c85fb50804aae8c4e59c2cd8b",
+          "source_text_sha256": "a80b4c5fb9197693c333faf00b7ac6d73436cd04d8d361d5d62f2b1961561bce",
           "canonical_length": 53,
-          "boundary_after": null
-        }
-      ]
-    },
-    {
-      "flow_id": "FLOW.T30.P036-P038..E0016",
-      "entry_id": "LDC.T30.E0016",
-      "classification": "inherited_dash_continuation",
-      "confidence": "inherited_not_source_verified",
-      "origin": "legacy_runtime_inference",
-      "review_status": "preserved_pending_structural_review",
-      "reason": "runtime dash-merger inheritance",
-      "members": [
+          "boundary_after": {
+            "display_joiner": "space",
+            "speech_run_policy": "continue_same_speaker_only",
+            "suppress_next_leading_ranges": [],
+            "visual_policy": "continuous_prose",
+            "visual_action": "join_inline",
+            "adjudication_generation": "FAST_MODE_BODY0277_0854",
+            "adjudication_status": "CERTIFIED_CORRECTION_CERTAIN",
+            "adjudication_rule_id": "FAST_MODE.BOUNDARY.JOIN",
+            "evidence_ref": "FAST:BOUNDARY_REPAIR:LDC.T30.E0016.P036:LDC.T30.E0016.P035__LDC.T30.E0016.P036",
+            "evidence_sha256": "db0d8565b2746abd0a54e37ab7d7cc8064a8c89f89cd5e326d867909a12756a2"
+          }
+        },
         {
           "paragraph_id": "LDC.T30.E0016.P036",
           "stable_ref": "LDC.T30.E0016.P036",
-          "source_text_sha256": "6fd9354c2768e055095d21a7a08c8357c2d18a5fe7cecb6b0e45c38b845214a0",
+          "source_text_sha256": "61cc2dd04550b7e414ceb084401536330420b02983c1b05e3ab2ed2ecbfdc978",
           "canonical_length": 58,
           "boundary_after": {
             "display_joiner": "space",
@@ -25884,13 +26082,13 @@
       ]
     },
     {
-      "flow_id": "FLOW.T30.P044-P045..E0016",
+      "flow_id": "FLOW.T30.FAST1.016.LDC_T30_E0016_P044__LDC_T30_E0016_P046",
       "entry_id": "LDC.T30.E0016",
       "classification": "inherited_dash_continuation",
       "confidence": "inherited_not_source_verified",
-      "origin": "legacy_runtime_inference",
+      "origin": "FAST_MODE_CERTIFIED_CORPUS_MUTATION_BODY0277_0854",
       "review_status": "preserved_pending_structural_review",
-      "reason": "runtime dash-merger inheritance",
+      "reason": "Certified correction-certain FAST Mode boundary repair; stable paragraph records preserved",
       "members": [
         {
           "paragraph_id": "LDC.T30.E0016.P044",
@@ -25918,8 +26116,26 @@
         {
           "paragraph_id": "LDC.T30.E0016.P045",
           "stable_ref": "LDC.T30.E0016.P045",
-          "source_text_sha256": "a75b7b0f1b75fd42bebd9dd1ed19b64a60a6b5f51f71cc5684fa08deabc2202f",
+          "source_text_sha256": "2cfdfde3e12e3e51923f6394a3cb9f6d7b839f3159e6c9bd483e514d13208b62",
           "canonical_length": 71,
+          "boundary_after": {
+            "display_joiner": "space",
+            "speech_run_policy": "continue_same_speaker_only",
+            "suppress_next_leading_ranges": [],
+            "visual_policy": "continuous_prose",
+            "visual_action": "join_inline",
+            "adjudication_generation": "FAST_MODE_BODY0277_0854",
+            "adjudication_status": "CERTIFIED_CORRECTION_CERTAIN",
+            "adjudication_rule_id": "FAST_MODE.BOUNDARY.JOIN",
+            "evidence_ref": "FAST:BOUNDARY_REPAIR:LDC.T30.E0016.P046:LDC.T30.E0016.P045__LDC.T30.E0016.P046",
+            "evidence_sha256": "4c51334190a512585cebb5d7789ca4d76cf1c9db6e389080cf5dccf5036a5507"
+          }
+        },
+        {
+          "paragraph_id": "LDC.T30.E0016.P046",
+          "stable_ref": "LDC.T30.E0016.P046",
+          "source_text_sha256": "ed46da91d47948fd1337c58120f68a0dd7dc32fa0660d064689e6dac6907351d",
+          "canonical_length": 144,
           "boundary_after": null
         }
       ]
@@ -26453,7 +26669,7 @@
         {
           "paragraph_id": "LDC.T30.E0016.P079",
           "stable_ref": "LDC.T30.E0016.P079",
-          "source_text_sha256": "df271f16cf58ed67e3779cd6ae9871cab45c43baf0abbb67654944dcb15352fb",
+          "source_text_sha256": "f512bcfaa1fef63ee30f5562911f97506aaeeddae89c8fb350c97068c672d174",
           "canonical_length": 49,
           "boundary_after": {
             "display_joiner": "space",
@@ -27090,7 +27306,7 @@
         {
           "paragraph_id": "LDC.T30.E0017.P018",
           "stable_ref": "LDC.T30.E0017.P018",
-          "source_text_sha256": "0a06e92e07edccf8a092ae7e6d256b22be89be9c670ef91e43ee61814041dada",
+          "source_text_sha256": "e0e2c87f91fb6d698abddc2b3689ec847adbd8126be698c5f9270d447c2f3522",
           "canonical_length": 103,
           "boundary_after": null
         }
@@ -27108,8 +27324,8 @@
         {
           "paragraph_id": "LDC.T30.E0017.P021",
           "stable_ref": "LDC.T30.E0017.P021",
-          "source_text_sha256": "7b1f77c8b09b360f4a33e064942094e5fe12bda09123cbe1b4cbf41f2956c46f",
-          "canonical_length": 52,
+          "source_text_sha256": "9eda27dcb5ffbd1b1defbd19c487828ecadcf82f48f86f1d39a1ddd4afb23a42",
+          "canonical_length": 53,
           "boundary_after": {
             "display_joiner": "space",
             "speech_run_policy": "continue_same_speaker_only",
@@ -27346,7 +27562,7 @@
         {
           "paragraph_id": "LDC.T30.E0017.P041",
           "stable_ref": "LDC.T30.E0017.P041",
-          "source_text_sha256": "bc00dd462987ab266421384642da01e109b3fb6877f985f33efd258e92fbf55c",
+          "source_text_sha256": "9462007395e650d0fcbd78fc4cc502c75634bbcc35c9b995f823a80e43991473",
           "canonical_length": 52,
           "boundary_after": {
             "display_joiner": "space",
@@ -27643,8 +27859,8 @@
         {
           "paragraph_id": "LDC.T30.E0017.P059",
           "stable_ref": "LDC.T30.E0017.P059",
-          "source_text_sha256": "cd15e24af0288f99841a86d38399021596816651dfda9b957a6601db83090c3d",
-          "canonical_length": 75,
+          "source_text_sha256": "841efe383aa1138e87ecc7325d46ae1b7b5b487f9d1e277887df279204cc62a6",
+          "canonical_length": 77,
           "boundary_after": null
         }
       ]
@@ -28009,7 +28225,7 @@
         {
           "paragraph_id": "LDC.T30.E0018.P009",
           "stable_ref": "LDC.T30.E0018.P009",
-          "source_text_sha256": "0ea4ba69fc6a5633c751bba45906433558da94a119667f68b8571a8c5fe61c5e",
+          "source_text_sha256": "ac59d335b217dc96f26d02e8123d6de01ab9a674d82e2f4a8bddcb042278e6b1",
           "canonical_length": 108,
           "boundary_after": null
         }
@@ -28213,18 +28429,36 @@
       ]
     },
     {
-      "flow_id": "FLOW.T30.P026-P027..E0018",
+      "flow_id": "FLOW.T30.FAST1.017.LDC_T30_E0018_P025__LDC_T30_E0018_P027",
       "entry_id": "LDC.T30.E0018",
       "classification": "inherited_dash_continuation",
       "confidence": "inherited_not_source_verified",
-      "origin": "legacy_runtime_inference",
+      "origin": "FAST_MODE_CERTIFIED_CORPUS_MUTATION_BODY0277_0854",
       "review_status": "preserved_pending_structural_review",
-      "reason": "runtime dash-merger inheritance",
+      "reason": "Certified correction-certain FAST Mode boundary repair; stable paragraph records preserved",
       "members": [
+        {
+          "paragraph_id": "LDC.T30.E0018.P025",
+          "stable_ref": "LDC.T30.E0018.P025",
+          "source_text_sha256": "05adf0a143fcf5f1945167a1667241b3142541685793865a581f943d9c9cd525",
+          "canonical_length": 144,
+          "boundary_after": {
+            "display_joiner": "space",
+            "speech_run_policy": "continue_same_speaker_only",
+            "suppress_next_leading_ranges": [],
+            "visual_policy": "continuous_prose",
+            "visual_action": "join_inline",
+            "adjudication_generation": "FAST_MODE_BODY0277_0854",
+            "adjudication_status": "CERTIFIED_CORRECTION_CERTAIN",
+            "adjudication_rule_id": "FAST_MODE.BOUNDARY.JOIN",
+            "evidence_ref": "FAST:BOUNDARY_REPAIR:LDC.T30.E0018.P026:LDC.T30.E0018.P025__LDC.T30.E0018.P026",
+            "evidence_sha256": "6ebe881c3611eae5c96eda9d79ea262b833d64576b8dd21dd4f6aae883e81bf9"
+          }
+        },
         {
           "paragraph_id": "LDC.T30.E0018.P026",
           "stable_ref": "LDC.T30.E0018.P026",
-          "source_text_sha256": "a38a859b83b592491a1678e26170a551f0d47042a0929feb0217401d53e6421a",
+          "source_text_sha256": "f67f93586976b45c8480dd8e6c2e684ece907093e40c820be705a326380b615e",
           "canonical_length": 46,
           "boundary_after": {
             "display_joiner": "space",
@@ -28446,13 +28680,13 @@
       ]
     },
     {
-      "flow_id": "FLOW.T30.P039-P042..E0018",
+      "flow_id": "FLOW.T30.FAST1.018.LDC_T30_E0018_P039__LDC_T30_E0018_P045",
       "entry_id": "LDC.T30.E0018",
       "classification": "inherited_dash_continuation",
       "confidence": "inherited_not_source_verified",
-      "origin": "legacy_runtime_inference",
+      "origin": "FAST_MODE_CERTIFIED_CORPUS_MUTATION_BODY0277_0854",
       "review_status": "preserved_pending_structural_review",
-      "reason": "runtime dash-merger inheritance",
+      "reason": "Certified correction-certain FAST Mode boundary repair; stable paragraph records preserved",
       "members": [
         {
           "paragraph_id": "LDC.T30.E0018.P039",
@@ -28526,25 +28760,25 @@
         {
           "paragraph_id": "LDC.T30.E0018.P042",
           "stable_ref": "LDC.T30.E0018.P042",
-          "source_text_sha256": "91289cf7165ea28f81b70ddb0a0dfeef703125519beb9c3038bd2c9cc1b5477b",
+          "source_text_sha256": "7d867d79d05d61ee80b651fe833bc2e07850bc2a84f67bab669552c69133ba1a",
           "canonical_length": 25,
-          "boundary_after": null
-        }
-      ]
-    },
-    {
-      "flow_id": "FLOW.T30.P043-P045..E0018",
-      "entry_id": "LDC.T30.E0018",
-      "classification": "inherited_dash_continuation",
-      "confidence": "inherited_not_source_verified",
-      "origin": "legacy_runtime_inference",
-      "review_status": "preserved_pending_structural_review",
-      "reason": "runtime dash-merger inheritance",
-      "members": [
+          "boundary_after": {
+            "display_joiner": "space",
+            "speech_run_policy": "continue_same_speaker_only",
+            "suppress_next_leading_ranges": [],
+            "visual_policy": "continuous_prose",
+            "visual_action": "join_inline",
+            "adjudication_generation": "FAST_MODE_BODY0277_0854",
+            "adjudication_status": "CERTIFIED_CORRECTION_CERTAIN",
+            "adjudication_rule_id": "FAST_MODE.BOUNDARY.JOIN",
+            "evidence_ref": "FAST:BOUNDARY_REPAIR:LDC.T30.E0018.P043:LDC.T30.E0018.P042__LDC.T30.E0018.P043",
+            "evidence_sha256": "61e2e83cd293f301b71cd1b90f1c182d40a2c3e8efeaf1b89137aebf6d5dec36"
+          }
+        },
         {
           "paragraph_id": "LDC.T30.E0018.P043",
           "stable_ref": "LDC.T30.E0018.P043",
-          "source_text_sha256": "9fc15f756f1cb739ac367a0cfdefb664e0a6425114df4a463073010df9d147f8",
+          "source_text_sha256": "57069514568dee5c27883aba1efef2ccdd8644d4c9cd0a705f2e658888420d7a",
           "canonical_length": 41,
           "boundary_after": {
             "display_joiner": "space",
@@ -28991,6 +29225,34 @@
       ]
     },
     {
+      "flow_id": "FLOW.RA11.T30.LDC_T30_E0018.P070-P071",
+      "entry_id": "LDC.T30.E0018",
+      "classification": "ra11_broader_boundary_high_confidence_continuation",
+      "confidence": "high",
+      "origin": "RA11_226_CASE_ADJUDICATION",
+      "review_status": "source_or_grammar_discourse_adjudicated",
+      "reason": "RA11 broader-boundary adjudication: canonical punctuation/grammar proves continuous prose; display-flow repair preserves canonical records.",
+      "members": [
+        {
+          "paragraph_id": "LDC.T30.E0018.P070",
+          "stable_ref": "LDC.T30.E0018.P070",
+          "source_text_sha256": "aa00a583bbac3c42c2922318e2dc2e31f93261736e85872ff6102f74d9867a45",
+          "canonical_length": 64,
+          "boundary_after": {
+            "display_joiner": "space",
+            "speech_run_policy": "continue_same_speaker_only"
+          }
+        },
+        {
+          "paragraph_id": "LDC.T30.E0018.P071",
+          "stable_ref": "LDC.T30.E0018.P071",
+          "source_text_sha256": "f64ae8f76d6376b3e955d1c02ed14e059609a22a04c51cd6fa04bbe23f0aa9dd",
+          "canonical_length": 132,
+          "boundary_after": null
+        }
+      ]
+    },
+    {
       "flow_id": "FLOW.T30.P072-P074..E0018",
       "entry_id": "LDC.T30.E0018",
       "classification": "inherited_dash_continuation",
@@ -29258,7 +29520,7 @@
         {
           "paragraph_id": "LDC.T30.E0018.P089",
           "stable_ref": "LDC.T30.E0018.P089",
-          "source_text_sha256": "0a46f6dcd2b5e12f658c3e7b9a386d8b8813ac786e6ebd0b1f76000fed0feed8",
+          "source_text_sha256": "ef4860351ada10bdec685f384ae6a237839381bae28851e225e561ea33701018",
           "canonical_length": 308,
           "boundary_after": {
             "display_joiner": "space",
@@ -29721,8 +29983,8 @@
         {
           "paragraph_id": "LDC.T30.E0019.P017",
           "stable_ref": "LDC.T30.E0019.P017",
-          "source_text_sha256": "701df5439358f62ddf161fb7476469d70714f6ef07400f9a45b3b0c6f3455657",
-          "canonical_length": 110,
+          "source_text_sha256": "13fed2b1f0cc34fe40a8377107fc8435665caa9453e81abbbcce7a6180b9f5bb",
+          "canonical_length": 111,
           "boundary_after": null
         }
       ]
@@ -30049,7 +30311,7 @@
         {
           "paragraph_id": "LDC.T30.E0019.P041",
           "stable_ref": "LDC.T30.E0019.P041",
-          "source_text_sha256": "368181ab6a7683a69b016726af3312be275ede7b0791abacb1443cb919a55aee",
+          "source_text_sha256": "ed66d4e817419a693ca5e675ffe002d76e38fee0c5149355c50016f5a5e49ef8",
           "canonical_length": 57,
           "boundary_after": null
         }
@@ -30474,7 +30736,7 @@
         {
           "paragraph_id": "LDC.T30.E0020.P003",
           "stable_ref": "LDC.T30.E0020.P003",
-          "source_text_sha256": "e0e22012a6e25d3ca64b54e00886d3f4242bd3dace9af88a458dd492aa568bf0",
+          "source_text_sha256": "f096d2f2531b07e3cad4226298efa715aee447357ca963eae0b93dd9a8f0b9ba",
           "canonical_length": 109,
           "boundary_after": {
             "display_joiner": "space",
@@ -30737,7 +30999,7 @@
         {
           "paragraph_id": "LDC.T30.E0020.P032",
           "stable_ref": "LDC.T30.E0020.P032",
-          "source_text_sha256": "11cbbdef90b668be4ca708ecab293db44239eb7e05a020b4f509c0a5df13cc83",
+          "source_text_sha256": "705e8725372462e7760ca568024405f0b1ad3eb2c2a4c44184cda62083b7e293",
           "canonical_length": 156,
           "boundary_after": {
             "display_joiner": "space",
@@ -30941,13 +31203,13 @@
       ]
     },
     {
-      "flow_id": "FLOW.T30.P047-P049..E0020",
+      "flow_id": "FLOW.T30.FAST1.019.LDC_T30_E0020_P047__LDC_T30_E0020_P050",
       "entry_id": "LDC.T30.E0020",
       "classification": "inherited_dash_continuation",
       "confidence": "inherited_not_source_verified",
-      "origin": "legacy_runtime_inference",
+      "origin": "FAST_MODE_CERTIFIED_CORPUS_MUTATION_BODY0277_0854",
       "review_status": "preserved_pending_structural_review",
-      "reason": "runtime dash-merger inheritance",
+      "reason": "Certified correction-certain FAST Mode boundary repair; stable paragraph records preserved",
       "members": [
         {
           "paragraph_id": "LDC.T30.E0020.P047",
@@ -30998,8 +31260,26 @@
         {
           "paragraph_id": "LDC.T30.E0020.P049",
           "stable_ref": "LDC.T30.E0020.P049",
-          "source_text_sha256": "cc0c73e6c51a44a7035e1d74abfbd9fa7ef0bcf1de69504f03e5bd51d26a4c65",
+          "source_text_sha256": "f463bb388c0c75257086317716bff9cfd976a50aa57ef1f118462e48e7a31b67",
           "canonical_length": 24,
+          "boundary_after": {
+            "display_joiner": "space",
+            "speech_run_policy": "continue_same_speaker_only",
+            "suppress_next_leading_ranges": [],
+            "visual_policy": "continuous_prose",
+            "visual_action": "join_inline",
+            "adjudication_generation": "FAST_MODE_BODY0277_0854",
+            "adjudication_status": "CERTIFIED_CORRECTION_CERTAIN",
+            "adjudication_rule_id": "FAST_MODE.BOUNDARY.JOIN",
+            "evidence_ref": "FAST:BOUNDARY_REPAIR:LDC.T30.E0020.P050:LDC.T30.E0020.P049__LDC.T30.E0020.P050",
+            "evidence_sha256": "4801368a4b2eba93fd35ed4e9df60f529a52c9f79643d43dea8f0151bc70c3dc"
+          }
+        },
+        {
+          "paragraph_id": "LDC.T30.E0020.P050",
+          "stable_ref": "LDC.T30.E0020.P050",
+          "source_text_sha256": "0ac48008ba1aca541507a45b3f7fe8aecae82f36eeee0f37bf4feeeae06f06ac",
+          "canonical_length": 62,
           "boundary_after": null
         }
       ]
@@ -31041,6 +31321,42 @@
           "stable_ref": "LDC.T30.E0020.P052",
           "source_text_sha256": "150a1e7336c7bed94f43fa95c7b0229793ea01c0b6a23e6a84269e65ccd58bec",
           "canonical_length": 45,
+          "boundary_after": null
+        }
+      ]
+    },
+    {
+      "flow_id": "FLOW.T30.FAST1.020.LDC_T30_E0020_P058__LDC_T30_E0020_P059",
+      "entry_id": "LDC.T30.E0020",
+      "classification": "certified_sentence_continuation",
+      "confidence": "high",
+      "origin": "FAST_MODE_CERTIFIED_CORPUS_MUTATION_BODY0277_0854",
+      "review_status": "approved_for_display",
+      "reason": "Certified correction-certain FAST Mode boundary repair; stable paragraph records preserved",
+      "members": [
+        {
+          "paragraph_id": "LDC.T30.E0020.P058",
+          "stable_ref": "LDC.T30.E0020.P058",
+          "source_text_sha256": "939058f60195a400e427ebbdfd4fa04ef33992013b5ab85a29b49c093485b4d4",
+          "canonical_length": 79,
+          "boundary_after": {
+            "display_joiner": "space",
+            "speech_run_policy": "continue_same_speaker_only",
+            "suppress_next_leading_ranges": [],
+            "visual_policy": "continuous_prose",
+            "visual_action": "join_inline",
+            "adjudication_generation": "FAST_MODE_BODY0277_0854",
+            "adjudication_status": "CERTIFIED_CORRECTION_CERTAIN",
+            "adjudication_rule_id": "FAST_MODE.BOUNDARY.JOIN",
+            "evidence_ref": "FAST:BOUNDARY_REPAIR:LDC.T30.E0020.P059:LDC.T30.E0020.P058__LDC.T30.E0020.P059",
+            "evidence_sha256": "1802d6aeb58a19341a383bb8c59c2ddefb6e7e9be6e0d34b9bd5f493399f7215"
+          }
+        },
+        {
+          "paragraph_id": "LDC.T30.E0020.P059",
+          "stable_ref": "LDC.T30.E0020.P059",
+          "source_text_sha256": "e29a86a30ec44bd27d272155ccdc2db33a7736454127e2e59dcebef53c397290",
+          "canonical_length": 157,
           "boundary_after": null
         }
       ]
@@ -31550,8 +31866,8 @@
         {
           "paragraph_id": "LDC.T30.E0021.P046",
           "stable_ref": "LDC.T30.E0021.P046",
-          "source_text_sha256": "7d2fe4238517a244a749dd4fea677b1b4fc7779ed71c39c62980152864cd61a7",
-          "canonical_length": 92,
+          "source_text_sha256": "143e06119ea8aec32f68fdc5f55ea6de370a71d7ac910c6a02f50581229a3297",
+          "canonical_length": 94,
           "boundary_after": {
             "display_joiner": "space",
             "speech_run_policy": "continue_same_speaker_only",
@@ -32044,7 +32360,7 @@
         {
           "paragraph_id": "LDC.T30.E0021.P077",
           "stable_ref": "LDC.T30.E0021.P077",
-          "source_text_sha256": "5e98f84b9226c0b1966e85da069fed53c7ce48cc706e6ec0182213a43e7858c3",
+          "source_text_sha256": "e16a62c8736de3a6b3385a7266e286e671f3cf820175adee6053591b5ee4cf67",
           "canonical_length": 175,
           "boundary_after": null
         }
@@ -32215,6 +32531,42 @@
           "stable_ref": "LDC.T30.E0021.P086",
           "source_text_sha256": "d551544055f30716932e841574425dbbe6e5bcbd1e456c192160ae68955b4c1f",
           "canonical_length": 39,
+          "boundary_after": null
+        }
+      ]
+    },
+    {
+      "flow_id": "FLOW.T30.FAST1.021.LDC_T30_E0021_P087__LDC_T30_E0021_P088",
+      "entry_id": "LDC.T30.E0021",
+      "classification": "certified_sentence_continuation",
+      "confidence": "high",
+      "origin": "FAST_MODE_CERTIFIED_CORPUS_MUTATION_BODY0277_0854",
+      "review_status": "approved_for_display",
+      "reason": "Certified correction-certain FAST Mode boundary repair; stable paragraph records preserved",
+      "members": [
+        {
+          "paragraph_id": "LDC.T30.E0021.P087",
+          "stable_ref": "LDC.T30.E0021.P087",
+          "source_text_sha256": "0a2ac179fe94ce2a82bd146eaf1ebec265bfd63da8fbe0a6cb4a013ccc813ae2",
+          "canonical_length": 44,
+          "boundary_after": {
+            "display_joiner": "space",
+            "speech_run_policy": "continue_same_speaker_only",
+            "suppress_next_leading_ranges": [],
+            "visual_policy": "continuous_prose",
+            "visual_action": "join_inline",
+            "adjudication_generation": "FAST_MODE_BODY0277_0854",
+            "adjudication_status": "CERTIFIED_CORRECTION_CERTAIN",
+            "adjudication_rule_id": "FAST_MODE.BOUNDARY.JOIN",
+            "evidence_ref": "FAST:BOUNDARY_REPAIR:LDC.T30.E0021.P088:LDC.T30.E0021.P087__LDC.T30.E0021.P088",
+            "evidence_sha256": "ede891e20b2039cb329d99e1b8d7cc48beb0f8176b72506596052527a6bf64c8"
+          }
+        },
+        {
+          "paragraph_id": "LDC.T30.E0021.P088",
+          "stable_ref": "LDC.T30.E0021.P088",
+          "source_text_sha256": "363db29720d9e0aaa304355e5fecf250599251bbc3747874db65c2b1274b21bd",
+          "canonical_length": 161,
           "boundary_after": null
         }
       ]
@@ -32596,18 +32948,36 @@
       ]
     },
     {
-      "flow_id": "FLOW.T30.P020-P023..E0022",
+      "flow_id": "FLOW.T30.FAST1.022.LDC_T30_E0022_P019__LDC_T30_E0022_P023",
       "entry_id": "LDC.T30.E0022",
       "classification": "inherited_dash_continuation",
       "confidence": "inherited_not_source_verified",
-      "origin": "legacy_runtime_inference",
+      "origin": "FAST_MODE_CERTIFIED_CORPUS_MUTATION_BODY0277_0854",
       "review_status": "preserved_pending_structural_review",
-      "reason": "runtime dash-merger inheritance",
+      "reason": "Certified correction-certain FAST Mode boundary repair; stable paragraph records preserved",
       "members": [
+        {
+          "paragraph_id": "LDC.T30.E0022.P019",
+          "stable_ref": "LDC.T30.E0022.P019",
+          "source_text_sha256": "c03cb590414ec1dccefb2729b570280fa033602b384473abe549f8630b799962",
+          "canonical_length": 147,
+          "boundary_after": {
+            "display_joiner": "space",
+            "speech_run_policy": "continue_same_speaker_only",
+            "suppress_next_leading_ranges": [],
+            "visual_policy": "continuous_prose",
+            "visual_action": "join_inline",
+            "adjudication_generation": "FAST_MODE_BODY0277_0854",
+            "adjudication_status": "CERTIFIED_CORRECTION_CERTAIN",
+            "adjudication_rule_id": "FAST_MODE.BOUNDARY.JOIN",
+            "evidence_ref": "FAST:BOUNDARY_REPAIR:LDC.T30.E0022.P020:LDC.T30.E0022.P019__LDC.T30.E0022.P020",
+            "evidence_sha256": "e79450cae9a7a7912a86846cd30243600b06eb78b5c192572f5d44d244412996"
+          }
+        },
         {
           "paragraph_id": "LDC.T30.E0022.P020",
           "stable_ref": "LDC.T30.E0022.P020",
-          "source_text_sha256": "ddb8606dcc62f7ce5cf5f4e48cad56bbb2cca7badbcdf1d7183e9958e98056bc",
+          "source_text_sha256": "de214180d31804520bbccb10a294981c0b9e43990b338836b4099e43fab9522c",
           "canonical_length": 62,
           "boundary_after": {
             "display_joiner": "space",
@@ -33177,13 +33547,13 @@
       ]
     },
     {
-      "flow_id": "FLOW.T30.P053-P054..E0022",
+      "flow_id": "FLOW.T30.FAST1.023.LDC_T30_E0022_P053__LDC_T30_E0022_P055",
       "entry_id": "LDC.T30.E0022",
       "classification": "inherited_dash_continuation",
       "confidence": "inherited_not_source_verified",
-      "origin": "legacy_runtime_inference",
+      "origin": "FAST_MODE_CERTIFIED_CORPUS_MUTATION_BODY0277_0854",
       "review_status": "preserved_pending_structural_review",
-      "reason": "runtime dash-merger inheritance",
+      "reason": "Certified correction-certain FAST Mode boundary repair; stable paragraph records preserved",
       "members": [
         {
           "paragraph_id": "LDC.T30.E0022.P053",
@@ -33211,8 +33581,26 @@
         {
           "paragraph_id": "LDC.T30.E0022.P054",
           "stable_ref": "LDC.T30.E0022.P054",
-          "source_text_sha256": "6a90948968ee47354e69f8e0cf43ba17c1af5e525abe444ae6f821b5cc7054bc",
+          "source_text_sha256": "d5f7d6b4d7befa550c2063ce804938d8c143d57eec17e9cddd2858de35a8a444",
           "canonical_length": 66,
+          "boundary_after": {
+            "display_joiner": "space",
+            "speech_run_policy": "continue_same_speaker_only",
+            "suppress_next_leading_ranges": [],
+            "visual_policy": "continuous_prose",
+            "visual_action": "join_inline",
+            "adjudication_generation": "FAST_MODE_BODY0277_0854",
+            "adjudication_status": "CERTIFIED_CORRECTION_CERTAIN",
+            "adjudication_rule_id": "FAST_MODE.BOUNDARY.JOIN",
+            "evidence_ref": "FAST:BOUNDARY_REPAIR:LDC.T30.E0022.P055:LDC.T30.E0022.P054__LDC.T30.E0022.P055",
+            "evidence_sha256": "8f6a9dc4289433283beb5f67fbaadcfff4a551fc43c61bc81746117a15493123"
+          }
+        },
+        {
+          "paragraph_id": "LDC.T30.E0022.P055",
+          "stable_ref": "LDC.T30.E0022.P055",
+          "source_text_sha256": "4c5a88b38354ee8758145bf31316643cc9b5892468bcf4321d699ad0e1b4513e",
+          "canonical_length": 70,
           "boundary_after": null
         }
       ]
@@ -33229,8 +33617,8 @@
         {
           "paragraph_id": "LDC.T30.E0022.P056",
           "stable_ref": "LDC.T30.E0022.P056",
-          "source_text_sha256": "2318428c68f7137f8b0608cd4bd76fe875b631feb940cac8ded305f696a423c7",
-          "canonical_length": 13,
+          "source_text_sha256": "f10ea9a38aa05db3d2d334747751634e7d68ccb27d36f1216d34bf728dd02b21",
+          "canonical_length": 12,
           "boundary_after": {
             "display_joiner": "space",
             "speech_run_policy": "continue_same_speaker_only",
@@ -33531,7 +33919,7 @@
         {
           "paragraph_id": "LDC.T30.E0022.P079",
           "stable_ref": "LDC.T30.E0022.P079",
-          "source_text_sha256": "b5d2caa92ac8f641053f179361a70a8f950d385ab0febf3aee0e62c9249b65f8",
+          "source_text_sha256": "00c50b634ad964a651b31cdc1a4666c13d486c647d3a29c689e566f1bdfb0e98",
           "canonical_length": 215,
           "boundary_after": {
             "display_joiner": "space",
@@ -33787,8 +34175,8 @@
         {
           "paragraph_id": "LDC.T30.E0022.P104",
           "stable_ref": "LDC.T30.E0022.P104",
-          "source_text_sha256": "a97c745f128a07d649a6d1ca716278b0518e4002107d57600bdc49fd8222e2c4",
-          "canonical_length": 54,
+          "source_text_sha256": "6ab255f75deda6b440a751f4f475f835720e73644630ac9fe78f84852697f642",
+          "canonical_length": 55,
           "boundary_after": {
             "display_joiner": "space",
             "speech_run_policy": "continue_same_speaker_only",
@@ -34148,7 +34536,7 @@
         {
           "paragraph_id": "LDC.T30.E0022.P125",
           "stable_ref": "LDC.T30.E0022.P125",
-          "source_text_sha256": "2d0d81eb95cdc3761c4bfe05a53ee5c9a66ba4ad195f404f02136773e422be68",
+          "source_text_sha256": "633b774a5a5bcac769b0e2fd09eafd089ee33d6c571783e9fdf972e4b27b13a6",
           "canonical_length": 95,
           "boundary_after": {
             "display_joiner": "space",
@@ -34299,8 +34687,8 @@
         {
           "paragraph_id": "LDC.T30.E0022.P132",
           "stable_ref": "LDC.T30.E0022.P132",
-          "source_text_sha256": "59d424456f4616d498fbfc87c946af77f53197a3ed84fc4a396f3b28a6ba44d6",
-          "canonical_length": 197,
+          "source_text_sha256": "62b4703049b496a9a7eb8845327f32afb7475efc68e92e7618b74d2ba3af3789",
+          "canonical_length": 198,
           "boundary_after": null
         }
       ]
@@ -34381,8 +34769,8 @@
         {
           "paragraph_id": "LDC.T30.E0022.P142",
           "stable_ref": "LDC.T30.E0022.P142",
-          "source_text_sha256": "65d54afbca5a7fb9c9dadabb2d13a08021e759c64c7c4b79929136b150a69b15",
-          "canonical_length": 38,
+          "source_text_sha256": "60d4709ee842de013b154999b835a09364d4275e5e3aa61c9fdaf9570a7e7d43",
+          "canonical_length": 39,
           "boundary_after": {
             "display_joiner": "space",
             "speech_run_policy": "continue_same_speaker_only",
@@ -34445,8 +34833,8 @@
         {
           "paragraph_id": "LDC.T30.E0022.P149",
           "stable_ref": "LDC.T30.E0022.P149",
-          "source_text_sha256": "4f908e9ae2000406a4ea7dec43a5c16221cacd499c4b323027aba675ba3b4cc0",
-          "canonical_length": 142,
+          "source_text_sha256": "114cdb77f1c8d85ef4534f47e50ea9ac1ff4b12ef4756273020bf5a7e5a9fc5d",
+          "canonical_length": 143,
           "boundary_after": {
             "display_joiner": "space",
             "speech_run_policy": "continue_same_speaker_only",
@@ -34514,8 +34902,8 @@
         {
           "paragraph_id": "LDC.T30.E0022.P152",
           "stable_ref": "LDC.T30.E0022.P152",
-          "source_text_sha256": "6bace215b7253d5b66127b29f42ff44dc096109801c41147b2100dff023bcbb1",
-          "canonical_length": 57,
+          "source_text_sha256": "527c043b2f07dc4360b8681b0968209e475e3b19acde90a1fa16c5a96eae8f24",
+          "canonical_length": 58,
           "boundary_after": null
         }
       ]
@@ -34669,13 +35057,13 @@
       ]
     },
     {
-      "flow_id": "FLOW.T30.P015-P016..E0023",
+      "flow_id": "FLOW.T30.FAST1.024.LDC_T30_E0023_P015__LDC_T30_E0023_P018",
       "entry_id": "LDC.T30.E0023",
       "classification": "inherited_dash_continuation",
       "confidence": "inherited_not_source_verified",
-      "origin": "legacy_runtime_inference",
+      "origin": "FAST_MODE_CERTIFIED_CORPUS_MUTATION_BODY0277_0854",
       "review_status": "preserved_pending_structural_review",
-      "reason": "runtime dash-merger inheritance",
+      "reason": "Certified correction-certain FAST Mode boundary repair; stable paragraph records preserved",
       "members": [
         {
           "paragraph_id": "LDC.T30.E0023.P015",
@@ -34703,25 +35091,25 @@
         {
           "paragraph_id": "LDC.T30.E0023.P016",
           "stable_ref": "LDC.T30.E0023.P016",
-          "source_text_sha256": "9aefac97bbd97adc7910c035d46b6302a7ae57402f4b8a6be5cf87589d7e2ec7",
+          "source_text_sha256": "d0814ffb98d46ae4b74ce0ad7c9806baa57143afc29f4b8d8538faa79c860951",
           "canonical_length": 119,
-          "boundary_after": null
-        }
-      ]
-    },
-    {
-      "flow_id": "FLOW.T30.P017-P018..E0023",
-      "entry_id": "LDC.T30.E0023",
-      "classification": "inherited_dash_continuation",
-      "confidence": "inherited_not_source_verified",
-      "origin": "legacy_runtime_inference",
-      "review_status": "preserved_pending_structural_review",
-      "reason": "runtime dash-merger inheritance",
-      "members": [
+          "boundary_after": {
+            "display_joiner": "space",
+            "speech_run_policy": "continue_same_speaker_only",
+            "suppress_next_leading_ranges": [],
+            "visual_policy": "continuous_prose",
+            "visual_action": "join_inline",
+            "adjudication_generation": "FAST_MODE_BODY0277_0854",
+            "adjudication_status": "CERTIFIED_CORRECTION_CERTAIN",
+            "adjudication_rule_id": "FAST_MODE.BOUNDARY.JOIN",
+            "evidence_ref": "FAST:BOUNDARY_REPAIR:LDC.T30.E0023.P017:LDC.T30.E0023.P016__LDC.T30.E0023.P017",
+            "evidence_sha256": "a9973d80e795389d960241aa4d5dd73db71ddd9895b40a63020088470c6a1ae2"
+          }
+        },
         {
           "paragraph_id": "LDC.T30.E0023.P017",
           "stable_ref": "LDC.T30.E0023.P017",
-          "source_text_sha256": "0db7d5195ca0d0b1894571b72994f0b49ac3e1af00479a970c3fdb76c56841f3",
+          "source_text_sha256": "0611656a634f5a31e27f16be7bdde91a5bf641d17050ff7b6c6884d916c79140",
           "canonical_length": 35,
           "boundary_after": {
             "display_joiner": "space",
@@ -34849,7 +35237,7 @@
         {
           "paragraph_id": "LDC.T30.E0023.P023",
           "stable_ref": "LDC.T30.E0023.P023",
-          "source_text_sha256": "7cf8592a5260060112a854c4c90357a74c05dfb15e8cca93d130ea9e0d41e010",
+          "source_text_sha256": "f365a55496e258ae516ef3dcf5ee44c538a9e9b38e9fdd42c5ae000320cfb58a",
           "canonical_length": 44,
           "boundary_after": {
             "display_joiner": "space",
@@ -35012,18 +35400,36 @@
       ]
     },
     {
-      "flow_id": "FLOW.T30.P041-P042..E0023",
+      "flow_id": "FLOW.T30.FAST1.025.LDC_T30_E0023_P040__LDC_T30_E0023_P042",
       "entry_id": "LDC.T30.E0023",
       "classification": "inherited_dash_continuation",
       "confidence": "inherited_not_source_verified",
-      "origin": "legacy_runtime_inference",
+      "origin": "FAST_MODE_CERTIFIED_CORPUS_MUTATION_BODY0277_0854",
       "review_status": "preserved_pending_structural_review",
-      "reason": "runtime dash-merger inheritance",
+      "reason": "Certified correction-certain FAST Mode boundary repair; stable paragraph records preserved",
       "members": [
+        {
+          "paragraph_id": "LDC.T30.E0023.P040",
+          "stable_ref": "LDC.T30.E0023.P040",
+          "source_text_sha256": "ae6a5d1c2b8553c73af7c946854e9558e5c0b88472901b6a1bab925f944ddcf5",
+          "canonical_length": 72,
+          "boundary_after": {
+            "display_joiner": "space",
+            "speech_run_policy": "continue_same_speaker_only",
+            "suppress_next_leading_ranges": [],
+            "visual_policy": "continuous_prose",
+            "visual_action": "join_inline",
+            "adjudication_generation": "FAST_MODE_BODY0277_0854",
+            "adjudication_status": "CERTIFIED_CORRECTION_CERTAIN",
+            "adjudication_rule_id": "FAST_MODE.BOUNDARY.JOIN",
+            "evidence_ref": "FAST:BOUNDARY_REPAIR:LDC.T30.E0023.P041:LDC.T30.E0023.P040__LDC.T30.E0023.P041",
+            "evidence_sha256": "36bdc77c6d355eb9c247b9c6ed1b930c4d4304e9418751763ee35818a4b4adbb"
+          }
+        },
         {
           "paragraph_id": "LDC.T30.E0023.P041",
           "stable_ref": "LDC.T30.E0023.P041",
-          "source_text_sha256": "6120a3b0bcf9ce6241da2836f76899621752cfde7378932ecfe73ef21556b964",
+          "source_text_sha256": "e779bba4468d55bdf69d81cffd9fb5fb0d392bb21214cace102e95b1713d180d",
           "canonical_length": 40,
           "boundary_after": {
             "display_joiner": "space",
@@ -35678,8 +36084,8 @@
         {
           "paragraph_id": "LDC.T30.E0023.P076",
           "stable_ref": "LDC.T30.E0023.P076",
-          "source_text_sha256": "bfaa20d08c84d9f20b4b01f360e8b8d36fe3e9024d731f2899001f499cefd253",
-          "canonical_length": 46,
+          "source_text_sha256": "9e865627b1fdaed76d937e1052a933a97c6dd533be056ff3b988ec7ceb95fe87",
+          "canonical_length": 47,
           "boundary_after": {
             "display_joiner": "space",
             "speech_run_policy": "continue_same_speaker_only",
@@ -36430,8 +36836,8 @@
         {
           "paragraph_id": "LDC.T30.E0024.P015",
           "stable_ref": "LDC.T30.E0024.P015",
-          "source_text_sha256": "0917dfd9e7d9164d42988bdcee7dc264c93f0217e64fda2dc71e771e2f7d7b8f",
-          "canonical_length": 72,
+          "source_text_sha256": "5b03fcae4edf9772325acec7513387cdbe7818f47708e54ecce881c31e76c282",
+          "canonical_length": 71,
           "boundary_after": {
             "display_joiner": "space",
             "speech_run_policy": "continue_same_speaker_only",
@@ -36540,7 +36946,7 @@
         {
           "paragraph_id": "LDC.T30.E0024.P022",
           "stable_ref": "LDC.T30.E0024.P022",
-          "source_text_sha256": "4d9d8cfeb76284c39d3ef0278561b3f2b68a6766ee14fe92a0fa6782836a2e46",
+          "source_text_sha256": "87fc0e6b697e3c8e309697103a4133ecc46ef2fcba9ef34db76bd5be1d9c35f1",
           "canonical_length": 90,
           "boundary_after": null
         }
@@ -36634,6 +37040,41 @@
       ]
     },
     {
+      "flow_id": "FLOW.RA11.T30.LDC_T30_E0024.P027-P028",
+      "entry_id": "LDC.T30.E0024",
+      "classification": "ra11_broader_boundary_high_confidence_continuation",
+      "confidence": "high",
+      "origin": "RA11_226_CASE_ADJUDICATION",
+      "review_status": "source_or_grammar_discourse_adjudicated",
+      "reason": "RA11 broader-boundary adjudication: canonical punctuation/grammar proves continuous prose; display-flow repair preserves canonical records.",
+      "members": [
+        {
+          "paragraph_id": "LDC.T30.E0024.P027",
+          "stable_ref": "LDC.T30.E0024.P027",
+          "source_text_sha256": "5c543223a7c5f71cd8ef43e0bbea356c3ad9106ce1488a91f5e371dbad6dfc90",
+          "canonical_length": 267,
+          "boundary_after": {
+            "display_joiner": "space",
+            "speech_run_policy": "continue_same_speaker_only",
+            "visual_policy": "continuous_prose",
+            "visual_action": "join_inline",
+            "adjudication_generation": "RA19B_MULTI_SOURCE",
+            "adjudication_status": "SOURCE_BACKED_CERTAIN",
+            "adjudication_rule_id": "RA19B.JOIN.DIRECT_ITPM_CONTINUITY",
+            "evidence_ref": "RA19B:B30.20008.LDC.T30.E0024.P027__LDC.T30.E0024.P028",
+            "evidence_sha256": "a5c5380cc7e5fe7ca9d817425d075bfa16d39368499eb24be21a042675f1cdea"
+          }
+        },
+        {
+          "paragraph_id": "LDC.T30.E0024.P028",
+          "stable_ref": "LDC.T30.E0024.P028",
+          "source_text_sha256": "a8b9a58bef4954a6480c32b1580c6fd6332e5a38ed554effd1de2e64fbf6898d",
+          "canonical_length": 31,
+          "boundary_after": null
+        }
+      ]
+    },
+    {
       "flow_id": "FLOW.T30.P031-P032..E0024",
       "entry_id": "LDC.T30.E0024",
       "classification": "inherited_dash_continuation",
@@ -36645,8 +37086,8 @@
         {
           "paragraph_id": "LDC.T30.E0024.P031",
           "stable_ref": "LDC.T30.E0024.P031",
-          "source_text_sha256": "a1ecb8f9f24371620983a9b341dbb0d9fb099077d902e9ad9a75d25ced3e8753",
-          "canonical_length": 60,
+          "source_text_sha256": "6ff9e3f583627758ba8fb20a1c5d4e0fe55ac7d61946de1a7d07e40e0fa29423",
+          "canonical_length": 61,
           "boundary_after": {
             "display_joiner": "space",
             "speech_run_policy": "continue_same_speaker_only",
@@ -36739,13 +37180,13 @@
       ]
     },
     {
-      "flow_id": "FLOW.T30.P038-P040..E0024",
+      "flow_id": "FLOW.T30.FAST1.026.LDC_T30_E0024_P038__LDC_T30_E0024_P043",
       "entry_id": "LDC.T30.E0024",
       "classification": "inherited_dash_continuation",
       "confidence": "inherited_not_source_verified",
-      "origin": "legacy_runtime_inference",
+      "origin": "FAST_MODE_CERTIFIED_CORPUS_MUTATION_BODY0277_0854",
       "review_status": "preserved_pending_structural_review",
-      "reason": "runtime dash-merger inheritance",
+      "reason": "Certified correction-certain FAST Mode boundary repair; stable paragraph records preserved",
       "members": [
         {
           "paragraph_id": "LDC.T30.E0024.P038",
@@ -36796,25 +37237,25 @@
         {
           "paragraph_id": "LDC.T30.E0024.P040",
           "stable_ref": "LDC.T30.E0024.P040",
-          "source_text_sha256": "8c085ee83af49cecd8811855d17d293bd2c4a947703185fcbfa6b550da3c0ae0",
+          "source_text_sha256": "e3bb8efbbff83056784110e88659d3615a4d0676498b50ccb07cd46bebf7f6de",
           "canonical_length": 41,
-          "boundary_after": null
-        }
-      ]
-    },
-    {
-      "flow_id": "FLOW.T30.P041-P043..E0024",
-      "entry_id": "LDC.T30.E0024",
-      "classification": "inherited_dash_continuation",
-      "confidence": "inherited_not_source_verified",
-      "origin": "legacy_runtime_inference",
-      "review_status": "preserved_pending_structural_review",
-      "reason": "runtime dash-merger inheritance",
-      "members": [
+          "boundary_after": {
+            "display_joiner": "space",
+            "speech_run_policy": "continue_same_speaker_only",
+            "suppress_next_leading_ranges": [],
+            "visual_policy": "continuous_prose",
+            "visual_action": "join_inline",
+            "adjudication_generation": "FAST_MODE_BODY0277_0854",
+            "adjudication_status": "CERTIFIED_CORRECTION_CERTAIN",
+            "adjudication_rule_id": "FAST_MODE.BOUNDARY.JOIN",
+            "evidence_ref": "FAST:BOUNDARY_REPAIR:LDC.T30.E0024.P041:LDC.T30.E0024.P040__LDC.T30.E0024.P041",
+            "evidence_sha256": "e257ff7f446d24140e7def97d0d6ef8c5fd82ecd19f6c816fd0141b6334f5812"
+          }
+        },
         {
           "paragraph_id": "LDC.T30.E0024.P041",
           "stable_ref": "LDC.T30.E0024.P041",
-          "source_text_sha256": "aeae4d96a96c1b5edd727c46422431e9846b7f332f1c2028feaee1a3e0734cc6",
+          "source_text_sha256": "759636c1ad041e7b343e3c4b88615a56b2173eaf446e6794b5ed5c6e01165ddb",
           "canonical_length": 20,
           "boundary_after": {
             "display_joiner": "space",
@@ -37175,7 +37616,7 @@
         {
           "paragraph_id": "LDC.T30.E0024.P066",
           "stable_ref": "LDC.T30.E0024.P066",
-          "source_text_sha256": "017e1dc62c78951066ec2aa4bc6945316ba0c4960e6f4f0f5fa4573dcb89e847",
+          "source_text_sha256": "6ce658c82e13f0253f93abea9af1fd65ed956e2225e6aeac731b084f96d08e93",
           "canonical_length": 104,
           "boundary_after": {
             "display_joiner": "space",
@@ -39547,8 +39988,8 @@
         {
           "paragraph_id": "LDC.T30.E0026.P081",
           "stable_ref": "LDC.T30.E0026.P081",
-          "source_text_sha256": "44a360526144264f0d362682766e940d6c137b46289230991fceed1ffffe9a1d",
-          "canonical_length": 54,
+          "source_text_sha256": "bb5c1581814cb9898cbc9034a578dd7e13b37241af565b3ec44466db16f368af",
+          "canonical_length": 55,
           "boundary_after": null
         }
       ]
@@ -39597,7 +40038,7 @@
         {
           "paragraph_id": "LDC.T30.E0027.P005",
           "stable_ref": "LDC.T30.E0027.P005",
-          "source_text_sha256": "89bf51875ce70708bd779b5f510a913310139553ef0a280e5a8a8bfc9aeacf36",
+          "source_text_sha256": "34718049d1cb18506d4a330b2c18b884cae690684d5a10bb46622505c71aa22c",
           "canonical_length": 106,
           "boundary_after": null
         }
@@ -39889,8 +40330,8 @@
         {
           "paragraph_id": "LDC.T30.E0027.P024",
           "stable_ref": "LDC.T30.E0027.P024",
-          "source_text_sha256": "8526ef4668ea1e91411f6776096730e24e89b6e8229d3f00f10bd5a2a29f0675",
-          "canonical_length": 34,
+          "source_text_sha256": "c3fb0bce264f324cc32fe918404b27bcd00cd0e5308568b2fc85dc983bda47c0",
+          "canonical_length": 33,
           "boundary_after": {
             "display_joiner": "space",
             "speech_run_policy": "continue_same_speaker_only",
@@ -40198,18 +40639,36 @@
       ]
     },
     {
-      "flow_id": "FLOW.T30.P047-P048..E0027",
+      "flow_id": "FLOW.T30.FAST1.027.LDC_T30_E0027_P046__LDC_T30_E0027_P048",
       "entry_id": "LDC.T30.E0027",
       "classification": "inherited_dash_continuation",
       "confidence": "inherited_not_source_verified",
-      "origin": "legacy_runtime_inference",
+      "origin": "FAST_MODE_CERTIFIED_CORPUS_MUTATION_BODY0277_0854",
       "review_status": "preserved_pending_structural_review",
-      "reason": "runtime dash-merger inheritance",
+      "reason": "Certified correction-certain FAST Mode boundary repair; stable paragraph records preserved",
       "members": [
+        {
+          "paragraph_id": "LDC.T30.E0027.P046",
+          "stable_ref": "LDC.T30.E0027.P046",
+          "source_text_sha256": "dba3f6eed5a4e950041bab7b8f3e181da35a239487c19aa0befe1094bc9863d3",
+          "canonical_length": 66,
+          "boundary_after": {
+            "display_joiner": "space",
+            "speech_run_policy": "continue_same_speaker_only",
+            "suppress_next_leading_ranges": [],
+            "visual_policy": "continuous_prose",
+            "visual_action": "join_inline",
+            "adjudication_generation": "FAST_MODE_BODY0277_0854",
+            "adjudication_status": "CERTIFIED_CORRECTION_CERTAIN",
+            "adjudication_rule_id": "FAST_MODE.BOUNDARY.JOIN",
+            "evidence_ref": "FAST:BOUNDARY_REPAIR:LDC.T30.E0027.P047:LDC.T30.E0027.P046__LDC.T30.E0027.P047",
+            "evidence_sha256": "0c00501596db8f96f3c0e0441cda391ff78e79f7d612f442c42d9216f863d6f4"
+          }
+        },
         {
           "paragraph_id": "LDC.T30.E0027.P047",
           "stable_ref": "LDC.T30.E0027.P047",
-          "source_text_sha256": "4b7ca9ec51ab1faefa5cf8faef249df6a89ad603ec03b3f0ab9c31f52560577e",
+          "source_text_sha256": "c43acde40d013eb9ad3600275dbd16eaf594eb1150d308fe488144316ee310a0",
           "canonical_length": 31,
           "boundary_after": {
             "display_joiner": "space",
@@ -41744,8 +42203,8 @@
         {
           "paragraph_id": "LDC.T30.E0028.P045",
           "stable_ref": "LDC.T30.E0028.P045",
-          "source_text_sha256": "1c5d9223a6c28d6c1a462a85f9f7b9fe8447418fb2e5ff250d9d1c1f73c5d689",
-          "canonical_length": 123,
+          "source_text_sha256": "93d788bef81bcd5e6c3d55f6ec5df8b20af94f3faa9b8bf7e5e2efbc063da6b6",
+          "canonical_length": 124,
           "boundary_after": null
         }
       ]
@@ -41995,8 +42454,8 @@
         {
           "paragraph_id": "LDC.T30.E0028.P058",
           "stable_ref": "LDC.T30.E0028.P058",
-          "source_text_sha256": "f6eea25a9889f341c0462cd90367da957fabad847df34556e4098f766c52ab15",
-          "canonical_length": 245,
+          "source_text_sha256": "e867f10a3ad7e5a9d586cd646b4b842892e2227b289560f1971377099dca872f",
+          "canonical_length": 246,
           "boundary_after": null
         }
       ]
@@ -42059,7 +42518,7 @@
         {
           "paragraph_id": "LDC.T30.E0028.P062",
           "stable_ref": "LDC.T30.E0028.P062",
-          "source_text_sha256": "8958cc436c2132ea7e03951f086764442b66ed66ec56ed20282f97b24dc93bdb",
+          "source_text_sha256": "4c395d21a21a19c8196b3b26777637c80ba6e00036750df172bf85cf3532aa35",
           "canonical_length": 157,
           "boundary_after": null
         }
@@ -42100,7 +42559,7 @@
         {
           "paragraph_id": "LDC.T30.E0028.P069",
           "stable_ref": "LDC.T30.E0028.P069",
-          "source_text_sha256": "ec660e1ceddefbe2785747ae6ca8301743a16cf50a54ef412991649531605e2c",
+          "source_text_sha256": "4a5e1fc288eb2a39398ecafe43553328af6302fd19d54283f587508ddf2a882a",
           "canonical_length": 44,
           "boundary_after": {
             "display_joiner": "space",
@@ -42153,18 +42612,36 @@
       ]
     },
     {
-      "flow_id": "FLOW.T30.P073-P075..E0028",
+      "flow_id": "FLOW.T30.FAST1.028.LDC_T30_E0028_P072__LDC_T30_E0028_P075",
       "entry_id": "LDC.T30.E0028",
       "classification": "inherited_dash_continuation",
       "confidence": "inherited_not_source_verified",
-      "origin": "legacy_runtime_inference",
+      "origin": "FAST_MODE_CERTIFIED_CORPUS_MUTATION_BODY0277_0854",
       "review_status": "preserved_pending_structural_review",
-      "reason": "runtime dash-merger inheritance",
+      "reason": "Certified correction-certain FAST Mode boundary repair; stable paragraph records preserved",
       "members": [
+        {
+          "paragraph_id": "LDC.T30.E0028.P072",
+          "stable_ref": "LDC.T30.E0028.P072",
+          "source_text_sha256": "c8ee5e31d0a4f7c5932d04de3736a08bdb6c51e0d989e2da23d23a2ff7f72619",
+          "canonical_length": 120,
+          "boundary_after": {
+            "display_joiner": "space",
+            "speech_run_policy": "continue_same_speaker_only",
+            "suppress_next_leading_ranges": [],
+            "visual_policy": "continuous_prose",
+            "visual_action": "join_inline",
+            "adjudication_generation": "FAST_MODE_BODY0277_0854",
+            "adjudication_status": "CERTIFIED_CORRECTION_CERTAIN",
+            "adjudication_rule_id": "FAST_MODE.BOUNDARY.JOIN",
+            "evidence_ref": "FAST:BOUNDARY_REPAIR:LDC.T30.E0028.P073:LDC.T30.E0028.P072__LDC.T30.E0028.P073",
+            "evidence_sha256": "3c6bff67727e84979504a2ac04c1742a5cbd5d02177e603e23f96298c0bf7df6"
+          }
+        },
         {
           "paragraph_id": "LDC.T30.E0028.P073",
           "stable_ref": "LDC.T30.E0028.P073",
-          "source_text_sha256": "b86894ba26bea25a9d818e36fb37af1b597824832b3c3221b6e2b8b1c6ce349c",
+          "source_text_sha256": "1cd2d210c78aee5ef56871a971a5d194a125a015636c8d553be10d78dcbb3fb2",
           "canonical_length": 9,
           "boundary_after": {
             "display_joiner": "space",
@@ -42704,7 +43181,7 @@
         {
           "paragraph_id": "LDC.T30.E0028.P099",
           "stable_ref": "LDC.T30.E0028.P099",
-          "source_text_sha256": "5298a290e19fbccf2cc4dcdf1abe167f8a954b75ab5c38b5fc47b05b7b64dc29",
+          "source_text_sha256": "984e4b22d879a95ccfd1538aded833e8d3a0a19bd50056b37f74cc469137a08a",
           "canonical_length": 73,
           "boundary_after": null
         }
@@ -42763,7 +43240,7 @@
         {
           "paragraph_id": "LDC.T30.E0028.P103",
           "stable_ref": "LDC.T30.E0028.P103",
-          "source_text_sha256": "231b4279c28aced13d849fc6f9e58628487cb8cf256911a4ebdb19ebf20491ca",
+          "source_text_sha256": "253ed60248db34ec7526783631cca5871d18358b0c63fb48a1a392011a3c7e85",
           "canonical_length": 72,
           "boundary_after": {
             "display_joiner": "space",
@@ -43334,6 +43811,42 @@
       ]
     },
     {
+      "flow_id": "FLOW.T30.FAST1.029.LDC_T30_E0029_P022__LDC_T30_E0029_P023",
+      "entry_id": "LDC.T30.E0029",
+      "classification": "certified_sentence_continuation",
+      "confidence": "high",
+      "origin": "FAST_MODE_CERTIFIED_CORPUS_MUTATION_BODY0277_0854",
+      "review_status": "approved_for_display",
+      "reason": "Certified correction-certain FAST Mode boundary repair; stable paragraph records preserved",
+      "members": [
+        {
+          "paragraph_id": "LDC.T30.E0029.P022",
+          "stable_ref": "LDC.T30.E0029.P022",
+          "source_text_sha256": "f781c4d8ca60cc678e0f401eb580db4a5a686ca52359dfd5a83251be28eebaa4",
+          "canonical_length": 83,
+          "boundary_after": {
+            "display_joiner": "space",
+            "speech_run_policy": "continue_same_speaker_only",
+            "suppress_next_leading_ranges": [],
+            "visual_policy": "continuous_prose",
+            "visual_action": "join_inline",
+            "adjudication_generation": "FAST_MODE_BODY0277_0854",
+            "adjudication_status": "CERTIFIED_CORRECTION_CERTAIN",
+            "adjudication_rule_id": "FAST_MODE.BOUNDARY.JOIN",
+            "evidence_ref": "FAST:BOUNDARY_REPAIR:LDC.T30.E0029.P023:LDC.T30.E0029.P022__LDC.T30.E0029.P023",
+            "evidence_sha256": "05d74f1213aef66f57f1308b7e4bc7911454f8fe5377afdb4cb99feb3051d1bf"
+          }
+        },
+        {
+          "paragraph_id": "LDC.T30.E0029.P023",
+          "stable_ref": "LDC.T30.E0029.P023",
+          "source_text_sha256": "81faa14577b7cbdf2b797a5dd0e06f1a0dfb77a16ddfaab1918ed72dc0d16d24",
+          "canonical_length": 103,
+          "boundary_after": null
+        }
+      ]
+    },
+    {
       "flow_id": "FLOW.T30.P025-P028..E0029",
       "entry_id": "LDC.T30.E0029",
       "classification": "inherited_dash_continuation",
@@ -43432,7 +43945,7 @@
         {
           "paragraph_id": "LDC.T30.E0029.P031",
           "stable_ref": "LDC.T30.E0029.P031",
-          "source_text_sha256": "46502db8d8fad8bf0529adc6be8702f84da9feea7b7499991c849ca8d3eb2ffc",
+          "source_text_sha256": "6d0e3c4ae7e3af3a54935a017b9cabdead3b09f64dc5df001b2fed4d33357a98",
           "canonical_length": 119,
           "boundary_after": {
             "display_joiner": "space",
@@ -43549,13 +44062,13 @@
       ]
     },
     {
-      "flow_id": "FLOW.T30.P037-P039..E0029",
+      "flow_id": "FLOW.T30.FAST1.030.LDC_T30_E0029_P037__LDC_T30_E0029_P040",
       "entry_id": "LDC.T30.E0029",
       "classification": "inherited_dash_continuation",
       "confidence": "inherited_not_source_verified",
-      "origin": "legacy_runtime_inference",
+      "origin": "FAST_MODE_CERTIFIED_CORPUS_MUTATION_BODY0277_0854",
       "review_status": "preserved_pending_structural_review",
-      "reason": "runtime dash-merger inheritance",
+      "reason": "Certified correction-certain FAST Mode boundary repair; stable paragraph records preserved",
       "members": [
         {
           "paragraph_id": "LDC.T30.E0029.P037",
@@ -43606,8 +44119,26 @@
         {
           "paragraph_id": "LDC.T30.E0029.P039",
           "stable_ref": "LDC.T30.E0029.P039",
-          "source_text_sha256": "873505631e87361f4e3a2aa0478b83a1ef9c4aa5349596a04c7b2982d453eead",
+          "source_text_sha256": "0b2c84a2591208279fa8df9ed85988dafe130f0da3ff51d14f4b1d73eb596e7f",
           "canonical_length": 135,
+          "boundary_after": {
+            "display_joiner": "space",
+            "speech_run_policy": "continue_same_speaker_only",
+            "suppress_next_leading_ranges": [],
+            "visual_policy": "continuous_prose",
+            "visual_action": "join_inline",
+            "adjudication_generation": "FAST_MODE_BODY0277_0854",
+            "adjudication_status": "CERTIFIED_CORRECTION_CERTAIN",
+            "adjudication_rule_id": "FAST_MODE.BOUNDARY.JOIN",
+            "evidence_ref": "FAST:BOUNDARY_REPAIR:LDC.T30.E0029.P040:LDC.T30.E0029.P039__LDC.T30.E0029.P040",
+            "evidence_sha256": "d9a36abbf54c9235658350ad5cf53635f0dc05600f63adbbefbf794690ea9a82"
+          }
+        },
+        {
+          "paragraph_id": "LDC.T30.E0029.P040",
+          "stable_ref": "LDC.T30.E0029.P040",
+          "source_text_sha256": "697537925900ce8b5e813692807f836ffd0f3b9edbf13edc058703626ddd197d",
+          "canonical_length": 118,
           "boundary_after": null
         }
       ]
@@ -43892,18 +44423,36 @@
       ]
     },
     {
-      "flow_id": "FLOW.T30.P060-P062..E0029",
+      "flow_id": "FLOW.T30.FAST1.031.LDC_T30_E0029_P059__LDC_T30_E0029_P062",
       "entry_id": "LDC.T30.E0029",
       "classification": "inherited_dash_continuation",
       "confidence": "inherited_not_source_verified",
-      "origin": "legacy_runtime_inference",
+      "origin": "FAST_MODE_CERTIFIED_CORPUS_MUTATION_BODY0277_0854",
       "review_status": "preserved_pending_structural_review",
-      "reason": "runtime dash-merger inheritance",
+      "reason": "Certified correction-certain FAST Mode boundary repair; stable paragraph records preserved",
       "members": [
+        {
+          "paragraph_id": "LDC.T30.E0029.P059",
+          "stable_ref": "LDC.T30.E0029.P059",
+          "source_text_sha256": "54c6672a3991ce4535a3734c97cd79981cf007a3476c4d861c6f73ab396a617f",
+          "canonical_length": 94,
+          "boundary_after": {
+            "display_joiner": "space",
+            "speech_run_policy": "continue_same_speaker_only",
+            "suppress_next_leading_ranges": [],
+            "visual_policy": "continuous_prose",
+            "visual_action": "join_inline",
+            "adjudication_generation": "FAST_MODE_BODY0277_0854",
+            "adjudication_status": "CERTIFIED_CORRECTION_CERTAIN",
+            "adjudication_rule_id": "FAST_MODE.BOUNDARY.JOIN",
+            "evidence_ref": "FAST:BOUNDARY_REPAIR:LDC.T30.E0029.P060:LDC.T30.E0029.P059__LDC.T30.E0029.P060",
+            "evidence_sha256": "697764a7237d332f6b5ada178a5b908645d54de805d9726bbd713860dbf1412e"
+          }
+        },
         {
           "paragraph_id": "LDC.T30.E0029.P060",
           "stable_ref": "LDC.T30.E0029.P060",
-          "source_text_sha256": "12c17c6e5995d501b89491458dfcfcb87e03e782702a2de79926137143d7d712",
+          "source_text_sha256": "e5bb23e86c57fa1293f39bce9f599e4406f26d0d48abb618dedb2ee35aa6d8fa",
           "canonical_length": 56,
           "boundary_after": {
             "display_joiner": "space",
@@ -44217,13 +44766,13 @@
       ]
     },
     {
-      "flow_id": "FLOW.T30.P081-P088..E0029",
+      "flow_id": "FLOW.T30.FAST1.032.LDC_T30_E0029_P081__LDC_T30_E0029_P091",
       "entry_id": "LDC.T30.E0029",
       "classification": "inherited_dash_continuation",
       "confidence": "inherited_not_source_verified",
-      "origin": "legacy_runtime_inference",
+      "origin": "FAST_MODE_CERTIFIED_CORPUS_MUTATION_BODY0277_0854",
       "review_status": "preserved_pending_structural_review",
-      "reason": "runtime dash-merger inheritance",
+      "reason": "Certified correction-certain FAST Mode boundary repair; stable paragraph records preserved",
       "members": [
         {
           "paragraph_id": "LDC.T30.E0029.P081",
@@ -44308,7 +44857,7 @@
         {
           "paragraph_id": "LDC.T30.E0029.P086",
           "stable_ref": "LDC.T30.E0029.P086",
-          "source_text_sha256": "552d299470bbc356f2e1c7fe03a6860c390474ccc99149dc9f6e943d5b1b595a",
+          "source_text_sha256": "e30c3dc254711e0b7b5d1f41ec50d29201334507904295d51b20c2940a52c05e",
           "canonical_length": 143,
           "boundary_after": {
             "display_joiner": "space",
@@ -44340,25 +44889,25 @@
         {
           "paragraph_id": "LDC.T30.E0029.P088",
           "stable_ref": "LDC.T30.E0029.P088",
-          "source_text_sha256": "b6ae2e3437aad9a47ea02e5948f16a0f1e8959a6816e06caa74401b635213422",
+          "source_text_sha256": "63cc851d8e97f6e2ddff06b6336ca37b656b7838a7b79165c965549cfc0aac21",
           "canonical_length": 32,
-          "boundary_after": null
-        }
-      ]
-    },
-    {
-      "flow_id": "FLOW.T30.P089-P091..E0029",
-      "entry_id": "LDC.T30.E0029",
-      "classification": "inherited_dash_continuation",
-      "confidence": "inherited_not_source_verified",
-      "origin": "legacy_runtime_inference",
-      "review_status": "preserved_pending_structural_review",
-      "reason": "runtime dash-merger inheritance",
-      "members": [
+          "boundary_after": {
+            "display_joiner": "space",
+            "speech_run_policy": "continue_same_speaker_only",
+            "suppress_next_leading_ranges": [],
+            "visual_policy": "continuous_prose",
+            "visual_action": "join_inline",
+            "adjudication_generation": "FAST_MODE_BODY0277_0854",
+            "adjudication_status": "CERTIFIED_CORRECTION_CERTAIN",
+            "adjudication_rule_id": "FAST_MODE.BOUNDARY.JOIN",
+            "evidence_ref": "FAST:BOUNDARY_REPAIR:LDC.T30.E0029.P089:LDC.T30.E0029.P088__LDC.T30.E0029.P089",
+            "evidence_sha256": "7d90b39d49ecee4956a1b9c89dab54d8593106d33de38b870793fbadab719607"
+          }
+        },
         {
           "paragraph_id": "LDC.T30.E0029.P089",
           "stable_ref": "LDC.T30.E0029.P089",
-          "source_text_sha256": "4bcc69c0f866fe5e88f5463e0fd00eb769d1f4e5674643a6df6cc170ca1f2ecf",
+          "source_text_sha256": "22fa55e36ec1a1805059c26b5310814f50b7146377045c5bf0c00336acc744a1",
           "canonical_length": 21,
           "boundary_after": {
             "display_joiner": "space",
@@ -44536,7 +45085,7 @@
         {
           "paragraph_id": "LDC.T30.E0029.P111",
           "stable_ref": "LDC.T30.E0029.P111",
-          "source_text_sha256": "8a051e7d88705108940db0956b9424b5888760df09219e2658475b8b28a26f01",
+          "source_text_sha256": "d3dc0cb6de640eca01e058169a7ad648055ea1bf939b30a74aab84df82f42ef2",
           "canonical_length": 104,
           "boundary_after": {
             "display_joiner": "space",
@@ -45721,8 +46270,8 @@
         {
           "paragraph_id": "LDC.T30.E0030.P074",
           "stable_ref": "LDC.T30.E0030.P074",
-          "source_text_sha256": "bd5833bc14219801c0eff6c557122408b335be1271ee798bc631f5cc39df0cf8",
-          "canonical_length": 90,
+          "source_text_sha256": "a96a1bbdc92436cc18b335c4bc4d4614ae35e987376bc99ac6f678ab35344f08",
+          "canonical_length": 91,
           "boundary_after": {
             "display_joiner": "space",
             "speech_run_policy": "continue_same_speaker_only",
@@ -45785,8 +46334,8 @@
         {
           "paragraph_id": "LDC.T30.E0030.P077",
           "stable_ref": "LDC.T30.E0030.P077",
-          "source_text_sha256": "725331b53d11e367380e149f006b8d9e27ce99fb2d88571596b22c558ab2acbb",
-          "canonical_length": 180,
+          "source_text_sha256": "c961f1b030aa902ea86203af9411a9f74b52925b2dc0b29e217c5f3ba56c702b",
+          "canonical_length": 181,
           "boundary_after": null
         }
       ]
@@ -46100,7 +46649,7 @@
         {
           "paragraph_id": "LDC.T30.E0030.P099",
           "stable_ref": "LDC.T30.E0030.P099",
-          "source_text_sha256": "638832efb954a78970af5730aaa6b174ff9f2fba6b493bf825bef6c1f5b0750c",
+          "source_text_sha256": "21295519c6ab4d59751d977bac60d5054420d942abc02141730d163bad16d6a0",
           "canonical_length": 101,
           "boundary_after": {
             "display_joiner": "space",
@@ -46292,7 +46841,7 @@
         {
           "paragraph_id": "LDC.T30.E0030.P110",
           "stable_ref": "LDC.T30.E0030.P110",
-          "source_text_sha256": "91086e60980ab919a13c876a8d79806e6e1692f0a48c228e9e50de427907e0b6",
+          "source_text_sha256": "195c60ad262fa8d3b68cd775e218db7179f54ef031a535a9e74a43ebdc1fb67b",
           "canonical_length": 13,
           "boundary_after": {
             "display_joiner": "space",
@@ -46489,7 +47038,7 @@
         {
           "paragraph_id": "LDC.T30.E0031.P002",
           "stable_ref": "LDC.T30.E0031.P002",
-          "source_text_sha256": "b30514f040b27f5c9a3bc5fe5cc673d7350461ae8033d8a52c0b94e008d9842c",
+          "source_text_sha256": "0bda22f19041daf9e880bacdaabeb07c221a2ecedac1c73e9a8cd111e57353b0",
           "canonical_length": 14,
           "boundary_after": {
             "display_joiner": "space",
@@ -46776,8 +47325,8 @@
         {
           "paragraph_id": "LDC.T30.E0031.P019",
           "stable_ref": "LDC.T30.E0031.P019",
-          "source_text_sha256": "d340b9d81de6ac3a12908507a7a70539142d49c052f4c35e8d82e6aae9586f67",
-          "canonical_length": 69,
+          "source_text_sha256": "424794b34ef42fd228e285d1424dec86674083ce2376460a7dae690ca2e7560c",
+          "canonical_length": 67,
           "boundary_after": null
         }
       ]
@@ -47300,18 +47849,36 @@
       ]
     },
     {
-      "flow_id": "FLOW.T30.P052-P054..E0031",
+      "flow_id": "FLOW.T30.FAST1.033.LDC_T30_E0031_P051__LDC_T30_E0031_P054",
       "entry_id": "LDC.T30.E0031",
       "classification": "inherited_dash_continuation",
       "confidence": "inherited_not_source_verified",
-      "origin": "legacy_runtime_inference",
+      "origin": "FAST_MODE_CERTIFIED_CORPUS_MUTATION_BODY0277_0854",
       "review_status": "preserved_pending_structural_review",
-      "reason": "runtime dash-merger inheritance",
+      "reason": "Certified correction-certain FAST Mode boundary repair; stable paragraph records preserved",
       "members": [
+        {
+          "paragraph_id": "LDC.T30.E0031.P051",
+          "stable_ref": "LDC.T30.E0031.P051",
+          "source_text_sha256": "6fb3eaa7e6cbe943379fec3c56baa0392349453b8911d8b548c8a9371e6858d9",
+          "canonical_length": 122,
+          "boundary_after": {
+            "display_joiner": "space",
+            "speech_run_policy": "continue_same_speaker_only",
+            "suppress_next_leading_ranges": [],
+            "visual_policy": "continuous_prose",
+            "visual_action": "join_inline",
+            "adjudication_generation": "FAST_MODE_BODY0277_0854",
+            "adjudication_status": "CERTIFIED_CORRECTION_CERTAIN",
+            "adjudication_rule_id": "FAST_MODE.BOUNDARY.JOIN",
+            "evidence_ref": "FAST:BOUNDARY_REPAIR:LDC.T30.E0031.P052:LDC.T30.E0031.P051__LDC.T30.E0031.P052",
+            "evidence_sha256": "2509709f2dccd0380618e1c64a35b9db91417a32d85735c83ddc1206cb8e1bed"
+          }
+        },
         {
           "paragraph_id": "LDC.T30.E0031.P052",
           "stable_ref": "LDC.T30.E0031.P052",
-          "source_text_sha256": "ca553e1602e1c44dea3c7ad03cc6f99294b5a85431761f3ebb643536d2997313",
+          "source_text_sha256": "e5031f0ef70dc5a44c6b8fce4cda3679c2b6078deb5f3bcf6afe95c21b8a7f3f",
           "canonical_length": 44,
           "boundary_after": {
             "display_joiner": "space",
@@ -48286,7 +48853,7 @@
         {
           "paragraph_id": "LDC.T30.E0032.P023",
           "stable_ref": "LDC.T30.E0032.P023",
-          "source_text_sha256": "39675e9da7258a7f1f100c902e8775e79d750fd3ce63ee0baddb4537e6010a53",
+          "source_text_sha256": "b0f2fc447a6211ca3fb14d6b605a6cad7a60aa1e3565b01a9bf1ccb86d1a3643",
           "canonical_length": 115,
           "boundary_after": {
             "display_joiner": "space",
@@ -48501,8 +49068,8 @@
         {
           "paragraph_id": "LDC.T30.E0032.P033",
           "stable_ref": "LDC.T30.E0032.P033",
-          "source_text_sha256": "94a157a2d4659dbbd11e795f8fc49d9ebfa6002260a452784e4793414eea66d9",
-          "canonical_length": 103,
+          "source_text_sha256": "7e9558a158e1d6ba929638d6c8654a3d180a3533bcf0cdcb4b446da75bd2c544",
+          "canonical_length": 107,
           "boundary_after": null
         }
       ]
@@ -48885,8 +49452,8 @@
         {
           "paragraph_id": "LDC.T30.E0032.P056",
           "stable_ref": "LDC.T30.E0032.P056",
-          "source_text_sha256": "278d88b177f63aa7ae8cb77b7b3355fac86f0bc7955fe6ecdab9163057465508",
-          "canonical_length": 115,
+          "source_text_sha256": "33393b0117c979dae6febee3643bc52b13078a9dd2a51347d2cbf0cfaa8d4ea3",
+          "canonical_length": 116,
           "boundary_after": {
             "display_joiner": "space",
             "speech_run_policy": "continue_same_speaker_only",
@@ -49159,7 +49726,7 @@
         {
           "paragraph_id": "LDC.T30.E0032.P071",
           "stable_ref": "LDC.T30.E0032.P071",
-          "source_text_sha256": "6b21866892acf215b70e21bfd1a20f7e6f87a0c487e0241daa07d58d0e6f64cf",
+          "source_text_sha256": "b9e48e1daada79117ce6f11cb986ba2fbc655e5f01e33eb2520a1b3df31143b0",
           "canonical_length": 80,
           "boundary_after": {
             "display_joiner": "space",
@@ -49305,8 +49872,8 @@
         {
           "paragraph_id": "LDC.T30.E0032.P079",
           "stable_ref": "LDC.T30.E0032.P079",
-          "source_text_sha256": "5c35bf1d7970726bfd992f94b3e36939fead77bad9d5a85c4db0394b956d2973",
-          "canonical_length": 220,
+          "source_text_sha256": "ef27c710b63ef36c237327156e283bdc43a903bf4acd6f9eb7ac082a9316ae4a",
+          "canonical_length": 217,
           "boundary_after": {
             "display_joiner": "space",
             "speech_run_policy": "continue_same_speaker_only",
@@ -49520,8 +50087,8 @@
         {
           "paragraph_id": "LDC.T30.E0032.P096",
           "stable_ref": "LDC.T30.E0032.P096",
-          "source_text_sha256": "90a1d0a204ae38eb453a806ef527f4c082df64d2759f2c5b0699619d34d4dbe8",
-          "canonical_length": 153,
+          "source_text_sha256": "6dc002c07b920c785f17fee73a7b101bc6dadef040447f716f2597d92ef76a0f",
+          "canonical_length": 154,
           "boundary_after": {
             "display_joiner": "space",
             "speech_run_policy": "continue_same_speaker_only",
@@ -49671,7 +50238,7 @@
         {
           "paragraph_id": "LDC.T30.E0032.P103",
           "stable_ref": "LDC.T30.E0032.P103",
-          "source_text_sha256": "d01638d76495d84005048ef4c7c798f023e37067227c4f3564d7d8c02e82d667",
+          "source_text_sha256": "b9dd1e959ec50bd24fc80abe0b57b2e8d411bf5bc623a217cf867658edc68a89",
           "canonical_length": 90,
           "boundary_after": null
         }
@@ -49973,7 +50540,7 @@
         {
           "paragraph_id": "LDC.T30.E0032.P122",
           "stable_ref": "LDC.T30.E0032.P122",
-          "source_text_sha256": "aa3391fa023911a4d31354717b70420e5e899a7bb74e1a1c0df1767ef1c91706",
+          "source_text_sha256": "efd3d8d259e273088ba4553480ef72b11c2e67233c45fe83d78e3634f6167f73",
           "canonical_length": 143,
           "boundary_after": null
         }
@@ -50142,8 +50709,8 @@
         {
           "paragraph_id": "LDC.T30.E0032.P132",
           "stable_ref": "LDC.T30.E0032.P132",
-          "source_text_sha256": "560a69fe8ffc68d73f2b6e9fcd8d69ede0d25ade0cb1755e5584a867ade64cee",
-          "canonical_length": 77,
+          "source_text_sha256": "34be81c422360c68cce9ffd0e19382766b27797d825bb8a1cbe68a7ad5f60f88",
+          "canonical_length": 78,
           "boundary_after": {
             "display_joiner": "space",
             "speech_run_policy": "continue_same_speaker_only",
@@ -50293,7 +50860,7 @@
         {
           "paragraph_id": "LDC.T30.E0032.P140",
           "stable_ref": "LDC.T30.E0032.P140",
-          "source_text_sha256": "a75bc0924c78e2917024ab1dbfe51e23754e09761a401f333dd407b754b31bab",
+          "source_text_sha256": "504bfccf97e4b91ddf5bf4b2ad013f679950d51ba9cd19733bca7f95b3622698",
           "canonical_length": 87,
           "boundary_after": {
             "display_joiner": "space",
@@ -50815,8 +51382,8 @@
         {
           "paragraph_id": "LDC.T30.E0032.P169",
           "stable_ref": "LDC.T30.E0032.P169",
-          "source_text_sha256": "dead52bb19186d3fb13e8949d4153a48f62a585ea8eef5ca79bb9099757b9c84",
-          "canonical_length": 25,
+          "source_text_sha256": "c69852e7b1ccc420850edca7a69097d3c0ea0a674889f3dd26703adaf73219c4",
+          "canonical_length": 28,
           "boundary_after": {
             "display_joiner": "space",
             "speech_run_policy": "continue_same_speaker_only",
@@ -51053,8 +51620,8 @@
         {
           "paragraph_id": "LDC.T30.E0032.P181",
           "stable_ref": "LDC.T30.E0032.P181",
-          "source_text_sha256": "b5813ef2edd79eb24097c5b969bd918e0dfc0e306d49a9405d8533b47aaccea7",
-          "canonical_length": 119,
+          "source_text_sha256": "1c4a5dbf69bff56287307d8d4d0aa0bae5e5133d237c62df8c14a3179b58bb99",
+          "canonical_length": 120,
           "boundary_after": {
             "display_joiner": "space",
             "speech_run_policy": "continue_same_speaker_only",
@@ -51286,8 +51853,8 @@
         {
           "paragraph_id": "LDC.T30.E0032.P200",
           "stable_ref": "LDC.T30.E0032.P200",
-          "source_text_sha256": "03c842b0352a750a5082bc056b618dabd133816f146e721decce9b271f8efa70",
-          "canonical_length": 155,
+          "source_text_sha256": "b08e7ff477c5bd4f29ac262729ebeca9d737584ea3b9eaca86213553bcbd2c51",
+          "canonical_length": 156,
           "boundary_after": {
             "display_joiner": "space",
             "speech_run_policy": "continue_same_speaker_only",
@@ -51339,18 +51906,36 @@
       ]
     },
     {
-      "flow_id": "FLOW.T30.P204-P205..E0032",
+      "flow_id": "FLOW.T30.FAST1.034.LDC_T30_E0032_P203__LDC_T30_E0032_P205",
       "entry_id": "LDC.T30.E0032",
       "classification": "inherited_dash_continuation",
       "confidence": "inherited_not_source_verified",
-      "origin": "legacy_runtime_inference",
+      "origin": "FAST_MODE_CERTIFIED_CORPUS_MUTATION_BODY0277_0854",
       "review_status": "preserved_pending_structural_review",
-      "reason": "runtime dash-merger inheritance",
+      "reason": "Certified correction-certain FAST Mode boundary repair; stable paragraph records preserved",
       "members": [
+        {
+          "paragraph_id": "LDC.T30.E0032.P203",
+          "stable_ref": "LDC.T30.E0032.P203",
+          "source_text_sha256": "8f2f9b1387597594dc56801f751844fe84fd18bf768f7b815e62b0939d83a11b",
+          "canonical_length": 102,
+          "boundary_after": {
+            "display_joiner": "space",
+            "speech_run_policy": "continue_same_speaker_only",
+            "suppress_next_leading_ranges": [],
+            "visual_policy": "continuous_prose",
+            "visual_action": "join_inline",
+            "adjudication_generation": "FAST_MODE_BODY0277_0854",
+            "adjudication_status": "CERTIFIED_CORRECTION_CERTAIN",
+            "adjudication_rule_id": "FAST_MODE.BOUNDARY.JOIN",
+            "evidence_ref": "FAST:BOUNDARY_REPAIR:LDC.T30.E0032.P204:LDC.T30.E0032.P203__LDC.T30.E0032.P204",
+            "evidence_sha256": "873bccb4cf1eeff2bdbd8f22a3551606d21b51e77d97f8e2963a5175244f2886"
+          }
+        },
         {
           "paragraph_id": "LDC.T30.E0032.P204",
           "stable_ref": "LDC.T30.E0032.P204",
-          "source_text_sha256": "371774d1c8b4c61f1f06888e39fd161a6da4e8c1208024922ad0f90a598d13f3",
+          "source_text_sha256": "a75e8ba036d9ad9c2f7094a0c9227584694dd101674ce41e9214dcf220579a2a",
           "canonical_length": 38,
           "boundary_after": {
             "display_joiner": "space",
@@ -51528,8 +52113,8 @@
         {
           "paragraph_id": "LDC.T30.E0033.P012",
           "stable_ref": "LDC.T30.E0033.P012",
-          "source_text_sha256": "13e01ea50ed630323328d1d419787fd5f0e5af99e5ab3b850fa8ed787fddb8d4",
-          "canonical_length": 54,
+          "source_text_sha256": "d32eda8a09ed0785577615ad32a1179f2b0ecf26fd66a4cebd90670da1833d01",
+          "canonical_length": 53,
           "boundary_after": null
         }
       ]
@@ -51948,7 +52533,7 @@
         {
           "paragraph_id": "LDC.T30.E0033.P034",
           "stable_ref": "LDC.T30.E0033.P034",
-          "source_text_sha256": "2ddd4e397b07f0e75aea2100545a838600171a083a45bf338c54f6c1d803d247",
+          "source_text_sha256": "6764301231c79589f275f852d7f3c71dacd5be9f1707088a66cd3fa9fee271b7",
           "canonical_length": 7,
           "boundary_after": {
             "display_joiner": "space",
@@ -52128,7 +52713,7 @@
         {
           "paragraph_id": "LDC.T30.E0033.P044",
           "stable_ref": "LDC.T30.E0033.P044",
-          "source_text_sha256": "961b432c44f5d11e4975ec3d69e28e4c462da4bf604347ee96628b537bb0d900",
+          "source_text_sha256": "eb318c134d120e84d97b0e38e0f98afca7a9dcd4f88b4ad37e6dfb407b082167",
           "canonical_length": 82,
           "boundary_after": {
             "display_joiner": "space",
@@ -52174,7 +52759,7 @@
         {
           "paragraph_id": "LDC.T30.E0033.P046",
           "stable_ref": "LDC.T30.E0033.P046",
-          "source_text_sha256": "cb3186484f51ddfe4a9eb3bd978246d58553298652ce4f6ba96028fcf93cd129",
+          "source_text_sha256": "2ef5e17720d2e92a448754a8f8c318e9b9cb0f81322439f9d86f9b1938622c71",
           "canonical_length": 55,
           "boundary_after": null
         }
@@ -52215,7 +52800,7 @@
         {
           "paragraph_id": "LDC.T30.E0033.P048",
           "stable_ref": "LDC.T30.E0033.P048",
-          "source_text_sha256": "ebcbae2b50d9acd98df7781a4ce0ee0cbff5ca5caeb7c99ffb9eac93c2043d0d",
+          "source_text_sha256": "3b70ce1f70f97f301f2cff0007188dd7c361096a1dc9ff70e6cbc1cea251645f",
           "canonical_length": 239,
           "boundary_after": null
         }
@@ -52558,8 +53143,8 @@
         {
           "paragraph_id": "LDC.T30.E0033.P065",
           "stable_ref": "LDC.T30.E0033.P065",
-          "source_text_sha256": "84dcc65ef6ff4a18d26cac29bf167bb84e2b820729f02833874e64e47f556961",
-          "canonical_length": 40,
+          "source_text_sha256": "b3e16d6600be25f22d7348adcdc1c9ce3e4e66d4d81a28fee99accf0e94b45c9",
+          "canonical_length": 41,
           "boundary_after": {
             "display_joiner": "space",
             "speech_run_policy": "continue_same_speaker_only",
@@ -52814,7 +53399,7 @@
         {
           "paragraph_id": "LDC.T30.E0033.P083",
           "stable_ref": "LDC.T30.E0033.P083",
-          "source_text_sha256": "77771744cb01f41c236947809fb7889f274ec96c1dd2307ee6621a1914f2edce",
+          "source_text_sha256": "d59bbabb50c250fdb7d278a34ce417f4a1b7886fe48edf8635ac8e86dab97ea3",
           "canonical_length": 108,
           "boundary_after": {
             "display_joiner": "space",
@@ -53006,7 +53591,7 @@
         {
           "paragraph_id": "LDC.T30.E0033.P098",
           "stable_ref": "LDC.T30.E0033.P098",
-          "source_text_sha256": "4886d23c4f1cb06577433615d2210f7148d4920f86105d72e4ed1d66e9abd64b",
+          "source_text_sha256": "84797da2fef7a964a5139eb6822dfccb5881e142be99f9d201df2fc8fab8b8c1",
           "canonical_length": 47,
           "boundary_after": null
         }
@@ -53349,7 +53934,7 @@
         {
           "paragraph_id": "LDC.T30.E0033.P119",
           "stable_ref": "LDC.T30.E0033.P119",
-          "source_text_sha256": "7de1b7f26912a29ec30bba8d009f760d8f80f539739f1aeae6a267693aa9fbe7",
+          "source_text_sha256": "c1eecd3fefaa4692182aa97408acd90268b58858b117a5a22a81e800193ef6da",
           "canonical_length": 67,
           "boundary_after": null
         }
@@ -54923,8 +55508,8 @@
         {
           "paragraph_id": "LDC.T30.E0034.P097",
           "stable_ref": "LDC.T30.E0034.P097",
-          "source_text_sha256": "79fdb88c5794dfce785c43042d7e2922e5b2538eac173f20a48c7fd7ee9f2cd2",
-          "canonical_length": 67,
+          "source_text_sha256": "5c56a2fac2b856cfbff911128dac11a99c5951c4667c3dbe4502b55a0d83db2b",
+          "canonical_length": 65,
           "boundary_after": null
         }
       ]
@@ -55143,8 +55728,8 @@
         {
           "paragraph_id": "LDC.T30.E0034.P108",
           "stable_ref": "LDC.T30.E0034.P108",
-          "source_text_sha256": "3b6e822e988a124590fcb8bad1b126596c8ec981c9202219396f052a41095571",
-          "canonical_length": 70,
+          "source_text_sha256": "08fddf7307061bc1f6a778f9328c5c6311190743f2227c041a0c12dfb486c6d0",
+          "canonical_length": 67,
           "boundary_after": null
         }
       ]
@@ -55358,8 +55943,8 @@
         {
           "paragraph_id": "LDC.T30.E0034.P119",
           "stable_ref": "LDC.T30.E0034.P119",
-          "source_text_sha256": "6f3bc5ac107c168e3359f2d5533e6367b5ccefa133cd15bd0f9dab4e94a0904a",
-          "canonical_length": 68,
+          "source_text_sha256": "4e8c84ce022f5c3ce14459d376893f145e93a7ad6c0a5274d16e7b0ce2927b31",
+          "canonical_length": 69,
           "boundary_after": null
         }
       ]
@@ -55775,8 +56360,8 @@
         {
           "paragraph_id": "LDC.T30.E0035.P027",
           "stable_ref": "LDC.T30.E0035.P027",
-          "source_text_sha256": "6eb9954e8670ffc35e63a6258a25f155ec864f0a333ad3ec52979e69de0ee0bb",
-          "canonical_length": 54,
+          "source_text_sha256": "2131310fd35885aad71185383a20c0d171703a1ce531452a469babce6a34de4f",
+          "canonical_length": 55,
           "boundary_after": {
             "display_joiner": "space",
             "speech_run_policy": "continue_same_speaker_only",
@@ -57008,6 +57593,42 @@
       ]
     },
     {
+      "flow_id": "FLOW.T30.FAST1.035.LDC_T30_E0035_P109__LDC_T30_E0035_P110",
+      "entry_id": "LDC.T30.E0035",
+      "classification": "certified_sentence_continuation",
+      "confidence": "high",
+      "origin": "FAST_MODE_CERTIFIED_CORPUS_MUTATION_BODY0277_0854",
+      "review_status": "approved_for_display",
+      "reason": "Certified correction-certain FAST Mode boundary repair; stable paragraph records preserved",
+      "members": [
+        {
+          "paragraph_id": "LDC.T30.E0035.P109",
+          "stable_ref": "LDC.T30.E0035.P109",
+          "source_text_sha256": "c43beb64e973b565bd3c04ee75521862ae30148d9147dca591008aa5588f9726",
+          "canonical_length": 71,
+          "boundary_after": {
+            "display_joiner": "space",
+            "speech_run_policy": "continue_same_speaker_only",
+            "suppress_next_leading_ranges": [],
+            "visual_policy": "continuous_prose",
+            "visual_action": "join_inline",
+            "adjudication_generation": "FAST_MODE_BODY0277_0854",
+            "adjudication_status": "CERTIFIED_CORRECTION_CERTAIN",
+            "adjudication_rule_id": "FAST_MODE.BOUNDARY.JOIN",
+            "evidence_ref": "FAST:BOUNDARY_REPAIR:LDC.T30.E0035.P110:LDC.T30.E0035.P109__LDC.T30.E0035.P110",
+            "evidence_sha256": "36a9bd7851a3e26c772249113eb457f870999da4117edac7056b26f8af0e429b"
+          }
+        },
+        {
+          "paragraph_id": "LDC.T30.E0035.P110",
+          "stable_ref": "LDC.T30.E0035.P110",
+          "source_text_sha256": "9a747547daeb2abd64bdf3eab68a7aab9e76e009185d0b39b1a9a9f8169aa212",
+          "canonical_length": 98,
+          "boundary_after": null
+        }
+      ]
+    },
+    {
       "flow_id": "FLOW.T30.P004-P005..E0036",
       "entry_id": "LDC.T30.E0036",
       "classification": "inherited_dash_continuation",
@@ -57087,8 +57708,8 @@
         {
           "paragraph_id": "LDC.T30.E0036.P008",
           "stable_ref": "LDC.T30.E0036.P008",
-          "source_text_sha256": "3a03c651d55d89b558573016ce56f0d7ae991aea699ab83655d98a7b07267f3e",
-          "canonical_length": 144,
+          "source_text_sha256": "e3e51f1b90a316cf729e9f2abf5fc73bdb8598843fa4714da5a82d23587b84ab",
+          "canonical_length": 143,
           "boundary_after": {
             "display_joiner": "space",
             "speech_run_policy": "continue_same_speaker_only",
@@ -57924,8 +58545,8 @@
         {
           "paragraph_id": "LDC.T30.E0036.P050",
           "stable_ref": "LDC.T30.E0036.P050",
-          "source_text_sha256": "a161748bdac7d914c31ec14e50e75c56ada7befa476a994d6534822f542a8219",
-          "canonical_length": 83,
+          "source_text_sha256": "2ba3385ae4f8dd3a1f0eda0a2e9cabfa4576a9b85ab5656659097cec208d652b",
+          "canonical_length": 84,
           "boundary_after": null
         }
       ]
@@ -58887,13 +59508,13 @@
       ]
     },
     {
-      "flow_id": "FLOW.T30.P001-P002..E0037",
+      "flow_id": "FLOW.T30.FAST1.036.LDC_T30_E0037_P001__LDC_T30_E0037_P003",
       "entry_id": "LDC.T30.E0037",
       "classification": "inherited_dash_continuation",
       "confidence": "inherited_not_source_verified",
-      "origin": "legacy_runtime_inference",
+      "origin": "FAST_MODE_CERTIFIED_CORPUS_MUTATION_BODY0277_0854",
       "review_status": "preserved_pending_structural_review",
-      "reason": "runtime dash-merger inheritance",
+      "reason": "Certified correction-certain FAST Mode boundary repair; stable paragraph records preserved",
       "members": [
         {
           "paragraph_id": "LDC.T30.E0037.P001",
@@ -58914,8 +59535,26 @@
         {
           "paragraph_id": "LDC.T30.E0037.P002",
           "stable_ref": "LDC.T30.E0037.P002",
-          "source_text_sha256": "9f054a34f73adb66e9345a08c096491197a82eaeb317cba164a58a80b70e3bdd",
+          "source_text_sha256": "dd45316da55164586d1ee2d450aa6f261be9eab4e4921951ee5c3f1199c55dfa",
           "canonical_length": 85,
+          "boundary_after": {
+            "display_joiner": "space",
+            "speech_run_policy": "continue_same_speaker_only",
+            "suppress_next_leading_ranges": [],
+            "visual_policy": "continuous_prose",
+            "visual_action": "join_inline",
+            "adjudication_generation": "FAST_MODE_BODY0277_0854",
+            "adjudication_status": "CERTIFIED_CORRECTION_CERTAIN",
+            "adjudication_rule_id": "FAST_MODE.BOUNDARY.JOIN",
+            "evidence_ref": "FAST:BOUNDARY_REPAIR:LDC.T30.E0037.P003:LDC.T30.E0037.P002__LDC.T30.E0037.P003",
+            "evidence_sha256": "566079b233bd46d40330f17e4ffeb8d416059f858e4ccc5b925d9efbf451ad1a"
+          }
+        },
+        {
+          "paragraph_id": "LDC.T30.E0037.P003",
+          "stable_ref": "LDC.T30.E0037.P003",
+          "source_text_sha256": "c35707040614aaf5de6ac7942e7858980d6c36309f2c0136c48959b573994442",
+          "canonical_length": 83,
           "boundary_after": null
         }
       ]
@@ -59014,7 +59653,7 @@
         {
           "paragraph_id": "LDC.T30.E0037.P011",
           "stable_ref": "LDC.T30.E0037.P011",
-          "source_text_sha256": "f73887d1211614f84ceecf27ebce33ea79f29fa23dfca0634410ea87675f30cb",
+          "source_text_sha256": "e673c51dbbbeded4518e8c048cfc492e725230beff1fb13a61d7236b7a3588bf",
           "canonical_length": 121,
           "boundary_after": {
             "display_joiner": "space",
@@ -59119,8 +59758,8 @@
         {
           "paragraph_id": "LDC.T30.E0037.P019",
           "stable_ref": "LDC.T30.E0037.P019",
-          "source_text_sha256": "c6d982c56c0a71cafea16ab762d40d3f923c361acd5099d6012700cd953c4aec",
-          "canonical_length": 50,
+          "source_text_sha256": "6cae1f617c647b766281715ce7d0c375eff95cf97a3f77fbc1e50722c0933209",
+          "canonical_length": 52,
           "boundary_after": {
             "display_joiner": "space",
             "speech_run_policy": "continue_same_speaker_only",
@@ -59361,8 +60000,8 @@
         {
           "paragraph_id": "LDC.T30.E0037.P037",
           "stable_ref": "LDC.T30.E0037.P037",
-          "source_text_sha256": "6fc3aff59bed523aaa1adaf77fb4e49a0490e7b12867caba40fc78cfc5c3a086",
-          "canonical_length": 50,
+          "source_text_sha256": "6467d6171053fbd7021fdc4fd20a8b9550c985b7ae61953723eca37e0255bd55",
+          "canonical_length": 47,
           "boundary_after": {
             "display_joiner": "space",
             "speech_run_policy": "continue_same_speaker_only",
@@ -59455,13 +60094,13 @@
       ]
     },
     {
-      "flow_id": "FLOW.T30.P047-P049..E0037",
+      "flow_id": "FLOW.T30.FAST1.037.LDC_T30_E0037_P047__LDC_T30_E0037_P050",
       "entry_id": "LDC.T30.E0037",
       "classification": "inherited_dash_continuation",
       "confidence": "inherited_not_source_verified",
-      "origin": "legacy_runtime_inference",
+      "origin": "FAST_MODE_CERTIFIED_CORPUS_MUTATION_BODY0277_0854",
       "review_status": "preserved_pending_structural_review",
-      "reason": "runtime dash-merger inheritance",
+      "reason": "Certified correction-certain FAST Mode boundary repair; stable paragraph records preserved",
       "members": [
         {
           "paragraph_id": "LDC.T30.E0037.P047",
@@ -59512,8 +60151,26 @@
         {
           "paragraph_id": "LDC.T30.E0037.P049",
           "stable_ref": "LDC.T30.E0037.P049",
-          "source_text_sha256": "c94d61f0960c74050068342697af4ed8718f551a32fdcf0e807948ff0264a022",
+          "source_text_sha256": "eef18ce836b8b6082b772325347df2450d1a57a3b854d475b163700d9290f617",
           "canonical_length": 72,
+          "boundary_after": {
+            "display_joiner": "space",
+            "speech_run_policy": "continue_same_speaker_only",
+            "suppress_next_leading_ranges": [],
+            "visual_policy": "continuous_prose",
+            "visual_action": "join_inline",
+            "adjudication_generation": "FAST_MODE_BODY0277_0854",
+            "adjudication_status": "CERTIFIED_CORRECTION_CERTAIN",
+            "adjudication_rule_id": "FAST_MODE.BOUNDARY.JOIN",
+            "evidence_ref": "FAST:BOUNDARY_REPAIR:LDC.T30.E0037.P050:LDC.T30.E0037.P049__LDC.T30.E0037.P050",
+            "evidence_sha256": "bb70912f435fb6b42759a3633f63aa8333f9a7534709301d33201ac8597d200b"
+          }
+        },
+        {
+          "paragraph_id": "LDC.T30.E0037.P050",
+          "stable_ref": "LDC.T30.E0037.P050",
+          "source_text_sha256": "f06e89e155ee3e853a36bac980f618d6a4c4d4dc691d7bd53c3723fd385d609f",
+          "canonical_length": 63,
           "boundary_after": null
         }
       ]
@@ -59583,13 +60240,49 @@
       ]
     },
     {
-      "flow_id": "FLOW.T30.P059-P061..E0037",
+      "flow_id": "FLOW.T30.FAST1.038.LDC_T30_E0037_P056__LDC_T30_E0037_P057",
+      "entry_id": "LDC.T30.E0037",
+      "classification": "certified_sentence_continuation",
+      "confidence": "high",
+      "origin": "FAST_MODE_CERTIFIED_CORPUS_MUTATION_BODY0277_0854",
+      "review_status": "approved_for_display",
+      "reason": "Certified correction-certain FAST Mode boundary repair; stable paragraph records preserved",
+      "members": [
+        {
+          "paragraph_id": "LDC.T30.E0037.P056",
+          "stable_ref": "LDC.T30.E0037.P056",
+          "source_text_sha256": "52557e5382999f16cdede3e22c855980d37aeb0cf408f56dfa3515b5a35026be",
+          "canonical_length": 113,
+          "boundary_after": {
+            "display_joiner": "space",
+            "speech_run_policy": "continue_same_speaker_only",
+            "suppress_next_leading_ranges": [],
+            "visual_policy": "continuous_prose",
+            "visual_action": "join_inline",
+            "adjudication_generation": "FAST_MODE_BODY0277_0854",
+            "adjudication_status": "CERTIFIED_CORRECTION_CERTAIN",
+            "adjudication_rule_id": "FAST_MODE.BOUNDARY.JOIN",
+            "evidence_ref": "FAST:BOUNDARY_REPAIR:LDC.T30.E0037.P057:LDC.T30.E0037.P056__LDC.T30.E0037.P057",
+            "evidence_sha256": "ea253af65156b55eeadb45ef3e168c9367b0c14ddf79497eac888c3378cdedd4"
+          }
+        },
+        {
+          "paragraph_id": "LDC.T30.E0037.P057",
+          "stable_ref": "LDC.T30.E0037.P057",
+          "source_text_sha256": "5833f8fe1d95f04207ae5e0ca9ecc1e408252012a8fe732d5e65d32273879ad2",
+          "canonical_length": 288,
+          "boundary_after": null
+        }
+      ]
+    },
+    {
+      "flow_id": "FLOW.T30.FAST1.039.LDC_T30_E0037_P059__LDC_T30_E0037_P062",
       "entry_id": "LDC.T30.E0037",
       "classification": "inherited_dash_continuation",
       "confidence": "inherited_not_source_verified",
-      "origin": "legacy_runtime_inference",
+      "origin": "FAST_MODE_CERTIFIED_CORPUS_MUTATION_BODY0277_0854",
       "review_status": "preserved_pending_structural_review",
-      "reason": "runtime dash-merger inheritance",
+      "reason": "Certified correction-certain FAST Mode boundary repair; stable paragraph records preserved",
       "members": [
         {
           "paragraph_id": "LDC.T30.E0037.P059",
@@ -59640,8 +60333,26 @@
         {
           "paragraph_id": "LDC.T30.E0037.P061",
           "stable_ref": "LDC.T30.E0037.P061",
-          "source_text_sha256": "d536cd3b26ef019d4f3cfc5f89623211594772e651fbb24ffd7922fb45e93275",
+          "source_text_sha256": "649bc02260efd4f519fbecd8a384a35352855d4bc1842c4aa1d0c496437a00a3",
           "canonical_length": 76,
+          "boundary_after": {
+            "display_joiner": "space",
+            "speech_run_policy": "continue_same_speaker_only",
+            "suppress_next_leading_ranges": [],
+            "visual_policy": "continuous_prose",
+            "visual_action": "join_inline",
+            "adjudication_generation": "FAST_MODE_BODY0277_0854",
+            "adjudication_status": "CERTIFIED_CORRECTION_CERTAIN",
+            "adjudication_rule_id": "FAST_MODE.BOUNDARY.JOIN",
+            "evidence_ref": "FAST:BOUNDARY_REPAIR:LDC.T30.E0037.P062:LDC.T30.E0037.P061__LDC.T30.E0037.P062",
+            "evidence_sha256": "93182f40e31487f27621118b07f45506ca03ddebbc0714aeb41eab5cd8a2c26e"
+          }
+        },
+        {
+          "paragraph_id": "LDC.T30.E0037.P062",
+          "stable_ref": "LDC.T30.E0037.P062",
+          "source_text_sha256": "e11eb66ea4a4e8c111d537b9f5edd3a896978fad0d1d706fc30944231cb26069",
+          "canonical_length": 134,
           "boundary_after": null
         }
       ]
@@ -59788,8 +60499,8 @@
         {
           "paragraph_id": "LDC.T30.E0038.P008",
           "stable_ref": "LDC.T30.E0038.P008",
-          "source_text_sha256": "8a651a849afd76170dd2cbbca7df2f7f6efdfa535e1b21b412d49f3c8605a262",
-          "canonical_length": 130,
+          "source_text_sha256": "3c1c99886a6c347892210259794019cbb1cd4e9bbb29be5f172b788b19959c9c",
+          "canonical_length": 129,
           "boundary_after": {
             "display_joiner": "space",
             "speech_run_policy": "continue_same_speaker_only",
@@ -60644,8 +61355,8 @@
         {
           "paragraph_id": "LDC.T30.E0038.P081",
           "stable_ref": "LDC.T30.E0038.P081",
-          "source_text_sha256": "d0cee828016de80bb3fc67043ca68966b717c1d2ec95c1c88fc75ae39213e167",
-          "canonical_length": 35,
+          "source_text_sha256": "c95aca95b6ace10ffe46af1aba3710f63cf708e4e44c5052d99a5ce84ef21ee0",
+          "canonical_length": 37,
           "boundary_after": {
             "display_joiner": "space",
             "speech_run_policy": "continue_same_speaker_only",
@@ -60775,67 +61486,6 @@
           "source_text_sha256": "d3a5d54bef27701d15938f410d5bdbac3c5936b16efd3b031f273da24f0cc2a6",
           "canonical_length": 50,
           "boundary_after": null
-        }
-      ]
-    },
-    {
-      "flow_id": "FLOW.RA11.T30.LDC_T30_E0018.P070-P071",
-      "entry_id": "LDC.T30.E0018",
-      "classification": "ra11_broader_boundary_high_confidence_continuation",
-      "confidence": "high",
-      "origin": "RA11_226_CASE_ADJUDICATION",
-      "review_status": "source_or_grammar_discourse_adjudicated",
-      "reason": "RA11 broader-boundary adjudication: canonical punctuation/grammar proves continuous prose; display-flow repair preserves canonical records.",
-      "members": [
-        {
-          "paragraph_id": "LDC.T30.E0018.P070",
-          "stable_ref": "LDC.T30.E0018.P070",
-          "source_text_sha256": "aa00a583bbac3c42c2922318e2dc2e31f93261736e85872ff6102f74d9867a45",
-          "canonical_length": 64,
-          "boundary_after": {
-            "display_joiner": "space",
-            "speech_run_policy": "continue_same_speaker_only"
-          }
-        },
-        {
-          "paragraph_id": "LDC.T30.E0018.P071",
-          "stable_ref": "LDC.T30.E0018.P071",
-          "source_text_sha256": "02bd3adbf18451179dc284f6be2ef0def9ca86d577de8f0b68a79e38b4053399",
-          "canonical_length": 132
-        }
-      ]
-    },
-    {
-      "flow_id": "FLOW.RA11.T30.LDC_T30_E0024.P027-P028",
-      "entry_id": "LDC.T30.E0024",
-      "classification": "ra11_broader_boundary_high_confidence_continuation",
-      "confidence": "high",
-      "origin": "RA11_226_CASE_ADJUDICATION",
-      "review_status": "source_or_grammar_discourse_adjudicated",
-      "reason": "RA11 broader-boundary adjudication: canonical punctuation/grammar proves continuous prose; display-flow repair preserves canonical records.",
-      "members": [
-        {
-          "paragraph_id": "LDC.T30.E0024.P027",
-          "stable_ref": "LDC.T30.E0024.P027",
-          "source_text_sha256": "4f982e156097b09f0b57b4eb1af2f3d777eae519a14f6d35ee99f08974898792",
-          "canonical_length": 267,
-          "boundary_after": {
-            "display_joiner": "space",
-            "speech_run_policy": "continue_same_speaker_only",
-            "visual_policy": "continuous_prose",
-            "visual_action": "join_inline",
-            "adjudication_generation": "RA19B_MULTI_SOURCE",
-            "adjudication_status": "SOURCE_BACKED_CERTAIN",
-            "adjudication_rule_id": "RA19B.JOIN.DIRECT_ITPM_CONTINUITY",
-            "evidence_ref": "RA19B:B30.20008.LDC.T30.E0024.P027__LDC.T30.E0024.P028",
-            "evidence_sha256": "a5c5380cc7e5fe7ca9d817425d075bfa16d39368499eb24be21a042675f1cdea"
-          }
-        },
-        {
-          "paragraph_id": "LDC.T30.E0024.P028",
-          "stable_ref": "LDC.T30.E0024.P028",
-          "source_text_sha256": "a8b9a58bef4954a6480c32b1580c6fd6332e5a38ed554effd1de2e64fbf6898d",
-          "canonical_length": 31
         }
       ]
     }

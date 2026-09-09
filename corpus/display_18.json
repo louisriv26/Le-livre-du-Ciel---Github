@@ -1,7 +1,7 @@
 {
   "schema_version": "ldc-display-transform-v2",
   "volume": 18,
-  "corpus_version": "G036-AFLP-R7-UWR2",
+  "corpus_version": "G036-AFLP-R7-UWR2-FAST1",
   "paragraph_count": 714,
   "paragraphs": {
     "LDC.T18.E0001.P002": [
@@ -3156,8 +3156,8 @@
     "LDC.T18.E0009.P056": [
       {
         "s": 0,
-        "e": 2,
-        "t": "- ",
+        "e": 4,
+        "t": "- da",
         "r": "",
         "a": "SUPPRESS_LAYOUT_MARKER",
         "d": "LEAD-05054",

@@ -1284,7 +1284,7 @@
   {
     "confidence": "high",
     "display_role": "none",
-    "end_char": 88,
+    "end_char": 86,
     "entry_id": "LDC.T24.E0015",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0015.P004",
@@ -1296,7 +1296,7 @@
     "speaker": "LUISA",
     "stable_ref": "LDC.T24.E0015.P004",
     "start_char": 0,
-    "text_preview": "Les membres de cette Maison seront-elles de vraies petites filles de la Volonté Divine ?",
+    "text_preview": "Les membres de cette Maison seront-ils de vraies petites filles de la Volonté Divine ?",
     "volume": 24,
     "presentation_parent": "LUISA",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -2088,7 +2088,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 99,
+    "end_char": 100,
     "entry_id": "LDC.T24.E0024",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0024.P005",
@@ -2100,7 +2100,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0024.P005",
     "start_char": 90,
-    "text_preview": "Je t’aime",
+    "text_preview": " Je t’aime",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -2108,7 +2108,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 215,
+    "end_char": 216,
     "entry_id": "LDC.T24.E0024",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0024.P005",
@@ -2119,7 +2119,7 @@
     "source": "UNIFIED_R3A31_RECONSTRUCTION",
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0024.P005",
-    "start_char": 102,
+    "start_char": 103,
     "text_preview": "de Ma Volonté Divine qui, prononcé une fois, a la vertu de répéter, par des faits, ce qui fut dit une seule fois.",
     "volume": 24,
     "presentation_parent": "JESUS",
@@ -2540,7 +2540,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0021.P006",
     "start_char": 0,
-    "text_preview": "il pourrait à nouveau s’unir à elle et se lier par les liens du mariage.",
+    "text_preview": "Il pourrait à nouveau s’unir à elle et se lier par les liens du mariage.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -2560,7 +2560,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0048.P006",
     "start_char": 0,
-    "text_preview": "Ma fille, si Rome a la primauté de Mon Église, elle le doit à Jérusalem.",
+    "text_preview": "Ma fille, si Rome a la primauté de Mon Église, elle le doit à Jérusalem,",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -2668,7 +2668,7 @@
   {
     "confidence": "high",
     "display_role": "none",
-    "end_char": 111,
+    "end_char": 112,
     "entry_id": "LDC.T24.E0042",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0042.P006",
@@ -2680,7 +2680,7 @@
     "speaker": "LUISA",
     "stable_ref": "LDC.T24.E0042.P006",
     "start_char": 0,
-    "text_preview": "Aussi, dépêche-Toi Mon Amour, qu’on en finisse une fois pour toutes avec ces privations. Car je n’en peux plus.",
+    "text_preview": "Aussi, dépêche-Toi, Mon Amour, qu’on en finisse une fois pour toutes avec ces privations. Car je n’en peux plus.",
     "volume": 24,
     "presentation_parent": "LUISA",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -3220,7 +3220,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0043.P007",
     "start_char": 0,
-    "text_preview": "tu dois savoir qu’en allant de l’une à l’autre de nos Œuvres",
+    "text_preview": "Tu dois savoir qu’en allant de l’une à l’autre de nos Œuvres",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -3280,7 +3280,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0048.P007",
     "start_char": 0,
-    "text_preview": "Parce que le commencement de la Rédemption était précisément à Jérusalem.",
+    "text_preview": "parce que le commencement de la Rédemption était précisément à Jérusalem.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -3368,7 +3368,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 84,
+    "end_char": 86,
     "entry_id": "LDC.T24.E0012",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0012.P007",
@@ -3380,7 +3380,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0012.P007",
     "start_char": 0,
-    "text_preview": "Ceux-ci, l’une après l’autre, communiqueront à leurs travaux la vertu de Ma Volonté.",
+    "text_preview": "Celles-ci, l’une après l’autre, communiqueront à leurs travaux la vertu de Ma Volonté.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -3849,7 +3849,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 45,
+    "end_char": 46,
     "entry_id": "LDC.T24.E0023",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0023.P008",
@@ -3861,7 +3861,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0023.P008",
     "start_char": 0,
-    "text_preview": "Ses Œuvres sont de répétitrices continuelles.",
+    "text_preview": "Ses Œuvres sont des répétitrices continuelles.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -3941,7 +3941,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0026.P008",
     "start_char": 0,
-    "text_preview": "Ma fille, tu dois savoir que le corps n’a rien fait de mal.",
+    "text_preview": "Ma fille, tu dois savoir que le corps n’a rien fait de mal,",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -4202,7 +4202,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0008.P008",
     "start_char": 0,
-    "text_preview": "tu dois savoir que lorsque notre Fiat veut manifester une Vérité, Il met tout notre Être en activité et Il déborde",
+    "text_preview": "Tu dois savoir que lorsque notre Fiat veut manifester une Vérité, Il met tout notre Être en activité et Il déborde",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -5791,7 +5791,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 151,
+    "end_char": 155,
     "entry_id": "LDC.T24.E0042",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0042.P010",
@@ -5803,7 +5803,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0042.P010",
     "start_char": 0,
-    "text_preview": "Notre Volonté Divine est inséparable de Nous Si loin qu’Elle se répande, son Centre est toujours en Nous Il est symbolisée par la lumière du soleil qui",
+    "text_preview": "Notre Volonté Divine est inséparable de Nous. Si loin qu’Elle se répande, son Centre est toujours en Nous. Elle est symbolisée par la lumière du soleil qui",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -5913,7 +5913,7 @@
   {
     "confidence": "high",
     "display_role": "none",
-    "end_char": 110,
+    "end_char": 112,
     "entry_id": "LDC.T24.E0035",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0035.P010",
@@ -5925,7 +5925,7 @@
     "speaker": "LUISA",
     "stable_ref": "LDC.T24.E0035.P010",
     "start_char": 68,
-    "text_preview": "Est-il nécessaire Jésus veut-Il réellement",
+    "text_preview": "Est-il nécessaire ? Jésus veut-Il réellement",
     "volume": 24,
     "presentation_parent": "LUISA",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -6726,7 +6726,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0046.P011",
     "start_char": 0,
-    "text_preview": "En sortant de notre Fiat, l’homme a créé le désordre dans notre Œuvre de Création, Comment pouvons-Nous tolérer de laisser notre si bel Ouvrage désordonné ?",
+    "text_preview": "En sortant de notre Fiat, l’homme a créé le désordre dans notre Œuvre de Création. Comment pouvons-Nous tolérer de laisser notre si bel Ouvrage désordonné ?",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -6886,7 +6886,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0006.P012",
     "start_char": 0,
-    "text_preview": "ici, dans le nouveau Paradis,",
+    "text_preview": "Ici, dans le nouveau Paradis,",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -7486,7 +7486,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0024.P012",
     "start_char": 0,
-    "text_preview": "- Si elle parle, c’est pour livrer ses paroles dans la Parole de Dieu, formant la longue génération des enfants de sa Parole.",
+    "text_preview": "- si elle parle, c’est pour livrer ses paroles dans la Parole de Dieu, formant la longue génération des enfants de sa Parole.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -7936,7 +7936,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 48,
+    "end_char": 50,
     "entry_id": "LDC.T24.E0016",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0016.P013",
@@ -7948,7 +7948,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0016.P013",
     "start_char": 0,
-    "text_preview": "Même si beaucoup le récite sans être intéressées",
+    "text_preview": "Même si beaucoup le récitent sans être intéressées",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -8148,7 +8148,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0033.P013",
     "start_char": 0,
-    "text_preview": "- l’âme prend en elle une Vie qui n’a ni commencement ni fin, Elle prend en elle",
+    "text_preview": "- l’âme prend en elle une Vie qui n’a ni commencement ni fin. Elle prend en elle",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -8296,7 +8296,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 133,
+    "end_char": 134,
     "entry_id": "LDC.T24.E0029",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0029.P013",
@@ -8308,7 +8308,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0029.P013",
     "start_char": 0,
-    "text_preview": "Toutes nos Œuvres sont toujours accompagnées de ces trois Actes Puisque notre Ouvrage est toujours parfait, nos Œuvres sont exécutées",
+    "text_preview": "Toutes nos Œuvres sont toujours accompagnées de ces trois Actes. Puisque notre Ouvrage est toujours parfait, nos Œuvres sont exécutées",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -8368,7 +8368,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0024.P013",
     "start_char": 0,
-    "text_preview": "- Si elle agit, si elle marche, si elle palpite, elle livre ses œuvres entre les Mains de son Créateur, ses pas à ses Pieds divins, ses battements de cœur dans le Cœur paternel, formant la longue génération des enfants",
+    "text_preview": "- si elle agit, si elle marche, si elle palpite, elle livre ses œuvres entre les Mains de son Créateur, ses pas à ses Pieds divins, ses battements de cœur dans le Cœur paternel, formant la longue génération des enfants",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -8576,7 +8576,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 34,
+    "end_char": 33,
     "entry_id": "LDC.T24.E0009",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0009.P014",
@@ -8588,7 +8588,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0009.P014",
     "start_char": 0,
-    "text_preview": "Et l’Être Suprême, regarde dans ce",
+    "text_preview": "Et l’Être Suprême regarde dans ce",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -9257,7 +9257,7 @@
   {
     "confidence": "high",
     "display_role": "none",
-    "end_char": 46,
+    "end_char": 45,
     "entry_id": "LDC.T24.E0009",
     "evidence": "Immediate grammatical ownership assigns the quoted formula to the indicated semantic speaker; quotation remains nested inside outer Jesus discourse.",
     "paragraph_id": "LDC.T24.E0009.P014",
@@ -9268,7 +9268,7 @@
     "source": "RA19E1_A17_FIXED_POINT",
     "speaker": "GENERIC_SOUL",
     "stable_ref": "LDC.T24.E0009.P014",
-    "start_char": 37,
+    "start_char": 36,
     "text_preview": "Je t’aime",
     "volume": 24,
     "semantic_subrole_normalized": "ra19e1_reconciled_generic_soul",
@@ -9298,7 +9298,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 64,
+    "end_char": 63,
     "entry_id": "LDC.T24.E0009",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0009.P014",
@@ -9309,7 +9309,7 @@
     "source": "UNIFIED_R3A31_RECONSTRUCTION",
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0009.P014",
-    "start_char": 49,
+    "start_char": 48,
     "text_preview": "de la créature.",
     "volume": 24,
     "presentation_parent": "JESUS",
@@ -9831,7 +9831,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0043.P015",
     "start_char": 0,
-    "text_preview": "- d’établir de liens nombreux entre le Ciel et la terre,",
+    "text_preview": "- d’établir de nombreux liens entre le Ciel et la terre,",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -10452,7 +10452,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0043.P016",
     "start_char": 0,
-    "text_preview": "- d’ouvrir de portes de communication nombreuses,",
+    "text_preview": "- d’ouvrir de nombreuses portes de communication,",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -10900,7 +10900,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 195,
+    "end_char": 196,
     "entry_id": "LDC.T24.E0003",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0003.P016",
@@ -10912,7 +10912,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0003.P016",
     "start_char": 0,
-    "text_preview": "En fait, c’est par l’épreuve que l’homme acquiert le sceau de fidélité qui lui donne le droit de recevoir les Biens que Dieu a établi de lui donner dans l’état auquel l’âme a été appelée par Lui.",
+    "text_preview": "En fait, c’est par l’épreuve que l’homme acquiert le sceau de fidélité qui lui donne le droit de recevoir les Biens que Dieu a établis de lui donner dans l’état auquel l’âme a été appelée par Lui.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -11392,7 +11392,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0043.P017",
     "start_char": 0,
-    "text_preview": "- de placer de chaînes nombreuses pour que ses actes montent au Ciel, et",
+    "text_preview": "- de placer de nombreuses chaînes pour que ses actes montent au Ciel, et",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -11660,7 +11660,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 151,
+    "end_char": 152,
     "entry_id": "LDC.T24.E0048",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0048.P017",
@@ -11672,7 +11672,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0048.P017",
     "start_char": 0,
-    "text_preview": "Les premiers annonceurs de l’Évangile, ceux qui établirent le catholicisme à Rome, étaient Mes Apôtres, tous de Jérusalem c'est-à-dire de cette patrie.",
+    "text_preview": "Les premiers annonceurs de l’Évangile, ceux qui établirent le catholicisme à Rome, étaient Mes Apôtres, tous de Jérusalem, c'est-à-dire de cette patrie.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -11692,7 +11692,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0010.P017",
     "start_char": 0,
-    "text_preview": "il faut la cultiver souvent et l’arroser si l’on veut avoir la plante et les fruits de cette semence. Sinon la terre durcit et la recouvre sans lui donner la vie.",
+    "text_preview": "Il faut la cultiver souvent et l’arroser si l’on veut avoir la plante et les fruits de cette semence. Sinon la terre durcit et la recouvre sans lui donner la vie.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -12093,7 +12093,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0038.P018",
     "start_char": 0,
-    "text_preview": "- Si tu grandis, elle grandit avec toi.",
+    "text_preview": "- si tu grandis, elle grandit avec toi.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -12393,7 +12393,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0043.P018",
     "start_char": 0,
-    "text_preview": "- de faire descendre de grâces nombreuses pour le bien des créatures.",
+    "text_preview": "- de faire descendre de nombreuses grâces pour le bien des créatures.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -12702,7 +12702,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 131,
+    "end_char": 132,
     "entry_id": "LDC.T24.E0027",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0027.P018",
@@ -12714,7 +12714,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0027.P018",
     "start_char": 33,
-    "text_preview": "Tout en elle est la propriété de Mon Fiat Elle n’a plus rien qui lui appartienne : tout est à Moi.",
+    "text_preview": "Tout en elle est la propriété de Mon Fiat. Elle n’a plus rien qui lui appartienne : tout est à Moi.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -13082,7 +13082,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 62,
+    "end_char": 63,
     "entry_id": "LDC.T24.E0027",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0027.P019",
@@ -13094,7 +13094,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0027.P019",
     "start_char": 0,
-    "text_preview": "En retour, Je lui donne ce qui appartient à Ma Volonté Divine.",
+    "text_preview": "En retour, Je lui donne ce qui appartient à Ma Volonté Divine. ",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -13114,7 +13114,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0038.P019",
     "start_char": 0,
-    "text_preview": "- Si tu agis, Elle va jusqu’à t’étendre dans toutes ses Œuvres.",
+    "text_preview": "- si tu agis, Elle va jusqu’à t’étendre dans toutes ses Œuvres.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -14097,7 +14097,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0006.P020",
     "start_char": 0,
-    "text_preview": "Il était Incapable de soutenir le tourment de son Créateur.",
+    "text_preview": "Il était incapable de soutenir le tourment de son Créateur.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -14325,7 +14325,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 108,
+    "end_char": 109,
     "entry_id": "LDC.T24.E0038",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0038.P020",
@@ -14337,7 +14337,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0038.P020",
     "start_char": 0,
-    "text_preview": "Une mère peut laisser sa fille, elle peut se séparer d’elle et s’éloigner très loin mais Ma Volonté, jamais.",
+    "text_preview": "Une mère peut laisser sa fille, elle peut se séparer d’elle et s’éloigner très loin, mais Ma Volonté, jamais.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -14377,7 +14377,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0013.P020",
     "start_char": 0,
-    "text_preview": "Ainsi, la souffrance ne peut pas entrer dans l’âme qui vit dans Ma Volonté, D’autant plus que, ressentant en elle",
+    "text_preview": "Ainsi, la souffrance ne peut pas entrer dans l’âme qui vit dans Ma Volonté, d’autant plus que, ressentant en elle",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -14426,7 +14426,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 233,
+    "end_char": 232,
     "entry_id": "LDC.T24.E0033",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0033.P020",
@@ -14438,7 +14438,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0033.P020",
     "start_char": 0,
-    "text_preview": "Si une âme pouvait posséder un seul Acte accompli dans Ma Volonté, si toutes les bonnes œuvres de toutes les créatures durant tous les siècles pourraient être réunies, elles n’égaleraient jamais ce seul acte accompli dans Ma Volonté.",
+    "text_preview": "Si une âme pouvait posséder un seul Acte accompli dans Ma Volonté, si toutes les bonnes œuvres de toutes les créatures durant tous les siècles pouvaient être réunies, elles n’égaleraient jamais ce seul acte accompli dans Ma Volonté.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -14446,7 +14446,7 @@
   {
     "confidence": "high",
     "display_role": "none",
-    "end_char": 84,
+    "end_char": 86,
     "entry_id": "LDC.T24.E0012",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0012.P020",
@@ -14458,7 +14458,7 @@
     "speaker": "LUISA",
     "stable_ref": "LDC.T24.E0012.P020",
     "start_char": 17,
-    "text_preview": "Si ce n’était pas Jésus qui me parlait, ces Écrits seront sans vie.",
+    "text_preview": "Si ce n’était pas Jésus qui me parlait, ces Écrits seraient sans vie.",
     "volume": 24,
     "presentation_parent": "LUISA",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -14518,7 +14518,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0040.P020",
     "start_char": 71,
-    "text_preview": "Ma fille, Regarde combien nos Œuvres sont belles, pures, saintes et ordonnées.",
+    "text_preview": "Ma fille, regarde combien nos Œuvres sont belles, pures, saintes et ordonnées.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -15199,7 +15199,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0038.P021",
     "start_char": 0,
-    "text_preview": "Car en se faisant Elle-même la Vie de sa fille, Elle devient inséparable de lui.",
+    "text_preview": "Car en se faisant Elle-même la Vie de sa fille, Elle devient inséparable d’elle.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -15307,7 +15307,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 104,
+    "end_char": 100,
     "entry_id": "LDC.T24.E0019",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0019.P021",
@@ -15319,7 +15319,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0019.P021",
     "start_char": 0,
-    "text_preview": "- par lesquels furent formés en l’âme le Jour perpétuel et resplendissant qui ne connaît jamais la nuit.",
+    "text_preview": "- par lesquels fut formé en l’âme le Jour perpétuel et resplendissant qui ne connaît jamais la nuit.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -15768,7 +15768,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 60,
+    "end_char": 59,
     "entry_id": "LDC.T24.E0003",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0003.P022",
@@ -15780,7 +15780,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0003.P022",
     "start_char": 0,
-    "text_preview": "Et l’homme lui-même ne sait pas qu’elle est sa propre force.",
+    "text_preview": "Et l’homme lui-même ne sait pas quelle est sa propre force.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -16823,7 +16823,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0036.P023",
     "start_char": 0,
-    "text_preview": "Pour Moi et pour la céleste Dame la Patrie fût déjà nôtre.",
+    "text_preview": "Pour Moi et pour la céleste Dame la Patrie fut déjà nôtre.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -16891,7 +16891,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 61,
+    "end_char": 62,
     "entry_id": "LDC.T24.E0018",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0018.P023",
@@ -16903,7 +16903,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0018.P023",
     "start_char": 0,
-    "text_preview": "-de Nous donner le bonheur et la joie du retour de ton amour.",
+    "text_preview": "- de Nous donner le bonheur et la joie du retour de ton amour.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -17132,7 +17132,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 112,
+    "end_char": 114,
     "entry_id": "LDC.T24.E0029",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0029.P023",
@@ -17144,7 +17144,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0029.P023",
     "start_char": 0,
-    "text_preview": "Ceux-ci, n’ayant pas de vie propre, laisseront la place à la Mienne pour la laisser régner et dominer librement.",
+    "text_preview": "Celles-ci, n’ayant pas de vie propre, laisseront la place à la Mienne pour la laisser régner et dominer librement.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -17232,7 +17232,7 @@
   {
     "confidence": "high",
     "display_role": "none",
-    "end_char": 155,
+    "end_char": 156,
     "entry_id": "LDC.T24.E0027",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0027.P023",
@@ -17244,7 +17244,7 @@
     "speaker": "LUISA",
     "stable_ref": "LDC.T24.E0027.P023",
     "start_char": 2,
-    "text_preview": "Quelles sont belles les Œuvres de mon Créateur, et combien admirables l’Ordre et l’Harmonie que le tout-puissant Fiat a disposés dans toute la Création !",
+    "text_preview": "Qu’elles sont belles les Œuvres de mon Créateur, et combien admirables l’Ordre et l’Harmonie que le tout-puissant Fiat a disposés dans toute la Création !",
     "volume": 24,
     "presentation_parent": "LUISA",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -17252,7 +17252,7 @@
   {
     "confidence": "high",
     "display_role": "none",
-    "end_char": 77,
+    "end_char": 78,
     "entry_id": "LDC.T24.E0043",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0043.P023",
@@ -17264,7 +17264,7 @@
     "speaker": "LUISA",
     "stable_ref": "LDC.T24.E0043.P023",
     "start_char": 16,
-    "text_preview": "Adam a vécu le commencement de sa vie dans la Volonté Divine.",
+    "text_preview": " Adam a vécu le commencement de sa vie dans la Volonté Divine.",
     "volume": 24,
     "presentation_parent": "LUISA",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -17492,7 +17492,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 32,
+    "end_char": 30,
     "entry_id": "LDC.T24.E0024",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0024.P024",
@@ -17504,7 +17504,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0024.P024",
     "start_char": 0,
-    "text_preview": "Elles sont ses trois Puissances.",
+    "text_preview": "Ils sont ses trois Puissances.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -17772,7 +17772,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 65,
+    "end_char": 63,
     "entry_id": "LDC.T24.E0047",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0047.P024",
@@ -17784,7 +17784,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0047.P024",
     "start_char": 0,
-    "text_preview": "Elle est donné uniquement à celle qui vit dans Ma Volonté Divine.",
+    "text_preview": "Il est donné uniquement à celle qui vit dans Ma Volonté Divine.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -17912,7 +17912,7 @@
   {
     "confidence": "high",
     "display_role": "none",
-    "end_char": 75,
+    "end_char": 76,
     "entry_id": "LDC.T24.E0034",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0034.P024",
@@ -17925,7 +17925,7 @@
     "speaker": "PERSONIFIED_VOICE",
     "stable_ref": "LDC.T24.E0034.P024",
     "start_char": 0,
-    "text_preview": "Je possède tout et je peux tout donner, sans rien épuiser de mes richesses.",
+    "text_preview": "Je possède tout et je peux tout donner, sans rien épuiser de mes richesses. ",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -18193,7 +18193,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 192,
+    "end_char": 190,
     "entry_id": "LDC.T24.E0040",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0040.P024",
@@ -18205,7 +18205,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0040.P024",
     "start_char": 0,
-    "text_preview": "Nous avons réservé à l’homme la capacité et la raison de toute la Création, pour qu’en possession de sa raison, il Nous donnera de la lumière du soleil, des cieux, du vent et de tout le reste.",
+    "text_preview": "Nous avons réservé à l’homme la capacité et la raison de toute la Création, pour qu’en possession de sa raison, il Nous donne de la lumière du soleil, des cieux, du vent et de tout le reste.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -19470,7 +19470,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0009.P026",
     "start_char": 0,
-    "text_preview": "tu Me donnes Moi-même chaque fois à Moi-même.",
+    "text_preview": "Tu Me donnes Moi-même chaque fois à Moi-même.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -20973,7 +20973,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0009.P027",
     "start_char": 0,
-    "text_preview": "tu ne pourrais rien faire de plus grand, de plus beau ni de plus agréable que de Me donner tout de Moi-même.",
+    "text_preview": "Tu ne pourrais rien faire de plus grand, de plus beau ni de plus agréable que de Me donner tout de Moi-même.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -21435,7 +21435,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0031.P028",
     "start_char": 0,
-    "text_preview": "tu dois savoir qu’au cours de Ma Vie mortelle,",
+    "text_preview": "Tu dois savoir qu’au cours de Ma Vie mortelle,",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -21583,7 +21583,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 55,
+    "end_char": 56,
     "entry_id": "LDC.T24.E0045",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0045.P028",
@@ -21595,7 +21595,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0045.P028",
     "start_char": 0,
-    "text_preview": "Par la Puissance de sa Lumière notre Volonté a la vertu",
+    "text_preview": "Par la Puissance de sa Lumière, notre Volonté a la vertu",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -22526,7 +22526,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 61,
+    "end_char": 63,
     "entry_id": "LDC.T24.E0039",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0039.P029",
@@ -22538,7 +22538,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0039.P029",
     "start_char": 0,
-    "text_preview": "Rien de plus est nécessaire, seulement ceux qui y habiteront.",
+    "text_preview": "Rien de plus n’est nécessaire, seulement ceux qui y habiteront.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -22606,7 +22606,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 66,
+    "end_char": 67,
     "entry_id": "LDC.T24.E0025",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0025.P029",
@@ -22618,7 +22618,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0025.P029",
     "start_char": 0,
-    "text_preview": "Ma Volonté Divine est présent comme la Vie primaire en tout. Ainsi",
+    "text_preview": "Ma Volonté Divine est présente comme la Vie primaire en tout. Ainsi",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -22679,7 +22679,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0024.P029",
     "start_char": 0,
-    "text_preview": "Or, dans une guerre, si la capitale est conquise, la guerre se termine.",
+    "text_preview": "Or, dans une guerre, si la capitale est conquise, la guerre se termine,",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -22927,7 +22927,7 @@
   {
     "confidence": "high",
     "display_role": "none",
-    "end_char": 50,
+    "end_char": 51,
     "entry_id": "LDC.T24.E0047",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0047.P029",
@@ -22940,7 +22940,7 @@
     "speaker": "GENERIC_SOUL",
     "stable_ref": "LDC.T24.E0047.P029",
     "start_char": 1,
-    "text_preview": "Majesté adorable, Vous êtes la Lumière éternelle.",
+    "text_preview": " Majesté adorable, Vous êtes la Lumière éternelle.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -23008,7 +23008,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 72,
+    "end_char": 73,
     "entry_id": "LDC.T24.E0025",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0025.P029",
@@ -23019,7 +23019,7 @@
     "source": "UNIFIED_R3A31_RECONSTRUCTION",
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0025.P029",
-    "start_char": 69,
+    "start_char": 70,
     "text_preview": "une",
     "volume": 24,
     "presentation_parent": "JESUS",
@@ -23028,7 +23028,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 88,
+    "end_char": 89,
     "entry_id": "LDC.T24.E0025",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0025.P029",
@@ -23039,7 +23039,7 @@
     "source": "UNIFIED_R3A31_RECONSTRUCTION",
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0025.P029",
-    "start_char": 75,
+    "start_char": 76,
     "text_preview": "est la vie et",
     "volume": 24,
     "presentation_parent": "JESUS",
@@ -23048,7 +23048,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 94,
+    "end_char": 95,
     "entry_id": "LDC.T24.E0025",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0025.P029",
@@ -23059,7 +23059,7 @@
     "source": "UNIFIED_R3A31_RECONSTRUCTION",
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0025.P029",
-    "start_char": 91,
+    "start_char": 92,
     "text_preview": "une",
     "volume": 24,
     "presentation_parent": "JESUS",
@@ -23068,7 +23068,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 188,
+    "end_char": 189,
     "entry_id": "LDC.T24.E0025",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0025.P029",
@@ -23079,7 +23079,7 @@
     "source": "UNIFIED_R3A31_RECONSTRUCTION",
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0025.P029",
-    "start_char": 97,
+    "start_char": 98,
     "text_preview": "est le poids. Le poids de tout ensemble est le même que celui de chaque chose individuelle.",
     "volume": 24,
     "presentation_parent": "JESUS",
@@ -23208,7 +23208,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 28,
+    "end_char": 30,
     "entry_id": "LDC.T24.E0030",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0030.P030",
@@ -23220,7 +23220,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0030.P030",
     "start_char": 0,
-    "text_preview": "Ceux-ci n’ont pas de rayons.",
+    "text_preview": "Celles-ci n’ont pas de rayons,",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -23261,7 +23261,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0017.P030",
     "start_char": 0,
-    "text_preview": "il lui répète continuellement :",
+    "text_preview": "Il lui répète continuellement :",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -23681,7 +23681,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0024.P030",
     "start_char": 0,
-    "text_preview": "Parce que toutes les autres villes sont vaincues avec la capitale.",
+    "text_preview": "parce que toutes les autres villes sont vaincues avec la capitale.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -24566,7 +24566,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0030.P031",
     "start_char": 0,
-    "text_preview": "Parce que la Source de la Lumière est absente de ce bien.",
+    "text_preview": "parce que la Source de la Lumière est absente de ce bien.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -24834,7 +24834,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 96,
+    "end_char": 95,
     "entry_id": "LDC.T24.E0033",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0033.P031",
@@ -24846,7 +24846,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0033.P031",
     "start_char": 0,
-    "text_preview": "En revanche, l’Amour et la Jalousie de Ma Volonté pour l’Œuvre accomplie en Elle, sont si grands",
+    "text_preview": "En revanche, l’Amour et la Jalousie de Ma Volonté pour l’Œuvre accomplie en Elle sont si grands",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -24934,7 +24934,7 @@
   {
     "confidence": "high",
     "display_role": "none",
-    "end_char": 127,
+    "end_char": 126,
     "entry_id": "LDC.T24.E0043",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0043.P031",
@@ -24946,7 +24946,7 @@
     "speaker": "LUISA",
     "stable_ref": "LDC.T24.E0043.P031",
     "start_char": 0,
-    "text_preview": "Il est vrai que Adam a péché et qu’il est sorti de cette Volonté Divine mais bien qu’il en soit sorti, ses actes y sont restés.",
+    "text_preview": "Il est vrai qu’Adam a péché et qu’il est sorti de cette Volonté Divine mais bien qu’il en soit sorti, ses actes y sont restés.",
     "volume": 24,
     "presentation_parent": "LUISA",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -25629,7 +25629,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0017.P032",
     "start_char": 0,
-    "text_preview": "il est incapable de tout contenir et il en laisse tomber par terre.",
+    "text_preview": "Il est incapable de tout contenir et il en laisse tomber par terre.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -26370,7 +26370,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0038.P033",
     "start_char": 0,
-    "text_preview": "C’est pour cela que tu parcours la Création.",
+    "text_preview": "C’est pour cela que tu parcours la Création,",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -26820,7 +26820,7 @@
   {
     "confidence": "high",
     "display_role": "none",
-    "end_char": 148,
+    "end_char": 149,
     "entry_id": "LDC.T24.E0043",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0043.P033",
@@ -26832,7 +26832,7 @@
     "speaker": "LUISA",
     "stable_ref": "LDC.T24.E0043.P033",
     "start_char": 0,
-    "text_preview": "Dieu Lui-même ne peut pas anéantir un Acte semblable Tout au plus devrait-Il détruire sa propre Volonté Divine, ce qu’Il ne peut pas faire non plus.",
+    "text_preview": "Dieu Lui-même ne peut pas anéantir un Acte semblable. Tout au plus devrait-Il détruire sa propre Volonté Divine, ce qu’Il ne peut pas faire non plus.",
     "volume": 24,
     "presentation_parent": "LUISA",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -27034,7 +27034,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0038.P034",
     "start_char": 0,
-    "text_preview": "Parce que cette Mère,",
+    "text_preview": "parce que cette Mère,",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -27515,7 +27515,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0030.P034",
     "start_char": 0,
-    "text_preview": "La terre demeure obscurcie, comme enterrée dans une obscurité épaisse.",
+    "text_preview": "La terre demeure obscurcie, comme enterrée dans une obscurité épaisse,",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -27523,7 +27523,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 75,
+    "end_char": 76,
     "entry_id": "LDC.T24.E0035",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0035.P034",
@@ -27535,7 +27535,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0035.P034",
     "start_char": 0,
-    "text_preview": "Il prendra soin de placer la petite nouveau-née dans chacune de ses Œuvres.",
+    "text_preview": "Il prendra soin de placer la petite nouvelle-née dans chacune de ses Œuvres.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -27623,7 +27623,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 88,
+    "end_char": 89,
     "entry_id": "LDC.T24.E0014",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0014.P034",
@@ -27635,7 +27635,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0014.P034",
     "start_char": 0,
-    "text_preview": "Je sens Mes Actes répétés par toi J’attends la répétition de Mes Actes avec tant d’Amour",
+    "text_preview": "Je sens Mes Actes répétés par toi. J’attends la répétition de Mes Actes avec tant d’Amour",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -27695,7 +27695,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0022.P034",
     "start_char": 0,
-    "text_preview": "- de bonté et des effets multiples, Parce que tous ses actes dépendent de l’Acte Unique de Celui qui l’a créée.",
+    "text_preview": "- de bonté et des effets multiples, parce que tous ses actes dépendent de l’Acte Unique de Celui qui l’a créée.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -27743,7 +27743,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 148,
+    "end_char": 149,
     "entry_id": "LDC.T24.E0047",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0047.P034",
@@ -27755,7 +27755,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0047.P034",
     "start_char": 0,
-    "text_preview": "Ce sont ainsi de spectacles de Lumière merveilleux qui se forment entre l’âme et Dieu, avec toutes les harmonies de couleurs que possède la Lumière.",
+    "text_preview": "Ce sont ainsi des spectacles de Lumière merveilleux qui se forment entre l’âme et Dieu, avec toutes les harmonies de couleurs que possède la Lumière.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -28416,7 +28416,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0030.P035",
     "start_char": 0,
-    "text_preview": "Parce que la volonté humaine est annonciatrice et porteuse",
+    "text_preview": "parce que la volonté humaine est annonciatrice et porteuse",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -29198,7 +29198,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0012.P036",
     "start_char": 0,
-    "text_preview": "en lui confiant ses secrets et ses joies cachés,",
+    "text_preview": "En lui confiant ses secrets et ses joies cachés,",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -29626,7 +29626,7 @@
   {
     "confidence": "high",
     "display_role": "none",
-    "end_char": 88,
+    "end_char": 87,
     "entry_id": "LDC.T24.E0035",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0035.P036",
@@ -29638,7 +29638,7 @@
     "speaker": "LUISA",
     "stable_ref": "LDC.T24.E0035.P036",
     "start_char": 0,
-    "text_preview": "Mon doux Jésus, se manifesta en moi comme s’Il chantait les louanges de sa céleste Mère.",
+    "text_preview": "Mon doux Jésus se manifesta en moi comme s’Il chantait les louanges de sa céleste Mère.",
     "volume": 24,
     "presentation_parent": "LUISA",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -29666,7 +29666,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 109,
+    "end_char": 110,
     "entry_id": "LDC.T24.E0017",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0017.P036",
@@ -29678,7 +29678,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0017.P036",
     "start_char": 0,
-    "text_preview": "Il retourne bravement pour essayer d’en reprendre, mais il n’a plus de place Le père s’amuse avec son enfant.",
+    "text_preview": "Il retourne bravement pour essayer d’en reprendre, mais il n’a plus de place. Le père s’amuse avec son enfant.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -30306,7 +30306,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 74,
+    "end_char": 75,
     "entry_id": "LDC.T24.E0020",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0020.P037",
@@ -30318,7 +30318,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0020.P037",
     "start_char": 0,
-    "text_preview": "Car la volonté humaine a fait de l’Œuvre de nos Mains créatrice une ruine.",
+    "text_preview": "Car la volonté humaine a fait de l’Œuvre de nos Mains créatrices une ruine.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -31299,7 +31299,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0031.P038",
     "start_char": 0,
-    "text_preview": "tu vois donc ce que signifie la Bénédiction : Elle est la confirmation de notre Œuvre créatrice.",
+    "text_preview": "Tu vois donc ce que signifie la Bénédiction : Elle est la confirmation de notre Œuvre créatrice.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -31627,7 +31627,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 29,
+    "end_char": 30,
     "entry_id": "LDC.T24.E0017",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0017.P039",
@@ -31639,7 +31639,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0017.P039",
     "start_char": 0,
-    "text_preview": "Pour M’amuser Je lui disais :",
+    "text_preview": "Pour M’amuser, Je lui disais :",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -31999,7 +31999,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0001.P039",
     "start_char": 0,
-    "text_preview": "tu voudrais te reposer et retourner à tes distractions d’avant,",
+    "text_preview": "Tu voudrais te reposer et retourner à tes distractions d’avant,",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -32327,7 +32327,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 127,
+    "end_char": 128,
     "entry_id": "LDC.T24.E0016",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0016.P039",
@@ -32339,7 +32339,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0016.P039",
     "start_char": 0,
-    "text_preview": "Mais Je M’en servais pour frapper à la Porte du divin Fiat Le divin Fiat était fatigué d’entendre frapper à ses Portes divines.",
+    "text_preview": "Mais Je M’en servais pour frapper à la Porte du divin Fiat. Le divin Fiat était fatigué d’entendre frapper à ses Portes divines.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -32399,7 +32399,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0048.P039",
     "start_char": 0,
-    "text_preview": "De fait, en créant l’homme, Nous avons placé dans son être toutes les semences de bonheurs que possédait chaque chose créée, Nous avons disposé l’intérieur de l’homme comme un champ contenant toutes les semences de bonheurs.",
+    "text_preview": "De fait, en créant l’homme, Nous avons placé dans son être toutes les semences de bonheurs que possédait chaque chose créée. Nous avons disposé l’intérieur de l’homme comme un champ contenant toutes les semences de bonheurs.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -32427,7 +32427,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 72,
+    "end_char": 73,
     "entry_id": "LDC.T24.E0017",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0017.P039",
@@ -32439,7 +32439,7 @@
     "source": "UNIFIED_R3A31_RECONSTRUCTION",
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0017.P039",
-    "start_char": 31,
+    "start_char": 32,
     "text_preview": "Prends, prends Mon fils. Prends beaucoup.",
     "volume": 24,
     "presentation_parent": "JESUS",
@@ -33865,7 +33865,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0010.P041",
     "start_char": 0,
-    "text_preview": "tu vois donc la grande différence entre les vertus et Ma Volonté :",
+    "text_preview": "Tu vois donc la grande différence entre les vertus et Ma Volonté :",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -34093,7 +34093,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 117,
+    "end_char": 118,
     "entry_id": "LDC.T24.E0013",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0013.P041",
@@ -34105,7 +34105,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0013.P041",
     "start_char": 0,
-    "text_preview": "Il est toujours triomphant dans son état de lumière L’obscurité ne peut pas l’affaiblir ni rien enlever à sa lumière.",
+    "text_preview": "Il est toujours triomphant dans son état de lumière. L’obscurité ne peut pas l’affaiblir ni rien enlever à sa lumière.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -34165,7 +34165,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0042.P041",
     "start_char": 0,
-    "text_preview": "- comme quelque chose qui Lui appartient, La créature perd tout intérêt pour ce qui est humain et tous ses intérêts deviennent divins.",
+    "text_preview": "- comme quelque chose qui Lui appartient. La créature perd tout intérêt pour ce qui est humain et tous ses intérêts deviennent divins.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -34534,7 +34534,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 54,
+    "end_char": 53,
     "entry_id": "LDC.T24.E0046",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0046.P042",
@@ -34546,7 +34546,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0046.P042",
     "start_char": 0,
-    "text_preview": "Notre Volonté Divine, Nous entoure comme une couronne.",
+    "text_preview": "Notre Volonté Divine Nous entoure comme une couronne.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -35014,7 +35014,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 114,
+    "end_char": 115,
     "entry_id": "LDC.T24.E0003",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0003.P042",
@@ -35026,7 +35026,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0003.P042",
     "start_char": 0,
-    "text_preview": "Est-ce que je ne crie pas constamment des profondeurs de ton cœur « Que rien n’entre ici que Ma seule Volonté !» ?",
+    "text_preview": "Est-ce que je ne crie pas constamment des profondeurs de ton cœur « Que rien n’entre ici que Ma seule Volonté ! » ?",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -35146,7 +35146,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0047.P042",
     "start_char": 0,
-    "text_preview": "C’est alors que la Vie dans Mon divin Fiat rappelle en Lui le commencement de la Création, Elle reproduit pour Nous les joies et les fêtes de son début.",
+    "text_preview": "C’est alors que la Vie dans Mon divin Fiat rappelle en Lui le commencement de la Création. Elle reproduit pour Nous les joies et les fêtes de son début.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -35607,7 +35607,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0041.P043",
     "start_char": 0,
-    "text_preview": "tu dois savoir que chaque acte, chaque parole, chaque pensée",
+    "text_preview": "Tu dois savoir que chaque acte, chaque parole, chaque pensée",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -35755,7 +35755,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 68,
+    "end_char": 71,
     "entry_id": "LDC.T24.E0032",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0032.P043",
@@ -35767,7 +35767,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0032.P043",
     "start_char": 0,
-    "text_preview": "- subissent presque le même sort en raison de l’ingratitude humaine.",
+    "text_preview": "- et subissent presque le même sort en raison de l’ingratitude humaine.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -36067,7 +36067,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0048.P043",
     "start_char": 0,
-    "text_preview": "Or, en péchant, l’homme a fait que ces semences de bonheurs que Dieu lui avait infusées en le créant sont devenues malades. Par conséquent, Il a perdu le goût de jouir de tous les bonheurs contenus dans la Création.",
+    "text_preview": "Or, en péchant, l’homme a fait que ces semences de bonheurs que Dieu lui avait infusées en le créant sont devenues malades. Par conséquent, il a perdu le goût de jouir de tous les bonheurs contenus dans la Création.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -36247,7 +36247,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0024.P044",
     "start_char": 0,
-    "text_preview": "La Sacro Sainte Trinité.",
+    "text_preview": "La Sacro-Sainte Trinité.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -37008,7 +37008,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0043.P044",
     "start_char": 0,
-    "text_preview": "tu dois savoir que, en vérité, Adam possède dans le Ciel une gloire qui n’est donnée à aucune autre personne, si sainte qu’elle puisse être, à l’exception de Ma Maman céleste.",
+    "text_preview": "Tu dois savoir que, en vérité, Adam possède dans le Ciel une gloire qui n’est donnée à aucune autre personne, si sainte qu’elle puisse être, à l’exception de Ma Maman céleste.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -37376,7 +37376,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 40,
+    "end_char": 41,
     "entry_id": "LDC.T24.E0018",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0018.P045",
@@ -37388,7 +37388,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0018.P045",
     "start_char": 0,
-    "text_preview": "-le souffle que tu ressens est le Nôtre,",
+    "text_preview": "- le souffle que tu ressens est le Nôtre,",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -37609,7 +37609,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0022.P045",
     "start_char": 0,
-    "text_preview": "Les deux plateaux restent parfaitement en équilibre et au même niveau.",
+    "text_preview": "Les deux plateaux restent parfaitement en équilibre et au même niveau,",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -38030,7 +38030,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0025.P046",
     "start_char": 0,
-    "text_preview": "tu feras toute chose,",
+    "text_preview": "Tu feras toute chose,",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -38150,7 +38150,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0027.P046",
     "start_char": 0,
-    "text_preview": "Nous soyons heureux par nature.",
+    "text_preview": "Nous sommes heureux par nature.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -38298,7 +38298,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 49,
+    "end_char": 50,
     "entry_id": "LDC.T24.E0018",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0018.P046",
@@ -38310,7 +38310,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0018.P046",
     "start_char": 0,
-    "text_preview": "-le battement qui bat dans ton cœur est le Nôtre,",
+    "text_preview": "- le battement qui bat dans ton cœur est le Nôtre,",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -38450,7 +38450,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0022.P046",
     "start_char": 0,
-    "text_preview": "Parce que, comme la Volonté de Dieu et Celle de l’âme sont une,",
+    "text_preview": "parce que, comme la Volonté de Dieu et Celle de l’âme sont une,",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -38598,7 +38598,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 80,
+    "end_char": 79,
     "entry_id": "LDC.T24.E0048",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0048.P046",
@@ -38610,7 +38610,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0048.P046",
     "start_char": 0,
-    "text_preview": "Par contre, celui qui est sain, peut goûter les saveurs, la force et la chaleur.",
+    "text_preview": "Par contre, celui qui est sain peut goûter les saveurs, la force et la chaleur.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -38831,7 +38831,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0001.P046",
     "start_char": 0,
-    "text_preview": "Après bien des difficultés, les Écrits sur la Volonté Divine sont finalement arrivés ici, de Messine. J’en ressentais une certaine satisfaction parce que Je pouvais enfin les avoir près de Moi. Je remerciai Jésus du fond du cœur.",
+    "text_preview": "Après bien des difficultés, les Écrits sur la Volonté Divine sont finalement arrivés ici, de Messine. J’en ressentais une certaine satisfaction parce que je pouvais enfin les avoir près de Moi. Je remerciai Jésus du fond du cœur.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -39201,7 +39201,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 45,
+    "end_char": 43,
     "entry_id": "LDC.T24.E0027",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0027.P047",
@@ -39213,7 +39213,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0027.P047",
     "start_char": 0,
-    "text_preview": "Rien ne puisse faire ombrage à notre Bonheur.",
+    "text_preview": "Rien ne peut faire ombrage à notre Bonheur.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -39401,7 +39401,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 79,
+    "end_char": 80,
     "entry_id": "LDC.T24.E0033",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0033.P047",
@@ -39413,7 +39413,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0033.P047",
     "start_char": 0,
-    "text_preview": "Ces Œuvres-là ne sont pas muettes, mais parlent Elles possèdent une Vie divine.",
+    "text_preview": "Ces Œuvres-là ne sont pas muettes, mais parlent. Elles possèdent une Vie divine.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -40935,7 +40935,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0029.P049",
     "start_char": 0,
-    "text_preview": "tu as reçu la grâce en vertu du Rédempteur déjà venu.",
+    "text_preview": "Tu as reçu la grâce en vertu du Rédempteur déjà venu.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -41095,7 +41095,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0033.P049",
     "start_char": 0,
-    "text_preview": "Je reste avec elles avec tant d’Amour qu’Il M’est impossible de M’en séparer.",
+    "text_preview": "Je reste avec elles avec tant d’Amour qu’il M’est impossible de M’en séparer.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -41184,7 +41184,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 93,
+    "end_char": 94,
     "entry_id": "LDC.T24.E0031",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0031.P049",
@@ -41196,7 +41196,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0031.P049",
     "start_char": 0,
-    "text_preview": "La créature le demande par le signe de la Croix qu’elle fait en prononçant les mêmes paroles.",
+    "text_preview": "La créature le demande par le signe de la Croix qu’elle fait en prononçant les mêmes paroles. ",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -41578,7 +41578,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0021.P050",
     "start_char": 0,
-    "text_preview": "La fin est Ma Volonté.",
+    "text_preview": "La fin est Ma Volonté,",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -41967,7 +41967,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 67,
+    "end_char": 65,
     "entry_id": "LDC.T24.E0028",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0028.P050",
@@ -41979,7 +41979,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0028.P050",
     "start_char": 0,
-    "text_preview": "Mon Fiat donne à toutes les actes accomplis par la créature en Lui.",
+    "text_preview": "Mon Fiat donne à tous les actes accomplis par la créature en Lui.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -42047,7 +42047,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 73,
+    "end_char": 72,
     "entry_id": "LDC.T24.E0009",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0009.P050",
@@ -42059,7 +42059,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0009.P050",
     "start_char": 0,
-    "text_preview": "- si Je n’avais pas senti son écho continuel qui, résonnait dans le Mien,",
+    "text_preview": "- si Je n’avais pas senti son écho continuel qui résonnait dans le Mien,",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -42199,7 +42199,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0040.P050",
     "start_char": 0,
-    "text_preview": "tu vois donc la nécessité du retour de Mon divin Fiat dans la tête de ses membres, qui est l’homme, afin",
+    "text_preview": "Tu vois donc la nécessité du retour de Mon divin Fiat dans la tête de ses membres, qui est l’homme, afin",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -42800,7 +42800,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0021.P051",
     "start_char": 0,
-    "text_preview": "Parce que Ma Volonté était le commencement.",
+    "text_preview": "parce que Ma Volonté était le commencement.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -43140,7 +43140,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0035.P051",
     "start_char": 0,
-    "text_preview": "En vertu de cette Volonté, elle centralisait toutes les créatures en elle-même, Elle les concevait dans son Cœur maternel,",
+    "text_preview": "En vertu de cette Volonté, elle centralisait toutes les créatures en elle-même. Elle les concevait dans son Cœur maternel,",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -43148,7 +43148,7 @@
   {
     "confidence": "high",
     "display_role": "none",
-    "end_char": 123,
+    "end_char": 124,
     "entry_id": "LDC.T24.E0026",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0026.P051",
@@ -43160,7 +43160,7 @@
     "speaker": "LUISA",
     "stable_ref": "LDC.T24.E0026.P051",
     "start_char": 0,
-    "text_preview": "Saint Joseph, au milieu de ces Mers de Lumière comment pouvait-il ne pas se laisser dominer par cette très sainte Volonté ?",
+    "text_preview": "Saint Joseph, au milieu de ces Mers de Lumière, comment pouvait-il ne pas se laisser dominer par cette très sainte Volonté ?",
     "volume": 24,
     "presentation_parent": "LUISA",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -43168,7 +43168,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 126,
+    "end_char": 127,
     "entry_id": "LDC.T24.E0029",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0029.P051",
@@ -43180,7 +43180,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0029.P051",
     "start_char": 0,
-    "text_preview": "Ainsi J’ai pensé à tout depuis ce temps J’ai soutenu les trois volontés sur lesquelles devait triompher Mon éternelle Volonté.",
+    "text_preview": "Ainsi J’ai pensé à tout depuis ce temps. J’ai soutenu les trois volontés sur lesquelles devait triompher Mon éternelle Volonté.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -43908,7 +43908,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 94,
+    "end_char": 95,
     "entry_id": "LDC.T24.E0043",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0043.P052",
@@ -43920,7 +43920,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0043.P052",
     "start_char": 0,
-    "text_preview": "Tout ce qui est fait dans notre Volonté Divine demeure intouchable Personne ne peut y toucher.",
+    "text_preview": "Tout ce qui est fait dans notre Volonté Divine demeure intouchable. Personne ne peut y toucher.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -44128,7 +44128,7 @@
   {
     "confidence": "high",
     "display_role": "none",
-    "end_char": 71,
+    "end_char": 72,
     "entry_id": "LDC.T24.E0010",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0010.P052",
@@ -44140,7 +44140,7 @@
     "speaker": "LUISA",
     "stable_ref": "LDC.T24.E0010.P052",
     "start_char": 60,
-    "text_preview": "pour Jésus.",
+    "text_preview": "pour Jésus. ",
     "volume": 24,
     "presentation_parent": "LUISA",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -44640,7 +44640,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0023.P053",
     "start_char": 0,
-    "text_preview": "tu dois savoir que notre adorable Majesté, en formant la Création, établit",
+    "text_preview": "Tu dois savoir que notre adorable Majesté, en formant la Création, établit",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -45761,7 +45761,7 @@
     "speaker": "LUISA",
     "stable_ref": "LDC.T24.E0010.P054",
     "start_char": 17,
-    "text_preview": "Quelles bêtises Tu es en train de dire.",
+    "text_preview": "Quelles bêtises tu es en train de dire.",
     "volume": 24,
     "presentation_parent": "LUISA",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -46022,7 +46022,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0033.P055",
     "start_char": 0,
-    "text_preview": "tu souhaiterais avec ardeur que Mon Fiat",
+    "text_preview": "Tu souhaiterais avec ardeur que Mon Fiat",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -46182,7 +46182,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0012.P055",
     "start_char": 0,
-    "text_preview": "tu répètes souvent ces scènes de méfiance envers Moi.",
+    "text_preview": "Tu répètes souvent ces scènes de méfiance envers Moi.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -46282,7 +46282,7 @@
     "speaker": "LUISA",
     "stable_ref": "LDC.T24.E0010.P055",
     "start_char": 0,
-    "text_preview": "Jésus Lui-même doit être fatigué de T’entendre psalmodier Tes",
+    "text_preview": "Jésus Lui-même doit être fatigué de t’entendre psalmodier tes",
     "volume": 24,
     "presentation_parent": "LUISA",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -46522,7 +46522,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0026.P055",
     "start_char": 0,
-    "text_preview": "Ma céleste Maman et Moi ne connaissions pas d’autre Volonté, Saint Joseph vivait dans les reflets de notre Volonté.",
+    "text_preview": "Ma céleste Maman et Moi ne connaissions pas d’autre Volonté. Saint Joseph vivait dans les reflets de notre Volonté.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -46550,7 +46550,7 @@
   {
     "confidence": "high",
     "display_role": "none",
-    "end_char": 119,
+    "end_char": 120,
     "entry_id": "LDC.T24.E0035",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0035.P055",
@@ -46563,7 +46563,7 @@
     "speaker": "GENERIC_SOUL",
     "stable_ref": "LDC.T24.E0035.P055",
     "start_char": 0,
-    "text_preview": "Cette Mère si douce, si aimable et si aimante, donne son Fils bien-aimé à chacune de nous en gage de son Amour maternel",
+    "text_preview": "Cette Mère si douce, si aimable et si aimante, donne son Fils bien-aimé à chacune de nous en gage de son Amour maternel.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -47223,7 +47223,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0043.P056",
     "start_char": 0,
-    "text_preview": "C’est lui qui est resté blessé, malade, notre Image en lui défigurée.",
+    "text_preview": "C’est lui qui est resté blessé, malade, notre Image en lui défigurée,",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -47411,7 +47411,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 101,
+    "end_char": 102,
     "entry_id": "LDC.T24.E0016",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0016.P056",
@@ -47423,7 +47423,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0016.P056",
     "start_char": 0,
-    "text_preview": "Par conséquent, le nombre raccourcira le temps D’autant plus que la religion fait son chemin partout.",
+    "text_preview": "Par conséquent, le nombre raccourcira le temps. D’autant plus que la religion fait son chemin partout.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -47631,7 +47631,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 28,
+    "end_char": 26,
     "entry_id": "LDC.T24.E0020",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0020.P057",
@@ -47643,7 +47643,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0020.P057",
     "start_char": 0,
-    "text_preview": "Mais s’il se sentirait bien,",
+    "text_preview": "Mais s’il se sentait bien,",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -47971,7 +47971,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 59,
+    "end_char": 60,
     "entry_id": "LDC.T24.E0011",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0011.P057",
@@ -47983,7 +47983,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0011.P057",
     "start_char": 0,
-    "text_preview": "- sans Vertu génératrice et fécondante Ceci est impossible.",
+    "text_preview": "- sans Vertu génératrice et fécondante. Ceci est impossible.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -48243,7 +48243,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0043.P057",
     "start_char": 0,
-    "text_preview": "Parce que notre Volonté Divine, qui avait pris l’engagement de le conserver beau, fort, frais, saint, totalement en ordre avec Nous,",
+    "text_preview": "parce que notre Volonté Divine, qui avait pris l’engagement de le conserver beau, fort, frais, saint, totalement en ordre avec Nous,",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -48251,7 +48251,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 136,
+    "end_char": 137,
     "entry_id": "LDC.T24.E0003",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0003.P057",
@@ -48263,7 +48263,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0003.P057",
     "start_char": 0,
-    "text_preview": "Tous les mouvements, toutes les vies et tous les domaines Lui appartiennent Ma Volonté a bien des façons de raconter sa longue histoire.",
+    "text_preview": "Tous les mouvements, toutes les vies et tous les domaines Lui appartiennent. Ma Volonté a bien des façons de raconter sa longue histoire.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -48965,7 +48965,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0003.P058",
     "start_char": 0,
-    "text_preview": "tu seras la narratrice et la porteuse de l’histoire d’une Volonté Éternelle.",
+    "text_preview": "Tu seras la narratrice et la porteuse de l’histoire d’une Volonté Éternelle.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -49825,7 +49825,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0015.P059",
     "start_char": 0,
-    "text_preview": "tu dois savoir que tout a été déterminé par l’Être Suprême : les prières, les actes, les souffrances, les soupirs",
+    "text_preview": "Tu dois savoir que tout a été déterminé par l’Être Suprême : les prières, les actes, les souffrances, les soupirs",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -49885,7 +49885,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0013.P059",
     "start_char": 0,
-    "text_preview": "tu étais sensible à une douleur qui te rendait non pas imperturbable et en paix comme aujourd’hui, mais agitée et sans cette fermeté que donne le Divin.",
+    "text_preview": "Tu étais sensible à une douleur qui te rendait non pas imperturbable et en paix comme aujourd’hui, mais agitée et sans cette fermeté que donne le Divin.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -50185,7 +50185,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0027.P060",
     "start_char": 0,
-    "text_preview": "Celui-ci, avec sa bave empoisonnée, est capable",
+    "text_preview": "Celle-ci, avec sa bave empoisonnée, est capable",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -50325,7 +50325,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0026.P060",
     "start_char": 0,
-    "text_preview": "Si ceux qui M’entouraient pouvaient être appelés un peuple.",
+    "text_preview": "Si ceux qui M’entouraient pouvaient être appelés un peuple,",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -50473,7 +50473,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 71,
+    "end_char": 72,
     "entry_id": "LDC.T24.E0036",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0036.P060",
@@ -50485,7 +50485,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0036.P060",
     "start_char": 0,
-    "text_preview": "Regarde-les, Ma fille comme Elles veulent toutes marcher, agir, parler.",
+    "text_preview": "Regarde-les, Ma fille, comme Elles veulent toutes marcher, agir, parler.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -50673,7 +50673,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 139,
+    "end_char": 140,
     "entry_id": "LDC.T24.E0012",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0012.P060",
@@ -50685,7 +50685,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0012.P060",
     "start_char": 2,
-    "text_preview": "Ma fille, lorsque l’âme entre dans Ma Volonté elle y branche son fil électrique qui peut aller partout où l’on veut former de la lumière.",
+    "text_preview": "Ma fille, lorsque l’âme entre dans Ma Volonté, elle y branche son fil électrique qui peut aller partout où l’on veut former de la lumière.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -51366,7 +51366,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0026.P061",
     "start_char": 0,
-    "text_preview": "- C’était un peuple malade : des aveugles, des muets, des sourds, des infirmes, d’autres couverts de plaies",
+    "text_preview": "- c’était un peuple malade : des aveugles, des muets, des sourds, des infirmes, d’autres couverts de plaies",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -51434,7 +51434,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 141,
+    "end_char": 139,
     "entry_id": "LDC.T24.E0034",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0034.P061",
@@ -51446,7 +51446,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0034.P061",
     "start_char": 0,
-    "text_preview": "Si ce serait nécessaire à notre Gloire et à notre Amour inextinguible, elle formerait pour Nous un nouveau Ciel et une Création tout entière.",
+    "text_preview": "Si c’était nécessaire à notre Gloire et à notre Amour inextinguible, elle formerait pour Nous un nouveau Ciel et une Création tout entière.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -51934,7 +51934,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 66,
+    "end_char": 68,
     "entry_id": "LDC.T24.E0023",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0023.P062",
@@ -51946,7 +51946,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0023.P062",
     "start_char": 0,
-    "text_preview": "Regarde le ciel vois comme il est peuplé d’étoiles La terre devait",
+    "text_preview": "Regarde le ciel, vois comme il est peuplé d’étoiles. La terre devait",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -51966,7 +51966,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0003.P062",
     "start_char": 0,
-    "text_preview": "tu dois par conséquent savoir que celui qui vit dans Ma Volonté offre",
+    "text_preview": "Tu dois par conséquent savoir que celui qui vit dans Ma Volonté offre",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -52534,7 +52534,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 55,
+    "end_char": 58,
     "entry_id": "LDC.T24.E0007",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0007.P063",
@@ -52546,7 +52546,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0007.P063",
     "start_char": 0,
-    "text_preview": "- pour protéger la semence de la corruption sa volonté.",
+    "text_preview": "- pour protéger la semence de la corruption de sa volonté.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -53195,7 +53195,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 52,
+    "end_char": 51,
     "entry_id": "LDC.T24.E0004",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0004.P064",
@@ -53207,7 +53207,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0004.P064",
     "start_char": 0,
-    "text_preview": "Tout ce que J’ai fait dans Mon Humanité, n’était que",
+    "text_preview": "Tout ce que J’ai fait dans Mon Humanité n’était que",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -53595,7 +53595,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 124,
+    "end_char": 125,
     "entry_id": "LDC.T24.E0026",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0026.P064",
@@ -53607,7 +53607,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0026.P064",
     "start_char": 0,
-    "text_preview": "Je n’étais donc roi que pour Moi-même Ma Maman était une reine sans la longue génération de sa descendance d’enfants royaux.",
+    "text_preview": "Je n’étais donc roi que pour Moi-même. Ma Maman était une reine sans la longue génération de sa descendance d’enfants royaux.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -53715,7 +53715,7 @@
   {
     "confidence": "high",
     "display_role": "none",
-    "end_char": 65,
+    "end_char": 66,
     "entry_id": "LDC.T24.E0021",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0021.P064",
@@ -53727,7 +53727,7 @@
     "source": "UNIFIED_R3A31_RECONSTRUCTION",
     "speaker": "PERSONIFIED_VOICE",
     "stable_ref": "LDC.T24.E0021.P064",
-    "start_char": 1,
+    "start_char": 2,
     "text_preview": "Calme-toi, car Notre enfant bien-aimé est parvenu à sa destinée.",
     "volume": 24,
     "presentation_parent": "JESUS",
@@ -54157,7 +54157,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 54,
+    "end_char": 57,
     "entry_id": "LDC.T24.E0006",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0006.P065",
@@ -54169,7 +54169,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0006.P065",
     "start_char": 0,
-    "text_preview": "Ma Mort, Ma Résurrection était nécessaire à Mon Amour.",
+    "text_preview": "Ma Mort, Ma Résurrection étaient nécessaires à Mon Amour.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -54449,7 +54449,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0020.P065",
     "start_char": 0,
-    "text_preview": "toi, par conséquent, prie et plaide en faveur d’une cause si sainte au nom des pauvres créatures.",
+    "text_preview": "Toi, par conséquent, prie et plaide en faveur d’une cause si sainte au nom des pauvres créatures.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -54812,7 +54812,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0045.P066",
     "start_char": 0,
-    "text_preview": "toi, par conséquent, ne t’inquiète pas.",
+    "text_preview": "Toi, par conséquent, ne t’inquiète pas.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -54952,7 +54952,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0024.P066",
     "start_char": 0,
-    "text_preview": "Telle est la condition dans laquelle se trouve la foi.",
+    "text_preview": "Telle est la condition dans laquelle se trouve la foi,",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -55364,7 +55364,7 @@
     "confidence": "high",
     "decision_reason": "Narrative cue followed by direct speech",
     "display_role": "words_of_jesus",
-    "end_char": 143,
+    "end_char": 144,
     "entry_id": "LDC.T24.E0046",
     "evidence": "Four-witness/contextual Batch 4 linguistic recheck",
     "paragraph_id": "LDC.T24.E0046.P066",
@@ -55375,7 +55375,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0046.P066",
     "start_char": 27,
-    "text_preview": "Ma fille, parce que le But premier, l’acte et la fin de la Création, était que seulement notre Volonté Divine règne.",
+    "text_preview": "Ma fille, parce que le But premier, l’acte et la fin de la Création étaient que seulement notre Volonté Divine règne.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -55443,7 +55443,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 16,
+    "end_char": 12,
     "entry_id": "LDC.T24.E0017",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0017.P067",
@@ -55455,7 +55455,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0017.P067",
     "start_char": 0,
-    "text_preview": "Il qui est formé",
+    "text_preview": "Il est formé",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -55555,7 +55555,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0024.P067",
     "start_char": 0,
-    "text_preview": "Parce que Ma Volonté ne règne pas.",
+    "text_preview": "parce que Ma Volonté ne règne pas.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -55616,7 +55616,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0006.P067",
     "start_char": 0,
-    "text_preview": "Et je voulais ressusciter afin de former",
+    "text_preview": "Et Je voulais ressusciter afin de former",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -56650,7 +56650,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 104,
+    "end_char": 108,
     "entry_id": "LDC.T24.E0042",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0042.P068",
@@ -56662,7 +56662,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0042.P068",
     "start_char": 0,
-    "text_preview": "Tout ce tu as fait et souffert est en ce moment présent devant Dieu dans un acte de requête pour obtenir",
+    "text_preview": "Tout ce que tu as fait et souffert est en ce moment présent devant Dieu dans un acte de requête pour obtenir",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -56750,7 +56750,7 @@
   {
     "confidence": "high",
     "display_role": "none",
-    "end_char": 145,
+    "end_char": 147,
     "entry_id": "LDC.T24.E0021",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0021.P068",
@@ -56763,7 +56763,7 @@
     "speaker": "PERSONIFIED_VOICE",
     "stable_ref": "LDC.T24.E0021.P068",
     "start_char": 0,
-    "text_preview": "Les époux sont revenus à leur place d’honneur. Il ne reste plus qu’à fêter et à jouir d’un bien si grand, après un aussi long temps de tristesse.",
+    "text_preview": "Les époux sont revenus à leur place d’honneur. Il ne reste plus qu’à fêter et à jouir d’un bien si grand, après un aussi long temps de tristesse. »",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -56771,7 +56771,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 149,
+    "end_char": 148,
     "entry_id": "LDC.T24.E0018",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0018.P068",
@@ -56783,7 +56783,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0018.P068",
     "start_char": 0,
-    "text_preview": "- serré sur son cœur, et dont la tendresse amoureuse était si intense et si grande au point d’inonder de ses larmes, le visage de son enfant endormi,",
+    "text_preview": "- serré sur son cœur, et dont la tendresse amoureuse était si intense et si grande au point d’inonder de ses larmes le visage de son enfant endormi,",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -56851,7 +56851,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 199,
+    "end_char": 200,
     "entry_id": "LDC.T24.E0003",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0003.P068",
@@ -56863,7 +56863,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0003.P068",
     "start_char": 0,
-    "text_preview": "- quel que soit le bien qu’elle puisse faire, ne Nous offre toujours que des actes humains et non divins Ces actes nous sont inférieurs parce que l’Acte royal de notre divin Fiat ne coule pas en eux.",
+    "text_preview": "- quel que soit le bien qu’elle puisse faire, ne Nous offre toujours que des actes humains et non divins. Ces actes nous sont inférieurs parce que l’Acte royal de notre divin Fiat ne coule pas en eux.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -56991,7 +56991,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 46,
+    "end_char": 47,
     "entry_id": "LDC.T24.E0039",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0039.P069",
@@ -57003,7 +57003,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0039.P069",
     "start_char": 0,
-    "text_preview": "Je les ai placé devant les belles comparaisons",
+    "text_preview": "Je les ai placés devant les belles comparaisons",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -57373,7 +57373,7 @@
   {
     "confidence": "high",
     "display_role": "none",
-    "end_char": 89,
+    "end_char": 90,
     "entry_id": "LDC.T24.E0037",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0037.P069",
@@ -57385,7 +57385,7 @@
     "speaker": "LUISA",
     "stable_ref": "LDC.T24.E0037.P069",
     "start_char": 0,
-    "text_preview": "Dépêche-Toi, vois comme le monde est en train de tomber Ta Volonté le mettra en sécurité.",
+    "text_preview": "Dépêche-Toi, vois comme le monde est en train de tomber. Ta Volonté le mettra en sécurité.",
     "volume": 24,
     "presentation_parent": "LUISA",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -57854,7 +57854,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 42,
+    "end_char": 41,
     "entry_id": "LDC.T24.E0042",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0042.P070",
@@ -57866,7 +57866,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0042.P070",
     "start_char": 0,
-    "text_preview": "- que Dieu leur concède, un Bien si grand.",
+    "text_preview": "- que Dieu leur concède un Bien si grand.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -57926,7 +57926,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0035.P070",
     "start_char": 0,
-    "text_preview": "si bien que tous y participent et en profitent.",
+    "text_preview": "Si bien que tous y participent et en profitent.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -58447,7 +58447,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0020.P071",
     "start_char": 0,
-    "text_preview": "tout était fait dans une somptuosité royale.",
+    "text_preview": "Tout était fait dans une somptuosité royale.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -58895,7 +58895,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 102,
+    "end_char": 101,
     "entry_id": "LDC.T24.E0035",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0035.P071",
@@ -58907,7 +58907,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0035.P071",
     "start_char": 0,
-    "text_preview": "Les Bienheureux, voient qu’ils ne peuvent pas former ces vagues parce qu’ils ne possèdent pas de mers.",
+    "text_preview": "Les Bienheureux voient qu’ils ne peuvent pas former ces vagues parce qu’ils ne possèdent pas de mers.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -58927,7 +58927,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0034.P071",
     "start_char": 0,
-    "text_preview": "tu vois donc combien de choses précieuses elle enferme. Combien elle est étonnante dans toutes ses actions.",
+    "text_preview": "Tu vois donc combien de choses précieuses elle enferme. Combien elle est étonnante dans toutes ses actions.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -58955,7 +58955,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 213,
+    "end_char": 214,
     "entry_id": "LDC.T24.E0010",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0010.P071",
@@ -58967,7 +58967,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0010.P071",
     "start_char": 0,
-    "text_preview": "Or si ce merveilleux enchantement demeure caché aux créatures, il ne l’est pas au Ciel Là les habitants peuvent profiter de l’enchantement et des merveilles de voir la Création tout entière remplie et ornée de tes",
+    "text_preview": "Or si ce merveilleux enchantement demeure caché aux créatures, il ne l’est pas au Ciel. Là les habitants peuvent profiter de l’enchantement et des merveilles de voir la Création tout entière remplie et ornée de tes",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -58975,7 +58975,7 @@
   {
     "confidence": "high",
     "display_role": "none",
-    "end_char": 225,
+    "end_char": 226,
     "entry_id": "LDC.T24.E0010",
     "evidence": "Immediate grammatical ownership assigns the quoted formula to the indicated semantic speaker; quotation remains nested inside outer Jesus discourse.",
     "paragraph_id": "LDC.T24.E0010.P071",
@@ -58986,7 +58986,7 @@
     "source": "RA19E1_A17_FIXED_POINT",
     "speaker": "LUISA",
     "stable_ref": "LDC.T24.E0010.P071",
-    "start_char": 216,
+    "start_char": 217,
     "text_preview": "Je t’aime",
     "volume": 24,
     "semantic_subrole_normalized": "ra19e1_reconciled_luisa",
@@ -59256,7 +59256,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 41,
+    "end_char": 43,
     "entry_id": "LDC.T24.E0032",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0032.P072",
@@ -59268,7 +59268,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0032.P072",
     "start_char": 0,
-    "text_preview": "Ils ne sont pas juste une simple lumière.",
+    "text_preview": "Elles ne sont pas juste une simple lumière.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -59696,7 +59696,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 184,
+    "end_char": 185,
     "entry_id": "LDC.T24.E0010",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0010.P072",
@@ -59708,7 +59708,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0010.P072",
     "start_char": 36,
-    "text_preview": "s’harmonisent avec les tiens Ils ne se sentent pas séparés de la terre parce que l’Amour les réunit, formant les mêmes notes et les mêmes harmonies.",
+    "text_preview": "s’harmonisent avec les tiens. Ils ne se sentent pas séparés de la terre parce que l’Amour les réunit, formant les mêmes notes et les mêmes harmonies.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -60136,7 +60136,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 60,
+    "end_char": 58,
     "entry_id": "LDC.T24.E0045",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0045.P073",
@@ -60148,7 +60148,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0045.P073",
     "start_char": 0,
-    "text_preview": "Chaque membre et chaque objet puisse avoir sa lumière à lui.",
+    "text_preview": "Chaque membre et chaque objet peut avoir sa lumière à lui.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -60676,7 +60676,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 47,
+    "end_char": 48,
     "entry_id": "LDC.T24.E0033",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0033.P074",
@@ -60688,7 +60688,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0033.P074",
     "start_char": 0,
-    "text_preview": "La vertu et la prérogative de cette Lumière est",
+    "text_preview": "La vertu et la prérogative de cette Lumière sont",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -60708,7 +60708,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0037.P074",
     "start_char": 0,
-    "text_preview": "tu dois savoir que cette Solitude Me pesait beaucoup.",
+    "text_preview": "Tu dois savoir que cette Solitude Me pesait beaucoup.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -60908,7 +60908,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0003.P074",
     "start_char": 0,
-    "text_preview": "- S’il mange, ce sont des aliments dignes de lui, servis sur des plats d’argent.",
+    "text_preview": "- s’il mange, ce sont des aliments dignes de lui, servis sur des plats d’argent.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -63116,7 +63116,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0008.P078",
     "start_char": 0,
-    "text_preview": "et afin que",
+    "text_preview": "Et afin que",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -64145,7 +64145,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 83,
+    "end_char": 82,
     "entry_id": "LDC.T24.E0020",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0020.P079",
@@ -64157,7 +64157,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0020.P079",
     "start_char": 0,
-    "text_preview": "Car celui qui préparait le mariage et le formait, était d’une Beauté inatteignable.",
+    "text_preview": "Car celui qui préparait le mariage et le formait était d’une Beauté inatteignable.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -64827,7 +64827,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 137,
+    "end_char": 138,
     "entry_id": "LDC.T24.E0038",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0038.P080",
@@ -64839,7 +64839,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0038.P080",
     "start_char": 0,
-    "text_preview": "- il ne ressentait plus la Force vivifiante de Mon Souffle Celui-ci lui donna Vie, le maintenait beau, frais et semblable à son Créateur.",
+    "text_preview": "- il ne ressentait plus la Force vivifiante de Mon Souffle. Celui-ci lui donna Vie, le maintenait beau, frais et semblable à son Créateur.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -65267,7 +65267,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 92,
+    "end_char": 93,
     "entry_id": "LDC.T24.E0003",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0003.P081",
@@ -65279,7 +65279,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0003.P081",
     "start_char": 0,
-    "text_preview": "- il lui rapporte des aliments grossiers, dans des plats dégoûtants Si le roi veut se vêtir,",
+    "text_preview": "- il lui rapporte des aliments grossiers, dans des plats dégoûtants. Si le roi veut se vêtir,",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -65287,7 +65287,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 102,
+    "end_char": 103,
     "entry_id": "LDC.T24.E0019",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0019.P081",
@@ -65299,7 +65299,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0019.P081",
     "start_char": 0,
-    "text_preview": "Il s’élèvera alors immédiatement jusqu’à notre Origine Tout sera fête et gloire pour Nous et pour lui.",
+    "text_preview": "Il s’élèvera alors immédiatement jusqu’à notre Origine. Tout sera fête et gloire pour Nous et pour lui.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -65421,7 +65421,7 @@
     "speaker": "LUISA",
     "stable_ref": "LDC.T24.E0010.P081",
     "start_char": 63,
-    "text_preview": "Si Je mourais et que J’allais au Purgatoire, que vais-Je y faire ?",
+    "text_preview": "Si je mourais et que j’allais au Purgatoire, que vais-je y faire ?",
     "volume": 24,
     "presentation_parent": "LUISA",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -66769,7 +66769,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 60,
+    "end_char": 61,
     "entry_id": "LDC.T24.E0032",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0032.P084",
@@ -66781,7 +66781,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0032.P084",
     "start_char": 0,
-    "text_preview": "Comme Il est lumière, personne ne pourra empêcher sa marche.",
+    "text_preview": "Comme Il est lumière, personne ne pourra empêcher sa marche. ",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -66821,7 +66821,7 @@
     "speaker": "LUISA",
     "stable_ref": "LDC.T24.E0010.P084",
     "start_char": 0,
-    "text_preview": "- enfermée plus que dans une étroite prison, Ma pauvre âme souffre tant",
+    "text_preview": "- enfermée plus que dans une étroite prison, ma pauvre âme souffre tant",
     "volume": 24,
     "presentation_parent": "LUISA",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -66949,7 +66949,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 165,
+    "end_char": 167,
     "entry_id": "LDC.T24.E0029",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0029.P084",
@@ -66961,7 +66961,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0029.P084",
     "start_char": 0,
-    "text_preview": "Et la Volonté Divine te rend présent son état glorieux de Reine qu’il te fait célébrer avec toutes les choses créées, tout comme elle a été célébrée à sa Conception.",
+    "text_preview": "Et la Volonté Divine te rend présent son état glorieux de Reine qu’elle te fait célébrer avec toutes les choses créées, tout comme elle a été célébrée à sa Conception.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -66989,7 +66989,7 @@
   {
     "confidence": "high",
     "display_role": "none",
-    "end_char": 182,
+    "end_char": 183,
     "entry_id": "LDC.T24.E0003",
     "evidence": "Nested direct speaker is the king in Jesus’ parable; not Jesus and not a personified abstraction.",
     "paragraph_id": "LDC.T24.E0003.P084",
@@ -67001,7 +67001,7 @@
     "speaker": "OTHER",
     "stable_ref": "LDC.T24.E0003.P084",
     "start_char": 57,
-    "text_preview": "Comment cela se peut-il ? J’ai Mes propres biens royaux et celui-là ose Me servir ces choses misérables de sa propre maison ?",
+    "text_preview": "Comment cela se peut-il ? J’ai Mes propres biens royaux et celui-là ose Me servir ces choses misérables de sa propre maison ? ",
     "volume": 24,
     "semantic_subrole_normalized": "ra19e1_reconciled_other",
     "presentation_parent": "JESUS",
@@ -67490,7 +67490,7 @@
   {
     "confidence": "high",
     "display_role": "none",
-    "end_char": 55,
+    "end_char": 56,
     "entry_id": "LDC.T24.E0045",
     "evidence": "Explicit hypothetical « Personne ne peut dire : Il ne Me donne pas sa lumière »; generic person is the semantic speaker.",
     "paragraph_id": "LDC.T24.E0045.P085",
@@ -67502,7 +67502,7 @@
     "speaker": "GENERIC_SOUL",
     "stable_ref": "LDC.T24.E0045.P085",
     "start_char": 25,
-    "text_preview": "Il ne Me donne pas sa lumière.",
+    "text_preview": " Il ne Me donne pas sa lumière.",
     "volume": 24,
     "semantic_subrole_normalized": "ra19e1_reconciled_generic_soul",
     "presentation_parent": "JESUS",
@@ -67912,7 +67912,7 @@
   {
     "confidence": "high",
     "display_role": "none",
-    "end_char": 76,
+    "end_char": 78,
     "entry_id": "LDC.T24.E0046",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0046.P086",
@@ -67925,7 +67925,7 @@
     "speaker": "PERSONIFIED_VOICE",
     "stable_ref": "LDC.T24.E0046.P086",
     "start_char": 0,
-    "text_preview": "Est-il Mon Œuvre est-il vraiment celui que J’ai eu tant de plaisir à créer ?",
+    "text_preview": "Est-il Mon Œuvre ? Est-il vraiment celui que J’ai eu tant de plaisir à créer ?",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -67965,7 +67965,7 @@
     "speaker": "LUISA",
     "stable_ref": "LDC.T24.E0010.P086",
     "start_char": 0,
-    "text_preview": "- lorsque Je ne sais pas ce que Je pourrais faire et souffrir pour le retrouver.",
+    "text_preview": "- lorsque je ne sais pas ce que je pourrais faire et souffrir pour le retrouver.",
     "volume": 24,
     "presentation_parent": "LUISA",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -68113,7 +68113,7 @@
   {
     "confidence": "high",
     "display_role": "none",
-    "end_char": 31,
+    "end_char": 30,
     "entry_id": "LDC.T24.E0010",
     "evidence": "RA19E RA19E-C2373; complete-entry adjudication; frozen ledger sha256=b3f809d3d08c4623c23c7a49e57ce180ca3ab2d89eaf6cbab71925eb6c437878",
     "paragraph_id": "LDC.T24.E0010.P087",
@@ -68125,7 +68125,7 @@
     "speaker": "LUISA",
     "stable_ref": "LDC.T24.E0010.P087",
     "start_char": 0,
-    "text_preview": "Que se passera-t’il si, Mon âme",
+    "text_preview": "Que se passera-t-il si mon âme",
     "volume": 24,
     "presentation_parent": "LUISA",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -68334,7 +68334,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 59,
+    "end_char": 61,
     "entry_id": "LDC.T24.E0004",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0004.P087",
@@ -68346,7 +68346,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0004.P087",
     "start_char": 0,
-    "text_preview": "Il sera aussi suffisante pour créer le Royaume de Mon Fiat.",
+    "text_preview": "Elle sera aussi suffisante pour créer le Royaume de Mon Fiat.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -68454,7 +68454,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 108,
+    "end_char": 109,
     "entry_id": "LDC.T24.E0017",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0017.P087",
@@ -68466,7 +68466,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0017.P087",
     "start_char": 0,
-    "text_preview": "- deuxièmement, en allant partout et en remuant Ciel et terre pour demander le Royaume de Ma Volonté Divine.",
+    "text_preview": "- deuxièmement, en allant partout et en remuant Ciel et terre pour demander le Royaume de Ma Volonté Divine. ",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -69055,7 +69055,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 24,
+    "end_char": 25,
     "entry_id": "LDC.T24.E0005",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0005.P089",
@@ -69067,7 +69067,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0005.P089",
     "start_char": 0,
-    "text_preview": "-à former le sang pur et",
+    "text_preview": "- à former le sang pur et",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -69396,7 +69396,7 @@
   {
     "confidence": "high",
     "display_role": "none",
-    "end_char": 123,
+    "end_char": 121,
     "entry_id": "LDC.T24.E0010",
     "evidence": "RA19E RA19E-C1810; complete-entry adjudication; frozen ledger sha256=b3f809d3d08c4623c23c7a49e57ce180ca3ab2d89eaf6cbab71925eb6c437878",
     "paragraph_id": "LDC.T24.E0010.P089",
@@ -69408,7 +69408,7 @@
     "speaker": "LUISA",
     "stable_ref": "LDC.T24.E0010.P089",
     "start_char": 0,
-    "text_preview": "- prendra rapidement son envol et ne trouvera pas Jésus, le centre en qui Je cherche refuge pour ne plus en sortir jamais ?",
+    "text_preview": "- prend rapidement son envol et ne trouvera pas Jésus, le centre en qui Je cherche refuge pour ne plus en sortir jamais ?",
     "volume": 24,
     "presentation_parent": "LUISA",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -69576,7 +69576,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 60,
+    "end_char": 61,
     "entry_id": "LDC.T24.E0005",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0005.P090",
@@ -69588,7 +69588,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0005.P090",
     "start_char": 0,
-    "text_preview": "-à permettre à sa Vie véritable de croître dans la créature.",
+    "text_preview": "- à permettre à sa Vie véritable de croître dans la créature.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -69768,7 +69768,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0046.P090",
     "start_char": 0,
-    "text_preview": "tu vois donc qu’il est absolument nécessaire que Ma Volonté Divine soit connue et règne.",
+    "text_preview": "Tu vois donc qu’il est absolument nécessaire que Ma Volonté Divine soit connue et règne.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -69816,7 +69816,7 @@
   {
     "confidence": "high",
     "display_role": "none",
-    "end_char": 119,
+    "end_char": 118,
     "entry_id": "LDC.T24.E0010",
     "evidence": "RA19E RA19E-C2375; complete-entry adjudication; frozen ledger sha256=b3f809d3d08c4623c23c7a49e57ce180ca3ab2d89eaf6cbab71925eb6c437878",
     "paragraph_id": "LDC.T24.E0010.P090",
@@ -69828,7 +69828,7 @@
     "speaker": "LUISA",
     "stable_ref": "LDC.T24.E0010.P090",
     "start_char": 0,
-    "text_preview": "Que se passera-t’-il, si au lieu de trouver Ma Vie, le centre de Mon repos, Je Me trouverais jetée dans le Purgatoire ?",
+    "text_preview": "Que se passera-t-il, si au lieu de trouver ma Vie, le centre de mon repos, je me trouverais jetée dans le Purgatoire ?",
     "volume": 24,
     "presentation_parent": "LUISA",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -69856,7 +69856,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 123,
+    "end_char": 122,
     "entry_id": "LDC.T24.E0004",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0004.P090",
@@ -69868,7 +69868,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0004.P090",
     "start_char": 0,
-    "text_preview": "- les Connaissances que J’ai manifestées, soient connues pour pouvoir communiquer le Bien que contient Ma Parole Créatrice.",
+    "text_preview": "- les Connaissances que J’ai manifestées soient connues pour pouvoir communiquer le Bien que contient Ma Parole Créatrice.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -70108,7 +70108,7 @@
     "speaker": "LUISA",
     "stable_ref": "LDC.T24.E0010.P091",
     "start_char": 0,
-    "text_preview": "Quels seraient alors Mon tourment et Ma souffrance ?",
+    "text_preview": "Quels seraient alors mon tourment et ma souffrance ?",
     "volume": 24,
     "presentation_parent": "LUISA",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -70556,7 +70556,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 94,
+    "end_char": 96,
     "entry_id": "LDC.T24.E0042",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0042.P092",
@@ -70568,7 +70568,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0042.P092",
     "start_char": 0,
-    "text_preview": "- va descendre et remonter en ceux qui ont été le commencement et la cause d’un Bien si grand.",
+    "text_preview": "- vont descendre et remonter en ceux qui ont été le commencement et la cause d’un Bien si grand.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -70588,7 +70588,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0007.P092",
     "start_char": 0,
-    "text_preview": "tu le vois aussi dans l’institution du sacrement de l’Eucharistie où notre Fiat a formé l’Écho.",
+    "text_preview": "Tu le vois aussi dans l’institution du sacrement de l’Eucharistie où notre Fiat a formé l’Écho.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -70836,7 +70836,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 55,
+    "end_char": 56,
     "entry_id": "LDC.T24.E0032",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0032.P093",
@@ -70848,7 +70848,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0032.P093",
     "start_char": 0,
-    "text_preview": "- tout comme elle était sortie de nos Mains Créatrices.",
+    "text_preview": "- tout comme elle était sortie de nos Mains Créatrices. ",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -70908,7 +70908,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0040.P093",
     "start_char": 0,
-    "text_preview": "pour lui permettre de répéter ses Actes et les entrelacer ensemble",
+    "text_preview": "Pour lui permettre de répéter ses Actes et les entrelacer ensemble",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -70968,7 +70968,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0039.P093",
     "start_char": 0,
-    "text_preview": "tu languirais pour que soit connue l’Œuvre de ton Jésus afin qu’une Œuvre aussi exubérante, d’un prix incalculable, puisse",
+    "text_preview": "Tu languirais pour que soit connue l’Œuvre de ton Jésus afin qu’une Œuvre aussi exubérante, d’un prix incalculable, puisse",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -70976,7 +70976,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 141,
+    "end_char": 140,
     "entry_id": "LDC.T24.E0004",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0004.P093",
@@ -70988,7 +70988,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0004.P093",
     "start_char": 0,
-    "text_preview": "- le Dessein en vue duquel Je les ai manifestées, soient connus, afin de pouvoir réaliser le Royaume que Je désire tant donner aux créatures.",
+    "text_preview": "- le Dessein en vue duquel Je les ai manifestées soient connus, afin de pouvoir réaliser le Royaume que Je désire tant donner aux créatures.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -71016,7 +71016,7 @@
   {
     "confidence": "high",
     "display_role": "none",
-    "end_char": 114,
+    "end_char": 116,
     "entry_id": "LDC.T24.E0046",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0046.P093",
@@ -71028,7 +71028,7 @@
     "speaker": "LUISA",
     "stable_ref": "LDC.T24.E0046.P093",
     "start_char": 25,
-    "text_preview": "Pourquoi est-ce que mon bien-aimé Jésus ne parle pas de son Fiat aussi souvent qu’avant ?",
+    "text_preview": " Pourquoi est-ce que mon bien-aimé Jésus ne parle pas de son Fiat aussi souvent qu’avant ? ",
     "volume": 24,
     "presentation_parent": "LUISA",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -72056,7 +72056,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 67,
+    "end_char": 69,
     "entry_id": "LDC.T24.E0042",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0042.P096",
@@ -72068,7 +72068,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0042.P096",
     "start_char": 0,
-    "text_preview": "Ainsi, ta vie et tout ce que tu as fait et souffert sera parmi eux.",
+    "text_preview": "Ainsi, ta vie et tout ce que tu as fait et souffert seront parmi eux.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -72588,7 +72588,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0038.P098",
     "start_char": 0,
-    "text_preview": "Et ceux qui ont les Connaissances de Ma Volonté.",
+    "text_preview": "Et ceux qui ont les Connaissances de Ma Volonté,",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -72928,7 +72928,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0038.P099",
     "start_char": 0,
-    "text_preview": "Oh ! comme ils mettraient de l’ordre dans leur vie",
+    "text_preview": "oh ! comme ils mettraient de l’ordre dans leur vie",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -72956,7 +72956,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 53,
+    "end_char": 54,
     "entry_id": "LDC.T24.E0007",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0007.P099",
@@ -72968,7 +72968,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0007.P099",
     "start_char": 0,
-    "text_preview": "Et Ma Vie sacramentelle est continué perpétuellement.",
+    "text_preview": "Et Ma Vie sacramentelle est continuée perpétuellement.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -72976,7 +72976,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 54,
+    "end_char": 55,
     "entry_id": "LDC.T24.E0009",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0009.P099",
@@ -72988,7 +72988,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0009.P099",
     "start_char": 0,
-    "text_preview": "- même en respirant la créature peut faire Ma Volonté.",
+    "text_preview": "- même en respirant, la créature peut faire Ma Volonté.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -73716,7 +73716,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 142,
+    "end_char": 143,
     "entry_id": "LDC.T24.E0029",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0029.P101",
@@ -73728,7 +73728,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0029.P101",
     "start_char": 0,
-    "text_preview": "Ne sais-tu pas qu’elle soupire après les petites reines, qui sont les filles de Ma Volonté, pour célébrer la fête qu’elle reçoit, pour elles ?",
+    "text_preview": "Ne sais-tu pas qu’elle soupire après les petites reines, qui sont les filles de Ma Volonté, pour célébrer la fête qu’elle reçoit, pour elles ? ",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -74817,7 +74817,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 50,
+    "end_char": 46,
     "entry_id": "LDC.T24.E0018",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0018.P106",
@@ -74829,7 +74829,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0018.P106",
     "start_char": 0,
-    "text_preview": "- de comprendre l’état l’e sublime de sa création.",
+    "text_preview": "- de comprendre l’état sublime de sa création.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -74897,7 +74897,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 109,
+    "end_char": 110,
     "entry_id": "LDC.T24.E0005",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0005.P106",
@@ -74909,7 +74909,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0005.P106",
     "start_char": 0,
-    "text_preview": "- à ce qu’elles commencent à faire leur chemin pour donner le départ à la formation du Royaume de Ma Volonté.",
+    "text_preview": "- à ce qu’elles commencent à faire leur chemin pour donner le départ à la formation du Royaume de Ma Volonté. ",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -75079,7 +75079,7 @@
   {
     "confidence": "high",
     "display_role": "none",
-    "end_char": 153,
+    "end_char": 154,
     "entry_id": "LDC.T24.E0010",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0010.P107",
@@ -75092,7 +75092,7 @@
     "speaker": "PERSONIFIED_VOICE",
     "stable_ref": "LDC.T24.E0010.P107",
     "start_char": 71,
-    "text_preview": "Elle est Tienne et elle est nôtre La Vie qui nous anime tous, l’anime elle aussi !",
+    "text_preview": "Elle est Tienne et elle est nôtre. La Vie qui nous anime tous, l’anime elle aussi !",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -75213,7 +75213,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0020.P108",
     "start_char": 0,
-    "text_preview": "en somme, Je continue Ma Vie rédemptrice et de vertu.",
+    "text_preview": "En somme, Je continue Ma Vie rédemptrice et de vertu.",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -76321,7 +76321,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 84,
+    "end_char": 85,
     "entry_id": "LDC.T24.E0010",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0010.P115",
@@ -76333,7 +76333,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0010.P115",
     "start_char": 0,
-    "text_preview": "L’univers restera à sa place Ma Volonté connaîtra le triomphe d’amener au Ciel celle",
+    "text_preview": "L’univers restera à sa place. Ma Volonté connaîtra le triomphe d’amener au Ciel celle",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -76533,7 +76533,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0043.P117",
     "start_char": 0,
-    "text_preview": "et, en vertu de ses actes accomplis en Elle,",
+    "text_preview": "Et, en vertu de ses actes accomplis en Elle,",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -76573,7 +76573,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0001.P117",
     "start_char": 0,
-    "text_preview": "L’eau éternellement jaillissante de Ma Volonté est absente. Celui-ci",
+    "text_preview": "L’eau éternellement jaillissante de Ma Volonté est absente. Celle-ci",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"
@@ -78141,7 +78141,7 @@
   {
     "confidence": "high",
     "display_role": "words_of_jesus",
-    "end_char": 48,
+    "end_char": 49,
     "entry_id": "LDC.T24.E0001",
     "evidence": "Complete French entry + Queen Volume 24 + Hugh Owen Volume 24",
     "paragraph_id": "LDC.T24.E0001.P141",
@@ -78153,7 +78153,7 @@
     "speaker": "JESUS",
     "stable_ref": "LDC.T24.E0001.P141",
     "start_char": 0,
-    "text_preview": "- des guerres imprévues et inattendues tout cela",
+    "text_preview": "- des guerres imprévues et inattendues, tout cela",
     "volume": 24,
     "presentation_parent": "JESUS",
     "presentation_parent_source": "RA19E1_BV7_10_A17_FIXED_POINT"

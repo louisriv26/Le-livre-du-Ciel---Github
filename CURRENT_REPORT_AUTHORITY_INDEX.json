@@ -1,6 +1,6 @@
 {
-  "app_version": "v2.19.73-R1B",
-  "classification_policy": "EXHAUSTIVE_CURRENT_TOP_LEVEL_PARTITION__V73_REPORT_METADATA_REPAIR_CURRENT__V72_PROVENANCE_MODEL_REMAINS_CURRENT__V71_AND_OLDER_NAMED_PHASE_OBJECTS_HISTORICAL__FINAL_ZIP_SHA_EXTERNAL_RECEIPT",
+  "app_version": "v2.19.76-R1B",
+  "classification_policy": "EXHAUSTIVE_CURRENT_TOP_LEVEL_PARTITION__V76_REPORT_AND_SEARCH_BINDING_REPAIR_CURRENT__V74_FAST1_MUTATION_AND_V72_PROVENANCE_MODELS_REMAIN_CURRENT_SEMANTIC_AUTHORITIES__OLDER_NAMED_PHASE_OBJECTS_HISTORICAL__FINAL_ZIP_SHA_EXTERNAL_RECEIPT",
   "corpus_manifest_current_field_keys": [
     "app_version",
     "corpus",
@@ -23,10 +23,12 @@
     "speech_resynced",
     "status",
     "t17_23nov1924_status",
+    "total_corrections",
     "total_entries",
     "total_paragraphs",
     "v72_provenance_presentation_successor",
-    "v73_deep_four_pass_report_repair",
+    "v74_fast_mode_corpus_mutation",
+    "v76_deep_four_pass_report_repair",
     "version",
     "volumes_available",
     "volumes_total"
@@ -79,25 +81,31 @@
     "ra19e1_v43_stage_c1a_scroll_containing_block_closure",
     "ra5c_speaker_reconciliation",
     "ra9_source_verified_display_flow_repairs",
-    "total_corrections",
     "v63_four_pass_active_metadata_reconciliation",
     "v64_four_pass_metadata_namespace_reconciliation",
     "v67_four_pass_metadata_reconciliation",
     "v68_principal_ui_presentation_successor",
     "v69_deep_four_pass_metadata_repair",
-    "v71_deep_four_pass_corrective"
+    "v71_deep_four_pass_corrective",
+    "v73_deep_four_pass_report_repair",
+    "v75_deep_four_pass_report_repair"
   ],
   "current_active_reports": {
-    "CURRENT_REPORT_AUTHORITY_INDEX.json": "Current package-local authority boundary; exact final ZIP hash is certified externally because a ZIP cannot contain its own SHA-256 non-circularly.",
-    "README.md": "Current v73 report-metadata corrective scope and external-gate status; everything below its historical marker is historical.",
-    "corpus/manifest.json": "Current corpus identity plus v72 reader-provenance model and v73 stale-current-evidence repair; canonical generation remains G036-AFLP-R7-UWR2 / G036-AFLP-R7-SUP-T5.",
-    "corpus/supplement_manifest.json": "Current supplement registry/hash binding; v72 provenance semantics unchanged; v73 wrapper records report-metadata successor.",
-    "corpus/supplements.json": "Current 75-item supplement registry; all 75 supplement objects and v72 reader provenance fields semantically unchanged; top-level status rebound to v73.",
-    "offline_manifest.json": "Current offline integrity binding including v73 current corpus-report bindings.",
-    "version.json": "Current v73 release/runtime binding, v72 provenance model inheritance, and report-repair authority."
+    "CURRENT_REPORT_AUTHORITY_INDEX.json": "Current v76 package-local authority boundary; version-neutral schema and external final ZIP hash receipt.",
+    "README.md": "Current v76 repair scope/status; hard inline historical boundary precedes preserved predecessor CURRENT headings.",
+    "V76_DEEP_FOUR_PASS_REPORT_REPAIR_SUMMARY.md": "Current v76 finding/repair and final audit contract summary; final ZIP SHA remains external.",
+    "V74_FAST_MODE_TERMINAL_MUTATION_LEDGER_2707.json": "Inherited current semantic authority for unchanged v74 FAST1 corpus mutation: exact 2,707-entry terminal ledger.",
+    "V74_SEMANTIC_PAYLOAD_VALIDATION_REPORT.json": "Inherited semantic validation evidence for byte-identical v74 canonical/search-index-payload/speaker/display/flow payload.",
+    "corpus/M2_INDEPENDENT_INDEX_VERIFICATION.json": "Current v76 SEARCH-V2 independent recomputation/structural evidence bound to current package; search payloads remain byte-identical to v74.",
+    "corpus/manifest.json": "Current corpus/package authority wrapper; semantic generation remains G036-AFLP-R7-UWR2-FAST1 / G036-AFLP-R7-SUP-T5-FAST1.",
+    "corpus/search_v2_manifest.json": "Current SEARCH-V2 payload/source binding manifest; four index payload assets remain byte-identical to v74.",
+    "corpus/supplement_manifest.json": "Current supplement registry/hash binding; supplement semantics unchanged from v74.",
+    "corpus/supplements.json": "Current 75-item supplement registry wrapper; all supplement objects/counts unchanged from v74.",
+    "offline_manifest.json": "Current v76 offline integrity/release binding.",
+    "version.json": "Current v76 release/runtime/cache binding and current authority partition."
   },
-  "external_gate_authority": "External receipts/state only; immutable v73 makes no physical-device/live-browser/public-release PASS assertion.",
-  "historical_policy": "Historical predecessor files and explicitly historical named objects may retain older current/PASS/FAIL/count/version/ALIGNÉ/AFLP wording valid at their own freeze point. They do not override v73 current fields, the still-active v72 reader-provenance model, current index, or external current-state receipt.",
+  "external_gate_authority": "External receipts/state only; the current package makes no live GitHub, installed-PWA, real persisted user-data, true-offline, physical-device, accessibility, or public-release PASS assertion.",
+  "historical_policy": "Historical predecessor files and explicitly versioned named objects retain their freeze-point wording. They do not override current package identity/status fields, the still-active v72 reader-provenance model, the inherited v74 FAST1 terminal mutation ledger, current v76 search-binding evidence, or external final-ZIP receipt.",
   "historical_predecessor_reports_byte_preserved": [
     "INTERIM_SUCCESSOR_AUTHORIZED_BUILD_README.md",
     "POST_R6_DATE_ID_A2_PREAUTH_GATE.txt",
@@ -108,7 +116,9 @@
     "V68_PRINCIPAL_UI_APP_AUDIT_SUMMARY.md",
     "V68_PRINCIPAL_UI_MUTATION_LEDGER.json",
     "V69_DEEP_FOUR_PASS_APP_AUDIT_SUMMARY.md",
-    "V69_DEEP_FOUR_PASS_MUTATION_LEDGER.json"
+    "V69_DEEP_FOUR_PASS_MUTATION_LEDGER.json",
+    "V74_FAST_MODE_CORPUS_MUTATION_REPORT.md",
+    "V75_DEEP_FOUR_PASS_REPORT_REPAIR_SUMMARY.md"
   ],
   "predecessor_v66_zip_sha256": "4317d041ec9475b52850c7ec7cd374eb0b2b980e115f841eebaafe10df7ddcd6",
   "predecessor_v67_zip_sha256": "f58a28f6546000c6b17905fa37c0ba74db44de766a11bf2ef5b936ed384919e9",
@@ -117,12 +127,13 @@
   "predecessor_v70_zip_sha256": "c4a4e35208ed8a40368137bea7303bf773cd5cc0d6192f54c3a5cc94dc8cb399",
   "predecessor_v71_zip_sha256": "ed925239f570293b54a4565a2666dc50ac71e43aa149b3567d8a55364e550d8c",
   "predecessor_v72_zip_sha256": "825e08ea96a8cf6a245cd56c47e30f3eb4a04bb838fc2e4d3940f8bd2f3f974c",
-  "public_version": 73,
-  "schema": "ldc-v73-current-report-authority-index-v1",
-  "semantic_authority_sha256": "d1a7450adf36368cc8609e21ccde3c51e0b3c90dc4f3c3305534cb40104d56f4",
+  "public_version": 76,
+  "schema": "ldc-current-report-authority-index-v2",
+  "semantic_authority_sha256": "afc351c02ee954583f663ca42615e48c5450893560f052d7da3c8a3caebfc879",
   "version_current_authority_objects": [
     "v72_provenance_presentation_successor",
-    "v73_deep_four_pass_report_repair"
+    "v74_fast_mode_corpus_mutation",
+    "v76_deep_four_pass_report_repair"
   ],
   "version_current_field_keys": [
     "app_version",
@@ -219,7 +230,8 @@
     "user_data_envelope_version",
     "user_data_schema_version",
     "v72_provenance_presentation_successor",
-    "v73_deep_four_pass_report_repair",
+    "v74_fast_mode_corpus_mutation",
+    "v76_deep_four_pass_report_repair",
     "vector_binding",
     "vector_order_clarification",
     "vector_search_authorised",
@@ -338,6 +350,8 @@
     "v68_principal_ui_presentation_successor",
     "v69_deep_four_pass_metadata_repair",
     "v71_deep_four_pass_corrective",
+    "v73_deep_four_pass_report_repair",
+    "v75_deep_four_pass_report_repair",
     "vector_search_subsystem"
   ],
   "version_historical_provenance_objects": [
@@ -349,5 +363,7 @@
     "m6_*",
     "m9_*",
     "v2_* and other explicitly versioned predecessor objects"
-  ]
+  ],
+  "predecessor_v74_zip_sha256": "c7dd3cd477aca7734bb205c5e8400654c40a615bb408b5693cc488e0bcb33f64",
+  "predecessor_v75_zip_sha256": "3a2163a69431795a3670fbfc9c242035c7664b626301f6b82aae9db50b7e4956"
 }

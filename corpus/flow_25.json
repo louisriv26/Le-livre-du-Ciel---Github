@@ -1,7 +1,7 @@
 {
   "schema_version": "ldc-display-flow-v2",
   "volume": 25,
-  "corpus_version": "G036-AFLP-R7-UWR2",
+  "corpus_version": "G036-AFLP-R7-UWR2-FAST1",
   "group_count": 640,
   "groups": [
     {
@@ -921,8 +921,8 @@
         {
           "paragraph_id": "LDC.T25.E0001.P064",
           "stable_ref": "LDC.T25.E0001.P064",
-          "source_text_sha256": "ea35e0cdabdef49914ada2c234fc2952f3df16f927094ddb4446753b25d39a1a",
-          "canonical_length": 56,
+          "source_text_sha256": "611d3ce510266e4be08c4799a1341329d65084ca3b553b8655b1bda7f81c12d8",
+          "canonical_length": 57,
           "boundary_after": null
         }
       ]
@@ -1768,7 +1768,7 @@
         {
           "paragraph_id": "LDC.T25.E0002.P011",
           "stable_ref": "LDC.T25.E0002.P011",
-          "source_text_sha256": "dd7bb440cb14443bd41a65090470def2fd225ecd108cf94f9d99ab6e757a98bc",
+          "source_text_sha256": "269fd9a87a40fe4bb7245b30f678afaaa2f59eb232ba9633eba35c0495c8bed9",
           "canonical_length": 77,
           "boundary_after": {
             "display_joiner": "space",
@@ -1832,8 +1832,8 @@
         {
           "paragraph_id": "LDC.T25.E0002.P016",
           "stable_ref": "LDC.T25.E0002.P016",
-          "source_text_sha256": "4d42e2d2671a89a959b2a2db56d6b5ac0f21ead016cd35b463a3790d874a5f2f",
-          "canonical_length": 85,
+          "source_text_sha256": "c1e901da8ea413750709334398c520a6815a9f8ff0cb05662fb63191a658f0d0",
+          "canonical_length": 84,
           "boundary_after": {
             "display_joiner": "space",
             "speech_run_policy": "continue_same_speaker_only",
@@ -3663,8 +3663,8 @@
         {
           "paragraph_id": "LDC.T25.E0003.P024",
           "stable_ref": "LDC.T25.E0003.P024",
-          "source_text_sha256": "4e2d2258b5a7425235d75a92deb783f7074d939834888b37c44b1b80926d13fa",
-          "canonical_length": 87,
+          "source_text_sha256": "109505dbe510aae9b2617846649e47820bb1f3059d5c40c8ba00edda935d954c",
+          "canonical_length": 90,
           "boundary_after": null
         }
       ]
@@ -3768,8 +3768,8 @@
         {
           "paragraph_id": "LDC.T25.E0003.P041",
           "stable_ref": "LDC.T25.E0003.P041",
-          "source_text_sha256": "d4808ffadf61156df7263d6d816e75b2c725b157a39a17b6bffd417552291476",
-          "canonical_length": 155,
+          "source_text_sha256": "dd1c8f6acfc4c33ae3f7cdb442d823c4ed90c37c609f6e2c7b9777dd73e4d530",
+          "canonical_length": 154,
           "boundary_after": null
         }
       ]
@@ -3896,8 +3896,8 @@
         {
           "paragraph_id": "LDC.T25.E0003.P047",
           "stable_ref": "LDC.T25.E0003.P047",
-          "source_text_sha256": "5dd0f982e1353e963e68ef7e1285085f090dffc34dad0bae4c2a3c9466240cb8",
-          "canonical_length": 73,
+          "source_text_sha256": "636ac1aeded731c49dc9c269d8477c82e9ef8778f69264b17e7fad86e6e0bf5b",
+          "canonical_length": 76,
           "boundary_after": {
             "display_joiner": "space",
             "speech_run_policy": "continue_same_speaker_only",
@@ -4111,7 +4111,7 @@
         {
           "paragraph_id": "LDC.T25.E0003.P059",
           "stable_ref": "LDC.T25.E0003.P059",
-          "source_text_sha256": "0d636f53ceaee0d1188074eef996acdeb70b0e6beb85f501c82b05c4db375687",
+          "source_text_sha256": "1c025d8ea76a7336a205c7f1a3fe70d8273c7bdae26726a903b318b47ce2c281",
           "canonical_length": 60,
           "boundary_after": {
             "display_joiner": "space",
@@ -5496,8 +5496,8 @@
         {
           "paragraph_id": "LDC.T25.E0005.P018",
           "stable_ref": "LDC.T25.E0005.P018",
-          "source_text_sha256": "043accfd4a03348e635953ade9dcb048763c4dbca731cfcd6fc8580cc57504a2",
-          "canonical_length": 51,
+          "source_text_sha256": "9fc25f27176ae79e7d02b276466035bb5d645b45f3022e59ed5bf35479baf86a",
+          "canonical_length": 52,
           "boundary_after": null
         }
       ]
@@ -5601,8 +5601,8 @@
         {
           "paragraph_id": "LDC.T25.E0005.P024",
           "stable_ref": "LDC.T25.E0005.P024",
-          "source_text_sha256": "e9f8abed189e2122ba830e04e2744c4ba3d79adff2f0758f463c9d7b71602d74",
-          "canonical_length": 71,
+          "source_text_sha256": "1a290e98c8e24de9a9e331fd29446c208fec5e3910f725577160a45996ef7c96",
+          "canonical_length": 72,
           "boundary_after": null
         }
       ]
@@ -5706,8 +5706,8 @@
         {
           "paragraph_id": "LDC.T25.E0005.P029",
           "stable_ref": "LDC.T25.E0005.P029",
-          "source_text_sha256": "8b4713970ec61f4bf101f6592f44756fbaf5c19ef2e6d739ec3da5d510a29fd7",
-          "canonical_length": 45,
+          "source_text_sha256": "1a131a0883fb2051f92a23638613584943582ebf06c6a7ba4566c5b9f0574efa",
+          "canonical_length": 46,
           "boundary_after": null
         }
       ]
@@ -6472,8 +6472,8 @@
         {
           "paragraph_id": "LDC.T25.E0006.P016",
           "stable_ref": "LDC.T25.E0006.P016",
-          "source_text_sha256": "d928569e43639ddf024e10f58a7012b535a2437bca8043292f1946ce23b21bec",
-          "canonical_length": 133,
+          "source_text_sha256": "42b81e5d51d196fce70684c5056ebfeb109cad0bdfa57b98bec5d57ab719584f",
+          "canonical_length": 135,
           "boundary_after": {
             "display_joiner": "space",
             "speech_run_policy": "continue_same_speaker_only",
@@ -6687,7 +6687,7 @@
         {
           "paragraph_id": "LDC.T25.E0006.P027",
           "stable_ref": "LDC.T25.E0006.P027",
-          "source_text_sha256": "0b808c49d1796b0f83e4cabc052b157107d0ff7e0e801317b62c950bd9d616cf",
+          "source_text_sha256": "134752f042b5bf27ab155dc05c7237543e3b73535c731db7696cf090bbcf3de9",
           "canonical_length": 43,
           "boundary_after": {
             "display_joiner": "space",
@@ -7066,8 +7066,8 @@
         {
           "paragraph_id": "LDC.T25.E0006.P058",
           "stable_ref": "LDC.T25.E0006.P058",
-          "source_text_sha256": "3a4da9e5794523b47e46d2fe24b254396af3c909fd132a469cf661dc8f634d1e",
-          "canonical_length": 161,
+          "source_text_sha256": "03177694f5c96d644029c2e430685c29e4bbbfd5bedf7404312206ef90dcc99a",
+          "canonical_length": 162,
           "boundary_after": {
             "display_joiner": "space",
             "speech_run_policy": "continue_same_speaker_only",
@@ -7112,7 +7112,7 @@
         {
           "paragraph_id": "LDC.T25.E0006.P060",
           "stable_ref": "LDC.T25.E0006.P060",
-          "source_text_sha256": "12666ffe552e2d1cec4c7e2cf21f3043996ecaa80f78e5bfe8506e022831d0d0",
+          "source_text_sha256": "40bedcb1d7e9a7a0272af18a2c4eaebb8ab4e723dc7c26a1f1e414ccbe6975ff",
           "canonical_length": 54,
           "boundary_after": {
             "display_joiner": "space",
@@ -7384,7 +7384,7 @@
         {
           "paragraph_id": "LDC.T25.E0007.P014",
           "stable_ref": "LDC.T25.E0007.P014",
-          "source_text_sha256": "ba2aa26980632553c4caf329843d94c09858580ec0be2872f040013ad830192d",
+          "source_text_sha256": "2668a2cac3587f631a278a1b376e48dce15c62efeffada56c095c95490f177c9",
           "canonical_length": 37,
           "boundary_after": {
             "display_joiner": "space",
@@ -7494,7 +7494,7 @@
         {
           "paragraph_id": "LDC.T25.E0007.P019",
           "stable_ref": "LDC.T25.E0007.P019",
-          "source_text_sha256": "10c0d2c9d777d615cb7091a0ac163ffe1c9d658af2e39be79b9d1b6bf53aa14a",
+          "source_text_sha256": "c50e1ec4e057f1c3452e1e7ef8a44a405d73c7d0201e553b5364f93523280ad5",
           "canonical_length": 14,
           "boundary_after": {
             "display_joiner": "space",
@@ -7686,7 +7686,7 @@
         {
           "paragraph_id": "LDC.T25.E0007.P034",
           "stable_ref": "LDC.T25.E0007.P034",
-          "source_text_sha256": "d47ac4edb6acd7e9c70a51b03c3813dcef3b5f09e4c0dec9314da8fc32c66e00",
+          "source_text_sha256": "303dcb1531d140cb758014ea01a1196cb71fc22a0287a7e0bf3b0d4870f6a5b6",
           "canonical_length": 10,
           "boundary_after": {
             "display_joiner": "space",
@@ -8354,7 +8354,7 @@
         {
           "paragraph_id": "LDC.T25.E0007.P080",
           "stable_ref": "LDC.T25.E0007.P080",
-          "source_text_sha256": "eee5ec8425ff46203c847ac335a571ba3453827a189e8f8adc3e48620d07365d",
+          "source_text_sha256": "f0bc0d9b1181904392182cb216bc3e1e930b65cd2f3f8866b66d436b06c29ddf",
           "canonical_length": 78,
           "boundary_after": {
             "display_joiner": "space",
@@ -10928,7 +10928,7 @@
         {
           "paragraph_id": "LDC.T25.E0010.P052",
           "stable_ref": "LDC.T25.E0010.P052",
-          "source_text_sha256": "d9471922c1065a37c1bca2093682f57959acc8a88e35f9b9b72d34ec4e0943fc",
+          "source_text_sha256": "8242a671085b023ef972b177c5ab7bdc85fdb48c6fa7f3502a74bcb72e43f11c",
           "canonical_length": 28,
           "boundary_after": {
             "display_joiner": "space",
@@ -10944,7 +10944,7 @@
         {
           "paragraph_id": "LDC.T25.E0010.P053",
           "stable_ref": "LDC.T25.E0010.P053",
-          "source_text_sha256": "d2cd47508f35f797badc20f6ea07cc5638bdf4a6dc354f6112af963219de48b3",
+          "source_text_sha256": "cdf7e576f0aede1851f9abdd0b3ad2f7ce750a9d64f596cac101c55150f01d5c",
           "canonical_length": 77,
           "boundary_after": null
         }
@@ -11012,7 +11012,7 @@
         {
           "paragraph_id": "LDC.T25.E0010.P057",
           "stable_ref": "LDC.T25.E0010.P057",
-          "source_text_sha256": "cfd13597f652f637274e39ca27dfb46e42ef959a3a46287e5169723ae8d93d11",
+          "source_text_sha256": "264419913ab8052c1c2faa8232280a93aa6034ab3c1955878f61e507b774e400",
           "canonical_length": 102,
           "boundary_after": {
             "display_joiner": "space",
@@ -11044,7 +11044,7 @@
         {
           "paragraph_id": "LDC.T25.E0010.P059",
           "stable_ref": "LDC.T25.E0010.P059",
-          "source_text_sha256": "c892248bdfc89807d51c08bc1f630df59751d4184037acdf5ac8663b723ae1eb",
+          "source_text_sha256": "447af43ff95fe27dc2602c655007bf560157f405288837b0a4bb2d699122ae8b",
           "canonical_length": 117,
           "boundary_after": null
         }
@@ -11162,8 +11162,8 @@
         {
           "paragraph_id": "LDC.T25.E0011.P017",
           "stable_ref": "LDC.T25.E0011.P017",
-          "source_text_sha256": "d5e09840a0e0e0ab216525077b8ef10e9de8602681303610161be6a6007e9e7b",
-          "canonical_length": 197,
+          "source_text_sha256": "e04a02efc47ba10665c2716da151ad2675a573a78a985d3970eb1bd49979f300",
+          "canonical_length": 203,
           "boundary_after": {
             "display_joiner": "space",
             "speech_run_policy": "continue_same_speaker_only",
@@ -12023,8 +12023,8 @@
         {
           "paragraph_id": "LDC.T25.E0012.P011",
           "stable_ref": "LDC.T25.E0012.P011",
-          "source_text_sha256": "b8fdcc6ecef4f96b70240fbf8c3cdfaa379e0cfe3738987be79096ba56d22cc3",
-          "canonical_length": 65,
+          "source_text_sha256": "ca04767e70dbc2b40ac37fb7003d7181e4a87b604efb47f0dfc30201eb444399",
+          "canonical_length": 64,
           "boundary_after": {
             "display_joiner": "space",
             "speech_run_policy": "continue_same_speaker_only",
@@ -13087,8 +13087,8 @@
         {
           "paragraph_id": "LDC.T25.E0012.P099",
           "stable_ref": "LDC.T25.E0012.P099",
-          "source_text_sha256": "e463c6676e82dc7a4361952fffbf42858f35038223cce4901de7b4386179566f",
-          "canonical_length": 52,
+          "source_text_sha256": "7e0838b89ef3b2f2b3029e5e1165f3b61481273947e3cfff0d8189975d111665",
+          "canonical_length": 51,
           "boundary_after": null
         }
       ]
@@ -13233,8 +13233,8 @@
         {
           "paragraph_id": "LDC.T25.E0012.P109",
           "stable_ref": "LDC.T25.E0012.P109",
-          "source_text_sha256": "fc7c31d42de19d1d72dbe1e384fb9a1aecdd17fb08fd1623ef56c48a6f1e8c14",
-          "canonical_length": 83,
+          "source_text_sha256": "df69809ed065d468d811f86a0560400e98241343e19ca2b46b30d592f43017ad",
+          "canonical_length": 86,
           "boundary_after": null
         }
       ]
@@ -13461,8 +13461,8 @@
         {
           "paragraph_id": "LDC.T25.E0013.P010",
           "stable_ref": "LDC.T25.E0013.P010",
-          "source_text_sha256": "ac56e16e5b00c5e18ef83f0ffc139345ef4bc3015064d8aaaada8ad0c24b67a8",
-          "canonical_length": 75,
+          "source_text_sha256": "359ffb82c5fad9d40f7ddd8373f150c8e25683c8c7d1c899b6a39fa8267e1296",
+          "canonical_length": 69,
           "boundary_after": {
             "display_joiner": "space",
             "speech_run_policy": "continue_same_speaker_only",
@@ -13507,8 +13507,8 @@
         {
           "paragraph_id": "LDC.T25.E0013.P012",
           "stable_ref": "LDC.T25.E0013.P012",
-          "source_text_sha256": "ffbcb1395f61786be7e54ce6b10dc5d80f81b5e0dfcd3cc2c5f7139c4cc6b6f8",
-          "canonical_length": 110,
+          "source_text_sha256": "559240e73b89459bdef0740661beabd6be4b25a435482d6f4124b8c2bcbf4dd8",
+          "canonical_length": 105,
           "boundary_after": null
         }
       ]
@@ -15202,7 +15202,7 @@
         {
           "paragraph_id": "LDC.T25.E0015.P010",
           "stable_ref": "LDC.T25.E0015.P010",
-          "source_text_sha256": "830505d727aaef228cb2644a2b879404e81c308dd35bb0e3246be861dce1611f",
+          "source_text_sha256": "c3003cea9cac86fd14b4b12c91362a2b1132b11171b2cc95c8434f11063aaec6",
           "canonical_length": 29,
           "boundary_after": {
             "display_joiner": "space",
@@ -15219,7 +15219,7 @@
         {
           "paragraph_id": "LDC.T25.E0015.P011",
           "stable_ref": "LDC.T25.E0015.P011",
-          "source_text_sha256": "26a73cd6eeaaa87a09af6cf4e7fbd24883946a29dc17c41c82350bea74658e6c",
+          "source_text_sha256": "6b8d2350d5026bb57863bd70ea60599052ed892818fd2b67b83c6982ae63d78e",
           "canonical_length": 83,
           "boundary_after": null
         }
@@ -15253,7 +15253,7 @@
         {
           "paragraph_id": "LDC.T25.E0015.P013",
           "stable_ref": "LDC.T25.E0015.P013",
-          "source_text_sha256": "387ef591ad751a3c203c383f4b0bac4b49a69c60727e55dd4224507cd796eb0f",
+          "source_text_sha256": "312b06406f42ee2b541e0393f27487e32436fc08488988c01e61878ebcd639b0",
           "canonical_length": 20,
           "boundary_after": {
             "display_joiner": "space",
@@ -15269,7 +15269,7 @@
         {
           "paragraph_id": "LDC.T25.E0015.P014",
           "stable_ref": "LDC.T25.E0015.P014",
-          "source_text_sha256": "9a2dc8eed71bb078ad9b4dce382624a2a4f24c875dc3f9ed085b28b3ca205dd4",
+          "source_text_sha256": "a028e10469751412a5e2024e01e8cba69b30a66afb59e17459ab60024fc50852",
           "canonical_length": 17,
           "boundary_after": null
         }
@@ -15353,7 +15353,7 @@
         {
           "paragraph_id": "LDC.T25.E0015.P020",
           "stable_ref": "LDC.T25.E0015.P020",
-          "source_text_sha256": "724d013405d6fd7308d701ef6326a070d606e891c4b8eb2cecb6e986c4568b4c",
+          "source_text_sha256": "98913bd0118b72b94d10bf2b7a6335f892013f39d54abaefb1d938e8a4c01be7",
           "canonical_length": 64,
           "boundary_after": {
             "display_joiner": "space",
@@ -15369,7 +15369,7 @@
         {
           "paragraph_id": "LDC.T25.E0015.P021",
           "stable_ref": "LDC.T25.E0015.P021",
-          "source_text_sha256": "8850c69e700b15ea7bc4a78d01cafc5feb644afb433f5d9f6162feca5cc2dfcf",
+          "source_text_sha256": "a508d4cc86226efa89056ce85e61a84f6ed17bec44348029ac191562cf9a311e",
           "canonical_length": 66,
           "boundary_after": {
             "display_joiner": "space",
@@ -15417,7 +15417,7 @@
         {
           "paragraph_id": "LDC.T25.E0015.P024",
           "stable_ref": "LDC.T25.E0015.P024",
-          "source_text_sha256": "4eced3bac6911d8fcf87894adda471d226a0d53be2075ef1e786c2bc5c890772",
+          "source_text_sha256": "d0eae3c468aa893488aacd7bd3f8fc5f699bee141f9cc61a2d3c29c66267e6f2",
           "canonical_length": 50,
           "boundary_after": null
         }
@@ -15467,7 +15467,7 @@
         {
           "paragraph_id": "LDC.T25.E0015.P027",
           "stable_ref": "LDC.T25.E0015.P027",
-          "source_text_sha256": "85e23265b2295a7b3ed207106e6d5c411ecc378b1e5b21c27863a1b178e74700",
+          "source_text_sha256": "6a75fccfe5068f292910572a1a4b82baaa7760852fd4f87145294013d58ca17b",
           "canonical_length": 71,
           "boundary_after": null
         }
@@ -15635,7 +15635,7 @@
         {
           "paragraph_id": "LDC.T25.E0015.P039",
           "stable_ref": "LDC.T25.E0015.P039",
-          "source_text_sha256": "0c9e763ce7a4811de33fedaf06a299b4d39ff835c43921c49ae67b3d5eb34cd2",
+          "source_text_sha256": "16e61a6eb9db73f8a4f3ff6d2a4b8bf88aed92b28c1410724f1982dcb69a05f9",
           "canonical_length": 146,
           "boundary_after": {
             "display_joiner": "space",
@@ -15884,8 +15884,8 @@
         {
           "paragraph_id": "LDC.T25.E0015.P057",
           "stable_ref": "LDC.T25.E0015.P057",
-          "source_text_sha256": "a7addf297e391f4bdc5771112b15678a5116dc31300d17296f90b8cc91234e94",
-          "canonical_length": 125,
+          "source_text_sha256": "b6f3060644773742efccf144fba5a21a8ee52dc9d492446994c3567ab2101484",
+          "canonical_length": 126,
           "boundary_after": {
             "display_joiner": "space",
             "speech_run_policy": "continue_same_speaker_only",
@@ -16256,7 +16256,7 @@
         {
           "paragraph_id": "LDC.T25.E0016.P025",
           "stable_ref": "LDC.T25.E0016.P025",
-          "source_text_sha256": "5eb675ed5bb7a9266d86b32a85c50db2228b52f8303fde0d643a34a90bba5c2a",
+          "source_text_sha256": "af1c74f596cd5054c3926b4ed15b1565d2b684fa783734d950c64a70fef9e358",
           "canonical_length": 137,
           "boundary_after": {
             "display_joiner": "space",
@@ -16272,7 +16272,7 @@
         {
           "paragraph_id": "LDC.T25.E0016.P026",
           "stable_ref": "LDC.T25.E0016.P026",
-          "source_text_sha256": "2eff03fcca97e2638d490bf17d82ec2ea270e10bc41200261e3b354dfe5043f3",
+          "source_text_sha256": "eb198776ae095ff0c6b2a6c66cf3ff568cc232e7a1a8c4908fb6c942fa3ea89e",
           "canonical_length": 86,
           "boundary_after": {
             "display_joiner": "space",
@@ -16288,7 +16288,7 @@
         {
           "paragraph_id": "LDC.T25.E0016.P027",
           "stable_ref": "LDC.T25.E0016.P027",
-          "source_text_sha256": "e97bcf14c5b0c8fa8098e10a5704c2bc2457bb33725aba4f98573d1ac66e60f2",
+          "source_text_sha256": "e35fdd0c66aa703d607624b029dae57830f328253a21ba5a2e46b62cfa96a21c",
           "canonical_length": 33,
           "boundary_after": {
             "display_joiner": "space",
@@ -16304,7 +16304,7 @@
         {
           "paragraph_id": "LDC.T25.E0016.P028",
           "stable_ref": "LDC.T25.E0016.P028",
-          "source_text_sha256": "72ef27be95ab2524989f39994a185aee8abad24ff35a52b2101cc654b3fd5c78",
+          "source_text_sha256": "a93f4e7a563dc792bc3d0b7a7125964556ea35e975a8d86f34b061c48ea06661",
           "canonical_length": 135,
           "boundary_after": {
             "display_joiner": "space",
@@ -16320,7 +16320,7 @@
         {
           "paragraph_id": "LDC.T25.E0016.P029",
           "stable_ref": "LDC.T25.E0016.P029",
-          "source_text_sha256": "5182d3795b612faaaf1191e486256dd2033314b75d78bac82aaa414893ae5055",
+          "source_text_sha256": "7633bf2dd16cffcba2b117278d3b249fa475ad202989c161e9ef954389cf12da",
           "canonical_length": 28,
           "boundary_after": {
             "display_joiner": "space",
@@ -16336,7 +16336,7 @@
         {
           "paragraph_id": "LDC.T25.E0016.P030",
           "stable_ref": "LDC.T25.E0016.P030",
-          "source_text_sha256": "59307e59b4ad05d5a191bd4dadf77e256333b3c14220c99800f80f2c27d57481",
+          "source_text_sha256": "7fc40e82e2054813c3a30fe4c1ab6c7e97a90eacebbe149144678bc48da9e139",
           "canonical_length": 34,
           "boundary_after": {
             "display_joiner": "space",
@@ -16352,7 +16352,7 @@
         {
           "paragraph_id": "LDC.T25.E0016.P031",
           "stable_ref": "LDC.T25.E0016.P031",
-          "source_text_sha256": "228a4fd179eec6cdc2ed1fc530671ca4403c289f38ddf3f7b9da3359758728b0",
+          "source_text_sha256": "765cc0c2b0e5243914fe8ff7d12d90620a14363ce1430d23b1b1d670f2d2a142",
           "canonical_length": 112,
           "boundary_after": null
         }
@@ -16370,7 +16370,7 @@
         {
           "paragraph_id": "LDC.T25.E0016.P032",
           "stable_ref": "LDC.T25.E0016.P032",
-          "source_text_sha256": "ad687bd0bfcf5459344635dfb8057746cc701089b4aa54e548d427a48c8dc7a3",
+          "source_text_sha256": "af842896f9e471104be2496d5bb5c91f7fb1296e35f3c0a905a31d93ad046c4c",
           "canonical_length": 54,
           "boundary_after": {
             "display_joiner": "space",
@@ -16386,7 +16386,7 @@
         {
           "paragraph_id": "LDC.T25.E0016.P033",
           "stable_ref": "LDC.T25.E0016.P033",
-          "source_text_sha256": "7ba17c5d2061ef60127eb4e0068964d29695599f74b0c65b1e76bd42be28e58e",
+          "source_text_sha256": "d07f49573a111310e5cf8d325532adac96d008b87080f14aad3825ed93b192ff",
           "canonical_length": 28,
           "boundary_after": {
             "display_joiner": "space",
@@ -16454,7 +16454,7 @@
         {
           "paragraph_id": "LDC.T25.E0016.P037",
           "stable_ref": "LDC.T25.E0016.P037",
-          "source_text_sha256": "f12f82678920bd0d5c0cbddf555648d18877a18186638ab38669bdc5a1162526",
+          "source_text_sha256": "0d0ba13958a103eae69dcc011456d510333c6825dacaa3076d858b6a9b7e159d",
           "canonical_length": 46,
           "boundary_after": {
             "display_joiner": "space",
@@ -16470,7 +16470,7 @@
         {
           "paragraph_id": "LDC.T25.E0016.P038",
           "stable_ref": "LDC.T25.E0016.P038",
-          "source_text_sha256": "2b49f6886624b6787119195cc89b8c8baa05e04e1ee92f590cb06b12b6f31a4c",
+          "source_text_sha256": "dd891db4370f0c86240bf4c02194a575261c31571bf9cbf73a9b6f4225bb32ab",
           "canonical_length": 27,
           "boundary_after": {
             "display_joiner": "space",
@@ -16486,7 +16486,7 @@
         {
           "paragraph_id": "LDC.T25.E0016.P039",
           "stable_ref": "LDC.T25.E0016.P039",
-          "source_text_sha256": "682862eee13e3188896ffc0f63b76daa4cb0383cc7b3c3c0318c235ab69d65b2",
+          "source_text_sha256": "c710a7e7c7b39eaecbfa99e1054b3ed43e41408c31471562fee6753f81a67048",
           "canonical_length": 24,
           "boundary_after": {
             "display_joiner": "space",
@@ -16502,7 +16502,7 @@
         {
           "paragraph_id": "LDC.T25.E0016.P040",
           "stable_ref": "LDC.T25.E0016.P040",
-          "source_text_sha256": "6ba2c3b9f33b1191f05d181c1573a218c462e43e933ec7e118679895c0a390f1",
+          "source_text_sha256": "e0397175ca70063f94e0a42a46138f84fc991589161652ddbbb927a8386f804f",
           "canonical_length": 39,
           "boundary_after": null
         }
@@ -17233,8 +17233,8 @@
         {
           "paragraph_id": "LDC.T25.E0016.P087",
           "stable_ref": "LDC.T25.E0016.P087",
-          "source_text_sha256": "e8e865715cccb1a99cd80f1d1dcc97cf8633407f76ff2154ae5d8327763fa0ed",
-          "canonical_length": 76,
+          "source_text_sha256": "a96bfdedabe2c186a54ed7847dd47ad1eb0ee8140c409f80caaf647e49ceed97",
+          "canonical_length": 78,
           "boundary_after": null
         }
       ]
@@ -17750,6 +17750,35 @@
       ]
     },
     {
+      "flow_id": "FLOW.T25.RA10.001.LDC_T25_E0017_P010__LDC_T25_E0017_P011",
+      "entry_id": "LDC.T25.E0017",
+      "classification": "source_verified_sentence_continuation",
+      "confidence": "high",
+      "origin": "RA10_DIRECT_SOURCE_OR_APPROVED_LEDGER",
+      "review_status": "approved_for_display",
+      "reason": "Approved T25 correction/segment evidence preserves one chorus construction: « Nous T’aimons » et « Nous voulons… ».",
+      "members": [
+        {
+          "paragraph_id": "LDC.T25.E0017.P010",
+          "stable_ref": "LDC.T25.E0017.P010",
+          "source_text_sha256": "c37220ac8b37d001fd09e7f2cfbcc965de56c7fa3edea706a62b844d0e6ef28f",
+          "canonical_length": 20,
+          "boundary_after": {
+            "display_joiner": "space",
+            "speech_run_policy": "continue_same_speaker_only",
+            "suppress_next_leading_ranges": []
+          }
+        },
+        {
+          "paragraph_id": "LDC.T25.E0017.P011",
+          "stable_ref": "LDC.T25.E0017.P011",
+          "source_text_sha256": "2847c8b9cc5bfbae2f3f4f23e201374b7544a96b276dd9f35099171162f9c33f",
+          "canonical_length": 55,
+          "boundary_after": null
+        }
+      ]
+    },
+    {
       "flow_id": "FLOW.T25.P013-P014..E0017",
       "entry_id": "LDC.T25.E0017",
       "classification": "inherited_dash_continuation",
@@ -17784,6 +17813,35 @@
       ]
     },
     {
+      "flow_id": "FLOW.T25.RA10.002.LDC_T25_E0017_P015__LDC_T25_E0017_P016",
+      "entry_id": "LDC.T25.E0017",
+      "classification": "source_verified_sentence_continuation",
+      "confidence": "high",
+      "origin": "RA10_DIRECT_SOURCE_OR_APPROVED_LEDGER",
+      "review_status": "approved_for_display",
+      "reason": "Approved T25 text operation states terminal punctuation was changed because the sentence continues in the next paragraph.",
+      "members": [
+        {
+          "paragraph_id": "LDC.T25.E0017.P015",
+          "stable_ref": "LDC.T25.E0017.P015",
+          "source_text_sha256": "82e635e7c2f47346291b545f03f9e27e8d842b32b81c0a76eb90253a67113079",
+          "canonical_length": 56,
+          "boundary_after": {
+            "display_joiner": "space",
+            "speech_run_policy": "continue_same_speaker_only",
+            "suppress_next_leading_ranges": []
+          }
+        },
+        {
+          "paragraph_id": "LDC.T25.E0017.P016",
+          "stable_ref": "LDC.T25.E0017.P016",
+          "source_text_sha256": "e259e081fd3d7beb39ea9a6b8f9d4376668610d1814ee06a21dbcef3aa60baf3",
+          "canonical_length": 101,
+          "boundary_after": null
+        }
+      ]
+    },
+    {
       "flow_id": "FLOW.T25.P017-P018..E0017",
       "entry_id": "LDC.T25.E0017",
       "classification": "inherited_dash_continuation",
@@ -17795,7 +17853,7 @@
         {
           "paragraph_id": "LDC.T25.E0017.P017",
           "stable_ref": "LDC.T25.E0017.P017",
-          "source_text_sha256": "90df3b489934c1d0564128fe3a35e271a45000af29314f4d5c4a0119812f845b",
+          "source_text_sha256": "be81f274309d9a4516cea6bf699b5b05a6feef8325e87f99db13d0f9edf11a81",
           "canonical_length": 65,
           "boundary_after": {
             "display_joiner": "space",
@@ -17811,7 +17869,7 @@
         {
           "paragraph_id": "LDC.T25.E0017.P018",
           "stable_ref": "LDC.T25.E0017.P018",
-          "source_text_sha256": "77251238d85d50ed5cd655785b2e00f784533825fee893c602036d00106a93f3",
+          "source_text_sha256": "3465a94a1f4b5f282f5dab144cefb507062f7ff60dfbd4dea872a465923a01b1",
           "canonical_length": 47,
           "boundary_after": null
         }
@@ -17829,7 +17887,7 @@
         {
           "paragraph_id": "LDC.T25.E0017.P019",
           "stable_ref": "LDC.T25.E0017.P019",
-          "source_text_sha256": "a436f09f2b1897647598a0ecd9a96a7797f9b68faba8bdea66a4d96111322ae2",
+          "source_text_sha256": "ff9ee7fcb068770df6210005b20bd4edc250a4f78e303be7c2aa79cf08840a10",
           "canonical_length": 25,
           "boundary_after": {
             "display_joiner": "space",
@@ -17845,7 +17903,7 @@
         {
           "paragraph_id": "LDC.T25.E0017.P020",
           "stable_ref": "LDC.T25.E0017.P020",
-          "source_text_sha256": "2f312fcf69571fed1b08882ccf90393976bdce6e606b11174dfd950e774dee94",
+          "source_text_sha256": "df76acffb69f2b801cd744d27fbfadd4d076a711f9c05a0e255207fe39043d68",
           "canonical_length": 19,
           "boundary_after": {
             "display_joiner": "space",
@@ -17861,7 +17919,7 @@
         {
           "paragraph_id": "LDC.T25.E0017.P021",
           "stable_ref": "LDC.T25.E0017.P021",
-          "source_text_sha256": "5a72a01f9d87e0a15ba6463231c62ec8df8ce7f2d61fd1320ba265934f726e1b",
+          "source_text_sha256": "4a718dba3164ad91134e2e405b545cc6f90f61fe664e8986e1831d6956d6d74d",
           "canonical_length": 101,
           "boundary_after": null
         }
@@ -17879,7 +17937,7 @@
         {
           "paragraph_id": "LDC.T25.E0017.P023",
           "stable_ref": "LDC.T25.E0017.P023",
-          "source_text_sha256": "8c3e5f70bd97698c6dddbcfda38392d8c8376b77daad201f99826887ddc9d4b2",
+          "source_text_sha256": "fe0f36904e46cd4535af8c1893d2936db8023ac80de3c5555124ea3a99d89cef",
           "canonical_length": 56,
           "boundary_after": {
             "display_joiner": "space",
@@ -17947,7 +18005,7 @@
         {
           "paragraph_id": "LDC.T25.E0017.P027",
           "stable_ref": "LDC.T25.E0017.P027",
-          "source_text_sha256": "e57a8452d6695f2d783156cfcb9f2ac2d1c19b3f9d9a16412ffd39a50d7d8fa4",
+          "source_text_sha256": "565e4266408989f58a7f2b35136ae7f68f1747c2fd48de3625964281fa331762",
           "canonical_length": 42,
           "boundary_after": {
             "display_joiner": "space",
@@ -18142,8 +18200,8 @@
         {
           "paragraph_id": "LDC.T25.E0017.P040",
           "stable_ref": "LDC.T25.E0017.P040",
-          "source_text_sha256": "2d807c369e6a63f3aa674296c94869b4545788c991be9e575549c56c1b3738b9",
-          "canonical_length": 90,
+          "source_text_sha256": "d6d267d5bbca73a3b92911d809d1de6a6d4585b313933f585cc9aaec1d4ecee1",
+          "canonical_length": 93,
           "boundary_after": {
             "display_joiner": "space",
             "speech_run_policy": "continue_same_speaker_only",
@@ -18286,7 +18344,7 @@
         {
           "paragraph_id": "LDC.T25.E0017.P048",
           "stable_ref": "LDC.T25.E0017.P048",
-          "source_text_sha256": "a7e8afe883892b8f9fa9baa02932bac77c752d3b15b3fbccfe3a3002cdd081d2",
+          "source_text_sha256": "12104a88e6e90d203bc77efee0e8514cd0c8645897416c2e9a5b0b6e2daba512",
           "canonical_length": 22,
           "boundary_after": {
             "display_joiner": "space",
@@ -18971,7 +19029,7 @@
         {
           "paragraph_id": "LDC.T25.E0017.P096",
           "stable_ref": "LDC.T25.E0017.P096",
-          "source_text_sha256": "6bd962ea72fc19216b63991bd8f5a4e5505f9c1930714afdbcaa5a52309fb7b0",
+          "source_text_sha256": "def0c3ff70479206024e77fa55319282329bd30edd61ba7019008ad6fcbc8cc9",
           "canonical_length": 75,
           "boundary_after": {
             "display_joiner": "space",
@@ -19598,7 +19656,7 @@
         {
           "paragraph_id": "LDC.T25.E0018.P004",
           "stable_ref": "LDC.T25.E0018.P004",
-          "source_text_sha256": "c20840c8ccb3a1534c4ec417e454a3583175b71133b65b6e358d74595671d108",
+          "source_text_sha256": "830f52e4c81949eac3824cf88ade4edc46af9f96c1e484b08fb4e8e4515c2f7a",
           "canonical_length": 202,
           "boundary_after": {
             "display_joiner": "space",
@@ -20351,7 +20409,7 @@
         {
           "paragraph_id": "LDC.T25.E0018.P052",
           "stable_ref": "LDC.T25.E0018.P052",
-          "source_text_sha256": "f9c420065acbcea7eb62bccb35da315445fee4ee60df159979765aa794319bfb",
+          "source_text_sha256": "bc366ceec0ea8af58517ee655024c01108610820b60c47e853b3445f2908a4a7",
           "canonical_length": 19,
           "boundary_after": {
             "display_joiner": "space",
@@ -20627,7 +20685,7 @@
         {
           "paragraph_id": "LDC.T25.E0019.P009",
           "stable_ref": "LDC.T25.E0019.P009",
-          "source_text_sha256": "d60025a8d2864c453b63803f7cedae8a0a49a29abfcd8fff46ab695ca04408c1",
+          "source_text_sha256": "72d02b129c0e254d6c79e772b918ca50e9cdaf27b756d26ff1c071c59d401c04",
           "canonical_length": 77,
           "boundary_after": {
             "display_joiner": "space",
@@ -20708,7 +20766,7 @@
         {
           "paragraph_id": "LDC.T25.E0019.P015",
           "stable_ref": "LDC.T25.E0019.P015",
-          "source_text_sha256": "061764dc0dc2a0a601e161ba885dec19dfd1fbae71b43dbf162f2558c859af5b",
+          "source_text_sha256": "b01973c9f8ccde9aa047e2798e78fd5232ce0355b2b43c5ea32b9db36f144b3f",
           "canonical_length": 127,
           "boundary_after": null
         }
@@ -22520,7 +22578,7 @@
         {
           "paragraph_id": "LDC.T25.E0020.P048",
           "stable_ref": "LDC.T25.E0020.P048",
-          "source_text_sha256": "d4476ab6b9e8c92e53faeb238cd561cb5fd7337b0a75e0c097bd63bea25e6b70",
+          "source_text_sha256": "e8a46f8cbef1962a05280aab6251064f176bd160ce07353330a6babc7f81c809",
           "canonical_length": 53,
           "boundary_after": null
         }
@@ -22611,8 +22669,8 @@
         {
           "paragraph_id": "LDC.T25.E0020.P058",
           "stable_ref": "LDC.T25.E0020.P058",
-          "source_text_sha256": "2bee9552cba8d8a428898329f0e5b5a71f42b5da4ffd99ef3dcb5373f454c8ec",
-          "canonical_length": 74,
+          "source_text_sha256": "c932f9371fa915eb526c58aa729b0e830df5ed415ee13e3816094b63e6803ad6",
+          "canonical_length": 75,
           "boundary_after": {
             "display_joiner": "space",
             "speech_run_policy": "continue_same_speaker_only",
@@ -22854,7 +22912,7 @@
         {
           "paragraph_id": "LDC.T25.E0020.P069",
           "stable_ref": "LDC.T25.E0020.P069",
-          "source_text_sha256": "bacd72ffda5787b30a31b5839a02e1b6e2508e16a97476963317acf1ec46b0b7",
+          "source_text_sha256": "cb6132758fd78fd8f76b377328e38bd2caf9282f041f1c251da21b807374b303",
           "canonical_length": 126,
           "boundary_after": {
             "display_joiner": "space",
@@ -23421,8 +23479,8 @@
         {
           "paragraph_id": "LDC.T25.E0021.P009",
           "stable_ref": "LDC.T25.E0021.P009",
-          "source_text_sha256": "80b623a4ea6107121b1a38c8606853dcc50ab5f380177b2f3a1d907e5d97e732",
-          "canonical_length": 88,
+          "source_text_sha256": "f4f54b96698e72e5cf3bb8e313207bbb943881d62a6e7b8d18333a46fba6ad74",
+          "canonical_length": 85,
           "boundary_after": {
             "display_joiner": "space",
             "speech_run_policy": "continue_same_speaker_only",
@@ -24199,8 +24257,8 @@
         {
           "paragraph_id": "LDC.T25.E0021.P047",
           "stable_ref": "LDC.T25.E0021.P047",
-          "source_text_sha256": "e9e30ece66e3bdee5e5d2de7177dc82c82abcf40493d9194353867541e535fb4",
-          "canonical_length": 86,
+          "source_text_sha256": "cb683c0e92813db7ab959ee601154fd353a9fce4afebd99a15703310364d5ae9",
+          "canonical_length": 87,
           "boundary_after": {
             "display_joiner": "space",
             "speech_run_policy": "continue_same_speaker_only",
@@ -24447,8 +24505,8 @@
         {
           "paragraph_id": "LDC.T25.E0021.P060",
           "stable_ref": "LDC.T25.E0021.P060",
-          "source_text_sha256": "03809c26f10701004679ac1d63f4e909326fc94b47921215b48943c743df4c9b",
-          "canonical_length": 53,
+          "source_text_sha256": "7c2127409b3f4c330c34b8cba6ed4ed26dc4ab6b2435995c78239387d7c9647b",
+          "canonical_length": 46,
           "boundary_after": {
             "display_joiner": "space",
             "speech_run_policy": "continue_same_speaker_only",
@@ -24767,8 +24825,8 @@
         {
           "paragraph_id": "LDC.T25.E0021.P077",
           "stable_ref": "LDC.T25.E0021.P077",
-          "source_text_sha256": "a7a9e57ff98ca762037e4ea63b13fe9788e046d18d5b40bc2381f8c7a31138b8",
-          "canonical_length": 58,
+          "source_text_sha256": "b15073c18e4615ec9f0ebe6244faeb7a46ba564012445bbed98fb9c053553c45",
+          "canonical_length": 59,
           "boundary_after": null
         }
       ]
@@ -24895,7 +24953,7 @@
         {
           "paragraph_id": "LDC.T25.E0021.P083",
           "stable_ref": "LDC.T25.E0021.P083",
-          "source_text_sha256": "18ec6536cf9cfe37252f34583916d324488ab763f6a4e22e274577e7a3f3c96c",
+          "source_text_sha256": "9ab458faabffe8799c95676efc1d5365930331a6b3b63ed571130da7e6b965e2",
           "canonical_length": 103,
           "boundary_after": null
         }
@@ -25205,8 +25263,8 @@
         {
           "paragraph_id": "LDC.T25.E0021.P101",
           "stable_ref": "LDC.T25.E0021.P101",
-          "source_text_sha256": "22b077f50522c6dbe4fb7c1dc30912de2ccdd33b3c76dc684160a3d960f91a6c",
-          "canonical_length": 108,
+          "source_text_sha256": "39b8c5274d570b85ac7f3b67b4f28d1bc381bb23e1764199bda3e720b77c1b00",
+          "canonical_length": 109,
           "boundary_after": {
             "display_joiner": "space",
             "speech_run_policy": "continue_same_speaker_only",
@@ -25477,8 +25535,8 @@
         {
           "paragraph_id": "LDC.T25.E0022.P014",
           "stable_ref": "LDC.T25.E0022.P014",
-          "source_text_sha256": "79294f0d099138070697d64cef1567b9af3cca82de632e123e3dd85368c6fc07",
-          "canonical_length": 169,
+          "source_text_sha256": "c3ec458e11d0efa2f80d28dbfc70419181907bfdd0567bd2ff924c6018344dba",
+          "canonical_length": 170,
           "boundary_after": null
         }
       ]
@@ -25900,8 +25958,8 @@
         {
           "paragraph_id": "LDC.T25.E0023.P007",
           "stable_ref": "LDC.T25.E0023.P007",
-          "source_text_sha256": "5daa67b12f75ed8a43d0b32f82cfa4b124f2660e64b1bb06eb33c89315aae0d9",
-          "canonical_length": 95,
+          "source_text_sha256": "e7ac1755108acd029db9eb80f2b03594145c0cf0bec1776c3dd8cae8a20fdf15",
+          "canonical_length": 96,
           "boundary_after": {
             "display_joiner": "space",
             "speech_run_policy": "continue_same_speaker_only",
@@ -26201,8 +26259,8 @@
         {
           "paragraph_id": "LDC.T25.E0023.P029",
           "stable_ref": "LDC.T25.E0023.P029",
-          "source_text_sha256": "8749e6ccf0692722cfda5c67670bd4305b759600e1b87b34b4f3135be421b678",
-          "canonical_length": 249,
+          "source_text_sha256": "fc24a5006c8a939dabb78eed83c434121b9bf4aa575383b04c49cdecbbde389d",
+          "canonical_length": 248,
           "boundary_after": {
             "display_joiner": "space",
             "speech_run_policy": "continue_same_speaker_only",
@@ -26767,8 +26825,8 @@
         {
           "paragraph_id": "LDC.T25.E0024.P015",
           "stable_ref": "LDC.T25.E0024.P015",
-          "source_text_sha256": "cb826586271063d0034d5cec68a74a30abff981db59fb577a17afdb1aac834ab",
-          "canonical_length": 9,
+          "source_text_sha256": "c521b450f0c62cc5c6544848a191638a8bf28f695b4b63ff5253f0048e55ad0a",
+          "canonical_length": 10,
           "boundary_after": {
             "display_joiner": "space",
             "speech_run_policy": "continue_same_speaker_only",
@@ -27614,7 +27672,7 @@
         {
           "paragraph_id": "LDC.T25.E0024.P064",
           "stable_ref": "LDC.T25.E0024.P064",
-          "source_text_sha256": "2d2a2a8864b8b6fd8ebf8f828b38516fe3c3ae8cf1be9eea5a7b435c0242df3d",
+          "source_text_sha256": "b66efa1a5e09df1fcc966c4304fd062c5b17f2cdca874249bc2daca564a87020",
           "canonical_length": 72,
           "boundary_after": {
             "display_joiner": "space",
@@ -27814,7 +27872,7 @@
         {
           "paragraph_id": "LDC.T25.E0025.P013",
           "stable_ref": "LDC.T25.E0025.P013",
-          "source_text_sha256": "4fe24da98fbeca4814509223c84bd60d2ea2cd99d35371f8f36f82fbdcbd715e",
+          "source_text_sha256": "5574192e1ece89b9d330974024374b90e9143a1fe9b2adc7b10c062e333385d4",
           "canonical_length": 71,
           "boundary_after": {
             "display_joiner": "space",
@@ -28180,7 +28238,7 @@
         {
           "paragraph_id": "LDC.T25.E0025.P033",
           "stable_ref": "LDC.T25.E0025.P033",
-          "source_text_sha256": "441b0eb471feb209f49e7b44e913a410f614e59ca6ec1fafb600b1e832755739",
+          "source_text_sha256": "5921d04ba9e14129f8f888f9fc4d636857752e8fc3a715ee6cdaec7249a13321",
           "canonical_length": 44,
           "boundary_after": {
             "display_joiner": "space",
@@ -29677,8 +29735,8 @@
         {
           "paragraph_id": "LDC.T25.E0026.P076",
           "stable_ref": "LDC.T25.E0026.P076",
-          "source_text_sha256": "c99572632516da5058f9bf71b5b731b23453761e493e4bd113fb1861a1e388ce",
-          "canonical_length": 97,
+          "source_text_sha256": "239f50e43cf09418272fe759850176b1b4ca656ed86d5a7fd08d74e88b30d5c7",
+          "canonical_length": 96,
           "boundary_after": null
         }
       ]
@@ -29969,8 +30027,8 @@
         {
           "paragraph_id": "LDC.T25.E0027.P017",
           "stable_ref": "LDC.T25.E0027.P017",
-          "source_text_sha256": "3973f206c51c5776f1644c6f17f9b346078e9bfd901f7db21f91a693008509a8",
-          "canonical_length": 51,
+          "source_text_sha256": "177b5616aedf1444675d884b6c07639440532b2548582f4f364f935268953da5",
+          "canonical_length": 53,
           "boundary_after": {
             "display_joiner": "space",
             "speech_run_policy": "continue_same_speaker_only",
@@ -30266,7 +30324,7 @@
         {
           "paragraph_id": "LDC.T25.E0027.P035",
           "stable_ref": "LDC.T25.E0027.P035",
-          "source_text_sha256": "0af2fc94b8501a3c1e290b9e9b1a0a0b9d37376dcd0c306cb4c51928e6220416",
+          "source_text_sha256": "34f6cd29d4f6deea835c7406398eef58ea20a6388ec220342f236e36c17824a8",
           "canonical_length": 136,
           "boundary_after": {
             "display_joiner": "space",
@@ -30371,8 +30429,8 @@
         {
           "paragraph_id": "LDC.T25.E0027.P042",
           "stable_ref": "LDC.T25.E0027.P042",
-          "source_text_sha256": "a27e0ab3a9f2c5725c649b75f1b3ad08db1f06584b19ef361e0bdf862532d479",
-          "canonical_length": 92,
+          "source_text_sha256": "be0681afd588f0baff12c0b2aa8995643aa010a380c09eeea6352488eb0ea1dd",
+          "canonical_length": 90,
           "boundary_after": {
             "display_joiner": "space",
             "speech_run_policy": "continue_same_speaker_only",
@@ -30563,7 +30621,7 @@
         {
           "paragraph_id": "LDC.T25.E0027.P054",
           "stable_ref": "LDC.T25.E0027.P054",
-          "source_text_sha256": "4d456628b5e25cab79997ecce01d545cde0878cec23a6140a52e4b1f8c77311f",
+          "source_text_sha256": "0da66d021b890a1eab5d79d2b9d8b4925e5782fa7476e3a61c8c7398728f7f8e",
           "canonical_length": 179,
           "boundary_after": {
             "display_joiner": "space",
@@ -30870,8 +30928,8 @@
         {
           "paragraph_id": "LDC.T25.E0027.P071",
           "stable_ref": "LDC.T25.E0027.P071",
-          "source_text_sha256": "943d5755ea1c77280b3c99f2389c901be8f45c2cd18250e1f7344c980a40a9e6",
-          "canonical_length": 34,
+          "source_text_sha256": "db15023d8394cd30e6682fc8eff66ad9104413395634c3d20245583899f902bd",
+          "canonical_length": 36,
           "boundary_after": null
         }
       ]
@@ -31638,8 +31696,8 @@
         {
           "paragraph_id": "LDC.T25.E0028.P040",
           "stable_ref": "LDC.T25.E0028.P040",
-          "source_text_sha256": "a922f3478c1c8607dd20765312808765d394b75fbce8d67c9ea6f289ee53423a",
-          "canonical_length": 85,
+          "source_text_sha256": "63570bb2e441714dbcdc201c54e3c616a756eb46ef10a483aa56a05c28e00c6b",
+          "canonical_length": 86,
           "boundary_after": {
             "display_joiner": "space",
             "speech_run_policy": "continue_same_speaker_only",
@@ -32063,8 +32121,8 @@
         {
           "paragraph_id": "LDC.T25.E0028.P066",
           "stable_ref": "LDC.T25.E0028.P066",
-          "source_text_sha256": "fa5cc6fafbe1d458995d637c2ded35bade35d1eea26708f4f9981c7c8281409a",
-          "canonical_length": 71,
+          "source_text_sha256": "d9497036fdb97093d058d61df23b1be0d11abfe31bd1b2a0a0e48472ab0c5677",
+          "canonical_length": 70,
           "boundary_after": {
             "display_joiner": "space",
             "speech_run_policy": "continue_same_speaker_only",
@@ -32481,7 +32539,7 @@
         {
           "paragraph_id": "LDC.T25.E0029.P009",
           "stable_ref": "LDC.T25.E0029.P009",
-          "source_text_sha256": "5683fad838efd3b696926104c6d09a44f0a5a99cc768f924f6a38bb3e2f22332",
+          "source_text_sha256": "74e5ef94e042743fb83400762f48711c65441814f8621c536483f53e78e7be20",
           "canonical_length": 42,
           "boundary_after": {
             "display_joiner": "space",
@@ -33334,8 +33392,8 @@
         {
           "paragraph_id": "LDC.T25.E0029.P061",
           "stable_ref": "LDC.T25.E0029.P061",
-          "source_text_sha256": "b4e2ebf0289686740ab4216a57553f1a8963c33924f365a75e34fcbc0d5425bc",
-          "canonical_length": 85,
+          "source_text_sha256": "3c5f1775680eb756f4ed23c1accc607b5d120ffefcc6e00996dfc12f02813c8b",
+          "canonical_length": 86,
           "boundary_after": null
         }
       ]
@@ -34510,8 +34568,8 @@
         {
           "paragraph_id": "LDC.T25.E0030.P060",
           "stable_ref": "LDC.T25.E0030.P060",
-          "source_text_sha256": "efd560082405c08cc4780f6891fdad16a3694df38dec5933cd072cb496f5b582",
-          "canonical_length": 31,
+          "source_text_sha256": "7ff311ef3c5c9969b98d1baf6c3ecc72dbde9681f78da6abb0d83dab8cd535ec",
+          "canonical_length": 30,
           "boundary_after": {
             "display_joiner": "space",
             "speech_run_policy": "continue_same_speaker_only",
@@ -34551,8 +34609,8 @@
         {
           "paragraph_id": "LDC.T25.E0030.P062",
           "stable_ref": "LDC.T25.E0030.P062",
-          "source_text_sha256": "621355a92ce776d9a069068870e92213344c8b675d45444132018e0d154c59b9",
-          "canonical_length": 48,
+          "source_text_sha256": "19fe541fdd4b342cff2e9ce0d37277b7152a3354eb3bc51224fb2e7dcb21203b",
+          "canonical_length": 47,
           "boundary_after": {
             "display_joiner": "space",
             "speech_run_policy": "continue_same_speaker_only",
@@ -34720,8 +34778,8 @@
         {
           "paragraph_id": "LDC.T25.E0030.P073",
           "stable_ref": "LDC.T25.E0030.P073",
-          "source_text_sha256": "e3166176c09ab569887bdf340412f9196f848ed2e7bb832be853c82ec149f586",
-          "canonical_length": 106,
+          "source_text_sha256": "b86bc38caa935379a8de0bcaf8f955e73783644b3416cfd3a9876934c3a4b42c",
+          "canonical_length": 105,
           "boundary_after": {
             "display_joiner": "space",
             "speech_run_policy": "continue_same_speaker_only",
@@ -34830,8 +34888,8 @@
         {
           "paragraph_id": "LDC.T25.E0030.P078",
           "stable_ref": "LDC.T25.E0030.P078",
-          "source_text_sha256": "237026915272cd522ec659fafa01e67e31d83d5cb0873b9fcb2b52e9859ba5c7",
-          "canonical_length": 119,
+          "source_text_sha256": "ea7138a02e2d6678302f9f4f20249ec5addead0fffbaf5029d3fa4bc1a99780e",
+          "canonical_length": 120,
           "boundary_after": null
         }
       ]
@@ -35237,8 +35295,8 @@
         {
           "paragraph_id": "LDC.T25.E0031.P027",
           "stable_ref": "LDC.T25.E0031.P027",
-          "source_text_sha256": "2ceaf45ed4f71de7933e8fa28569296dd494a0511a1941ace83c50075fdd8ab6",
-          "canonical_length": 110,
+          "source_text_sha256": "da9945863b10f7c06a3d31c01b7d749dbe1c5b6cdf7483a386a3ccf380a010f7",
+          "canonical_length": 109,
           "boundary_after": {
             "display_joiner": "space",
             "speech_run_policy": "continue_same_speaker_only",
@@ -35754,7 +35812,7 @@
         {
           "paragraph_id": "LDC.T25.E0031.P056",
           "stable_ref": "LDC.T25.E0031.P056",
-          "source_text_sha256": "509d2e9c0fe5276526543ebe096756e734020f6713caf75666fb835e5b14e246",
+          "source_text_sha256": "d5bf9a702ce5606b4011c96a7578f1c79ff0a234e4f9058f75582a64274aed90",
           "canonical_length": 238,
           "boundary_after": {
             "display_joiner": "space",
@@ -36197,7 +36255,7 @@
         {
           "paragraph_id": "LDC.T25.E0031.P085",
           "stable_ref": "LDC.T25.E0031.P085",
-          "source_text_sha256": "4f4f4edf7e553afda8dccbd6e7f405abbdbf70c1dbdf812aec79d086528f31da",
+          "source_text_sha256": "ddcc7133c841629bbc715bfdfaefb075abe92e0740ea18d3ac5f0f107411d329",
           "canonical_length": 45,
           "boundary_after": null
         }
@@ -36384,7 +36442,7 @@
         {
           "paragraph_id": "LDC.T25.E0031.P094",
           "stable_ref": "LDC.T25.E0031.P094",
-          "source_text_sha256": "5fce8f01bed7f78c82c13a2eb481d95da09718843ca6e2cae5310e454e3d1849",
+          "source_text_sha256": "c91f3030f78cc8a6443dab04a18516966eb75237b24fbed15163ce5115ce927f",
           "canonical_length": 42,
           "boundary_after": {
             "display_joiner": "space",
@@ -36488,8 +36546,8 @@
         {
           "paragraph_id": "LDC.T25.E0031.P102",
           "stable_ref": "LDC.T25.E0031.P102",
-          "source_text_sha256": "ae2d1e8234af2ba421d29248a9aac884c446a114cad8c9837615766b554855ac",
-          "canonical_length": 85,
+          "source_text_sha256": "c074faccf8df8a5f8a9ea706761d04156732ce8af095b1d548add584b3a0c1f9",
+          "canonical_length": 84,
           "boundary_after": null
         }
       ]
@@ -36977,8 +37035,8 @@
         {
           "paragraph_id": "LDC.T25.E0032.P024",
           "stable_ref": "LDC.T25.E0032.P024",
-          "source_text_sha256": "7c8ca2ffa72ddefc6d988fdc9f252e2ef4150b3ff8af157cad81f00d2ba0f688",
-          "canonical_length": 64,
+          "source_text_sha256": "50cdfc404c796a7510f067f188a2f564c6ea238a9601a2667f41aa12ce525552",
+          "canonical_length": 68,
           "boundary_after": {
             "display_joiner": "space",
             "speech_run_policy": "continue_same_speaker_only",
@@ -37087,8 +37145,8 @@
         {
           "paragraph_id": "LDC.T25.E0032.P029",
           "stable_ref": "LDC.T25.E0032.P029",
-          "source_text_sha256": "dacf92db6e0aa41a3bee36de1996eceea74fb3be529f3f1d1b4b8015c8dedb98",
-          "canonical_length": 29,
+          "source_text_sha256": "a6df4fcc31fd985160b558febebcd3953ada764eebd7c574f666202cde7c800e",
+          "canonical_length": 30,
           "boundary_after": {
             "display_joiner": "space",
             "speech_run_policy": "continue_same_speaker_only",
@@ -37394,7 +37452,7 @@
         {
           "paragraph_id": "LDC.T25.E0032.P046",
           "stable_ref": "LDC.T25.E0032.P046",
-          "source_text_sha256": "b3c8ebe70fea1e3dd310d41b451b16878b4555b84e49875c13e63a15ae173900",
+          "source_text_sha256": "f98d5009f5d6fa6dc0022ade11814c1c4184860f2c2f04ce7fe470c3497b9356",
           "canonical_length": 44,
           "boundary_after": null
         }
@@ -37563,8 +37621,8 @@
         {
           "paragraph_id": "LDC.T25.E0032.P058",
           "stable_ref": "LDC.T25.E0032.P058",
-          "source_text_sha256": "cc7963ecf67400284378463d66331eb39e196081e1b9c28cf6993f367f5994fb",
-          "canonical_length": 97,
+          "source_text_sha256": "3c56a336318f65de3d3cb6ad0cb64fa5e79238c01e1103605a90f674852b6f93",
+          "canonical_length": 98,
           "boundary_after": {
             "display_joiner": "space",
             "speech_run_policy": "continue_same_speaker_only",
@@ -38131,8 +38189,8 @@
         {
           "paragraph_id": "LDC.T25.E0032.P087",
           "stable_ref": "LDC.T25.E0032.P087",
-          "source_text_sha256": "3f1df34222859d411aa83325cfc70539ee09381068c81a0438d751004842f4e3",
-          "canonical_length": 70,
+          "source_text_sha256": "3e37bcd23ca06b53fedc474327a9d345aeae4d16c371d10af2cf02a78e3cf00f",
+          "canonical_length": 69,
           "boundary_after": null
         }
       ]
@@ -38277,7 +38335,7 @@
         {
           "paragraph_id": "LDC.T25.E0032.P098",
           "stable_ref": "LDC.T25.E0032.P098",
-          "source_text_sha256": "d1194d87393e546cbcbd5d28def44ece50e61d769325c27c42e35c53dea3eed0",
+          "source_text_sha256": "dc1395411515d9bb9f5084c1e3dcb7e03d029d7f54143401a562b7e5254b3675",
           "canonical_length": 75,
           "boundary_after": {
             "display_joiner": "space",
@@ -38638,8 +38696,8 @@
         {
           "paragraph_id": "LDC.T25.E0033.P004",
           "stable_ref": "LDC.T25.E0033.P004",
-          "source_text_sha256": "a61bdea14e4f14ab84107690fe537a35720bd11a780dc4e7106c47e7840812fd",
-          "canonical_length": 48,
+          "source_text_sha256": "8ac86b1b8b95c31b6136be14ebc9279a14592a3797356830f961975754c4655c",
+          "canonical_length": 46,
           "boundary_after": {
             "display_joiner": "space",
             "speech_run_policy": "continue_same_speaker_only",
@@ -38902,7 +38960,7 @@
         {
           "paragraph_id": "LDC.T25.E0033.P026",
           "stable_ref": "LDC.T25.E0033.P026",
-          "source_text_sha256": "32020dc96af4ea0bf3bfebf95c70aad0b0a62466f6d6af2b6ab471fd389b3b68",
+          "source_text_sha256": "e9c5010f84f57105d5881b511e24bd7cafbc7d91ba1099495d521e8e2db9b637",
           "canonical_length": 55,
           "boundary_after": {
             "display_joiner": "space",
@@ -38925,7 +38983,7 @@
         {
           "paragraph_id": "LDC.T25.E0033.P027",
           "stable_ref": "LDC.T25.E0033.P027",
-          "source_text_sha256": "6c57a0f0a0e7e1291873827dd302d3c58dba2d18b27bd7452c5f3ccf0b5218f8",
+          "source_text_sha256": "6540b5bf65233652d33d26550ef58d76efc04036e5dacc7177afeb134d4cd975",
           "canonical_length": 50,
           "boundary_after": {
             "display_joiner": "space",
@@ -38948,7 +39006,7 @@
         {
           "paragraph_id": "LDC.T25.E0033.P028",
           "stable_ref": "LDC.T25.E0033.P028",
-          "source_text_sha256": "fac7fdbbb9df74e712feaa55fc705ad2876f079ac2f16e31efc0a17bbe578197",
+          "source_text_sha256": "dbb95c2a96240b3aa97cb20235a23296fac45fde113577effd9e698787dff5bb",
           "canonical_length": 159,
           "boundary_after": null
         }
@@ -42113,64 +42171,6 @@
           "stable_ref": "LDC.T25.E0035.P047",
           "source_text_sha256": "f27190a4f45930d53a95ab9f488ba38b31bf07f2ee14691d55d733e76d0c43e9",
           "canonical_length": 22,
-          "boundary_after": null
-        }
-      ]
-    },
-    {
-      "flow_id": "FLOW.T25.RA10.001.LDC_T25_E0017_P010__LDC_T25_E0017_P011",
-      "entry_id": "LDC.T25.E0017",
-      "classification": "source_verified_sentence_continuation",
-      "confidence": "high",
-      "origin": "RA10_DIRECT_SOURCE_OR_APPROVED_LEDGER",
-      "review_status": "approved_for_display",
-      "reason": "Approved T25 correction/segment evidence preserves one chorus construction: « Nous T’aimons » et « Nous voulons… ».",
-      "members": [
-        {
-          "paragraph_id": "LDC.T25.E0017.P010",
-          "stable_ref": "LDC.T25.E0017.P010",
-          "source_text_sha256": "c37220ac8b37d001fd09e7f2cfbcc965de56c7fa3edea706a62b844d0e6ef28f",
-          "canonical_length": 20,
-          "boundary_after": {
-            "display_joiner": "space",
-            "speech_run_policy": "continue_same_speaker_only",
-            "suppress_next_leading_ranges": []
-          }
-        },
-        {
-          "paragraph_id": "LDC.T25.E0017.P011",
-          "stable_ref": "LDC.T25.E0017.P011",
-          "source_text_sha256": "2847c8b9cc5bfbae2f3f4f23e201374b7544a96b276dd9f35099171162f9c33f",
-          "canonical_length": 55,
-          "boundary_after": null
-        }
-      ]
-    },
-    {
-      "flow_id": "FLOW.T25.RA10.002.LDC_T25_E0017_P015__LDC_T25_E0017_P016",
-      "entry_id": "LDC.T25.E0017",
-      "classification": "source_verified_sentence_continuation",
-      "confidence": "high",
-      "origin": "RA10_DIRECT_SOURCE_OR_APPROVED_LEDGER",
-      "review_status": "approved_for_display",
-      "reason": "Approved T25 text operation states terminal punctuation was changed because the sentence continues in the next paragraph.",
-      "members": [
-        {
-          "paragraph_id": "LDC.T25.E0017.P015",
-          "stable_ref": "LDC.T25.E0017.P015",
-          "source_text_sha256": "82e635e7c2f47346291b545f03f9e27e8d842b32b81c0a76eb90253a67113079",
-          "canonical_length": 56,
-          "boundary_after": {
-            "display_joiner": "space",
-            "speech_run_policy": "continue_same_speaker_only",
-            "suppress_next_leading_ranges": []
-          }
-        },
-        {
-          "paragraph_id": "LDC.T25.E0017.P016",
-          "stable_ref": "LDC.T25.E0017.P016",
-          "source_text_sha256": "e259e081fd3d7beb39ea9a6b8f9d4376668610d1814ee06a21dbcef3aa60baf3",
-          "canonical_length": 101,
           "boundary_after": null
         }
       ]

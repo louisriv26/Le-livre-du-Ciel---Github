@@ -1,7 +1,7 @@
 {
   "schema_version": "ldc-display-transform-v2",
   "volume": 25,
-  "corpus_version": "G036-AFLP-R7-UWR2",
+  "corpus_version": "G036-AFLP-R7-UWR2-FAST1",
   "paragraph_count": 1425,
   "paragraphs": {
     "LDC.T25.E0001.P003": [
@@ -2284,8 +2284,8 @@
     "LDC.T25.E0005.P059": [
       {
         "s": 0,
-        "e": 1,
-        "t": "-",
+        "e": 2,
+        "t": "- ",
         "r": "",
         "a": "SUPPRESS_LAYOUT_MARKER",
         "d": "LEAD-14917",
@@ -2295,8 +2295,8 @@
     "LDC.T25.E0005.P060": [
       {
         "s": 0,
-        "e": 1,
-        "t": "-",
+        "e": 2,
+        "t": "- ",
         "r": "",
         "a": "SUPPRESS_LAYOUT_MARKER",
         "d": "LEAD-14918",
@@ -2647,8 +2647,8 @@
     "LDC.T25.E0006.P052": [
       {
         "s": 0,
-        "e": 1,
-        "t": "-",
+        "e": 2,
+        "t": "- ",
         "r": "",
         "a": "SUPPRESS_LAYOUT_MARKER",
         "d": "LEAD-14950",
@@ -2658,8 +2658,8 @@
     "LDC.T25.E0006.P053": [
       {
         "s": 0,
-        "e": 1,
-        "t": "-",
+        "e": 2,
+        "t": "- ",
         "r": "",
         "a": "SUPPRESS_LAYOUT_MARKER",
         "d": "LEAD-14951",
@@ -2669,8 +2669,8 @@
     "LDC.T25.E0006.P054": [
       {
         "s": 0,
-        "e": 1,
-        "t": "-",
+        "e": 2,
+        "t": "- ",
         "r": "",
         "a": "SUPPRESS_LAYOUT_MARKER",
         "d": "LEAD-14952",
@@ -2680,8 +2680,8 @@
     "LDC.T25.E0006.P056": [
       {
         "s": 0,
-        "e": 1,
-        "t": "-",
+        "e": 2,
+        "t": "- ",
         "r": "",
         "a": "SUPPRESS_LAYOUT_MARKER",
         "d": "LEAD-14953",
@@ -2691,8 +2691,8 @@
     "LDC.T25.E0006.P057": [
       {
         "s": 0,
-        "e": 1,
-        "t": "-",
+        "e": 2,
+        "t": "- ",
         "r": "",
         "a": "SUPPRESS_LAYOUT_MARKER",
         "d": "LEAD-14954",
@@ -2702,8 +2702,8 @@
     "LDC.T25.E0006.P058": [
       {
         "s": 0,
-        "e": 1,
-        "t": "-",
+        "e": 2,
+        "t": "- ",
         "r": "",
         "a": "SUPPRESS_LAYOUT_MARKER",
         "d": "LEAD-14955",
@@ -4174,8 +4174,8 @@
     "LDC.T25.E0010.P059": [
       {
         "s": 0,
-        "e": 2,
-        "t": "- ",
+        "e": 3,
+        "t": "- J",
         "r": "",
         "a": "SUPPRESS_LAYOUT_MARKER",
         "d": "LEAD-15088",
@@ -5659,8 +5659,8 @@
     "LDC.T25.E0015.P014": [
       {
         "s": 0,
-        "e": 2,
-        "t": "- ",
+        "e": 3,
+        "t": "- J",
         "r": "",
         "a": "SUPPRESS_LAYOUT_MARKER",
         "d": "LEAD-15223",
@@ -6220,8 +6220,8 @@
     "LDC.T25.E0016.P038": [
       {
         "s": 0,
-        "e": 2,
-        "t": "- ",
+        "e": 3,
+        "t": "- M",
         "r": "",
         "a": "SUPPRESS_LAYOUT_MARKER",
         "d": "LEAD-15274",
@@ -6231,8 +6231,8 @@
     "LDC.T25.E0016.P039": [
       {
         "s": 0,
-        "e": 2,
-        "t": "- ",
+        "e": 3,
+        "t": "- M",
         "r": "",
         "a": "SUPPRESS_LAYOUT_MARKER",
         "d": "LEAD-15275",
@@ -6242,8 +6242,8 @@
     "LDC.T25.E0016.P040": [
       {
         "s": 0,
-        "e": 2,
-        "t": "- ",
+        "e": 3,
+        "t": "- M",
         "r": "",
         "a": "SUPPRESS_LAYOUT_MARKER",
         "d": "LEAD-15276",
@@ -6429,8 +6429,8 @@
     "LDC.T25.E0016.P069": [
       {
         "s": 0,
-        "e": 1,
-        "t": "-",
+        "e": 2,
+        "t": "- ",
         "r": "",
         "a": "SUPPRESS_LAYOUT_MARKER",
         "d": "LEAD-15293",
@@ -6440,8 +6440,8 @@
     "LDC.T25.E0016.P070": [
       {
         "s": 0,
-        "e": 1,
-        "t": "-",
+        "e": 2,
+        "t": "- ",
         "r": "",
         "a": "SUPPRESS_LAYOUT_MARKER",
         "d": "LEAD-15294",
@@ -6451,8 +6451,8 @@
     "LDC.T25.E0016.P071": [
       {
         "s": 0,
-        "e": 1,
-        "t": "-",
+        "e": 2,
+        "t": "- ",
         "r": "",
         "a": "SUPPRESS_LAYOUT_MARKER",
         "d": "LEAD-15295",
@@ -6924,8 +6924,8 @@
     "LDC.T25.E0017.P048": [
       {
         "s": 0,
-        "e": 2,
-        "t": "- ",
+        "e": 3,
+        "t": "- M",
         "r": "",
         "a": "SUPPRESS_LAYOUT_MARKER",
         "d": "LEAD-15338",
@@ -7067,8 +7067,8 @@
     "LDC.T25.E0017.P075": [
       {
         "s": 0,
-        "e": 1,
-        "t": "-",
+        "e": 2,
+        "t": "- ",
         "r": "",
         "a": "SUPPRESS_LAYOUT_MARKER",
         "d": "LEAD-15351",
@@ -8211,8 +8211,8 @@
     "LDC.T25.E0019.P080": [
       {
         "s": 0,
-        "e": 1,
-        "t": "-",
+        "e": 2,
+        "t": "- ",
         "r": "",
         "a": "SUPPRESS_LAYOUT_MARKER",
         "d": "LEAD-15455",
@@ -13216,8 +13216,8 @@
     "LDC.T25.E0031.P029": [
       {
         "s": 0,
-        "e": 1,
-        "t": "-",
+        "e": 2,
+        "t": "- ",
         "r": "",
         "a": "SUPPRESS_LAYOUT_MARKER",
         "d": "LEAD-15910",
@@ -13535,8 +13535,8 @@
     "LDC.T25.E0031.P085": [
       {
         "s": 0,
-        "e": 2,
-        "t": "- ",
+        "e": 3,
+        "t": "- E",
         "r": "",
         "a": "SUPPRESS_LAYOUT_MARKER",
         "d": "LEAD-15939",
@@ -14514,8 +14514,8 @@
     "LDC.T25.E0033.P026": [
       {
         "s": 0,
-        "e": 2,
-        "t": "- ",
+        "e": 3,
+        "t": "- C",
         "r": "",
         "a": "SUPPRESS_LAYOUT_MARKER",
         "d": "LEAD-16028",
@@ -14525,8 +14525,8 @@
     "LDC.T25.E0033.P027": [
       {
         "s": 0,
-        "e": 2,
-        "t": "- ",
+        "e": 3,
+        "t": "- T",
         "r": "",
         "a": "SUPPRESS_LAYOUT_MARKER",
         "d": "LEAD-16029",
@@ -14536,8 +14536,8 @@
     "LDC.T25.E0033.P028": [
       {
         "s": 0,
-        "e": 2,
-        "t": "- ",
+        "e": 3,
+        "t": "- T",
         "r": "",
         "a": "SUPPRESS_LAYOUT_MARKER",
         "d": "LEAD-16030",

@@ -1,7 +1,7 @@
 {
   "authorized_runtime_ledger_sha256": "5ec25e997fc68e24eb18cd27180bb2b87aa153f9e3c976dab7b36ddef11b7906",
-  "backbone_generation": "G036-AFLP-R7-UWR2",
-  "composite_generation": "G036-AFLP-R7-SUP-T5",
+  "backbone_generation": "G036-AFLP-R7-UWR2-FAST1",
+  "composite_generation": "G036-AFLP-R7-SUP-T5-FAST1",
   "counts": {
     "complete_entries": 13,
     "internal_supplements": 62,
@@ -21,16 +21,16 @@
   },
   "files": {
     "supplement_search.json": {
-      "bytes": 288677,
-      "sha256": "bd3216465f10f8a9bc0b6f5ce96822412d7d4025e4abd973fbd773e7b4a3f10b"
+      "bytes": 288689,
+      "sha256": "2898a4557059df7b6057a4213c06e264ee20249654c92d229bf5eae4404f176e"
     },
     "supplement_speakers.json": {
-      "bytes": 126287,
-      "sha256": "9846f708baebe27466b82df1ff6400e9f9d8714ae4aa935801be00ab143dd284"
+      "bytes": 126299,
+      "sha256": "5b0688292b83406ebbf67cd8c3d1c6c7900a334cb969d2535025c02c62852374"
     },
     "supplements.json": {
-      "bytes": 1115203,
-      "sha256": "d32a0b824783ddba37e0bef7db6c855d9f053aa7492a77de58c6020ba1626df9"
+      "bytes": 1115215,
+      "sha256": "68ff5a177d4a81da06f524dfaca0218925fb1919ef2d3f22a1b7d075f713f013"
     }
   },
   "m3_decision_lock_sha256": "bb4a5c772b3eafdfe6eb857bc303a724a4bdb0cb0cef97c0ee5f088dfd65ab83",
@@ -40,9 +40,9 @@
   "programme": "LDC-AFLP-SUP-T1-SUP-T2-SUP-T3-SUP-T4-SUP-T5",
   "provenance_contract": "SUP-T1..SUP-T4_PRESERVED__SUP-T5_SOURCE_CRITICAL_AUTHORIZED__NO_MAJORITY_VOTE",
   "r6_authority": "AUTHORIZED_RUNTIME_LEDGER_SHA256_5ec25e997fc68e24eb18cd27180bb2b87aa153f9e3c976dab7b36ddef11b7906__OFFICIAL_R6_PREDECESSOR",
-  "release_status": "V73_DEEP_FOUR_PASS_REPORT_RECONCILIATION__EXTERNAL_FINAL_CERTIFICATION_AUTHORITY__PUBLIC_DEPLOYMENT_NOT_AUTHORIZED_BY_PACKAGE",
+  "release_status": "V76_DEEP_FOUR_PASS_REPORT_REPAIR__STATIC_PACKAGE_ALGORITHMIC_CERTIFIED__PUBLIC_DEPLOYMENT_NOT_AUTHORIZED_BY_PACKAGE",
   "schema": "ldc-supplement-manifest-v2",
-  "status": "LDC_V73_REPORT_METADATA_SUCCESSOR__V72_PROVENANCE_PRESENTATION_SEMANTICS_UNCHANGED__NOT_PUBLICLY_DEPLOYED",
+  "status": "LDC_V76_REPORT_INTEGRITY_REPAIR__V74_FAST1_AND_V72_PROVENANCE_SEMANTICS_UNCHANGED__NOT_PUBLICLY_DEPLOYED",
   "sup_t1_snapshot_sha256": "ee568d8857b3e38b4a2b536de146c3b54f876ab93478e66f327bdaaf0768a1e0",
   "sup_t2_segmentation_ledger_sha256": "f3345d58d2c12625c46cb92466012755c070fa84aef04da8cbcf2f9caa705f77",
   "user_state_schema": 4,
@@ -110,5 +110,36 @@
     "dependent_after_aligne_correction": 1,
     "placements": 22,
     "runtime_requirement": "CANONICAL_HOST_ID_AND_OFFSETS_PRESERVED__DISPLAY_SLICES_ONLY__CANONICAL_USER_OFFSETS"
+  },
+  "v74_fast_mode_corpus_mutation": {
+    "schema": "ldc-v74-fast-mode-corpus-mutation-v1",
+    "direct_predecessor_app_version": "v2.19.73-R1B",
+    "direct_predecessor_zip_sha256": "38222de19ff4bc2cde26d2edce26bd6ddabf223bd97c6652975f82ad48a6beac",
+    "authorized_entries": 2707,
+    "applied_entries": 2700,
+    "already_present_noop": 6,
+    "blocked_conflict": 1,
+    "canonical_text_mutated_records": 2768,
+    "canonical_deleted_records": 1,
+    "supplement_object_semantics_changed": false,
+    "reader_provenance_fields_changed": false,
+    "terminal_mutation_ledger_sha256": "afc351c02ee954583f663ca42615e48c5450893560f052d7da3c8a3caebfc879"
+  },
+  "v75_deep_four_pass_report_repair": {
+    "schema": "ldc-v75-deep-four-pass-report-repair-v1",
+    "direct_predecessor_app_version": "v2.19.74-R1B",
+    "direct_predecessor_zip_sha256": "c7dd3cd477aca7734bb205c5e8400654c40a615bb408b5693cc488e0bcb33f64",
+    "supplement_content_changes": 0,
+    "speaker_segment_content_changes": 0,
+    "status_wrapper_only": true
+  },
+  "v76_deep_four_pass_report_repair": {
+    "schema": "ldc-v76-deep-four-pass-report-repair-v2",
+    "direct_predecessor_app_version": "v2.19.75-R1B",
+    "direct_predecessor_zip_sha256": "3a2163a69431795a3670fbfc9c242035c7664b626301f6b82aae9db50b7e4956",
+    "underlying_semantic_predecessor_v74_zip_sha256": "c7dd3cd477aca7734bb205c5e8400654c40a615bb408b5693cc488e0bcb33f64",
+    "supplement_content_changes": 0,
+    "speaker_segment_content_changes": 0,
+    "status_wrapper_only": true
   }
 }

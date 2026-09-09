@@ -1,29 +1,29 @@
 {
-  "app_version": "v2.19.73-R1B",
+  "app_version": "v2.19.76-R1B",
   "corpus": "livre_du_ciel",
   "corpus_generation_source_app_version_historical": "v2.13.0-R1B",
-  "correction_ledger": "All 36 tomes completed source-boundary reconciliation. EB-17 corrects only two source-page provenance records: Tome 3 / 10 June 1900 ends at PDF page 102, and Tome 5 preface spans pages 1–6 with pages 1;3;5;6 evidenced. Tome 17 / 23 November 1924 now carries direct AFLP photographed hard-copy body authority on printed pages 48–49; the earlier title-only supplied-French-PDF limitation is historical and superseded for current body authority. EB-20 normalises three malformed semicolon source-page records: T3 16 April 1900 = 77–79; T3 27 April 1900 = 82–84; T17 17 May 1925 = 113–119. M4/R2 applies exactly 8 M3-authorised ALIGNÉ paragraph rewrites under stable IDs and introduces no other backbone paragraph mutation. M6/V55 restores three AFLP display-layer dates under stable IDs, preserves IT-PM alternatives as provenance, reconciles M2-0105/M2-0113 metadata, and adds one source-bound SUP-T3 complete entry for the historically bound T15/T16 three-columns discourse at 2 Dec 1922; ALIGNÉ paragraph wording remains unchanged. M9/V56 applies exactly 10 M8-authorized same-slot R3 paragraph replacements across 6 cases and 22 SUP-T4 controlled fragments across 15 cases. Existing paragraph IDs/order remain stable; M2-0021/M2-0134/M2-0351/M2-0364 remain held, M2-0366 no-change, M2-0052 historical hold. Official R6 subsequently applied the exact authorized 169-operation source-critical successor. The post-R6 Date/ID+A2 fixed point made zero French-text mutations. REV6 then applied exactly 16 retained paragraph text changes, 2 governed deletions, 6 speaker reattributions, 1 title update, 34 first-Jesus pointer rebuilds and the governed migration/derived-state rebuilds under authority d1a7450adf36368cc8609e21ccde3c51e0b3c90dc4f3c3305534cb40104d56f4. v67 adds zero corpus/semantic mutations and only reconciles active report/release metadata. v68 changes only reader-facing PRINCIPAL terminology/release bindings; v69 changes only the verified onboarding-count and supplement-speaker summary metadata; v70 replaces the active search retrieval runtime with SEARCH-V2 while preserving canonical/devotional text and governed corpus semantics; v71 repairs SEARCH-V2 displayed-date/reference parsing plus current report/release metadata, with zero canonical/devotional, paragraph-ID/order, speaker, display/flow, supplement-content, user-state-schema, stored-source-mode or migration-algorithm mutation. v72 centralizes the reader-facing provenance model and adds only reader-facing complement provenance fields with zero devotional/search/speaker/display/flow/user-state/migration semantic delta. v73 corrects stale current report/provenance metadata discovered by an independent four-pass re-audit; it makes zero canonical/devotional, paragraph-ID/order, SEARCH-V2, speaker, display/flow, supplement-body, user-state, stored-source-mode or migration-algorithm mutation.",
+  "correction_ledger": "All 36 tomes completed source-boundary reconciliation. EB-17 corrects only two source-page provenance records: Tome 3 / 10 June 1900 ends at PDF page 102, and Tome 5 preface spans pages 1–6 with pages 1;3;5;6 evidenced. Tome 17 / 23 November 1924 now carries direct AFLP photographed hard-copy body authority on printed pages 48–49; the earlier title-only supplied-French-PDF limitation is historical and superseded for current body authority. EB-20 normalises three malformed semicolon source-page records: T3 16 April 1900 = 77–79; T3 27 April 1900 = 82–84; T17 17 May 1925 = 113–119. M4/R2 applies exactly 8 M3-authorised ALIGNÉ paragraph rewrites under stable IDs and introduces no other backbone paragraph mutation. M6/V55 restores three AFLP display-layer dates under stable IDs, preserves IT-PM alternatives as provenance, reconciles M2-0105/M2-0113 metadata, and adds one source-bound SUP-T3 complete entry for the historically bound T15/T16 three-columns discourse at 2 Dec 1922; ALIGNÉ paragraph wording remains unchanged. M9/V56 applies exactly 10 M8-authorized same-slot R3 paragraph replacements across 6 cases and 22 SUP-T4 controlled fragments across 15 cases. Existing paragraph IDs/order remain stable; M2-0021/M2-0134/M2-0351/M2-0364 remain held, M2-0366 no-change, M2-0052 historical hold. Official R6 subsequently applied the exact authorized 169-operation source-critical successor. The post-R6 Date/ID+A2 fixed point made zero French-text mutations. REV6 then applied exactly 16 retained paragraph text changes, 2 governed deletions, 6 speaker reattributions, 1 title update, 34 first-Jesus pointer rebuilds and the governed migration/derived-state rebuilds under authority d1a7450adf36368cc8609e21ccde3c51e0b3c90dc4f3c3305534cb40104d56f4. v67 adds zero corpus/semantic mutations and only reconciles active report/release metadata. v68 changes only reader-facing PRINCIPAL terminology/release bindings; v69 changes only the verified onboarding-count and supplement-speaker summary metadata; v70 replaces the active search retrieval runtime with SEARCH-V2 while preserving canonical/devotional text and governed corpus semantics; v71 repairs SEARCH-V2 displayed-date/reference parsing plus current report/release metadata, with zero canonical/devotional, paragraph-ID/order, speaker, display/flow, supplement-content, user-state-schema, stored-source-mode or migration-algorithm mutation. v72 centralizes the reader-facing provenance model and adds only reader-facing complement provenance fields with zero devotional/search/speaker/display/flow/user-state/migration semantic delta. v73 corrects stale current report/provenance metadata discovered by an independent four-pass re-audit; it makes zero canonical/devotional, paragraph-ID/order, SEARCH-V2, speaker, display/flow, supplement-body, user-state, stored-source-mode or migration-algorithm mutation. v74 applies the frozen FAST Mode BODY0277–0854 authority only: 2,707 authorized entries terminate as 2,700 APPLIED, 6 ALREADY_PRESENT_NOOP and 1 BLOCKED_CONFLICT. It mutates 2,768 surviving canonical paragraph texts, deletes exactly one certified truncated duplicate paragraph (LDC.T32.E0010.P014), adds 278 previously absent certified flow edges, and leaves the blocked LDC.T29.E0003.P068 locus unchanged. v75 deep four-pass report-integrity repair changes zero devotional/canonical text and zero search/speaker/display/flow semantics; it only removes stale current-report ambiguity and rebinds required release/cache/offline metadata. v76 deep four-pass report-integrity repair changes zero devotional/canonical text and zero search-index-payload/ranking/speaker/display/flow semantics; it repairs stale current authority and SEARCH-V2 wrapper/evidence bindings and rebinds required release/cache/offline metadata.",
   "display_flow_layer": {
-    "boundaries": 23930,
+    "boundaries": 24208,
     "cross_role_joins_reviewed": 88,
     "files": "corpus/flow_01.json .. flow_36.json",
     "generator": "scripts/build_display_flow.py",
-    "groups": 11831,
+    "groups": 11972,
     "inherited_dash_joins": 23530,
-    "members": 35761,
-    "non_dash_continuations": 391,
-    "note": "Derived display-flow data. RA19B provides explicit source-backed visual policy/action/evidence metadata on active logical linked boundaries. M4 R2 preserves group membership/boundary actions and rebinds source_text_sha256/canonical_length where authorised ALIGNÉ text changed; v49 synchronizes the two stale Tome 19 members P044/P045 found by independent post-lock re-audit.",
+    "members": 36180,
+    "non_dash_continuations": 669,
+    "note": "Derived display-flow data. v74 preserves stable paragraph records except the single certified truncated-duplicate deletion and realizes 278 previously absent correction-certain FAST Mode flow edges; source hashes/lengths are rebound to current canonical text.",
     "schema": "ldc-display-flow-v2"
   },
   "display_transform_layer": {
-    "app_derived_section_markers": 1054,
+    "app_derived_section_markers": 1053,
     "authority": "LDC_R1B_runtime_display_transform_map_v2.json (structural-dash handoff RECHECKED v2)",
-    "canonical_mutations": 0,
+    "canonical_mutations": 2768,
     "files": "corpus/display_01.json .. display_36.json",
-    "handoff_operations": 24139,
-    "note": "Display-only token projection. Suppressed and replaced tokens keep their canonical [start,end) so highlights, notes and bookmarks stay anchored.",
+    "handoff_operations": 24133,
+    "note": "Display-only token projection rebound after the v74 certified canonical mutations. Obsolete transforms are removed only where the canonical correction makes them redundant; remaining actions retain exact current [start,end) targets.",
     "schema": "ldc-display-transform-v2",
-    "total_operations": 25191
+    "total_operations": 25186
   },
   "dual_successor_r4_bounded_mutation": {
     "active_aligne": "G036-AFLP-R4-UWR2",
@@ -88,11 +88,11 @@
     "status": "RETIRED_FROM_DEPLOY",
     "vector_search_authorised": false
   },
-  "flow_boundary_count": 23930,
-  "flow_group_count": 11831,
-  "flow_member_count": 35761,
-  "flow_non_dash_group_count": 391,
-  "generated": "2026-09-08",
+  "flow_boundary_count": 24208,
+  "flow_group_count": 11972,
+  "flow_member_count": 36180,
+  "flow_non_dash_group_count": 669,
+  "generated": "2026-09-09",
   "historical_embedding_manifest_last_build": {
     "binary_bytes": 57099264,
     "binding_note": "Vector row IDs cover the current paragraph-ID set exactly. Physical paragraph-shard order differs from vector-row order and is not used as a semantic-search invariant.",
@@ -390,7 +390,7 @@
     "supplement_parent_policy": "PARENTLESS_SUPPLEMENT_USES_LEGACY_CONTEXTUAL_FALLBACK",
     "supplement_presentation_parent_fields_added": 0
   },
-  "notes": "Current v73 is a bounded report/release-metadata successor of exact certified v72. It corrects stale active Tome 17 provenance/current-lineage statements found by the user-directed independent four-pass audit. The v72 centralized PRINCIPAL/COMPLÉMENT provenance model remains active and unchanged. Devotional/canonical text, paragraph IDs/order, SEARCH-V2 semantics/assets, speaker semantics/offsets, display/flow, supplement devotional/body text, user-state schema, migrations, stored source-mode values and 24H are unchanged.",
+  "notes": "Current v76 is a bounded report/current-authority and search-binding successor of frozen v75. It repairs stale active authority references plus stale SEARCH-V2 source/evidence bindings caused by wrapper-only release changes. The complete v74 FAST1 canonical corpus and SEARCH-V2 payload/ranking/speaker/display/flow semantics remain unchanged. Public deployment is not authorized by this package.",
   "post_r6_a2_speaker_reconstruction_pre_authorization": {
     "backbone_speaker_segments": 65100,
     "date": "2026-09-05",
@@ -428,7 +428,7 @@
     "text_mutations": 0,
     "withdrawn_false_precision_enrichments": 3
   },
-  "predecessor_generation": "G036-AFLP-R6-UWR2",
+  "predecessor_generation": "G036-AFLP-R7-UWR2",
   "r6_source_critical_authorized_build": {
     "active_complements": 75,
     "aligne_replacements": 155,
@@ -887,12 +887,12 @@
     "flow_boundary_action_contract": "continuous_prose:join_inline__preserve_break_ambiguous:preserve_break__preserve_break_enumeration:preserve_list_break",
     "flow_level_displayed_styled_runs": 37155,
     "flow_speech_visual_continuity": "RA19B_MULTI_SOURCE_EXPLICIT_SOURCE_BACKED_BOUNDARY_ACTIONS__RA18_HEURISTIC_FALLBACK_LEGACY_ONLY__CANONICAL_TEXT_UNCHANGED",
-    "migration": "schema-v4 + R3/R4/R5/R6/R7-DateID/REV6 generation migrations",
+    "migration": "schema-v4 + R3/R4/R5/R6/R7-DateID/REV6 + FAST1 certified text-generation migration",
     "paragraph_local_styled_runs": 57966,
     "post_render_structural_mutation": false,
     "user_data_schema_version": 4,
     "user_state_migration": "schema-v4 + generation-scoped ALIGNÉ R3/R4/R5/R6 + R7 Date/ID/REV6 migration and re-anchor preservation",
-    "version": "R7_REV6_CERTIFIED__V72_CENTRAL_READER_PROVENANCE_MODEL__V73_REPORT_RECONCILED",
+    "version": "R7_REV6_CERTIFIED__V72_CENTRAL_READER_PROVENANCE_MODEL__V74_FAST1_CORPUS_MUTATION",
     "within_paragraph_complement_contract": "CANONICAL_HOST_UNSPLIT_AUTHORITY__DISPLAY_SLICES_ONLY__CANONICAL_USER_OFFSETS__22_WITHIN_PLACEMENTS"
   },
   "search_norm": {
@@ -903,31 +903,31 @@
     "normalizer": "LDCSearch.normalise via search_normalizer.js",
     "normalizer_version": "ldc-search-normalizer-v1",
     "records_consistent": true,
-    "records_total": 74346,
+    "records_total": 74345,
     "runtime_and_build_shared_authority": true,
-    "search_shard_mutations": "R6_FULL_REBUILD__REV6_REBUILD_AFTER_16_TEXT_CHANGES_AND_2_DELETIONS__74346_FINAL_ROWS__ZERO_STALE_SEARCH_BLOBS"
+    "search_shard_mutations": "V74_FAST1_FULL_RESYNC__74345_FINAL_ROWS__ZERO_STALE_SEARCH_BLOBS"
   },
   "search_v2_core": {
-    "canonical_text_mutations": 0,
+    "canonical_text_mutations": 2768,
     "complement_documents": 177,
     "derived_asset_origin_app_version": "v2.19.70-R1B",
     "derived_asset_source_predecessor_app_version": "v2.19.69-R1B",
     "derived_asset_source_predecessor_zip_sha256": "5e3896468c6d822760fcd555c59e0042d3ed217ee7f389e8b2ab7a60d2b7d6dd",
-    "display_flow_semantic_mutations": 0,
-    "documents": 74523,
+    "display_flow_semantic_mutations": 278,
+    "documents": 74522,
     "legacy_search_shards_role": "PRESERVED_VALIDATION_WITNESS__NOT_ACTIVE_SEARCH_RUNTIME",
     "migration_algorithm_mutations": 0,
     "morphology": "DEFERRED",
-    "paragraph_id_or_order_mutations": 0,
-    "postings": 902655,
+    "paragraph_id_or_order_mutations": 1,
+    "postings": 902652,
     "predecessor_app_version": "v2.19.70-R1B",
     "predecessor_zip_sha256": "c4a4e35208ed8a40368137bea7303bf773cd5cc0d6192f54c3a5cc94dc8cb399",
-    "principal_documents": 74346,
+    "principal_documents": 74345,
     "runtime_engine": "search_engine_v2.js",
     "runtime_engine_version": "ldc-search-v2-engine-v1.1",
     "runtime_worker": "search_worker_v2.js",
     "schema": "ldc-search-v2-core-release-v1",
-    "semantic_authority_sha256": "d1a7450adf36368cc8609e21ccde3c51e0b3c90dc4f3c3305534cb40104d56f4",
+    "semantic_authority_sha256": "afc351c02ee954583f663ca42615e48c5450893560f052d7da3c8a3caebfc879",
     "source_mode_value_mutations": 0,
     "speaker_semantic_mutations": 0,
     "status": "ACTIVE_RUNTIME_RETRIEVAL",
@@ -935,7 +935,9 @@
     "synonyms": "DEFERRED",
     "user_state_schema_mutations": 0,
     "vectors": "RETIRED_NOT_RESTORED",
-    "vocabulary": 21353
+    "vocabulary": 21351,
+    "paragraph_record_deletions": 1,
+    "terminal_mutation_ledger_sha256": "afc351c02ee954583f663ca42615e48c5450893560f052d7da3c8a3caebfc879"
   },
   "speaker_layer": {
     "presentation_counts": {
@@ -959,15 +961,21 @@
       "SAINT": 24
     },
     "total_segments": 65099,
-    "verification_scope": "INTERIM_REV6_AUTHORIZED__65099_BACKBONE_SEGMENTS__A1_A6_BOUNDED_PROVENANCE_RESTAMP__D1_DELETE"
+    "verification_scope": "INTERIM_REV6_AUTHORIZED__65099_BACKBONE_SEGMENTS__A1_A6_BOUNDED_PROVENANCE_RESTAMP__D1_DELETE",
+    "v74_fast1_offset_resync": {
+      "semantic_speaker_mutations": 0,
+      "segments_coordinate_resynced": 2667,
+      "paragraphs_touched": 2470,
+      "segments_removed": 0
+    }
   },
-  "speech_layer_note": "Final R7 backbone speaker layer contains 65,099 segments. REV6 includes exactly six governed A1-A6 reattributions, exactly two governed entry speaker-array updates, 127 unrelated array mismatches deferred, and 34 first_jesus_para_id changes. v67 changes no speaker identity, offsets, previews, presentation parents or runtime speech logic. v68 through v73 make zero speaker-segment content/offset/classification-semantic changes. SEARCH-V2 uses only the independently derived compact Jésus-eligibility bitset at search runtime; v72/v73 do not mutate that bitset or the governed speaker layer.",
+  "speech_layer_note": "Final R7/FAST1 backbone speaker semantics remain 65,099 segments with zero speaker-identity reattribution in v74. Coordinates/previews are mechanically resynchronized for 2,667 affected segments across 2,470 paragraphs; one boundary inside a replacement is explicitly re-anchored. SEARCH-V2 Jésus eligibility remains governed by predecessor document identity, with 57,562 PRINCIPAL + 114 COMPLÉMENT eligible.",
   "speech_resynced": true,
-  "status": "LDC_V73_DEEP_FOUR_PASS_REPORT_RECONCILIATION__STATIC_PACKAGE_CERTIFICATION__EXTERNAL_DEVICE_GATES_OPEN__NOT_PUBLICLY_DEPLOYED",
+  "status": "LDC_V76_DEEP_FOUR_PASS_REPORT_INTEGRITY_REPAIR__STATIC_PACKAGE_ALGORITHMIC_CERTIFIED__EXTERNAL_DEVICE_GATES_OPEN__NOT_PUBLICLY_DEPLOYED",
   "t17_23nov1924_status": "Current body authority is direct AFLP photographed French hard-copy, printed pages 48–49, with AFLP_R1_DIRECT_HARDCOPY_BODY_VERIFIED / AFLP_HARDCOPY_VERIFIED status. The earlier supplied-French-PDF title-only limitation is historical and superseded; governing R2 linguistic normalisation was retained after exact proposition and token comparison.",
-  "total_corrections": 20900,
+  "total_corrections": 23600,
   "total_entries": 2312,
-  "total_paragraphs": 74346,
+  "total_paragraphs": 74345,
   "v63_four_pass_active_metadata_reconciliation": {
     "active_enriched_generation": "G036-AFLP-R5-SUP-T4",
     "active_generation": "G036-AFLP-R5-UWR2",
@@ -1143,7 +1151,7 @@
     "t17_current_authority": "AFLP photographed French hard-copy pages 48–49",
     "user_state_schema_mutations": 0
   },
-  "version": "G036-AFLP-R7-UWR2",
+  "version": "G036-AFLP-R7-UWR2-FAST1",
   "volumes_available": [
     1,
     2,
@@ -1182,5 +1190,71 @@
     35,
     36
   ],
-  "volumes_total": 36
+  "volumes_total": 36,
+  "v74_fast_mode_corpus_mutation": {
+    "schema": "ldc-v74-fast-mode-corpus-mutation-v1",
+    "direct_predecessor_app_version": "v2.19.73-R1B",
+    "direct_predecessor_zip_sha256": "38222de19ff4bc2cde26d2edce26bd6ddabf223bd97c6652975f82ad48a6beac",
+    "authorized_input_ledger_sha256": "09590abe803b99dadf696fbecd64fb88b4fee9a05b38280549b4abcb920e0c78",
+    "terminal_mutation_ledger_sha256": "afc351c02ee954583f663ca42615e48c5450893560f052d7da3c8a3caebfc879",
+    "authorized_entries": 2707,
+    "terminal_counts": {
+      "APPLIED": 2700,
+      "ALREADY_PRESENT_NOOP": 6,
+      "BLOCKED_CONFLICT": 1
+    },
+    "canonical_text_mutated_records": 2768,
+    "canonical_deleted_records": 1,
+    "new_flow_edges_added": 278,
+    "blocked_stable_ref": "LDC.T29.E0003.P068",
+    "user_state_migration_map": "corpus/user_state_migration_fast1.json",
+    "public_deployment_authorized": false
+  },
+  "v75_deep_four_pass_report_repair": {
+    "schema": "ldc-v75-deep-four-pass-report-repair-v1",
+    "direct_predecessor_app_version": "v2.19.74-R1B",
+    "direct_predecessor_zip_sha256": "c7dd3cd477aca7734bb205c5e8400654c40a615bb408b5693cc488e0bcb33f64",
+    "trigger_findings": [
+      "README_STALE_CURRENT_V73_HEADING_BEFORE_INLINE_HISTORICAL_BOUNDARY",
+      "VERSION_CURRENT_OWNER_STAGE_METADATA_STALE_AT_V73"
+    ],
+    "canonical_devotional_text_mutations": 0,
+    "paragraph_id_order_mutations": 0,
+    "search_semantic_mutations": 0,
+    "search_v2_asset_mutations": 0,
+    "speaker_semantic_mutations": 0,
+    "speaker_offset_mutations": 0,
+    "display_flow_semantic_mutations": 0,
+    "supplement_devotional_body_mutations": 0,
+    "user_state_schema_mutations": 0,
+    "migration_algorithm_mutations": 0,
+    "semantic_authority_sha256": "afc351c02ee954583f663ca42615e48c5450893560f052d7da3c8a3caebfc879",
+    "public_deployment_authorized": false
+  },
+  "v76_deep_four_pass_report_repair": {
+    "schema": "ldc-v76-deep-four-pass-report-repair-v2",
+    "direct_predecessor_app_version": "v2.19.75-R1B",
+    "direct_predecessor_zip_sha256": "3a2163a69431795a3670fbfc9c242035c7664b626301f6b82aae9db50b7e4956",
+    "underlying_semantic_predecessor_v74_zip_sha256": "c7dd3cd477aca7734bb205c5e8400654c40a615bb408b5693cc488e0bcb33f64",
+    "trigger_findings": [
+      "AUTHORITY_INDEX_SCHEMA_STALE_V74_NAMING",
+      "AUTHORITY_INDEX_HISTORICAL_POLICY_STALE_V74_CURRENT_FIELDS",
+      "AUTHORITY_INDEX_EXTERNAL_GATE_TEXT_STALE_V74_CURRENT_PACKAGE_REFERENCE",
+      "SEARCH_V2_SOURCE_BINDING_STALE_SUPPLEMENTS_WRAPPER_SHA",
+      "M2_CURRENT_APP_VERSION_STALE_V74"
+    ],
+    "canonical_devotional_text_mutations": 0,
+    "paragraph_id_order_mutations": 0,
+    "search_semantic_mutations": 0,
+    "search_v2_index_payload_mutations": 0,
+    "search_v2_binding_metadata_repairs": 2,
+    "speaker_semantic_mutations": 0,
+    "speaker_offset_mutations": 0,
+    "display_flow_semantic_mutations": 0,
+    "supplement_devotional_body_mutations": 0,
+    "user_state_schema_mutations": 0,
+    "migration_algorithm_mutations": 0,
+    "semantic_authority_sha256": "afc351c02ee954583f663ca42615e48c5450893560f052d7da3c8a3caebfc879",
+    "public_deployment_authorized": false
+  }
 }

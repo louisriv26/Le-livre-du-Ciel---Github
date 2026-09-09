@@ -1,5 +1,5 @@
 {
-  "corpus_version": "G036-AFLP-R7-UWR2",
+  "corpus_version": "G036-AFLP-R7-UWR2-FAST1",
   "cross_batch_schema": "final-r2-common-derived-and-source-envelope-v1",
   "entries": [
     {
@@ -540,7 +540,7 @@
       "date_precision": "day",
       "has_speech": true,
       "id": "LDC.T32.E0010",
-      "para_count": 35,
+      "para_count": 34,
       "para_ids": [
         "LDC.T32.E0010.P001",
         "LDC.T32.E0010.P002",
@@ -555,7 +555,6 @@
         "LDC.T32.E0010.P011",
         "LDC.T32.E0010.P012",
         "LDC.T32.E0010.P013",
-        "LDC.T32.E0010.P014",
         "LDC.T32.E0010.P015",
         "LDC.T32.E0010.P016",
         "LDC.T32.E0010.P017",
@@ -1715,9 +1714,9 @@
     }
   ],
   "entry_count": 30,
-  "generation": "G036-AFLP-R7-UWR2",
+  "generation": "G036-AFLP-R7-UWR2-FAST1",
   "label": "Tome 32",
-  "para_count": 736,
+  "para_count": 735,
   "predecessor_generation": "G036-AFLP-R6-UWR2",
   "r3ait_status": "SUPERSEDED_BY_B06_LING_R2",
   "status": "LDC_V69_DEEP_FOUR_PASS_METADATA_REPAIR__FINAL_CERTIFICATION_AUTHORITY_EXTERNAL_TO_ZIP__NOT_PUBLICLY_DEPLOYED",

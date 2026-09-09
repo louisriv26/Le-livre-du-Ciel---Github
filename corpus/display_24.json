@@ -1,8 +1,8 @@
 {
   "schema_version": "ldc-display-transform-v2",
   "volume": 24,
-  "corpus_version": "G036-AFLP-R7-UWR2",
-  "paragraph_count": 1639,
+  "corpus_version": "G036-AFLP-R7-UWR2-FAST1",
+  "paragraph_count": 1638,
   "paragraphs": {
     "LDC.T24.E0001.P008": [
       {
@@ -1404,8 +1404,8 @@
     "LDC.T24.E0003.P074": [
       {
         "s": 0,
-        "e": 2,
-        "t": "- ",
+        "e": 3,
+        "t": "- s",
         "r": "",
         "a": "SUPPRESS_LAYOUT_MARKER",
         "d": "LEAD-13200",
@@ -2438,8 +2438,8 @@
     "LDC.T24.E0005.P089": [
       {
         "s": 0,
-        "e": 1,
-        "t": "-",
+        "e": 2,
+        "t": "- ",
         "r": "",
         "a": "SUPPRESS_LAYOUT_MARKER",
         "d": "LEAD-13294",
@@ -2449,8 +2449,8 @@
     "LDC.T24.E0005.P090": [
       {
         "s": 0,
-        "e": 1,
-        "t": "-",
+        "e": 2,
+        "t": "- ",
         "r": "",
         "a": "SUPPRESS_LAYOUT_MARKER",
         "d": "LEAD-13295",
@@ -5234,17 +5234,6 @@
         "p": ""
       }
     ],
-    "LDC.T24.E0010.P090": [
-      {
-        "s": 16,
-        "e": 18,
-        "t": "’-",
-        "r": "-",
-        "a": "EXACT_DISPLAY_REPLACEMENT",
-        "d": "SVDR-014-OP01",
-        "p": ""
-      }
-    ],
     "LDC.T24.E0010.P096": [
       {
         "s": 0,
@@ -7217,8 +7206,8 @@
     "LDC.T24.E0018.P023": [
       {
         "s": 0,
-        "e": 1,
-        "t": "-",
+        "e": 2,
+        "t": "- ",
         "r": "",
         "a": "SUPPRESS_LAYOUT_MARKER",
         "d": "LEAD-13725",
@@ -7349,8 +7338,8 @@
     "LDC.T24.E0018.P045": [
       {
         "s": 0,
-        "e": 1,
-        "t": "-",
+        "e": 2,
+        "t": "- ",
         "r": "",
         "a": "SUPPRESS_LAYOUT_MARKER",
         "d": "LEAD-13737",
@@ -7360,8 +7349,8 @@
     "LDC.T24.E0018.P046": [
       {
         "s": 0,
-        "e": 1,
-        "t": "-",
+        "e": 2,
+        "t": "- ",
         "r": "",
         "a": "SUPPRESS_LAYOUT_MARKER",
         "d": "LEAD-13738",
@@ -9758,8 +9747,8 @@
     "LDC.T24.E0024.P012": [
       {
         "s": 0,
-        "e": 2,
-        "t": "- ",
+        "e": 3,
+        "t": "- s",
         "r": "",
         "a": "SUPPRESS_LAYOUT_MARKER",
         "d": "LEAD-13956",
@@ -9769,8 +9758,8 @@
     "LDC.T24.E0024.P013": [
       {
         "s": 0,
-        "e": 2,
-        "t": "- ",
+        "e": 3,
+        "t": "- s",
         "r": "",
         "a": "SUPPRESS_LAYOUT_MARKER",
         "d": "LEAD-13957",
@@ -10275,8 +10264,8 @@
     "LDC.T24.E0026.P061": [
       {
         "s": 0,
-        "e": 2,
-        "t": "- ",
+        "e": 3,
+        "t": "- c",
         "r": "",
         "a": "SUPPRESS_LAYOUT_MARKER",
         "d": "LEAD-14003",
@@ -10559,8 +10548,8 @@
     "LDC.T24.E0028.P008": [
       {
         "s": 0,
-        "e": 2,
-        "t": "- ",
+        "e": 3,
+        "t": "- e",
         "r": "",
         "a": "SUPPRESS_LAYOUT_MARKER",
         "d": "LEAD-14028",
@@ -14031,8 +14020,8 @@
     "LDC.T24.E0038.P018": [
       {
         "s": 0,
-        "e": 2,
-        "t": "- ",
+        "e": 3,
+        "t": "- s",
         "r": "",
         "a": "SUPPRESS_LAYOUT_MARKER",
         "d": "LEAD-14342",
@@ -14042,8 +14031,8 @@
     "LDC.T24.E0038.P019": [
       {
         "s": 0,
-        "e": 2,
-        "t": "- ",
+        "e": 3,
+        "t": "- s",
         "r": "",
         "a": "SUPPRESS_LAYOUT_MARKER",
         "d": "LEAD-14343",

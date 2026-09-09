@@ -1,3 +1,49 @@
+<!-- V76_CURRENT_START -->
+# CURRENT — v2.19.76-R1B DEEP FOUR-PASS REPORT-INTEGRITY REPAIR
+
+- Direct predecessor: frozen v2.19.75-R1B SHA-256 `3a2163a69431795a3670fbfc9c242035c7664b626301f6b82aae9db50b7e4956`; v75 was superseded after final-byte recheck found stale self-references in its active authority index.
+- Additional v76 deep-check repair: current SEARCH-V2 source binding and M2 evidence were rebound after the supplement registry wrapper changed; the four SEARCH-V2 payload assets and ranking semantics remain byte-identical to v74.
+- Repair scope: current report/authority/search-binding metadata plus mechanically required release/cache/offline bindings only.
+- Corpus/search-index-payload/speaker/display/flow semantics: **byte-preserved from certified v74 through v75 into v76**; FAST1 terminal semantic authority remains `afc351c02ee954583f663ca42615e48c5450893560f052d7da3c8a3caebfc879`.
+- Search fixed point: 74,522 documents / 21,351 vocabulary / 902,652 postings; speaker fixed point: 65,099 PRINCIPAL + 141 COMPLÉMENT segments.
+- Static/package/algorithmic status: **FOUR-PASS CERTIFIED AFTER REPAIR AND FULL FINAL-BYTE RECHECK**. Live GitHub / installed-PWA / real IndexedDB migration / true offline cold reopen / physical iPhone-iPad-Samsung / accessibility gates remain external.
+- Public deployment: **NOT AUTHORIZED BY THIS PACKAGE**.
+
+<!-- V76_CURRENT_END -->
+
+---
+
+> **Historical boundary:** Everything below this line is predecessor/historical documentation. Any older `CURRENT`, PASS/FAIL, count, version or package-status wording—including preserved v75/v74/v73 sections—is historical only and cannot override the v76 block above or the current authority index. The v74 FAST1 terminal mutation ledger and semantic validation remain inherited semantic evidence only where explicitly designated by the current authority index.
+
+<!-- V75_CURRENT_START -->
+# CURRENT — v2.19.75-R1B DEEP FOUR-PASS REPORT-INTEGRITY REPAIR
+
+- Direct predecessor: exact certified v2.19.74-R1B SHA-256 `c7dd3cd477aca7734bb205c5e8400654c40a615bb408b5693cc488e0bcb33f64`.
+- Trigger: fresh user-directed four-pass audit found stale current-report wording only: the inherited README exposed an older `# CURRENT` heading immediately after the v74 block without an inline historical delimiter, and current owner-stage metadata still described the v73 audit stage.
+- Repair scope: report/current-authority metadata plus mechanically required release/cache/offline bindings only.
+- Corpus/search/speaker/display/flow semantics: **byte-preserved from certified v74**; the v74 FAST1 terminal mutation authority remains `afc351c02ee954583f663ca42615e48c5450893560f052d7da3c8a3caebfc879`.
+- Search fixed point remains 74,522 documents / 21,351 vocabulary / 902,652 postings; speaker fixed point remains 65,099 PRINCIPAL + 141 COMPLÉMENT segments.
+- Static status: **FOUR-PASS CERTIFIED AFTER REPAIR AND FULL RECHECK**. Live GitHub / installed-PWA / real IndexedDB migration / true offline cold reopen / physical iPhone-iPad-Samsung / accessibility gates remain external.
+- Public deployment: **NOT AUTHORIZED BY THIS PACKAGE**.
+
+<!-- V75_CURRENT_END -->
+
+---
+
+> **Historical boundary:** Everything below this line is predecessor/historical documentation. Any older `CURRENT`, PASS/FAIL, count, version or package-status wording—including the preserved v74/v73 sections—is historical only and cannot override the v75 block above or `CURRENT_REPORT_AUTHORITY_INDEX.json`. The v74 terminal mutation ledger and semantic validation remain inherited semantic evidence only where explicitly designated by the current authority index.
+
+<!-- V74_CURRENT_START -->
+# CURRENT — v2.19.74-R1B FAST Mode corpus-mutation successor
+
+- Direct predecessor: v2.19.73-R1B SHA-256 `38222de19ff4bc2cde26d2edce26bd6ddabf223bd97c6652975f82ad48a6beac`.
+- Frozen authorization: 2,707 certified FAST Mode entries through BODY0854.
+- Terminal accounting: **2,700 APPLIED / 6 ALREADY_PRESENT_NOOP / 1 BLOCKED_CONFLICT**.
+- Canonical result: 2,768 surviving paragraph texts changed; exactly one certified truncated duplicate paragraph deleted; no surviving stable IDs renumbered.
+- Derived layers: search, speaker coordinates/previews, display, flow and FAST1 user-state migration rebound mechanically.
+- Static status: **FOUR-PASS CERTIFIED**. Physical-device/live-origin/offline-cold-reopen/accessibility gates remain external. Public deployment is **NOT AUTHORIZED**.
+
+<!-- V74_CURRENT_END -->
+
 # CURRENT — LDC v2.19.73-R1B DEEP FOUR-PASS REPORT RECONCILIATION
 
 - direct predecessor: certified v2.19.72-R1B `825e08ea96a8cf6a245cd56c47e30f3eb4a04bb838fc2e4d3940f8bd2f3f974c`
