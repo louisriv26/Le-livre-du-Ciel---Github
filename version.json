@@ -1,5 +1,5 @@
 {
-  "app_version": "v2.19.86-R1B",
+  "app_version": "v2.19.87-R1B",
   "backbone_corpus_version": "G036-AFLP-R7-UWR2-FAST1",
   "backup_help_current_format_contract": "HELP_NORMAL_BACKUP_DESCRIBES_LDCBACKUP__LEGACY_JSON_COMPATIBILITY_IMPORTER_AND_ERROR_UNCHANGED",
   "baseline_candidate_sha256": "425e582d07f244d2b350c793816598868817a74e0efc6d26ace267acd96e5a92",
@@ -27,17 +27,17 @@
     "active_aligne": "G036-AFLP-R7-UWR2-FAST1",
     "active_enrichi": "G036-AFLP-R7-SUP-T5-FAST1",
     "historical_r1b": "G036-AFLP-R1B-UWR2",
-    "package_predecessor_app_version": "v2.19.84-R1B Repair R3",
-    "package_predecessor_zip_sha256": "425e582d07f244d2b350c793816598868817a74e0efc6d26ace267acd96e5a92",
+    "package_predecessor_app_version": "v2.19.86-R1B",
+    "package_predecessor_zip_sha256": "606d2209a1f243337f2d897e700342ad90318e3fb2717a9c95614e6e877e613a",
     "semantic_predecessor_aligne": "G036-AFLP-R7-UWR2"
   },
-  "current_release_authority": "LDC_V86_REPRENDRE_P1_REPAIR_R5_R16__R13_UPDATE_DISCOVERY_R14_UX_R15_REAUDIT_PRESERVED__EXPLICIT_AUTHORITY_EPOCH_FENCING_AND_OPERATION_BOUND_UNDO__OWNER_DEVICE_GATES_OPEN__PUBLIC_DEPLOYMENT_NOT_AUTHORIZED",
-  "current_runtime_browser_validation": "V86_REPRENDRE_P1_REPAIR_R5_R16__R5_R13_R14_R15_INHERITED_MACHINE_QA_PRESERVED__R16_AUTHORITY_FENCING_SINGLE_FLIGHT_REJOIN_AND_UNHEALTHY_CONTINUITY_QA_PASS__MANAGED_BROWSER_VISUAL_LIMITATION__PHYSICAL_VISUAL_LARGE_TEXT_AND_IPAD_V76_GATE_OPEN",
+  "current_release_authority": "LDC_V87_R17_R3_BOUNDARY_AWARE_RESUME_RECOVERY__R16_AUTHORITY_FENCES_PRESERVED__REAUDIT_DIAGNOSTIC_USER_SCROLL_AND_STALE_SESSION_COMMIT_HARDENING__OWNER_IPAD_RESUME_RETEST_REQUIRED__PUBLIC_DEPLOYMENT_NOT_AUTHORIZED",
+  "current_runtime_browser_validation": "V87_R17_R3_DETERMINISTIC_ENGINEERING_QA_PASS__616_GEOMETRY_PLUS_14_AUTHORITY_LIVE_ANCHOR_PLUS_7_RECOVERABLE_REPLACEMENT_PLUS_4_RESUME_TRANSACTION_PLUS_21_SOURCE_BINDING_PLUS_53_PACKAGE_AUDIT__MANAGED_CHROMIUM_LOCAL_RUNTIME_ATTEMPT_TIMED_OUT_WITHOUT_USABLE_DOM__OWNER_IPAD_PHYSICAL_RESUME_RETEST_REQUIRED__IPHONE_REGRESSION_CONTROL_REQUIRED",
   "deep_link_schema": "ldc-deep-link-v1",
   "degraded_boot_stage6": "DEFER__NOT_JUSTIFIED_FOR_RUNTIME_MUTATION_NOW",
   "diagnostic_default_copy_contract": "ALLOWLIST_PUBLIC_TECHNICAL_METADATA__NO_RAW_QUERY__NO_RAW_ERROR_MESSAGE__NO_USER_AUTHORED_TEXT",
   "external_decision_authority": "FINAL_DECISION_LOCK_EXTERNAL_TO_DEPLOY_ZIP__WRITTEN_LAST_AFTER_PRIMARY_AND_INDEPENDENT_REOPEN_AUDITS",
-  "external_validation_status": "V86_REPRENDRE_P1_REPAIR_R5_R16__MACHINE_QA_PASS__IPAD_V76_STANDALONE_UPDATE_DISCOVERY_GATE_OPEN__PHYSICAL_UX_VISIBILITY_LARGE_TEXT_AND_FINAL_OWNER_DEVICE_GATES_REQUIRED",
+  "external_validation_status": "V87_R17_R3_DETERMINISTIC_ENGINEERING_QA_PASS__OWNER_DEVICE_RESUME_RETEST_REQUIRED__IPAD_V76_STANDALONE_UPDATE_DISCOVERY_GATE_REMAINS_SEPARATE_OPEN_ITEM__PUBLIC_DEPLOYMENT_NOT_AUTHORIZED",
   "f1_poisoned_http_cache_regression_gate": "REQUIRED_AND_EXTERNAL_EVIDENCE",
   "f7_release_metadata_generation": "CURRENT_RELEASE_COUNTS_AND_BINDINGS_GENERATED_AFTER_CORPUS_PAYLOAD_FREEZE__V32_VALUES_RETAINED_ONLY_UNDER_HISTORICAL_KEYS",
   "f8_android_nonfragment_highlight_targeting": {
@@ -362,13 +362,13 @@
     "ambiguous Jesus-speech dot removed from entry list",
     "Tome cards must show entry count only, not paragraph count"
   ],
-  "owner_override_note": "R16 engineering/machine QA passes after a second hostile re-audit. Public release remains blocked until owner device gates pass, including the unresolved iPad home-screen v76 automatic update-discovery gate and physical UX/large-text validation.",
+  "owner_override_note": "R16 owner evidence is preserved as a failed iPad Resume/recovery physical gate while iPhone Resume was reported working. R17 is the bounded functional successor and remains DO NOT RELEASE until the preserved failing iPad profile passes exact-target Resume, cold reopen, orientation/text-size boundary tests, with iPhone regression control. The separate iPad-v76 update-discovery issue remains open.",
   "owner_stage_start_authorisation": "USER_EXPLICITLY_AUTHORIZED_FULL_BLIND_ADVERSARIAL_VERIFICATION_AND_ALL_NECESSARY_CORRECTIONS__2026_09_12",
   "owner_user_acceptance": "USER_EXPLICITLY_AUTHORIZED_FULL_BLIND_ADVERSARIAL_VERIFICATION_AND_ALL_NECESSARY_CORRECTIONS__NO_PUBLIC_DEPLOYMENT_AUTHORITY__2026_09_12",
-  "package_state_at_freeze": "R16_AUTHORITY_FENCING_REAUDIT_FINAL_DEVICE_TEST_CANDIDATE__ENGINEERING_QA_PASS__OWNER_DEVICE_GATES_OPEN__PUBLIC_DEPLOYMENT_NOT_AUTHORIZED",
-  "page_worker_revision": "ldc-v2.19.86-R1B-stage8-r16",
-  "physical_ipad_gate": "OPEN__R16_EXISTING_HOME_SCREEN_V76_AUTOMATIC_UPDATE_DISCOVERY_THEN_DIRECT_UPGRADE_VISIBLE_CONSULTATION_RELOCATION_OFFLINE_SEARCH",
-  "physical_iphone_gate": "OPEN__R16_CURRENT_V86_PROFILE_UPDATE__REAL_CONTRADICTORY_LEGACY_MAIN_RECOVERY__JOURNEY_UX_VISIBILITY",
+  "package_state_at_freeze": "R17_R3_BOUNDARY_AWARE_RESUME_RECOVERY_DEVICE_TEST_CANDIDATE__REAUDIT_CORRECTIONS_AND_STALE_SESSION_COMMIT_FENCE_APPLIED__OWNER_IPAD_RESUME_RETEST_REQUIRED__DO_NOT_RELEASE",
+  "page_worker_revision": "ldc-v2.19.87-R1B-stage8-r17-r3",
+  "physical_ipad_gate": "FAIL_ON_EXACT_R16_PRESERVED_PROFILE__R17_EXACT_TARGET_RESUME_RETEST_REQUIRED__SEPARATE_V76_UPDATE_DISCOVERY_GATE_STILL_OPEN",
+  "physical_iphone_gate": "R17_REGRESSION_RETEST_REQUIRED__R16_RESUME_REPORTED_WORKING",
   "physical_samsung_android_gate": "NOT_REOPENED_BY_R5__NO_ANDROID_SPECIFIC_RUNTIME_MUTATION",
   "post_four_pass_metadata_reconciliation": {
     "active_envelopes_rebound_to_r3": 109,
@@ -1287,9 +1287,9 @@
   "speaker_presentation_contract": "SEMANTIC_SPEAKER_DISTINCT_FROM_PRESENTATION_PARENT__BV7_11_EXPLICIT_MAIN_PARENT_PER_SEGMENT_OVERLAY__PARENTLESS_SUPPLEMENT_LEGACY_FALLBACK_ONLY__FALLBACK_NEVER_OVERRIDES_VALID_EXPLICIT_PARENT",
   "speech_boundary_display_contract": "RA19B_MULTI_SOURCE_SOURCE_BACKED_EXPLICIT_BOUNDARY_METADATA__20811_ACTIVE_LINKED_BOUNDARIES__HEURISTIC_FALLBACK_ZERO_ON_ACTIVE_LINKS__CANONICAL_TEXT_AND_SPEAKER_OFFSETS_UNCHANGED",
   "speech_paragraphing_contract": "UNCOLOURED_DIRECT_TURN_STAYS_WITH_ATTRIBUTION_OPEN_GUILLEMET__CLOSING_GUILLEMET_STAYS_WITH_TURN__RESUMED_NARRATION_STARTS_NEW_VISUAL_PARAGRAPH__JESUS_MARY_STYLING_UNCHANGED",
-  "stage": "LDC_V86_REPRENDRE_P1_REPAIR_R5_STAGE8_R16",
+  "stage": "LDC_V87_BOUNDARY_AWARE_RESUME_RECOVERY_STAGE8_R17_R3",
   "stage5b_help_label_residual": "CLOSED_V83_STAGE7__HELP_NORMAL_BACKUP_WORDING_NOW_NAMES_SAUVEGARDE_AND_LDCBACKUP__LEGACY_JSON_COMPATIBILITY_IMPORTER_ERROR_UNCHANGED",
-  "stage8_same_profile_note": "APP_VERSION remains v2.19.86-R1B; page/worker revision advances from exact stage8-r15 to stage8-r16. R16 preserves the complete R13 update-discovery hardening and R14/R15 Ma lecture suivie / Consultation protections, while adding explicit authority-epoch continuity validation after confirmation and binding each Undo action to the authority epoch created by its own relocation. This prevents an older confirmation or stale toast action from crossing a newer explicit authority transfer. DB version, corpus generation, Search semantics and offline content binding remain unchanged; physical device gates remain mandatory.",
+  "stage8_same_profile_note": "APP_VERSION remains v2.19.87-R1B while page/worker revision advances to stage8-r17-r3 so prior R17 test installations can discover corrected bytes. R17 R3 preserves the bounded Resume/recovery and RECOVERABLE replacement logic, keeps separate original-saved versus resolved-target diagnostics, hardens live-anchor release so a mouse click alone is not treated as genuine scrolling, and serializes recovered commits through the reading-position write chain with a session recheck after the asynchronous main read. R16 authority_epoch, stale-write, atomic main_previous+main, session ownership, single-flight and Undo protections remain. Corpus, Search, paragraph/entry IDs, supplements, DB schema, source semantics, R13 update/discovery and offline content binding remain unchanged.",
   "static_audit_scope": "PACKAGE_BYTES_AND_BUILD_BINDINGS_ONLY__POST_FREEZE_REOPEN_RESULTS_EXTERNAL__PHYSICAL_DEVICE_LIVE_ORIGIN_PWA_OFFLINE_SCREEN_READER_NOT_CLAIMED",
   "superseded_failed_candidate": {
     "authority": "independent reopened-ZIP audit; never deploy",
@@ -1931,6 +1931,97 @@
   "vector_search_subsystem": "RETIRED_IN_RA3_V2_19_8__PRESERVED_IN_V2_19_9",
   "volume_lru_max": 4,
   "whole_collection_undo_contract": "TEN_SECOND_ATOMIC_PARENT_PLUS_ALL_CAPTURED_CHILDREN__FAIL_CLOSED_ON_PARENT_CHILD_OR_UNEXPECTED_ORPHAN_CONFLICT",
-  "wide_public_release": "NOT_AUTHORIZED_BY_THIS_PACKAGE__CURRENT_V86_REQUIRES_SEPARATE_USER_RELEASE_DECISION_AFTER_REQUIRED_EXTERNAL_GATES",
-  "wide_public_release_gate": "NOT_AUTHORIZED__PHYSICAL_DEVICE_INSTALLED_PWA_TRUE_OFFLINE_VOICEOVER_TALKBACK_TEXTUAL_FIDELITY_RIGHTS_AND_DEPLOY_BINDING_GATES_OPEN"
+  "wide_public_release": "NOT_AUTHORIZED_BY_THIS_PACKAGE__R17_REQUIRES_PRESERVED_FAILING_IPAD_RESUME_GATE_PASS_AND_SEPARATE_RELEASE_DECISION",
+  "wide_public_release_gate": "NOT_AUTHORIZED__PHYSICAL_DEVICE_INSTALLED_PWA_TRUE_OFFLINE_VOICEOVER_TALKBACK_TEXTUAL_FIDELITY_RIGHTS_AND_DEPLOY_BINDING_GATES_OPEN",
+  "r17_resume_boundary_recovery_fix": {
+    "status": "R17_R2_REAUDIT_CORRECTIONS_APPLIED__DETERMINISTIC_ENGINEERING_QA_PASS__OWNER_DEVICE_RETEST_REQUIRED__DO_NOT_RELEASE",
+    "direct_predecessor_app_version": "v2.19.86-R1B",
+    "direct_predecessor_runtime": "ldc-v2.19.86-R1B-stage8-r16",
+    "direct_predecessor_zip_sha256": "606d2209a1f243337f2d897e700342ad90318e3fb2717a9c95614e6e877e613a",
+    "direct_predecessor_git_tree": "b67cedd854d344e927b66fe28c25d696da56fbc1",
+    "functional_source_mutations": [
+      "index.html"
+    ],
+    "mechanical_release_binding_mutations": [
+      "sw.js",
+      "offline_manifest.json",
+      "version.json"
+    ],
+    "restore_classes": [
+      "EXACT_ANCHOR_RESTORE",
+      "TOP_CLAMPED_RESTORE",
+      "BOTTOM_CLAMPED_RESTORE",
+      "ENTRY_FRACTION_RESTORE",
+      "RESTORE_TARGET_NOT_FOUND",
+      "RESTORE_TARGET_NOT_VISIBLE",
+      "RESTORE_IDENTITY_MISMATCH",
+      "RESTORE_GEOMETRY_MISMATCH",
+      "RESTORE_INVALID_FRACTION"
+    ],
+    "semantic_commit_contract": "VERIFIED_REQUESTED_TARGET_NOT_ACCIDENTAL_TOP_VISIBLE_PARAGRAPH",
+    "post_resume_live_anchor_contract": "LOCK_EXACT_COMMITTED_TARGET_THROUGH_IMMEDIATE_LIFECYCLE_LAYOUT_EVENTS_UNTIL_FRESH_EXPLICIT_USER_SCROLL_GESTURE__MOUSE_CLICK_ALONE_NOT_SCROLL_INTENT",
+    "recoverable_replacement_contract": "ONE_SHOT_HOME_CHOOSE_OTHER_INTENT__TOMES_ENTRIES_READER__EXPLICIT_CONFIRMATION__NORMAL_ATOMIC_AUTHORITY_TRANSFER",
+    "corpus_changed": false,
+    "search_changed": false,
+    "paragraph_entry_ids_changed": false,
+    "db_schema_changed": false,
+    "source_semantics_changed": false,
+    "undo_semantics_changed": false,
+    "journey_single_flight_changed": false,
+    "r13_update_discovery_changed": false,
+    "separate_ipad_v76_update_discovery_issue": "OPEN_UNCHANGED",
+    "engineering_qa": {
+      "resume_geometry": {
+        "passed": 616,
+        "failed": 0,
+        "evidence": "R17_R3_RESUME_GEOMETRY_TEST_RESULTS.json"
+      },
+      "authority_live_anchor": {
+        "passed": 14,
+        "failed": 0,
+        "evidence": "R17_R3_COMMIT_LOCK_TEST_RESULTS.json"
+      },
+      "recoverable_replacement": {
+        "passed": 7,
+        "failed": 0,
+        "evidence": "R17_R3_RECOVERABLE_REPLACE_TEST_RESULTS.json"
+      },
+      "resume_transaction_fail_closed_target_diagnostic": {
+        "passed": 4,
+        "failed": 0,
+        "evidence": "R17_R3_RESUME_TRANSACTION_TEST_RESULTS.json"
+      },
+      "source_binding": {
+        "passed": 21,
+        "failed": 0,
+        "evidence": "R17_R3_SOURCE_BINDING_AUDIT_RESULTS.json"
+      },
+      "owner_legacy_fixture": {
+        "passed": true,
+        "evidence": "R17_R3_OWNER_LEGACY_FIXTURE_UNIQUENESS.json"
+      },
+      "package_audit": {
+        "passed": 53,
+        "failed": 0,
+        "evidence": "R17_R3_PACKAGE_AUDIT_RESULTS.json"
+      },
+      "js_syntax": {
+        "index_inline": "PASS",
+        "service_worker": "PASS"
+      },
+      "managed_browser_runtime": {
+        "status": "INCONCLUSIVE_ENVIRONMENT_TIMEOUT",
+        "evidence": "R17_R3_CHROMIUM_STDERR.txt",
+        "physical_device_substitute": false
+      }
+    },
+    "release_gate": "OWNER_IPAD_PROFILE_MUST_PASS_WITHOUT_DATA_CLEAR__EXACT_RECOVERED_TARGET__COHERENT_HOME_CARD__COLD_REOPEN_RESUME__ORIENTATION_TEXT_SIZE_BOUNDARIES__IPHONE_REGRESSION_CONTROL",
+    "diagnostic_contract": "SEPARATE_ORIGINAL_SAVED_IDENTITY__RESOLVED_TARGET__REQUESTED_TARGET__RESTORE_GEOMETRY__CAPTURED_TOP_ANCHOR__COMMITTED_TARGET__SESSION_SOURCE_EPOCH__COMMIT_RESULT",
+    "r17_r1_superseded_candidate_sha256": "2bfeacb05927a02371e338ce37989b2a8ee8d2c49b1dbfe18bfb40015f2d0e99",
+    "r17_r2_reason": "HOSTILE_REAUDIT_FOUND_HANDOVER_PATH_ERROR__MISSING_ORIGINAL_SAVED_IDENTITY_DIAGNOSTIC__MOUSE_POINTERDOWN_TOO_BROAD_AS_SCROLL_INTENT",
+    "r17_r3_stale_session_commit_fence": "Recovered commit now owns the reading-position write chain and rechecks active Reader session after the asynchronous main read immediately before atomic transfer.",
+    "superseded_r17_r2_sha256": "e201d1cb439041511022bd1d0ccb6a823269da5f362ef86bf5ac458ddd83fb92",
+    "engineering_qa_r17_r3": "PASS__OWNER_DEVICE_GATE_PENDING",
+    "r17_r3_reason": "HOSTILE_REAUDIT_REPRODUCED_STALE_RECOVERED_COMMIT_IF_READER_SESSION_CHANGED_DURING_ASYNC_MAIN_READ__FIX_SERIALIZES_COMMIT_ON_WRITE_CHAIN_AND_RECHECKS_SESSION_BEFORE_ATOMIC_TRANSFER"
+  }
 }

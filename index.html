@@ -2005,11 +2005,11 @@ html[data-theme="dark"] .st-luisa{color:#D4A843;}
    VERSION — single source of truth
    Update this string on every release.
 ═══════════════════════════════════════════════════════ */
-const APP_VERSION = 'v2.19.86-R1B'; // technical update/audit identifier
-const PUBLIC_VERSION = '86';        // single user-facing release number
+const APP_VERSION = 'v2.19.87-R1B'; // technical update/audit identifier
+const PUBLIC_VERSION = '87';        // single user-facing release number
 const APP_VERSION_LABEL = `Version ${PUBLIC_VERSION}`;
 const APP_BUILD   = '2026-09-13';
-const SW_CACHE_VERSION = 'ldc-v2.19.86-R1B-stage8-r16';
+const SW_CACHE_VERSION = 'ldc-v2.19.87-R1B-stage8-r17-r3';
 const CORPUS_MANIFEST_SHA256 = '4e7f7bf22552299a1e4e08525c41534a607fb956a7ad819d1b5358dec092b941';
 const DEEP_LINK_SCHEMA = 'ldc-deep-link-v1';
 const READING_POSITION_SCHEMA = 'ldc-reading-position-v3';
@@ -2093,12 +2093,13 @@ function readerSnapshotMayWriteMain(snapshot){
   return String(snapshot.session_id||'')===String(session.session_id||'')&&Number(snapshot.vol)===Number(session.vol)&&String(snapshot.entry_id||'')===String(session.entry_id||'')&&String(snapshot.supplement_id||'')===String(session.supplement_id||'');
 }
 const JOURNEY_UI_STATE=Object.freeze({
-  SEQUENTIAL:'SEQUENTIAL_ACTIVE',OTHER:'CONSULTATION_OTHER',EXACT:'CONSULTATION_EXACT_MAIN',NO_MAIN:'CONSULTATION_NO_MAIN',RECOVERABLE:'CONSULTATION_RECOVERABLE_MAIN',UNHEALTHY:'CONSULTATION_UNHEALTHY_MAIN',UNAVAILABLE:'CONSULTATION_MAIN_UNAVAILABLE'
+  SEQUENTIAL:'SEQUENTIAL_ACTIVE',OTHER:'CONSULTATION_OTHER',EXACT:'CONSULTATION_EXACT_MAIN',NO_MAIN:'CONSULTATION_NO_MAIN',RECOVERABLE:'CONSULTATION_RECOVERABLE_MAIN',RECOVERABLE_REPLACE:'CONSULTATION_RECOVERABLE_REPLACE_EXPLICIT',UNHEALTHY:'CONSULTATION_UNHEALTHY_MAIN',UNAVAILABLE:'CONSULTATION_MAIN_UNAVAILABLE'
 });
 let currentJourneyUiState={kind:JOURNEY_UI_STATE.UNAVAILABLE,action:null};
 let journeyUiRefreshSerial=0,journeyUiRefreshTimer=null,journeyMainHealthCache=null;
 let journeyActionInFlight=false;
 let journeyPointSelectionGuide=false;
+let journeyRecoverableReplacementIntent=null; // one-shot Home-origin authority transfer intent; never inferred from ordinary consultation
 function journeyPositionsExactlyEquivalent(main,current){
   if(!main||!current||!main.para_id||!current.para_id)return false;
   if(Number(main.vol)!==Number(current.vol)||String(main.entry_id||'')!==String(current.entry_id||''))return false;
@@ -2128,7 +2129,10 @@ async function classifyJourneyUiStateForVisibleReader({force=false}={}){
   const main=await dbGet('reading_pos','main');
   if(!main)return {kind:JOURNEY_UI_STATE.NO_MAIN,action:'START_HERE',main:null};
   const health=await journeyMainHealth(main,{force});
-  if(health.category==='RECOVERABLE')return {kind:JOURNEY_UI_STATE.RECOVERABLE,action:null,main,health};
+  if(health.category==='RECOVERABLE'){
+    const explicit=!!(journeyRecoverableReplacementIntent&&journeyRecoverableReplacementIntent.origin==='HOME_CHOOSE_OTHER'&&journeyRecoverableReplacementIntent.main_identity===journeyMainCacheKey(main)&&Number(journeyRecoverableReplacementIntent.authority_epoch||0)===Math.max(0,Number(main.authority_epoch)||0));
+    return explicit?{kind:JOURNEY_UI_STATE.RECOVERABLE_REPLACE,action:'REPLACE_RECOVERABLE_MAIN',main,health,replacement_intent:journeyRecoverableReplacementIntent}:{kind:JOURNEY_UI_STATE.RECOVERABLE,action:null,main,health};
+  }
   if(health.category==='UNHEALTHY')return {kind:JOURNEY_UI_STATE.UNHEALTHY,action:'REPLACE_UNHEALTHY_MAIN',main,health};
   if(health.category!=='HEALTHY')return {kind:JOURNEY_UI_STATE.UNAVAILABLE,action:null,main,health};
   const pos=captureSemanticReadingPosition(),snap=makeReaderPositionSnapshot(pos,false);
@@ -2142,6 +2146,7 @@ function journeyUiCopy(state){
     case JOURNEY_UI_STATE.EXACT:return {status:'Consultation',explain:'Vous êtes à votre point de lecture, mais cette ouverture est une consultation.',action:'Reprendre ma lecture suivie ici'};
     case JOURNEY_UI_STATE.OTHER:return {status:'Consultation',explain:'Votre lecture suivie reste inchangée.',action:'Continuer ma lecture suivie d’ici'};
     case JOURNEY_UI_STATE.UNHEALTHY:return {status:'Consultation',explain:'Votre ancienne position de lecture ne peut pas être utilisée automatiquement.',action:'Choisir ce passage comme nouvelle lecture suivie'};
+    case JOURNEY_UI_STATE.RECOVERABLE_REPLACE:return {status:'Consultation',explain:'Vous avez demandé depuis l’Accueil de choisir un nouveau point de lecture. Votre ancienne position reste inchangée jusqu’à votre confirmation.',action:'Choisir ce passage comme nouvelle lecture suivie'};
     case JOURNEY_UI_STATE.RECOVERABLE:return {status:'Consultation',explain:'Votre ancienne position doit d’abord être vérifiée depuis l’Accueil.',action:''};
     default:return {status:'Consultation',explain:'Impossible de vérifier votre lecture suivie pour le moment.',action:''};
   }
@@ -2176,8 +2181,13 @@ function updateReaderIntentIndicator(){
   if(readerScreenIsVisible())scheduleJourneyUiRefresh();
 }
 function syncJourneySelectionGuide(){for(const id of ['journey-guide-tomes','journey-guide-entries']){const el=document.getElementById(id);if(el)el.hidden=!journeyPointSelectionGuide;}}
-function clearJourneyPointSelectionGuide(){journeyPointSelectionGuide=false;syncJourneySelectionGuide();}
-async function beginChooseReadingPointFlow(){journeyPointSelectionGuide=true;syncJourneySelectionGuide();await goTomes();}
+function clearJourneyPointSelectionGuide(){journeyPointSelectionGuide=false;journeyRecoverableReplacementIntent=null;syncJourneySelectionGuide();}
+async function beginChooseReadingPointFlow(){
+  const main=await dbGet('reading_pos','main').catch(()=>null);
+  const health=main?await journeyMainHealth(main,{force:true}).catch(()=>null):null;
+  journeyRecoverableReplacementIntent=health&&health.category==='RECOVERABLE'?Object.freeze({origin:'HOME_CHOOSE_OTHER',main_identity:journeyMainCacheKey(main),authority_epoch:Math.max(0,Number(main.authority_epoch)||0),started_at:Date.now()}):null;
+  journeyPointSelectionGuide=true;syncJourneySelectionGuide();await goTomes();
+}
 function makeReaderPositionSnapshot(pos,advanceSequence=true){
   const session=activeReaderSession;
   if(!pos||!session)return null;
@@ -2198,6 +2208,7 @@ let readerTemporarySourceModeRestore = null; // prior in-memory mode for automat
 let autourOrigin   = null;  // compatibility alias; related navigation now uses readerOriginContext stack
 let pendingSemanticPosition = null; // semantic reader restore, never raw pixels only
 let liveSemanticPosition = null;    // latest stable reader anchor for resize/orientation recovery
+let resumeSemanticTargetLock = null; // exact Resume target remains authoritative until explicit user scroll
 let semanticRestoreInProgress = false;
 let semanticResizeTimer = null;
 let previousScreen = 'home'; // screen before Help was opened
@@ -2986,7 +2997,7 @@ function showScreen(id) {
   const ni = document.getElementById(navMap[id]);
   if (ni) ni.classList.add('active');
   if(journeyPointSelectionGuide&&!['tomes','entries','reader'].includes(id))clearJourneyPointSelectionGuide();
-  if(id==='reader'&&journeyPointSelectionGuide)clearJourneyPointSelectionGuide();else syncJourneySelectionGuide();
+  if(id==='reader'&&journeyPointSelectionGuide&&!journeyRecoverableReplacementIntent)clearJourneyPointSelectionGuide();else syncJourneySelectionGuide();
   if(id==='reader')scheduleJourneyUiRefresh();
 }
 
@@ -3341,6 +3352,23 @@ function captureSemanticReadingPosition(){
   return {schema:READING_POSITION_SCHEMA,vol:currentVolume,entry_id:currentEntry.id,supplement_id:activeSupp&&activeSupp.supplement_id||null,para_id:hit.dataset.paraId||null,fraction_within_paragraph:frac,fallback_entry_fraction:entryFraction,approx_char:canonLen?Math.round(frac*canonLen):null,label:currentReaderLabel(),excerpt:(()=>{const rec=window.LDCAnchor&&LDCAnchor.recordFor(hit);const t=rec?rec.text:canonicalParaText(hit);return String(t||'').slice(0,80)+(String(t||'').length>80?'…':'');})(),updated_at:Date.now()};
 }
 
+function resumeLockedSemanticPosition(session=activeReaderSession){
+  if(!resumeSemanticTargetLock||!session)return null;
+  if(String(resumeSemanticTargetLock.session_id||'')!==String(session.session_id||''))return null;
+  return resumeSemanticTargetLock.position||null;
+}
+function clearResumeSemanticTargetLock(){resumeSemanticTargetLock=null;}
+function installResumeSemanticTargetLock(position,session=activeReaderSession){
+  if(!position||!session)return null;
+  const frozen=Object.freeze(Object.assign({},position,{session_id:String(session.session_id)}));
+  resumeSemanticTargetLock={session_id:String(session.session_id),position:frozen,user_scroll_armed:false,user_scroll_armed_at:0,installed_at:Date.now()};
+  liveSemanticPosition=frozen;
+  return frozen;
+}
+function semanticPositionForPersistence(){return resumeLockedSemanticPosition()||captureSemanticReadingPosition();}
+function markReaderUserScrollIntent(){
+  if(resumeSemanticTargetLock&&activeReaderSession&&String(resumeSemanticTargetLock.session_id)===String(activeReaderSession.session_id)){resumeSemanticTargetLock.user_scroll_armed=true;resumeSemanticTargetLock.user_scroll_armed_at=Date.now();}
+}
 function restoreSemanticReadingPosition(pos){
   const sc=document.getElementById('reader-scroll');
   if(!sc||!pos)return false;
@@ -3356,7 +3384,12 @@ function restoreSemanticReadingPosition(pos){
     const max=Math.max(0,sc.scrollHeight-sc.clientHeight);
     sc.scrollTop=clamp01(pos.fallback_entry_fraction)*max;
   }
-  requestAnimationFrame(()=>{semanticRestoreInProgress=false;liveSemanticPosition=captureSemanticReadingPosition()||pos;});
+  requestAnimationFrame(()=>{
+    semanticRestoreInProgress=false;
+    const locked=resumeLockedSemanticPosition();
+    if(locked)liveSemanticPosition=locked;
+    else if(!(activeReaderSession&&activeReaderSession.persistence_suspended))liveSemanticPosition=captureSemanticReadingPosition()||pos;
+  });
   return used;
 }
 
@@ -3409,15 +3442,18 @@ async function flushActiveReaderSession(opts={}){
   try{
     // Never sample hidden Reader geometry. A hidden/suspended Reader has no write authority.
     if(readerSessionOwnsVisibleReader(session)){
-      const pos=captureSemanticReadingPosition();
-      const snapshot=makeReaderPositionSnapshot(pos,true);
-      if(snapshot)result=await persistReaderSnapshot(snapshot,{requireActive:true});
-      else result={written:false,reason:'no_position'};
+      if(session.persistence_suspended)result={written:false,reason:'session_persistence_suspended'};
+      else{
+        const pos=semanticPositionForPersistence();
+        const snapshot=makeReaderPositionSnapshot(pos,true);
+        if(snapshot)result=await persistReaderSnapshot(snapshot,{requireActive:true});
+        else result={written:false,reason:'no_position'};
+      }
     }
     return {flushed:true,persist_result:result,session_id:session.session_id};
   }finally{
     // Permanent exits must revoke authority even if persistence rejects.
-    if(opts.invalidate!==false&&activeReaderSession&&activeReaderSession.session_id===session.session_id)activeReaderSession=null;
+    if(opts.invalidate!==false&&activeReaderSession&&activeReaderSession.session_id===session.session_id){clearResumeSemanticTargetLock();activeReaderSession=null;}
   }
 }
 
@@ -3435,8 +3471,8 @@ function scheduleInitialSequentialPositionPersistence(){
   }));
 }
 function flushReadingPositionForLifecycle(reason){
-  if(!activeReaderSession||!readerSessionOwnsVisibleReader(activeReaderSession))return;
-  const pos=captureSemanticReadingPosition();
+  if(!activeReaderSession||!readerSessionOwnsVisibleReader(activeReaderSession)||activeReaderSession.persistence_suspended)return;
+  const pos=semanticPositionForPersistence();
   const snapshot=makeReaderPositionSnapshot(pos,true);
   if(!snapshot)return;
   liveSemanticPosition=snapshot;
@@ -3689,20 +3725,34 @@ async function resolveLegacyReadingPosition(pos){
 }
 async function commitRecoveredReadingMain(oldMain,targetPos,committedSnapshot,classification){
   if(!oldMain||!targetPos||!committedSnapshot)return {written:false,reason:'invalid_recovery_commit'};
+  if(!readingSnapshotBelongsToActiveSession(committedSnapshot))return {written:false,reason:'inactive_session'};
   const identityMatches=Number(targetPos.vol)===Number(committedSnapshot.vol)&&String(targetPos.entry_id||'')===String(committedSnapshot.entry_id||'')&&String(targetPos.supplement_id||'')===String(committedSnapshot.supplement_id||'')&&String(targetPos.para_id||'')===String(committedSnapshot.para_id||'')&&(!validJourneySourceMode(targetPos.source_mode)||String(targetPos.source_mode)===String(committedSnapshot.source_mode||''));
   if(!identityMatches)return {written:false,reason:'recovery_commit_target_mismatch'};
-  await readingPositionWriteChain.catch(()=>{});
-  const current=await dbGet('reading_pos','main');if(!current||JSON.stringify(current)!==JSON.stringify(oldMain))return {written:false,reason:'main_changed_during_recovery'};
-  const newEpoch=Math.max(0,Number(oldMain.authority_epoch)||0)+1,now=Date.now();
-  const canonical=Object.assign({},targetPos,committedSnapshot,{schema:READING_POSITION_SCHEMA,vol:Number(targetPos.vol),entry_id:targetPos.entry_id,supplement_id:targetPos.supplement_id||null,para_id:targetPos.para_id||null,source_mode:validJourneySourceMode(targetPos.source_mode)?targetPos.source_mode:committedSnapshot.source_mode,authority_epoch:newEpoch,confirmation_status:'confirmed',journey_provenance:'legacy_exact_recovery',recovery_classification:classification,recovered_at:now});
-  const per=Object.assign({},canonical,{key:readingPosKey(canonical.vol,canonical.entry_id,canonical.supplement_id||null)});
-  const previous=Object.assign({},oldMain,{key:'main_previous',saved_for_legacy_recovery_at:now,replaced_by_authority_epoch:newEpoch});
-  const main=Object.assign({},canonical,{key:'main'});
-  await dbPutManyAtomic('reading_pos',[per,previous,main]);
-  if(activeReaderSession&&String(activeReaderSession.session_id)===String(committedSnapshot.session_id)){activeReaderSession.authority_epoch=newEpoch;activeReaderSession.intent=READER_INTENT.SEQUENTIAL;activeReaderSession.source_mode=canonical.source_mode;}
-  readingPositionCommittedSequence.set(String(committedSnapshot.session_id),Number(committedSnapshot.save_sequence)||0);
-  await renderHome().catch(()=>{});
-  return {written:true,reason:'legacy_recovery_committed',authority_epoch:newEpoch};
+  const task=async()=>{
+    if(!readingSnapshotBelongsToActiveSession(committedSnapshot))return {written:false,reason:'inactive_session_after_queue'};
+    const current=await dbGet('reading_pos','main');
+    // dbGet yields to the event loop. Revalidate ownership after that await so a replacement
+    // Reader session cannot commit the stale recovered target under the old session id.
+    if(!readingSnapshotBelongsToActiveSession(committedSnapshot))return {written:false,reason:'inactive_session_before_commit'};
+    if(!current||JSON.stringify(current)!==JSON.stringify(oldMain))return {written:false,reason:'main_changed_during_recovery'};
+    const newEpoch=Math.max(0,Number(oldMain.authority_epoch)||0)+1,now=Date.now();
+    const canonical=Object.assign({},targetPos,committedSnapshot,{schema:READING_POSITION_SCHEMA,vol:Number(targetPos.vol),entry_id:targetPos.entry_id,supplement_id:targetPos.supplement_id||null,para_id:targetPos.para_id||null,source_mode:validJourneySourceMode(targetPos.source_mode)?targetPos.source_mode:committedSnapshot.source_mode,authority_epoch:newEpoch,confirmation_status:'confirmed',journey_provenance:'legacy_exact_recovery',recovery_classification:classification,recovered_at:now});
+    const per=Object.assign({},canonical,{key:readingPosKey(canonical.vol,canonical.entry_id,canonical.supplement_id||null)});
+    const previous=Object.assign({},oldMain,{key:'main_previous',saved_for_legacy_recovery_at:now,replaced_by_authority_epoch:newEpoch});
+    const main=Object.assign({},canonical,{key:'main'});
+    await dbPutManyAtomic('reading_pos',[per,previous,main]);
+    if(activeReaderSession&&String(activeReaderSession.session_id)===String(committedSnapshot.session_id)){activeReaderSession.authority_epoch=newEpoch;activeReaderSession.intent=READER_INTENT.SEQUENTIAL;activeReaderSession.source_mode=canonical.source_mode;}
+    readingPositionCommittedSequence.set(String(committedSnapshot.session_id),Number(committedSnapshot.save_sequence)||0);
+    return {written:true,reason:'legacy_recovery_committed',authority_epoch:newEpoch};
+  };
+  // Claim the same single-flight chain used by ordinary Reader persistence. This prevents a
+  // later reading-position writer that honours the chain from interleaving between validation
+  // and the atomic main_previous + main transfer.
+  const run=readingPositionWriteChain.catch(()=>{}).then(task);
+  readingPositionWriteChain=run.then(()=>undefined,()=>undefined);
+  const result=await run;
+  if(result&&result.written)await renderHome().catch(()=>{});
+  return result;
 }
 window.__ldcLegacyReadingRecovery={normalizeLegacyRecoveryText,normalizedSavedExcerpt,savedExcerptMatchesParagraph,inferVolumeFromReadingIdentity,resolveLegacyReadingPosition,classes:LEGACY_READING_RECOVERY_CLASS};
 
@@ -3750,7 +3800,7 @@ async function renderHome() {
     const temporarilyUnavailable=health.category==='UNAVAILABLE';
     const confirmation=document.getElementById('journey-confirmation');if(confirmation)confirmation.style.display=needsConfirmation?'block':'none';
     const resumeBtn=document.getElementById('resume-reading-btn');if(resumeBtn){resumeBtn.style.display=(needsConfirmation||preservedUnhealthy)?'none':'inline-flex';resumeBtn.disabled=false;resumeBtn.setAttribute('aria-disabled','false');}
-    const chooseBtn=document.getElementById('choose-reading-point-btn');if(chooseBtn){chooseBtn.style.display=(needsConfirmation||temporarilyUnavailable)?'none':'inline-flex';const span=chooseBtn.querySelector('span');if(span)span.textContent='Choisir un autre point de lecture';}
+    const chooseBtn=document.getElementById('choose-reading-point-btn');if(chooseBtn){chooseBtn.style.display=temporarilyUnavailable?'none':'inline-flex';const span=chooseBtn.querySelector('span');if(span)span.textContent='Choisir un autre point de lecture';}
     const healthEl=document.getElementById('journey-home-health');if(healthEl){healthEl.style.display=(preservedUnhealthy||temporarilyUnavailable)?'block':'none';healthEl.textContent=preservedUnhealthy?'Cette ancienne position ne peut pas être reprise automatiquement. Elle est conservée sans choix au hasard.':(temporarilyUnavailable?'Impossible de vérifier votre position de lecture pour le moment. Vous pouvez réessayer avec « Reprendre ».':'');}
     const confirmBtn=document.getElementById('confirm-resume-reading-btn');if(confirmBtn)confirmBtn.disabled=false;
     // Featured quote
@@ -3809,34 +3859,69 @@ function resumeFailureMessage(status){
   if(status==='LOAD_FAILURE')return 'Impossible d’ouvrir votre position de lecture pour le moment. Votre progression enregistrée n’a pas été modifiée.';
   return 'Impossible d’ouvrir votre position de lecture. Votre progression enregistrée n’a pas été modifiée.';
 }
+const RESUME_RESTORE_CLASS=Object.freeze({
+  EXACT:'EXACT_ANCHOR_RESTORE',TOP:'TOP_CLAMPED_RESTORE',BOTTOM:'BOTTOM_CLAMPED_RESTORE',ENTRY:'ENTRY_FRACTION_RESTORE',NOT_FOUND:'RESTORE_TARGET_NOT_FOUND',NOT_VISIBLE:'RESTORE_TARGET_NOT_VISIBLE',IDENTITY:'RESTORE_IDENTITY_MISMATCH',GEOMETRY:'RESTORE_GEOMETRY_MISMATCH',INVALID_FRACTION:'RESTORE_INVALID_FRACTION'
+});
 function waitReaderFrames(count=3){return new Promise(resolve=>{const step=()=>{if(--count<=0)resolve();else requestAnimationFrame(step);};requestAnimationFrame(step);});}
-function resumePostconditionsMatch(pos,preflight=null){
-  if(!pos||!readerScreenIsVisible()||!currentEntry||!activeReaderSession)return false;
-  if(Number(currentVolume)!==Number(pos.vol)||String(currentEntry.id||'')!==String(pos.entry_id||''))return false;
-  if(normalizeReaderIntent(activeReaderSession.intent)!==READER_INTENT.SEQUENTIAL)return false;
-  if(!readerSessionOwnsVisibleReader(activeReaderSession))return false;
-  if(String(pos.supplement_id||'')!==String(activeReaderSession.supplement_id||''))return false;
-  if(validJourneySourceMode(pos.source_mode)&&(String(activeReaderSession.source_mode||'')!==String(pos.source_mode)||String(supplementMode)!==String(pos.source_mode)))return false;
-  if(pos.para_id){const restored=captureSemanticReadingPosition();if(!restored||String(restored.para_id||'')!==String(pos.para_id))return false;}
-  return true;
+function resumeRestoreVerification(pos,preflight=null,expectedAuthorityEpoch=null){
+  const requested=pos?{vol:Number(pos.vol)||null,entry_id:pos.entry_id||null,supplement_id:pos.supplement_id||null,para_id:pos.para_id||null,fraction_within_paragraph:pos.fraction_within_paragraph,fallback_entry_fraction:pos.fallback_entry_fraction,source_mode:pos.source_mode||null}:null;
+  const result={ok:false,classification:RESUME_RESTORE_CLASS.IDENTITY,requested,preflight_status:preflight&&preflight.status||null,captured_top_anchor:null,session:null,scroll:null,target_geometry:null,reason:null};
+  if(!pos||!readerScreenIsVisible()||!currentEntry||!activeReaderSession){result.reason='reader_identity_unavailable';return result;}
+  const session={session_id:String(activeReaderSession.session_id||''),intent:normalizeReaderIntent(activeReaderSession.intent),vol:Number(activeReaderSession.vol)||null,entry_id:activeReaderSession.entry_id||null,supplement_id:activeReaderSession.supplement_id||null,source_mode:activeReaderSession.source_mode||null,authority_epoch:Math.max(0,Number(activeReaderSession.authority_epoch)||0),persistence_suspended:!!activeReaderSession.persistence_suspended};
+  result.session=session;
+  if(Number(currentVolume)!==Number(pos.vol)||String(currentEntry.id||'')!==String(pos.entry_id||'')){result.reason='visible_entry_identity_mismatch';return result;}
+  if(session.intent!==READER_INTENT.SEQUENTIAL){result.reason='reader_intent_not_sequential';return result;}
+  if(!readerSessionOwnsVisibleReader(activeReaderSession)){result.reason='session_does_not_own_visible_reader';return result;}
+  if(String(pos.supplement_id||'')!==String(activeReaderSession.supplement_id||'')){result.reason='supplement_identity_mismatch';return result;}
+  if(validJourneySourceMode(pos.source_mode)&&(String(activeReaderSession.source_mode||'')!==String(pos.source_mode)||String(supplementMode)!==String(pos.source_mode))){result.reason='source_mode_mismatch';return result;}
+  if(expectedAuthorityEpoch!=null&&session.authority_epoch!==Math.max(0,Number(expectedAuthorityEpoch)||0)){result.reason='authority_epoch_mismatch';return result;}
+  const sc=document.getElementById('reader-scroll');if(!sc){result.reason='reader_scroll_missing';return result;}
+  const sr=sc.getBoundingClientRect(),max=Math.max(0,sc.scrollHeight-sc.clientHeight),scrollTop=Math.max(0,Number(sc.scrollTop)||0),entryFraction=max>0?clamp01(scrollTop/max):0,epsilon=4,captureLine=8;
+  const captured=captureSemanticReadingPosition();
+  if(captured)result.captured_top_anchor={vol:captured.vol,entry_id:captured.entry_id,supplement_id:captured.supplement_id||null,para_id:captured.para_id||null,fraction_within_paragraph:captured.fraction_within_paragraph,fallback_entry_fraction:captured.fallback_entry_fraction};
+  result.scroll={scroll_top:scrollTop,max_scroll:max,client_height:Number(sc.clientHeight)||Math.max(0,sr.bottom-sr.top),entry_fraction:entryFraction,at_top:scrollTop<=epsilon,at_bottom:(max-scrollTop)<=epsilon,capture_line_px:captureLine,epsilon_px:epsilon};
+  if(!pos.para_id){
+    const wanted=clamp01(pos.fallback_entry_fraction),diff=Math.abs(entryFraction-wanted);
+    result.target_geometry={requested_entry_fraction:wanted,actual_entry_fraction:entryFraction,difference:diff};
+    if(diff<=0.015){result.ok=true;result.classification=RESUME_RESTORE_CLASS.ENTRY;result.reason='entry_fraction_verified';}
+    else{result.classification=RESUME_RESTORE_CLASS.GEOMETRY;result.reason='entry_fraction_mismatch';}
+    return result;
+  }
+  const rawFraction=Number(pos.fraction_within_paragraph);
+  if(!Number.isFinite(rawFraction)||rawFraction<0||rawFraction>1){result.classification=RESUME_RESTORE_CLASS.INVALID_FRACTION;result.reason='paragraph_fraction_invalid';return result;}
+  const frag=fragmentEl(pos.para_id);
+  if(!frag||String(frag.dataset&&frag.dataset.paraId||'')!==String(pos.para_id)){result.classification=RESUME_RESTORE_CLASS.NOT_FOUND;result.reason='target_paragraph_not_found';return result;}
+  const r=frag.getBoundingClientRect(),relTop=r.top-sr.top,relBottom=r.bottom-sr.top,targetPoint=relTop+(r.height*rawFraction),clientHeight=Number(sc.clientHeight)||Math.max(0,sr.bottom-sr.top);
+  const paragraphIntersects=relBottom>=-epsilon&&relTop<=clientHeight+epsilon,targetPointVisible=targetPoint>=-epsilon&&targetPoint<=clientHeight+epsilon;
+  result.target_geometry={para_id:String(pos.para_id),paragraph_top_px:relTop,paragraph_bottom_px:relBottom,paragraph_height_px:r.height,target_fraction:rawFraction,target_point_px:targetPoint,target_point_visible:targetPointVisible,paragraph_intersects_viewport:paragraphIntersects};
+  if(!paragraphIntersects||!targetPointVisible){result.classification=RESUME_RESTORE_CLASS.NOT_VISIBLE;result.reason='requested_target_point_not_visible';return result;}
+  if(Math.abs(targetPoint-captureLine)<=epsilon){result.ok=true;result.classification=RESUME_RESTORE_CLASS.EXACT;result.reason='requested_target_aligned_to_capture_line';return result;}
+  if(result.scroll.at_top&&targetPoint<captureLine-epsilon){result.ok=true;result.classification=RESUME_RESTORE_CLASS.TOP;result.reason='requested_target_verified_under_top_boundary_clamp';return result;}
+  if(result.scroll.at_bottom&&targetPoint>captureLine+epsilon){result.ok=true;result.classification=RESUME_RESTORE_CLASS.BOTTOM;result.reason='requested_target_verified_under_bottom_boundary_clamp';return result;}
+  result.classification=RESUME_RESTORE_CLASS.GEOMETRY;result.reason='target_visible_but_not_at_requested_alignment_or_legitimate_boundary';return result;
+}
+function resumePostconditionsMatch(pos,preflight=null,expectedAuthorityEpoch=null){return resumeRestoreVerification(pos,preflight,expectedAuthorityEpoch);}
+function resumeDiagnosticIdentity(pos){
+  if(!pos)return null;
+  return {schema:pos.schema||null,vol:Number(pos.vol)||null,entry_id:pos.entry_id||null,supplement_id:pos.supplement_id||null,para_id:pos.para_id||null,stable_ref:pos.stable_ref||null,source_mode:pos.source_mode||null,authority_epoch:Math.max(0,Number(pos.authority_epoch)||0),confirmation_status:pos.confirmation_status||null,fraction_within_paragraph:pos.fraction_within_paragraph,fallback_entry_fraction:pos.fallback_entry_fraction};
 }
 async function resumeReading(opts={}) {
   if(resumeReadingBusy)return false;
   const txId=`resume-${Date.now()}-${++resumeTransactionSerial}`;
   setResumeReadingBusy(true);
-  let pos=null,preflight=null,openedSessionId=null,commitCompleted=false;
+  let pos=null,originalMain=null,preflight=null,openedSessionId=null,commitCompleted=false,restoreVerification=null,committedSnapshot=null,commitResult=null,liveTargetInstalled=false;
   try{
     pos=await dbGet('reading_pos','main');
     if(!pos){showToast('Aucune position de lecture suivie n’est enregistrée.');return false;}
+    originalMain=pos;
     preflight=await preflightResumePosition(pos,{ignoreConfirmation:!!opts.confirmLegacy});
     if(preflight.status==='NEEDS_CONFIRMATION'){await renderHome();return false;}
     if(!['READY','RECOVERED_EXACT'].includes(preflight.status)){showToast(resumeFailureMessage(preflight.status));return false;}
-    const originalMain=pos;
     pos=preflight.position||pos;
     const confirmingLegacy=!!(opts.confirmLegacy&&originalMain.confirmation_status==='needs_confirmation'&&preflight.status==='READY');
     if(confirmingLegacy){
-      // Confirmation metadata remains in-memory until the exact visible target has opened and
-      // passed all postconditions. Failure before commit must leave the old main byte-for-byte untouched.
+      // Confirmation metadata remains in-memory until the exact semantic target has opened,
+      // passed boundary-aware verification and committed atomically.
       pos=Object.assign({},pos,{schema:READING_POSITION_SCHEMA,confirmation_status:'confirmed',journey_provenance:pos.journey_provenance||'legacy_v2_confirmed',confirmed_at:Date.now()});
     }
     applyJourneySourceModeForReader(pos);
@@ -3844,31 +3929,38 @@ async function resumeReading(opts={}) {
     await openEntry(pos.vol,pos.entry_id,'home',{restorePosition:pos,supplementId:pos.supplement_id||null,intent:readerIntentForAction('RESUME'),authorityEpoch:Math.max(0,Number(originalMain.authority_epoch)||0),deferSessionPersistence:true});
     openedSessionId=activeReaderSession&&activeReaderSession.session_id||null;
     await waitReaderFrames(3);
-    if(!resumePostconditionsMatch(pos,preflight)){
-      const e=new Error('Resume postconditions failed');e.name='LDCResumePostconditionError';throw e;
-    }
+    restoreVerification=resumePostconditionsMatch(pos,preflight,Math.max(0,Number(originalMain.authority_epoch)||0));
+    if(!restoreVerification.ok){const e=new Error('Resume postconditions failed: '+restoreVerification.classification+' / '+restoreVerification.reason);e.name='LDCResumePostconditionError';throw e;}
     if(!activeReaderSession||activeReaderSession.session_id!==openedSessionId){const e=new Error('Resume session lost before commit');e.name='LDCResumeCommitError';throw e;}
-    const committedPos=captureSemanticReadingPosition();
-    const rawSnapshot=makeReaderPositionSnapshot(committedPos,true);
+    // The requested semantic target is authoritative. Never replace it with whichever paragraph
+    // happens to cross the fixed top+8px capture line when scrollTop is boundary-clamped.
+    const targetForCommit=Object.assign({},pos,{fallback_entry_fraction:restoreVerification.scroll?restoreVerification.scroll.entry_fraction:pos.fallback_entry_fraction,updated_at:Date.now()});
+    const rawSnapshot=makeReaderPositionSnapshot(targetForCommit,true);
     if(!rawSnapshot){const e=new Error('Resume commit position unavailable');e.name='LDCResumeCommitError';throw e;}
-    const committedSnapshot=confirmingLegacy?Object.freeze(Object.assign({},rawSnapshot,{journey_provenance:pos.journey_provenance||'legacy_v2_confirmed',confirmed_at:pos.confirmed_at||Date.now()})):rawSnapshot;
+    committedSnapshot=confirmingLegacy?Object.freeze(Object.assign({},rawSnapshot,{journey_provenance:pos.journey_provenance||'legacy_v2_confirmed',confirmed_at:pos.confirmed_at||Date.now()})):rawSnapshot;
     // Keep ordinary Reader persistence suspended through the explicit transaction commit.
     // Only this commit may bypass the barrier; scroll/lifecycle writes remain denied.
-    const commitResult=preflight.status==='RECOVERED_EXACT'
+    commitResult=preflight.status==='RECOVERED_EXACT'
       ? await commitRecoveredReadingMain(originalMain,pos,committedSnapshot,preflight.recovery&&preflight.recovery.classification)
       : await persistReaderSnapshot(committedSnapshot,{requireActive:true,allowSuspendedCommit:true});
     if(!commitResult||commitResult.written!==true||(preflight.status!=='RECOVERED_EXACT'&&commitResult.update_main!==true)){const e=new Error('Resume commit rejected: '+String(commitResult&&commitResult.reason||'unknown'));e.name='LDCResumeCommitError';throw e;}
     commitCompleted=true;
-    // Once the authoritative main commit succeeded, never report a rollback-style failure merely
-    // because the ephemeral ReaderSession disappeared afterward. Navigation is inert during Resume,
-    // but this makes the transaction truthful even under an unexpected post-commit lifecycle race.
     const sessionStillActive=!!(activeReaderSession&&activeReaderSession.session_id===openedSessionId);
-    if(sessionStillActive)activeReaderSession.persistence_suspended=false;
-    window.__ldcLastResumeDiagnostic={tx_id:txId,status:'SUCCESS',target:{vol:pos.vol,entry_id:pos.entry_id,para_id:pos.para_id||null,supplement_id:pos.supplement_id||null},session_id:openedSessionId,session_still_active:sessionStillActive,source_mode:supplementMode,semantic_restore:pos.para_id?'EXACT_PARAGRAPH':'ENTRY_FRACTION',recovery_classification:preflight.recovery&&preflight.recovery.classification||LEGACY_READING_RECOVERY_CLASS.COHERENT,main_write_authorized:sessionStillActive?readerSessionMayWriteMain(activeReaderSession):false,commit_result:commitResult,at:new Date().toISOString()};
+    if(sessionStillActive){
+      if(scrollTimer){clearTimeout(scrollTimer);scrollTimer=null;}
+      const authoritativeEpoch=Math.max(0,Number(activeReaderSession.authority_epoch)||Number(commitResult.authority_epoch)||Number(committedSnapshot.authority_epoch)||0);
+      const installed=installResumeSemanticTargetLock(Object.assign({},committedSnapshot,{authority_epoch:authoritativeEpoch}),activeReaderSession);
+      liveTargetInstalled=!!installed;
+      // Persistence is released only after exact target installation. Delayed programmatic scroll,
+      // lifecycle, resize and text-size events continue to use this lock until explicit user scroll.
+      activeReaderSession.persistence_suspended=false;
+    }
+    window.__ldcLastResumeDiagnostic={tx_id:txId,status:'SUCCESS',preflight_status:preflight.status,original_saved_identity:resumeDiagnosticIdentity(originalMain),resolved_target:resumeDiagnosticIdentity(pos),requested_target:{vol:pos.vol,entry_id:pos.entry_id,para_id:pos.para_id||null,supplement_id:pos.supplement_id||null,fraction_within_paragraph:pos.fraction_within_paragraph,source_mode:pos.source_mode||null},restore_verification:restoreVerification,committed_target:committedSnapshot?{vol:committedSnapshot.vol,entry_id:committedSnapshot.entry_id,para_id:committedSnapshot.para_id||null,supplement_id:committedSnapshot.supplement_id||null,fraction_within_paragraph:committedSnapshot.fraction_within_paragraph,source_mode:committedSnapshot.source_mode,authority_epoch:sessionStillActive?activeReaderSession.authority_epoch:committedSnapshot.authority_epoch}:null,session_id:openedSessionId,session_still_active:sessionStillActive,live_target_installed:liveTargetInstalled,source_mode:supplementMode,recovery_classification:preflight.recovery&&preflight.recovery.classification||LEGACY_READING_RECOVERY_CLASS.COHERENT,main_write_authorized:sessionStillActive?readerSessionMayWriteMain(activeReaderSession):false,commit_result:commitResult,at:new Date().toISOString()};
     return true;
   }catch(e){
     console.warn('LDC: Resume transaction failed',txId,e);
-    window.__ldcLastResumeDiagnostic={tx_id:txId,status:'FAILURE',classification:e&&e.name||'OPEN_REJECTED',message:String(e&&e.message||e),target:pos?{vol:pos.vol,entry_id:pos.entry_id,para_id:pos.para_id||null,supplement_id:pos.supplement_id||null}:null,commit_completed:commitCompleted,at:new Date().toISOString()};
+    window.__ldcLastResumeDiagnostic={tx_id:txId,status:'FAILURE',classification:e&&e.name||'OPEN_REJECTED',message:String(e&&e.message||e),preflight_status:preflight&&preflight.status||null,original_saved_identity:resumeDiagnosticIdentity(originalMain),resolved_target:resumeDiagnosticIdentity(pos),requested_target:pos?{vol:pos.vol,entry_id:pos.entry_id,para_id:pos.para_id||null,supplement_id:pos.supplement_id||null,fraction_within_paragraph:pos.fraction_within_paragraph,source_mode:pos.source_mode||null}:null,restore_verification:restoreVerification,committed_target:committedSnapshot?{vol:committedSnapshot.vol,entry_id:committedSnapshot.entry_id,para_id:committedSnapshot.para_id||null,supplement_id:committedSnapshot.supplement_id||null}:null,commit_result:commitResult,commit_completed:commitCompleted,live_target_installed:liveTargetInstalled,session_id:openedSessionId,at:new Date().toISOString()};
+    clearResumeSemanticTargetLock();
     if(activeReaderSession&&(!openedSessionId||activeReaderSession.session_id===openedSessionId))activeReaderSession=null;
     pendingSemanticPosition=null;
     readerOriginContext=null;
@@ -4256,6 +4348,7 @@ async function openEntry(vol, entryId, backDest, opts={}) {
     activeReaderSession.supplement_id=focusedSupplement&&focusedSupplement.supplement_id||null;
     activeReaderSession.source_mode=supplementMode;
   }else{
+    clearResumeSemanticTargetLock();
     activeReaderSession=createReaderSession(requestedIntent,vol,currentEntry.id,focusedSupplement&&focusedSupplement.supplement_id||null,inheritedAuthorityEpoch);
   }
   if(activeReaderSession&&opts.deferSessionPersistence===true)activeReaderSession.persistence_suspended=true;
@@ -4611,6 +4704,13 @@ async function navEntry(dir) {
 let scrollTimer = null;
 async function onReaderScroll() {
   if (semanticRestoreInProgress) return;
+  if(activeReaderSession&&activeReaderSession.persistence_suspended)return;
+  const locked=resumeLockedSemanticPosition();
+  if(locked){
+    const armedAt=Number(resumeSemanticTargetLock.user_scroll_armed_at)||0;
+    if(!resumeSemanticTargetLock.user_scroll_armed||!armedAt||(Date.now()-armedAt)>1500){resumeSemanticTargetLock.user_scroll_armed=false;resumeSemanticTargetLock.user_scroll_armed_at=0;return;}
+    clearResumeSemanticTargetLock();
+  }
   const pos=captureSemanticReadingPosition();
   const snapshot=makeReaderPositionSnapshot(pos,true);
   clearTimeout(scrollTimer);
@@ -4621,6 +4721,18 @@ async function onReaderScroll() {
     catch(e){console.warn('LDC: semantic reading position not persisted',e);}
     if(currentReaderIntent()===READER_INTENT.CONSULTATION)scheduleJourneyUiRefresh(50);
   }, 400);
+}
+const readerScrollIntentEl=document.getElementById('reader-scroll');
+let readerMouseScrollPointer=null;
+if(readerScrollIntentEl){
+  readerScrollIntentEl.addEventListener('touchmove',markReaderUserScrollIntent,{passive:true});
+  readerScrollIntentEl.addEventListener('pointerdown',e=>{if(e.pointerType==='mouse')readerMouseScrollPointer={pointer_id:e.pointerId,start_y:Number(e.clientY)||0};},{passive:true});
+  readerScrollIntentEl.addEventListener('pointermove',e=>{if(readerMouseScrollPointer&&e.pointerType==='mouse'&&e.pointerId===readerMouseScrollPointer.pointer_id&&(e.buttons&1)&&Math.abs((Number(e.clientY)||0)-readerMouseScrollPointer.start_y)>3)markReaderUserScrollIntent();},{passive:true});
+  const clearReaderMouseScrollPointer=e=>{if(!readerMouseScrollPointer||e.pointerId===readerMouseScrollPointer.pointer_id)readerMouseScrollPointer=null;};
+  readerScrollIntentEl.addEventListener('pointerup',clearReaderMouseScrollPointer,{passive:true});
+  readerScrollIntentEl.addEventListener('pointercancel',clearReaderMouseScrollPointer,{passive:true});
+  readerScrollIntentEl.addEventListener('wheel',markReaderUserScrollIntent,{passive:true});
+  readerScrollIntentEl.addEventListener('keydown',e=>{if(['ArrowDown','ArrowUp','PageDown','PageUp','Home','End',' '].includes(e.key))markReaderUserScrollIntent();});
 }
 
 // Backward-compatible wrapper used only by legacy/import code if encountered.
@@ -5715,51 +5827,70 @@ async function requestRelocateReadingJourney(opts={}){
   if(!actionStartSnapshot)return false;
   const initiatingSessionId=String(activeReaderSession.session_id);
   const actionKind=String(opts.actionKind||'RELOCATE_HERE');
+  const replacingRecoverable=actionKind==='REPLACE_RECOVERABLE_MAIN';
+  const recoverIntent=replacingRecoverable&&journeyRecoverableReplacementIntent?Object.assign({},journeyRecoverableReplacementIntent):null;
+  const reject=async(message,{refresh=true}={})=>{
+    if(replacingRecoverable)clearJourneyPointSelectionGuide();
+    if(message)showToast(message);
+    if(refresh)await refreshJourneyUiState({force:true});
+    return false;
+  };
   const previewOldMain=await dbGet('reading_pos','main');
   const previewAuthorityEpoch=Math.max(0,Number(previewOldMain&&previewOldMain.authority_epoch)||0);
   const previewMainIdentity=journeyMainCacheKey(previewOldMain);
   const previewHealth=await journeyMainHealth(previewOldMain,{force:true});
   const previewMainNow=await dbGet('reading_pos','main');
   const previewNowEpoch=Math.max(0,Number(previewMainNow&&previewMainNow.authority_epoch)||0);
-  if(!activeReaderSession||String(activeReaderSession.session_id)!==initiatingSessionId||!readerSessionOwnsVisibleReader(activeReaderSession)||!journeyVisibleSnapshotStillMatches(actionStartSnapshot)){showToast('Le passage affiché a changé. Vérifiez-le puis réessayez.');await refreshJourneyUiState({force:true});return false;}
-  if(actionKind==='START_HERE'&&previewMainNow){showToast('Une lecture suivie existe maintenant. Vérifiez votre position puis réessayez.');await refreshJourneyUiState({force:true});return false;}
-  if(actionKind==='RELOCATE_HERE'&&previewOldMain&&previewMainNow&&previewNowEpoch!==previewAuthorityEpoch){showToast('Votre lecture suivie a été modifiée ailleurs. Vérifiez-la puis réessayez.');await refreshJourneyUiState({force:true});return false;}
-  if(actionKind==='REPLACE_UNHEALTHY_MAIN'&&journeyMainCacheKey(previewMainNow)!==previewMainIdentity){showToast('Votre ancienne position a changé. Vérifiez-la puis réessayez.');await refreshJourneyUiState({force:true});return false;}
+  if(!activeReaderSession||String(activeReaderSession.session_id)!==initiatingSessionId||!readerSessionOwnsVisibleReader(activeReaderSession)||!journeyVisibleSnapshotStillMatches(actionStartSnapshot))return reject('Le passage affiché a changé. Vérifiez-le puis réessayez.');
+  if(actionKind==='START_HERE'&&previewMainNow)return reject('Une lecture suivie existe maintenant. Vérifiez votre position puis réessayez.');
+  if(actionKind==='RELOCATE_HERE'&&previewOldMain&&previewMainNow&&previewNowEpoch!==previewAuthorityEpoch)return reject('Votre lecture suivie a été modifiée ailleurs. Vérifiez-la puis réessayez.');
+  if(actionKind==='REPLACE_UNHEALTHY_MAIN'&&journeyMainCacheKey(previewMainNow)!==previewMainIdentity)return reject('Votre ancienne position a changé. Vérifiez-la puis réessayez.');
+  if(replacingRecoverable){
+    if(!recoverIntent||recoverIntent.origin!=='HOME_CHOOSE_OTHER')return reject('Ce changement doit être demandé depuis « Choisir un autre point de lecture » sur l’Accueil.');
+    if(!previewOldMain||previewHealth.category!=='RECOVERABLE')return reject('Votre ancienne position n’est plus dans l’état attendu. Vérifiez-la depuis l’Accueil.');
+    if(recoverIntent.main_identity!==previewMainIdentity||Number(recoverIntent.authority_epoch||0)!==previewAuthorityEpoch)return reject('Votre lecture suivie a changé depuis votre demande. Rien n’a été modifié.');
+    if(journeyMainCacheKey(previewMainNow)!==previewMainIdentity||previewNowEpoch!==previewAuthorityEpoch)return reject('Votre lecture suivie a changé pendant la vérification. Rien n’a été modifié.');
+  }
   const pos=captureSemanticReadingPosition();
   const snapshot=makeReaderPositionSnapshot(pos,true);
-  if(!snapshot||!journeyPositionsExactlyEquivalent(actionStartSnapshot,snapshot))return false;
-  if(actionKind==='START_HERE'&&previewOldMain){showToast('Une lecture suivie existe maintenant. Vérifiez votre position puis réessayez.');await refreshJourneyUiState({force:true});return false;}
-  if(actionKind==='RELOCATE_HERE'&&previewHealth.category!=='HEALTHY'){showToast('Votre position de lecture a changé. Vérifiez-la puis réessayez.');await refreshJourneyUiState({force:true});return false;}
-  if(actionKind==='REPLACE_UNHEALTHY_MAIN'&&previewHealth.category!=='UNHEALTHY'){showToast('Votre ancienne position a changé. Vérifiez-la puis réessayez.');await refreshJourneyUiState({force:true});return false;}
-  if(previewOldMain&&journeyPositionsExactlyEquivalent(previewOldMain,snapshot)){showToast('Cette position correspond déjà à votre lecture suivie. Utilisez « Reprendre ma lecture suivie ici ».');await refreshJourneyUiState({force:true});return false;}
+  if(!snapshot||!journeyPositionsExactlyEquivalent(actionStartSnapshot,snapshot))return reject('Le passage affiché a changé. Rien n’a été modifié.');
+  if(actionKind==='START_HERE'&&previewOldMain)return reject('Une lecture suivie existe maintenant. Vérifiez votre position puis réessayez.');
+  if(actionKind==='RELOCATE_HERE'&&previewHealth.category!=='HEALTHY')return reject('Votre position de lecture a changé. Vérifiez-la puis réessayez.');
+  if(actionKind==='REPLACE_UNHEALTHY_MAIN'&&previewHealth.category!=='UNHEALTHY')return reject('Votre ancienne position a changé. Vérifiez-la puis réessayez.');
+  if(replacingRecoverable&&previewHealth.category!=='RECOVERABLE')return reject('Votre ancienne position a changé. Vérifiez-la puis réessayez.');
+  if(previewOldMain&&journeyPositionsExactlyEquivalent(previewOldMain,snapshot))return reject('Cette position correspond déjà à votre lecture suivie. Utilisez « Reprendre ma lecture suivie ici ».');
   const oldLabel=previewOldMain&&previewOldMain.label?previewOldMain.label:'aucune position';
   const newLabel=snapshot.label||`Tome ${snapshot.vol}`;
   let prompt='';
   if(actionKind==='START_HERE')prompt=`Commencer votre lecture suivie ici ?\n\nNouvelle position : ${newLabel}`;
   else if(actionKind==='REPLACE_UNHEALTHY_MAIN')prompt=`Choisir ce passage comme nouvelle lecture suivie ?\n\nVotre ancienne position ne peut pas être utilisée automatiquement. Elle sera conservée pour récupération, sans être restaurée au hasard.\n\nNouvelle position : ${newLabel}`;
+  else if(replacingRecoverable)prompt=`Choisir ce passage comme nouvelle lecture suivie ?\n\nVous avez demandé ce changement depuis l’Accueil. Votre ancienne position sera conservée pour récupération et ne sera remplacée qu’après cette confirmation.\n\nNouvelle position : ${newLabel}`;
   else prompt=`Déplacer votre lecture suivie ?\n\nActuellement : ${oldLabel}\nNouvelle position : ${newLabel}`;
   const ok=window.confirm(prompt);
-  if(!ok)return false;
+  if(!ok){if(replacingRecoverable)clearJourneyPointSelectionGuide();return false;}
   await readingPositionWriteChain.catch(()=>{});
-  // Protected R5 ordering: re-read after queue drain before authority transfer.
+  // Protected ordering: re-read after queue drain before any authority transfer.
   const oldMain=await dbGet('reading_pos','main');
   const postHealth=await journeyMainHealth(oldMain,{force:true});
   const postAuthorityEpoch=Math.max(0,Number(oldMain&&oldMain.authority_epoch)||0);
-  if(!journeyVisibleSnapshotStillMatches(snapshot)){showToast('Le passage affiché a changé pendant l’opération. Rien n’a été modifié.');await refreshJourneyUiState({force:true});return false;}
-  if(previewOldMain&&oldMain&&postAuthorityEpoch!==previewAuthorityEpoch){showToast('Votre lecture suivie a été modifiée ailleurs pendant la confirmation. Rien n’a été modifié.');await refreshJourneyUiState({force:true});return false;}
-  if(actionKind==='REPLACE_UNHEALTHY_MAIN'&&journeyMainCacheKey(oldMain)!==previewMainIdentity){showToast('Votre ancienne position a changé pendant la confirmation. Rien n’a été modifié.');await refreshJourneyUiState({force:true});return false;}
-  if(actionKind==='START_HERE'&&oldMain){showToast('Votre position de lecture a changé pendant la confirmation. Rien n’a été modifié.');return false;}
-  if(actionKind==='RELOCATE_HERE'&&postHealth.category!=='HEALTHY'){showToast('Votre position de lecture a changé pendant la confirmation. Rien n’a été modifié.');return false;}
-  if(actionKind==='REPLACE_UNHEALTHY_MAIN'&&postHealth.category!=='UNHEALTHY'){showToast('Votre ancienne position a changé pendant la confirmation. Rien n’a été modifié.');return false;}
+  if(!journeyVisibleSnapshotStillMatches(snapshot))return reject('Le passage affiché a changé pendant l’opération. Rien n’a été modifié.');
+  if(previewOldMain&&oldMain&&postAuthorityEpoch!==previewAuthorityEpoch)return reject('Votre lecture suivie a été modifiée ailleurs pendant la confirmation. Rien n’a été modifié.');
+  if(actionKind==='REPLACE_UNHEALTHY_MAIN'&&journeyMainCacheKey(oldMain)!==previewMainIdentity)return reject('Votre ancienne position a changé pendant la confirmation. Rien n’a été modifié.');
+  if(replacingRecoverable&&(journeyMainCacheKey(oldMain)!==previewMainIdentity||postAuthorityEpoch!==previewAuthorityEpoch))return reject('Votre ancienne position a changé pendant la confirmation. Rien n’a été modifié.');
+  if(actionKind==='START_HERE'&&oldMain)return reject('Votre position de lecture a changé pendant la confirmation. Rien n’a été modifié.',{refresh:false});
+  if(actionKind==='RELOCATE_HERE'&&postHealth.category!=='HEALTHY')return reject('Votre position de lecture a changé pendant la confirmation. Rien n’a été modifié.',{refresh:false});
+  if(actionKind==='REPLACE_UNHEALTHY_MAIN'&&postHealth.category!=='UNHEALTHY')return reject('Votre ancienne position a changé pendant la confirmation. Rien n’a été modifié.',{refresh:false});
+  if(replacingRecoverable&&postHealth.category!=='RECOVERABLE')return reject('Votre ancienne position a changé pendant la confirmation. Rien n’a été modifié.',{refresh:false});
   const newEpoch=Math.max(0,Number(oldMain&&oldMain.authority_epoch)||0)+1,relocatedAt=Date.now();
   const authoritativeSnapshot=Object.freeze(Object.assign({},snapshot,{authority_epoch:newEpoch}));
   const per=Object.assign({},authoritativeSnapshot,{key:readingPosKey(authoritativeSnapshot.vol,authoritativeSnapshot.entry_id,authoritativeSnapshot.supplement_id||null),schema:READING_POSITION_SCHEMA});
   const previous=oldMain?Object.assign({},oldMain,{key:'main_previous',saved_for_relocation_at:relocatedAt,replaced_by_authority_epoch:newEpoch,previous_health_status:postHealth.status,undo_restore_allowed:postHealth.category==='HEALTHY'}):{key:'main_previous',schema:READING_POSITION_SCHEMA,no_previous:true,saved_for_relocation_at:relocatedAt,replaced_by_authority_epoch:newEpoch,previous_health_status:'NO_MAIN',undo_restore_allowed:true};
-  const provenance=actionKind==='START_HERE'?'explicit_start':(actionKind==='REPLACE_UNHEALTHY_MAIN'?'explicit_unhealthy_replacement':'explicit_relocation');
+  const provenance=actionKind==='START_HERE'?'explicit_start':(actionKind==='REPLACE_UNHEALTHY_MAIN'?'explicit_unhealthy_replacement':(replacingRecoverable?'explicit_recoverable_replacement':'explicit_relocation'));
   const main=Object.assign({},authoritativeSnapshot,{key:'main',schema:READING_POSITION_SCHEMA,confirmation_status:'confirmed',journey_provenance:provenance,relocated_at:relocatedAt});
   await dbPutManyAtomic('reading_pos',[per,previous,main]);
   readingPositionCommittedSequence.set(String(authoritativeSnapshot.session_id),Number(authoritativeSnapshot.save_sequence)||0);
   if(activeReaderSession&&activeReaderSession.session_id===authoritativeSnapshot.session_id){activeReaderSession.intent=READER_INTENT.SEQUENTIAL;activeReaderSession.source_mode=authoritativeSnapshot.source_mode;activeReaderSession.authority_epoch=newEpoch;}
+  if(replacingRecoverable)clearJourneyPointSelectionGuide();
   journeyMainHealthCache=null;
   updateReaderIntentIndicator();
   focusJourneyStatusAfterCommit();
@@ -7716,7 +7847,7 @@ async function ensureTextLevelSetting() {
   return migrated;
 }
 
-function captureReaderSizeAnchor() { return captureSemanticReadingPosition(); }
+function captureReaderSizeAnchor() { return semanticPositionForPersistence(); }
 function restoreReaderSizeAnchor(anchor) { if(anchor) restoreSemanticReadingPosition(anchor); }
 
 async function showSizeSheet() {
