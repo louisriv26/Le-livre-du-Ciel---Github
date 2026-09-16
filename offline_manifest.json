@@ -1,5 +1,5 @@
 {
-  "app_version": "v2.19.104-R1B",
+  "app_version": "v2.19.105-R1B",
   "asset_count": 202,
   "assets": [
     {
@@ -1040,7 +1040,7 @@
   "fast_mode_authority_sha256": "09590abe803b99dadf696fbecd64fb88b4fee9a05b38280549b4abcb920e0c78",
   "legacy_cache_family_prefix": "ldc-le-livre-du-ciel-offline-v",
   "m7rc_fixed_point": true,
-  "page_worker_revision": "ldc-v2.19.104-R1B-sw-revision-coherence-r1",
+  "page_worker_revision": "ldc-v2.19.105-R1B-update-reopen-guidance-r1",
   "post_r6_date_id_a2_fixed_point": {
     "a2_sha256": "dd034a4d4bb329254818c3e62fd629c9b64c90f9d4bd533de9f6ed99247cb1d8",
     "date_id_sha256": "ed5bf462c47b8fb5a41f7c81591257d6e99f94bae08628aa27e5f7d667020c2a",
@@ -1054,7 +1054,7 @@
   "predecessor_of_v72_zip_sha256": "ed925239f570293b54a4565a2666dc50ac71e43aa149b3567d8a55364e550d8c",
   "predecessor_of_v73_zip_sha256": "825e08ea96a8cf6a245cd56c47e30f3eb4a04bb838fc2e4d3940f8bd2f3f974c",
   "predecessor_semantic_authority_sha256": "d1a7450adf36368cc8609e21ccde3c51e0b3c90dc4f3c3305534cb40104d56f4",
-  "rebuild_status": "V100_NAVIGATION_TARGET_FAILSAFE_R1__SECOND_BLIND_CHALLENGE_DEFECT_CORRECTED__STALE_SEARCH_AND_PARAGRAPH_TARGETS_FAIL_CLOSED_TO_VISIBLE_ENTRY_START__V99_SEMANTIC_REJECTION_FIX_RACE_BOUND_TO_VISIBLE_ENTRY__V98_ENTRY_START_READER_MEASURE_OFFLINE_STATUS_CONTRACTS_PRESERVED__CORPUS_SEARCH_USER_DATA_AND_PERSISTENT_OFFLINE_CONTENT_BINDING_UNCHANGED__PHYSICAL_DEVICE_CAMPAIGN_REQUIRED__DO_NOT_PUBLICLY_RELEASE",
+  "rebuild_status": "V105_UPDATE_REOPEN_GUIDANCE_R1__USER_VISIBLE_UPDATE_BANNER_EXPLAINS_FULL_CLOSE_AND_REOPEN_FALLBACK__ACTIVATING_AND_PUBLISHED_NOT_ACTIVE_STATES_SHOW_SAME_RECOVERY_GUIDANCE__V104_SW_REVISION_COHERENCE_PRESERVED__NO_CORPUS_SEARCH_READER_OR_USER_DATA_CHANGE__PUBLIC_DEPLOYMENT_REQUIRES_PHYSICAL_UPDATE_CONFIRMATION",
   "retention_contract": {
     "clear_policy": "CURRENT_SCOPE_ONLY_FOR_SHARED_LEGACY_CACHES",
     "copy_migration_required": false,

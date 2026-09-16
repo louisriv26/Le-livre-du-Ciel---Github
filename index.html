@@ -1768,7 +1768,7 @@ html[data-text-level="xlarge"]{--reader-measure:823px;--home-offline-title-size:
 
 <!-- Update banner — global, floats above whichever screen is active -->
 <div id="update-banner">
-  <div class="ub-text">Une nouvelle version est disponible.</div>
+  <div class="ub-text">Une nouvelle version est disponible. Appuyez sur <b>Actualiser</b>. Si rien ne change, fermez complètement l’app (ou l’onglet), puis rouvrez-la.</div>
   <button class="ub-refresh" onclick="reloadForUpdate()">Actualiser</button>
   <button class="ub-dismiss" onclick="document.getElementById('update-banner').classList.remove('show')" aria-label="Fermer">×</button>
 </div>
@@ -2200,7 +2200,7 @@ html[data-text-level="xlarge"]{--reader-measure:823px;--home-offline-title-size:
         <div id="offline-failed-list" class="help-text sem-floor-12" style="display:none;color:var(--muted);margin:-2px 0 10px;white-space:pre-wrap;"></div>
         <div style="display:flex;gap:8px;flex-wrap:wrap;"><button class="btn-secondary" style="flex:1;min-width:160px;" onclick="startOfflinePreparation()" id="offline-prepare-btn"><i class="ti ti-download"></i> Préparer hors ligne</button><button class="btn-secondary" style="display:none;" onclick="cancelOfflinePreparation()" id="offline-cancel-btn"><i class="ti ti-x"></i> Annuler</button><button class="btn-secondary" style="display:none;" onclick="clearOfflinePreparation()" id="offline-clear-btn"><i class="ti ti-trash"></i> Effacer les caches</button></div>
         <div class="help-divider"></div>
-        <div class="help-text" style="padding:2px 0 8px;">L’application vérifie les mises à jour à l’ouverture, au retour dans l’app, au retour en ligne et périodiquement tant qu’elle reste visible. La vérification de la version publiée et celle du Service Worker sont indépendantes : l’échec temporaire de l’une ne bloque pas l’autre. La page n’est jamais rechargée automatiquement pendant une saisie. Lorsque la bannière apparaît, terminez ou annulez toute saisie en cours puis appuyez sur <b>Actualiser</b>.</div>
+        <div class="help-text" style="padding:2px 0 8px;">L’application vérifie les mises à jour à l’ouverture, au retour dans l’app, au retour en ligne et périodiquement tant qu’elle reste visible. La vérification de la version publiée et celle du Service Worker sont indépendantes : l’échec temporaire de l’une ne bloque pas l’autre. La page n’est jamais rechargée automatiquement pendant une saisie. Lorsque la bannière apparaît, terminez ou annulez toute saisie en cours puis appuyez sur <b>Actualiser</b>. Si la version ne change pas après quelques secondes, fermez complètement l’application (ou l’onglet du navigateur), puis rouvrez-la : cela permet au nouveau Service Worker de prendre définitivement le contrôle sur certains appareils.</div>
         <div class="help-text sem-floor-12" style="padding:0 0 10px;color:var(--muted);" id="update-check-status" role="status" aria-live="polite" aria-atomic="true">État des mises à jour : prêt à vérifier.</div>
         <button class="btn-secondary" style="width:100%;" onclick="manualCheckForUpdate()" id="update-check-btn"><i class="ti ti-refresh"></i> Vérifier les mises à jour</button>
       </div>
@@ -2291,11 +2291,11 @@ html[data-text-level="xlarge"]{--reader-measure:823px;--home-offline-title-size:
    VERSION — single source of truth
    Update this string on every release.
 ═══════════════════════════════════════════════════════ */
-const APP_VERSION = 'v2.19.104-R1B'; // Service Worker revision-coherence repair successor to v103
-const PUBLIC_VERSION = '104';       // single user-facing release number
+const APP_VERSION = 'v2.19.105-R1B'; // Update/reopen guidance successor to v104
+const PUBLIC_VERSION = '105';       // single user-facing release number
 const APP_VERSION_LABEL = `Version ${PUBLIC_VERSION}`;
 const APP_BUILD   = '2026-09-16';
-const SW_CACHE_VERSION = 'ldc-v2.19.104-R1B-sw-revision-coherence-r1';
+const SW_CACHE_VERSION = 'ldc-v2.19.105-R1B-update-reopen-guidance-r1';
 const CORPUS_MANIFEST_SHA256 = '8d831c437fa6c2caa56ac637c3d539279ec24b57711d209b264804cca19c0ab7';
 const DEEP_LINK_SCHEMA = 'ldc-deep-link-v1';
 const READING_POSITION_SCHEMA = 'ldc-reading-position-v3';
@@ -8663,7 +8663,7 @@ async function boot() {
     navigator.serviceWorker.addEventListener('message', handleOfflineSwMessage);
     navigator.serviceWorker.addEventListener('controllerchange', () => {
       updateControllerChangedPending=true;
-      showUpdateAvailable('nouvelle version','La nouvelle version est activée. Enregistrez ou annulez toute saisie en cours, puis appuyez sur Actualiser pour charger la page mise à jour.');
+      showUpdateAvailable('nouvelle version','La nouvelle version est activée. Enregistrez ou annulez toute saisie en cours, puis appuyez sur Actualiser pour charger la page mise à jour.');setUpdateBannerText('La nouvelle version est activée. Appuyez sur <b>Actualiser</b>. Si la page ne change pas, fermez complètement l’app (ou l’onglet), puis rouvrez-la.');
     });
     navigator.serviceWorker.register('./sw.js').then(reg => {
       initOfflineState().catch(()=>{});
@@ -9152,8 +9152,10 @@ function setUpdateStatus(text, toastText=null) {
   if(statusEl)statusEl.textContent=text;
   if(toastText)showToast(toastText);
 }
+function setUpdateBannerText(text){const el=document.querySelector('#update-banner .ub-text');if(el&&text)el.innerHTML=text;}
 function showUpdateAvailable(version, detail='') {
   const b=document.getElementById('update-banner');if(b)b.classList.add('show');
+  setUpdateBannerText('Une nouvelle version est disponible. Appuyez sur <b>Actualiser</b>. Si rien ne change, fermez complètement l’app (ou l’onglet), puis rouvrez-la.');
   setUpdateStatus(detail || `Une nouvelle version (${version}) est disponible.`);
 }
 function updateProbeUrl() {
@@ -9221,13 +9223,13 @@ async function reloadForUpdate() {
   setUpdateStatus('Préparation de la nouvelle version…');
   try {
     const reg=(await navigator.serviceWorker.getRegistration()) || (await navigator.serviceWorker.ready);
-    if(reg.waiting){reg.waiting.postMessage({type:'SKIP_WAITING'});setUpdateStatus('Nouvelle version en cours d’activation. La page ne sera pas interrompue automatiquement ; appuyez de nouveau sur Actualiser lorsque la bannière l’indique.');return {status:'ACTIVATING'};}
+    if(reg.waiting){reg.waiting.postMessage({type:'SKIP_WAITING'});setUpdateStatus('Nouvelle version en cours d’activation. Si elle ne s’affiche pas après quelques secondes, fermez complètement l’app (ou l’onglet), puis rouvrez-la.');setUpdateBannerText('Activation en cours… Si la version ne change pas après quelques secondes, fermez complètement l’app (ou l’onglet), puis rouvrez-la.');return {status:'ACTIVATING'};}
     let published=null;try{published=await fetchPublishedVersion();}catch(e){}
     await reg.update();
     const result=await waitForRegistrationUpdate(reg);
     const waiting=reg.waiting||result.worker;
-    if(waiting){waiting.postMessage({type:'SKIP_WAITING'});setUpdateStatus('Nouvelle version en cours d’activation. La page ne sera pas interrompue automatiquement ; appuyez de nouveau sur Actualiser lorsque la bannière l’indique.');return {status:'ACTIVATING'};}
-    if(published&&published.version!==APP_VERSION){showUpdateAvailable(`Version ${published.publicVersion}`,`Version ${published.publicVersion} est publiée, mais son activation n’est pas encore terminée. Réessayez Actualiser.`);return {status:'PUBLISHED_NOT_ACTIVE'};}
+    if(waiting){waiting.postMessage({type:'SKIP_WAITING'});setUpdateStatus('Nouvelle version en cours d’activation. Si elle ne s’affiche pas après quelques secondes, fermez complètement l’app (ou l’onglet), puis rouvrez-la.');setUpdateBannerText('Activation en cours… Si la version ne change pas après quelques secondes, fermez complètement l’app (ou l’onglet), puis rouvrez-la.');return {status:'ACTIVATING'};}
+    if(published&&published.version!==APP_VERSION){showUpdateAvailable(`Version ${published.publicVersion}`,`Version ${published.publicVersion} est publiée, mais son activation n’est pas encore terminée. Réessayez Actualiser ; si rien ne change, fermez complètement l’app (ou l’onglet), puis rouvrez-la.`);setUpdateBannerText('La nouvelle version est publiée mais pas encore activée. Réessayez <b>Actualiser</b>. Si rien ne change, fermez complètement l’app (ou l’onglet), puis rouvrez-la.');return {status:'PUBLISHED_NOT_ACTIVE'};}
     if(published&&published.version===APP_VERSION){setUpdateStatus(`Version courante confirmée (${APP_VERSION_LABEL}).`);return {status:'CURRENT'};}
     setUpdateStatus('Mise à jour impossible à confirmer pour le moment.');return {status:'UNCONFIRMED'};
   } catch(e) {setUpdateStatus(navigator.onLine===false?'Mise à jour impossible hors ligne.':'Mise à jour impossible à confirmer pour le moment.');return {status:'ERROR'};}
