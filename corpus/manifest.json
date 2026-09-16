@@ -2,15 +2,15 @@
   "app_version": "v2.19.83-R1B",
   "corpus": "livre_du_ciel",
   "corpus_generation_source_app_version_historical": "v2.13.0-R1B",
-  "correction_ledger": "All 36 tomes completed source-boundary reconciliation. EB-17 corrects only two source-page provenance records: Tome 3 / 10 June 1900 ends at PDF page 102, and Tome 5 preface spans pages 1–6 with pages 1;3;5;6 evidenced. Tome 17 / 23 November 1924 now carries direct AFLP photographed hard-copy body authority on printed pages 48–49; the earlier title-only supplied-French-PDF limitation is historical and superseded for current body authority. EB-20 normalises three malformed semicolon source-page records: T3 16 April 1900 = 77–79; T3 27 April 1900 = 82–84; T17 17 May 1925 = 113–119. M4/R2 applies exactly 8 M3-authorised ALIGNÉ paragraph rewrites under stable IDs and introduces no other backbone paragraph mutation. M6/V55 restores three AFLP display-layer dates under stable IDs, preserves IT-PM alternatives as provenance, reconciles M2-0105/M2-0113 metadata, and adds one source-bound SUP-T3 complete entry for the historically bound T15/T16 three-columns discourse at 2 Dec 1922; ALIGNÉ paragraph wording remains unchanged. M9/V56 applies exactly 10 M8-authorized same-slot R3 paragraph replacements across 6 cases and 22 SUP-T4 controlled fragments across 15 cases. Existing paragraph IDs/order remain stable; M2-0021/M2-0134/M2-0351/M2-0364 remain held, M2-0366 no-change, M2-0052 historical hold. Official R6 subsequently applied the exact authorized 169-operation source-critical successor. The post-R6 Date/ID+A2 fixed point made zero French-text mutations. REV6 then applied exactly 16 retained paragraph text changes, 2 governed deletions, 6 speaker reattributions, 1 title update, 34 first-Jesus pointer rebuilds and the governed migration/derived-state rebuilds under authority d1a7450adf36368cc8609e21ccde3c51e0b3c90dc4f3c3305534cb40104d56f4. v67 adds zero corpus/semantic mutations and only reconciles active report/release metadata. v68 changes only reader-facing PRINCIPAL terminology/release bindings; v69 changes only the verified onboarding-count and supplement-speaker summary metadata; v70 replaces the active search retrieval runtime with SEARCH-V2 while preserving canonical/devotional text and governed corpus semantics; v71 repairs SEARCH-V2 displayed-date/reference parsing plus current report/release metadata, with zero canonical/devotional, paragraph-ID/order, speaker, display/flow, supplement-content, user-state-schema, stored-source-mode or migration-algorithm mutation. v72 centralizes the reader-facing provenance model and adds only reader-facing complement provenance fields with zero devotional/search/speaker/display/flow/user-state/migration semantic delta. v73 corrects stale current report/provenance metadata discovered by an independent four-pass re-audit; it makes zero canonical/devotional, paragraph-ID/order, SEARCH-V2, speaker, display/flow, supplement-body, user-state, stored-source-mode or migration-algorithm mutation. v74 applies the frozen FAST Mode BODY0277–0854 authority only: 2,707 authorized entries terminate as 2,700 APPLIED, 6 ALREADY_PRESENT_NOOP and 1 BLOCKED_CONFLICT. It mutates 2,768 surviving canonical paragraph texts, deletes exactly one certified truncated duplicate paragraph (LDC.T32.E0010.P014), adds 278 previously absent certified flow edges, and leaves the blocked LDC.T29.E0003.P068 locus unchanged. v75 deep four-pass report-integrity repair changes zero devotional/canonical text and zero search/speaker/display/flow semantics; it only removes stale current-report ambiguity and rebinds required release/cache/offline metadata. v76 deep four-pass report-integrity repair changes zero devotional/canonical text and zero search-index-payload/ranking/speaker/display/flow semantics; it repairs stale current authority and SEARCH-V2 wrapper/evidence bindings and rebinds required release/cache/offline metadata. v77 authorized renderer successor changes zero devotional/canonical text, zero stable IDs/order, zero speaker/display/flow authority payload and zero SEARCH-V2 payload/ranking semantics; it applies only the authorized speech_model.js visual-topology consumption repair plus mechanically required release/binding wrappers. v78 deep four-pass stale-gate metadata repair changes zero devotional/canonical text and zero search/speaker/display/flow/renderer/user-state semantics; it corrects three obsolete predecessor-candidate physical-device gate labels and mechanically rebinds release/cache/offline/search-wrapper metadata. v79 CONC-LDC-01 Stage 4A changes no canonical/devotional corpus wording or stable IDs/order; it applies only authorized IndexedDB transactional integrity logic in the app shell plus mechanically required release/binding wrappers. v80 Stage 4B changes no canonical/devotional corpus wording or stable IDs/order; it changes only persistent offline-cache retention/reuse logic plus mechanically required release/binding wrappers. v81 BKP-LDC-01 Stage 5B changes no canonical/devotional corpus wording or stable IDs/order; it adds only scalable IndexedDB backup stream/staging/atomic-restore infrastructure plus mechanically required release/binding wrappers. v82 Stage 6 changes no canonical/devotional corpus wording or stable IDs/order; it adds only whole-collection recovery, privacy-safe default diagnostics, guarded explicit update refresh, and mechanically required release/binding wrappers. v83 Stage 7 changes no canonical/devotional corpus wording, stable IDs/order, speaker/display/flow semantics or Search semantics; it adds only a Search accessible name, theme-aware journey-indicator text color, exact zero-size wording, current .ldcbackup Help wording, and mechanically required release/binding wrappers.",
+  "correction_ledger": "All 36 tomes completed source-boundary reconciliation. EB-17 corrects only two source-page provenance records: Tome 3 / 10 June 1900 ends at PDF page 102, and Tome 5 preface spans pages 1–6 with pages 1;3;5;6 evidenced. Tome 17 / 23 November 1924 now carries direct AFLP photographed hard-copy body authority on printed pages 48–49; the earlier title-only supplied-French-PDF limitation is historical and superseded for current body authority. EB-20 normalises three malformed semicolon source-page records: T3 16 April 1900 = 77–79; T3 27 April 1900 = 82–84; T17 17 May 1925 = 113–119. M4/R2 applies exactly 8 M3-authorised ALIGNÉ paragraph rewrites under stable IDs and introduces no other backbone paragraph mutation. M6/V55 restores three AFLP display-layer dates under stable IDs, preserves IT-PM alternatives as provenance, reconciles M2-0105/M2-0113 metadata, and adds one source-bound SUP-T3 complete entry for the historically bound T15/T16 three-columns discourse at 2 Dec 1922; ALIGNÉ paragraph wording remains unchanged. M9/V56 applies exactly 10 M8-authorized same-slot R3 paragraph replacements across 6 cases and 22 SUP-T4 controlled fragments across 15 cases. Existing paragraph IDs/order remain stable; M2-0021/M2-0134/M2-0351/M2-0364 remain held, M2-0366 no-change, M2-0052 historical hold. Official R6 subsequently applied the exact authorized 169-operation source-critical successor. The post-R6 Date/ID+A2 fixed point made zero French-text mutations. REV6 then applied exactly 16 retained paragraph text changes, 2 governed deletions, 6 speaker reattributions, 1 title update, 34 first-Jesus pointer rebuilds and the governed migration/derived-state rebuilds under authority d1a7450adf36368cc8609e21ccde3c51e0b3c90dc4f3c3305534cb40104d56f4. v67 adds zero corpus/semantic mutations and only reconciles active report/release metadata. v68 changes only reader-facing PRINCIPAL terminology/release bindings; v69 changes only the verified onboarding-count and supplement-speaker summary metadata; v70 replaces the active search retrieval runtime with SEARCH-V2 while preserving canonical/devotional text and governed corpus semantics; v71 repairs SEARCH-V2 displayed-date/reference parsing plus current report/release metadata, with zero canonical/devotional, paragraph-ID/order, speaker, display/flow, supplement-content, user-state-schema, stored-source-mode or migration-algorithm mutation. v72 centralizes the reader-facing provenance model and adds only reader-facing complement provenance fields with zero devotional/search/speaker/display/flow/user-state/migration semantic delta. v73 corrects stale current report/provenance metadata discovered by an independent four-pass re-audit; it makes zero canonical/devotional, paragraph-ID/order, SEARCH-V2, speaker, display/flow, supplement-body, user-state, stored-source-mode or migration-algorithm mutation. v74 applies the frozen FAST Mode BODY0277–0854 authority only: 2,707 authorized entries terminate as 2,700 APPLIED, 6 ALREADY_PRESENT_NOOP and 1 BLOCKED_CONFLICT. It mutates 2,768 surviving canonical paragraph texts, deletes exactly one certified truncated duplicate paragraph (LDC.T32.E0010.P014), adds 278 previously absent certified flow edges, and leaves the blocked LDC.T29.E0003.P068 locus unchanged. v75 deep four-pass report-integrity repair changes zero devotional/canonical text and zero search/speaker/display/flow semantics; it only removes stale current-report ambiguity and rebinds required release/cache/offline metadata. v76 deep four-pass report-integrity repair changes zero devotional/canonical text and zero search-index-payload/ranking/speaker/display/flow semantics; it repairs stale current authority and SEARCH-V2 wrapper/evidence bindings and rebinds required release/cache/offline metadata. v77 authorized renderer successor changes zero devotional/canonical text, zero stable IDs/order, zero speaker/display/flow authority payload and zero SEARCH-V2 payload/ranking semantics; it applies only the authorized speech_model.js visual-topology consumption repair plus mechanically required release/binding wrappers. v78 deep four-pass stale-gate metadata repair changes zero devotional/canonical text and zero search/speaker/display/flow/renderer/user-state semantics; it corrects three obsolete predecessor-candidate physical-device gate labels and mechanically rebinds release/cache/offline/search-wrapper metadata. v79 CONC-LDC-01 Stage 4A changes no canonical/devotional corpus wording or stable IDs/order; it applies only authorized IndexedDB transactional integrity logic in the app shell plus mechanically required release/binding wrappers. v80 Stage 4B changes no canonical/devotional corpus wording or stable IDs/order; it changes only persistent offline-cache retention/reuse logic plus mechanically required release/binding wrappers. v81 BKP-LDC-01 Stage 5B changes no canonical/devotional corpus wording or stable IDs/order; it adds only scalable IndexedDB backup stream/staging/atomic-restore infrastructure plus mechanically required release/binding wrappers. v82 Stage 6 changes no canonical/devotional corpus wording or stable IDs/order; it adds only whole-collection recovery, privacy-safe default diagnostics, guarded explicit update refresh, and mechanically required release/binding wrappers. v83 Stage 7 changes no canonical/devotional corpus wording, stable IDs/order, speaker/display/flow semantics or Search semantics; it adds only a Search accessible name, theme-aware journey-indicator text color, exact zero-size wording, current .ldcbackup Help wording, and mechanically required release/binding wrappers. R18 owner-device display correction adds exactly one display-flow member/boundary, joining LDC.T26.E0004.P022 to P023 without changing canonical paragraph text, stable IDs/order, Search payload or speaker semantics. R18 R2 changes no canonical text or IDs; it corrects only that flow-group identity/governance metadata while preserving the explicit P022→P023 display join.",
   "display_flow_layer": {
-    "boundaries": 24208,
+    "boundaries": 24209,
     "cross_role_joins_reviewed": 88,
     "files": "corpus/flow_01.json .. flow_36.json",
     "generator": "scripts/build_display_flow.py",
     "groups": 11972,
     "inherited_dash_joins": 23530,
-    "members": 36180,
+    "members": 36181,
     "non_dash_continuations": 669,
     "note": "Derived display-flow data. v74 preserves stable paragraph records except the single certified truncated-duplicate deletion and realizes 278 previously absent correction-certain FAST Mode flow edges; source hashes/lengths are rebound to current canonical text.",
     "schema": "ldc-display-flow-v2"
@@ -81,16 +81,17 @@
     "user_state_migration": "corpus/user_state_migration_r5.json"
   },
   "embedding_manifest": {
-    "active_search": "metadata + lexical/BM25 via corpus/semantic_index.json",
+    "active_search": "SEARCH-V2 lexical/BM25 via search_engine_v2.js + search_worker_v2.js + corpus/search_v2_{documents,entries,index,jesus_filter}.json",
     "files_present": false,
     "retirement_note": "Vector embedding artifacts and @xenova runtime were retired from deploy in RA3/v2.19.8-R1B. This current manifest no longer presents the earlier rebuilt vector set as deploy-active.",
     "semantic_vector_search_included": false,
     "status": "RETIRED_FROM_DEPLOY",
-    "vector_search_authorised": false
+    "vector_search_authorised": false,
+    "legacy_semantic_index_status": "RETIRED_FROM_DEPLOY_STAGE10_R1__HISTORICAL_VALIDATION_EVIDENCE_EXTERNAL_ONLY"
   },
-  "flow_boundary_count": 24208,
+  "flow_boundary_count": 24209,
   "flow_group_count": 11972,
-  "flow_member_count": 36180,
+  "flow_member_count": 36181,
   "flow_non_dash_group_count": 669,
   "generated": "2026-09-10",
   "historical_embedding_manifest_last_build": {
@@ -239,12 +240,14 @@
   "ldc_b": {
     "canonical_corpus_mutations": 0,
     "date": "2026-08-12",
-    "metadata_index": "corpus/search_metadata_index.json",
+    "metadata_index": "HISTORICAL_RETIRED_FROM_DEPLOY_STAGE10_R1__former corpus/search_metadata_index.json",
     "normalizer": "ldc-search-normalizer-v1",
     "predecessor_device_smoke": "NOT_TESTED",
     "scope": "search normalizer/metadata index/progressive cancellation/vector evidence gating only",
     "search_shard_mutations": 0,
-    "vector_runtime_gate": "manifest + corpus generation + count/dim/dtype + binary bytes/SHA-256 + vector-row ID-order SHA-256 + current paragraph-ID-set SHA-256 + corpus text-binding digest equality"
+    "vector_runtime_gate": "manifest + corpus generation + count/dim/dtype + binary bytes/SHA-256 + vector-row ID-order SHA-256 + current paragraph-ID-set SHA-256 + corpus text-binding digest equality",
+    "historical_only": true,
+    "runtime_asset_present": false
   },
   "m4_critical_reconciliation": {
     "active_complement_items_total": 58,
@@ -898,14 +901,16 @@
   "search_norm": {
     "ci_gate": "validate_corpus.py independently asserts stored search norm == canonical normalisation of body text",
     "m4_note": "Exactly 8 search records were text/fingerprint-resynchronised to the 8 M3-authorised ALIGNÉ rewrites; all other backbone search records retain their prior stable IDs/content.",
-    "metadata_index": "corpus/search_metadata_index.json",
+    "metadata_index": "RETIRED_FROM_DEPLOY_STAGE10_R1__LEGACY_SEARCH_VALIDATION_EVIDENCE_EXTERNAL_ONLY",
     "metadata_index_entries": 2312,
     "normalizer": "LDCSearch.normalise via search_normalizer.js",
     "normalizer_version": "ldc-search-normalizer-v1",
     "records_consistent": true,
     "records_total": 74345,
     "runtime_and_build_shared_authority": true,
-    "search_shard_mutations": "V74_FAST1_FULL_RESYNC__74345_FINAL_ROWS__ZERO_STALE_SEARCH_BLOBS"
+    "search_shard_mutations": "V74_FAST1_FULL_RESYNC__74345_FINAL_ROWS__ZERO_STALE_SEARCH_BLOBS",
+    "runtime_active": false,
+    "legacy_search_shards_present": false
   },
   "search_v2_core": {
     "canonical_text_mutations": 2768,
@@ -915,7 +920,7 @@
     "derived_asset_source_predecessor_zip_sha256": "5e3896468c6d822760fcd555c59e0042d3ed217ee7f389e8b2ab7a60d2b7d6dd",
     "display_flow_semantic_mutations": 278,
     "documents": 74522,
-    "legacy_search_shards_role": "PRESERVED_VALIDATION_WITNESS__NOT_ACTIVE_SEARCH_RUNTIME",
+    "legacy_search_shards_role": "RETIRED_FROM_DEPLOY_STAGE10_R1__VALIDATION_EVIDENCE_EXTERNAL_ONLY",
     "migration_algorithm_mutations": 0,
     "morphology": "DEFERRED",
     "paragraph_id_or_order_mutations": 1,
@@ -937,7 +942,15 @@
     "vectors": "RETIRED_NOT_RESTORED",
     "vocabulary": 21351,
     "paragraph_record_deletions": 1,
-    "terminal_mutation_ledger_sha256": "afc351c02ee954583f663ca42615e48c5450893560f052d7da3c8a3caebfc879"
+    "terminal_mutation_ledger_sha256": "afc351c02ee954583f663ca42615e48c5450893560f052d7da3c8a3caebfc879",
+    "legacy_semantic_index_role": "RETIRED_FROM_DEPLOY_STAGE10_R1__NOT_ACTIVE_SEARCH_RUNTIME",
+    "active_runtime_assets": [
+      "corpus/search_v2_documents.json",
+      "corpus/search_v2_entries.json",
+      "corpus/search_v2_index.json",
+      "corpus/search_v2_jesus_filter.json",
+      "corpus/search_v2_manifest.json"
+    ]
   },
   "speaker_layer": {
     "presentation_counts": {
@@ -1436,5 +1449,197 @@
     "stage5b_backup_format_or_atomic_swap_semantic_mutations": 0,
     "stage6_recovery_privacy_update_logic_mutations": 0,
     "public_deployment_authorized": false
+  },
+  "r18_owner_device_display_correction": {
+    "date": "2026-09-14",
+    "scope": "display-flow only; no canonical paragraph text or stable ID mutation",
+    "boundary": "LDC.T26.E0004.P022__LDC.T26.E0004.P023",
+    "reason": "false visual paragraph break inside one JESUS sentence; P022 ends comma and P023 begins lowercase dependent clause \"pour que\"",
+    "device_evidence": "owner iPad screenshot IMG_4564.png",
+    "evidence_sha256": "1102ffeed8737de8987a5b49ba82af0091e935531ae61a5ff1aa553f819a8fe9",
+    "r2_integrity_note": "R18 R2 corrects the flow-group identity to P019-P023 and restores the predecessor group-level inherited classification; certainty remains scoped only to the explicit P022→P023 R18_OWNER_DEVICE boundary."
+  },
+  "runtime_slim_r1": {
+    "schema": "ldc-stage10-runtime-slim-r1",
+    "date": "2026-09-14",
+    "direct_predecessor_revision": "ldc-v2.19.87-R1B-stage9-accessibility-r1",
+    "removed_legacy_search_asset_count": 39,
+    "removed_legacy_search_bytes": 62284207,
+    "volume_summary": "corpus/volume_summary.json",
+    "volume_summary_sha256": "e8e2a34ace37cbaaf597c88a3bcc4b95e5922481bc2a32b3d62b5d3cf2eb8d96",
+    "volume_summary_bytes": 6340,
+    "active_search_engine": "SEARCH-V2 UNCHANGED",
+    "search_v2_engine_mutations": 0,
+    "canonical_text_mutations": 0,
+    "speaker_display_flow_mutations": 0,
+    "supplement_manifest_sha256": "8d6546c3ce89313fd8f1da2d4e4a2c98d67ad50d0e6b316bf298dc2ca535a594",
+    "tome_count_fix": "Former search_metadata_index.volume_counts were paragraph counts but the legacy loader treated numeric values as entry_count. Tome cards now use exact entry_count from governed volume_NN.json via volume_summary.json."
+  },
+  "runtime_slim_r2": {
+    "schema": "ldc-stage10-runtime-slim-r2-speaker-flow-projection-v1",
+    "date": "2026-09-14",
+    "direct_predecessor_revision": "ldc-v2.19.87-R1B-stage10-runtime-slim-r1",
+    "direct_predecessor_zip_sha256": "e501f0f7d03e679673391d74cd0bab50ae50c5c62593f544cdd9dc449ba35642",
+    "projection_scope": [
+      "corpus/speakers_01..36.json",
+      "corpus/flow_01..36.json"
+    ],
+    "speaker_retained_fields": [
+      "confidence",
+      "end_char",
+      "entry_id",
+      "paragraph_id",
+      "presentation_parent",
+      "quotation_depth",
+      "quote_depth",
+      "segment_id",
+      "semantic_subrole",
+      "semantic_subrole_normalized",
+      "speaker",
+      "start_char"
+    ],
+    "flow_group_retained_fields": [
+      "flow_id",
+      "classification",
+      "confidence",
+      "review_status"
+    ],
+    "flow_member_retained_fields": [
+      "paragraph_id"
+    ],
+    "flow_boundary_retained_fields": [
+      "display_joiner",
+      "speech_run_policy",
+      "suppress_next_leading_ranges",
+      "visual_policy",
+      "visual_action",
+      "adjudication_generation",
+      "adjudication_status",
+      "evidence_ref",
+      "evidence_sha256"
+    ],
+    "speaker_raw_bytes_before": 52916554,
+    "speaker_raw_bytes_after": 17471736,
+    "flow_raw_bytes_before": 30623747,
+    "flow_raw_bytes_after": 13871431,
+    "combined_raw_bytes_saved": 52197134,
+    "projection_semantics": "Runtime-only proof-carrying projection. Governed rich R1 source/evidence remains immutable in the exact predecessor archive identified above. Same runtime filenames and loader shapes are preserved.",
+    "canonical_devotional_text_mutations": 0,
+    "search_v2_engine_mutations": 0,
+    "search_v2_asset_mutations": 0,
+    "display_payload_mutations": 0,
+    "interaction_anchor_mutations": 0,
+    "db_schema_mutations": 0,
+    "backup_algorithm_mutations": 0,
+    "speaker_semantic_mutations": 0,
+    "flow_semantic_mutations": 0,
+    "public_deployment_authorized": false
+  },
+  "search_v21a_textual_truth": {
+    "schema": "ldc-stage12-search-v21a-textual-truth-r1-v1",
+    "date": "2026-09-14",
+    "direct_predecessor_app_version": "v2.19.88-R1B",
+    "direct_predecessor_zip_sha256": "e957d11d762f32d5cbfa35c0806f7f4a6b98faa8b616cd43d7be12e7defa9183",
+    "purpose": "VISIBLE_DEVOTIONAL_TOKEN_TRUTH_LAYER_FOR_EXACT_SEARCH__SEARCH_V2_BM25_PRESERVED",
+    "canonical_devotional_text_mutations": 0,
+    "paragraph_id_or_order_mutations": 0,
+    "speaker_semantic_mutations": 0,
+    "flow_payload_mutations": 0,
+    "supplement_text_or_placement_authority_mutations": 0,
+    "search_v2_index_postings_bm25_mutations": 0,
+    "display_lexical_integrity_repairs": 42,
+    "display_lexical_integrity_layout_repairs": 30,
+    "display_lexical_integrity_section_repairs": 12,
+    "display_files_changed": 10,
+    "display_changed_files": [
+      {
+        "path": "corpus/display_18.json",
+        "predecessor_sha256": "f49b75dbfc827a3e8bd886040c50614bc26760b730a33dd590fd8a8980a8b929",
+        "successor_sha256": "8a0179f508a3501f02d90eac535861637a3b6a0ea5e14d0920d605f7589d294d"
+      },
+      {
+        "path": "corpus/display_24.json",
+        "predecessor_sha256": "57620ac66483e4d1696f100a7f39ef51d93e22cb98890f70287a6117d8dfbf6f",
+        "successor_sha256": "445b107040c1015b32dcc0bfd7d6725bc4e5f19dda8086c7fbd4e5ae851d4d51"
+      },
+      {
+        "path": "corpus/display_25.json",
+        "predecessor_sha256": "b55b015a5c7121d2b5e74e8921402d4a1184176d1b7a9e4e8a120b69a1890474",
+        "successor_sha256": "d202846a091f75ec6101bc29f9d6a6fe49f04204fbd20307c4e927a0bc7d3092"
+      },
+      {
+        "path": "corpus/display_26.json",
+        "predecessor_sha256": "382b811e5ced3679929c9e0f915a46bd267f48c8c5d61407f8b1acbed41ab5f9",
+        "successor_sha256": "123a36d599f1ddd29a72b3c55106f07069a78f6ddd7da631b07b03256baa9197"
+      },
+      {
+        "path": "corpus/display_27.json",
+        "predecessor_sha256": "9bb97b0ec1dd207aadfd4f507ceb035d9fdb6b6576f40559edd7a7a9d3511517",
+        "successor_sha256": "97323a822f380aa69f77335a5a018e507cf313731c9571b1206734f0f1db96d9"
+      },
+      {
+        "path": "corpus/display_28.json",
+        "predecessor_sha256": "f044c3a63bdba2690e9adad3cfa08ca6233bf528ede87312bd64f4fab0703001",
+        "successor_sha256": "cf0b946be29193ef8f414af9bec917440e11c8457d607736fc53164bb33cc70a"
+      },
+      {
+        "path": "corpus/display_29.json",
+        "predecessor_sha256": "9e7316c0a5a46147adc3cdcf23006274e981ff0921ac55ae5e710f39abeda6a1",
+        "successor_sha256": "8f63fef0e071b11e68b1512293aee354761a583da08908efb739033ac22667d3"
+      },
+      {
+        "path": "corpus/display_30.json",
+        "predecessor_sha256": "cc488724b49de806f8436a7c08c4b22156b1dea7b78a0f17865e8acd2f3a8ffa",
+        "successor_sha256": "534133adc504883daf7e7f0773bf8c92804c6b4465a5f95e65a5cdf71bfa3e58"
+      },
+      {
+        "path": "corpus/display_35.json",
+        "predecessor_sha256": "abb7401036e179038b8081da9eff21022dfbfa2e8be8d9704458982c788c26d8",
+        "successor_sha256": "058dd5f558156f5d8374a6ead7ce4baf20acec57ef682491a7dc28c39050d678"
+      },
+      {
+        "path": "corpus/display_36.json",
+        "predecessor_sha256": "c0dbf2c954fd26d43a502671c8943f3e659ed9ad1f2ab61cbd8b1461eaabe4b9",
+        "successor_sha256": "294d591fad403f29ba631a98bf2981c67a71ba0638d66c923e056d2b4ecda50b"
+      }
+    ],
+    "effective_supplement_topology_events": 77,
+    "explicit_supplement_placements": 76,
+    "legacy_anchor_fallback_events": 1,
+    "legacy_fallback_supplement_id": "LDCSUP.T04.1901-01-30.U0003",
+    "representation": "B_COMPACT_TOPOLOGY_RUNTIME_COMPOSITION__PROVISIONAL_ENGINEERING_SELECTION_FOR_CONTROLLED_TEST",
+    "topology_asset": "corpus/search_v21_topology.json",
+    "topology_sha256": "e57ab52b3cf46f8be3221b455ed826efe65a6a6e359387b1a9348319c53690da",
+    "projection_manifest_asset": "corpus/search_v21_manifest.json",
+    "projection_manifest_sha256": "a656c6b39dd5a6e4ba5649aaf1dc2a32516009c87ec38422bc1a6472a67baec4",
+    "runtime_exact_module": "search_exact_v21.js",
+    "runtime_exact_module_sha256": "9330d79cdb9c379678387ce5e8ce41735a73ef04ec9d73b31373894f058aa39c",
+    "normalizer_contract": "NFC_THEN_FROZEN_SEARCH_V2_NORMALISE__ALL_NONEMPTY_TOKENS_FOR_EXACT_TRUTH",
+    "source_modes": [
+      "PRINCIPAL",
+      "COMPLÉMENT",
+      "ENRICHI"
+    ],
+    "principal_units": 2312,
+    "principal_tokens": 1465530,
+    "complement_units": 75,
+    "complement_tokens": 14333,
+    "enrichi_units": 2325,
+    "enrichi_tokens": 1479863,
+    "source_token_mappings_checked": 2959726,
+    "search_universe_documents": 74522,
+    "search_universe_preserved": 74522,
+    "historical_cross_storage_fixtures": 120,
+    "storage_layout_softness_cases": 69141,
+    "supplement_interruption_negatives": 40,
+    "cross_origin_multipart_positives": 75,
+    "copy_search_roundtrip_cases": 4711,
+    "short_token_cases": 25,
+    "nfc_nfd_cases": 100,
+    "hard_boundary_mutants": 200,
+    "normalizer_compatibility_cases": 1500,
+    "exact_total_truth_cases": 20,
+    "runtime_acceptance_status": "PASS_INTERNAL_REFERENCE_AND_PRODUCTION_JS_ORACLES__PHYSICAL_DEVICE_PERF_AND_NAVIGATION_OPEN",
+    "perf_001": "OPEN_TARGET_DEVICE__REPRESENTATION_B_PROVISIONALLY_PREFERRED__NO_PUBLIC_DEPLOYMENT_AUTHORITY"
   }
 }

@@ -1,4 +1,4 @@
-const VERSION = 'ldc-v2.19.87-R1B-stage8-r17-r3';
+const VERSION = 'ldc-v2.19.103-R1B-final-audit-metadata-coherence-r1';
 const CACHE_PREFIX = 'ldc-le-livre-du-ciel-';
 const OFFLINE_STORAGE_SCHEMA = 'ldc-offline-storage-v3';
 const OFFLINE_CONTENT_BINDING_SCHEMA = 'ldc-offline-content-binding-v2';
@@ -10,16 +10,16 @@ function scopeFingerprint(scope) {
 }
 const OFFLINE_SCOPE_FINGERPRINT = scopeFingerprint(self.registration.scope);
 const SCOPE_CACHE_PREFIX = `${CACHE_PREFIX}${OFFLINE_SCOPE_FINGERPRINT}-`;
-const SHELL_CACHE = `${SCOPE_CACHE_PREFIX}shell-v2.19.87-R1B-stage8-r17-r3`;
-const RUNTIME_CACHE = `${SCOPE_CACHE_PREFIX}runtime-v2.19.87-R1B-stage8-r17-r3`;
+const SHELL_CACHE = `${SCOPE_CACHE_PREFIX}shell-v2.19.103-R1B-navigation-target-failsafe-r1`;
+const RUNTIME_CACHE = `${SCOPE_CACHE_PREFIX}runtime-v2.19.103-R1B-navigation-target-failsafe-r1`;
 const LEGACY_V76_WORKER_VERSION = 'ldc-v2.19.76-R1B-report-r2';
 const UPDATE_COMPAT_META_PATH = '__ldc_update_compat__.json';
 const INSTALL_FETCH_NONCE = `${Date.now().toString(36)}-${Math.random().toString(36).slice(2)}`;
 const OFFLINE_CACHE = `${CACHE_PREFIX}offline-persistent-v3-${OFFLINE_SCOPE_FINGERPRINT}`;
 const OFFLINE_MANIFEST_URL = './offline_manifest.json';
 const OFFLINE_MANIFEST_SCHEMA = 'ldc-offline-manifest-v3';
-const OFFLINE_CONTENT_BINDING = '69bafb3c9fc99bbcad3e9453b60cb4fc4204cca540c2deab6317708e3648c419';
-const OFFLINE_CORPUS_MANIFEST_SHA256 = '4e7f7bf22552299a1e4e08525c41534a607fb956a7ad819d1b5358dec092b941';
+const OFFLINE_CONTENT_BINDING = '36e9d99ef1474bf4dfd15651bc5894f072afe0aab80c38567937552d057d5b55';
+const OFFLINE_CORPUS_MANIFEST_SHA256 = '8d831c437fa6c2caa56ac637c3d539279ec24b57711d209b264804cca19c0ab7';
 const OFFLINE_META_PATH = '__ldc_offline_meta__.json';
 const RUNTIME_META_PATH = '__ldc_runtime_meta__.json';
 const RUNTIME_MAX_ENTRIES = 48;
@@ -29,7 +29,7 @@ let runtimeMutationQueue = Promise.resolve();
 // Keep install small and atomic. If any shell/index resource cannot be cached, the
 // installation fails and the previous active worker remains in control.
 const SHELL = [
-  './', './index.html', './manifest.json', './offline_manifest.json', './sw.js', './speech_model.js', './display_map.js', './interaction_anchor.js', './search_normalizer.js', './search_engine_v2.js', './search_worker_v2.js', './interim_user_state_migration.js', './icons/favicon-16.png', './icons/favicon-32.png', './icons/favicon.ico', './icons/icon-60.png', './icons/icon-120.png', './icons/apple-touch-icon.png', './icons/icon-192.png', './icons/icon-512.png', './icons/icon-maskable-512.png', './assets/fonts/fonts.css', './assets/fonts/im-fell-english-latin-400-normal.woff2', './assets/fonts/im-fell-english-latin-400-italic.woff2', './assets/fonts/crimson-text-latin-400-normal.woff2', './assets/fonts/crimson-text-latin-400-italic.woff2', './assets/fonts/crimson-text-latin-600-normal.woff2', './assets/icons/tabler-icons.min.css', './assets/icons/tabler-icons.woff2', './assets/js/sortable.min.js'
+  './', './index.html', './manifest.json', './offline_manifest.json', './sw.js', './speech_model.js', './display_map.js', './interaction_anchor.js', './search_normalizer.js', './search_engine_v2.js', './search_exact_v21.js', './search_foundation_v21b.js', './search_near_v22.js', './search_worker_v2.js', './interim_user_state_migration.js', './icons/favicon-16.png', './icons/favicon-32.png', './icons/favicon.ico', './icons/icon-60.png', './icons/icon-120.png', './icons/apple-touch-icon.png', './icons/icon-192.png', './icons/icon-512.png', './icons/icon-maskable-512.png', './assets/fonts/fonts.css', './assets/fonts/im-fell-english-latin-400-normal.woff2', './assets/fonts/im-fell-english-latin-400-italic.woff2', './assets/fonts/crimson-text-latin-400-normal.woff2', './assets/fonts/crimson-text-latin-400-italic.woff2', './assets/fonts/crimson-text-latin-600-normal.woff2', './assets/icons/tabler-icons.min.css', './assets/icons/tabler-icons.woff2', './assets/js/sortable.min.js'
 ];
 
 let offlineJob = null;
@@ -75,7 +75,7 @@ async function loadOfflineManifest() {
   if(!r){r=await fetch(OFFLINE_MANIFEST_URL,{cache:'reload'});if(r&&r.ok)await shell.put(OFFLINE_MANIFEST_URL,r.clone());}
   if(!r||!r.ok)throw new Error('offline manifest indisponible');
   const m=await r.json();
-  if(m.schema!==OFFLINE_MANIFEST_SCHEMA||m.app_version!=='v2.19.87-R1B'||m.storage_schema!==OFFLINE_STORAGE_SCHEMA)throw new Error('offline manifest incompatible');
+  if(m.schema!==OFFLINE_MANIFEST_SCHEMA||m.app_version!=='v2.19.103-R1B'||m.storage_schema!==OFFLINE_STORAGE_SCHEMA)throw new Error('offline manifest incompatible');
   if(m.content_binding_schema!==OFFLINE_CONTENT_BINDING_SCHEMA||m.content_binding_sha256!==OFFLINE_CONTENT_BINDING)throw new Error('offline manifest binding incompatible');
   if(m.corpus_manifest_sha256!==OFFLINE_CORPUS_MANIFEST_SHA256)throw new Error('offline corpus manifest binding incompatible');
   const unique=[...new Set((m.assets||[]).map(a=>a.path))];
@@ -160,8 +160,11 @@ async function recordRuntimeEntry(asset,m) {
     const cache=await caches.open(RUNTIME_CACHE), meta=await readRuntimeMeta(cache,m);
     let entries=meta.entries.filter(e=>e.path!==asset.path); entries.push({path:asset.path,bytes:Number(asset.bytes)});
     let total=entries.reduce((a,e)=>a+Number(e.bytes||0),0);
+    const pinned=new Set(BOOT_CRITICAL_CORPUS);
     while(entries.length>1&&(entries.length>RUNTIME_MAX_ENTRIES||total>RUNTIME_MAX_BYTES)){
-      const victim=entries.shift(); total-=Number(victim.bytes||0); await cache.delete(cacheUrl(victim.path),{ignoreSearch:true});
+      const victimIndex=entries.findIndex(e=>!pinned.has(e.path));
+      if(victimIndex<0)break;
+      const victim=entries.splice(victimIndex,1)[0]; total-=Number(victim.bytes||0); await cache.delete(cacheUrl(victim.path),{ignoreSearch:true});
     }
     await writeRuntimeMeta(cache,m,entries);
     return {entries:entries.length,bytes:total,max_entries:RUNTIME_MAX_ENTRIES,max_bytes:RUNTIME_MAX_BYTES};
@@ -181,10 +184,38 @@ async function runtimeCacheStats(m) {
   return {entries:valid.length,bytes:valid.reduce((a,e)=>a+e.bytes,0),max_entries:RUNTIME_MAX_ENTRIES,max_bytes:RUNTIME_MAX_BYTES};
 }
 async function clearRuntimeCache() {
-  return queueRuntimeMutation(async()=>{await caches.delete(RUNTIME_CACHE);return emptyRuntimeStats();});
+  return queueRuntimeMutation(async()=>{
+    const m=await loadOfflineManifest(),cache=await caches.open(RUNTIME_CACHE),kept=[];
+    const requests=await cache.keys();
+    for(const request of requests){
+      const path=corpusAssetPath(request);
+      if(BOOT_CRITICAL_CORPUS.includes(path))continue;
+      if(path===RUNTIME_META_PATH)continue;
+      await cache.delete(request,{ignoreSearch:true});
+    }
+    for(const path of BOOT_CRITICAL_CORPUS){
+      const asset=m.assetMap.get(path);if(!asset)continue;
+      const hit=await verifiedRuntimeCachedCorpusHit(cache,new Request(cacheUrl(path)),asset,m);
+      if(hit)kept.push({path,bytes:Number(asset.bytes)});
+    }
+    await writeRuntimeMeta(cache,m,kept);
+    return {entries:kept.length,bytes:kept.reduce((a,e)=>a+e.bytes,0),max_entries:RUNTIME_MAX_ENTRIES,max_bytes:RUNTIME_MAX_BYTES};
+  });
+}
+async function pruneObsoleteStableOfflineEntries(cache,m) {
+  const requests=await cache.keys();let removed=0;
+  for(const request of requests){
+    if(!requestBelongsToCurrentScope(request))continue;
+    const path=corpusAssetPath(request);
+    if(!path.startsWith('corpus/'))continue;
+    if(m.assetMap.has(path))continue;
+    if(await cache.delete(request,{ignoreSearch:true}))removed++;
+  }
+  return removed;
 }
 async function scanOfflineCache() {
   const m=await loadOfflineManifest(), sources=await offlineCacheSources(), stable=sources[0].cache;
+  await pruneObsoleteStableOfflineEntries(stable,m);
   let completed=0,cached_bytes=0;const invalid=[];const missing=[];
   for(const asset of m.assets){
     const v=await findVerifiedOfflineAsset(asset,sources,true);
@@ -223,6 +254,7 @@ async function runOfflineJob(job,requestClientId) {
     job.state='CHECKING';await broadcast(terminalPayload(job,'CHECKING','Analyse des fichiers déjà présents…'),requestClientId);
     const m=await loadOfflineManifest();job.manifest=m;job.total=m.assets.length;job.total_bytes=m.total_bytes||0;
     const sources=await offlineCacheSources(),stable=sources[0].cache,missing=[];job.completed=0;job.failed=[];
+    await pruneObsoleteStableOfflineEntries(stable,m);
     for(const asset of m.assets){if(job.cancelled)break;const v=await findVerifiedOfflineAsset(asset,sources,true);if(v.ok)job.completed++;else missing.push(asset);}
     if(job.cancelled){job.state='CANCELLED';await writeOfflineMeta(stable,m,job.failed);await broadcast(terminalPayload(job,'CANCELLED','Préparation annulée; les fichiers déjà vérifiés sont conservés.'),requestClientId);return;}
     if(!missing.length){job.state='READY';await writeOfflineMeta(stable,m,[]);const runtime=await clearRuntimeCache();await broadcast(terminalPayload(job,'READY','Préparation complète.',{runtime}),requestClientId);return;}

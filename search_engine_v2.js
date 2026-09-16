@@ -6,7 +6,7 @@
   if(root)root.LDCSearchV2=api;
 })(typeof globalThis!=='undefined'?globalThis:this,function(){
 'use strict';
-const VERSION='ldc-search-v2-engine-v1.1';
+const VERSION='ldc-search-v2-engine-v1.2-v21b';
 const MONTHS={janvier:1,fevrier:2,mars:3,avril:4,mai:5,juin:6,juillet:7,aout:8,septembre:9,octobre:10,novembre:11,decembre:12};
 function normalise(input){
   return String(input==null?'':input).toLowerCase()
@@ -93,7 +93,7 @@ function createEngine(payload){
     if(p.ref){
       for(const i of (docRefMap.get(p.ref)||[])){const d=documents[i];if(!scopeAllows(i,d,p,opt))continue;const e=entries[d[1]];rows.push({id:d[0],entry_id:e[0],stable_ref:d[4],volume:d[2],title:e[3],date_display:e[4],date_iso:e[5],text:d[5],is_supplement:d[3]===1,score:2200,matchType:'metadata',_metaKind:'Référence'});}
       for(const ei of (entryRefMap.get(p.ref)||[])){const e=entries[ei];if(!entryModeAllows(e,opt.mode))continue;if(opt.volMin&&e[2]<opt.volMin)continue;if(opt.volMax&&e[2]>opt.volMax)continue;if(p.volume&&e[2]!==p.volume)continue;const first=findFirstVisibleDoc(ei,opt,p);if(first<0)continue;const d=documents[first];rows.push({id:d[0],entry_id:e[0],stable_ref:e[1]||d[4],volume:e[2],title:e[3],date_display:e[4],date_iso:e[5],text:d[5],is_supplement:d[3]===1,score:2000,matchType:'metadata',_metaKind:'Référence'});}
-      if(rows.length){rows.sort((a,b)=>b.score-a.score||a.volume-b.volume||String(a.id).localeCompare(String(b.id)));return rows.slice(0,10);}
+      if(rows.length){rows.sort((a,b)=>b.score-a.score||a.volume-b.volume||String(a.id).localeCompare(String(b.id)));return rows;}
     }
     for(let ei=0;ei<entries.length;ei++){const e=entries[ei];if(!entryModeAllows(e,opt.mode))continue;if(opt.volMin&&e[2]<opt.volMin)continue;if(opt.volMax&&e[2]>opt.volMax)continue;if(p.volume&&e[2]!==p.volume)continue;
       const iso=e[5]||'';if(p.date&&!iso.startsWith(p.date))continue;if(p.year&&!iso.startsWith(String(p.year)))continue;
@@ -106,10 +106,16 @@ function createEngine(payload){
       const first=findFirstVisibleDoc(ei,opt,p);if(first<0)continue;const d=documents[first];rows.push({id:d[0],entry_id:e[0],stable_ref:e[1]||d[4],volume:e[2],title:e[3],date_display:e[4],date_iso:e[5],text:d[5],is_supplement:d[3]===1,score,matchType:'metadata',_metaKind:kind});
     }
     rows.sort((a,b)=>b.score-a.score||a.volume-b.volume||String(a.entry_id).localeCompare(String(b.entry_id)));
-    return rows.slice(0,10);
+    return rows;
   }
   function findFirstVisibleDoc(ei,opt,p){for(const i of entryDocs[ei]||[]){const d=documents[i];if(scopeAllows(i,d,p,opt))return i;}return -1;}
-  function search(raw,options){const opt={mode:'enriched',volMin:0,volMax:0,jesus:false,cap:30,...(options||{})};const p=parseQuery(raw);const body=bodySearch(p,opt),metadata=metadataSearch(p,opt);return {...body,metadata,parsed:p};}
+  function search(raw,options){
+    const opt={mode:'enriched',volMin:0,volMax:0,jesus:false,cap:30,metadataCap:10,metadataOffset:0,...(options||{})};
+    const p=parseQuery(raw),body=bodySearch(p,opt),metadataRows=metadataSearch(p,opt);
+    const metadataOffset=Math.max(0,Number(opt.metadataOffset)||0),metadataCap=Math.max(1,Number(opt.metadataCap)||10);
+    const metadata=metadataRows.slice(metadataOffset,metadataOffset+metadataCap);
+    return {...body,metadata,metadataTotalMatches:metadataRows.length,parsed:p};
+  }
   return Object.freeze({search,parseQuery,normalise,terms,stats:{N,indexVocabulary:index.vocabulary_count,indexPostings:index.posting_count}});
 }
 return Object.freeze({VERSION,normalise,terms,parseQuery,createEngine,decodePosting});

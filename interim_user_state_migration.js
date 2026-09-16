@@ -220,6 +220,6 @@ function verifyNoSilentDrop(before,after){
   if((after.highlights||[]).length<(before.highlights||[]).length) failures.push('highlight_count_decreased');
   return failures;
 }
-const LDCInterimMigrationAPI={migrateEnvelope,migrateDateIdEnvelope,migrateV65ToInterim,canonicalUserState,verifyNoSilentDrop,d1MapSpan,d2MapSpan,D1Model,sha256};
+const LDCInterimMigrationAPI={migrateEnvelope,migrateDateIdEnvelope,migrateV65ToInterim,canonicalUserState,verifyNoSilentDrop,d1MapSpan,d2MapSpan,D1Model,sha256,migrateHighlightRow,migrateNoteRow,migrateColItem,migrateReadingPos,speakerAliasRewrite,normalizeHighlightGroups};
 if(typeof module!=='undefined'&&module.exports)module.exports=LDCInterimMigrationAPI;
 if(typeof window!=='undefined')window.LDCInterimMigration=LDCInterimMigrationAPI;

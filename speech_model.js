@@ -218,7 +218,8 @@
     var explicitBoundary = members && members[index] && members[index].boundaryAfter || null;
     var explicitGeneration = explicitBoundary ? String(explicitBoundary.adjudication_generation || '') : '';
     var explicitStatusRequired = explicitGeneration === 'RA19B_MULTI_SOURCE' ? 'SOURCE_BACKED_CERTAIN'
-      : (explicitGeneration === 'FAST_MODE_BODY0277_0854' ? 'CERTIFIED_CORRECTION_CERTAIN' : '');
+      : (explicitGeneration === 'FAST_MODE_BODY0277_0854' ? 'CERTIFIED_CORRECTION_CERTAIN'
+      : (explicitGeneration === 'R18_OWNER_DEVICE' ? 'DEVICE_CONFIRMED_SYNTAX_CERTAIN' : ''));
     if (explicitBoundary && explicitStatusRequired) {
       var explicitPolicy = String(explicitBoundary.visual_policy || '');
       var explicitAction = String(explicitBoundary.visual_action || '');
@@ -234,7 +235,9 @@
       return { policy: explicitPolicy,
                reason: explicitGeneration === 'RA19B_MULTI_SOURCE'
                  ? 'ra19b_source_backed_explicit_boundary'
-                 : 'fast_correction_certain_explicit_boundary',
+                 : (explicitGeneration === 'FAST_MODE_BODY0277_0854'
+                   ? 'fast_correction_certain_explicit_boundary'
+                   : 'r18_owner_device_explicit_boundary'),
                action: explicitAction, explicit: true,
                evidence_ref: String(explicitBoundary.evidence_ref),
                evidence_sha256: String(explicitBoundary.evidence_sha256) };
@@ -293,7 +296,7 @@
       var b = cur && cur.boundaryAfter;
       if (!b || !b.display_joiner) continue;
       var generation = String(b.adjudication_generation || '');
-      if (generation !== 'RA19B_MULTI_SOURCE' && generation !== 'FAST_MODE_BODY0277_0854') continue;
+      if (generation !== 'RA19B_MULTI_SOURCE' && generation !== 'FAST_MODE_BODY0277_0854' && generation !== 'R18_OWNER_DEVICE') continue;
       var visual = flowBoundaryVisualPolicy(members, k, opts);
       var visualAction = visual.action || (visual.policy === 'continuous_prose' ? 'join_inline'
         : (visual.policy === 'preserve_break_enumeration' ? 'preserve_list_break' : 'preserve_break'));
@@ -358,7 +361,8 @@
       // is not flattened merely because the speaker remains the same.
       var visual = (cur.visualBoundaryActionAfter &&
                     (String(b.adjudication_generation || '') === 'RA19B_MULTI_SOURCE' ||
-                     String(b.adjudication_generation || '') === 'FAST_MODE_BODY0277_0854'))
+                     String(b.adjudication_generation || '') === 'FAST_MODE_BODY0277_0854' ||
+                     String(b.adjudication_generation || '') === 'R18_OWNER_DEVICE'))
         ? { policy: cur.visualPolicyAfter, reason: cur.visualPolicyReason,
             action: cur.visualBoundaryActionAfter, explicit: true,
             evidence_ref: String(b.evidence_ref || ''), evidence_sha256: String(b.evidence_sha256 || '') }
@@ -677,6 +681,34 @@
   // Nested/internal quotation punctuation is preserved through quotation-depth guards.
   function isNestedStart(r) { return !!r && (Number(r.start_quotation_depth || 0) >= 2 || Number(r.start_quote_depth || 0) >= 2); }
   function isNestedEnd(r) { return !!r && (Number(r.end_quotation_depth || 0) >= 2 || Number(r.end_quote_depth || 0) >= 2); }
+  function isQuoteOnlyOpeningRun(r) {
+    return !!r && !r.styled && /^\s*[«“„"]\s*$/.test(String(r.text || ''));
+  }
+  function isQuoteOnlyClosingRun(r) {
+    return !!r && !r.styled && /^\s*[»”"](?:[.!?…])?\s*$/.test(String(r.text || ''));
+  }
+  // R18 R2: ordinary spaces immediately between a visible nested guillemet
+  // and its quoted run are legal soft-wrap points. Preserve canonical length and
+  // offsets while rendering only those boundary spaces as narrow no-break spaces.
+  // This prevents an opening/closing guillemet from being orphaned by line wrap.
+  function protectNestedBoundaryQuoteWhitespace(t, prevRun, nextRun) {
+    var out = String(t || '');
+    // The boundary may be a quote-only narrative run or the tail/head of a longer
+    // narrative run. Protect only the whitespace directly between a nested quote
+    // delimiter and its styled quoted run; preserve one display character per
+    // canonical whitespace character so interaction offsets remain stable.
+    if (nextRun && nextRun.styled && isNestedStart(nextRun)) {
+      out = out.replace(/([«“„"])(\s+)$/, function (_, q, ws) {
+        return q + ws.replace(/\s/g, '\u202F');
+      });
+    }
+    if (prevRun && prevRun.styled && isNestedEnd(prevRun)) {
+      out = out.replace(/^(\s+)([»”"])/, function (_, ws, q) {
+        return ws.replace(/\s/g, '\u202F') + q;
+      });
+    }
+    return out;
+  }
   function splitNarrativeBoundaryDelimiters(t, prevRun, nextRun, hideOuter) {
     if (!hideOuter) return { lead: '', core: t, trail: '' };
     var lead = '', trail = '', core = t;
@@ -776,7 +808,8 @@
     return out;
   }
 
-  function plainNarrativeWithExtraHidden(t, np, absoluteStart, hiddenOffsets) {
+  function plainNarrativeWithExtraHidden(t, np, absoluteStart, hiddenOffsets, displayText) {
+    var visibleText = (typeof displayText === 'string' && displayText.length === t.length) ? displayText : t;
     var hidden = {};
     for (var i = 0; i < (hiddenOffsets || []).length; i++) hidden[hiddenOffsets[i] - absoluteStart] = true;
     var leadLen = np.lead.length, trailLen = np.trail.length;
@@ -790,7 +823,7 @@
       var h = j < leadLen || j >= t.length - trailLen || !!hidden[j];
       if (hiddenMode === null) hiddenMode = h;
       if (h !== hiddenMode) { flush(); hiddenMode = h; }
-      buf += t[j];
+      buf += visibleText[j];
     }
     flush();
     return out;
@@ -826,8 +859,22 @@
     }
     var np = splitNarrativeBoundaryDelimiters(display, prevRun, nextRun, hideOuter);
     var extraHidden = extraNarrativeDelimiterOffsets(local, prevRun, nextRun, hideOuter);
-    var html = atoms ? emitRangeWithExtraHidden(atoms, start, end, np.lead.length, np.trail.length, extraHidden) : null;
-    if (html === null) html = plainNarrativeWithExtraHidden(local.text, np, start, extraHidden);
+    var protectedDisplayText = protectNestedBoundaryQuoteWhitespace(local.text, prevRun, nextRun);
+    var boundarySpaceProtected = protectedDisplayText !== local.text;
+    // Current governed corpus has no display-map mutation overlapping a quote-only
+    // boundary run. When protection is needed, render that tiny canonical delimiter
+    // slice directly so the no-break space survives even if the paragraph has other
+    // display-map operations elsewhere. If a future non-canonical display atom ever
+    // overlaps this exact slice, preserve that governed display mutation instead.
+    var boundaryHasDisplayMutation = false;
+    if (boundarySpaceProtected && atoms && DM) {
+      var boundaryAtoms = DM.atomsForRange(atoms, start, end);
+      boundaryHasDisplayMutation = boundaryAtoms.some(function (a) { return a.kind !== 'canonical'; });
+    }
+    var html = (atoms && !(boundarySpaceProtected && !boundaryHasDisplayMutation))
+      ? emitRangeWithExtraHidden(atoms, start, end, np.lead.length, np.trail.length, extraHidden)
+      : null;
+    if (html === null) html = plainNarrativeWithExtraHidden(local.text, np, start, extraHidden, protectedDisplayText);
     return { html:html, core:np.core };
   }
 
@@ -934,6 +981,15 @@
       }
       var cls = M.normSpeaker(r.speaker) === 'marie' ? 'speech-marie' : 'speech-jesus';
       var label = M.normSpeaker(r.speaker) === 'marie' ? 'Marie' : 'Jésus';
+      // R18: a nested quotation delimiter is canonical and must remain visible,
+      // but it must not be stranded on a separate line merely because the
+      // presentation-parent speech run is block-level. When the only adjacent
+      // narrative material is the opening/closing quote token, keep that styled
+      // run inline inside its paragraph container so «/» stay attached to text.
+      var prevModelRun = i > 0 ? model.runs[i - 1] : null;
+      var nextModelRun = i + 1 < model.runs.length ? model.runs[i + 1] : null;
+      var boundaryQuoteInline = (isNestedStart(r) && isQuoteOnlyOpeningRun(prevModelRun)) ||
+                                (isNestedEnd(r) && isQuoteOnlyClosingRun(nextModelRun));
       // A run linked across a flow boundary keeps ONE logical id; only its first
       // fragment emits the speaker label and block-start spacing (§6.4).
       var runId = r.runId || (paraId + '#R' + i);
@@ -975,6 +1031,18 @@
         if (parts.trail) inner += '<span class="speech-outer-delimiter"' +
                                   (hideTrailDelim ? ' aria-hidden="true"' : '') + '>' + esc(parts.trail) + '</span>';
       }
+      // R18 R2: the boundary whitespace can belong to the styled run rather than
+      // the adjacent quote-only narrative run.  In that case protect the rendered
+      // edge whitespace as well.  This is display-only, length-preserving and is
+      // applied after display-map emission so display decisions elsewhere in the
+      // speech run remain intact.  Corpus-wide audit proves no noncanonical display
+      // atom overlaps these exact boundary whitespace positions.
+      if (boundaryQuoteInline && isNestedStart(r) && isQuoteOnlyOpeningRun(prevModelRun)) {
+        inner = inner.replace(/^\s+/, function (ws) { return ws.replace(/\s/g, '\u202F'); });
+      }
+      if (boundaryQuoteInline && isNestedEnd(r) && isQuoteOnlyClosingRun(nextModelRun)) {
+        inner = inner.replace(/\s+$/, function (ws) { return ws.replace(/\s/g, '\u202F'); });
+      }
       var quotedLabels = quotedVoiceLabels(r);
       var quotedVoiceHtml = '';
       var attributionSrHtml = !isCont
@@ -986,7 +1054,7 @@
                           prefix + esc(quotedLabels.join(' · ')) + '</span>';
       }
       html += '<span class="' + cls + ' speech-run speech-' +
-              (isCont ? 'inline speech-run-continuation' : (isInlineFlowHead ? 'inline speech-run-flow-head' : r.presentation)) + '"' +
+              (isCont ? 'inline speech-run-continuation' : (isInlineFlowHead ? 'inline speech-run-flow-head' : (boundaryQuoteInline ? 'inline speech-run-boundary-quote' : r.presentation))) + '"' +
               ' data-speech-run-id="' + esc(runId) + '"' +
               (isCont ? ' data-run-continuation="1"' : '') +
               (isInlineFlowHead ? ' data-run-flow-head="1" data-visual-policy="continuous_prose"' : '') +

@@ -62,43 +62,141 @@
     return el ? el.closest('.para-fragment') : null;
   }
 
-  // display offset of (node, offset) within its fragment
-  function displayOffsetOf(rec, node, offset) {
-    if (node.nodeType !== 3) {
-      // element boundary: count display length of everything before child `offset`
-      var kids = node.childNodes, acc = null;
-      if (offset >= kids.length) {
-        var lastTxt = lastTextNodeIn(node);
-        if (!lastTxt) return null;
-        acc = entryFor(rec, lastTxt);
-        return acc ? acc.de : null;
-      }
-      var firstTxt = firstTextNodeIn(kids[offset]) || firstTextNodeIn(node);
-      if (!firstTxt) return null;
-      acc = entryFor(rec, firstTxt);
-      return acc ? acc.ds : null;
+  // display offset of (node, offset) within its fragment.
+  //
+  // Safari/iPadOS may expose a native Selection endpoint as an ELEMENT boundary
+  // beside an injected accessibility/presentation node rather than directly in the
+  // visible canonical text node. Those injected nodes are intentionally absent from
+  // rec.nodes. Resolve such boundaries to the nearest INDEXED canonical text node
+  // with an endpoint-specific bias; never let a noncanonical label become a reason
+  // to substitute an entire paragraph.
+  function displayOffsetOf(rec, node, offset, bias) {
+    bias = bias === 'backward' ? 'backward' : 'forward';
+    if (node.nodeType === 3) {
+      var exact = entryFor(rec, node);
+      if (exact) return exact.ds + Math.min(Math.max(0, offset), node.nodeValue.length);
+      // The text node itself is presentation-only (for example
+      // .speech-attribution-sr). Skip the whole injected presentation wrapper in
+      // the requested direction and bind to neighbouring canonical content.
+      var frag = fragmentOf(node), carrier = presentationOnlyAncestor(node, frag) || node;
+      return indexedOffsetFromNodeBoundary(rec, carrier, bias);
     }
-    var e = entryFor(rec, node);
-    if (!e) return null;
-    return e.ds + Math.min(offset, node.nodeValue.length);
+    return indexedOffsetFromElementBoundary(rec, node, offset, bias);
   }
 
   function entryFor(rec, node) {
     for (var i = 0; i < rec.nodes.length; i++) if (rec.nodes[i].node === node) return rec.nodes[i];
     return null;
   }
-  function firstTextNodeIn(el) {
-    if (!el) return null;
-    if (el.nodeType === 3) return el;
-    var w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null, false);
-    return w.nextNode();
+
+  function presentationOnlyAncestor(node, stop) {
+    var el = node && (node.nodeType === 3 ? node.parentElement : node);
+    while (el && el !== stop) {
+      if (el.classList && (el.classList.contains('speech-label') || el.classList.contains('speech-conf') || el.classList.contains('speech-quoted-voice') || el.classList.contains('speech-attribution-sr'))) return el;
+      el = el.parentElement;
+    }
+    return null;
   }
-  function lastTextNodeIn(el) {
+
+  function firstIndexedTextIn(rec, el) {
     if (!el) return null;
-    if (el.nodeType === 3) return el;
+    if (el.nodeType === 3) return entryFor(rec, el) ? el : null;
+    var w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null, false), n;
+    while ((n = w.nextNode())) if (entryFor(rec, n)) return n;
+    return null;
+  }
+  function lastIndexedTextIn(rec, el) {
+    if (!el) return null;
+    if (el.nodeType === 3) return entryFor(rec, el) ? el : null;
     var w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null, false), n, last = null;
-    while ((n = w.nextNode())) last = n;
+    while ((n = w.nextNode())) if (entryFor(rec, n)) last = n;
     return last;
+  }
+
+  function nextIndexedTextAfter(rec, node, stop) {
+    var cur = node;
+    while (cur && cur !== stop) {
+      var sib = cur.nextSibling;
+      while (sib) {
+        var hit = firstIndexedTextIn(rec, sib);
+        if (hit) return hit;
+        sib = sib.nextSibling;
+      }
+      cur = cur.parentNode;
+    }
+    return null;
+  }
+  function previousIndexedTextBefore(rec, node, stop) {
+    var cur = node;
+    while (cur && cur !== stop) {
+      var sib = cur.previousSibling;
+      while (sib) {
+        var hit = lastIndexedTextIn(rec, sib);
+        if (hit) return hit;
+        sib = sib.previousSibling;
+      }
+      cur = cur.parentNode;
+    }
+    return null;
+  }
+
+  function indexedOffsetFromNodeBoundary(rec, node, bias) {
+    var frag = fragmentOf(node);
+    if (!frag) return null;
+    if (bias === 'backward') {
+      var prev = previousIndexedTextBefore(rec, node, frag);
+      var pe = prev && entryFor(rec, prev);
+      if (pe) return pe.de;
+      var nextFallback = nextIndexedTextAfter(rec, node, frag);
+      var neFallback = nextFallback && entryFor(rec, nextFallback);
+      return neFallback ? neFallback.ds : null;
+    }
+    var next = nextIndexedTextAfter(rec, node, frag);
+    var ne = next && entryFor(rec, next);
+    if (ne) return ne.ds;
+    var prevFallback = previousIndexedTextBefore(rec, node, frag);
+    var peFallback = prevFallback && entryFor(rec, prevFallback);
+    return peFallback ? peFallback.de : null;
+  }
+
+  function indexedOffsetFromElementBoundary(rec, node, offset, bias) {
+    var frag = fragmentOf(node);
+    if (!frag) return null;
+    var kids = node.childNodes || [], clamped = Math.max(0, Math.min(Number(offset) || 0, kids.length));
+    if (bias === 'forward') {
+      for (var i = clamped; i < kids.length; i++) {
+        var fwd = firstIndexedTextIn(rec, kids[i]);
+        var fe = fwd && entryFor(rec, fwd);
+        if (fe) return fe.ds;
+      }
+      var after = nextIndexedTextAfter(rec, node, frag);
+      var ae = after && entryFor(rec, after);
+      if (ae) return ae.ds;
+      for (var j = clamped - 1; j >= 0; j--) {
+        var backFallback = lastIndexedTextIn(rec, kids[j]);
+        var bfe = backFallback && entryFor(rec, backFallback);
+        if (bfe) return bfe.de;
+      }
+      var prevFallback = previousIndexedTextBefore(rec, node, frag);
+      var pfe = prevFallback && entryFor(rec, prevFallback);
+      return pfe ? pfe.de : null;
+    }
+    for (var k = clamped - 1; k >= 0; k--) {
+      var back = lastIndexedTextIn(rec, kids[k]);
+      var be = back && entryFor(rec, back);
+      if (be) return be.de;
+    }
+    var before = previousIndexedTextBefore(rec, node, frag);
+    var bfe2 = before && entryFor(rec, before);
+    if (bfe2) return bfe2.de;
+    for (var m = clamped; m < kids.length; m++) {
+      var fwdFallback = firstIndexedTextIn(rec, kids[m]);
+      var ffe = fwdFallback && entryFor(rec, fwdFallback);
+      if (ffe) return ffe.ds;
+    }
+    var nextFallback2 = nextIndexedTextAfter(rec, node, frag);
+    var nfe2 = nextFallback2 && entryFor(rec, nextFallback2);
+    return nfe2 ? nfe2.ds : null;
   }
 
   /* -- display offset -> canonical offset, via the display map -------------- */
@@ -113,11 +211,11 @@
     return root.LDCDisplayMap.canonicalToDisplay(rec.atoms, canOffset);
   }
 
-  function canonicalPosition(node, offset) {
+  function canonicalPosition(node, offset, bias) {
     var frag = fragmentOf(node);
     var rec = recordFor(frag);
     if (!rec) return null;
-    var d = displayOffsetOf(rec, node, offset);
+    var d = displayOffsetOf(rec, node, offset, bias);
     if (d === null) return null;
     return { paraId: rec.paraId, canonical: toCanonical(rec, d), fragment: frag };
   }
@@ -138,16 +236,26 @@
       reader.querySelectorAll('.para-fragment'));
     var i0 = all.indexOf(startFrag), i1 = all.indexOf(endFrag);
     if (i0 < 0 || i1 < 0) return [];
-    if (i0 > i1) { var t = i0; i0 = i1; i1 = t; t = startFrag; startFrag = endFrag; endFrag = t; }
+
+    // Endpoints are authoritative. If either one cannot be mapped explicitly to
+    // canonical text, fail closed. Only truly INTERMEDIATE fragments may use their
+    // full canonicalStart/canonicalEnd. Never repair an unresolved endpoint by
+    // silently expanding it to the start/end of its paragraph.
+    var startPos = canonicalPosition(range.startContainer, range.startOffset, 'forward');
+    var endPos   = canonicalPosition(range.endContainer,   range.endOffset,   'backward');
+    if (!startPos || !endPos || startPos.fragment !== startFrag || endPos.fragment !== endFrag) return [];
+    if (i0 > i1) {
+      var t = i0; i0 = i1; i1 = t;
+      t = startFrag; startFrag = endFrag; endFrag = t;
+      t = startPos; startPos = endPos; endPos = t;
+    }
 
     var parts = [];
     for (var i = i0; i <= i1; i++) {
       var f = all[i], rec = recordFor(f);
       if (!rec) continue;
-      var s = (f === startFrag) ? canonicalPosition(range.startContainer, range.startOffset) : null;
-      var e = (f === endFrag)   ? canonicalPosition(range.endContainer,   range.endOffset)   : null;
-      var sc = (s && s.fragment === f) ? s.canonical : rec.canonicalStart;
-      var ec = (e && e.fragment === f) ? e.canonical : rec.canonicalEnd;
+      var sc = (f === startFrag) ? startPos.canonical : rec.canonicalStart;
+      var ec = (f === endFrag)   ? endPos.canonical   : rec.canonicalEnd;
       if (sc > ec) { var q = sc; sc = ec; ec = q; }
       sc = Math.max(0, Math.min(sc, rec.text.length));
       ec = Math.max(0, Math.min(ec, rec.text.length));   // never exceed paragraph length
