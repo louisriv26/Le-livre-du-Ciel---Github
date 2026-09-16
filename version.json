@@ -1,5 +1,5 @@
 {
-  "app_version": "v2.19.103-R1B",
+  "app_version": "v2.19.104-R1B",
   "backbone_corpus_version": "G036-AFLP-R7-UWR2-FAST1",
   "backup_help_current_format_contract": "HELP_NORMAL_BACKUP_DESCRIBES_STREAMING_LDCBACKUP__SUPPORTED_HISTORICAL_GENERATIONS_MIGRATE_PRUDENTLY_BEFORE_VALIDATION__UNRESOLVED_ANCHORS_REMAIN_FOR_REVIEW__LEGACY_JSON_COMPATIBILITY_RETAINED",
   "baseline_candidate_sha256": "4a45966c24b9d6444c77b4229ba3df16634ec949cfb703dce91c5da1ec2d8fad",
@@ -27,17 +27,17 @@
     "active_aligne": "G036-AFLP-R7-UWR2-FAST1",
     "active_enrichi": "G036-AFLP-R7-SUP-T5-FAST1",
     "historical_r1b": "G036-AFLP-R1B-UWR2",
-    "package_predecessor_app_version": "v2.19.102-R1B",
-    "package_predecessor_zip_sha256": "c162658008feee0fedb3fe317e0b42bf77738993bb7ac763f70af681724cc791",
+    "package_predecessor_app_version": "v2.19.103-R1B",
+    "package_predecessor_zip_sha256": "d9b11d3dc8d3231aef61d2117e319c5ce0e5be367a6e6190f28485363f595988",
     "semantic_predecessor_aligne": "G036-AFLP-R7-UWR2"
   },
-  "current_release_authority": "LDC_V103_FINAL_AUDIT_METADATA_COHERENCE_R1__BOUNDED_SUCCESSOR_TO_EXACT_V102__RUNTIME_LOGIC_UNCHANGED_FROM_V102__ACTIVE_PREDECESSOR_RUNTIME_VALIDATION_AND_EXTERNAL_GATE_FIELDS_RECONCILED__PACKAGE_DOES_NOT_SELF_CERTIFY_AUDIT_PASS__EXTERNAL_EXACT_PACKAGE_AUDIT_REPORT_AND_GOVERNING_STATE_DOCUMENT_CONTROL_TEST_RESULTS__PUBLIC_DEPLOYMENT_NOT_AUTHORIZED",
-  "current_runtime_browser_validation": "EXACT_V103_RUNTIME_VALIDATION_RESULTS_ARE_EXTERNAL_EVIDENCE_NOT_SELF_CERTIFIED_BY_PACKAGE__REFER_TO_MATCHING_SHA256_AUDIT_REPORT__CONTROLLED_BROWSER_TESTING_DOES_NOT_CLOSE_PHYSICAL_DEVICE_SERVICE_WORKER_INSTALL_UPDATE_TRUE_OFFLINE_LIVE_ORIGIN_OR_ASSISTIVE_TECH_GATES",
+  "current_release_authority": "LDC_V104_SW_REVISION_COHERENCE_R1__BOUNDED_SUCCESSOR_TO_EXACT_V103__FIXES_FATAL_CROSS_FILE_SERVICE_WORKER_INSTALL_CONTRACT__RUNTIME_FEATURE_LOGIC_UNCHANGED__V103_REAL_DEVICE_DEPLOYMENT_FAILED__EXACT_V104_PHYSICAL_DEVICE_LIVE_ORIGIN_UPDATE_AND_TRUE_OFFLINE_RETEST_REQUIRED__PUBLIC_DEPLOYMENT_NOT_AUTHORIZED",
+  "current_runtime_browser_validation": "V104_INTERNAL_CONTROLLED_REGRESSION_REQUIRES_EXTERNAL_EXACT_PACKAGE_EVIDENCE__CROSS_FILE_SERVICE_WORKER_INSTALL_CONTRACT_NOW_AUDITED_EXPLICITLY__PHYSICAL_DEVICE_LIVE_SERVICE_WORKER_INSTALL_UPDATE_TRUE_OFFLINE_AND_ASSISTIVE_TECH_RETESTS_REMAIN_OPEN",
   "deep_link_schema": "ldc-deep-link-v1",
   "degraded_boot_stage6": "DEFER__NOT_JUSTIFIED_FOR_RUNTIME_MUTATION_NOW",
   "diagnostic_default_copy_contract": "ALLOWLIST_PUBLIC_TECHNICAL_METADATA__NO_RAW_QUERY__NO_RAW_ERROR_MESSAGE__NO_USER_AUTHORED_TEXT",
   "external_decision_authority": "FINAL_DECISION_LOCK_EXTERNAL_TO_DEPLOY_ZIP__WRITTEN_LAST_AFTER_PRIMARY_AND_INDEPENDENT_REOPEN_AUDITS",
-  "external_validation_status": "OPEN_FOR_EXACT_V103__PHYSICAL_IPHONE_IPAD_SAMSUNG_INSTALLED_PWA_CAMPAIGN__EXACT_V102_TO_V103_UPDATE_PATH__LIVE_ORIGIN_EXACT_BYTE_BINDING__TRUE_OFFLINE_COLD_REOPEN__SAFE_AREAS__VOICEOVER_TALKBACK__PLATFORM_BROWSER_LARGER_TEXT_AROUND_200_PERCENT__PUBLIC_DEPLOYMENT_NOT_AUTHORIZED",
+  "external_validation_status": "OPEN_FOR_EXACT_V104__PHYSICAL_IPHONE_IPAD_SAMSUNG_BROWSER_AND_INSTALLED_PWA__EXACT_V103_TO_V104_RECOVERY_UPDATE_PATH__LIVE_ORIGIN_EXACT_BYTE_BINDING__TRUE_OFFLINE_COLD_REOPEN__SAFE_AREAS__VOICEOVER_TALKBACK__PLATFORM_BROWSER_LARGER_TEXT_AROUND_200_PERCENT__PUBLIC_DEPLOYMENT_NOT_AUTHORIZED",
   "f1_poisoned_http_cache_regression_gate": "REQUIRED_AND_EXTERNAL_EVIDENCE",
   "f7_release_metadata_generation": "CURRENT_RELEASE_COUNTS_AND_BINDINGS_GENERATED_AFTER_CORPUS_PAYLOAD_FREEZE__V32_VALUES_RETAINED_ONLY_UNDER_HISTORICAL_KEYS",
   "f8_android_nonfragment_highlight_targeting": {
@@ -407,8 +407,8 @@
   "owner_override_note": "A continuation of the full blind adversarial audit of frozen R18 R7 found a genuine active-metadata contradiction: offline_manifest.json had the correct R18 R7 page_worker_revision and rebuild_status but its active scope field still described v87 R18 R6 as the current bounded successor. R18 R8 is a metadata-coherence successor. It corrects that active scope description and advances page/worker/cache identity to R18 R8 so the corrected bytes have a unique update namespace. The R18 R7 user-select:none native-selection repair and all R18 R6/R18 R5 runtime repairs are preserved. No corpus, search, speaker, flow, display, interaction-anchor, DB-schema or offline-content-binding mutation is authorised.",
   "owner_stage_start_authorisation": "USER_EXPLICITLY_AUTHORIZED_FULL_BLIND_ADVERSARIAL_VERIFICATION_AND_ALL_NECESSARY_CORRECTIONS__2026_09_12",
   "owner_user_acceptance": "USER_EXPLICITLY_REQUESTED_CONTINUED_DEVELOPMENT_WITHOUT_IMMEDIATE_DEVICE_CHECKING__NO_PUBLIC_DEPLOYMENT_AUTHORITY__2026_09_14",
-  "package_state_at_freeze": "V103_FROZEN_CONTROLLED_TEST_CANDIDATE__EXACT_V102_PREDECESSOR__PACKAGE_METADATA_DOES_NOT_SELF_CERTIFY_INDEPENDENT_AUDIT_RESULTS__CORPUS_SEARCH_USER_DATA_AND_OFFLINE_CONTENT_UNCHANGED__PHYSICAL_DEVICE_INSTALLED_PWA_LIVE_ORIGIN_TRUE_OFFLINE_AND_ASSISTIVE_TECH_GATES_OPEN__PUBLIC_DEPLOYMENT_NOT_AUTHORIZED",
-  "page_worker_revision": "ldc-v2.19.103-R1B-final-audit-metadata-coherence-r1",
+  "package_state_at_freeze": "V104_FROZEN_CONTROLLED_TEST_CANDIDATE__EXACT_V103_PREDECESSOR__SERVICE_WORKER_INDEX_VERSION_JSON_OFFLINE_MANIFEST_REVISION_CONTRACT_RECONCILED__CORPUS_SEARCH_USER_DATA_AND_PERSISTENT_OFFLINE_CONTENT_UNCHANGED__EXACT_V104_PHYSICAL_DEVICE_INSTALLED_PWA_LIVE_ORIGIN_UPDATE_TRUE_OFFLINE_AND_ASSISTIVE_TECH_GATES_OPEN__PUBLIC_DEPLOYMENT_NOT_AUTHORIZED",
+  "page_worker_revision": "ldc-v2.19.104-R1B-sw-revision-coherence-r1",
   "physical_ipad_gate": "V100_RETEST_REQUIRED__FAILED_SEMANTIC_AND_SEARCH_TARGET_RECOVERY_PATHS__ENTRY_START_AND_SEMANTIC_REFLOW__ALL_FOUR_PRESETS__PLATFORM_LEVEL_LARGER_TEXT_OR_EQUIVALENT_200_PERCENT__SAFE_AREAS__OFFLINE_COLD_REOPEN__V99_TO_V100_UPDATE_PATH__VOICEOVER_REPRESENTATIVE_CHECK",
   "physical_iphone_gate": "V100_RETEST_REQUIRED__FAILED_SEMANTIC_AND_SEARCH_TARGET_RECOVERY_PATHS__ENTRY_START_AND_SEMANTIC_REFLOW__ALL_FOUR_PRESETS__PLATFORM_LEVEL_LARGER_TEXT_OR_EQUIVALENT_200_PERCENT__SAFE_AREAS__OFFLINE_COLD_REOPEN__V99_TO_V100_UPDATE_PATH__VOICEOVER_REPRESENTATIVE_CHECK",
   "physical_samsung_android_gate": "V100_RETEST_REQUIRED__FAILED_SEMANTIC_AND_SEARCH_TARGET_RECOVERY_PATHS__ENTRY_START_AND_SEMANTIC_REFLOW__ALL_FOUR_PRESETS__MAX_SYSTEM_FONT_OR_EQUIVALENT_200_PERCENT__OFFLINE_COLD_REOPEN__V99_TO_V100_UPDATE_PATH__TALKBACK_REPRESENTATIVE_CHECK",
@@ -444,7 +444,7 @@
   ],
   "protected_lecture_suivie_contract": "ONE_PROTECTED_MAIN_JOURNEY__ONLY_EXPLICIT_SEQUENTIAL_START_RESUME_INHERITED_PREV_NEXT_OR_CONFIRMED_RELOCATION_MAY_WRITE_MAIN__CONSULTATIONS_NEVER_WRITE_MAIN__LU_INDEPENDENT",
   "protected_v45_runtime": "CORPUS_SPEAKERS_PRESENTATION_SEARCH_FLOW_DISPLAY_SUPPLEMENTS_USER_STATE_HIGHLIGHTING_OFFLINE_CACHE_ALGORITHM_NAVIGATION_LOGIC_UNCHANGED",
-  "public_version": "103",
+  "public_version": "104",
   "quote_display_contract": "CANONICAL_GUILLEMETS_PRESERVED_IN_CORPUS__ADJACENT_OUTER_DELIMITERS_HIDDEN__TWO_SOURCE_SPAN_GAP_OPENERS_WITH_EXPLICIT_JESUS_ATTRIBUTION_HIDDEN__SIX_PUNCTUATION_GAP_CLOSERS_HIDDEN__NESTED_AND_REPORTED_QUOTES_PRESERVED",
   "r16_authority_fencing_reaudit": {
     "corpus_changed": false,
@@ -2982,8 +2982,8 @@
     ],
     "public_deployment_authorized": false
   },
-  "package_predecessor_app_version": "v2.19.102-R1B",
-  "package_predecessor_zip_sha256": "c162658008feee0fedb3fe317e0b42bf77738993bb7ac763f70af681724cc791",
+  "package_predecessor_app_version": "v2.19.103-R1B",
+  "package_predecessor_zip_sha256": "d9b11d3dc8d3231aef61d2117e319c5ce0e5be367a6e6190f28485363f595988",
   "v101_transactional_navigation_commit": {
     "date": "2026-09-16",
     "classification": "THIRD_BLIND_CHALLENGE_FAILED_NAVIGATION_TRANSACTION_REPAIR",
@@ -3054,6 +3054,24 @@
       "sw.js",
       "version.json"
     ],
+    "public_deployment_authorized": false
+  },
+  "v104_sw_revision_coherence_repair": {
+    "date": "2026-09-16",
+    "classification": "BLOCKING_REAL_DEVICE_SERVICE_WORKER_INSTALL_REPAIR",
+    "predecessor_version": "v2.19.103-R1B",
+    "predecessor_zip_sha256": "d9b11d3dc8d3231aef61d2117e319c5ce0e5be367a6e6190f28485363f595988",
+    "triggering_evidence": "Owner physical tests on iPhone, iPad and desktop browser showed v103 could not progress reliably; iPad fatal boot diagnostic explicitly reported SW_SYNC and \"nouveau Service Worker devenu redondant\".",
+    "root_cause": "v103 index.html, sw.js and version.json declared revision ldc-v2.19.103-R1B-final-audit-metadata-coherence-r1, but offline_manifest.json still declared ldc-v2.19.100-R1B-navigation-target-failsafe-r1. sw.js verifyShellRevisionResponse requires offline_manifest.page_worker_revision === VERSION during install, so the v103 Service Worker install was guaranteed to reject and become redundant.",
+    "repair": "Advance to v104 and bind index SW_CACHE_VERSION, sw.js VERSION, version.json page_worker_revision and offline_manifest.json page_worker_revision to one exact revision: ldc-v2.19.104-R1B-sw-revision-coherence-r1. Advance shell/runtime cache namespaces and offline-manifest app_version coherently.",
+    "feature_runtime_logic_change": false,
+    "candidate_byte_mutations": [
+      "index.html",
+      "offline_manifest.json",
+      "sw.js",
+      "version.json"
+    ],
+    "v103_release_status": "FAILED_REAL_DEVICE_DEPLOYMENT__SUPERSEDED",
     "public_deployment_authorized": false
   }
 }
