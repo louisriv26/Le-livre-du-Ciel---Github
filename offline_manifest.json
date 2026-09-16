@@ -1,5 +1,5 @@
 {
-  "app_version": "v2.19.105-R1B",
+  "app_version": "v2.19.106-R1B",
   "asset_count": 202,
   "assets": [
     {
@@ -1040,7 +1040,7 @@
   "fast_mode_authority_sha256": "09590abe803b99dadf696fbecd64fb88b4fee9a05b38280549b4abcb920e0c78",
   "legacy_cache_family_prefix": "ldc-le-livre-du-ciel-offline-v",
   "m7rc_fixed_point": true,
-  "page_worker_revision": "ldc-v2.19.105-R1B-update-reopen-guidance-r1",
+  "page_worker_revision": "ldc-v2.19.106-R1B-entry-start-stability-r1",
   "post_r6_date_id_a2_fixed_point": {
     "a2_sha256": "dd034a4d4bb329254818c3e62fd629c9b64c90f9d4bd533de9f6ed99247cb1d8",
     "date_id_sha256": "ed5bf462c47b8fb5a41f7c81591257d6e99f94bae08628aa27e5f7d667020c2a",
@@ -1054,7 +1054,7 @@
   "predecessor_of_v72_zip_sha256": "ed925239f570293b54a4565a2666dc50ac71e43aa149b3567d8a55364e550d8c",
   "predecessor_of_v73_zip_sha256": "825e08ea96a8cf6a245cd56c47e30f3eb4a04bb838fc2e4d3940f8bd2f3f974c",
   "predecessor_semantic_authority_sha256": "d1a7450adf36368cc8609e21ccde3c51e0b3c90dc4f3c3305534cb40104d56f4",
-  "rebuild_status": "V105_UPDATE_REOPEN_GUIDANCE_R1__USER_VISIBLE_UPDATE_BANNER_EXPLAINS_FULL_CLOSE_AND_REOPEN_FALLBACK__ACTIVATING_AND_PUBLISHED_NOT_ACTIVE_STATES_SHOW_SAME_RECOVERY_GUIDANCE__V104_SW_REVISION_COHERENCE_PRESERVED__NO_CORPUS_SEARCH_READER_OR_USER_DATA_CHANGE__PUBLIC_DEPLOYMENT_REQUIRES_PHYSICAL_UPDATE_CONFIRMATION",
+  "rebuild_status": "V106_ENTRY_START_STABILITY_R1__OWNER_PHYSICAL_V105_FINDING_DIRECT_TOME_ENTRY_COULD_REOPEN_BELOW_ABSOLUTE_START__ENTRY_START_IS_FIRST_CLASS_SEMANTIC_POSITION__SESSION_IDENTITY_BOUND_LOCK_UNTIL_GENUINE_USER_SCROLL__LATE_JOURNEY_HEADER_FONT_VIEWPORT_REFLOW_FAILS_CLOSED_TO_TOP__NATIVE_SCROLL_ANCHOR_DISABLED_ONLY_WHILE_LOCKED__SEARCH_CORPUS_AND_USER_DATA_SCHEMA_UNCHANGED__PUBLIC_DEPLOYMENT_REQUIRES_EXACT_V106_PHYSICAL_CONFIRMATION",
   "retention_contract": {
     "clear_policy": "CURRENT_SCOPE_ONLY_FOR_SHARED_LEGACY_CACHES",
     "copy_migration_required": false,
@@ -1065,7 +1065,7 @@
     "shell_runtime_caches": "APP_VERSIONED"
   },
   "schema": "ldc-offline-manifest-v3",
-  "scope": "36 tomes PRINCIPAL R7/FAST1 + SUP-T1..SUP-T5 + SEARCH-V2 active assets + compact volume summary + frozen SEARCH-V2.1A visible-token exact-truth authority + Search Foundation V2.1B + SEARCH-V2.2 A9 Formulation proche runtime. V99 is a bounded recovery-safety successor from exact v98: valid same-entry semantic restore/Resume and explicit Search/notes/highlights/deep-link targets are preserved; if a stale or cross-entry semantic restore is rejected, Reader now fails closed to the newly opened entry start instead of retaining prior-entry pixel scroll geometry. V98 ENTRY_START, measured Reader width, semantic scaling and offline-status typography contracts remain intact. Corpus/search assets, source-mode logic, user-data schemas and persistent offline corpus content binding are unchanged. Public deployment is not authorized; physical-device/live-origin/true-offline/assistive-technology and platform-level ~200% text gates remain open.",
+  "scope": "36 tomes PRINCIPAL R7/FAST1 + SUP-T1..SUP-T5 + SEARCH-V2 active assets only + compact volume summary + projected speaker/flow runtime payloads + V2.1A exact truth + V2.1B foundation + V2.2 A9 Formulation proche runtime; v106 changes Reader entry-start stability and release identity only; semantic remembered-meaning Search remains a separately open P0 benchmark/integration programme; offline corpus content binding unchanged; public deployment not authorized.",
   "scope_isolation_contract": "ONLY_CURRENT_SERVICE_WORKER_SCOPE_URLS_MAY_SATISFY_REUSE_OR_BE_CLEARED_FROM_SHARED_LEGACY_CACHES",
   "semantic_vector_search_included": false,
   "semantic_vector_search_note": "Vector/embedding search remains retired. Legacy semantic_index.json is also retired from deploy; SEARCH-V2 is the sole active search runtime.",
