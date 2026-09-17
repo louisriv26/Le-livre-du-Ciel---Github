@@ -480,6 +480,13 @@ h2.dn-section-title{margin-bottom:0;}
    reflow as reading progress. The class is removed on the first genuine user
    scroll gesture. */
 #reader-scroll.entry-start-locked{overflow-anchor:none;}
+/* v107 physical-failure repair: when a Tome list has been scrolled, iOS/WebKit
+   must not carry focus/momentum/compositor state from #entries-list into the
+   newly shown Reader. The source list is frozen only for the bounded handoff;
+   the Reader receives a fresh scroll surface and starts with async touch
+   scrolling temporarily disabled until its absolute-top state has settled. */
+#entries-list.reader-handoff-source-frozen{overflow-y:hidden!important;-webkit-overflow-scrolling:auto!important;touch-action:none!important;overscroll-behavior:none!important;}
+#reader-scroll.entry-list-handoff-reset{-webkit-overflow-scrolling:auto!important;scroll-behavior:auto!important;overflow-anchor:none!important;}
 .journey-state-block{margin:0 0 12px;}
 .journey-intent-indicator{display:inline-flex;align-items:center;gap:5px;margin:0 0 6px;padding:3px 8px;border-radius:999px;font:600 var(--reading-badge-size) var(--body);letter-spacing:.04em;background:var(--gold-pale);color:var(--gold-text);}
 .journey-intent-indicator.consultation{background:var(--accent-fill);color:var(--accent-fill-ink);}
@@ -2296,11 +2303,11 @@ html[data-text-level="xlarge"]{--reader-measure:823px;--home-offline-title-size:
    VERSION — single source of truth
    Update this string on every release.
 ═══════════════════════════════════════════════════════ */
-const APP_VERSION = 'v2.19.106-R1B'; // Entry-start stability successor to v105
-const PUBLIC_VERSION = '106';       // single user-facing release number
+const APP_VERSION = 'v2.19.107-R1B'; // Entry-list → Reader handoff successor to v106
+const PUBLIC_VERSION = '107';       // single user-facing release number
 const APP_VERSION_LABEL = `Version ${PUBLIC_VERSION}`;
 const APP_BUILD   = '2026-09-16';
-const SW_CACHE_VERSION = 'ldc-v2.19.106-R1B-entry-start-stability-r1';
+const SW_CACHE_VERSION = 'ldc-v2.19.107-R1B-entry-list-reader-handoff-r1';
 const CORPUS_MANIFEST_SHA256 = '8d831c437fa6c2caa56ac637c3d539279ec24b57711d209b264804cca19c0ab7';
 const DEEP_LINK_SCHEMA = 'ldc-deep-link-v1';
 const READING_POSITION_SCHEMA = 'ldc-reading-position-v3';
@@ -2524,6 +2531,13 @@ let entryStartTargetLock = null;
 let entryStartResizeObserver = null;
 const entryStartTrace = [];
 window.__ldcEntryStartTrace = entryStartTrace;
+// v107: physical owner evidence isolated the remaining failure to the
+// scrollable Tome-list -> Reader transition. Same entry via Previous/Next opens
+// at the correct top, so the source scroll surface must not retain authority.
+let entriesReaderHandoff = null;
+let entriesReaderHandoffSeq = 0;
+const entriesReaderHandoffTrace = [];
+window.__ldcEntriesReaderHandoffTrace = entriesReaderHandoffTrace;
 let semanticRestoreInProgress = false;
 let semanticResizeTimer = null;
 let previousScreen = 'home'; // screen before Help was opened
@@ -4505,6 +4519,95 @@ async function renderSupplementRegistryList(container,items,opts={}){
   });
 }
 
+function entriesReaderHandoffTraceEvent(event,extra={}){
+  const list=document.getElementById('entries-list'),sc=document.getElementById('reader-scroll');
+  entriesReaderHandoffTrace.push(Object.assign({ts:Date.now(),event,source_scroll_top:list?Number(list.scrollTop)||0:null,reader_scroll_top:sc?Number(sc.scrollTop)||0:null,screen:currentScreenName(),active_element:document.activeElement&&document.activeElement.id||null},extra));
+  if(entriesReaderHandoffTrace.length>100)entriesReaderHandoffTrace.splice(0,entriesReaderHandoffTrace.length-100);
+}
+function renewReaderScrollSurfaceForEntriesHandoff(){
+  const old=document.getElementById('reader-scroll');
+  if(!old)return null;
+  // A fresh DOM scrolling element breaks any retained iOS/WebKit async-scroll
+  // compositor state from a previous Reader session. Dynamic paragraph listeners
+  // are rebuilt later by openEntryCore; static Reader controls use inline handlers.
+  const fresh=old.cloneNode(true);
+  fresh.classList.remove('entry-start-locked');
+  fresh.classList.add('entry-list-handoff-reset');
+  fresh.scrollTop=0;
+  old.replaceWith(fresh);
+  bindReaderScrollIntentHandlers(fresh);
+  // Force a layout boundary while the Reader screen is still hidden, then pin
+  // the new physical scrolling surface to absolute top before it is exposed.
+  void fresh.offsetHeight;
+  fresh.scrollTop=0;
+  entriesReaderHandoffTraceEvent('READER_SCROLL_SURFACE_RENEWED');
+  return fresh;
+}
+function beginEntriesToReaderHandoff(button,originContext){
+  if(entriesReaderHandoff)completeEntriesToReaderHandoff(entriesReaderHandoff,'superseded');
+  const list=document.getElementById('entries-list');
+  const token={id:++entriesReaderHandoffSeq,created_at:Date.now(),source_scroll_top:list?Number(list.scrollTop)||0:0,source_entry_id:button&&button.dataset?button.dataset.entryId||null:null,origin_context:originContext||null};
+  entriesReaderHandoff=token;
+  entriesReaderHandoffTraceEvent('BEGIN',{handoff_id:token.id,entry_id:token.source_entry_id});
+  // Crucial: release focus synchronously, before openEntryCore reaches its first
+  // await. A focused button inside a scrolled, momentum-enabled list must never
+  // remain the browser's scroll anchor while that screen is hidden.
+  const active=document.activeElement;
+  if(active&&list&&list.contains(active)){try{active.blur();}catch(_){}}
+  if(button&&document.activeElement===button){try{button.blur();}catch(_){}}
+  if(list){
+    list.classList.add('reader-handoff-source-frozen');
+    // Keep logical Back geometry intact while terminating physical momentum.
+    list.scrollTop=token.source_scroll_top;
+    void list.offsetHeight;
+    list.scrollTop=token.source_scroll_top;
+  }
+  token.reader_surface=renewReaderScrollSurfaceForEntriesHandoff();
+  entriesReaderHandoffTraceEvent('SOURCE_FROZEN',{handoff_id:token.id,blurred:!(document.activeElement&&list&&list.contains(document.activeElement))});
+  return token;
+}
+function completeEntriesToReaderHandoff(token,reason='complete'){
+  if(!token)return;
+  const list=document.getElementById('entries-list');
+  if(list){
+    list.classList.remove('reader-handoff-source-frozen');
+    // Restore the source list's logical position without allowing it to drive the
+    // Reader; the list is normally hidden at this point and Back later restores
+    // its captured anchor/focus context explicitly.
+    list.scrollTop=Number(token.source_scroll_top)||0;
+  }
+  const sc=document.getElementById('reader-scroll');
+  if(sc){
+    sc.scrollTop=0;
+    requestAnimationFrame(()=>{
+      if(entryStartLockMatchesVisible())enforceEntryStartTargetLock('entries-handoff-frame-1');
+      else sc.scrollTop=0;
+      requestAnimationFrame(()=>{
+        const current=document.getElementById('reader-scroll');
+        if(!current)return;
+        if(entryStartLockMatchesVisible())enforceEntryStartTargetLock('entries-handoff-frame-2');
+        else current.scrollTop=0;
+        current.classList.remove('entry-list-handoff-reset');
+        entriesReaderHandoffTraceEvent('SETTLED',{handoff_id:token.id,reason});
+      });
+    });
+  }
+  if(entriesReaderHandoff&&entriesReaderHandoff.id===token.id)entriesReaderHandoff=null;
+  entriesReaderHandoffTraceEvent('COMPLETE',{handoff_id:token.id,reason});
+}
+async function openEntryFromEntries(vol,entryId,button){
+  // Capture Back state BEFORE blur/freeze so returning to the Tome preserves the
+  // exact list position and can restore focus to the selected entry.
+  const originContext=captureNavigationContext('entries');
+  const token=beginEntriesToReaderHandoff(button,originContext);
+  try{
+    return await openEntry(vol,entryId,'entries',{intent:READER_INTENT.CONSULTATION,navigationTarget:'ENTRY_START',originContext});
+  }finally{
+    completeEntriesToReaderHandoff(token,'open-entry-finally');
+  }
+}
+window.__ldcEntriesReaderHandoffDebug=()=>({active:entriesReaderHandoff&&Object.assign({},entriesReaderHandoff,{reader_surface:undefined}),trace:entriesReaderHandoffTrace.slice(-30),entries_scroll_top:Number(document.getElementById('entries-list')?.scrollTop)||0,reader_scroll_top:Number(document.getElementById('reader-scroll')?.scrollTop)||0});
+
 async function openTome(vol) {
   if(activeReaderSession)await finishReaderForPermanentNavigation('entries');
   currentVolume = vol;
@@ -4542,7 +4645,7 @@ async function openTome(vol) {
         ${inlineHostAdd?`<span class="ei-supp-badge" title="Cette entrée principale contient un complément approuvé ; sa provenance est indiquée dans Infos et source." aria-label="Cette entrée principale contient un complément approuvé ; sa provenance est indiquée dans Infos et source.">+ COMPL.</span>`:''}
       </div>
       ${statusMarks}`;
-    btn.onclick = () => openEntry(vol, e.id, 'entries',{intent:READER_INTENT.CONSULTATION,navigationTarget:'ENTRY_START'});
+    btn.onclick = () => openEntryFromEntries(vol, e.id, btn);
     list.appendChild(btn);
   });
   if(Number(vol)===1 && supplementMode!=='additions'){
@@ -5227,9 +5330,11 @@ async function onReaderScroll() {
     if(currentReaderIntent()===READER_INTENT.CONSULTATION)scheduleJourneyUiRefresh(50);
   }, 400);
 }
-const readerScrollIntentEl=document.getElementById('reader-scroll');
 let readerMouseScrollPointer=null;
-if(readerScrollIntentEl){
+const readerScrollIntentBoundNodes=new WeakSet();
+function bindReaderScrollIntentHandlers(readerScrollIntentEl){
+  if(!readerScrollIntentEl||readerScrollIntentBoundNodes.has(readerScrollIntentEl))return false;
+  readerScrollIntentBoundNodes.add(readerScrollIntentEl);
   readerScrollIntentEl.addEventListener('touchmove',markReaderUserScrollIntent,{passive:true});
   readerScrollIntentEl.addEventListener('pointerdown',e=>{if(e.pointerType==='mouse')readerMouseScrollPointer={pointer_id:e.pointerId,start_y:Number(e.clientY)||0};},{passive:true});
   readerScrollIntentEl.addEventListener('pointermove',e=>{if(readerMouseScrollPointer&&e.pointerType==='mouse'&&e.pointerId===readerMouseScrollPointer.pointer_id&&(e.buttons&1)&&Math.abs((Number(e.clientY)||0)-readerMouseScrollPointer.start_y)>3)markReaderUserScrollIntent();},{passive:true});
@@ -5238,7 +5343,9 @@ if(readerScrollIntentEl){
   readerScrollIntentEl.addEventListener('pointercancel',clearReaderMouseScrollPointer,{passive:true});
   readerScrollIntentEl.addEventListener('wheel',markReaderUserScrollIntent,{passive:true});
   readerScrollIntentEl.addEventListener('keydown',e=>{if(['ArrowDown','ArrowUp','PageDown','PageUp','Home','End',' '].includes(e.key))markReaderUserScrollIntent();});
+  return true;
 }
+bindReaderScrollIntentHandlers(document.getElementById('reader-scroll'));
 
 // Backward-compatible wrapper used only by legacy/import code if encountered.
 async function saveReadingPos(vol, entryId, paraId, label, excerpt) {
