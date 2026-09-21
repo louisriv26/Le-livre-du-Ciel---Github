@@ -470,20 +470,6 @@ h2.dn-section-title{margin-bottom:0;}
 .reader-info-key{color:var(--muted);}
 .reader-info-val{color:var(--ink);overflow-wrap:anywhere;}
 .reader-info-val.mono{font-family:monospace;font-size:11px;color:var(--gold-text);}
-.reader-info-method-link{display:flex;justify-content:flex-start;padding:4px 0 12px;}
-.reader-info-method-link .btn-secondary{min-height:42px;text-align:left;}
-.reader-info-technical{margin:2px 0 12px;border-top:0.5px solid var(--border);border-bottom:0.5px solid var(--border);}
-.reader-info-technical summary,.help-validation-details summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;color:var(--night);font-weight:600;}
-.reader-info-technical summary{padding:12px 2px;font-size:var(--sem-strong-13);}
-.reader-info-technical summary::-webkit-details-marker,.help-validation-details summary::-webkit-details-marker{display:none;}
-.reader-info-technical summary::before,.help-validation-details summary::before{content:'›';display:inline-block;color:var(--gold-text);transition:transform .15s ease;font-size:18px;line-height:1;}
-.reader-info-technical[open] summary::before,.help-validation-details[open] summary::before{transform:rotate(90deg);}
-.reader-info-technical .reader-info-grid{padding:0 0 12px;}
-.help-jump-action{display:flex;justify-content:flex-start;padding-top:8px;}
-.help-jump-action .btn-secondary{min-height:42px;text-align:left;}
-.help-validation-details{margin-top:10px;border-top:0.5px solid var(--border);padding-top:2px;}
-.help-validation-details summary{padding:10px 0;font-size:var(--help-body-size);}
-.help-validation-details .help-row:first-of-type{border-top:0;}
 @media(max-width:420px){.reader-top-title{display:none}.reader-tools{margin-left:auto}.reader-info-row{grid-template-columns:1fr}.reader-info-key{font-size:11px}}
 .mode-pill{font-size:12px;padding:3px 10px;border-radius:12px;border:0.5px solid var(--border);
   background:none;color:var(--muted);cursor:pointer;font-family:var(--body);transition:all .15s;}
@@ -504,13 +490,6 @@ h2.dn-section-title{margin-bottom:0;}
 #reader-scroll.entry-list-handoff-reset{-webkit-overflow-scrolling:auto!important;scroll-behavior:auto!important;overflow-anchor:none!important;}
 #screen-entries.entries-return-restoring #entries-list{visibility:hidden!important;}
 #entries-list.entries-return-lock{scroll-behavior:auto!important;overflow-anchor:none!important;}
-
-/* v115 Search-branch navigation closure: physical scroll surfaces are never
-   navigation authority. Active destination screens can be laid out while
-   concealed, then revealed only after their semantic target is established. */
-.screen.navigation-commit-hidden{visibility:hidden!important;pointer-events:none!important;}
-.scroll.navigation-source-frozen{overflow-y:hidden!important;-webkit-overflow-scrolling:auto!important;touch-action:none!important;overscroll-behavior:none!important;}
-#entries-list.tome-start-lock,#entries-list.entries-return-lock,#tomes-list.tomes-return-lock{scroll-behavior:auto!important;overflow-anchor:none!important;}
 
 /* v110 contextual Reader bar: Back is a primary fixed navigation action on the
    same line as PRINCIPAL / COMPLÉMENT / ENRICHI, outside #reader-scroll. */
@@ -669,16 +648,6 @@ mark.hl-pink{background:#fce7f3;color:inherit;}
 .hl-del-btn:hover{background:rgba(255,255,255,.1);}
 
 /* ═══ SEARCH SCREEN ═══ */
-/* SEARCH-V3 R5 INTERNAL LAB — explicit intent selector, constrained by v112 iPhone viewport rules. */
-.search-intent-wrap{padding:10px 12px 0;flex-shrink:0;min-width:0;width:100%;max-width:100%;}
-.search-intent-segment{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);min-width:0;width:100%;max-width:100%;background:var(--white);border:.5px solid var(--border);border-radius:11px;padding:3px;gap:3px;}
-.search-intent-btn{min-width:0;min-height:40px;border:0;border-radius:8px;background:transparent;color:var(--muted);font-family:var(--body);font-size:var(--sem-strong-13);font-weight:600;cursor:pointer;white-space:normal;overflow-wrap:anywhere;}
-.search-intent-btn.active{background:var(--accent-fill);color:var(--accent-fill-ink);}
-.search-intent-help{padding:6px 4px 0;color:var(--muted);font-size:var(--sem-strong-12);line-height:1.35;min-width:0;max-width:100%;overflow-wrap:anywhere;}
-.search-intent-lab{font-weight:700;letter-spacing:.02em;}
-.semantic-pack-panel{margin:10px 16px;padding:14px;border:.5px solid var(--border);border-radius:12px;background:var(--white);font-size:var(--sem-strong-13);line-height:1.5;min-width:0;max-width:calc(100% - 32px);overflow-wrap:anywhere;}
-.semantic-pack-panel b{color:var(--night);}
-.semantic-pack-panel .semantic-lab-note{margin-top:8px;color:var(--muted);font-size:var(--sem-strong-12);}
 .search-bar-wrap{padding:10px 12px 8px;flex-shrink:0;min-width:0;width:100%;max-width:100%;}
 .search-bar{display:flex;align-items:center;gap:8px;background:var(--white);min-width:0;width:100%;max-width:100%;
   border:0.5px solid var(--border);border-radius:10px;padding:9px 13px;}
@@ -1460,15 +1429,6 @@ html[data-text-level="xlarge"]{--reader-measure:823px;--home-offline-title-size:
 .note-textarea,
 .col-new-input,
 .editorial-appendix-entry .eae-title{font-size:var(--sem-strong-16);}
-
-/* Restored blind-audit mobile editable-control floor. This rule is deliberately
-   after semantic typography so Petit/Normal cannot cascade below iOS' 16px floor,
-   while Grand/Très grand continue to scale to 18/20px via --sem-strong-16. */
-@media (hover:none) and (pointer:coarse){
-  .search-bar input,.espace-filter input,.note-textarea,.col-new-input,.ci-note-edit,#report-issue-comment{
-    font-size:max(16px,var(--sem-strong-16))!important;
-  }
-}
 .sheet-title,
 .editorial-note-title{font-size:var(--sem-strong-17);}
 .top-bar-title,
@@ -1595,10 +1555,6 @@ html[data-text-level="xlarge"]{--reader-measure:823px;--home-offline-title-size:
 <script src="speech_model.js"></script>
 <script src="search_normalizer.js"></script>
 <script src="interim_user_state_migration.js"></script>
-<script src="search_semantic_pack_guard_r3.js"></script>
-<script src="search_semantic_v3_core_r4.js"></script>
-<script src="search_semantic_pack_registry_r5.js"></script>
-<script src="search_semantic_pack_lifecycle_r5.js"></script>
 </head>
 <body class="app-state-boot">
 
@@ -1723,19 +1679,15 @@ html[data-text-level="xlarge"]{--reader-measure:823px;--home-offline-title-size:
   <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="reader-info-title">
     <div class="sheet-handle"></div>
     <div class="sheet-title" id="reader-info-title">Infos et source</div>
-    <div class="reader-info-grid" id="info-public-grid">
-      <div class="reader-info-row"><div class="reader-info-key" id="info-status-key">Version du texte</div><div class="reader-info-val" id="info-status"></div></div>
+    <div class="reader-info-grid">
+      <div class="reader-info-row"><div class="reader-info-key">Référence stable</div><div class="reader-info-val mono" id="info-stable-ref"></div></div>
       <div class="reader-info-row"><div class="reader-info-key" id="info-source-edition-key">Édition source</div><div class="reader-info-val" id="info-source-edition"></div></div>
       <div class="reader-info-row"><div class="reader-info-key" id="info-source-pages-key">Pages source</div><div class="reader-info-val" id="info-source-pages"></div></div>
-      <div class="reader-info-row"><div class="reader-info-key">Référence stable</div><div class="reader-info-val mono" id="info-stable-ref"></div></div>
+      <div class="reader-info-row"><div class="reader-info-key" id="info-status-key">Statut</div><div class="reader-info-val" id="info-status"></div></div>
+      <div class="reader-info-row"><div class="reader-info-key" id="info-corpus-generation-key">Identifiant technique du corpus</div><div class="reader-info-val mono" id="info-corpus-generation"></div></div>
       <div class="reader-info-row"><div class="reader-info-key">Précision de date</div><div class="reader-info-val" id="info-date-precision"></div></div>
-      <div id="info-public-extra"></div>
+      <div id="info-extra"></div>
     </div>
-    <div class="reader-info-method-link"><button class="btn-secondary" type="button" onclick="openProvenanceHelpFromReaderInfo()"><i class="ti ti-file-description" aria-hidden="true"></i> Comment le texte a-t-il été vérifié ?</button></div>
-    <details class="reader-info-technical" id="info-technical-details">
-      <summary>Détails techniques</summary>
-      <div class="reader-info-grid" id="info-technical"></div>
-    </details>
     <div class="sheet-actions"><button class="btn-primary" type="button" onclick="closeReaderInfo()">Fermer</button></div>
   </div>
 </div>
@@ -1814,7 +1766,7 @@ html[data-text-level="xlarge"]{--reader-measure:823px;--home-offline-title-size:
         <div class="ob-icon" style="font-size:48px;margin-bottom:24px;">✦</div>
         <div class="ob-title">Livre du Ciel</div>
         <div class="ob-body">Les 36 Tomes du Livre du Ciel rassemblent des écrits de Luisa Piccarreta datés de 1899 à 1938. Dans ces écrits, elle rapporte ses expériences spirituelles et des paroles qu’elle présente comme venant de Jésus.</div>
-        <div class="ob-sub">Corpus PRINCIPAL · 74 345 paragraphes</div>
+        <div class="ob-sub">Corpus PRINCIPAL · 74 346 paragraphes</div>
       </div>
       <!-- Slide 1: Speech layer -->
       <div class="ob-slide" id="ob-slide-1">
@@ -2063,13 +2015,6 @@ html[data-text-level="xlarge"]{--reader-measure:823px;--home-offline-title-size:
     <h1 class="top-bar-title">Recherche</h1>
     <button class="btn-icon" type="button" onclick="copySearchLink()" aria-label="Copier le lien de cette recherche" title="Copier le lien"><i class="ti ti-link"></i></button>
   </div>
-  <div class="search-intent-wrap">
-    <div class="search-intent-segment" role="group" aria-label="Type de recherche">
-      <button id="search-intent-meaning" class="search-intent-btn" type="button" aria-pressed="false" onclick="setSearchIntentMode('meaning')">Par le sens</button>
-      <button id="search-intent-words" class="search-intent-btn active" type="button" aria-pressed="true" onclick="setSearchIntentMode('words')">Par les mots</button>
-    </div>
-    <div id="search-intent-help" class="search-intent-help"><span class="search-intent-lab">LAB interne.</span> Recherchez un mot, une expression, une citation, une date ou une référence.</div>
-  </div>
   <div class="search-bar-wrap">
     <div class="search-bar">
       <i class="ti ti-search"></i>
@@ -2211,34 +2156,13 @@ html[data-text-level="xlarge"]{--reader-measure:823px;--home-offline-title-size:
     <div class="help-section">
       <div class="help-section-head"><div class="help-section-icon hsi-amber"><i class="ti ti-adjustments-horizontal"></i></div><h2 class="help-section-title">Version du texte</h2></div>
       <div class="help-card">
-        <div class="help-row"><span class="help-chip light">PRINCIPAL</span><span class="help-text">Affiche le texte français principal utilisé pour la lecture courante. Il part de la base française décrite ci-dessous et intègre les corrections et choix de texte issus des différents contrôles. Il ne reproduit donc pas intégralement une édition française unique.</span></div>
-        <div class="help-row"><span class="help-chip">COMPLÉMENT</span><span class="help-text">Affiche les <b>75 COMPLÉMENTS</b>, identifiés comme distincts du PRINCIPAL afin que leur origine et leur statut restent visibles : <b>13 entrées complètes et 62 compléments internes</b>. Le mot <b>RETENU</b> indique seulement que le passage fait partie des COMPLÉMENTS de l’application après examen des éléments disponibles. Ce choix dans l’application ne constitue pas une approbation de l’Église.</span></div>
-        <div class="help-row"><span class="help-chip light">ENRICHI</span><span class="help-text">Affiche le PRINCIPAL et insère les COMPLÉMENTS à leur place de lecture, tout en les gardant clairement identifiés.</span></div>
+        <div class="help-row"><span class="help-chip light">PRINCIPAL</span><span class="help-text">Affiche le corpus français principal du Livre du Ciel. Il est issu du corpus GE/Lumen Luminis, puis a été réconcilié avec les témoins AFLP et corrigé ponctuellement lorsque des preuves suffisantes provenant des sources italiennes ou d’autres témoins contrôlés le justifiaient. Il ne reproduit donc mot pour mot aucune édition française unique.</span></div>
+        <div class="help-row"><span class="help-chip">COMPLÉMENT</span><span class="help-text">Affiche uniquement les 75 compléments approuvés : 13 entrées complètes et 62 compléments internes. Ils sont conservés séparément du corpus PRINCIPAL afin que leur statut et leur provenance restent visibles. Leur intégration ne signifie pas que toute différence possible entre tous les témoins a été résolue.</span></div>
+        <div class="help-row"><span class="help-chip light">ENRICHI</span><span class="help-text">Réunit PRINCIPAL et les COMPLÉMENTS à leur position de lecture. Le choix est mémorisé et ne supprime ni favoris, ni notes, ni surlignages.</span></div>
         <div class="help-row"><span class="help-chip outline">Portée du choix</span><span class="help-text">La version choisie s’applique à l’ensemble de l’application : Bibliothèque, lecture, Recherche, navigation par date et statistiques liées aux textes visibles. Changer de version ne supprime pas vos données personnelles.</span></div>
-        <div class="help-jump-action"><button class="btn-secondary" type="button" onclick="scrollHelpToProvenance()"><i class="ti ti-file-description" aria-hidden="true"></i> Comprendre l’origine et la vérification du texte</button></div>
       </div>
     </div>
 
-    <div class="help-section" id="help-provenance-origin">
-      <div class="help-section-head"><div class="help-section-icon hsi-teal"><i class="ti ti-file-description"></i></div><h2 class="help-section-title">Origine et vérification du texte</h2></div>
-      <div class="help-card">
-        <div class="help-tip"><b>En bref :</b> le texte français de cette application vient principalement d’une base française existante. Certains passages qui soulevaient une difficulté ont été comparés à d’autres versions françaises et, lorsque cela était utile, à des textes italiens disponibles. Un contrôle distinct a aussi recherché, dans l’ensemble du texte français, certains types d’erreurs évidentes pouvant être corrigées avec une très grande certitude. Pour les passages ainsi examinés, les décisions sont documentées et peuvent être revues si de meilleurs éléments apparaissent. Ce texte n’est pas l’édition critique officielle.</div>
-        <div class="help-row"><span class="help-chip light">Base française</span><span class="help-text"><b>D’où vient le texte français ?</b> Le corpus <b>GE / Lumen Luminis</b> a servi de principale base de départ. D’autres éditions et documents français, notamment <b>AFLP</b>, ont aussi été consultés selon les besoins pour comparer certaines formulations et vérifier la présence de passages, des dates, des titres ou la continuité du texte. Le texte actuel ne correspond donc pas exactement à une édition française unique. Son histoire peut varier selon les tomes et les passages.</span></div>
-        <div class="help-row"><span class="help-chip light">Choix du texte</span><span class="help-text"><b>Que se passait-il lorsque les sources différaient ?</b> Une différence entre deux sources n’entraînait pas automatiquement une correction. Selon les éléments disponibles, le passage pouvait être corrigé, laissé inchangé, présenté séparément comme <b>COMPLÉMENT</b> ou laissé en attente d’éléments supplémentaires.</span></div>
-        <div class="help-row"><span class="help-chip outline">Passages difficiles</span><span class="help-text"><b>Comment les passages difficiles ont-ils été vérifiés ?</b> Lorsqu’un passage paraissait manquer ou soulevait une difficulté, il pouvait être réexaminé et comparé aux sources disponibles les plus pertinentes. Selon les cas, la vérification pouvait porter sur le sens, la date, le locuteur, la structure ou la place du passage dans le texte. Cette vérification était ciblée : elle ne portait pas sur chaque paragraphe des 36 Tomes.</span></div>
-        <div class="help-row"><span class="help-chip outline">Français</span><span class="help-text"><b>Le français a-t-il été contrôlé dans l’ensemble du texte ?</b> Oui, mais dans un périmètre précis. Un contrôle distinct a recherché, dans l’ensemble du texte français, des défauts évidents pour lesquels une correction pouvait être faite avec une très grande certitude : accords manifestes, mots manquants ou répétés, erreurs de transcription, phrases clairement rompues et défauts comparables. Il ne cherchait pas à résoudre toutes les difficultés grammaticales possibles, à moderniser le style ni à retraduire le <i>Livre du Ciel</i> depuis l’italien.</span></div>
-        <div class="help-row"><span class="help-chip light">Textes italiens</span><span class="help-text"><b>Quel rôle avaient les textes italiens ?</b> Pour certains passages difficiles, des textes italiens disponibles ont servi de comparaison. Parmi les ensembles consultés figurent notamment <b>IT-PM / Don Pablo Martín</b> et <b>IT-DV</b>, noms utilisés dans la documentation technique du projet. Ce sont ici des textes de comparaison. Ils ne sont pas présentés comme les manuscrits originaux de Luisa et ne sont pas automatiquement décisifs lorsqu’une source diffère d’une autre.</span></div>
-        <div class="help-row"><span class="help-chip light">Autres langues</span><span class="help-text"><b>D’autres traductions ont-elles été consultées ?</b> Oui, ponctuellement. Des traductions anglaises et espagnoles ont parfois servi à vérifier la présence, l’ordre ou le sens général d’un passage. Plusieurs fichiers appartenant à une même famille de traduction n’étaient pas comptés comme autant de confirmations indépendantes.</span></div>
-        <div class="help-divider"></div>
-        <div class="help-row"><span class="help-chip outline">Portée</span><span class="help-text"><b>Ce que cette vérification ne garantit pas.</b> La documentation est la plus détaillée pour les passages qui ont réellement été signalés, réexaminés et comparés, puis ont fait l’objet d’une décision. Ce travail n’est ni une nouvelle traduction complète depuis l’italien ni une comparaison, paragraphe par paragraphe, des 36 Tomes avec toutes les éditions existantes. Le contrôle du français ne garantit pas non plus qu’aucune erreur subtile ne subsiste. Le texte reste révisable si de nouvelles sources suffisamment solides justifient de revoir une décision.</span></div>
-        <details class="help-validation-details">
-          <summary>Détails de la validation</summary>
-          <div class="help-row"><span class="help-chip light">Sources</span><span class="help-text"><b>Vérification ciblée des sources.</b> Les passages signalés comme difficiles ont pu être comparés aux témoins français, italiens ou traduits jugés pertinents. Il ne s’agit pas d’une collation universelle de chaque paragraphe.</span></div>
-          <div class="help-row"><span class="help-chip light">Français</span><span class="help-text"><b>Contrôle systématique dans un périmètre défini.</b> L’ensemble du texte a été examiné selon un protocole visant certains défauts français évidents et corrigeables avec une très grande certitude, sans transformer ce contrôle en réécriture stylistique ou en nouvelle traduction.</span></div>
-          <div class="help-row"><span class="help-chip light">Cohérence</span><span class="help-text"><b>Contrôles structurels et techniques.</b> D’autres vérifications portent notamment sur les dates, l’identité des entrées, les locuteurs, les paragraphes, les COMPLÉMENTS, les références et la cohérence des données de l’application. Elles renforcent la traçabilité du corpus sans équivaloir à une édition critique mot à mot.</span></div>
-        </details>
-      </div>
-    </div>
     <div class="help-section">
       <div class="help-section-head"><div class="help-section-icon hsi-gold"><i class="ti ti-highlight"></i></div><h2 class="help-section-title">Surligner, noter et conserver</h2></div>
       <div class="help-card">
@@ -2263,11 +2187,10 @@ html[data-text-level="xlarge"]{--reader-measure:823px;--home-offline-title-size:
         <div class="help-row"><span class="help-chip outline">Correspondance exacte</span><span class="help-text"><b>Phrase exacte</b> signifie que les mots sont contigus dans le texte réellement visible pour la source choisie. <b>Tous les termes</b> signifie que tous les mots utiles sont présents sans nécessairement former la même phrase.</span></div>
         <div class="help-row"><span class="help-chip outline">Formulation proche</span><span class="help-text">Pour une phrase de <b>3 à 14 mots</b> dont vous vous souvenez imparfaitement, l’application peut proposer une formulation présentant une ou quelques petites différences textuelles, par exemple un mot ajouté, omis ou remplacé, ou deux mots voisins inversés. Plus la phrase est courte, plus la tolérance est stricte. Elle affiche toujours les mots réellement présents dans la source et ne présente jamais ce résultat comme une <b>Phrase exacte</b>. Lorsque trop de formulations restent également plausibles, elle vous invite à préciser votre souvenir. Un badge <b>CRITICAL_DIFFERENCE</b> signale certaines différences potentiellement importantes qui ne doivent pas être assimilées silencieusement.</span></div>
         <div class="help-row"><span class="help-chip outline">Métadonnées</span><span class="help-text">Les résultats peuvent aussi correspondre au titre, à la date, à la référence ou à une autre métadonnée de l’entrée.</span></div>
-        <div class="help-row"><span class="help-chip outline">Correspondance approchée</span><span class="help-text"><b>Élargir la recherche</b> permet, seulement si vous le choisissez, d’afficher <b>Certains termes</b> : une partie seulement des mots saisis a été retrouvée. Ces résultats ne sont jamais affichés comme résultat principal par défaut. Cela ne signifie pas qu’un lien thématique, doctrinal ou « par le sens » a été établi. Vérifiez toujours le passage avant de le citer.</span></div>
-        <div class="help-row"><span class="help-chip outline">Par le sens / Par les mots</span><span class="help-text"><b>Par les mots</b> conserve la recherche textuelle qualifiée. <b>Par le sens</b> est le laboratoire de recherche d’un souvenir exprimé avec vos propres mots. Il ne remplace jamais le sens par une union de mots partiels et reste fermé tant que le modèle, le pack sémantique, l’abstention et les tests appareil/hors ligne ne sont pas qualifiés.</span></div>
+        <div class="help-row"><span class="help-chip outline">Correspondance approchée</span><span class="help-text"><b>Certains termes</b> signale qu’une partie seulement des mots saisis a été retrouvée. Cela ne signifie pas qu’un lien thématique, doctrinal ou « par le sens » a été établi. Vérifiez toujours le passage avant de le citer.</span></div>
         <div class="help-divider"></div>
         <div class="help-row"><span class="help-chip">Autour de ce passage</span><span class="help-text">Dans le lecteur, ouvrez <b>⋯ → Autour de ce passage</b> pour explorer des entrées du même Tome, des thèmes proches ou des familles d’images spirituelles.</span></div>
-        <div class="help-row"><span class="help-chip outline">Badges de contexte</span><span class="help-text"><b>Éditorial</b> signale une explication éditoriale du Tome 1 ; <b>COMPLÉMENT</b> signale un passage identifié comme distinct du PRINCIPAL afin que son statut et son origine restent visibles ; ouvrez <b>Infos et source</b> pour les détails propres au passage ; le badge du filtre Jésus apparaît lorsque ce filtre est actif.</span></div>
+        <div class="help-row"><span class="help-chip outline">Badges de contexte</span><span class="help-text"><b>Éditorial</b> signale une explication éditoriale du Tome 1 ; <b>COMPLÉMENT</b> signale un contenu substantiel absent du corpus PRINCIPAL et intégré comme complément approuvé ; sa provenance détaillée est disponible dans les informations du passage ; le badge du filtre Jésus apparaît lorsque ce filtre est actif.</span></div>
       </div>
       <div class="help-tip">Les rapprochements approximatifs, thématiques et « Autour de ce passage » sont proposés automatiquement pour faciliter l’exploration. Ils ne constituent pas des renvois éditoriaux, historiques ou doctrinaux établis.</div>
     </div>
@@ -2328,15 +2251,12 @@ html[data-text-level="xlarge"]{--reader-measure:823px;--home-offline-title-size:
     <div class="help-section">
       <div class="help-section-head"><div class="help-section-icon hsi-amber"><i class="ti ti-info-circle"></i></div><h2 class="help-section-title">À propos, sources et support</h2></div>
       <div class="help-card">
-        <div class="help-text">Cette application présente les 36 Tomes du <b>Livre du Ciel</b> de Luisa Piccarreta dans un corpus français de lecture et d’étude. Une seule section de référence explique l’origine du texte, les contrôles effectués et leurs limites.</div>
-        <div class="help-jump-action"><button class="btn-secondary" type="button" onclick="scrollHelpToProvenance()"><i class="ti ti-file-description" aria-hidden="true"></i> Voir l’origine et la vérification du texte</button></div>
+        <div class="help-text">Cette application propose les 36 Tomes du <b>Livre du Ciel</b> de Luisa Piccarreta dans un corpus français de lecture et d’étude. Le corpus PRINCIPAL est issu du corpus GE/Lumen Luminis, puis a été réconcilié avec les témoins AFLP et corrigé ponctuellement lorsque des preuves suffisantes provenant des sources italiennes ou d’autres témoins contrôlés le justifiaient. Il ne reproduit donc mot pour mot aucune édition française unique. Les COMPLÉMENTS sont conservés séparément afin que leur statut et leur provenance restent visibles.</div>
         <div class="help-divider"></div>
-        <div class="help-row"><span class="help-chip">COMPLÉMENT</span><span class="help-text">Passage identifié comme distinct du PRINCIPAL afin que son statut et son origine restent visibles. Les détails propres au passage figurent dans <b>« Infos et source »</b>.</span></div>
-        <div class="help-row"><span class="help-chip light">Infos et source</span><span class="help-text">Affiche d’abord les informations utiles pour comprendre l’entrée courante : version du texte, source ou libellé français, référence source lorsqu’elle est disponible, référence stable et précision de date. Les identifiants et statuts techniques restent accessibles séparément sous <b>Détails techniques</b>.</span></div>
+        <div class="help-row"><span class="help-chip">COMPLÉMENT</span><span class="help-text">Signale un contenu substantiel absent du corpus PRINCIPAL et intégré comme complément approuvé. La fiche du passage indique séparément la provenance du contenu et celle du libellé français.</span></div>
+        <div class="help-row"><span class="help-chip light">Infos et source</span><span class="help-text">Affiche la référence stable et les informations de provenance disponibles pour l’entrée courante : édition ou libellé français, référence source lorsqu’elle est disponible, statut, précision de date et, dans les détails, les identifiants techniques utiles.</span></div>
         <div class="help-row"><span class="help-chip light">Signaler un problème de texte</span><span class="help-text">Prépare un signalement que vous pouvez relire, copier et transmettre. <b>Rien n’est envoyé automatiquement.</b> Le passage sélectionné n’est inclus que si vous choisissez de l’ajouter.</span></div>
         <div class="help-row"><span class="help-chip light">Copier le diagnostic</span><span class="help-text">Copie uniquement des informations techniques publiques et des identifiants de passage utiles au dépannage. Les termes de recherche, messages d’erreur détaillés, notes, surlignages, commentaires et textes sélectionnés n’y sont pas inclus.</span></div>
-        <div class="help-row"><span class="help-chip outline">Dépannage navigation</span><span class="help-text">Si le retour Reader → Tome ne restaure pas la bonne position dans la liste, utilisez « Copier trace courte » puis joignez le résultat à votre signalement. Cette trace contient uniquement des informations techniques de navigation et reste volontairement compacte pour être copiable sur iPhone/iPad.</span></div>
-        <div class="help-row"><span></span><div style="display:flex;gap:8px;flex-wrap:wrap;width:100%;"><button class="btn-secondary sem-strong-13" type="button" onclick="copyNavigationPhysicalTrace()" style="padding:8px 16px;"><i class="ti ti-copy" aria-hidden="true"></i> Copier trace courte</button><button class="btn-secondary sem-strong-13" type="button" onclick="resetNavigationPhysicalTrace()" style="padding:8px 16px;"><i class="ti ti-trash" aria-hidden="true"></i> Effacer trace</button></div></div>
         <div class="help-divider"></div>
         <div class="help-row"><span class="help-chip outline">Version</span><span class="help-text" id="about-app-version">—</span></div>
         <div class="help-row"><span></span><button class="btn-secondary sem-strong-13" type="button" onclick="shareApplication()" style="padding:8px 16px;"><i class="ti ti-share" aria-hidden="true"></i> Partager l’application</button></div>
@@ -2412,11 +2332,11 @@ html[data-text-level="xlarge"]{--reader-measure:823px;--home-offline-title-size:
    VERSION — single source of truth
    Update this string on every release.
 ═══════════════════════════════════════════════════════ */
-const APP_VERSION = 'v2.19.119-R1B-NAV-BACK-ROOT-RESTORE-R2-PROV-R6-R8-FULLQA-META'; // full-application QA repaired successor of exact R6 R6 IA; corpus/Search/navigation/user-data semantics preserved
-const PUBLIC_VERSION = '119';       // internal controlled-device repair candidate; public release not yet authorized
+const APP_VERSION = 'v2.19.112-R1B'; // iPhone Search viewport containment + robust Tome-context return successor to exact v111
+const PUBLIC_VERSION = '112';       // single user-facing release number
 const APP_VERSION_LABEL = `Version ${PUBLIC_VERSION}`;
-const APP_BUILD   = '2026-09-21';
-const SW_CACHE_VERSION = 'ldc-v2.19.119-R1B-nav-back-root-restore-r2-prov-r6-r8-fullqa-meta';
+const APP_BUILD   = '2026-09-18';
+const SW_CACHE_VERSION = 'ldc-v2.19.112-R1B-iphone-search-tome-return-r1';
 const CORPUS_MANIFEST_SHA256 = '8d831c437fa6c2caa56ac637c3d539279ec24b57711d209b264804cca19c0ab7';
 const DEEP_LINK_SCHEMA = 'ldc-deep-link-v1';
 const READING_POSITION_SCHEMA = 'ldc-reading-position-v3';
@@ -3119,8 +3039,8 @@ function enrichedMode() { return supplementMode === 'enriched'; }
 function sourceModeLabel(mode=supplementMode) { return mode==='aflp'?'PRINCIPAL':(mode==='additions'?'COMPLÉMENT':'ENRICHI'); }
 function sourceModeCaption(mode=supplementMode) {
   if(mode==='aflp') return 'Corpus français principal';
-  if(mode==='additions') { const c=(supplementRegistry&&supplementRegistry.counts)||{}; return `${c.items||75} compléments · ${c.complete_entries||13} entrées + ${c.internal_supplements||62} compléments internes`; }
-  return 'PRINCIPAL + COMPLÉMENTS';
+  if(mode==='additions') { const c=(supplementRegistry&&supplementRegistry.counts)||{}; return `${c.items||75} compléments approuvés · ${c.complete_entries||13} entrées + ${c.internal_supplements||62} compléments internes`; }
+  return 'PRINCIPAL + compléments approuvés';
 }
 
 async function loadSupplementRegistryData() {
@@ -3186,8 +3106,8 @@ function internalSupplementItemsForVolume(vol) { return supplementItemsForVolume
 function requireReaderFrenchLabel(s){const v=s&&s.reader_french_wording_label;if(typeof v!=='string'||!v.trim())throw new Error('reader French provenance label missing: '+String(s&&s.supplement_id||'UNKNOWN'));return v.trim();}
 function requireReaderProvenanceText(s){const v=s&&s.reader_provenance_text;if(typeof v!=='string'||!v.trim())throw new Error('reader provenance text missing: '+String(s&&s.supplement_id||'UNKNOWN'));return v.trim();}
 function supplementReaderSourceReference(s){if(!s)return null;const fw=s.french_wording_provenance||{},it=s.itpm_anchor||{};if(typeof fw.source_page_refs==='string'&&fw.source_page_refs.trim())return fw.source_page_refs.trim();if(typeof it.source_file==='string'&&it.source_file.trim())return it.source_file.trim();return null;}
-function buildReaderProvenanceModel(entry,s){if(s)return {kind:'supplement',stableRef:s.supplement_id||'—',primaryKey:'Libellé français',primaryValue:requireReaderFrenchLabel(s),locatorKey:'Référence source',locatorValue:supplementReaderSourceReference(s),publicStatus:'COMPLÉMENT RETENU',longProvenance:requireReaderProvenanceText(s),technicalStatus:s.translation_status||'—',technicalSource:s.source_origin||'—',technicalCorpus:CORPUS_GENERATION,technicalProgramme:SUPPLEMENT_PROGRAMME};return {kind:'principal',stableRef:entry&&entry.stable_ref||'—',primaryKey:'Édition source',primaryValue:entry&&entry.source_edition||'—',locatorKey:'Pages source',locatorValue:entry&&entry.source_page_start?`${entry.source_page_start}–${entry.source_page_end||entry.source_page_start}`:null,publicStatus:entry&&entry.verification_status||'—',technicalCorpus:BACKBONE_GENERATION};}
-function supplementReaderBadgeLabel(s){return `COMPLÉMENT — ${requireReaderFrenchLabel(s)} ; origine et détails dans Infos et source.`;}
+function buildReaderProvenanceModel(entry,s){if(s)return {kind:'supplement',stableRef:s.supplement_id||'—',primaryKey:'Libellé français',primaryValue:requireReaderFrenchLabel(s),locatorKey:'Référence source',locatorValue:supplementReaderSourceReference(s),publicStatus:'COMPLÉMENT APPROUVÉ',longProvenance:requireReaderProvenanceText(s),technicalStatus:s.translation_status||'—',technicalSource:s.source_origin||'—',technicalCorpus:CORPUS_GENERATION,technicalProgramme:SUPPLEMENT_PROGRAMME};return {kind:'principal',stableRef:entry&&entry.stable_ref||'—',primaryKey:'Édition source',primaryValue:entry&&entry.source_edition||'—',locatorKey:'Pages source',locatorValue:entry&&entry.source_page_start?`${entry.source_page_start}–${entry.source_page_end||entry.source_page_start}`:null,publicStatus:entry&&entry.verification_status||'—',technicalCorpus:BACKBONE_GENERATION};}
+function supplementReaderBadgeLabel(s){return `COMPLÉMENT approuvé — ${requireReaderFrenchLabel(s)}`;}
 function supplementFrenchProvenanceLabel(s){return requireReaderFrenchLabel(s);}
 function supplementBadgeText(s) { return 'COMPLÉMENT'; }
 function supplementPrimaryContextParaId(s, side='before') {
@@ -3346,8 +3266,6 @@ async function setSupplementMode(mode, opts={}) {
   const next=['aflp','additions','enriched'].includes(mode)?mode:'enriched';
   if(next===supplementMode){syncSupplementModeUI();return;}
   const oldMode=supplementMode, readerActive=document.getElementById('screen-reader')?.classList.contains('active'), semantic=readerActive?captureSemanticReadingPosition():null;
-  const activeBefore=document.querySelector('.screen.active')?.id||'';
-  const entriesRerenderContext=activeBefore==='screen-entries'?captureEntriesNavigationContext(null,{source_mode:oldMode,vol:currentVolume}):null;
   const oldEntry=currentEntry, oldFocus=currentSupplementFocusId, focusItem=oldFocus?supplementById(oldFocus):null;
   if(readerActive&&readerOriginContext&&readerOriginContext.screen==='entries')readerOriginContext.return_source_mode=next;
   supplementMode=next;
@@ -3362,10 +3280,10 @@ async function setSupplementMode(mode, opts={}) {
       let target=focusItem;
       if(!target&&oldEntry.is_supplement)target=supplementById(oldEntry.supplement_id);
       if(!target){const inline=inlineSupplementsForEntry(currentVolume,oldEntry.id);target=inline[0]||null;}
-      if(!target){currentSupplementFocusId=null;await openTome(currentVolume,{intent:NAV_INTENT.PRESERVE_RERENDER,preserveContext:readerOriginContext});if(!opts.silent)showToast('COMPLÉMENT — aucun complément dans ce texte.');return;}
+      if(!target){currentSupplementFocusId=null;await openTome(currentVolume);if(!opts.silent)showToast('COMPLÉMENT — aucun complément dans ce texte.');return;}
       await openSupplementItem(target,readerBack,{preserveOrigin:true,originContext:readerOriginContext,preserveSession:true,intent:currentReaderIntent()});
     } else if(next==='aflp'){
-      if(oldEntry.is_supplement){currentSupplementFocusId=null;await openTome(currentVolume,{intent:NAV_INTENT.PRESERVE_RERENDER,preserveContext:readerOriginContext});if(!opts.silent)showToast('PRINCIPAL — cette date complémentaire n’appartient pas au corpus principal.');return;}
+      if(oldEntry.is_supplement){currentSupplementFocusId=null;await openTome(currentVolume);if(!opts.silent)showToast('PRINCIPAL — cette date complémentaire n’appartient pas au corpus principal.');return;}
       const anchor=focusItem&&isInternalSupplementItem(focusItem)?supplementPrimaryContextParaId(focusItem,'before'):null;
       currentSupplementFocusId=null;if(anchor)pendingParaId=anchor;
       await openEntry(currentVolume,oldEntry.id,readerBack,{preserveOrigin:true,originContext:readerOriginContext,restorePosition:anchor?null:semantic,preserveSession:true,intent:currentReaderIntent()});
@@ -3373,7 +3291,7 @@ async function setSupplementMode(mode, opts={}) {
       if(focusItem&&isInternalSupplementItem(focusItem))pendingParaId=(focusItem.paragraphs&&focusItem.paragraphs[0]&&focusItem.paragraphs[0].id)||null;
       await openEntry(currentVolume,oldEntry.id,readerBack,{preserveOrigin:true,originContext:readerOriginContext,restorePosition:pendingParaId?null:semantic,supplementId:focusItem&&focusItem.supplement_id,preserveSession:true,intent:currentReaderIntent()});
     }
-  } else if(active==='screen-entries'&&currentVolume) await openTome(currentVolume,{intent:NAV_INTENT.PRESERVE_RERENDER,preserveContext:entriesRerenderContext});
+  } else if(active==='screen-entries'&&currentVolume) await openTome(currentVolume);
   else if(active==='screen-tomes') await renderTomes();
   else if(active==='screen-search'){renderSearchSourceModeRow();if(document.getElementById('search-input')?.value) await runSearch();}
   if(!opts.silent)showToast(next==='aflp'?'Lecture PRINCIPAL activée':(next==='additions'?'Lecture COMPLÉMENT activée':'Lecture ENRICHI activée'));
@@ -3487,7 +3405,7 @@ async function getParagraphs(vol, entryId) {
 function showScreen(id) {
   const leavingSearch=id!=='search'&&document.getElementById('screen-search')?.classList.contains('active');
   if(leavingSearch)resetRootHorizontalViewport('leave-search');
-  if (id !== 'entries') { if(typeof releaseEntriesReturnLock==='function')releaseEntriesReturnLock('screen:'+id); if(typeof releaseTomeStartLock==='function')releaseTomeStartLock('screen:'+id); }
+  if (id !== 'entries' && typeof releaseEntriesReturnLock==='function') releaseEntriesReturnLock('screen:'+id);
   if (id !== 'reader') {clearEntryStartTargetLock('screen:'+id);resetReaderInteractionContext('screen:'+id);}
   if (id !== 'search') cancelActiveSearch('navigation');
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
@@ -3538,7 +3456,6 @@ async function goSearch() {
   await finishReaderForPermanentNavigation('search');
   resetRootHorizontalViewport('enter-search');
   showScreen('search');
-  renderSearchIntentMode();
   renderSearchSourceModeRow();
   renderSearchOrderRow();
   renderSpeakerFilterRow();
@@ -4111,125 +4028,87 @@ function restoreScrollContext(el,ctx,selector,keyAttr){
   });
 }
 
-const NAV_INTENT=Object.freeze({FRESH_TOME:'FRESH_TOME',PRESERVE_RERENDER:'PRESERVE_RERENDER',BACK_RESTORE:'BACK_RESTORE',TOMES_BACK_RESTORE:'TOMES_BACK_RESTORE'});
 const ENTRIES_RETURN_SELECTOR='[data-return-key]';
-const TOMES_RETURN_SELECTOR='[data-tome-key]';
-let navigationTransactionSeq=0,currentNavigationTransaction=0;
-let tomesOriginContext=null;
-let entriesReturnLock=null,entriesReturnLockSeq=0,tomeStartLock=null,tomeStartLockSeq=0,tomesReturnLock=null,tomesReturnLockSeq=0;
-const navigationScrollTrace=[];
-const NAV_DIAGNOSTIC_TRACE_MAX=180;
-let navigationDiagnosticToken=null,navigationDiagnosticArmedUntil=0,navigationDiagnosticFirstInputTxn=0;
-let navigationDiagnosticInputState={event:null,pointer_type:null,touches:null,buttons:null,key:null,ts:null};
-const navigationDiagnosticEventStamp=new Map();
-function navigationStableIdentity(el){
-  if(!el)return null;
-  const d=el.dataset||{};
-  return {tag:String(el.tagName||'').toLowerCase()||null,id:el.id||null,return_key:d.returnKey||null,tome_key:d.tomeKey||null,entry_id:d.entryId||null,stable_ref:d.entryStableRef||null,class_name:typeof el.className==='string'?el.className.slice(0,160):null};
-}
-function navigationRect(el){if(!el||typeof el.getBoundingClientRect!=='function')return null;const r=el.getBoundingClientRect();return {top:Number(r.top)||0,bottom:Number(r.bottom)||0,left:Number(r.left)||0,right:Number(r.right)||0,width:Number(r.width)||0,height:Number(r.height)||0};}
-function navigationLayerSnapshot(id){
-  const el=id==='html'?document.documentElement:(id==='body'?document.body:document.getElementById(id));if(!el)return {id,missing:true};
-  const cs=getComputedStyle(el),r=navigationRect(el);
-  return {id,tag:String(el.tagName||'').toLowerCase(),scroll_top:Number(el.scrollTop)||0,scroll_left:Number(el.scrollLeft)||0,scroll_height:Number(el.scrollHeight)||0,scroll_width:Number(el.scrollWidth)||0,client_height:Number(el.clientHeight)||0,client_width:Number(el.clientWidth)||0,rect:r,display:cs.display,visibility:cs.visibility,overflow_y:cs.overflowY,overflow_x:cs.overflowX,position:cs.position,overscroll_behavior_y:cs.overscrollBehaviorY||cs.overscrollBehavior||'',overflow_anchor:cs.overflowAnchor||'',scroll_behavior:cs.scrollBehavior||'',touch_action:cs.touchAction||'',webkit_overflow_scrolling:cs.webkitOverflowScrolling||'',min_height:cs.minHeight,height:cs.height,flex:cs.flex,flex_grow:cs.flexGrow,flex_shrink:cs.flexShrink};
-}
-function navigationFindTomeNode(token){const list=document.getElementById('tomes-list');if(!list)return null;const key=(token&&token.tomes_context&&token.tomes_context.selected_tome_key)||(token&&token.selected_volume?`tome:${token.selected_volume}`:null)||(tomesOriginContext&&tomesOriginContext.selected_tome_key)||null;return key?tomeReturnNode(list,key):null;}
-function navigationFindEntryNode(){const list=document.getElementById('entries-list');if(!list)return null;const ctx=(entriesReturnLock&&entriesReturnLock.ctx)||null;return ctx?semanticEntryReturnNode(list,ctx):null;}
-function navigationPhysicalState(token){
-  const vv=window.visualViewport,se=document.scrollingElement,tome=navigationFindTomeNode(token),entry=navigationFindEntryNode(),active=document.activeElement;
-  let standalone=false;try{standalone=!!(navigator.standalone||(window.matchMedia&&window.matchMedia('(display-mode: standalone)').matches));}catch(_){}
-  return {performance_ms:Number(performance.now().toFixed(3)),document_visibility:document.visibilityState,document_hidden:!!document.hidden,active_screen:currentScreenName(),active_element:navigationStableIdentity(active),focus_state:{has_focus:document.hasFocus?document.hasFocus():null,active:navigationStableIdentity(active)},layers:['html','body','main-content','screen-tomes','tomes-list','screen-entries','entries-list','screen-reader','reader-scroll'].map(navigationLayerSnapshot),window_scroll_y:Number(window.scrollY)||0,window_scroll_x:Number(window.scrollX)||0,document_scrolling_element:se?(se.id||String(se.tagName||'').toLowerCase()):null,document_scrolling_element_top:se?(Number(se.scrollTop)||0):null,document_element_top:document.documentElement?Number(document.documentElement.scrollTop)||0:null,body_top:document.body?Number(document.body.scrollTop)||0:null,visual_viewport:vv?{offset_top:Number(vv.offsetTop)||0,offset_left:Number(vv.offsetLeft)||0,page_top:Number(vv.pageTop)||0,page_left:Number(vv.pageLeft)||0,width:Number(vv.width)||0,height:Number(vv.height)||0,scale:Number(vv.scale)||0}:null,viewport:{inner_width:Number(window.innerWidth)||0,inner_height:Number(window.innerHeight)||0,outer_width:Number(window.outerWidth)||0,outer_height:Number(window.outerHeight)||0,device_pixel_ratio:Number(window.devicePixelRatio)||0,orientation_type:screen.orientation&&screen.orientation.type||null,orientation_angle:screen.orientation&&Number(screen.orientation.angle),legacy_orientation:Number.isFinite(Number(window.orientation))?Number(window.orientation):null,standalone},selected_tome:tome?{identity:navigationStableIdentity(tome),rect:navigationRect(tome)}:null,selected_entry:entry?{identity:navigationStableIdentity(entry),rect:navigationRect(entry)}:null,input_state:{...navigationDiagnosticInputState},locks:{entries_return:!!entriesReturnLock,tome_start:!!tomeStartLock,tomes_return:!!tomesReturnLock}};
-}
-function navigationTraceSnapshot(phase,token=null,extra={}){
-  const tomes=document.getElementById('tomes-list'),entries=document.getElementById('entries-list'),reader=document.getElementById('reader-scroll'),vv=window.visualViewport,se=document.scrollingElement;
-  const row=Object.assign({navigation_id:token&&token.id||null,intent:token&&token.intent||null,phase,ts:Date.now(),performance_ms:Number(performance.now().toFixed(3)),screen:currentScreenName(),active_element:document.activeElement&&document.activeElement.id||null,source_mode:supplementMode,tomes_scroll_top:tomes?Number(tomes.scrollTop)||0:null,entries_scroll_top:entries?Number(entries.scrollTop)||0:null,reader_scroll_top:reader?Number(reader.scrollTop)||0:null,window_scroll_y:Number(window.scrollY)||0,document_scroll_top:se?(Number(se.scrollTop)||0):null,html_scroll_top:document.documentElement?Number(document.documentElement.scrollTop)||0:null,body_scroll_top:document.body?Number(document.body.scrollTop)||0:null,visual_viewport_offset_top:vv?Number(vv.offsetTop)||0:null,visual_viewport_page_top:vv?Number(vv.pageTop)||0:null,visual_viewport_height:vv?Number(vv.height)||0:null,entries_return_lock:!!entriesReturnLock,tome_start_lock:!!tomeStartLock,tomes_return_lock:!!tomesReturnLock,physical:navigationPhysicalState(token)},extra);
-  navigationScrollTrace.push(row);if(navigationScrollTrace.length>NAV_DIAGNOSTIC_TRACE_MAX)navigationScrollTrace.splice(0,navigationScrollTrace.length-NAV_DIAGNOSTIC_TRACE_MAX);return row;
-}
-window.__ldcNavigationScrollDebug=()=>({schema:'ldc-nav-physical-trace-v2',app_version:APP_VERSION,current_transaction:currentNavigationTransaction,tomes_origin:tomesOriginContext,entries_return_lock:entriesReturnLock&&{id:entriesReturnLock.id,created_at:entriesReturnLock.created_at,last_reason:entriesReturnLock.last_reason,last_scroll_top:entriesReturnLock.last_scroll_top},tome_start_lock:tomeStartLock&&{id:tomeStartLock.id,created_at:tomeStartLock.created_at,last_reason:tomeStartLock.last_reason},tomes_return_lock:tomesReturnLock&&{id:tomesReturnLock.id,created_at:tomesReturnLock.created_at,last_reason:tomesReturnLock.last_reason},trace:navigationScrollTrace.slice()});
-function navigationDiagnosticArm(token){navigationDiagnosticToken=token||null;navigationDiagnosticArmedUntil=performance.now()+4500;navigationDiagnosticFirstInputTxn=0;navigationDiagnosticEventStamp.clear();}
-function navigationDiagnosticActive(){return !!navigationDiagnosticToken&&performance.now()<=navigationDiagnosticArmedUntil;}
-function navigationDiagnosticEvent(phase,extra={},minGap=25){if(!navigationDiagnosticActive())return;const now=performance.now(),key=String(phase),last=navigationDiagnosticEventStamp.get(key)||-1e9;if(now-last<minGap)return;navigationDiagnosticEventStamp.set(key,now);navigationTraceSnapshot(phase,navigationDiagnosticToken,extra);}
-function navigationDiagnosticInput(ev){
-  if(!navigationDiagnosticActive())return;navigationDiagnosticInputState={event:ev.type,pointer_type:ev.pointerType||null,touches:ev.touches?ev.touches.length:null,buttons:Number.isFinite(Number(ev.buttons))?Number(ev.buttons):null,key:ev.key||null,ts:Date.now()};
-  if(navigationDiagnosticFirstInputTxn!==navigationDiagnosticToken.id){navigationDiagnosticFirstInputTxn=navigationDiagnosticToken.id;navigationTraceSnapshot('FIRST_USER_INPUT',navigationDiagnosticToken,{input:{...navigationDiagnosticInputState}});}
-}
-function bindNavigationPhysicalDiagnostics(){
-  document.addEventListener('scroll',ev=>{const t=ev.target===document?document.scrollingElement:ev.target;const id=t&&t.id?t.id:(t===document.documentElement?'html':(t===document.body?'body':'unknown'));navigationDiagnosticEvent('SCROLL_EVENT_'+String(id).toUpperCase().replace(/[^A-Z0-9]+/g,'_'),{event_target:id},30);},true);
-  window.addEventListener('scroll',()=>navigationDiagnosticEvent('SCROLL_EVENT_WINDOW',{},30),{passive:true});
-  window.addEventListener('resize',()=>navigationDiagnosticEvent('RESIZE',{},20),{passive:true});
-  window.addEventListener('orientationchange',()=>navigationDiagnosticEvent('ORIENTATION_CHANGE',{},0),{passive:true});
-  document.addEventListener('focusin',ev=>navigationDiagnosticEvent('FOCUSIN',{focus_target:navigationStableIdentity(ev.target)},0),true);
-  for(const name of ['pointerdown','touchstart','wheel','keydown'])document.addEventListener(name,navigationDiagnosticInput,{capture:true,passive:name!=='keydown'});
-  if(window.visualViewport){window.visualViewport.addEventListener('resize',()=>navigationDiagnosticEvent('VISUAL_VIEWPORT_RESIZE',{},20),{passive:true});window.visualViewport.addEventListener('scroll',()=>navigationDiagnosticEvent('VISUAL_VIEWPORT_SCROLL',{},20),{passive:true});}
-}
-bindNavigationPhysicalDiagnostics();
-function resetNavigationPhysicalTrace(){navigationScrollTrace.splice(0);navigationDiagnosticToken=null;navigationDiagnosticArmedUntil=0;navigationDiagnosticFirstInputTxn=0;navigationDiagnosticEventStamp.clear();showToast('Trace navigation effacée');}
-function navigationCompactPhysicalState(p){
-  if(!p)return null;const keep=new Set(['screen-entries','entries-list','screen-reader','reader-scroll']);
-  return {active_screen:p.active_screen,active_element:p.active_element,focus_state:p.focus_state,window_scroll_y:p.window_scroll_y,document_scrolling_element:p.document_scrolling_element,document_scrolling_element_top:p.document_scrolling_element_top,visual_viewport:p.visual_viewport,viewport:p.viewport,selected_entry:p.selected_entry,input_state:p.input_state,locks:p.locks,layers:(p.layers||[]).filter(x=>keep.has(x.id)).map(x=>({id:x.id,scroll_top:x.scroll_top,scroll_height:x.scroll_height,client_height:x.client_height,rect:x.rect,display:x.display,visibility:x.visibility,overflow_y:x.overflow_y,overflow_anchor:x.overflow_anchor,scroll_behavior:x.scroll_behavior,webkit_overflow_scrolling:x.webkit_overflow_scrolling}))};
-}
-function navigationPhysicalTraceExport(){
-  const dbg=window.__ldcNavigationScrollDebug(),txn=Number(dbg.current_transaction)||null;
-  const src=(dbg.trace||[]).filter(r=>txn==null||Number(r.navigation_id)===txn),wanted=['AFTER_CAPTURE','ENTRIES_SCROLL_SURFACE_RENEWED','DESTINATION_POSITIONED','RAF2','rebuilt-before-reveal','REVEAL','T+300','T+1200'],picked=[];
-  for(const phase of wanted){const hit=[...src].reverse().find(r=>r.phase===phase);if(hit&&!picked.includes(hit))picked.push(hit);}
-  const scrollHit=[...src].reverse().find(r=>String(r.phase||'').startsWith('SCROLL_EVENT_ENTRIES_LIST'));if(scrollHit&&!picked.includes(scrollHit))picked.push(scrollHit);
-  const latest=src[src.length-1];if(latest&&!picked.includes(latest))picked.push(latest);picked.sort((a,b)=>(Number(a.performance_ms)||0)-(Number(b.performance_ms)||0));
-  const rows=picked.slice(-10).map(r=>({navigation_id:r.navigation_id,intent:r.intent,phase:r.phase,ts:r.ts,performance_ms:r.performance_ms,screen:r.screen,source_mode:r.source_mode,tomes_scroll_top:r.tomes_scroll_top,entries_scroll_top:r.entries_scroll_top,reader_scroll_top:r.reader_scroll_top,window_scroll_y:r.window_scroll_y,visual_viewport_offset_top:r.visual_viewport_offset_top,entries_return_lock:r.entries_return_lock,tome_start_lock:r.tome_start_lock,tomes_return_lock:r.tomes_return_lock,lock:r.lock,target_kind:r.target_kind,target_identity:r.target_identity,target_rect:r.target_rect,capture_selected_viewport_top:r.capture_selected_viewport_top,capture_root_scroll_top:r.capture_root_scroll_top,scroll_owner:r.scroll_owner,intended_target_scroll:r.intended_target_scroll,intended_root_scroll:r.intended_root_scroll,scroll_before_write:r.scroll_before_write,root_before_write:r.root_before_write,actual_target_scroll_after_write:r.actual_target_scroll_after_write,actual_root_scroll_after_write:r.actual_root_scroll_after_write,write_reason:r.write_reason,event_target:r.event_target,input:r.input,physical:navigationCompactPhysicalState(r.physical)}));
-  return {schema:'ldc-nav-physical-export-v2-compact',app_version:APP_VERSION,public_version:PUBLIC_VERSION,generated_at:new Date().toISOString(),governance:'V118_CONTROLLED_READER_BACK_ROOT_OWNER_REPAIR__V117_TRACE_PROVES_ROOT_SCROLL_OWNER__SEARCH_R18D_PRESERVED',current_transaction:txn,current_physical:navigationCompactPhysicalState(navigationPhysicalState(navigationDiagnosticToken)),trace:rows};
-}
-async function copyNavigationPhysicalTrace(){const text=JSON.stringify(navigationPhysicalTraceExport()),ok=await copyPlainText(text);showToast(ok?`Trace courte copiée (${Math.ceil(text.length/1024)} Ko)`:'Copie indisponible');return text;}
-window.__ldcNavigationPhysicalTraceExport=navigationPhysicalTraceExport;
-function beginNavigationTransaction(intent,extra={}){const token=Object.assign({id:++navigationTransactionSeq,intent,source_mode:supplementMode,created_at:Date.now()},extra);currentNavigationTransaction=token.id;navigationDiagnosticArm(token);navigationTraceSnapshot('SOURCE_ACTIVATION',token);return token;}
-function navigationTransactionCurrent(token){return !!token&&Number(token.id)===Number(currentNavigationTransaction);}
-function navigationCommitAllowed(token,phase){const ok=navigationTransactionCurrent(token)&&(!token.source_mode||token.source_mode===supplementMode);if(!ok)navigationTraceSnapshot('STALE_ABORT',token,{at_phase:phase});return ok;}
-function resetRootVerticalNavigation(){try{window.scrollTo({left:0,top:0,behavior:'auto'});}catch(_){try{window.scrollTo(0,0);}catch(__){}}const se=document.scrollingElement;if(se)se.scrollTop=0;if(document.documentElement)document.documentElement.scrollTop=0;if(document.body)document.body.scrollTop=0;}
-function stageNavigationScreen(id,token){const screen=document.getElementById('screen-'+id);if(screen)screen.classList.add('navigation-commit-hidden');showScreen(id);navigationTraceSnapshot('DESTINATION_ACTIVE_HIDDEN',token);return screen;}
-function revealNavigationScreen(screen,token){if(screen)screen.classList.remove('navigation-commit-hidden');if(navigationDiagnosticToken&&token&&navigationDiagnosticToken.id===token.id)navigationDiagnosticArmedUntil=Math.max(navigationDiagnosticArmedUntil,performance.now()+3200);navigationTraceSnapshot('REVEAL',token);}
-function freezeNavigationSource(el,token){if(!el)return;const active=document.activeElement;if(active&&el.contains(active)){try{active.blur();}catch(_){}}el.classList.add('navigation-source-frozen');navigationTraceSnapshot('SOURCE_ISOLATED',token);}
-function releaseNavigationSource(el){if(el)el.classList.remove('navigation-source-frozen');}
-function navigationListSignature(list,vol,mode,selector=ENTRIES_RETURN_SELECTOR,keyAttr='data-return-key'){if(!list)return null;const keys=[...list.querySelectorAll(selector)].map(n=>String(n.getAttribute(keyAttr)||''));let h=2166136261;const raw=`${vol||''}|${mode||''}|${keys.join('|')}`;for(let i=0;i<raw.length;i++){h^=raw.charCodeAt(i);h=Math.imul(h,16777619);}return `${vol||''}:${mode||''}:${keys.length}:${(h>>>0).toString(16).padStart(8,'0')}`;}
-function viewportFraction(offset,list){const h=Number(list&&list.clientHeight)||0;return Number.isFinite(Number(offset))&&h>0?Math.max(0,Math.min(1,Number(offset)/h)):null;}
-function geometryCompatible(ctx,list){const oh=Number(ctx&&ctx.viewport_height)||0,ow=Number(ctx&&ctx.viewport_width)||0,nh=Number(list&&list.clientHeight)||0,nw=Number(list&&list.clientWidth)||0;if(!oh||!ow||!nh||!nw)return false;return Math.abs(nh-oh)<=Math.max(40,oh*.16)&&Math.abs(nw-ow)<=Math.max(32,ow*.12);}
-function navigationRootScroller(){return document.scrollingElement||document.documentElement||document.body||null;}
-function navigationRootScrollTop(){const se=navigationRootScroller();const a=Number(window.scrollY),b=se?Number(se.scrollTop):NaN;return Number.isFinite(a)&&Math.abs(a)>0.5?a:(Number.isFinite(b)?b:0);}
-function navigationRootViewportHeight(){const vv=window.visualViewport;return Math.max(1,Number(vv&&vv.height)||Number(window.innerHeight)||Number(document.documentElement&&document.documentElement.clientHeight)||1);}
-function navigationRootMaxScroll(){const se=navigationRootScroller(),html=document.documentElement,body=document.body;const sh=Math.max(Number(se&&se.scrollHeight)||0,Number(html&&html.scrollHeight)||0,Number(body&&body.scrollHeight)||0);return Math.max(0,sh-navigationRootViewportHeight());}
-function navigationVisualViewportOffsetTop(){return Number(window.visualViewport&&window.visualViewport.offsetTop)||0;}
-function navigationSetRootScrollTop(top){const intended=Math.max(0,Math.min(navigationRootMaxScroll(),Number(top)||0));try{window.scrollTo({left:Number(window.scrollX)||0,top:intended,behavior:'auto'});}catch(_){try{window.scrollTo(Number(window.scrollX)||0,intended);}catch(__){}}const se=navigationRootScroller();if(se)se.scrollTop=intended;if(document.documentElement&&document.documentElement!==se)document.documentElement.scrollTop=intended;if(document.body&&document.body!==se)document.body.scrollTop=intended;return intended;}
-function entriesNavigationScrollOwner(list){const nestedMax=list?Math.max(0,(Number(list.scrollHeight)||0)-(Number(list.clientHeight)||0)):0;const rootMax=navigationRootMaxScroll();if(nestedMax>2)return {kind:'entries-list',max:nestedMax};if(rootMax>2)return {kind:'root',max:rootMax};return {kind:'entries-list',max:nestedMax};}
+let entriesReturnLock=null,entriesReturnLockSeq=0;
 function entryReturnNode(list,key){if(!list||key==null)return null;return [...list.querySelectorAll(ENTRIES_RETURN_SELECTOR)].find(n=>String(n.dataset.returnKey||'')===String(key))||null;}
-function semanticEntryReturnNode(list,ctx){if(!list||!ctx)return null;let n=entryReturnNode(list,ctx.selectedKey);if(n)return n;if(ctx.selectedEntryId){n=[...list.querySelectorAll(ENTRIES_RETURN_SELECTOR)].find(x=>String(x.dataset.entryId||'')===String(ctx.selectedEntryId));if(n)return n;n=[...list.querySelectorAll(ENTRIES_RETURN_SELECTOR)].find(x=>String(x.dataset.hostEntryId||'')===String(ctx.selectedEntryId));if(n)return n;}if(ctx.selectedStableRef){n=[...list.querySelectorAll(ENTRIES_RETURN_SELECTOR)].find(x=>String(x.dataset.entryStableRef||'')===String(ctx.selectedStableRef));if(n)return n;}if(ctx.selectedDate){const hits=[...list.querySelectorAll(ENTRIES_RETURN_SELECTOR)].filter(x=>String(x.dataset.entryDate||'')===String(ctx.selectedDate));if(hits.length===1)return hits[0];}return null;}
-function captureEntriesNavigationContext(selectedButton=null,opts={}){const list=document.getElementById('entries-list'),lr=list&&list.getBoundingClientRect();const selected=(selectedButton&&list&&list.contains(selectedButton))?selectedButton:null;const active=document.activeElement,focus=(active&&list&&list.contains(active)&&active.dataset)?active:null;const selectedRect=selected&&selected.getBoundingClientRect?selected.getBoundingClientRect():null;const selectedOffset=selectedRect&&lr?selectedRect.top-lr.top:null;const selectedViewportTop=selectedRect?selectedRect.top-navigationVisualViewportOffsetTop():null;const sourceMode=opts.source_mode||supplementMode;const scroll=captureScrollContext(list,ENTRIES_RETURN_SELECTOR,'data-return-key');const owner=entriesNavigationScrollOwner(list);return {screen:'entries',navigation_id:opts.navigation_id||currentNavigationTransaction||null,vol:opts.vol||currentVolume,source_mode:sourceMode,scroll,raw_entries_scroll_top:list?Number(list.scrollTop)||0:0,raw_root_scroll_top:navigationRootScrollTop(),capture_scroll_owner:owner.kind,selectedKey:selected&&selected.dataset?selected.dataset.returnKey||null:null,selectedEntryId:selected&&selected.dataset?selected.dataset.entryId||null:null,selectedStableRef:selected&&selected.dataset?selected.dataset.entryStableRef||null:null,selectedDate:selected&&selected.dataset?selected.dataset.entryDate||null:null,selectedOffset:selectedOffset,selectedViewportTop:selectedViewportTop,selectedVisibleViewportFraction:Number.isFinite(Number(selectedViewportTop))?Math.max(0,Math.min(1,Number(selectedViewportTop)/navigationRootViewportHeight())):null,selectedViewportFraction:viewportFraction(selectedOffset,list),first_visible_entry_key:scroll.anchorKey||null,first_visible_entry_offset:scroll.anchorOffset||0,list_signature:navigationListSignature(list,opts.vol||currentVolume,sourceMode),viewport_width:list?Number(list.clientWidth)||0:0,viewport_height:list?Number(list.clientHeight)||0:0,root_viewport_height:navigationRootViewportHeight(),focusKey:focus&&focus.dataset?focus.dataset.returnKey||null:null};}
-function releaseEntriesReturnLock(reason='release'){if(!entriesReturnLock)return false;const lock=entriesReturnLock,list=document.getElementById('entries-list');if(lock.resizeObserver){try{lock.resizeObserver.disconnect();}catch(_){}}if(lock.autoRelease)clearTimeout(lock.autoRelease);if(list)list.classList.remove('entries-return-lock');entriesReturnLock=null;navigationTraceSnapshot('USER_INTENT_RELEASE',lock.token||null,{lock:'entries-return',reason});return true;}
-function entriesReturnTarget(ctx,list){if(!ctx||!list)return null;const selected=semanticEntryReturnNode(list,ctx);if(selected){let offset=null;if(geometryCompatible(ctx,list)&&Number.isFinite(Number(ctx.selectedOffset)))offset=Number(ctx.selectedOffset);else if(Number.isFinite(Number(ctx.selectedViewportFraction)))offset=Number(ctx.selectedViewportFraction)*(Number(list.clientHeight)||0);if(!Number.isFinite(offset))offset=Math.max(0,((Number(list.clientHeight)||0)-(Number(selected.offsetHeight)||0))/2);return {node:selected,offset,kind:selected.dataset.returnKey===ctx.selectedKey?'selected':'semantic'};}const anchor=entryReturnNode(list,ctx.scroll&&ctx.scroll.anchorKey);if(anchor&&Number.isFinite(Number(ctx.scroll&&ctx.scroll.anchorOffset)))return {node:anchor,offset:Number(ctx.scroll.anchorOffset),kind:'anchor'};return null;}
-function enforceEntriesReturnPosition(reason='enforce'){const lock=entriesReturnLock,list=document.getElementById('entries-list');if(!lock||!list||currentScreenName()!=='entries')return false;const target=entriesReturnTarget(lock.ctx,list),owner=entriesNavigationScrollOwner(list);let intended=null,before=Number(list.scrollTop)||0,actual=before,rootBefore=navigationRootScrollTop(),intendedRoot=null,actualRoot=rootBefore;if(target&&owner.kind==='root'&&Number.isFinite(Number(lock.ctx&&lock.ctx.selectedViewportTop))){const currentViewportTop=target.node.getBoundingClientRect().top-navigationVisualViewportOffsetTop();const desiredViewportTop=Number(lock.ctx.selectedViewportTop);const delta=currentViewportTop-desiredViewportTop;intendedRoot=Math.max(0,Math.min(navigationRootMaxScroll(),rootBefore+delta));if(Math.abs(delta)>.5)navigationSetRootScrollTop(intendedRoot);actualRoot=navigationRootScrollTop();actual=Number(list.scrollTop)||0;}
-else if(target){const lr=list.getBoundingClientRect(),delta=(target.node.getBoundingClientRect().top-lr.top)-target.offset;intended=Math.max(0,Math.min(Math.max(0,list.scrollHeight-list.clientHeight),list.scrollTop+delta));if(Math.abs(delta)>.5)list.scrollTop=intended;actual=Number(list.scrollTop)||0;actualRoot=navigationRootScrollTop();}
-else if(!lock.rawApplied){const sameSignature=lock.ctx&&lock.ctx.list_signature&&lock.ctx.list_signature===navigationListSignature(list,lock.ctx.vol,supplementMode);if(owner.kind==='root'&&Number.isFinite(Number(lock.ctx&&lock.ctx.raw_root_scroll_top))){intendedRoot=sameSignature?Number(lock.ctx.raw_root_scroll_top)||0:0;navigationSetRootScrollTop(intendedRoot);actualRoot=navigationRootScrollTop();}else{intended=sameSignature?(Number(lock.ctx.raw_entries_scroll_top??lock.ctx.scroll?.scrollTop)||0):0;list.scrollTop=intended;actual=Number(list.scrollTop)||0;}lock.rawApplied=true;}
-lock.last_reason=reason;lock.last_scroll_top=owner.kind==='root'?actualRoot:actual;const extra={lock:'entries-return',target_kind:target&&target.kind||'fallback',target_identity:target&&navigationStableIdentity(target.node)||null,target_rect:target&&navigationRect(target.node)||null,scroll_owner:owner.kind,capture_selected_viewport_top:Number.isFinite(Number(lock.ctx&&lock.ctx.selectedViewportTop))?Number(lock.ctx.selectedViewportTop):null,capture_root_scroll_top:Number.isFinite(Number(lock.ctx&&lock.ctx.raw_root_scroll_top))?Number(lock.ctx.raw_root_scroll_top):null,intended_target_scroll:intended,intended_root_scroll:intendedRoot,scroll_before_write:before,root_before_write:rootBefore,actual_target_scroll_after_write:actual,actual_root_scroll_after_write:actualRoot};navigationTraceSnapshot(reason,lock.token||null,extra);if(reason==='DESTINATION_POSITIONED')navigationTraceSnapshot('AFTER_SCROLL_WRITE',lock.token||null,{...extra,write_reason:reason});return true;}
-function installEntriesReturnLock(ctx,token=null){releaseEntriesReturnLock('replace');releaseTomeStartLock('entries-return');const list=document.getElementById('entries-list');if(!list)return null;const lock=entriesReturnLock={id:++entriesReturnLockSeq,ctx,token,rawApplied:false,created_at:Date.now(),resizeObserver:null,autoRelease:null};list.classList.add('entries-return-lock');enforceEntriesReturnPosition('DESTINATION_POSITIONED');setTimeout(()=>{if(entriesReturnLock===lock)navigationTraceSnapshot('T+50',token||null,{lock:'entries-return',passive:true});},50);requestAnimationFrame(()=>{if(entriesReturnLock===lock)enforceEntriesReturnPosition('RAF1');requestAnimationFrame(()=>{if(entriesReturnLock===lock)enforceEntriesReturnPosition('RAF2');});});for(const [delay,label] of [[120,'T+120'],[300,'T+300'],[700,'T+700'],[1200,'T+1200']])setTimeout(()=>{if(entriesReturnLock===lock)enforceEntriesReturnPosition(label);},delay);if(typeof ResizeObserver==='function'){try{lock.resizeObserver=new ResizeObserver(()=>{if(entriesReturnLock===lock)enforceEntriesReturnPosition('resize-observer');});lock.resizeObserver.observe(list);}catch(_){lock.resizeObserver=null;}}if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>{if(entriesReturnLock===lock){navigationTraceSnapshot('FONTS_READY',token||null,{lock:'entries-return'});enforceEntriesReturnPosition('fonts-ready');}}).catch(()=>{});lock.autoRelease=setTimeout(()=>{if(entriesReturnLock===lock)releaseEntriesReturnLock('settled-timeout');},1800);return lock;}
-function releaseTomeStartLock(reason='release'){if(!tomeStartLock)return false;const lock=tomeStartLock,list=document.getElementById('entries-list');if(lock.resizeObserver){try{lock.resizeObserver.disconnect();}catch(_){}}if(lock.autoRelease)clearTimeout(lock.autoRelease);if(list)list.classList.remove('tome-start-lock');tomeStartLock=null;navigationTraceSnapshot('USER_INTENT_RELEASE',lock.token||null,{lock:'tome-start',reason});return true;}
-function enforceTomeStartPosition(reason='enforce'){const lock=tomeStartLock,list=document.getElementById('entries-list');if(!lock||!list||currentScreenName()!=='entries')return false;const before=Number(list.scrollTop)||0;list.scrollTop=0;resetRootVerticalNavigation();const actual=Number(list.scrollTop)||0;lock.last_reason=reason;const extra={lock:'tome-start',intended_target_scroll:0,scroll_before_write:before,actual_target_scroll_after_write:actual};navigationTraceSnapshot(reason,lock.token||null,extra);if(reason==='DESTINATION_POSITIONED')navigationTraceSnapshot('AFTER_SCROLL_WRITE',lock.token||null,{...extra,write_reason:reason});return true;}
-function installTomeStartLock(token){releaseTomeStartLock('replace');releaseEntriesReturnLock('tome-start');const list=document.getElementById('entries-list');if(!list)return null;const lock=tomeStartLock={id:++tomeStartLockSeq,token,created_at:Date.now(),resizeObserver:null,autoRelease:null,last_reason:null};list.classList.add('tome-start-lock');enforceTomeStartPosition('DESTINATION_POSITIONED');setTimeout(()=>{if(tomeStartLock===lock)navigationTraceSnapshot('T+50',token||null,{lock:'tome-start',passive:true});},50);requestAnimationFrame(()=>{if(tomeStartLock===lock)enforceTomeStartPosition('RAF1');requestAnimationFrame(()=>{if(tomeStartLock===lock)enforceTomeStartPosition('RAF2');});});for(const [delay,label] of [[120,'T+120'],[300,'T+300'],[700,'T+700'],[1200,'T+1200']])setTimeout(()=>{if(tomeStartLock===lock)enforceTomeStartPosition(label);},delay);if(typeof ResizeObserver==='function'){try{lock.resizeObserver=new ResizeObserver(()=>{if(tomeStartLock===lock)enforceTomeStartPosition('resize-observer');});lock.resizeObserver.observe(list);}catch(_){}}if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>{if(tomeStartLock===lock){navigationTraceSnapshot('FONTS_READY',token||null,{lock:'tome-start'});enforceTomeStartPosition('fonts-ready');}}).catch(()=>{});lock.autoRelease=setTimeout(()=>{if(tomeStartLock===lock)releaseTomeStartLock('settled-timeout');},1800);return lock;}
-function bindEntriesReturnIntentHandlers(){const list=document.getElementById('entries-list');if(!list||list.dataset.returnIntentBound==='1')return;list.dataset.returnIntentBound='1';for(const ev of ['pointerdown','touchstart','wheel'])list.addEventListener(ev,()=>{releaseEntriesReturnLock('user:'+ev);releaseTomeStartLock('user:'+ev);},{passive:true});list.addEventListener('keydown',e=>{if(['ArrowDown','ArrowUp','PageDown','PageUp','Home','End',' ','Tab'].includes(e.key)){releaseEntriesReturnLock('user:key:'+e.key);releaseTomeStartLock('user:key:'+e.key);}});}
-function entriesListMatchesReturnContext(list,ctx,desired){if(!list||!ctx)return false;if(String(list.dataset.renderedVolume||'')!==String(ctx.vol||''))return false;if(String(list.dataset.renderedSourceMode||'')!==String(desired||''))return false;return !!semanticEntryReturnNode(list,ctx);}
-function tomeReturnNode(list,key){if(!list||key==null)return null;return [...list.querySelectorAll(TOMES_RETURN_SELECTOR)].find(n=>String(n.dataset.tomeKey||'')===String(key))||null;}
-function captureTomesNavigationContext(selectedButton=null,vol=null,navigationId=null,sourceModeOverride=null){const list=document.getElementById('tomes-list'),lr=list&&list.getBoundingClientRect(),selected=(selectedButton&&list&&list.contains(selectedButton))?selectedButton:null,selectedOffset=selected&&lr?selected.getBoundingClientRect().top-lr.top:null,scroll=captureScrollContext(list,TOMES_RETURN_SELECTOR,'data-tome-key'),mode=sourceModeOverride||supplementMode;return {screen:'tomes',navigation_id:navigationId||currentNavigationTransaction||null,source_mode:mode,selected_volume:Number(vol)||null,selected_tome_key:selected&&selected.dataset?selected.dataset.tomeKey||null:(vol?`tome:${vol}`:null),selected_tome_offset_px:selectedOffset,selected_tome_viewport_fraction:viewportFraction(selectedOffset,list),first_visible_tome_key:scroll.anchorKey||null,first_visible_tome_offset:scroll.anchorOffset||0,raw_tomes_scroll_top:list?Number(list.scrollTop)||0:0,list_signature:navigationListSignature(list,'tomes',mode,TOMES_RETURN_SELECTOR,'data-tome-key'),viewport_width:list?Number(list.clientWidth)||0:0,viewport_height:list?Number(list.clientHeight)||0:0};}
-function releaseTomesReturnLock(reason='release'){if(!tomesReturnLock)return false;const lock=tomesReturnLock,list=document.getElementById('tomes-list');if(lock.resizeObserver){try{lock.resizeObserver.disconnect();}catch(_){}}if(lock.autoRelease)clearTimeout(lock.autoRelease);if(list)list.classList.remove('tomes-return-lock');tomesReturnLock=null;navigationTraceSnapshot('USER_INTENT_RELEASE',lock.token||null,{lock:'tomes-return',reason});return true;}
-function tomesReturnTarget(ctx,list){if(!ctx||!list)return null;const selected=tomeReturnNode(list,ctx.selected_tome_key);if(selected){let offset=null;if(geometryCompatible(ctx,list)&&Number.isFinite(Number(ctx.selected_tome_offset_px)))offset=Number(ctx.selected_tome_offset_px);else if(Number.isFinite(Number(ctx.selected_tome_viewport_fraction)))offset=Number(ctx.selected_tome_viewport_fraction)*(Number(list.clientHeight)||0);if(!Number.isFinite(offset))offset=Math.max(0,((Number(list.clientHeight)||0)-(Number(selected.offsetHeight)||0))/2);return {node:selected,offset,kind:'selected'};}const anchor=tomeReturnNode(list,ctx.first_visible_tome_key);if(anchor)return {node:anchor,offset:Number(ctx.first_visible_tome_offset)||0,kind:'anchor'};return null;}
-function enforceTomesReturnPosition(reason='enforce'){const lock=tomesReturnLock,list=document.getElementById('tomes-list');if(!lock||!list||currentScreenName()!=='tomes')return false;const target=tomesReturnTarget(lock.ctx,list);if(target){const lr=list.getBoundingClientRect(),delta=(target.node.getBoundingClientRect().top-lr.top)-target.offset;if(Math.abs(delta)>.5)list.scrollTop=Math.max(0,Math.min(list.scrollHeight-list.clientHeight,list.scrollTop+delta));}else if(!lock.rawApplied){const sig=navigationListSignature(list,'tomes',supplementMode,TOMES_RETURN_SELECTOR,'data-tome-key'),same=lock.ctx&&lock.ctx.list_signature&&sig===lock.ctx.list_signature;list.scrollTop=same?(Number(lock.ctx.raw_tomes_scroll_top)||0):0;lock.rawApplied=true;}lock.last_reason=reason;navigationTraceSnapshot(reason,lock.token||null,{lock:'tomes-return',target_kind:target&&target.kind||'fallback'});return true;}
-function installTomesReturnLock(ctx,token){releaseTomesReturnLock('replace');const list=document.getElementById('tomes-list');if(!list)return null;const lock=tomesReturnLock={id:++tomesReturnLockSeq,ctx,token,rawApplied:false,created_at:Date.now(),resizeObserver:null,autoRelease:null};list.classList.add('tomes-return-lock');enforceTomesReturnPosition('DESTINATION_POSITIONED');requestAnimationFrame(()=>{if(tomesReturnLock===lock)enforceTomesReturnPosition('RAF1');requestAnimationFrame(()=>{if(tomesReturnLock===lock)enforceTomesReturnPosition('RAF2');});});for(const [delay,label] of [[120,'T+120'],[300,'T+300'],[700,'T+700'],[1200,'T+1200']])setTimeout(()=>{if(tomesReturnLock===lock)enforceTomesReturnPosition(label);},delay);if(typeof ResizeObserver==='function'){try{lock.resizeObserver=new ResizeObserver(()=>{if(tomesReturnLock===lock)enforceTomesReturnPosition('resize-observer');});lock.resizeObserver.observe(list);}catch(_){}}if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>{if(tomesReturnLock===lock)enforceTomesReturnPosition('fonts-ready');}).catch(()=>{});lock.autoRelease=setTimeout(()=>{if(tomesReturnLock===lock)releaseTomesReturnLock('settled-timeout');},1800);return lock;}
-function bindTomesReturnIntentHandlers(){const list=document.getElementById('tomes-list');if(!list||list.dataset.returnIntentBound==='1')return;list.dataset.returnIntentBound='1';for(const ev of ['pointerdown','touchstart','wheel'])list.addEventListener(ev,()=>releaseTomesReturnLock('user:'+ev),{passive:true});list.addEventListener('keydown',e=>{if(['ArrowDown','ArrowUp','PageDown','PageUp','Home','End',' ','Tab'].includes(e.key))releaseTomesReturnLock('user:key:'+e.key);});}
-async function restoreEntriesNavigationContext(ctx){if(!ctx)return false;const desired=validJourneySourceMode(ctx.return_source_mode)?ctx.return_source_mode:(validJourneySourceMode(ctx.source_mode)?ctx.source_mode:supplementMode);if(desired!==supplementMode)await setSupplementMode(desired,{rerender:false,silent:true});let list=document.getElementById('entries-list');const warm=entriesListMatchesReturnContext(list,ctx,desired);const token=beginNavigationTransaction(NAV_INTENT.BACK_RESTORE,{volume:ctx.vol,source_mode:supplementMode});navigationTraceSnapshot('AFTER_CAPTURE',token,{capture_kind:'entries-return',warm,selected_key:ctx.selectedKey,selected_entry_id:ctx.selectedEntryId,selected_offset:ctx.selectedOffset,selected_viewport_top:ctx.selectedViewportTop,selected_viewport_fraction:ctx.selectedVisibleViewportFraction,raw_entries_scroll_top:ctx.raw_entries_scroll_top,raw_root_scroll_top:ctx.raw_root_scroll_top,capture_scroll_owner:ctx.capture_scroll_owner});navigationTraceSnapshot('LOAD_COMPLETE',token,{warm});if(warm){const source=document.getElementById('reader-scroll');freezeNavigationSource(source,token);const screen=stageNavigationScreen('entries',token);bindEntriesReturnIntentHandlers();resetRootVerticalNavigation();installEntriesReturnLock(ctx,token);await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));if(!navigationCommitAllowed(token,'warm-back')){releaseNavigationSource(source);if(screen)screen.classList.remove('navigation-commit-hidden');return false;}enforceEntriesReturnPosition('rebuilt-before-reveal');const focus=entryReturnNode(list,ctx.focusKey||ctx.selectedKey);if(focus){try{focus.focus({preventScroll:true});}catch(_){focus.focus();enforceEntriesReturnPosition('focus-fallback');}}revealNavigationScreen(screen,token);releaseNavigationSource(source);return true;}return !!(await openTome(ctx.vol,{intent:NAV_INTENT.BACK_RESTORE,navigationToken:token,returnContext:ctx}));}
+function captureEntriesNavigationContext(selectedButton=null){
+  const list=document.getElementById('entries-list'),lr=list&&list.getBoundingClientRect();
+  const selected=(selectedButton&&list&&list.contains(selectedButton))?selectedButton:null;
+  const active=document.activeElement,focus=(active&&list&&list.contains(active)&&active.dataset)?active:null;
+  return {screen:'entries',vol:currentVolume,source_mode:supplementMode,
+    scroll:captureScrollContext(list,ENTRIES_RETURN_SELECTOR,'data-return-key'),
+    selectedKey:selected&&selected.dataset?selected.dataset.returnKey||null:null,
+    selectedOffset:selected&&lr?selected.getBoundingClientRect().top-lr.top:null,
+    focusKey:focus&&focus.dataset?focus.dataset.returnKey||null:null};
+}
+function releaseEntriesReturnLock(reason='release'){
+  if(!entriesReturnLock)return false;const lock=entriesReturnLock,list=document.getElementById('entries-list');
+  if(lock.resizeObserver){try{lock.resizeObserver.disconnect();}catch(_){}}
+  if(list)list.classList.remove('entries-return-lock');entriesReturnLock=null;return true;
+}
+function entriesReturnTarget(ctx,list){
+  if(!ctx||!list)return null;
+  const selected=entryReturnNode(list,ctx.selectedKey);
+  if(selected&&Number.isFinite(Number(ctx.selectedOffset)))return {node:selected,offset:Number(ctx.selectedOffset),kind:'selected'};
+  const anchor=entryReturnNode(list,ctx.scroll&&ctx.scroll.anchorKey);
+  if(anchor&&Number.isFinite(Number(ctx.scroll&&ctx.scroll.anchorOffset)))return {node:anchor,offset:Number(ctx.scroll.anchorOffset),kind:'anchor'};
+  return null;
+}
+function enforceEntriesReturnPosition(reason='enforce'){
+  const lock=entriesReturnLock,list=document.getElementById('entries-list');if(!lock||!list||currentScreenName()!=='entries')return false;
+  const target=entriesReturnTarget(lock.ctx,list);
+  if(target){const lr=list.getBoundingClientRect(),delta=(target.node.getBoundingClientRect().top-lr.top)-target.offset;if(Math.abs(delta)>.5)list.scrollTop+=delta;}
+  else if(!lock.rawApplied){list.scrollTop=Number(lock.ctx&&lock.ctx.scroll&&lock.ctx.scroll.scrollTop)||0;lock.rawApplied=true;}
+  lock.last_reason=reason;lock.last_scroll_top=Number(list.scrollTop)||0;return true;
+}
+function installEntriesReturnLock(ctx){
+  releaseEntriesReturnLock('replace');const list=document.getElementById('entries-list');if(!list)return null;
+  const lock=entriesReturnLock={id:++entriesReturnLockSeq,ctx,rawApplied:false,created_at:Date.now(),resizeObserver:null};list.classList.add('entries-return-lock');
+  list.scrollTop=Number(ctx&&ctx.scroll&&ctx.scroll.scrollTop)||0;
+  enforceEntriesReturnPosition('immediate');
+  requestAnimationFrame(()=>{if(entriesReturnLock===lock)enforceEntriesReturnPosition('raf1');requestAnimationFrame(()=>{if(entriesReturnLock===lock)enforceEntriesReturnPosition('raf2');});});
+  for(const [delay,label] of [[120,'t120'],[300,'t300'],[700,'t700'],[1200,'t1200']])setTimeout(()=>{if(entriesReturnLock===lock)enforceEntriesReturnPosition(label);},delay);
+  if(typeof ResizeObserver==='function'){try{lock.resizeObserver=new ResizeObserver(()=>{if(entriesReturnLock===lock)enforceEntriesReturnPosition('resize-observer');});lock.resizeObserver.observe(list);}catch(_){lock.resizeObserver=null;}}
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>{if(entriesReturnLock===lock)enforceEntriesReturnPosition('fonts-ready');}).catch(()=>{});
+  return lock;
+}
+function bindEntriesReturnIntentHandlers(){const list=document.getElementById('entries-list');if(!list||list.dataset.returnIntentBound==='1')return;list.dataset.returnIntentBound='1';for(const ev of ['pointerdown','touchstart','wheel'])list.addEventListener(ev,()=>releaseEntriesReturnLock('user:'+ev),{passive:true});list.addEventListener('keydown',e=>{if(['ArrowDown','ArrowUp','PageDown','PageUp','Home','End',' '].includes(e.key))releaseEntriesReturnLock('user:key');});}
+function entriesListMatchesReturnContext(list,ctx,desired){
+  if(!list||!ctx)return false;
+  if(String(list.dataset.renderedVolume||'')!==String(ctx.vol||''))return false;
+  if(String(list.dataset.renderedSourceMode||'')!==String(desired||''))return false;
+  const key=ctx.selectedKey||(ctx.scroll&&ctx.scroll.anchorKey)||ctx.focusKey;
+  return key!=null&&!!entryReturnNode(list,key);
+}
+async function restoreEntriesNavigationContext(ctx){
+  if(!ctx)return false;const screen=document.getElementById('screen-entries');if(screen)screen.classList.add('entries-return-restoring');
+  try{
+    const desired=validJourneySourceMode(ctx.return_source_mode)?ctx.return_source_mode:(validJourneySourceMode(ctx.source_mode)?ctx.source_mode:supplementMode);
+    if(desired!==supplementMode)await setSupplementMode(desired,{rerender:false,silent:true});
+    currentVolume=ctx.vol||currentVolume;
+    let list=document.getElementById('entries-list');
+    // v112: the v110 handoff deliberately neutralises the hidden list while Reader is active.
+    // On Back, prefer restoring that already-rendered logical list instead of rebuilding it.
+    // This removes an iOS timing window in which a rebuild could visibly settle at scrollTop=0.
+    const warm=entriesListMatchesReturnContext(list,ctx,desired);
+    if(warm){showScreen('entries');bindEntriesReturnIntentHandlers();}
+    else{await openTome(currentVolume);list=document.getElementById('entries-list');bindEntriesReturnIntentHandlers();}
+    installEntriesReturnLock(ctx);
+    await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
+    enforceEntriesReturnPosition(warm?'warm-before-reveal':'rebuilt-before-reveal');
+    const selected=entryReturnNode(list,ctx.selectedKey);if(selected){const lr=list.getBoundingClientRect(),rr=selected.getBoundingClientRect();if(rr.bottom<=lr.top||rr.top>=lr.bottom){selected.scrollIntoView({block:'center',inline:'nearest'});enforceEntriesReturnPosition('selected-visible-fallback');}}
+    const focus=entryReturnNode(list,ctx.focusKey||ctx.selectedKey);if(focus){try{focus.focus({preventScroll:true});}catch(_){focus.focus();enforceEntriesReturnPosition('focus-fallback');}}
+    return true;
+  }finally{if(screen)screen.classList.remove('entries-return-restoring');}
+}
 
-async function restoreTomesNavigationContext(ctx){const token=beginNavigationTransaction(NAV_INTENT.TOMES_BACK_RESTORE,{source_mode:supplementMode,selected_volume:ctx&&ctx.selected_volume||currentVolume});navigationTraceSnapshot('LOAD_BEGIN',token);await renderTomes();if(!navigationCommitAllowed(token,'tomes-rendered'))return false;navigationTraceSnapshot('LOAD_COMPLETE',token);const source=document.getElementById('entries-list');freezeNavigationSource(source,token);const screen=stageNavigationScreen('tomes',token);bindTomesReturnIntentHandlers();installTomesReturnLock(ctx||{raw_tomes_scroll_top:0},token);resetRootVerticalNavigation();await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));if(!navigationCommitAllowed(token,'tomes-back')){releaseNavigationSource(source);if(screen)screen.classList.remove('navigation-commit-hidden');return false;}enforceTomesReturnPosition('rebuilt-before-reveal');revealNavigationScreen(screen,token);releaseNavigationSource(source);return true;}
-async function openFreshTomeFromTomes(vol,button){const token=beginNavigationTransaction(NAV_INTENT.FRESH_TOME,{selected_volume:Number(vol),source_mode:supplementMode});const ctx=captureTomesNavigationContext(button,vol,token.id,supplementMode);tomesOriginContext=ctx;token.tomes_context=ctx;navigationTraceSnapshot('AFTER_CAPTURE',token,{capture_kind:'tomes',selected_tome_key:ctx.selected_tome_key,raw_tomes_scroll_top:ctx.raw_tomes_scroll_top});return openTome(vol,{intent:NAV_INTENT.FRESH_TOME,navigationToken:token,tomesContext:ctx});}
 function captureNavigationContext(kind){
   const screen=kind||currentScreenName();
   if(screen==='entries')return captureEntriesNavigationContext();
-  if(screen==='search')return {screen:'search',query:document.getElementById('search-input').value,intentMode:searchIntentMode,volMin:searchVolFilter,volMax:searchVolFilterMax,speaker:searchSpeakerFilter,source_mode:supplementMode,order:effectiveSearchOrder(),orderExplicit:!!searchOrderMode,lane:searchLastPayload&&searchLastPayload.foundation&&searchLastPayload.foundation.lane||searchResultLane,partialExpanded:searchPartialExpanded,page:searchPage,metadataPage:searchMetadataPage,scroll:captureScrollContext(document.getElementById('search-results'),'.result-card','data-result-key'),focusKey:document.activeElement&&document.activeElement.dataset?document.activeElement.dataset.resultKey:null};
+  if(screen==='search')return {screen:'search',query:document.getElementById('search-input').value,volMin:searchVolFilter,volMax:searchVolFilterMax,speaker:searchSpeakerFilter,source_mode:supplementMode,order:effectiveSearchOrder(),orderExplicit:!!searchOrderMode,lane:searchLastPayload&&searchLastPayload.foundation&&searchLastPayload.foundation.lane||searchResultLane,page:searchPage,metadataPage:searchMetadataPage,scroll:captureScrollContext(document.getElementById('search-results'),'.result-card','data-result-key'),focusKey:document.activeElement&&document.activeElement.dataset?document.activeElement.dataset.resultKey:null};
   if(screen==='espace'){const panel=document.getElementById('ep-'+activeEspaceTab);return {screen:'espace',tab:activeEspaceTab,filter:document.getElementById('espace-filter-input').value,scroll:captureScrollContext(panel,'[data-filter-text]',null)};}
   if(screen==='date-nav')return {screen:'date-nav',year:dnYear,month:dnMonth,day:dnDay,scroll:captureScrollContext(document.querySelector('#screen-date-nav .scroll'),':scope > *',null)};
-  if(screen==='tomes')return captureTomesNavigationContext();
+  if(screen==='tomes')return {screen:'tomes',scroll:captureScrollContext(document.getElementById('tomes-list'),'.vol-card',null)};
   if(screen==='home'||screen==='parcours')return {screen};
   return {screen:screen||'tomes'};
 }
@@ -4249,8 +4128,8 @@ async function restoreNavigationContext(ctx){
   if(ctx.screen==='entries'){await restoreEntriesNavigationContext(ctx);return;}
   if(ctx.screen==='search'){
     const sourceChanged=ctx.source_mode&&ctx.source_mode!==supplementMode;
-    searchIntentMode=ctx.intentMode==='meaning'?'meaning':'words';searchVolFilter=Number(ctx.volMin)||0;searchVolFilterMax=Number(ctx.volMax)||0;searchSpeakerFilter=!!ctx.speaker;searchOrderMode=ctx.orderExplicit&&['book','relevance'].includes(ctx.order)?ctx.order:null;searchResultLane=['exact','words','partial'].includes(ctx.lane)?ctx.lane:null;searchPartialExpanded=!!ctx.partialExpanded||searchResultLane==='partial';searchPage=Math.max(1,Number(ctx.page)||1);searchMetadataPage=Math.max(1,Number(ctx.metadataPage)||1);
-    document.getElementById('search-input').value=ctx.query||'';showScreen('search');renderSearchIntentMode();renderSearchSourceModeRow();renderSearchOrderRow();renderSpeakerFilterRow();renderVolFilterRow();document.getElementById('search-clear').style.display=ctx.query?'':'none';document.querySelector('.date-nav-entry').style.display=ctx.query?'none':'';
+    searchVolFilter=Number(ctx.volMin)||0;searchVolFilterMax=Number(ctx.volMax)||0;searchSpeakerFilter=!!ctx.speaker;searchOrderMode=ctx.orderExplicit&&['book','relevance'].includes(ctx.order)?ctx.order:null;searchResultLane=['exact','words','partial'].includes(ctx.lane)?ctx.lane:null;searchPage=Math.max(1,Number(ctx.page)||1);searchMetadataPage=Math.max(1,Number(ctx.metadataPage)||1);
+    document.getElementById('search-input').value=ctx.query||'';showScreen('search');renderSearchSourceModeRow();renderSearchOrderRow();renderSpeakerFilterRow();renderVolFilterRow();document.getElementById('search-clear').style.display=ctx.query?'':'none';document.querySelector('.date-nav-entry').style.display=ctx.query?'none':'';
     if(ctx.query)await runSearch();else await refreshSearchSuggestions();
     const el=document.getElementById('search-results');restoreScrollContext(el,ctx.scroll,'.result-card','data-result-key');requestAnimationFrame(()=>{if(ctx.focusKey){const c=[...el.querySelectorAll('.result-card')].find(x=>x.dataset.resultKey===ctx.focusKey);if(c){try{c.focus({preventScroll:true});}catch(_){c.focus();}}}});
     if(sourceChanged)showToast(`Recherche actualisée en ${searchSourceModeLabel(supplementMode)}.`);return;
@@ -4261,7 +4140,7 @@ async function restoreNavigationContext(ctx){
   if(ctx.screen==='date-nav'){
     showScreen('date-nav');if(Number.isFinite(ctx.year))dnYear=ctx.year;if(Number.isFinite(ctx.month))dnMonth=ctx.month;if(Number.isFinite(ctx.day))dnDay=ctx.day;renderDnYearStrip();renderDnMonthGrid();renderDnDayGrid();renderDnResultCard();restoreScrollContext(document.querySelector('#screen-date-nav .scroll'),ctx.scroll,':scope > *',null);return;
   }
-  if(ctx.screen==='home'){await goHome();return;}if(ctx.screen==='parcours'){goParcours();return;}if(ctx.screen==='tomes'){await finishReaderForPermanentNavigation('tomes');await restoreTomesNavigationContext(ctx);return;}await goTomes();
+  if(ctx.screen==='home'){await goHome();return;}if(ctx.screen==='parcours'){goParcours();return;}if(ctx.screen==='tomes'){await finishReaderForPermanentNavigation('tomes');showScreen('tomes');await renderTomes();restoreScrollContext(document.getElementById('tomes-list'),ctx.scroll,'.vol-card',null);return;}await goTomes();
 }
 
 function scheduleSemanticLayoutRestore(){
@@ -4769,8 +4648,6 @@ async function renderTomes() {
     }
     const btn = document.createElement('button');
     btn.className = 'vol-card' + (pos && pos.vol === vd.v ? ' current' : '');
-    btn.dataset.tomeKey = `tome:${vd.v}`;
-    btn.dataset.volume = String(vd.v);
     let progressBar = '';
     if (entryCount > 0) {
       const readCount = readCountByVol[vd.v] || 0;
@@ -4784,7 +4661,7 @@ async function renderTomes() {
         <div class="vc-sub" id="vol-sub-${vd.v}">${entryCount ? entryCount + ' entrées' : 'Tome ' + vd.v}</div>
         ${progressBar}
       </div>`;
-    btn.onclick = () => openFreshTomeFromTomes(vd.v,btn);
+    btn.onclick = () => openTome(vd.v);
     grid.appendChild(btn);
   }
   list.appendChild(grid);
@@ -4798,9 +4675,9 @@ function supplementRegistryExcerpt(s){const p=s.paragraphs&&s.paragraphs[0];retu
 async function renderSupplementRegistryList(container,items,opts={}){
   container.innerHTML='';
   const intro=document.createElement('div');intro.className='supp-registry-intro';
-  { const c=(supplementRegistry&&supplementRegistry.counts)||{}; intro.innerHTML=opts.global?`<b>${c.items||75} compléments</b> · ${c.complete_entries||13} entrées complètes + ${c.internal_supplements||62} compléments internes. Chaque complément reste distinct du texte PRINCIPAL et peut être masqué.`:'<b>COMPLÉMENTS de ce tome</b> · seuls les COMPLÉMENTS retenus pour ce tome sont affichés.'; }
+  { const c=(supplementRegistry&&supplementRegistry.counts)||{}; intro.innerHTML=opts.global?`<b>${c.items||75} compléments approuvés</b> · ${c.complete_entries||13} entrées datées complètes + ${c.internal_supplements||62} compléments internes. Chaque complément reste distinct du corpus principal et peut être masqué.`:'<b>COMPLÉMENTS de ce tome</b> · seuls les compléments approuvés par la réconciliation critique sont affichés.'; }
   container.appendChild(intro);
-  if(!items.length){const empty=document.createElement('div');empty.className='empty-state';empty.innerHTML='<i class="ti ti-layers-off"></i>Aucun complément dans ce tome.';container.appendChild(empty);return;}
+  if(!items.length){const empty=document.createElement('div');empty.className='empty-state';empty.innerHTML='<i class="ti ti-layers-off"></i>Aucun complément approuvé dans ce tome.';container.appendChild(empty);return;}
   const [favoriteRows,readRows]=await Promise.all([dbGetAll('favorites'),dbGetAll('read_entries')]);
   const favoriteIds=new Set(favoriteRows.map(r=>r&&r.entry_id).filter(Boolean));
   const readIds=new Set(readRows.filter(isConfirmedReadRecord).map(r=>r&&r.entry_id).filter(Boolean));
@@ -4808,7 +4685,6 @@ async function renderSupplementRegistryList(container,items,opts={}){
     const btn=document.createElement('button');btn.type='button';btn.className='supp-registry-item';btn.dataset.supplementId=s.supplement_id;
     const userId=s.supplement_type==='COMPLETE_ENTRY'&&s.entry?s.entry.id:s.supplement_id;
     btn.dataset.entryId=userId;btn.dataset.returnKey='supp:'+String(s.supplement_id||userId);btn.id='entry-row-'+userId;
-    btn.dataset.hostEntryId=String(s.target_entry_id||userId||'');btn.dataset.entryDate=String(s.date_iso||'');btn.dataset.entryStableRef=String(s.stable_ref||s.supplement_id||'');
     const kind=isInternalSupplementItem(s)?'Complément interne':'Entrée complète';
     const favMark=favoriteIds.has(userId)?`<span class="ei-fav-mark" data-favorite-indicator="true" title="Favori" aria-label="Favori"><i class="ti ti-heart-filled" aria-hidden="true"></i></span>`:'';
     const readMark=readIds.has(userId)?`<span class="ei-read-mark" data-read-indicator="true" title="Lu" aria-label="Lu"><i class="ti ti-circle-check" aria-hidden="true"></i></span>`:'';
@@ -4944,65 +4820,58 @@ async function openSupplementFromEntries(s,button){
 }
 window.__ldcEntriesReaderHandoffDebug=()=>({active:entriesReaderHandoff&&Object.assign({},entriesReaderHandoff,{reader_surface:undefined}),trace:entriesReaderHandoffTrace.slice(-30),entries_scroll_top:Number(document.getElementById('entries-list')?.scrollTop)||0,reader_scroll_top:Number(document.getElementById('reader-scroll')?.scrollTop)||0});
 
-async function openTome(vol,opts={}) {
-  releaseEntriesReturnLock('open-tome');releaseTomeStartLock('open-tome');
+async function openTome(vol) {
+  releaseEntriesReturnLock('open-tome');
   if(activeReaderSession)await finishReaderForPermanentNavigation('entries');
-  const intent=Object.values(NAV_INTENT).includes(opts.intent)?opts.intent:NAV_INTENT.PRESERVE_RERENDER;
-  const token=opts.navigationToken||beginNavigationTransaction(intent,{selected_volume:Number(vol),source_mode:supplementMode});
-  token.intent=intent;token.source_mode=token.source_mode||supplementMode;
-  navigationTraceSnapshot('LOAD_BEGIN',token,{volume:Number(vol)});
+  currentVolume = vol;
   await ensureVolumeIndex(vol);
-  if(!navigationCommitAllowed(token,'volume-index'))return false;
-  const renderMode=supplementMode;
-  const stage=document.createElement('div');
-  let title=`Tome ${vol}`;
-  if(renderMode==='additions'){
-    title=`Tome ${vol} · Compléments`;
-    await renderSupplementRegistryList(stage,sortedSupplementItems(supplementItemsForVolume(vol)),{global:false});
-    if(!navigationCommitAllowed(token,'supplement-render'))return false;
-  }else{
-    const entries=corpusCache[vol].entries;
-    const [readIds,favoriteRows]=await Promise.all([getReadEntryIds(vol),dbGetAll('favorites')]);
-    if(!navigationCommitAllowed(token,'status-load'))return false;
-    const favoriteIds=new Set(favoriteRows.map(f=>f&&f.entry_id).filter(Boolean));
-    entries.forEach((e,idx)=>{
-      const btn=document.createElement('button');btn.className='entry-item'+(readIds.has(e.id)?' read':'');btn.dataset.entryId=e.id;btn.dataset.returnKey='entry:'+String(e.id);btn.dataset.hostEntryId=String(e.id||'');btn.dataset.entryStableRef=String(e.stable_ref||'');btn.dataset.entryDate=String(e.date_iso||'');btn.id='entry-row-'+e.id;
-      const favMark=favoriteIds.has(e.id)?`<span class="ei-fav-mark" data-favorite-indicator="true" title="Favori" aria-label="Favori"><i class="ti ti-heart-filled" aria-hidden="true"></i></span>`:'';
-      const readMark=readIds.has(e.id)?`<span class="ei-read-mark" title="Lu" aria-label="Lu"><i class="ti ti-circle-check" aria-hidden="true"></i></span>`:'';
-      const statusMarks=(favMark||readMark)?`<span class="ei-statuses">${favMark}${readMark}</span>`:'';
-      const inlineHostAdd=renderMode==='enriched'&&!e.is_supplement&&inlineSupplementsForEntry(vol,e.id).length>0;
-      btn.innerHTML=`<span class="ei-seq">${idx+1}</span><div class="ei-body"><div class="ei-title">${e.title||'Entrée '+(idx+1)}</div><div class="ei-date">${e.date_display||''}</div>${e.is_supplement?`<span class="ei-supp-badge" title="COMPLÉMENT — origine et détails dans Infos et source." aria-label="COMPLÉMENT — origine et détails dans Infos et source.">COMPLÉMENT</span>`:''}${inlineHostAdd?`<span class="ei-supp-badge" title="Cette entrée contient un COMPLÉMENT — origine et détails dans Infos et source." aria-label="Cette entrée contient un COMPLÉMENT — origine et détails dans Infos et source.">+ COMPL.</span>`:''}</div>${statusMarks}`;
-      btn.onclick=()=>openEntryFromEntries(vol,e.id,btn);stage.appendChild(btn);
-    });
-    if(Number(vol)===1&&renderMode!=='additions'){
-      const appendix=document.createElement('button');appendix.type='button';appendix.className='editorial-appendix-entry';appendix.id='tome1-editorial-appendix-entry';appendix.innerHTML='<div class="eae-kicker">Matériel éditorial · non compté comme entrée</div><div class="eae-title">Explications éditoriales</div><div class="eae-sub">16 notes de l’appendice de l’édition source 2021. Seuls les repères (3), (4) et (5) sont explicitement numérotés dans le corps du texte.</div>';appendix.onclick=()=>openTome1EditorialAppendix('entries');stage.appendChild(appendix);
-    }
+  document.getElementById('entries-title').textContent = `Tome ${vol}`;
+  const list = document.getElementById('entries-list');
+  list.innerHTML = '';
+  list.dataset.renderedVolume=String(vol);
+  list.dataset.renderedSourceMode=String(supplementMode);
+  syncSupplementModeUI();
+  if(supplementsOnly()){
+    document.getElementById('entries-title').textContent=`Tome ${vol} · Compléments`;
+    await renderSupplementRegistryList(list,sortedSupplementItems(supplementItemsForVolume(vol)),{global:false});
+    showScreen('entries'); bindEntriesReturnIntentHandlers(); scheduleVolumeReaderPreload(vol); return;
   }
-  if(!navigationCommitAllowed(token,'pre-commit'))return false;
-  navigationTraceSnapshot('LOAD_COMPLETE',token,{volume:Number(vol),intent,render_mode:renderMode,staged_children:stage.childElementCount});
-  navigationTraceSnapshot('PRE_COMMIT',token,{volume:Number(vol),intent});
-  const source=intent===NAV_INTENT.FRESH_TOME?document.getElementById('tomes-list'):(intent===NAV_INTENT.BACK_RESTORE?document.getElementById('reader-scroll'):null);
-  freezeNavigationSource(source,token);
-  const screen=document.getElementById('screen-entries');if(screen)screen.classList.add('navigation-commit-hidden');
+  const entries = corpusCache[vol].entries;
+  // Load user-status sets once per Tome render. This avoids one IndexedDB query per row.
+  const readIds = await getReadEntryIds(vol);
+  const favoriteIds = new Set((await dbGetAll('favorites')).map(f => f && f.entry_id).filter(Boolean));
+  entries.forEach((e, idx) => {
+    const btn = document.createElement('button');
+    btn.className = 'entry-item' + (readIds.has(e.id) ? ' read' : '');
+    btn.dataset.entryId = e.id;
+    btn.dataset.returnKey = 'entry:' + String(e.id);
+    btn.id = 'entry-row-' + e.id;
+    const favMark = favoriteIds.has(e.id)
+      ? `<span class="ei-fav-mark" data-favorite-indicator="true" title="Favori" aria-label="Favori"><i class="ti ti-heart-filled" aria-hidden="true"></i></span>` : '';
+    const readMark = readIds.has(e.id)
+      ? `<span class="ei-read-mark" title="Lu" aria-label="Lu"><i class="ti ti-circle-check" aria-hidden="true"></i></span>` : '';
+    const statusMarks = (favMark || readMark) ? `<span class="ei-statuses">${favMark}${readMark}</span>` : '';
+    const inlineHostAdd = supplementMode==='enriched' && !e.is_supplement && inlineSupplementsForEntry(vol,e.id).length>0;
+    btn.innerHTML = `
+      <span class="ei-seq">${idx+1}</span>
+      <div class="ei-body">
+        <div class="ei-title">${e.title || 'Entrée ' + (idx+1)}</div>
+        <div class="ei-date">${e.date_display || ''}</div>
+        ${e.is_supplement?`<span class="ei-supp-badge" title="Complément approuvé, absent du corpus PRINCIPAL ; provenance détaillée dans Infos et source" aria-label="Complément approuvé, absent du corpus PRINCIPAL ; provenance détaillée dans Infos et source">COMPLÉMENT</span>`:''}
+        ${inlineHostAdd?`<span class="ei-supp-badge" title="Cette entrée principale contient un complément approuvé ; sa provenance est indiquée dans Infos et source." aria-label="Cette entrée principale contient un complément approuvé ; sa provenance est indiquée dans Infos et source.">+ COMPL.</span>`:''}
+      </div>
+      ${statusMarks}`;
+    btn.onclick = () => openEntryFromEntries(vol, e.id, btn);
+    list.appendChild(btn);
+  });
+  if(Number(vol)===1 && supplementMode!=='additions'){
+    const appendix=document.createElement('button');appendix.type='button';appendix.className='editorial-appendix-entry';appendix.id='tome1-editorial-appendix-entry';
+    appendix.innerHTML='<div class="eae-kicker">Matériel éditorial · non compté comme entrée</div><div class="eae-title">Explications éditoriales</div><div class="eae-sub">16 notes de l’appendice de l’édition source 2021. Seuls les repères (3), (4) et (5) sont explicitement numérotés dans le corps du texte.</div>';
+    appendix.onclick=()=>openTome1EditorialAppendix('entries');list.appendChild(appendix);
+  }
   showScreen('entries');
-  navigationTraceSnapshot('DESTINATION_ACTIVE_HIDDEN',token);
-  if(!navigationCommitAllowed(token,'destination-active')){releaseNavigationSource(source);if(screen)screen.classList.remove('navigation-commit-hidden');return false;}
-  currentVolume=Number(vol);
-  document.getElementById('entries-title').textContent=title;
-  const list=document.getElementById('entries-list');
-  list.replaceChildren(...stage.childNodes);
-  list.dataset.renderedVolume=String(vol);list.dataset.renderedSourceMode=String(renderMode);list.dataset.renderedListSignature=navigationListSignature(list,vol,renderMode);
-  syncSupplementModeUI();bindEntriesReturnIntentHandlers();resetRootVerticalNavigation();
-  if(intent===NAV_INTENT.FRESH_TOME){if(opts.tomesContext)tomesOriginContext=opts.tomesContext;installTomeStartLock(token);}
-  else if(intent===NAV_INTENT.BACK_RESTORE&&opts.returnContext)installEntriesReturnLock(opts.returnContext,token);
-  else if(intent===NAV_INTENT.PRESERVE_RERENDER&&opts.preserveContext)installEntriesReturnLock(opts.preserveContext,token);
-  else list.scrollTop=0;
-  await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
-  if(!navigationCommitAllowed(token,'settled-before-reveal')){releaseNavigationSource(source);if(screen)screen.classList.remove('navigation-commit-hidden');return false;}
-  if(intent===NAV_INTENT.FRESH_TOME)enforceTomeStartPosition('rebuilt-before-reveal');
-  else if((intent===NAV_INTENT.BACK_RESTORE&&opts.returnContext)||(intent===NAV_INTENT.PRESERVE_RERENDER&&opts.preserveContext))enforceEntriesReturnPosition('rebuilt-before-reveal');
-  if(intent===NAV_INTENT.BACK_RESTORE&&opts.returnContext){const focus=entryReturnNode(list,opts.returnContext.focusKey||opts.returnContext.selectedKey);if(focus){try{focus.focus({preventScroll:true});}catch(_){focus.focus();enforceEntriesReturnPosition('focus-fallback');}}}
-  revealNavigationScreen(screen,token);releaseNavigationSource(source);scheduleVolumeReaderPreload(vol);return true;
+  bindEntriesReturnIntentHandlers();
+  scheduleVolumeReaderPreload(vol);
 }
 
 let tome1EditorialBackState=null;
@@ -5038,7 +4907,7 @@ function closeTome1EditorialAppendix(){
   showScreen('entries');
 }
 
-async function backToTomes() { await restoreTomesNavigationContext(tomesOriginContext); }
+function backToTomes() { showScreen('tomes'); }
 
 /* ═══════════════════════════════════════════════════════
    READER
@@ -7095,58 +6964,26 @@ function openSizeFromReaderMore() { closeReaderMore(); showSizeSheet(); }
 function openThemeFromReaderMore() { closeReaderMore(); showThemeSheet(); }
 function openReaderInfoFromMore() { closeReaderMore(); openReaderInfo(); }
 
-function addInfoExtraRow(label, value, mono=false) {
+function addInfoExtraRow(label, value) {
   if (value == null || String(value).trim() === '') return '';
-  return `<div class="reader-info-row"><div class="reader-info-key">${escapeHtml(label)}</div><div class="reader-info-val${mono?' mono':''}">${escapeHtml(String(value))}</div></div>`;
+  return `<div class="reader-info-row"><div class="reader-info-key">${escapeHtml(label)}</div><div class="reader-info-val">${escapeHtml(String(value))}</div></div>`;
 }
 function openReaderInfo() {
   if (!currentEntry) return;
   const volData = corpusCache[currentVolume] || {};
   const sp=activeReaderSupplement(), pm=buildReaderProvenanceModel(currentEntry,sp);
-  document.getElementById('info-status-key').textContent='Version du texte';
-  document.getElementById('info-status').textContent=sp?'COMPLÉMENT RETENU':'PRINCIPAL';
+  document.getElementById('info-stable-ref').textContent=pm.stableRef;
   document.getElementById('info-source-edition-key').textContent=pm.primaryKey;
   document.getElementById('info-source-edition').textContent=pm.primaryValue;
   document.getElementById('info-source-pages-key').textContent=pm.locatorKey;
   document.getElementById('info-source-pages').textContent=pm.locatorValue||'—';
-  document.getElementById('info-stable-ref').textContent=pm.stableRef;
+  document.getElementById('info-status-key').textContent='Statut';
+  document.getElementById('info-status').textContent=pm.publicStatus;
+  document.getElementById('info-corpus-generation-key').textContent='Identifiant technique du corpus';
+  document.getElementById('info-corpus-generation').textContent=pm.technicalCorpus;
   document.getElementById('info-date-precision').textContent=currentEntry.date_precision||'—';
-  const details=document.getElementById('info-technical-details');if(details)details.open=false;
-  if(sp){
-    const it=sp.itpm_anchor||{},qa=sp.queen_anchor||{},ha=sp.hugh_anchor||{};
-    const publicRows=[
-      ['Type',isInternalSupplementItem(sp)?'COMPLÉMENT INTERNE':'ENTRÉE COMPLÉMENTAIRE'],
-      ['Ce que signifie « RETENU »','Ce passage fait partie des COMPLÉMENTS de l’application après examen des éléments disponibles. Ce choix dans l’application ne constitue pas une approbation de l’Église.'],
-      ['Origine de ce complément',pm.longProvenance]
-    ].map(x=>addInfoExtraRow(x[0],x[1])).join('');
-    document.getElementById('info-public-extra').innerHTML=publicRows;
-    const technicalRows=[
-      ['Statut technique',pm.technicalStatus],
-      ['Identifiant technique du corpus',pm.technicalCorpus],
-      ['Identifiant technique du programme',pm.technicalProgramme],
-      ['Version de traduction',sp.translation_version],
-      ['Famille source technique',pm.technicalSource],
-      ['Ancrage IT-PM',it.source_file||null],
-      ['Queen',qa.role==='comparative_translation'?'traduction comparative':null],
-      ['Hugh Owen',ha.role==='comparative_translation'?'traduction comparative':null],
-      ['Entrée PRINCIPALE hôte',isInternalSupplementItem(sp)?(currentEntry.stable_ref||sp.target_entry_id):null],
-      ['Contrat technique de source',sp.source_evidence_contract]
-    ].map(x=>addInfoExtraRow(x[0],x[1],/Identifiant|Ancrage|Contrat/.test(x[0]))).join('');
-    document.getElementById('info-technical').innerHTML=technicalRows;
-  } else {
-    document.getElementById('info-public-extra').innerHTML='';
-    const technicalRows=[
-      ['Statut technique',pm.publicStatus],
-      ['Identifiant technique du corpus',pm.technicalCorpus],
-      ['Note de provenance',currentEntry.provenance_note],
-      ['Autorité du texte',currentEntry.body_authority],
-      ['Détail d’autorité',currentEntry.body_text_authority],
-      ['Corroboration',currentEntry.en_corroboration],
-      ['Localisation source',currentEntry.source_locator_type],
-      ['Statut du tome',volData.status]
-    ].map(x=>addInfoExtraRow(x[0],x[1],/Identifiant/.test(x[0]))).join('');
-    document.getElementById('info-technical').innerHTML=technicalRows;
-  }
+  if(sp){const it=sp.itpm_anchor||{},qa=sp.queen_anchor||{},ha=sp.hugh_anchor||{};const extra=[['Type',isInternalSupplementItem(sp)?'COMPLÉMENT INTERNE':'ENTRÉE COMPLÉMENTAIRE'],['Provenance du contenu',pm.longProvenance],['Statut technique',pm.technicalStatus],['Identifiant technique du programme',pm.technicalProgramme],['Version de traduction',sp.translation_version],['Famille source technique',pm.technicalSource],['Ancrage IT-PM',it.source_file||null],['Queen',qa.role==='comparative_translation'?'traduction comparative':null],['Hugh Owen',ha.role==='comparative_translation'?'traduction comparative':null],['Entrée PRINCIPALE hôte',isInternalSupplementItem(sp)?(currentEntry.stable_ref||sp.target_entry_id):null],['Contrat technique de source',sp.source_evidence_contract]].map(x=>addInfoExtraRow(x[0],x[1])).join('');document.getElementById('info-extra').innerHTML=extra;}
+  else{const extra=[['Note de provenance',currentEntry.provenance_note],['Autorité du texte',currentEntry.body_authority],['Détail d’autorité',currentEntry.body_text_authority],['Corroboration',currentEntry.en_corroboration],['Localisation source',currentEntry.source_locator_type],['Statut du tome',volData.status]].map(x=>addInfoExtraRow(x[0],x[1])).join('');document.getElementById('info-extra').innerHTML=extra;}
   openModalOverlay('reader-info-overlay','closeReaderInfo');
 }
 function closeReaderInfo() {
@@ -7408,7 +7245,7 @@ async function shareCitation() {
   const human = formatHumanReference(currentEntry, paraId);
   const url = buildDeepLink(paraId ? {view:'paragraph',vol:currentVolume,entry:currentEntry.id,para:paraId} : {view:'entry',vol:currentVolume,entry:currentEntry.id});
   const sp=activeReaderSupplement();
-  const provenance=sp?`\nStatut : COMPLÉMENT · ${requireReaderFrenchLabel(sp)}`:'';
+  const provenance=sp?`\nProvenance : COMPLÉMENT approuvé · ${requireReaderFrenchLabel(sp)}`:'';
   const text = `${passage}${human}\n${url}\n\nSource : Livre du Ciel, Luisa Piccarreta${provenance}`;
   try {
     if (navigator.share) await navigator.share({ title: sp?supplementRegistryTitle(sp):currentEntry.title, text, url });
@@ -7641,10 +7478,7 @@ let searchVolFilter = 0; // 0 = all, or min of group
 let searchVolFilterMax = 0; // max of group (0 = all)
 let searchSpeakerFilter = false; // false = all; true = paragraphs containing at least one high-confidence JESUS semantic segment
 let searchOrderMode = null; // null = automatic: one-token/book, multi-token/relevance
-let searchResultLane = null; // null = strongest primary evidence class (exact/all terms); partial requires explicit expansion
-let searchPartialExpanded = false; // 'Certains termes' only after explicit expansion
-let searchIntentMode = 'words'; // Search-V3 internal lab; explicit user intent
-const SEARCH_INTENT_MODE_KEY = 'ldc_search_intent_mode_v3';
+let searchResultLane = null; // null = strongest available evidence class
 let searchPage = 1, searchMetadataPage = 1;
 let searchLastPayload = null;
 let pendingSearchReaderTarget = null;
@@ -7659,100 +7493,15 @@ const CORPUS_GENERATION = 'G036-AFLP-R7-SUP-T5-FAST1';
 const SUPPLEMENT_PROGRAMME = 'LDC-AFLP-SUP-T1-SUP-T2-SUP-T3-SUP-T4-SUP-T5';
 const SUPPLEMENT_MODE_KEY = 'supplement_mode';
 const SUPPLEMENT_BADGE = 'COMPLÉMENT';
-const SUPPLEMENT_PROVENANCE_TEXT = 'COMPLÉMENT — origine et détails dans Infos et source.';
+const SUPPLEMENT_PROVENANCE_TEXT = 'COMPLÉMENT approuvé — contenu conservé séparément du corpus PRINCIPAL. Provenance détaillée dans Infos et source.';
 let supplementMode = 'enriched';
 let currentSupplementFocusId = null;
 let supplementRegistry = null, supplementSpeakerData = null, supplementManifest = null;
 let supplementRegistryLoading = null, supplementSpeakerLoading = null;
 let supplementEntryIds = new Set();
-setTimeout(()=>{loadSearchIntentMode();renderSearchIntentMode();},0);
-function loadSearchIntentMode(){
-  try{const v=localStorage.getItem(SEARCH_INTENT_MODE_KEY);if(v==='meaning'||v==='words')searchIntentMode=v;}catch(_){ }
-  return searchIntentMode;
-}
-function renderSearchIntentMode(){
-  const meaning=document.getElementById('search-intent-meaning'),words=document.getElementById('search-intent-words'),help=document.getElementById('search-intent-help'),input=document.getElementById('search-input');
-  if(meaning){const a=searchIntentMode==='meaning';meaning.classList.toggle('active',a);meaning.setAttribute('aria-pressed',a?'true':'false');}
-  if(words){const a=searchIntentMode==='words';words.classList.toggle('active',a);words.setAttribute('aria-pressed',a?'true':'false');}
-  if(input){input.placeholder=searchIntentMode==='meaning'?'Décrivez ce dont vous vous souvenez avec vos propres mots…':'Mot, expression, citation, date ou référence…';input.setAttribute('aria-label',searchIntentMode==='meaning'?'Rechercher par le sens dans le Livre du Ciel':'Rechercher par les mots dans le Livre du Ciel');}
-  if(help)help.innerHTML=searchIntentMode==='meaning'?'<span class="search-intent-lab">LAB interne.</span> Décrivez librement l’idée ou le passage dont vous vous souvenez. Les mots exacts ne sont pas nécessaires.':'<span class="search-intent-lab">LAB interne.</span> Recherchez un mot, une expression, une citation, une date ou une référence.';
-  const order=document.getElementById('search-order-row'),lane=document.getElementById('search-lane-row');
-  if(order)order.style.display=searchIntentMode==='words'?'flex':'none';
-  if(lane&&searchIntentMode==='meaning')lane.style.display='none';
-}
-function setSearchIntentMode(mode,{rerun=true,persist=true}={}){
-  if(mode!=='meaning'&&mode!=='words')return;
-  if(searchIntentMode===mode){renderSearchIntentMode();return;}
-  cancelActiveSearch('search-intent-mode-changed');searchIntentMode=mode;resetSearchPaging({resetOrder:true,resetLane:true});searchLastPayload=null;
-  if(persist){try{localStorage.setItem(SEARCH_INTENT_MODE_KEY,mode);}catch(_){ }}
-  renderSearchIntentMode();document.getElementById('trust-notice').style.display='none';
-  const q=(document.getElementById('search-input')?.value||'').trim();
-  if(q&&rerun)runSearch();else if(!q)refreshSearchSuggestions().catch(()=>{});
-}
-function searchSemanticV3ParseStructural(raw){
-  const text=String(raw||''),out={volume:null,date:null,year:null,ref:null,residual:text};
-  let residual=text,m=residual.match(/\b(?:LDC|LDCSUP)\.[A-Za-z0-9._-]+/i);if(m){out.ref=m[0].toUpperCase();residual=(residual.slice(0,m.index)+' '+residual.slice(m.index+m[0].length));}
-  m=residual.match(/\btome\s+([1-9]|[12][0-9]|3[0-6])\b/i);if(m){out.volume=Number(m[1]);residual=(residual.slice(0,m.index)+' '+residual.slice(m.index+m[0].length));}
-  const months={janvier:1,'février':2,fevrier:2,mars:3,avril:4,mai:5,juin:6,juillet:7,'août':8,aout:8,septembre:9,octobre:10,novembre:11,'décembre':12,decembre:12};
-  for(const [name,mi] of Object.entries(months)){const rx=new RegExp(`\\b(1er|[1-9]|[12]\\d|3[01])\\s+${name}\\s+((?:18|19|20)\\d{2})\\b`,'i'),dm=residual.match(rx);if(dm){const day=dm[1].toLowerCase()==='1er'?1:Number(dm[1]);out.year=Number(dm[2]);out.date=`${dm[2]}-${String(mi).padStart(2,'0')}-${String(day).padStart(2,'0')}`;residual=(residual.slice(0,dm.index)+' '+residual.slice(dm.index+dm[0].length));break;}}
-  if(!out.date){m=residual.match(/\b((?:18|19|20)\d{2})\b/);if(m){out.year=Number(m[1]);residual=(residual.slice(0,m.index)+' '+residual.slice(m.index+m[0].length));}}
-  out.residual=residual.replace(/\s+/g,' ').trim();out.hasStructural=!!(out.volume||out.date||out.year||out.ref);out.structuralOnly=out.hasStructural&&!out.residual;return out;
-}
-async function semanticPackV3Status(){
-  // LAB R3 is deliberately fail-closed. A future bound runtime can provide a status hook,
-  // but only a QUALIFIED status may ever make semantic execution available.
-  try{
-    if(window.LDCSemanticPackRegistryV5&&typeof window.LDCSemanticPackRegistryV5.status==='function'){
-      const s=await window.LDCSemanticPackRegistryV5.status(supplementMode);
-      if(s&&s.available===true&&s.calibration_status==='QUALIFIED')return s;
-      if(s)return {...s,available:false};
-    }
-  }catch(e){return {available:false,reason:'PACK_STATUS_ERROR',error:String(e&&e.message||e),schema:'ldc-semantic-pack-v3'};}
-  return {available:false,reason:'PACK_NOT_QUALIFIED_OR_INSTALLED',schema:'ldc-semantic-pack-v3'};
-}
-function renderSemanticPackUnavailable(raw,structural,status){
-  searchLastPayload=null;renderSearchIntentMode();renderSearchSourceModeRow();renderSpeakerFilterRow();renderVolFilterRow();
-  const meta=document.getElementById('search-meta');meta.style.display='block';meta.innerHTML=`Recherche par le sens <span class="search-mode-badge">SEARCH-V3 · qualification en cours</span>`;
-  document.getElementById('trust-notice').style.display='none';const container=document.getElementById('search-results');container.innerHTML='';
-  const reason=status&&status.reason?`<div class="semantic-lab-note">État du pack : ${escapeHtml(String(status.reason))}</div>`:'';
-  const panel=document.createElement('div');panel.className='semantic-pack-panel';panel.innerHTML='<b>Recherche par le sens : moteur non encore qualifié dans ce laboratoire.</b><br>La requête n’est pas transformée en une recherche OR sur chacun de ses mots. Aucun résultat lexical trompeur n’est affiché à la place.<div class="semantic-lab-note">Activation seulement après benchmark LDC, choix du modèle, requêtes humaines, négatifs difficiles, calibrage de l’abstention et tests appareil/hors ligne.</div>'+reason;container.appendChild(panel);
-  if(structural&&structural.hasStructural&&structural.residual){const n=document.createElement('div');n.className='search-suggestion-box';n.textContent='Les contraintes Tome/date/référence ont été reconnues et seront appliquées au moteur sémantique qualifié.';container.appendChild(n);}
-}
-function semanticResultToSearchTargetR4(r){
-  const parts=(r.source_spans||[]).filter(x=>x&&x.para_id).map(x=>({para_id:x.para_id,id:x.para_id,canonical_start:Number(x.canonical_start)||0,canonical_end:Number(x.canonical_end)||0}));
-  const first=parts[0]||{};
-  return {...r,id:first.para_id||r.entry_id,stable_ref:(r.source_spans&&r.source_spans[0]&&r.source_spans[0].stable_ref)||r.entry_id,primary_target:{volume:r.volume,entry_id:r.entry_id,id:first.para_id||r.entry_id,supplement_id:r.supplement_id||null},match_parts:parts};
-}
-function renderSemanticResultsV4(payload,raw,structural){
-  searchLastPayload={semantic:true,payload};renderSearchIntentMode();renderSearchSourceModeRow();renderSpeakerFilterRow();renderVolFilterRow();
-  const meta=document.getElementById('search-meta');meta.style.display='block';meta.innerHTML=`Recherche par le sens · ${escapeHtml(searchSourceModeLabel(payload.source_mode||supplementMode))} <span class="search-mode-badge">SEARCH-V3 · pack qualifié</span>`;
-  document.getElementById('trust-notice').style.display='none';const container=document.getElementById('search-results');container.innerHTML='';
-  if(payload.confidence&&payload.confidence.state==='abstain'){const e=document.createElement('div');e.className='empty-state';e.innerHTML='<i class="ti ti-search-off"></i>'+escapeHtml(payload.confidence.label||'Aucun passage suffisamment proche n’a été identifié.');container.appendChild(e);return;}
-  if(payload.confidence){const n=document.createElement('div');n.className='search-suggestion-box';n.textContent=payload.confidence.label||'Résultats sémantiques';container.appendChild(n);}
-  for(const [semanticIndex,r] of (payload.results||[]).entries()){
-    const item=semanticResultToSearchTargetR4(r),card=document.createElement('button');card.type='button';card.className='result-card';card.dataset.resultKey='semantic:'+String(r.passage_id||r.entry_id||'');
-    const speechTag=searchSpeakerFilter?'<span class="rc-tag"><i class="ti ti-message-circle" style="font-size:10px;"></i> Passages contenant des paroles de Jésus</span>':'';
-    const supplementTag=r.supplement_id?'<span class="rc-tag exact">COMPLÉMENT</span>':'';
-    const stable=item.stable_ref||item.entry_id||item.passage_id||'';
-    const semanticLabel=payload.confidence&&payload.confidence.state==='close'&&semanticIndex===0?'Proche par le sens':'Quelques pistes possibles';
-    card.innerHTML=`<div class="rc-stable">${escapeHtml(stable)} · Tome ${Number(r.volume)||''}</div>${r.title?`<div class="rc-title">${escapeHtml(r.title)}</div>`:''}<div class="rc-body-text">${escapeHtml(r.text||'')}</div><div class="rc-tags"><span class="rc-tag approximate">${escapeHtml(semanticLabel)}</span>${supplementTag}${speechTag}${r.date_display?`<span class="rc-tag">${escapeHtml(r.date_display)}</span>`:''}</div>`;
-    card.onclick=()=>openFromSearch(item);container.appendChild(card);
-  }
-  if(!(payload.results||[]).length){const e=document.createElement('div');e.className='empty-state';e.textContent='Aucun passage suffisamment proche n’a été identifié.';container.appendChild(e);}
-}
-async function runSemanticSearchV3(raw){
-  const structural=searchSemanticV3ParseStructural(raw);
-  // Pure structural navigation is already governed and does not require embeddings.
-  if(structural.structuralOnly){const payload=await searchV2Request(raw,searchRunSeq);if(isSearchActive(searchRunSeq))renderSearchV2Results(payload,raw);return;}
-  const status=await semanticPackV3Status();if(!status.available){renderSemanticPackUnavailable(raw,structural,status);return;}
-  if(!window.LDCSemanticPackRegistryV5||typeof window.LDCSemanticPackRegistryV5.search!=='function')throw new Error('SEARCH_V3_SEMANTIC_REGISTRY_NOT_BOUND');
-  const sem=await window.LDCSemanticPackRegistryV5.search(structural.residual||raw,{sourceMode:supplementMode,volMin:structural.volume||searchVolFilter||0,volMax:structural.volume||searchVolFilterMax||0,dateIso:structural.date||null,year:structural.date?0:(structural.year||0),stableRef:structural.ref||null,jesus:!!searchSpeakerFilter,maxResults:20});
-  if(!isSearchActive(searchRunSeq))return;
-  renderSemanticResultsV4(sem,raw,structural);
-}
 function resetSearchPaging({resetOrder=false,resetLane=false}={}) {
   searchPage=1;searchMetadataPage=1;
-  if(resetLane){searchResultLane=null;searchPartialExpanded=false;}
+  if(resetLane)searchResultLane=null;
   if(resetOrder)searchOrderMode=null;
 }
 function searchSourceModeLabel(mode){return mode==='aflp'?'PRINCIPAL':(mode==='additions'?'COMPLÉMENT':'ENRICHI');}
@@ -7765,16 +7514,15 @@ function renderSearchSourceModeRow(){
 }
 function effectiveSearchOrder(){return searchLastPayload&&searchLastPayload.foundation?searchLastPayload.foundation.order:(searchOrderMode||'relevance');}
 function renderSearchOrderRow(payload=searchLastPayload){
-  const row=document.getElementById('search-order-row');if(!row)return;row.innerHTML='';if(searchIntentMode==='meaning'){row.style.display='none';return;}row.style.display='flex';
+  const row=document.getElementById('search-order-row');if(!row)return;row.innerHTML='';
   // Before the first completed query, automatic ordering is still unresolved.
   // Do not falsely present Pertinence as active merely because it is the legacy fallback.
   const active=payload&&payload.foundation?payload.foundation.order:(searchOrderMode||null);
   for(const x of [{id:'book',label:'Ordre du Livre'},{id:'relevance',label:'Pertinence'}]){const b=document.createElement('button');b.type='button';b.className='chip'+(active===x.id?' active':'');b.textContent=x.label;b.setAttribute('aria-pressed',active===x.id?'true':'false');b.onclick=()=>{searchOrderMode=x.id;searchPage=1;runSearch();};row.appendChild(b);}
 }
 function renderSearchLaneRow(payload){
-  const row=document.getElementById('search-lane-row');if(!row)return;if(searchIntentMode==='meaning'){row.innerHTML='';row.style.display='none';return;}const c=payload&&payload.matchCounts||{exact:0,words:0,partial:0},active=payload&&payload.foundation&&payload.foundation.lane;row.innerHTML='';row.style.display=(c.exact||c.words||c.partial)?'flex':'none';
-  for(const x of [{id:'exact',label:'Phrase exacte'},{id:'words',label:'Tous les termes'}]){const n=Number(c[x.id]||0);if(!n)continue;const b=document.createElement('button');b.type='button';b.className='chip'+(active===x.id?' active':'');b.textContent=`${x.label} · ${n}`;b.setAttribute('aria-pressed',active===x.id?'true':'false');b.onclick=()=>{searchResultLane=x.id;searchPartialExpanded=false;searchPage=1;runSearch();};row.appendChild(b);}
-  const partial=Number(c.partial||0);if(partial){const b=document.createElement('button');b.type='button';b.className='chip'+(searchPartialExpanded&&active==='partial'?' active':'');b.textContent=searchPartialExpanded?`Certains termes · ${partial}`:'Élargir la recherche';b.setAttribute('aria-pressed',searchPartialExpanded&&active==='partial'?'true':'false');b.onclick=()=>{searchPartialExpanded=true;searchResultLane='partial';searchPage=1;runSearch();};row.appendChild(b);}
+  const row=document.getElementById('search-lane-row');if(!row)return;const c=payload&&payload.matchCounts||{exact:0,words:0,partial:0},active=payload&&payload.foundation&&payload.foundation.lane;row.innerHTML='';row.style.display=(c.exact||c.words||c.partial)?'flex':'none';
+  for(const x of [{id:'exact',label:'Phrase exacte'},{id:'words',label:'Tous les termes'},{id:'partial',label:'Certains termes'}]){const n=Number(c[x.id]||0);if(!n)continue;const b=document.createElement('button');b.type='button';b.className='chip'+(active===x.id?' active':'');b.textContent=`${x.label} · ${n}`;b.setAttribute('aria-pressed',active===x.id?'true':'false');b.onclick=()=>{searchResultLane=x.id;searchPage=1;runSearch();};row.appendChild(b);}
 }
 function appendSearchPager(container,kind,page,pageCount){
   if(pageCount<=1)return;const wrap=document.createElement('div');wrap.className='search-pager';wrap.setAttribute('aria-label',kind==='body'?'Pagination des passages':'Pagination des entrées');
@@ -7835,7 +7583,7 @@ function onSearchInput() {
   const val = document.getElementById('search-input').value;
   document.getElementById('search-clear').style.display = val ? '' : 'none';
   document.querySelector('.date-nav-entry').style.display = val ? 'none' : '';
-  resetSearchPaging({resetOrder:true,resetLane:true});searchLastPayload=null;renderSearchIntentMode();renderSearchOrderRow();renderSearchLaneRow(null);
+  resetSearchPaging({resetOrder:true,resetLane:true});searchLastPayload=null;renderSearchOrderRow();renderSearchLaneRow(null);
   if (!val) { clearSearch(); return; }
   const meta=document.getElementById('search-meta');meta.style.display='block';meta.textContent='Recherche modifiée — appuyez sur Entrée pour lancer la recherche.';
   document.getElementById('trust-notice').style.display='none';document.getElementById('search-results').innerHTML='';
@@ -7843,7 +7591,7 @@ function onSearchInput() {
 
 async function clearSearch() {
   cancelActiveSearch('cleared');
-  resetSearchPaging({resetOrder:true,resetLane:true});searchLastPayload=null;renderSearchIntentMode();renderSearchOrderRow();renderSearchLaneRow(null);
+  resetSearchPaging({resetOrder:true,resetLane:true});searchLastPayload=null;renderSearchOrderRow();renderSearchLaneRow(null);
   document.getElementById('search-input').value = '';
   document.getElementById('search-clear').style.display = 'none';
   document.querySelector('.date-nav-entry').style.display = '';
@@ -8084,7 +7832,6 @@ function searchV2Request(query, generation, optionOverrides={}) {
     metadataPageSize: SEARCH_METADATA_CAP,
     order: searchOrderMode,
     resultLane: searchResultLane,
-    allowPartialDefault: !!searchPartialExpanded,
     ...optionOverrides
   };
   return new Promise((resolve,reject) => {
@@ -8185,7 +7932,7 @@ function renderSearchV2Results(payload, raw) {
   if(payload.structuralError){meta.textContent=payload.structuralError.message||'Recherche structurelle invalide.';document.getElementById('trust-notice').style.display='none';container.innerHTML='<div class="empty-state"><i class="ti ti-alert-triangle"></i>'+escapeHtml(payload.structuralError.message||'Recherche invalide')+'</div>';return;}
   const selectedTotal=Number(payload.totalMatches||0),totalBody=Number(payload.totalBodyMatches||0),metadataTotal=Number(payload.metadataTotalMatches||0),page=Number(f.page||1),pageCount=Number(f.pageCount||1),metaPage=Number(f.metadataPage||1),metaPageCount=Number(f.metadataPageCount||1);
   const laneLabel={exact:'Phrase exacte',words:'Tous les termes',partial:'Certains termes'}[f.lane]||'Passages';
-  const parts=[];if(selectedTotal)parts.push(`${laneLabel} : ${selectedTotal}`);if(searchPartialExpanded&&totalBody&&totalBody!==selectedTotal)parts.push(`${totalBody} passages lexicaux au total`);if(near&&near.eligible&&near.results&&near.results.length)parts.push(near.ambiguous?`Formulation proche : plusieurs possibilités`:`Formulation proche : ${near.totalAccepted}`);if(metadataTotal)parts.push(`${metadataTotal} entrées correspondantes`);
+  const parts=[];if(selectedTotal)parts.push(`${laneLabel} : ${selectedTotal}`);if(totalBody&&totalBody!==selectedTotal)parts.push(`${totalBody} passages lexicaux au total`);if(near&&near.eligible&&near.results&&near.results.length)parts.push(near.ambiguous?`Formulation proche : plusieurs possibilités`:`Formulation proche : ${near.totalAccepted}`);if(metadataTotal)parts.push(`${metadataTotal} entrées correspondantes`);
   meta.innerHTML=`${escapeHtml(parts.join(' · ')||'0 résultat')} <span class="search-mode-badge">Recherche lexicale · ${escapeHtml(searchSourceModeLabel(f.mode||supplementMode))}</span>${renderStructuralChips(payload)}`;
   document.getElementById('trust-notice').style.display=f.lane==='partial'?'block':'none';
   const sug=document.getElementById('search-suggestions');if(sug)sug.style.display='none';const lexical=(payload.parsed&&payload.parsed.lexical)||raw;
@@ -8193,7 +7940,7 @@ function renderSearchV2Results(payload, raw) {
   if(results.length){const h=document.createElement('div');h.className='sugg-label';h.textContent=`${laneLabel} — page ${page}/${pageCount}`;container.appendChild(h);for(const r of results)renderSearchV2Card(container,r,lexical,false);appendSearchPager(container,'body',page,pageCount);}
   renderSearchNearSection(container,payload);
   if(metadata.length){const h=document.createElement('div');h.className='sugg-label';h.textContent=`Entrées correspondantes — ${metadataTotal}`;container.appendChild(h);for(const r of metadata)renderSearchV2Card(container,r,lexical,true);appendSearchPager(container,'metadata',metaPage,metaPageCount);}
-  if(!results.length&&!metadata.length&&!(near&&near.eligible&&near.results&&near.results.length)&&!payload.suggestions?.length){const hasPartial=Number(counts.partial||0)>0&&!searchPartialExpanded;container.innerHTML=hasPartial?'<div class="empty-state"><i class="ti ti-search"></i>Aucun passage avec tous les termes. Utilisez « Élargir la recherche » pour voir les passages qui n’en contiennent qu’une partie.</div>':'<div class="empty-state"><i class="ti ti-search-off"></i>Aucun résultat. Essayez d’autres mots ou vérifiez les filtres.</div>';}
+  if(!results.length&&!metadata.length&&!(near&&near.eligible&&near.results&&near.results.length)&&!payload.suggestions?.length)container.innerHTML='<div class="empty-state"><i class="ti ti-search-off"></i>Aucun résultat. Essayez d’autres mots ou vérifiez les filtres.</div>';
 }
 
 async function runSearch() {
@@ -8205,7 +7952,6 @@ async function runSearch() {
   cancelActiveSearch('new-search');const generation=searchRunSeq;
   const metaEl=document.getElementById('search-meta');metaEl.style.display='block';metaEl.textContent='Recherche…';
   try{
-    if(searchIntentMode==='meaning'){await runSemanticSearchV3(raw);return;}
     const payload=await searchV2Request(raw,generation);
     if(!isSearchActive(generation)||document.getElementById('search-input').value.trim()!==raw)return;
     renderSearchV2Results(payload,raw);
@@ -8536,11 +8282,9 @@ function buildDeepLink(spec){
   if(s.date)u.searchParams.set('date',String(s.date));
   if(s.q)u.searchParams.set('q',String(s.q));
   if(view==='search'){
-    const intent=s.intent_mode==='meaning'?'meaning':(s.intent_mode==='words'?'words':null);if(intent)u.searchParams.set('intent',intent);
     const src={aflp:'principal',additions:'complement',enriched:'enrichi'}[s.source_mode];if(src)u.searchParams.set('src',src);
     if(['book','relevance'].includes(s.order))u.searchParams.set('order',s.order);
     if(['exact','words','partial'].includes(s.lane))u.searchParams.set('lane',s.lane);
-    if(s.partialExpanded||s.lane==='partial')u.searchParams.set('expand','1');
     if(Number.isInteger(Number(s.page))&&Number(s.page)>1)u.searchParams.set('page',String(Number(s.page)));
     if(Number.isInteger(Number(s.metadataPage))&&Number(s.metadataPage)>1)u.searchParams.set('mpage',String(Number(s.metadataPage)));
     if(Number.isInteger(Number(s.volMin))&&Number(s.volMin)>=1)u.searchParams.set('vmin',String(Number(s.volMin)));
@@ -8569,11 +8313,9 @@ function parseDeepLink(raw){
   }
   if(view==='search'){
     const q=u.searchParams.get('q')||'';if(!validDeepQuery(q))return{ok:false,error:'Recherche invalide'};out.q=q;
-    const intent=u.searchParams.get('intent');if(intent){if(!['meaning','words'].includes(intent))return{ok:false,error:'Type de recherche invalide'};out.intent_mode=intent;}
     const src=u.searchParams.get('src');if(src){const m={principal:'aflp',complement:'additions',enrichi:'enriched'}[src];if(!m)return{ok:false,error:'Source de recherche invalide'};out.source_mode=m;}
     const order=u.searchParams.get('order');if(order){if(!['book','relevance'].includes(order))return{ok:false,error:'Ordre de recherche invalide'};out.order=order;}
     const lane=u.searchParams.get('lane');if(lane){if(!['exact','words','partial'].includes(lane))return{ok:false,error:'Catégorie de résultats invalide'};out.lane=lane;}
-    const expand=u.searchParams.get('expand');if(expand!=null){if(expand!=='1'&&expand!=='0')return{ok:false,error:'État de recherche élargie invalide'};out.partialExpanded=expand==='1';}
     for(const [param,key] of [['page','page'],['mpage','metadataPage']]){const rawp=u.searchParams.get(param);if(rawp!=null){const n=Number(rawp);if(!Number.isInteger(n)||n<1||n>100000)return{ok:false,error:'Page de recherche invalide'};out[key]=n;}}
     const vmin=u.searchParams.get('vmin'),vmax=u.searchParams.get('vmax');if(vmin!=null||vmax!=null){const a=Number(vmin||vmax),b=Number(vmax||vmin);if(!Number.isInteger(a)||!Number.isInteger(b)||a<1||b>36||a>b)return{ok:false,error:'Filtre de Tomes invalide'};out.volMin=a;out.volMax=b;}
     const jesus=u.searchParams.get('jesus');if(jesus!=null){if(jesus!=='1'&&jesus!=='0')return{ok:false,error:'Filtre Jésus invalide'};out.jesus=jesus==='1';}
@@ -8605,7 +8347,7 @@ async function copyCurrentPassageLink(){
 }
 async function copySearchLink(){
   const q=(document.getElementById('search-input').value||'').trim();if(!q){showToast('Saisissez une recherche');return;}
-  const f=searchLastPayload&&searchLastPayload.foundation||{};const spec={view:'search',q,intent_mode:searchIntentMode,source_mode:supplementMode,volMin:searchVolFilter||null,volMax:searchVolFilter?searchVolFilterMax:null,jesus:!!searchSpeakerFilter,order:f.order||effectiveSearchOrder(),lane:f.lane||searchResultLane,partialExpanded:searchPartialExpanded,page:f.page||searchPage,metadataPage:f.metadataPage||searchMetadataPage};
+  const f=searchLastPayload&&searchLastPayload.foundation||{};const spec={view:'search',q,source_mode:supplementMode,volMin:searchVolFilter||null,volMax:searchVolFilter?searchVolFilterMax:null,jesus:!!searchSpeakerFilter,order:f.order||effectiveSearchOrder(),lane:f.lane||searchResultLane,page:f.page||searchPage,metadataPage:f.metadataPage||searchMetadataPage};
   const ok=await copyPlainText(`Recherche : ${q}\n${buildDeepLink(spec)}`);showToast(ok?'Lien de recherche copié':'Copie indisponible');
 }
 function supportSourceLabel(entry){const sp=activeReaderSupplement();if(sp)return `${requireReaderFrenchLabel(sp)} · ${sp.supplement_id}`;if(!entry)return'';const pages=(entry.source_page_start||entry.source_page_end)?`p. ${entry.source_page_start||'?'}${entry.source_page_end&&entry.source_page_end!==entry.source_page_start?'–'+entry.source_page_end:''}`:'';return [`édition ${entry.source_edition||'non indiquée'}`,pages].filter(Boolean).join(' · ');}
@@ -8627,19 +8369,19 @@ async function diagnosticsText(){
   const off=await dbGet('settings','offline_completion').catch(()=>null);
   const deploymentBase=(()=>{try{return new URL('./',window.location.href).pathname;}catch(e){return window.location.pathname.replace(/[^/]*$/,'');}})();
   const publicRef=currentEntry?`${currentEntry.stable_ref||currentEntry.id||''}`:'aucun';
-  return ['Livre du Ciel — diagnostic public',`App : ${APP_VERSION} · ${APP_BUILD}`,`SW attendu : ${SW_CACHE_VERSION}`,`SW contrôleur : ${sw}`,`Caches LDC : ${cachesOwned.join(', ')||'aucun détecté'}`,`Corpus composite : ${CORPUS_GENERATION}`,`Corpus principal : ${BACKBONE_GENERATION}`,`Lecture : ${sourceModeLabel()}`,`Backbone manifest SHA-256 : ${CORPUS_MANIFEST_SHA256}`,`Résumé des tomes : ${volumeSummary?'chargé · 36 tomes':'non chargé'}`,`Recherche : Search-Words v109 + SEARCH-V3 R18D evidence preserved · navigation v118 Reader→Tome root-owner repair preserved · Par le sens fail-closed tant que pack/modèle non qualifiés`,`Stockage IndexedDB : ${db?'ouvert':'indisponible'}`,`Hors ligne : navigator.onLine=${navigator.onLine!==false} · completion=${off?JSON.stringify(off.val??off.value??off):'non préparé'}`,`Thème : ${theme}`,`Texte : ${tl}`,`Repères : ${showReperes?'ON':'OFF'}`,`Diagnostics locaux récents : ${localDiagnosticBuffer.length}`,...localDiagnosticBuffer.slice(-5).map(x=>`Erreur locale ${x.ts} · ${x.kind||'runtime'} · ${x.name||'Erreur'}`),`Base de déploiement : ${deploymentBase}`,`Passage public courant : ${publicRef}`,`Reader A/B diagnostic : ${window.__ldcReaderOpenTraceExport?window.__ldcReaderOpenTraceExport():'indisponible'}`].join('\n');
+  return ['Livre du Ciel — diagnostic public',`App : ${APP_VERSION} · ${APP_BUILD}`,`SW attendu : ${SW_CACHE_VERSION}`,`SW contrôleur : ${sw}`,`Caches LDC : ${cachesOwned.join(', ')||'aucun détecté'}`,`Corpus composite : ${CORPUS_GENERATION}`,`Corpus principal : ${BACKBONE_GENERATION}`,`Lecture : ${sourceModeLabel()}`,`Backbone manifest SHA-256 : ${CORPUS_MANIFEST_SHA256}`,`Résumé des tomes : ${volumeSummary?'chargé · 36 tomes':'non chargé'}`,`Recherche : SEARCH-V2 BM25 + V2.1A vérité textuelle visible + V2.1B ordre/pagination/état + V2.2 Formulation proche A9 · chargée à la demande · sous-système vectoriel retiré`,`Stockage IndexedDB : ${db?'ouvert':'indisponible'}`,`Hors ligne : navigator.onLine=${navigator.onLine!==false} · completion=${off?JSON.stringify(off.val??off.value??off):'non préparé'}`,`Thème : ${theme}`,`Texte : ${tl}`,`Repères : ${showReperes?'ON':'OFF'}`,`Diagnostics locaux récents : ${localDiagnosticBuffer.length}`,...localDiagnosticBuffer.slice(-5).map(x=>`Erreur locale ${x.ts} · ${x.kind||'runtime'} · ${x.name||'Erreur'}`),`Base de déploiement : ${deploymentBase}`,`Passage public courant : ${publicRef}`,`Reader A/B diagnostic : ${window.__ldcReaderOpenTraceExport?window.__ldcReaderOpenTraceExport():'indisponible'}`].join('\n');
 }
 async function copyDiagnostics(){const text=await diagnosticsText();const ok=await copyPlainText(text);showToast(ok?'Diagnostic copié':'Copie indisponible');return text;}
 async function routeFail(message,fallback){console.warn('LDC deep link:',message);showToast('Lien invalide ou cible introuvable');if(fallback==='search')goSearch();else if(fallback==='espace')goEspace();else goHome();return false;}
 async function applyInitialDeepLink(){
   const r=parseDeepLink(window.location.href);if(!r.ok)return routeFail(r.error);if(r.view==='root')return true;
   try{
-    if(r.view==='tome'){await openTome(r.vol,{intent:NAV_INTENT.FRESH_TOME});return true;}
+    if(r.view==='tome'){await openTome(r.vol);return true;}
     if(['entry','paragraph','related'].includes(r.view)){await ensureVolumeIndex(r.vol);const c=corpusCache[r.vol],e=c&&(((c.allById||{})[r.entry])||c.byId[r.entry]);if(!e)return routeFail('entrée absente');if(r.para){await ensureVolumeReaderData(r.vol);const p=paragraphRecordById(r.vol,r.para);if(!p||p.entry_id!==r.entry)return routeFail('paragraphe absent');pendingParaId=r.para;}await openEntry(r.vol,r.entry,r.view==='related'?'tomes':'tomes',{intent:READER_INTENT.CONSULTATION});return true;}
     if(r.view==='search'){
       await goSearch();if(r.source_mode&&r.source_mode!==supplementMode)await setSupplementMode(r.source_mode,{rerender:false,silent:true});
-      searchIntentMode=r.intent_mode==='meaning'?'meaning':'words';searchVolFilter=r.volMin||0;searchVolFilterMax=r.volMax||(r.volMin||0);searchSpeakerFilter=!!r.jesus;searchOrderMode=r.order||null;searchResultLane=r.lane||null;searchPartialExpanded=!!r.partialExpanded||searchResultLane==='partial';searchPage=r.page||1;searchMetadataPage=r.metadataPage||1;
-      document.getElementById('search-input').value=r.q;document.getElementById('search-clear').style.display='';document.querySelector('.date-nav-entry').style.display='none';renderSearchIntentMode();renderSearchSourceModeRow();renderSearchOrderRow();renderSpeakerFilterRow();renderVolFilterRow();await runSearch();return true;
+      searchVolFilter=r.volMin||0;searchVolFilterMax=r.volMax||(r.volMin||0);searchSpeakerFilter=!!r.jesus;searchOrderMode=r.order||null;searchResultLane=r.lane||null;searchPage=r.page||1;searchMetadataPage=r.metadataPage||1;
+      document.getElementById('search-input').value=r.q;document.getElementById('search-clear').style.display='';document.querySelector('.date-nav-entry').style.display='none';renderSearchSourceModeRow();renderSearchOrderRow();renderSpeakerFilterRow();renderVolFilterRow();await runSearch();return true;
     }
     if(r.view==='date'){await openDateNav();const [y,m,d]=r.date.split('-').map(Number);dnYear=y;dnMonth=m;dnDay=d;renderDnYearStrip();renderDnMonthGrid();renderDnDayGrid();renderDnResultCard();const k=`${y}-${m}-${d}`;if(!DN_BY_YMD[k]||!DN_BY_YMD[k].length)return routeFail('date sans entrée','search');return true;}
     if(r.view==='collection'){await goCollections();const col=await dbGet('collections',r.collection).catch(()=>null);if(!col){showToast('Collection absente sur cet appareil');return true;}requestAnimationFrame(()=>{const el=document.querySelector(`.col-section[data-col-id="${r.collection}"]`);if(el)el.scrollIntoView({block:'start'});});return true;}
@@ -8873,17 +8615,6 @@ function updateThemeBtn(theme) {
 /* ═══════════════════════════════════════════════════════
    HELP SCREEN
 ═══════════════════════════════════════════════════════ */
-function scrollHelpToProvenance() {
-  const el=document.getElementById('help-provenance-origin');if(!el)return;
-  el.scrollIntoView({block:'start',behavior:reduceMotionPreferred()?'auto':'smooth'});
-  const title=el.querySelector('.help-section-title');if(title){title.setAttribute('tabindex','-1');requestAnimationFrame(()=>{try{title.focus({preventScroll:true});}catch(_){title.focus();}});}
-}
-async function openProvenanceHelpFromReaderInfo() {
-  closeReaderInfo();
-  await openHelp();
-  requestAnimationFrame(()=>requestAnimationFrame(scrollHelpToProvenance));
-}
-
 async function openHelp() {
   // Remember current screen to restore on close. If this temporarily hides the Reader, save while it is still visible but retain the logical session.
   const current = document.querySelector('.screen.active');
@@ -9888,12 +9619,10 @@ async function fetchPublishedVersion() {
   if(!res||!res.ok)throw new Error(`version HTTP ${res&&res.status}`);
   const meta=await res.json();
   const version=String(meta&&meta.app_version||'').trim();
-  if(!/^v\d+\.\d+\.\d+-R1B(?:-[A-Za-z0-9]+)*$/.test(version))throw new Error('version publiée invalide');
+  if(!/^v\d+\.\d+\.\d+-R1B$/.test(version))throw new Error('version publiée invalide');
   const explicitPublic=String(meta&&meta.public_version||'').trim();
-  const patchMatch=version.match(/^v\d+\.\d+\.(\d+)-R1B(?:-|$)/);
-  const derivedPublic=patchMatch?patchMatch[1]:version;
-  if(/^\d+$/.test(explicitPublic)&&patchMatch&&explicitPublic!==derivedPublic)console.warn('LDC: public_version incohérent; version dérivée utilisée',explicitPublic,derivedPublic);
-  const publicVersion=derivedPublic;
+  const patchMatch=version.match(/^v\d+\.\d+\.(\d+)-R1B$/);
+  const publicVersion=/^\d+$/.test(explicitPublic)?explicitPublic:(patchMatch?patchMatch[1]:version);
   return {version,publicVersion,meta};
 }
 function waitForRegistrationUpdate(reg, timeoutMs=UPDATE_CHECK_TIMEOUT_MS) {
