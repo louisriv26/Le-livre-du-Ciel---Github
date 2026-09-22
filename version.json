@@ -1,10 +1,10 @@
 {
-  "app_version": "v2.19.112-R1B",
+  "app_version": "v2.19.119-R1B-NAV-BACK-ROOT-RESTORE-R2-PROV-R6-R10-SEMANTIC-UI-CONSISTENCY",
   "backbone_corpus_version": "G036-AFLP-R7-UWR2-FAST1",
   "backup_help_current_format_contract": "HELP_NORMAL_BACKUP_DESCRIBES_STREAMING_LDCBACKUP__SUPPORTED_HISTORICAL_GENERATIONS_MIGRATE_PRUDENTLY_BEFORE_VALIDATION__UNRESOLVED_ANCHORS_REMAIN_FOR_REVIEW__LEGACY_JSON_COMPATIBILITY_RETAINED",
-  "baseline_candidate_sha256": "4a45966c24b9d6444c77b4229ba3df16634ec949cfb703dce91c5da1ec2d8fad",
-  "baseline_candidate_version": "v2.19.91-R1B Stage14 Search V2.2 A9 Near R1 controlled-test freeze",
-  "build_date": "2026-09-18",
+  "baseline_candidate_sha256": "2561688eeccc0f388ad80b57d223fc4b2c92d5aea4da9747d3bf26befef131cc",
+  "baseline_candidate_version": "v2.19.119-R1B-NAV-BACK-ROOT-RESTORE-R2-PROV-R6-R8-FULLQA-META",
+  "build_date": "2026-09-21",
   "collection_link_contract": "LOCAL_COLLECTION_ID_LINK_DOES_NOT_TRANSFER_USER_DATA",
   "collections_visibility": "VISIBLE_MON_ESPACE_WORKSPACE_AND_EXPLICIT_ENTRYPOINT",
   "context_action_contract": "SELECTION_OR_PARAGRAPH_SINGLE_CONTEXT_SURFACE",
@@ -27,17 +27,18 @@
     "active_aligne": "G036-AFLP-R7-UWR2-FAST1",
     "active_enrichi": "G036-AFLP-R7-SUP-T5-FAST1",
     "historical_r1b": "G036-AFLP-R1B-UWR2",
-    "package_predecessor_app_version": "v2.19.111-R1B",
-    "package_predecessor_zip_sha256": "f79244ae3baa3e17c33f283b24b07ec4a970c371360455dd8f26094e2e64621b",
+    "package_predecessor_app_version": "v2.19.119-R1B-NAV-BACK-ROOT-RESTORE-R2-PROV-R6-R9-SEMANTIC-UNAVAILABLE-MSG",
+    "package_predecessor_zip_sha256": "a07e245c5e62ce0e46ebff1e07f043606dcae6f37af43c7fd8bd2aa7130e53ae",
     "semantic_predecessor_aligne": "G036-AFLP-R7-UWR2"
   },
-  "current_release_authority": "LDC_V112_IPHONE_SEARCH_VIEWPORT_AND_TOME_RETURN_R1__EXACT_V111_PREDECESSOR__SEARCH_ROOT_HORIZONTAL_OVERFLOW_CONTAINED__MOBILE_SEARCH_AUTOFOCUS_REMOVED__IOS_FORM_CONTROL_FONT_FLOOR_16PX__V110_LIST_READER_PHYSICAL_ISOLATION_PRESERVED__TOME_RETURN_PREFERS_WARM_LOGICAL_LIST_AND_REASSERTS_SELECTED_ROW__SEARCH_CORPUS_USER_DATA_SCHEMA_UNCHANGED__PUBLIC_RELEASE_NOT_AUTHORIZED_PENDING_OWNER_PHYSICAL_CONFIRMATION",
-  "current_runtime_browser_validation": "V112_STATIC_AND_MODELLED_IPHONE_SEARCH_WIDTH_GATE_REQUIRED__PHYSICAL_IPHONE_SEARCH_ENTER_EXIT_NO_HORIZONTAL_PAN_REQUIRED__PHYSICAL_TOME25_OPEN_BACK_SELECTED_ROW_RESTORATION_REQUIRED__V111_TYPOGRAPHY_INHERITED__SEARCH_V3_R5_BRANCH_REMAINS_ENGINEERING_ONLY_AND_SEPARATE",
+  "current_release_authority": "LDC_V119_PROVENANCE_R6_R10_SEMANTIC_UI_CONSISTENCY__EXACT_R9_PREDECESSOR__PUBLIC_SEARCH_COPY_CONSISTENCY_AND_ACTIVE_PREDECESSOR_METADATA_REPAIR__INTERNAL_FAIL_CLOSED_SEARCH_V3_STATUS_PRESERVED__CORPUS_SEARCH_ENGINE_NAVIGATION_USER_DATA_SEMANTICS_UNCHANGED__PUBLIC_RELEASE_NOT_AUTHORIZED",
+  "current_runtime_browser_validation": "R10_BOUNDED_PUBLIC_SEARCH_COPY_AND_METADATA_SUCCESSOR__R8_FULLQA_SEMANTIC_PAYLOAD_PRESERVED_THROUGH_R9__R10_SEARCH_HELPER_HELP_COPY_AND_RELEASE_WRAPPER_REQUALIFICATION_REQUIRED__EXTERNAL_DEVICE_AND_LIVE_ORIGIN_GATES_PENDING__PUBLIC_RELEASE_NOT_AUTHORIZED",
   "deep_link_schema": "ldc-deep-link-v1",
   "degraded_boot_stage6": "DEFER__NOT_JUSTIFIED_FOR_RUNTIME_MUTATION_NOW",
   "diagnostic_default_copy_contract": "ALLOWLIST_PUBLIC_TECHNICAL_METADATA__NO_RAW_QUERY__NO_RAW_ERROR_MESSAGE__NO_USER_AUTHORED_TEXT",
+  "entry_start_contract": "V107__V106_ENTRY_START_SEMANTIC_FIXED_POINT_AND_USER_INTENT_LOCK_PRESERVED__DIRECT_TOME_LIST_OPEN_ADDS_SOURCE_SCROLL_HANDOFF_TRANSACTION__CAPTURE_BACK_CONTEXT_BEFORE_BLUR__BLUR_FOCUSED_LIST_BUTTON_BEFORE_FIRST_AWAIT__FREEZE_SOURCE_MOMENTUM__RENEW_READER_SCROLL_DOM_SURFACE__PIN_TOP_BEFORE_EXPOSURE_AND_FOR_TWO_SETTLING_FRAMES__PREVIOUS_NEXT_SEARCH_RESUME_NOTE_HIGHLIGHT_DEEP_LINK_TARGET_SEMANTICS_UNCHANGED",
   "external_decision_authority": "FINAL_DECISION_LOCK_EXTERNAL_TO_DEPLOY_ZIP__WRITTEN_LAST_AFTER_PRIMARY_AND_INDEPENDENT_REOPEN_AUDITS",
-  "external_validation_status": "OPEN_FOR_EXACT_V112__IPHONE_SEARCH_MUST_NOT_CHANGE_ROOT_HORIZONTAL_VIEWPORT_OR_LEAVE_HOME_PANNABLE__TOME_LIST_MIDPOINT_OPEN_BACK_MUST_RESTORE_SELECTED_ROW_NEAR_ORIGINAL_VIEWPORT_OFFSET__REPEAT_PRINCIPAL_ENRICHI_COMPLEMENT__PUBLIC_RELEASE_NOT_AUTHORIZED",
+  "external_validation_status": "R10_SEMANTIC_UI_CONSISTENCY_INTERNAL_BOUNDED_QA_REQUIRED__R8_FULLQA_EXTERNAL_GATES_STILL_OPEN__PUBLIC_RELEASE_NOT_AUTHORIZED",
   "f1_poisoned_http_cache_regression_gate": "REQUIRED_AND_EXTERNAL_EVIDENCE",
   "f7_release_metadata_generation": "CURRENT_RELEASE_COUNTS_AND_BINDINGS_GENERATED_AFTER_CORPUS_PAYLOAD_FREEZE__V32_VALUES_RETAINED_ONLY_UNDER_HISTORICAL_KEYS",
   "f8_android_nonfragment_highlight_targeting": {
@@ -407,11 +408,13 @@
   "owner_override_note": "A continuation of the full blind adversarial audit of frozen R18 R7 found a genuine active-metadata contradiction: offline_manifest.json had the correct R18 R7 page_worker_revision and rebuild_status but its active scope field still described v87 R18 R6 as the current bounded successor. R18 R8 is a metadata-coherence successor. It corrects that active scope description and advances page/worker/cache identity to R18 R8 so the corrected bytes have a unique update namespace. The R18 R7 user-select:none native-selection repair and all R18 R6/R18 R5 runtime repairs are preserved. No corpus, search, speaker, flow, display, interaction-anchor, DB-schema or offline-content-binding mutation is authorised.",
   "owner_stage_start_authorisation": "USER_EXPLICITLY_AUTHORIZED_FULL_BLIND_ADVERSARIAL_VERIFICATION_AND_ALL_NECESSARY_CORRECTIONS__2026_09_12",
   "owner_user_acceptance": "USER_EXPLICITLY_REQUESTED_CONTINUED_DEVELOPMENT_WITHOUT_IMMEDIATE_DEVICE_CHECKING__NO_PUBLIC_DEPLOYMENT_AUTHORITY__2026_09_14",
-  "package_state_at_freeze": "V107_CONTROLLED_TEST_CANDIDATE__EXACT_V106_PREDECESSOR__V106_PHYSICAL_FAIL_LOCALIZED_BY_OWNER_A_B_TEST_TO_SCROLLED_ENTRIES_LIST_TO_READER_TRANSITION__BOUNDED_HANDOFF_REPAIR_ONLY__CORPUS_SEARCH_USER_DATA_SCHEMA_PERSISTENT_OFFLINE_CONTENT_UNCHANGED__PUBLIC_DEPLOYMENT_NOT_AUTHORIZED",
-  "page_worker_revision": "ldc-v2.19.112-R1B-iphone-search-tome-return-r1",
-  "physical_ipad_gate": "V107_REQUIRED__OPEN_SAME_ENTRY_FROM_SCROLLED_TOME_LIST_AND_VIA_PREVIOUS_NEXT__DIRECT_LIST_PATH_MUST_REMAIN_AT_ABSOLUTE_TOP__BACK_MUST_RESTORE_LIST_POSITION__FOUR_TEXT_PRESETS__PORTRAIT_LANDSCAPE__MULTIPLE_SCROLL_DEPTHS__OFFLINE_COLD_REOPEN__UPDATE__VOICEOVER_REPRESENTATIVE_CHECK",
-  "physical_iphone_gate": "V107_REQUIRED__OPEN_SAME_ENTRY_FROM_SCROLLED_TOME_LIST_AND_VIA_PREVIOUS_NEXT__DIRECT_LIST_PATH_MUST_REMAIN_AT_ABSOLUTE_TOP__BACK_MUST_RESTORE_LIST_POSITION__FOUR_TEXT_PRESETS__MULTIPLE_SCROLL_DEPTHS__OFFLINE_COLD_REOPEN__UPDATE__VOICEOVER_REPRESENTATIVE_CHECK",
-  "physical_samsung_android_gate": "V106_RETEST_REQUIRED_AFTER_READER_MUTATION__DIRECT_TOME_ENTRY_START__PREV_NEXT__FOUR_TEXT_PRESETS__MAX_SYSTEM_FONT__OFFLINE_COLD_REOPEN__TALKBACK_REPRESENTATIVE_CHECK",
+  "package_predecessor_app_version": "v2.19.119-R1B-NAV-BACK-ROOT-RESTORE-R2-PROV-R6-R9-SEMANTIC-UNAVAILABLE-MSG",
+  "package_predecessor_zip_sha256": "a07e245c5e62ce0e46ebff1e07f043606dcae6f37af43c7fd8bd2aa7130e53ae",
+  "package_state_at_freeze": "R10_SEMANTIC_UI_CONSISTENCY_CONTROLLED_DEVICE_TEST_CANDIDATE__EXACT_R9_PREDECESSOR__FOUR_FILE_PRESENTATION_RELEASE_WRAPPER_DELTA__PUBLIC_SEARCH_SURFACES_CONSISTENT__SEMANTIC_SEARCH_REMAINS_FAIL_CLOSED__PUBLIC_RELEASE_NOT_AUTHORIZED",
+  "page_worker_revision": "ldc-v2.19.119-R1B-nav-back-root-restore-r2-prov-r6-r10-semantic-ui-consistency",
+  "physical_ipad_gate": "R9_EXACT_CANDIDATE_PHYSICAL_IPAD_RETEST_REQUIRED__SEMANTIC_UNAVAILABLE_MESSAGE_AND_EXISTING_R8_SMOKE",
+  "physical_iphone_gate": "R9_EXACT_CANDIDATE_PHYSICAL_IPHONE_RETEST_REQUIRED__SEMANTIC_UNAVAILABLE_MESSAGE_AND_EXISTING_R8_SMOKE",
+  "physical_samsung_android_gate": "R9_EXACT_CANDIDATE_REPRESENTATIVE_ANDROID_RETEST_REQUIRED__SEMANTIC_UNAVAILABLE_MESSAGE_AND_EXISTING_R8_SMOKE",
   "post_four_pass_metadata_reconciliation": {
     "active_envelopes_rebound_to_r3": 109,
     "corpus_text_mutated": false,
@@ -444,7 +447,8 @@
   ],
   "protected_lecture_suivie_contract": "ONE_PROTECTED_MAIN_JOURNEY__ONLY_EXPLICIT_SEQUENTIAL_START_RESUME_INHERITED_PREV_NEXT_OR_CONFIRMED_RELOCATION_MAY_WRITE_MAIN__CONSULTATIONS_NEVER_WRITE_MAIN__LU_INDEPENDENT",
   "protected_v45_runtime": "CORPUS_SPEAKERS_PRESENTATION_SEARCH_FLOW_DISPLAY_SUPPLEMENTS_USER_STATE_HIGHLIGHTING_OFFLINE_CACHE_ALGORITHM_NAVIGATION_LOGIC_UNCHANGED",
-  "public_version": 111,
+  "public_release": "NOT_AUTHORIZED__R10_EXTERNAL_LIVE_ORIGIN_INSTALLED_PWA_REAL_INDEXEDDB_AND_PHYSICAL_DEVICE_GATES_PENDING",
+  "public_version": "119",
   "quote_display_contract": "CANONICAL_GUILLEMETS_PRESERVED_IN_CORPUS__ADJACENT_OUTER_DELIMITERS_HIDDEN__TWO_SOURCE_SPAN_GAP_OPENERS_WITH_EXPLICIT_JESUS_ATTRIBUTION_HIDDEN__SIX_PUNCTUATION_GAP_CLOSERS_HIDDEN__NESTED_AND_REPORTED_QUOTES_PRESERVED",
   "r16_authority_fencing_reaudit": {
     "corpus_changed": false,
@@ -1400,6 +1404,70 @@
     "NONE": 19
   },
   "reader_provenance_view_model": "V72_CENTRAL_READER_PROVENANCE_MODEL__7_DYNAMIC_PATHS",
+  "reader_semantic_hierarchy_contract": {
+    "context_back_px": [
+      13,
+      14,
+      17,
+      19
+    ],
+    "journey_action_px": [
+      13,
+      14,
+      18,
+      21
+    ],
+    "journey_copy_px": [
+      12,
+      13,
+      17,
+      20
+    ],
+    "levels": [
+      "small",
+      "normal",
+      "large",
+      "xlarge"
+    ],
+    "policy": "PRIMARY_READER_CONTROLS_AND_ORIENTATION_MUST_SCALE_MONOTONICALLY_AND_RETAIN_CLEAR_RELATIVE_PROMINENCE_AT_GRAND_TRES_GRAND__TECHNICAL_MICRODATA_REMAINS_COMPACT",
+    "reader_body_px": [
+      16,
+      19,
+      22,
+      26
+    ],
+    "reader_chrome_title_px": [
+      13,
+      14,
+      17,
+      20
+    ],
+    "reader_date_px": [
+      12,
+      13,
+      16,
+      18
+    ],
+    "reader_nav_control_px": [
+      13,
+      14,
+      18,
+      20
+    ],
+    "reader_orientation_px": [
+      11,
+      12,
+      15,
+      17
+    ],
+    "scope": "READER_ONLY_FOR_JOURNEY_COPY_ACTION_NAV_CONTEXT_BACK_CHROME_ORIENTATION_DATE__GLOBAL_HOME_SEARCH_HELP_TYPOGRAPHY_UNCHANGED_FROM_V110",
+    "source_mode_px": [
+      12,
+      12,
+      14,
+      15
+    ]
+  },
   "reading_completion_contract": "EXPLICIT_USER_LU_ONLY__LEGACY_AUTO_OPEN_RECORDS_PRESERVED_BUT_NOT_COUNTED_AS_READ",
   "reading_journey_ux_r15": {
     "authority_contract": "R5/R13/R14 authority, Resume, queue-drain, epoch, atomic transfer and update-discovery mechanics preserved",
@@ -1435,9 +1503,11 @@
     "superseded v2.19.0 key-claim-only report audit with exhaustive active-report line/row audit and exact shipped-function tests"
   ],
   "reaudit_static_validator": "HISTORICAL_RA1_PRE_FINAL_TARGETED_TESTS__CURRENT_RA5C_FINAL_AUTHORITY_IN_EXTERNAL_DECISION_LOCK",
+  "rebuild_status": "R10_SEMANTIC_UI_CONSISTENCY_SUCCESSOR__EXACT_R9_PREDECESSOR__FOUR_FILE_PRESENTATION_RELEASE_METADATA_DELTA_ONLY__PUBLIC_SEARCH_SURFACES_ALIGNED__ACTIVE_PREDECESSOR_METADATA_REPAIRED__DETERMINISTIC_BUILD_AND_RELEVANT_REGRESSION_REQUIRED__PUBLIC_RELEASE_NOT_AUTHORIZED",
   "rejected_predecessor_sha256": "0e26740387911fe15a9a275c3ff04d08ba9cbb28f46c2ec74670eb795fbe22d6",
   "rejected_predecessor_status": "FAIL_HIGHLIGHT_ANCHOR_COMPATIBILITY",
   "rejected_predecessor_version": "v2.19.37-R1B",
+  "remembered_meaning_search_product_gate": "P0_OPEN__V105_V106_LEXICAL_SEARCH_DOES_NOT_SATISFY_OWNER_REQUIREMENT_TO_FIND_PASSAGES_FROM_REMEMBERED_MEANING_WITH_DIFFERENT_WORDING__SEARCH_MUST_NOT_BE_DECLARED PRODUCT_COMPLETE_UNTIL_EXPLICIT_PAR_LE_SENS_LANE_IS_BENCHMARKED_AND_QUALIFIED",
   "reperes_dual_attribution": {
     "canonical_text_changed": false,
     "examples": {
@@ -1500,6 +1570,7 @@
     "stage8_same_profile_note": "APP_VERSION remains v2.19.86-R1B; page/worker revision advances to stage8-r12 after hostile adversarial re-audit. R5 does not change DB version or corpus generation; exact final device tests remain mandatory."
   },
   "search_accessible_name_contract": "SEARCH_INPUT_EXPLICIT_ARIA_LABEL_RECHERCHER_DANS_LE_LIVRE_DU_CIEL__SEARCH_LOGIC_UNCHANGED",
+  "search_meaning_gate": "P0_OPEN__R18D_ENGINEERING_EVIDENCE_PRESERVED__NO_QUALIFIED_MODEL_OR_PACK__USER_EXPOSURE_NOT_AUTHORIZED",
   "search_v21a_textual_truth_r1": {
     "canonical_devotional_text_mutations": 0,
     "complement_tokens": 14333,
@@ -1714,6 +1785,7 @@
     "vectors": "RETIRED_NOT_RESTORED",
     "vocabulary": 21351
   },
+  "search_words_gate": "INTERNAL_PASS_V113_REBASED_FROM_V109__BYTE_IDENTICAL_SEARCH_MODULES_PRESERVED_THROUGH_V117_READER_BACK_REPAIR",
   "semantic_label_accessibility_v97_closure": {
     "canonical_text_changed": false,
     "classification": "BOUNDED_MEANINGFUL_MICROTEXT_RECLASSIFICATION_HELP_REFLOW_AND_DATE_NAV_NARROW_LAYOUT_CLOSURE",
@@ -1859,7 +1931,7 @@
   "speaker_presentation_contract": "SEMANTIC_SPEAKER_DISTINCT_FROM_PRESENTATION_PARENT__BV7_11_EXPLICIT_MAIN_PARENT_PER_SEGMENT_OVERLAY__PARENTLESS_SUPPLEMENT_LEGACY_FALLBACK_ONLY__FALLBACK_NEVER_OVERRIDES_VALID_EXPLICIT_PARENT",
   "speech_boundary_display_contract": "RA19B_MULTI_SOURCE_SOURCE_BACKED_EXPLICIT_BOUNDARY_METADATA__20811_ACTIVE_LINKED_BOUNDARIES__HEURISTIC_FALLBACK_ZERO_ON_ACTIVE_LINKS__CANONICAL_TEXT_AND_SPEAKER_OFFSETS_UNCHANGED",
   "speech_paragraphing_contract": "UNCOLOURED_DIRECT_TURN_STAYS_WITH_ATTRIBUTION_OPEN_GUILLEMET__CLOSING_GUILLEMET_STAYS_WITH_TURN__RESUMED_NARRATION_STARTS_NEW_VISUAL_PARAGRAPH__JESUS_MARY_STYLING_UNCHANGED",
-  "stage": "LDC_V112_IPHONE_SEARCH_VIEWPORT_AND_TOME_RETURN_R1",
+  "stage": "LDC_V119_PROVENANCE_R6_R10_SEMANTIC_UI_CONSISTENCY",
   "stage10_runtime_slim_r1": {
     "accessibility_cases": 28,
     "added_files": [
@@ -2329,6 +2401,7 @@
   "translation_freeze_amendment_sha256": "1f726a4e9a246aaa1aa5424cda244064211b836227acd2124deff92ad940acc1",
   "translation_set_reacceptance": "14_OF_14_PASS_AFTER_2_SOURCE_CONTROLLED_AMENDMENTS",
   "translation_set_revision": "RA2__2_SOURCE_CONTROLLED_AMENDMENTS",
+  "update_detection_contract": "VERSION_JSON_APP_VERSION_ACCEPTS_CONTROLLED_R1B_SUFFIXES__PUBLIC_VERSION_DERIVED_FROM_APP_VERSION_PATCH__STALE_EXPLICIT_PUBLIC_VERSION_CANNOT_SUPPRESS_DETECTION__SERVICE_WORKER_UPDATE_CHANNEL_RETAINED",
   "update_draft_guard_contract": "NOTE_COLLECTION_NOTE_NEW_COLLECTION_ISSUE_COMMENT_PENDING_BACKUP_PREVIEW_ACTIVE_BACKUP_IMPORT_BLOCK_RELOAD",
   "update_system_contract": "SERVER_VERSION_NO_STORE_TRUTH__SW_CONTROLLERCHANGE_NEVER_AUTO_RELOADS__EXPLICIT_ACTUALISER_GUARDED_BY_VOLATILE_DRAFT_AND_BACKUP_IMPORT_STATE__BEFOREUNLOAD_GUARD",
   "user_data_authority": "IndexedDB ldc_user_v1; eight canonical stores remain authoritative; DB v3 adds backup_stage + backup_stage_meta as noncanonical temporary restore staging; localStorage onboarding only; CacheStorage/service worker not restore authority",
@@ -2346,6 +2419,383 @@
   "user_data_envelope_schema": "ldc-user-data-envelope",
   "user_data_envelope_version": 4,
   "user_data_schema_version": 4,
+  "v100_navigation_target_failsafe": {
+    "candidate_byte_mutations": [
+      "index.html",
+      "offline_manifest.json",
+      "sw.js",
+      "version.json"
+    ],
+    "classification": "SECOND_BLIND_CHALLENGE_TRANSIENT_TARGET_RECOVERY_REPAIR",
+    "date": "2026-09-16",
+    "predecessor_version": "v2.19.99-R1B",
+    "predecessor_zip_sha256": "8a7dd5e047a429f545f290ca4fb2597b70e359178269b83b8505e3e25fb92b90",
+    "preserved": [
+      "valid same-entry Resume/semantic restore",
+      "valid Search paragraph targets",
+      "ENTRY_START Tome and Previous/Next",
+      "notes/highlights/deep links",
+      "Reader measure/status typography",
+      "corpus/search/source-mode/user-data schemas",
+      "persistent offline content binding"
+    ],
+    "public_deployment_authorized": false,
+    "repair": "Identity-bind every delayed transient Reader target action to the visible volume/entry snapshot. Search target focus now returns success/failure; stale/missing Search or paragraph targets fail closed to the visible entry start. The semantic-rejection fallback is also identity-bound so it cannot reset a newer Reader after a navigation race.",
+    "root_cause": "After a failed cross-volume Search paragraph load, pendingSearchReaderTarget and pendingParaId could survive. A later unrelated non-ENTRY_START Reader open consumed the stale target; target focus found no matching fragment and left prior-entry pixel scroll geometry in place. The v99 semantic fallback also lacked a visible-reader identity token around its delayed animation-frame fallback, leaving a theoretical cross-navigation race."
+  },
+  "v101_transactional_navigation_commit": {
+    "candidate_byte_mutations": [
+      "index.html",
+      "offline_manifest.json",
+      "sw.js",
+      "version.json"
+    ],
+    "classification": "THIRD_BLIND_CHALLENGE_FAILED_NAVIGATION_TRANSACTION_REPAIR",
+    "date": "2026-09-16",
+    "predecessor_version": "v2.19.100-R1B",
+    "predecessor_zip_sha256": "00b2f02a42ff3bca34b2b6b96616cb8db3ba1b677f5e580d7a78e5cabd304f29",
+    "preserved": [
+      "v100 stale Search/paragraph/semantic fail-closed guards",
+      "valid Resume/Search/notes/highlights/deep links",
+      "ENTRY_START Tome and Previous/Next",
+      "Reader measure/status typography",
+      "corpus/search/source-mode/user-data schemas",
+      "persistent offline content binding"
+    ],
+    "public_deployment_authorized": false,
+    "repair": "Stage origin/back context, preload Reader data, resolve the requested entry/paragraph/supplement and validate a concrete target first. Only after target validation flush the prior Reader session, clear ENTRY_START transient state, and commit readerOriginContext, readerBack and currentVolume/currentEntry. A pre-commit load failure therefore leaves the old Reader identity/session untouched.",
+    "root_cause": "openEntryCore invalidated the visible Reader session and assigned currentVolume/back-origin before ensureVolumeReaderData completed. A failed cross-volume load therefore left the old entry visible while currentVolume already named the failed target and activeReaderSession was invalidated; pressing Next could navigate in the wrong Tome."
+  },
+  "v102_transactional_supplement_target": {
+    "candidate_byte_mutations": [
+      "index.html",
+      "offline_manifest.json",
+      "sw.js",
+      "version.json"
+    ],
+    "classification": "FOURTH_BLIND_CHALLENGE_SUPPLEMENT_WRAPPER_TRANSACTION_REPAIR",
+    "date": "2026-09-16",
+    "predecessor_version": "v2.19.101-R1B",
+    "predecessor_zip_sha256": "7e3864066c7ee214a25a0ae3a908bd42223fb7114a499989621ff61f63a5c07a",
+    "preserved": [
+      "v100 transient Search/paragraph/semantic fail-closed guards",
+      "v101 transactional volume/back-origin/session commit",
+      "valid supplement opens and COMPLÉMENT-only inherited intent",
+      "valid Resume/Search/notes/highlights/deep links",
+      "ENTRY_START Tome and Previous/Next",
+      "Reader measure/status typography",
+      "corpus/search/source-mode/user-data schemas",
+      "persistent offline content binding"
+    ],
+    "public_deployment_authorized": false,
+    "repair": "openSupplementItem now only derives an explicit navigationParaId and passes supplementId/target options into openEntry. It neither flushes the Reader session nor precommits supplement focus. openEntryCore uses the option for target resolution and commits pendingParaId/currentSupplementFocusId only after target preload/validation and session transition. Search and user-record supplement callers pass their explicit paragraph target through the option instead of global pre-mutation.",
+    "root_cause": "openSupplementItem flushed the visible Reader session and assigned currentSupplementFocusId/pendingParaId before openEntryCore could preload and validate the cross-volume target. If that load failed, the old entry remained visible but readerTargetIdentity could resolve to the failed supplement; a Favourite could then save the Tome-2 supplement with volume 12."
+  },
+  "v103_final_audit_metadata_coherence": {
+    "candidate_byte_mutations": [
+      "index.html",
+      "offline_manifest.json",
+      "sw.js",
+      "version.json"
+    ],
+    "classification": "FINAL_AUDIT_ACTIVE_METADATA_COHERENCE_CLOSURE",
+    "date": "2026-09-16",
+    "predecessor_version": "v2.19.102-R1B",
+    "predecessor_zip_sha256": "c162658008feee0fedb3fe317e0b42bf77738993bb7ac763f70af681724cc791",
+    "preserved": [
+      "all v102 runtime logic including transactional supplement targeting",
+      "v101 transactional Reader identity/session commit",
+      "v100 transient target fail-closed guards",
+      "v98 ENTRY_START/Reader measure/status contracts",
+      "corpus/search/source-mode/user-data schemas",
+      "persistent offline content binding"
+    ],
+    "public_deployment_authorized": false,
+    "repair": "Advance release identity to v103 and reconcile top-level/current_generation predecessor to exact v102. Replace stale self-status wording with durable metadata that does not self-certify independent audit results and explicitly delegates exact-package test status to the matching external audit report/state document. External device/PWA/live-origin/offline/accessibility gates remain open.",
+    "root_cause": "The v102 runtime repair survived the available audit, but active version.json authority still contained pre-audit wording and stale v99/v100 predecessor/runtime/external-validation references. Leaving those fields active would make the delivered package contradict its external audit/state authority.",
+    "runtime_logic_change": false
+  },
+  "v104_sw_revision_coherence_repair": {
+    "candidate_byte_mutations": [
+      "index.html",
+      "offline_manifest.json",
+      "sw.js",
+      "version.json"
+    ],
+    "classification": "BLOCKING_REAL_DEVICE_SERVICE_WORKER_INSTALL_REPAIR",
+    "date": "2026-09-16",
+    "feature_runtime_logic_change": false,
+    "predecessor_version": "v2.19.103-R1B",
+    "predecessor_zip_sha256": "d9b11d3dc8d3231aef61d2117e319c5ce0e5be367a6e6190f28485363f595988",
+    "public_deployment_authorized": false,
+    "repair": "Advance to v104 and bind index SW_CACHE_VERSION, sw.js VERSION, version.json page_worker_revision and offline_manifest.json page_worker_revision to one exact revision: ldc-v2.19.104-R1B-sw-revision-coherence-r1. Advance shell/runtime cache namespaces and offline-manifest app_version coherently.",
+    "root_cause": "v103 index.html, sw.js and version.json declared revision ldc-v2.19.103-R1B-final-audit-metadata-coherence-r1, but offline_manifest.json still declared ldc-v2.19.100-R1B-navigation-target-failsafe-r1. sw.js verifyShellRevisionResponse requires offline_manifest.page_worker_revision === VERSION during install, so the v103 Service Worker install was guaranteed to reject and become redundant.",
+    "triggering_evidence": "Owner physical tests on iPhone, iPad and desktop browser showed v103 could not progress reliably; iPad fatal boot diagnostic explicitly reported SW_SYNC and \"nouveau Service Worker devenu redondant\".",
+    "v103_release_status": "FAILED_REAL_DEVICE_DEPLOYMENT__SUPERSEDED"
+  },
+  "v105_update_reopen_guidance": {
+    "candidate_byte_mutations": [
+      "index.html",
+      "offline_manifest.json",
+      "sw.js",
+      "version.json"
+    ],
+    "change": "The global update banner now states the close-and-reopen fallback. ACTIVATING, controllerchange and PUBLISHED_NOT_ACTIVE states surface the same guidance. Help text documents why this may be needed.",
+    "classification": "BOUNDED_UPDATE_UX_RECOVERY_GUIDANCE",
+    "date": "2026-09-16",
+    "feature_runtime_logic_change": false,
+    "predecessor_version": "v2.19.104-R1B",
+    "predecessor_zip_sha256": "04ddae3f2050ec1898847403745c3b708cfd925eeeb7dfa3b62813b907e5abe3",
+    "public_deployment_authorized": false,
+    "service_worker_install_contract_change": false,
+    "triggering_evidence": "Owner physical iPhone and iPad tests: tapping Actualiser could remain on the old page/version, while fully closing and reopening immediately loaded the new version."
+  },
+  "v106_entry_start_stability": {
+    "date": "2026-09-16",
+    "direct_predecessor_app_version": "v2.19.105-R1B",
+    "direct_predecessor_zip_sha256": "50fafb36adf4ddaa5201dcb06bc67e0698bc6f02f966e5b074a76e7541e6e5b7",
+    "protected": [
+      "corpus text and IDs",
+      "Search V2/V2.1/V2.2 assets and ranking",
+      "speaker/display/flow payloads",
+      "user-data schema v4",
+      "reading position schema identifier remains ldc-reading-position-v3; position_kind is backward-compatible optional metadata",
+      "persistent offline content binding"
+    ],
+    "repair": [
+      "capture absolute top as explicit position_kind ENTRY_START",
+      "restore ENTRY_START to absolute scrollTop 0 rather than first paragraph",
+      "identity/session-bound EntryStartTargetLock remains authoritative until genuine touch/wheel/keyboard/mouse-drag scroll intent",
+      "programmatic/layout scroll while lock active is rejected and reset to top",
+      "browser overflow-anchor disabled only while lock is active",
+      "reader-header ResizeObserver plus fonts-ready and resize/orientation/visualViewport paths reassert top",
+      "Journey UI async render triggers a start-stability check",
+      "EntryStart diagnostic trace exposed for controlled/physical debugging"
+    ],
+    "root_cause_class": "ENTRY_START_WAS_A_ONE_SHOT_PIXEL_RESET_NOT_A_STABLE_SEMANTIC_STATE__TOP_CAPTURE_COULD_BE_REINTERPRETED_AS_FIRST_PARAGRAPH__LATE_ASYNC_JOURNEY_HEADER_FONT_OR_VIEWPORT_REFLOW_COULD_MOVE_SCROLL_WITHOUT_USER_INTENT",
+    "search_p0": "Remembered-meaning semantic Search remains open and is intentionally not mixed into this bounded Reader release.",
+    "trigger": "Owner physical testing on deployed v105 confirmed that opening a text directly from Bibliothèque/Tomes could still land part-way down the entry even though the v98+ code requested navigationTarget ENTRY_START."
+  },
+  "v107_entry_list_reader_handoff": {
+    "date": "2026-09-16",
+    "direct_predecessor_app_version": "v2.19.106-R1B",
+    "direct_predecessor_zip_sha256": "69eccff9ef49e38405d1f5f575d3b479ba1db0efef8a6c82fbb9155252184210",
+    "physical_discriminator": "Owner confirmed the same entry (e.g. entry 7) opens part-way down when selected from a Tome list that had to be scrolled, but opens at the absolute beginning when reached via Suivant from the preceding entry. Threshold varies by Tome (7/8), consistent with list viewport geometry rather than entry identity.",
+    "protected": [
+      "corpus text/IDs",
+      "Search V2/V2.1/V2.2 assets/ranking",
+      "speaker/display/flow payloads",
+      "user-data schema v4",
+      "reading position schema",
+      "persistent offline content binding",
+      "Previous/Next and non-list navigation target semantics"
+    ],
+    "repair": [
+      "capture list Back/navigation context before blur/freeze",
+      "blur focused entry button synchronously before openEntry first await",
+      "freeze entries-list physical momentum while preserving logical scrollTop",
+      "replace reader-scroll with a fresh DOM scroll surface before rendering direct Tome entry",
+      "rebind genuine-user-scroll intent handlers to fresh Reader surface",
+      "pin fresh Reader surface to zero while hidden and during settling frames",
+      "retain v106 EntryStartLock until first genuine user scroll",
+      "restore entries-list logical scroll position for Back"
+    ],
+    "root_cause_scope": "SCROLLED_ENTRIES_LIST_TO_READER_PHYSICAL_HANDOFF__NOT_ENTRY_CONTENT_OR_ENTRY_INDEX__EXACT_IOS_SUBMECHANISM_FOCUS_VS_MOMENTUM_VS_COMPOSITOR_NOT_CLAIMED_AS_INDIVIDUALLY_PROVEN"
+  },
+  "v108_reader_ab_diagnostic_only": {
+    "date": "2026-09-17",
+    "direct_predecessor_app_version": "v2.19.107-R1B",
+    "direct_predecessor_zip_sha256": "94e2035504c9d3289fb39ed95c06d548fb7f8e1ef68a069941ef8a87a800303b",
+    "instrumentation": [
+      "nested reader/list scroll",
+      "window/document root scroll",
+      "visualViewport offsets/page coordinates",
+      "screen/reader/paragraph bounding geometry",
+      "first nested-visible and first visual-visible paragraph ids",
+      "active element/focus",
+      "pointer/touch/mouse/click/focus/scroll/resize/orientation events",
+      "reader session / ENTRY_START lock / handoff identity",
+      "delayed samples through +3000ms",
+      "automatic same-target DIRECT_ENTRIES vs PREV_NEXT comparison"
+    ],
+    "privacy": "NO_QUERY_TEXT_NOTES_HIGHLIGHTS_COMMENTS_SELECTIONS_OR_DEVOTIONAL_PARAGRAPH_TEXT_IN_READER_TRACE__PUBLIC_ENTRY_AND_PARAGRAPH_IDENTIFIERS_ONLY",
+    "protected": [
+      "corpus assets",
+      "Search engine/index/runtime assets",
+      "speaker/display/flow payloads",
+      "user-data schema",
+      "reading-position schema",
+      "offline content binding",
+      "v107 navigation behavior"
+    ],
+    "purpose": "OBSERVE_FIRST_PHYSICAL_STATE_DIVERGENCE_BETWEEN_DIRECT_SCROLLED_TOME_LIST_OPEN_AND_PREV_NEXT_TO_SAME_TARGET",
+    "repair_mutation_authorized": false
+  },
+  "v110_reader_list_isolation_context_return": {
+    "date": "2026-09-17",
+    "direct_predecessor_app_version": "v2.19.108-R1B-DIAG",
+    "direct_predecessor_zip_sha256": "d2a80005bdd704d1e21a1ce195611c20128644e556d373a76dd2709caf1863f9",
+    "protected": [
+      "canonical corpus and supplement payloads",
+      "Search V2/V2.1/V2.2 runtime/index assets",
+      "user-data schema v4",
+      "reading-position schema",
+      "persistent offline content binding",
+      "v108 diagnostic observation fields",
+      "non-list Search/Resume/note/highlight/deep-link target semantics"
+    ],
+    "purpose": "BREAK_PHYSICAL_SCROLL_AUTHORITY_BETWEEN_TOME_LIST_AND_READER_AND_RESTORE_TOME_EXPLORATION_CONTEXT_LOGICALLY_ON_BACK",
+    "reader_back_ui": [
+      "single prominent >=48px contextual Back control",
+      "same fixed row as PRINCIPAL/COMPLÉMENT/ENRICHI",
+      "outside reader-scroll so it never scrolls away",
+      "dynamic Tome/Search/Espace/Dates/etc label",
+      "full accessible return label",
+      "compact visual source labels only on <=360px while accessible names remain full"
+    ],
+    "reader_open_contract": [
+      "capture Tome/source/selected return key/selected viewport offset/viewport anchor/raw scroll fallback",
+      "blur/freeze source early without changing its visible scroll position during data load",
+      "immediately before Reader exposure hide source scroller, neutralise source scroll to zero, reset root scroll and settle one animation frame",
+      "never restore hidden source scroll while Reader is active",
+      "retain fresh Reader surface + ENTRY_START lock as secondary defenses",
+      "route local PRINCIPAL/ENRICHI and COMPLÉMENT opens through the same handoff"
+    ],
+    "return_contract": [
+      "render desired Tome/source mode under a hidden return-restoration state",
+      "restore selected row to its previous viewport offset when available",
+      "fallback to prior viewport anchor then raw scrollTop",
+      "verify across immediate/rAF/delayed/font settling until first genuine user list interaction",
+      "restore focus with preventScroll",
+      "preserve initial list origin across Previous/Next Reader navigation"
+    ]
+  },
+  "v112_iphone_search_viewport_and_tome_return": {
+    "date": "2026-09-18",
+    "direct_predecessor_app_version": "v2.19.111-R1B",
+    "direct_predecessor_zip_sha256": "f79244ae3baa3e17c33f283b24b07ec4a970c371360455dd8f26094e2e64621b",
+    "owner_physical_findings": [
+      "On iPhone, entering Search makes the app horizontally pannable/wider than the viewport and the offset can remain after returning Home.",
+      "Returning from a Reader entry to its Tome list can land at the beginning instead of the previously selected mid-list entry."
+    ],
+    "protected": [
+      "canonical corpus and supplement payloads",
+      "Search V2/V2.1/V2.2 algorithm/index assets",
+      "user-data schema v4",
+      "reading-position schema",
+      "persistent offline content binding",
+      "v111 typography vectors and v110 Reader isolation architecture",
+      "Search-V3 R5 engineering branch remains unmerged"
+    ],
+    "search_viewport_repair": [
+      "all screens receive min-width:0 and bounded width/max-width",
+      "Search flex input may shrink with min-width:0/width:0",
+      "Search wrappers/filter rows/results are bounded to 100%",
+      "touch Search input has >=16px font floor to avoid iOS focus zoom",
+      "Search no longer autofocuses on coarse-pointer/mobile devices",
+      "leaving Search blurs the field and reasserts root horizontal scrollLeft=0 over settling frames"
+    ],
+    "tome_return_repair": [
+      "preserve v110 physical list-to-Reader isolation and hidden-list neutralisation",
+      "tag rendered entries list with Tome/source identity",
+      "on Back prefer the already-rendered logical list when identity/anchor still match",
+      "restore selected row/anchor/raw scroll under hidden restoration state before reveal",
+      "reassert position through rAF, delayed timers, font readiness and ResizeObserver until user interaction",
+      "fallback to full openTome rebuild only when warm list identity is unavailable"
+    ]
+  },
+  "v112_physical_regression_gate": "SUPERSEDED_BY_V115_NAVIGATION_CLOSURE_THEN_V115_FAILED_PHYSICAL_ACCEPTANCE__PREVIOUS_V113_TOME_RETURN_PHYSICAL_PASS_CLAIM_REJECTED__V116_DIAGNOSTIC_TRACE_REQUIRED",
+  "v115_navigation_scroll_closure": {
+    "contracts": [
+      "fresh Tome destination starts at absolute top after activation into layout",
+      "Reader Back restores exact semantic source entry using nested Entries scrollTop only",
+      "Entries Back restores selected Tome logically rather than relying on hidden physical scroll",
+      "source-mode rerender preserves semantic context",
+      "newest navigation transaction wins",
+      "first genuine user interaction releases temporary locks",
+      "Tab releases navigation locks",
+      "coarse-pointer editable fields retain effective 16px floor at Petit/Normal and scale to 18/20px at Grand/Très grand"
+    ],
+    "corpus_mutation": false,
+    "date": "2026-09-19",
+    "direct_predecessor_app_version": "v2.19.113-R1B-SEARCH-MERGE",
+    "direct_predecessor_zip_sha256": "7a340d7de0cad2e6b83dcf66f214bfa07e16239c5c35318914f381b9cdc0317d",
+    "instrumentation": "BOUNDED_PHASE_SNAPSHOTS__NO_CONTINUOUS_GEOMETRY_POLLING__WINDOW___ldcNavigationScrollDebug",
+    "navigation_intents": [
+      "FRESH_TOME",
+      "PRESERVE_RERENDER",
+      "BACK_RESTORE",
+      "TOMES_BACK_RESTORE"
+    ],
+    "physical_acceptance": "FAILED_IPHONE_AND_IPAD__FRESH_TOME_AND_READER_BACK",
+    "search_continuation_checkpoint": "R18D",
+    "search_continuation_sha256": "867d23bb540d594af97ff0afb691757daa769e189635610b2e09cc47949ac744",
+    "search_semantic_module_mutation": false,
+    "status": "FAILED_PHYSICAL_ACCEPTANCE__STATIC_AND_HOSTILE_EVIDENCE_SCOPE_LIMITED",
+    "user_data_schema_mutation": false,
+    "webkit_micro_cause": "NOT_PROVEN__REOPENED_FORENSIC_INVESTIGATION"
+  },
+  "v116_navigation_physical_diagnostic": {
+    "classification": "BOUNDED_OBSERVATION_ONLY_DIAGNOSTIC_SUCCESSOR",
+    "corpus_mutation": false,
+    "governing_physical_result": "IPHONE_FAIL__IPAD_FAIL__FRESH_TOME_AND_READER_BACK",
+    "navigation_behavior_change": "NONE_INTENDED__TRACE_ONLY",
+    "par_le_sens_user_exposure": "NOT_AUTHORIZED",
+    "predecessor_app_version": "v2.19.115-R1B-SEARCH-NAV-CLOSURE-R1",
+    "predecessor_zip_sha256": "35e91e31157dfd77c8d60905da9b3c69b3d8cfa3f8d83ffee7d5624ad90045bf",
+    "public_release_authorized": false,
+    "search_branch": "PRESERVED__R18D_EVIDENCE_AND_V113_RUNTIME_SEARCH_BYTES",
+    "search_module_mutation": false,
+    "trace": "EVENT_DRIVEN_BOUNDED_180_RECORDS__ALL_PLAUSIBLE_SCROLL_LAYERS__FOCUS__VISUAL_VIEWPORT__GEOMETRY__COMPUTED_SCROLL_CSS__USER_COPY_EXPORT",
+    "user_data_schema_mutation": false
+  },
+  "v117_reader_back_physical_repair": {
+    "causal_differential": "FRESH_TOME_REBUILD_PATH_PASSES__DIRECT_READER_BACK_WARM_PATH_REUSES_ENTRIES_SCROLLING_ELEMENT_AFTER_V110_ZERO_NEUTRALISATION",
+    "classification": "BOUNDED_SCROLL_SURFACE_RENEWAL_CONTROLLED_DEVICE_CANDIDATE",
+    "corpus_mutation": false,
+    "diagnostic_export": "CURRENT_NAVIGATION_TRANSACTION_ONLY__KEY_PHASES_PLUS_LATEST_AND_CURRENT_PHYSICAL_STATE__MAX_10_ROWS__MINIFIED_JSON_FOR_IOS_CLIPBOARD",
+    "governing_v116_physical_observation": {
+      "fresh_tome": "APPEARS_PASS__RETURNS_TO_BEGINNING",
+      "reader_back": "FAIL__RETURNS_TO_BEGINNING_INSTEAD_OF_PRIOR_AREA",
+      "trace_export": "FULL_TRACE_TOO_LARGE_FOR_DEVICE_CLIPBOARD"
+    },
+    "mutation": "ON_WARM_BACK_RESTORE_RENEW_ONLY_ENTRIES_LIST_SCROLLING_SHELL__MOVE_EXISTING_CHILD_NODES_TO_PRESERVE_ENTRY_HANDLERS_AND_IDENTITIES__THEN_APPLY_EXISTING_SEMANTIC_RETURN_LOCK",
+    "par_le_sens_user_exposure": "NOT_AUTHORIZED",
+    "predecessor_app_version": "v2.19.116-R1B-NAV-DIAGNOSTIC-R1",
+    "predecessor_zip_sha256": "6ad8c36c20de2a62814da180b3f63f74eb67f74fc53f1683d4aa79d16ed7c5dc",
+    "public_release_authorized": false,
+    "search_module_mutation": false,
+    "user_data_schema_mutation": false
+  },
+  "v118_reader_back_root_owner_repair": {
+    "classification": "BOUNDED_SCROLL_OWNER_AWARE_READER_BACK_REPAIR_CONTROLLED_DEVICE_CANDIDATE",
+    "corpus_mutation": false,
+    "governing_v117_physical_observation": {
+      "fresh_tome_ipad": "PASS",
+      "fresh_tome_iphone": "PASS",
+      "reader_back_ipad": "FAIL",
+      "reader_back_iphone": "FAIL"
+    },
+    "mutation": "CAPTURE_SELECTED_ENTRY_VIEWPORT_TOP_AND_ROOT_SCROLL_AT_ENTRY_OPEN__DETECT_ACTUAL_SCROLL_OWNER__ON_ROOT_OWNER_RESTORE_DOCUMENT_SCROLL_SO_SELECTED_ENTRY_RETURNS_TO_CAPTURED_VIEWPORT_POSITION__RETAIN_NESTED_LIST_PATH_WHERE_LIST_IS_ACTUALLY_SCROLLABLE__REMOVE_FAILED_V117_SCROLL_SHELL_RENEWAL_FROM_ACTIVE_PATH",
+    "par_le_sens_user_exposure": "NOT_AUTHORIZED",
+    "predecessor_app_version": "v2.19.117-R1B-NAV-BACK-RESTORE-R1",
+    "predecessor_zip_sha256": "11f4527872e3b5fca0e1be9267150100dddfc1f4da3a4a465b0d240a3f2bc829",
+    "public_release_authorized": false,
+    "root_cause": "READER_BACK_RESTORE_TARGETED_ENTRIES_LIST_SCROLLTOP_AND_CONTENT_RELATIVE_OFFSET_WHILE_PHYSICAL_DEVICE_SCROLLING_OCCURRED_ON_DOCUMENT_ROOT__ENTRIES_LIST_MAX_SCROLLTOP_ZERO__ROOT_WAS_EXPLICITLY_RESET_TO_ZERO",
+    "search_module_mutation": false,
+    "trace_finding": {
+      "document_scroller": "html",
+      "entries_list_client_height": 18139,
+      "entries_list_scroll_height": 18139,
+      "entries_list_scroll_range": 0,
+      "failed_intended_target_scroll": 0,
+      "target_rect_top_px": 2804.546875,
+      "viewport_height_px": 797
+    },
+    "user_data_schema_mutation": false
+  },
+  "v118_withdrawal": "WITHDRAWN__MISSING_OPENFRESHTOMEFROMTOMES_RESTORETOMESNAVIGATIONCONTEXT_CAPTURENAVIGATIONCONTEXT__TOME_SELECTION_BROKEN_ALL_PLATFORMS",
+  "v119_shell_repair": "RESTORES_THREE_LIVE_V117_NAVIGATION_FUNCTIONS_EXACTLY__PRESERVES_V118_ROOT_OWNER_READER_BACK_LOGIC__NO_CORPUS_SEARCH_OR_USER_SCHEMA_MUTATION",
   "v2_19_0_superseded_reason": "Deep four-pass audit found six deleted lexical/BM25 helper functions, composite metadata contract drift, diagnostics ReferenceError, incomplete report-evidence scope, and stale version evidence. v2.19.0 must not be deployed.",
   "v2_19_49_deep_four_pass_reaudit_repairs": [
     "flow_19 derived metadata synchronized for LDC.T19.E0049.P044/P045 after authorised ALIGNÉ text correction; boundary policy/group membership unchanged",
@@ -2926,21 +3376,17 @@
     },
     "supplement_content_mutations": 0
   },
-  "vector_binding": "RETIRED_FROM_DEPLOY__LEXICAL_BM25_METADATA_SEARCH_AUTHORITATIVE__FUTURE_VECTOR_SEARCH_REQUIRES_FULL_COMPOSITE_REBUILD_AND_BUNDLED_OR_SELF_HOSTED_RUNTIME",
-  "vector_order_clarification": "HISTORICAL_R1B_EMBEDDING_ROW_ORDER_NOT_APPLICABLE__EMBEDDING_ARTIFACTS_RETIRED_IN_RA3",
-  "vector_search_authorised": false,
-  "vector_search_subsystem": "RETIRED_IN_RA3_V2_19_8__PRESERVED_IN_V2_19_9",
-  "volume_lru_max": 4,
-  "whole_collection_undo_contract": "TEN_SECOND_ATOMIC_PARENT_PLUS_ALL_CAPTURED_CHILDREN__FAIL_CLOSED_ON_PARENT_CHILD_OR_UNEXPECTED_ORPHAN_CONFLICT",
-  "wide_public_release": "NOT_AUTHORIZED__V112_IPHONE_SEARCH_AND_TOME_RETURN_PHYSICAL_CONFIRMATION_REQUIRED__SEARCH_MEANING_P0_OPEN",
-  "wide_public_release_gate": "NOT_AUTHORIZED__PHYSICAL_DEVICE_INSTALLED_PWA_TRUE_OFFLINE_VOICEOVER_TALKBACK_TEXTUAL_FIDELITY_RIGHTS_AND_DEPLOY_BINDING_GATES_OPEN",
   "v99_restore_rejection_failsafe": {
-    "date": "2026-09-16",
+    "candidate_byte_mutations": [
+      "index.html",
+      "offline_manifest.json",
+      "sw.js",
+      "version.json"
+    ],
     "classification": "BLIND_CHALLENGE_RECOVERY_PATH_REPAIR",
+    "date": "2026-09-16",
     "predecessor_version": "v2.19.98-R1B",
     "predecessor_zip_sha256": "9397e707ff442103fd98cc822724aeb6a9b0975717c7b4a277de145c8c9dfa47",
-    "root_cause": "A rejected cross-entry semantic restore returned false without resetting reader-scroll, so a later non-ENTRY_START open could retain prior-entry pixel geometry after an interrupted/failed restore path.",
-    "repair": "When restoreSemanticReadingPosition returns false in the semantic-restore branch, reset reader-scroll to 0 immediately and on the next animation frame, then capture the new entry semantic position.",
     "preserved": [
       "valid same-entry Resume/semantic restore",
       "Search explicit targets",
@@ -2950,365 +3396,147 @@
       "corpus/search/source-mode/user-data schemas",
       "persistent offline content binding"
     ],
-    "candidate_byte_mutations": [
-      "index.html",
-      "offline_manifest.json",
-      "sw.js",
-      "version.json"
-    ],
-    "public_deployment_authorized": false
+    "public_deployment_authorized": false,
+    "repair": "When restoreSemanticReadingPosition returns false in the semantic-restore branch, reset reader-scroll to 0 immediately and on the next animation frame, then capture the new entry semantic position.",
+    "root_cause": "A rejected cross-entry semantic restore returned false without resetting reader-scroll, so a later non-ENTRY_START open could retain prior-entry pixel geometry after an interrupted/failed restore path."
   },
-  "v100_navigation_target_failsafe": {
-    "date": "2026-09-16",
-    "classification": "SECOND_BLIND_CHALLENGE_TRANSIENT_TARGET_RECOVERY_REPAIR",
-    "predecessor_version": "v2.19.99-R1B",
-    "predecessor_zip_sha256": "8a7dd5e047a429f545f290ca4fb2597b70e359178269b83b8505e3e25fb92b90",
-    "root_cause": "After a failed cross-volume Search paragraph load, pendingSearchReaderTarget and pendingParaId could survive. A later unrelated non-ENTRY_START Reader open consumed the stale target; target focus found no matching fragment and left prior-entry pixel scroll geometry in place. The v99 semantic fallback also lacked a visible-reader identity token around its delayed animation-frame fallback, leaving a theoretical cross-navigation race.",
-    "repair": "Identity-bind every delayed transient Reader target action to the visible volume/entry snapshot. Search target focus now returns success/failure; stale/missing Search or paragraph targets fail closed to the visible entry start. The semantic-rejection fallback is also identity-bound so it cannot reset a newer Reader after a navigation race.",
-    "preserved": [
-      "valid same-entry Resume/semantic restore",
-      "valid Search paragraph targets",
-      "ENTRY_START Tome and Previous/Next",
-      "notes/highlights/deep links",
-      "Reader measure/status typography",
-      "corpus/search/source-mode/user-data schemas",
-      "persistent offline content binding"
-    ],
-    "candidate_byte_mutations": [
-      "index.html",
-      "offline_manifest.json",
-      "sw.js",
-      "version.json"
-    ],
-    "public_deployment_authorized": false
+  "vector_binding": "RETIRED_FROM_DEPLOY__LEXICAL_BM25_METADATA_SEARCH_AUTHORITATIVE__FUTURE_VECTOR_SEARCH_REQUIRES_FULL_COMPOSITE_REBUILD_AND_BUNDLED_OR_SELF_HOSTED_RUNTIME",
+  "vector_order_clarification": "HISTORICAL_R1B_EMBEDDING_ROW_ORDER_NOT_APPLICABLE__EMBEDDING_ARTIFACTS_RETIRED_IN_RA3",
+  "vector_search_authorised": false,
+  "vector_search_subsystem": "RETIRED_IN_RA3_V2_19_8__PRESERVED_IN_V2_19_9",
+  "volume_lru_max": 4,
+  "whole_collection_undo_contract": "TEN_SECOND_ATOMIC_PARENT_PLUS_ALL_CAPTURED_CHILDREN__FAIL_CLOSED_ON_PARENT_CHILD_OR_UNEXPECTED_ORPHAN_CONFLICT",
+  "wide_public_release": "NOT_AUTHORIZED__R10_LIVE_ORIGIN_INSTALLED_PWA_TRUE_BROWSER_OFFLINE_REAL_INDEXEDDB_PHYSICAL_DEVICE_ACCESSIBILITY_DEPLOY_BINDING_AND_RIGHTS_GATES_OPEN",
+  "wide_public_release_gate": "NOT_AUTHORIZED__R10_LIVE_ORIGIN_INSTALLED_PWA_REAL_INDEXEDDB_IPHONE_IPAD_ANDROID_VOICEOVER_TALKBACK_DEPLOY_BINDING_TEXTUAL_FIDELITY_AND_RIGHTS_GATES_OPEN",
+  "search_v2_current_semantic_rebind_r7_fullqa": {
+    "status": "PASS_CURRENT_SEMANTIC_PARITY_REVERIFIED_2026-09-21",
+    "jesus_filter_rule": "speaker == JESUS && confidence == high",
+    "principal_eligible_paragraphs": 57562,
+    "complement_eligible_paragraphs": 114,
+    "enrichi_eligible_paragraphs": 57676,
+    "current_filter_missing": 0,
+    "current_filter_extra": 0,
+    "manifest_source_hash_scope_note": "corpus/search_v2_manifest.json source_hashes are retained as historical generation-input bindings from the unchanged SEARCH-V2 payload lineage; current speaker/supplement semantic parity was independently recomputed against the R7 package. No Search payload mutation is made by R7."
   },
-  "package_predecessor_app_version": "v2.19.110-R1B",
-  "package_predecessor_zip_sha256": "8e5228cac3a795ea510098cc67e16c8de7f1050a90f13a56bb83a4caaf08de61",
-  "v101_transactional_navigation_commit": {
-    "date": "2026-09-16",
-    "classification": "THIRD_BLIND_CHALLENGE_FAILED_NAVIGATION_TRANSACTION_REPAIR",
-    "predecessor_version": "v2.19.100-R1B",
-    "predecessor_zip_sha256": "00b2f02a42ff3bca34b2b6b96616cb8db3ba1b677f5e580d7a78e5cabd304f29",
-    "root_cause": "openEntryCore invalidated the visible Reader session and assigned currentVolume/back-origin before ensureVolumeReaderData completed. A failed cross-volume load therefore left the old entry visible while currentVolume already named the failed target and activeReaderSession was invalidated; pressing Next could navigate in the wrong Tome.",
-    "repair": "Stage origin/back context, preload Reader data, resolve the requested entry/paragraph/supplement and validate a concrete target first. Only after target validation flush the prior Reader session, clear ENTRY_START transient state, and commit readerOriginContext, readerBack and currentVolume/currentEntry. A pre-commit load failure therefore leaves the old Reader identity/session untouched.",
-    "preserved": [
-      "v100 stale Search/paragraph/semantic fail-closed guards",
-      "valid Resume/Search/notes/highlights/deep links",
-      "ENTRY_START Tome and Previous/Next",
-      "Reader measure/status typography",
-      "corpus/search/source-mode/user-data schemas",
-      "persistent offline content binding"
-    ],
-    "candidate_byte_mutations": [
+  "full_application_qa_r7": {
+    "date": "2026-09-21",
+    "predecessor_zip": "LDC_v119_PROVENANCE_R6_R6_IA_CONTROLLED_TEST_GITHUB_DEPLOY.zip",
+    "predecessor_sha256": "c7a150f50f1f807d34f0f59e8c61f195e2046498ee1f2d5f367926e1968adf58",
+    "repair_scope": [
       "index.html",
-      "offline_manifest.json",
       "sw.js",
-      "version.json"
+      "version.json",
+      "offline_manifest.json"
     ],
-    "public_deployment_authorized": false
-  },
-  "v102_transactional_supplement_target": {
-    "date": "2026-09-16",
-    "classification": "FOURTH_BLIND_CHALLENGE_SUPPLEMENT_WRAPPER_TRANSACTION_REPAIR",
-    "predecessor_version": "v2.19.101-R1B",
-    "predecessor_zip_sha256": "7e3864066c7ee214a25a0ae3a908bd42223fb7114a499989621ff61f63a5c07a",
-    "root_cause": "openSupplementItem flushed the visible Reader session and assigned currentSupplementFocusId/pendingParaId before openEntryCore could preload and validate the cross-volume target. If that load failed, the old entry remained visible but readerTargetIdentity could resolve to the failed supplement; a Favourite could then save the Tome-2 supplement with volume 12.",
-    "repair": "openSupplementItem now only derives an explicit navigationParaId and passes supplementId/target options into openEntry. It neither flushes the Reader session nor precommits supplement focus. openEntryCore uses the option for target resolution and commits pendingParaId/currentSupplementFocusId only after target preload/validation and session transition. Search and user-record supplement callers pass their explicit paragraph target through the option instead of global pre-mutation.",
-    "preserved": [
-      "v100 transient Search/paragraph/semantic fail-closed guards",
-      "v101 transactional volume/back-origin/session commit",
-      "valid supplement opens and COMPLÉMENT-only inherited intent",
-      "valid Resume/Search/notes/highlights/deep links",
-      "ENTRY_START Tome and Previous/Next",
-      "Reader measure/status typography",
-      "corpus/search/source-mode/user-data schemas",
-      "persistent offline content binding"
-    ],
-    "candidate_byte_mutations": [
-      "index.html",
-      "offline_manifest.json",
-      "sw.js",
-      "version.json"
-    ],
-    "public_deployment_authorized": false
-  },
-  "v103_final_audit_metadata_coherence": {
-    "date": "2026-09-16",
-    "classification": "FINAL_AUDIT_ACTIVE_METADATA_COHERENCE_CLOSURE",
-    "predecessor_version": "v2.19.102-R1B",
-    "predecessor_zip_sha256": "c162658008feee0fedb3fe317e0b42bf77738993bb7ac763f70af681724cc791",
-    "runtime_logic_change": false,
-    "root_cause": "The v102 runtime repair survived the available audit, but active version.json authority still contained pre-audit wording and stale v99/v100 predecessor/runtime/external-validation references. Leaving those fields active would make the delivered package contradict its external audit/state authority.",
-    "repair": "Advance release identity to v103 and reconcile top-level/current_generation predecessor to exact v102. Replace stale self-status wording with durable metadata that does not self-certify independent audit results and explicitly delegates exact-package test status to the matching external audit report/state document. External device/PWA/live-origin/offline/accessibility gates remain open.",
-    "preserved": [
-      "all v102 runtime logic including transactional supplement targeting",
-      "v101 transactional Reader identity/session commit",
-      "v100 transient target fail-closed guards",
-      "v98 ENTRY_START/Reader measure/status contracts",
-      "corpus/search/source-mode/user-data schemas",
-      "persistent offline content binding"
-    ],
-    "candidate_byte_mutations": [
-      "index.html",
-      "offline_manifest.json",
-      "sw.js",
-      "version.json"
-    ],
-    "public_deployment_authorized": false
-  },
-  "v104_sw_revision_coherence_repair": {
-    "date": "2026-09-16",
-    "classification": "BLOCKING_REAL_DEVICE_SERVICE_WORKER_INSTALL_REPAIR",
-    "predecessor_version": "v2.19.103-R1B",
-    "predecessor_zip_sha256": "d9b11d3dc8d3231aef61d2117e319c5ce0e5be367a6e6190f28485363f595988",
-    "triggering_evidence": "Owner physical tests on iPhone, iPad and desktop browser showed v103 could not progress reliably; iPad fatal boot diagnostic explicitly reported SW_SYNC and \"nouveau Service Worker devenu redondant\".",
-    "root_cause": "v103 index.html, sw.js and version.json declared revision ldc-v2.19.103-R1B-final-audit-metadata-coherence-r1, but offline_manifest.json still declared ldc-v2.19.100-R1B-navigation-target-failsafe-r1. sw.js verifyShellRevisionResponse requires offline_manifest.page_worker_revision === VERSION during install, so the v103 Service Worker install was guaranteed to reject and become redundant.",
-    "repair": "Advance to v104 and bind index SW_CACHE_VERSION, sw.js VERSION, version.json page_worker_revision and offline_manifest.json page_worker_revision to one exact revision: ldc-v2.19.104-R1B-sw-revision-coherence-r1. Advance shell/runtime cache namespaces and offline-manifest app_version coherently.",
-    "feature_runtime_logic_change": false,
-    "candidate_byte_mutations": [
-      "index.html",
-      "offline_manifest.json",
-      "sw.js",
-      "version.json"
-    ],
-    "v103_release_status": "FAILED_REAL_DEVICE_DEPLOYMENT__SUPERSEDED",
-    "public_deployment_authorized": false
-  },
-  "v105_update_reopen_guidance": {
-    "date": "2026-09-16",
-    "classification": "BOUNDED_UPDATE_UX_RECOVERY_GUIDANCE",
-    "predecessor_version": "v2.19.104-R1B",
-    "predecessor_zip_sha256": "04ddae3f2050ec1898847403745c3b708cfd925eeeb7dfa3b62813b907e5abe3",
-    "triggering_evidence": "Owner physical iPhone and iPad tests: tapping Actualiser could remain on the old page/version, while fully closing and reopening immediately loaded the new version.",
-    "change": "The global update banner now states the close-and-reopen fallback. ACTIVATING, controllerchange and PUBLISHED_NOT_ACTIVE states surface the same guidance. Help text documents why this may be needed.",
-    "feature_runtime_logic_change": false,
-    "service_worker_install_contract_change": false,
-    "candidate_byte_mutations": [
-      "index.html",
-      "offline_manifest.json",
-      "sw.js",
-      "version.json"
-    ],
-    "public_deployment_authorized": false
-  },
-  "entry_start_contract": "V107__V106_ENTRY_START_SEMANTIC_FIXED_POINT_AND_USER_INTENT_LOCK_PRESERVED__DIRECT_TOME_LIST_OPEN_ADDS_SOURCE_SCROLL_HANDOFF_TRANSACTION__CAPTURE_BACK_CONTEXT_BEFORE_BLUR__BLUR_FOCUSED_LIST_BUTTON_BEFORE_FIRST_AWAIT__FREEZE_SOURCE_MOMENTUM__RENEW_READER_SCROLL_DOM_SURFACE__PIN_TOP_BEFORE_EXPOSURE_AND_FOR_TWO_SETTLING_FRAMES__PREVIOUS_NEXT_SEARCH_RESUME_NOTE_HIGHLIGHT_DEEP_LINK_TARGET_SEMANTICS_UNCHANGED",
-  "remembered_meaning_search_product_gate": "P0_OPEN__V105_V106_LEXICAL_SEARCH_DOES_NOT_SATISFY_OWNER_REQUIREMENT_TO_FIND_PASSAGES_FROM_REMEMBERED_MEANING_WITH_DIFFERENT_WORDING__SEARCH_MUST_NOT_BE_DECLARED PRODUCT_COMPLETE_UNTIL_EXPLICIT_PAR_LE_SENS_LANE_IS_BENCHMARKED_AND_QUALIFIED",
-  "v106_entry_start_stability": {
-    "date": "2026-09-16",
-    "direct_predecessor_app_version": "v2.19.105-R1B",
-    "direct_predecessor_zip_sha256": "50fafb36adf4ddaa5201dcb06bc67e0698bc6f02f966e5b074a76e7541e6e5b7",
-    "trigger": "Owner physical testing on deployed v105 confirmed that opening a text directly from Bibliothèque/Tomes could still land part-way down the entry even though the v98+ code requested navigationTarget ENTRY_START.",
-    "root_cause_class": "ENTRY_START_WAS_A_ONE_SHOT_PIXEL_RESET_NOT_A_STABLE_SEMANTIC_STATE__TOP_CAPTURE_COULD_BE_REINTERPRETED_AS_FIRST_PARAGRAPH__LATE_ASYNC_JOURNEY_HEADER_FONT_OR_VIEWPORT_REFLOW_COULD_MOVE_SCROLL_WITHOUT_USER_INTENT",
-    "repair": [
-      "capture absolute top as explicit position_kind ENTRY_START",
-      "restore ENTRY_START to absolute scrollTop 0 rather than first paragraph",
-      "identity/session-bound EntryStartTargetLock remains authoritative until genuine touch/wheel/keyboard/mouse-drag scroll intent",
-      "programmatic/layout scroll while lock active is rejected and reset to top",
-      "browser overflow-anchor disabled only while lock is active",
-      "reader-header ResizeObserver plus fonts-ready and resize/orientation/visualViewport paths reassert top",
-      "Journey UI async render triggers a start-stability check",
-      "EntryStart diagnostic trace exposed for controlled/physical debugging"
+    "repairs": [
+      "service-worker published revision marker coherence",
+      "service-worker offline-manifest app-version gate coherence",
+      "active release metadata refresh",
+      "remove stale v117 internal-test wording from public Help"
     ],
     "protected": [
-      "corpus text and IDs",
-      "Search V2/V2.1/V2.2 assets and ranking",
-      "speaker/display/flow payloads",
-      "user-data schema v4",
-      "reading position schema identifier remains ldc-reading-position-v3; position_kind is backward-compatible optional metadata",
-      "persistent offline content binding"
+      "canonical corpus",
+      "supplement content and placement",
+      "Search/Search-V3 payload and semantics",
+      "speaker/display/flow semantics",
+      "navigation logic",
+      "user-data schemas and migration algorithms",
+      "offline content payload binding"
     ],
-    "search_p0": "Remembered-meaning semantic Search remains open and is intentionally not mixed into this bounded Reader release."
+    "environment_limitations": [
+      "browser navigation to local/file/http origins blocked by administrator policy",
+      "installed-PWA Service Worker/CacheStorage/IndexedDB origin runtime not executable end-to-end in current container",
+      "physical iPhone/iPad/Android and VoiceOver/TalkBack not executable in current container"
+    ],
+    "release": "NOT_AUTHORIZED"
   },
-  "v107_entry_list_reader_handoff": {
-    "date": "2026-09-16",
-    "direct_predecessor_app_version": "v2.19.106-R1B",
-    "direct_predecessor_zip_sha256": "69eccff9ef49e38405d1f5f575d3b479ba1db0efef8a6c82fbb9155252184210",
-    "physical_discriminator": "Owner confirmed the same entry (e.g. entry 7) opens part-way down when selected from a Tome list that had to be scrolled, but opens at the absolute beginning when reached via Suivant from the preceding entry. Threshold varies by Tome (7/8), consistent with list viewport geometry rather than entry identity.",
-    "root_cause_scope": "SCROLLED_ENTRIES_LIST_TO_READER_PHYSICAL_HANDOFF__NOT_ENTRY_CONTENT_OR_ENTRY_INDEX__EXACT_IOS_SUBMECHANISM_FOCUS_VS_MOMENTUM_VS_COMPOSITOR_NOT_CLAIMED_AS_INDIVIDUALLY_PROVEN",
-    "repair": [
-      "capture list Back/navigation context before blur/freeze",
-      "blur focused entry button synchronously before openEntry first await",
-      "freeze entries-list physical momentum while preserving logical scrollTop",
-      "replace reader-scroll with a fresh DOM scroll surface before rendering direct Tome entry",
-      "rebind genuine-user-scroll intent handlers to fresh Reader surface",
-      "pin fresh Reader surface to zero while hidden and during settling frames",
-      "retain v106 EntryStartLock until first genuine user scroll",
-      "restore entries-list logical scroll position for Back"
+  "full_application_qa_r8": {
+    "date": "2026-09-21",
+    "direct_predecessor_app_version": "v2.19.119-R1B-NAV-BACK-ROOT-RESTORE-R2-PROV-R6-R7-FULLQA",
+    "direct_predecessor_zip_sha256": "6b8bfe0765d51b9169e9d90f412713341bb6a5dcf191a1faacd860ec015daa79",
+    "trigger": "FINAL_METADATA_HOSTILITY_SWEEP_FOUND_ACTIVE_STAGE_V113_AND_CURRENT_GENERATION_CONTRACT_PACKAGE_PREDECESSOR_V113",
+    "repair_scope": [
+      "index.html",
+      "sw.js",
+      "version.json",
+      "offline_manifest.json"
+    ],
+    "substantive_metadata_repairs": [
+      "stage rebound to R8 current authority",
+      "current_generation_contract.package_predecessor_app_version rebound to exact R7",
+      "current_generation_contract.package_predecessor_zip_sha256 rebound to exact R7"
+    ],
+    "mechanical_release_repairs": [
+      "unique R8 app/page-worker/cache identity",
+      "R8 offline-manifest app/revision/status/scope binding"
     ],
     "protected": [
-      "corpus text/IDs",
-      "Search V2/V2.1/V2.2 assets/ranking",
-      "speaker/display/flow payloads",
-      "user-data schema v4",
-      "reading position schema",
-      "persistent offline content binding",
-      "Previous/Next and non-list navigation target semantics"
+      "canonical corpus and supplements",
+      "Search/Search-V3 payload and semantics",
+      "speaker/display/flow semantics",
+      "navigation logic",
+      "user-data schemas and migration algorithms",
+      "offline content asset list and content binding",
+      "R7 Help/provenance wording and runtime repair logic"
+    ],
+    "public_release_authorized": false,
+    "external_gates": [
+      "installed-PWA update from existing installation",
+      "secure-origin IndexedDB with real persisted data",
+      "true browser-process cold offline reopen",
+      "live deployment exact-byte binding",
+      "physical iPhone/iPad/Android",
+      "VoiceOver/TalkBack",
+      "rights/final release governance"
     ]
   },
-  "v108_reader_ab_diagnostic_only": {
-    "date": "2026-09-17",
-    "direct_predecessor_app_version": "v2.19.107-R1B",
-    "direct_predecessor_zip_sha256": "94e2035504c9d3289fb39ed95c06d548fb7f8e1ef68a069941ef8a87a800303b",
-    "purpose": "OBSERVE_FIRST_PHYSICAL_STATE_DIVERGENCE_BETWEEN_DIRECT_SCROLLED_TOME_LIST_OPEN_AND_PREV_NEXT_TO_SAME_TARGET",
-    "repair_mutation_authorized": false,
-    "instrumentation": [
-      "nested reader/list scroll",
-      "window/document root scroll",
-      "visualViewport offsets/page coordinates",
-      "screen/reader/paragraph bounding geometry",
-      "first nested-visible and first visual-visible paragraph ids",
-      "active element/focus",
-      "pointer/touch/mouse/click/focus/scroll/resize/orientation events",
-      "reader session / ENTRY_START lock / handoff identity",
-      "delayed samples through +3000ms",
-      "automatic same-target DIRECT_ENTRIES vs PREV_NEXT comparison"
+  "semantic_search_unavailable_message_r9": {
+    "date": "2026-09-21",
+    "direct_predecessor_app_version": "v2.19.119-R1B-NAV-BACK-ROOT-RESTORE-R2-PROV-R6-R8-FULLQA-META",
+    "direct_predecessor_zip_sha256": "2561688eeccc0f388ad80b57d223fc4b2c92d5aea4da9747d3bf26befef131cc",
+    "scope": "USER_FACING_UNAVAILABLE_STATE_COPY_ONLY_PLUS_REQUIRED_RELEASE_IDENTITY",
+    "public_badge": "En développement",
+    "public_message": "Cette fonctionnalité est encore en cours de développement et n’est pas encore disponible. Nous travaillons à améliorer la pertinence et la fiabilité des résultats avant de l’activer dans l’application. En attendant, vous pouvez utiliser la recherche « Par les mots ».",
+    "removed_from_unavailable_state": [
+      "SEARCH-V3 · qualification en cours",
+      "moteur non encore qualifié dans ce laboratoire",
+      "benchmark LDC / modèle / négatifs difficiles / calibrage de l’abstention",
+      "État du pack : PACK_NOT_*"
     ],
-    "privacy": "NO_QUERY_TEXT_NOTES_HIGHLIGHTS_COMMENTS_SELECTIONS_OR_DEVOTIONAL_PARAGRAPH_TEXT_IN_READER_TRACE__PUBLIC_ENTRY_AND_PARAGRAPH_IDENTIFIERS_ONLY",
+    "internal_status_logic": "UNCHANGED__FAIL_CLOSED__PACK_REASON_RETAINED_IN_INTERNAL_RUNTIME_STATUS_NOT_RENDERED_TO_USER",
     "protected": [
-      "corpus assets",
-      "Search engine/index/runtime assets",
-      "speaker/display/flow payloads",
-      "user-data schema",
-      "reading-position schema",
-      "offline content binding",
-      "v107 navigation behavior"
-    ]
+      "corpus",
+      "Search/Search-V3 engine modules and pack registry",
+      "semantic execution qualification logic",
+      "navigation",
+      "user-data schemas/migrations",
+      "R8 provenance wording",
+      "offline content asset universe and binding"
+    ],
+    "public_release_authorized": false
   },
-  "v110_reader_list_isolation_context_return": {
-    "date": "2026-09-17",
-    "direct_predecessor_app_version": "v2.19.108-R1B-DIAG",
-    "direct_predecessor_zip_sha256": "d2a80005bdd704d1e21a1ce195611c20128644e556d373a76dd2709caf1863f9",
-    "purpose": "BREAK_PHYSICAL_SCROLL_AUTHORITY_BETWEEN_TOME_LIST_AND_READER_AND_RESTORE_TOME_EXPLORATION_CONTEXT_LOGICALLY_ON_BACK",
-    "reader_open_contract": [
-      "capture Tome/source/selected return key/selected viewport offset/viewport anchor/raw scroll fallback",
-      "blur/freeze source early without changing its visible scroll position during data load",
-      "immediately before Reader exposure hide source scroller, neutralise source scroll to zero, reset root scroll and settle one animation frame",
-      "never restore hidden source scroll while Reader is active",
-      "retain fresh Reader surface + ENTRY_START lock as secondary defenses",
-      "route local PRINCIPAL/ENRICHI and COMPLÉMENT opens through the same handoff"
+  "semantic_search_unavailable_message_r10": {
+    "date": "2026-09-21",
+    "direct_predecessor_app_version": "v2.19.119-R1B-NAV-BACK-ROOT-RESTORE-R2-PROV-R6-R9-SEMANTIC-UNAVAILABLE-MSG",
+    "direct_predecessor_zip_sha256": "a07e245c5e62ce0e46ebff1e07f043606dcae6f37af43c7fd8bd2aa7130e53ae",
+    "scope": "USER_FACING_SEARCH_COPY_CONSISTENCY_PLUS_ACTIVE_PREDECESSOR_METADATA_REPAIR_PLUS_REQUIRED_RELEASE_IDENTITY",
+    "public_badge": "En développement",
+    "public_message": "Cette fonctionnalité est encore en cours de développement et n’est pas encore disponible. Nous travaillons à améliorer la pertinence et la fiabilité des résultats avant de l’activer dans l’application. En attendant, vous pouvez utiliser la recherche « Par les mots ».",
+    "public_surfaces_aligned": [
+      "selected unavailable panel",
+      "search intent helper",
+      "Help — Par le sens / Par les mots"
     ],
-    "return_contract": [
-      "render desired Tome/source mode under a hidden return-restoration state",
-      "restore selected row to its previous viewport offset when available",
-      "fallback to prior viewport anchor then raw scrollTop",
-      "verify across immediate/rAF/delayed/font settling until first genuine user list interaction",
-      "restore focus with preventScroll",
-      "preserve initial list origin across Previous/Next Reader navigation"
-    ],
-    "reader_back_ui": [
-      "single prominent >=48px contextual Back control",
-      "same fixed row as PRINCIPAL/COMPLÉMENT/ENRICHI",
-      "outside reader-scroll so it never scrolls away",
-      "dynamic Tome/Search/Espace/Dates/etc label",
-      "full accessible return label",
-      "compact visual source labels only on <=360px while accessible names remain full"
-    ],
+    "internal_status_logic": "UNCHANGED__FAIL_CLOSED__PACK_REASON_RETAINED_IN_INTERNAL_RUNTIME_STATUS_AND_DIAGNOSTICS",
     "protected": [
-      "canonical corpus and supplement payloads",
-      "Search V2/V2.1/V2.2 runtime/index assets",
-      "user-data schema v4",
-      "reading-position schema",
-      "persistent offline content binding",
-      "v108 diagnostic observation fields",
-      "non-list Search/Resume/note/highlight/deep-link target semantics"
-    ]
-  },
-  "reader_semantic_hierarchy_contract": {
-    "reader_body_px": [
-      16,
-      19,
-      22,
-      26
+      "corpus",
+      "Search/Search-V3 engine modules and pack registry",
+      "semantic execution qualification logic",
+      "navigation",
+      "user-data schemas/migrations",
+      "R8 provenance wording",
+      "offline content asset universe and binding"
     ],
-    "levels": [
-      "small",
-      "normal",
-      "large",
-      "xlarge"
-    ],
-    "journey_copy_px": [
-      12,
-      13,
-      17,
-      20
-    ],
-    "journey_action_px": [
-      13,
-      14,
-      18,
-      21
-    ],
-    "reader_nav_control_px": [
-      13,
-      14,
-      18,
-      20
-    ],
-    "context_back_px": [
-      13,
-      14,
-      17,
-      19
-    ],
-    "reader_chrome_title_px": [
-      13,
-      14,
-      17,
-      20
-    ],
-    "reader_orientation_px": [
-      11,
-      12,
-      15,
-      17
-    ],
-    "reader_date_px": [
-      12,
-      13,
-      16,
-      18
-    ],
-    "source_mode_px": [
-      12,
-      12,
-      14,
-      15
-    ],
-    "policy": "PRIMARY_READER_CONTROLS_AND_ORIENTATION_MUST_SCALE_MONOTONICALLY_AND_RETAIN_CLEAR_RELATIVE_PROMINENCE_AT_GRAND_TRES_GRAND__TECHNICAL_MICRODATA_REMAINS_COMPACT",
-    "scope": "READER_ONLY_FOR_JOURNEY_COPY_ACTION_NAV_CONTEXT_BACK_CHROME_ORIENTATION_DATE__GLOBAL_HOME_SEARCH_HELP_TYPOGRAPHY_UNCHANGED_FROM_V110"
-  },
-  "v112_iphone_search_viewport_and_tome_return": {
-    "date": "2026-09-18",
-    "direct_predecessor_app_version": "v2.19.111-R1B",
-    "direct_predecessor_zip_sha256": "f79244ae3baa3e17c33f283b24b07ec4a970c371360455dd8f26094e2e64621b",
-    "owner_physical_findings": [
-      "On iPhone, entering Search makes the app horizontally pannable/wider than the viewport and the offset can remain after returning Home.",
-      "Returning from a Reader entry to its Tome list can land at the beginning instead of the previously selected mid-list entry."
-    ],
-    "search_viewport_repair": [
-      "all screens receive min-width:0 and bounded width/max-width",
-      "Search flex input may shrink with min-width:0/width:0",
-      "Search wrappers/filter rows/results are bounded to 100%",
-      "touch Search input has >=16px font floor to avoid iOS focus zoom",
-      "Search no longer autofocuses on coarse-pointer/mobile devices",
-      "leaving Search blurs the field and reasserts root horizontal scrollLeft=0 over settling frames"
-    ],
-    "tome_return_repair": [
-      "preserve v110 physical list-to-Reader isolation and hidden-list neutralisation",
-      "tag rendered entries list with Tome/source identity",
-      "on Back prefer the already-rendered logical list when identity/anchor still match",
-      "restore selected row/anchor/raw scroll under hidden restoration state before reveal",
-      "reassert position through rAF, delayed timers, font readiness and ResizeObserver until user interaction",
-      "fallback to full openTome rebuild only when warm list identity is unavailable"
-    ],
-    "protected": [
-      "canonical corpus and supplement payloads",
-      "Search V2/V2.1/V2.2 algorithm/index assets",
-      "user-data schema v4",
-      "reading-position schema",
-      "persistent offline content binding",
-      "v111 typography vectors and v110 Reader isolation architecture",
-      "Search-V3 R5 engineering branch remains unmerged"
-    ]
+    "public_release_authorized": false
   }
 }
