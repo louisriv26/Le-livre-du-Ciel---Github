@@ -1,5 +1,5 @@
 {
-  "app_version": "v2.19.128-R1B-UX-ACCESS-R2",
+  "app_version": "v2.19.129-R1B-UX-CLOSURE-R1",
   "asset_count": 204,
   "assets": [
     {
@@ -1077,7 +1077,7 @@
   },
   "legacy_cache_family_prefix": "ldc-le-livre-du-ciel-offline-v",
   "m7rc_fixed_point": true,
-  "page_worker_revision": "ldc-v2.19.128-R1B-ux-access-r2",
+  "page_worker_revision": "ldc-v2.19.129-R1B-ux-closure-r1",
   "post_r6_date_id_a2_fixed_point": {
     "a2_sha256": "dd034a4d4bb329254818c3e62fd629c9b64c90f9d4bd533de9f6ed99247cb1d8",
     "date_id_sha256": "ed5bf462c47b8fb5a41f7c81591257d6e99f94bae08628aa27e5f7d667020c2a",
@@ -1138,7 +1138,7 @@
     "user_state_schema_changed": false,
     "ux_logic_changed": false
   },
-  "rebuild_status": "V127_R1_UX_ACCESS__R4_PAGE_WORKER_EXPECTATION_MISMATCH_REPAIRED__D03_D06_D09_CLOSED__ONE_GLOBAL_TEXT_SIZE_SETTING__CORPUS_SEARCH_PROVENANCE_WORDING_USER_STATE_OFFLINE_BINDING_UNCHANGED__HOSTED_PWA_IPHONE_IPAD_RETEST_REQUIRED__PUBLIC_RELEASE_NOT_YET_AUTHORIZED",
+  "rebuild_status": "V129_R1_UX_TRUTHFULNESS_CLOSURE__D07_UNAVAILABLE_SEMANTIC_MODE_NON_STICKY__PUBLIC_VERSION_IDENTITY_COHERENT__CORPUS_SEARCH_PROVENANCE_USER_STATE_OFFLINE_CONTENT_UNCHANGED__HOSTED_PWA_IPHONE_IPAD_RETEST_REQUIRED__PUBLIC_RELEASE_NOT_YET_AUTHORIZED",
   "retention_contract": {
     "clear_policy": "CURRENT_SCOPE_ONLY_FOR_SHARED_LEGACY_CACHES",
     "copy_migration_required": false,
@@ -1149,7 +1149,7 @@
     "shell_runtime_caches": "APP_VERSIONED"
   },
   "schema": "ldc-offline-manifest-v3",
-  "scope": "v127 R1 bounded UX/accessibility and release-identity successor of exact v126 R4: one global text-size setting made directly accessible on substantive screens; Mon Espace tabs expose selected semantics; authored accessible names added to note/collection inputs; page/service-worker expected-version mismatch repaired; corpus/Search/provenance wording/user-state/offline content preserved.",
+  "scope": "v129 R1 bounded UX truthfulness successor of exact v128 R2: unavailable Search-V3 semantic mode can no longer become a persisted/default dead state; public version display/diagnostics are coherently advanced; Search engine/packs/ranking, corpus, provenance wording, user-state schemas, backup semantics and offline content remain unchanged.",
   "scope_isolation_contract": "ONLY_CURRENT_SERVICE_WORKER_SCOPE_URLS_MAY_SATISFY_REUSE_OR_BE_CLEARED_FROM_SHARED_LEGACY_CACHES",
   "semantic_vector_search_included": false,
   "semantic_vector_search_note": "R18D Search-V3 engineering evidence is preserved externally and v113 Search-V3 runtime modules remain byte-identical. No neural model, vectors or qualified semantic pack are bundled. Par le sens remains fail-closed.",
@@ -1224,5 +1224,19 @@
     "public_release_authorized": false,
     "physical_retest_required": true,
     "modal_focus_contract": "SHARED_MODAL_INVOKER_CAPTURE_OCCURS_BEFORE_SHELL_INERT__SHELL_INERT_REMOVED_BEFORE_INVOKER_FOCUS_RESTORE__SIZE_AND_OTHER_SHARED_DIALOGS_RETURN_FOCUS_TO_ORIGINATING_CONTROL"
+  },
+  "ux_closure_v129_r1": {
+    "classification": "BOUNDED_UX_TRUTHFULNESS_AND_RELEASE_IDENTITY_SUCCESSOR",
+    "predecessor_app_version": "v2.19.128-R1B-UX-ACCESS-R2",
+    "predecessor_zip_sha256": "cb42fd9ba3b44e42dcd70bfdc390ddff957b8dbec3b5c92cae471fa3fc617053",
+    "closed_findings": [
+      "D-07-STICKY-UNAVAILABLE-MODE",
+      "NEW-LDC-PUBLIC-VERSION-IDENTITY-01"
+    ],
+    "semantic_mode_contract": "MEANING_MODE_MAY_PERSIST_ONLY_WHEN_SEMANTIC_PACK_STATUS_AVAILABLE_TRUE_AND_CALIBRATION_STATUS_QUALIFIED__OTHERWISE_WORDS_REMAINS_ACTIVE_AND_EXISTING_STICKY_MEANING_STATE_IS_MIGRATED_TO_WORDS",
+    "public_version_contract": "INDEX_VISIBLE_PUBLIC_VERSION__VERSION_JSON_PUBLIC_VERSION__APP_PATCH__DIAGNOSTICS_AND_BACKUP_HEADER_COHERENT_AT_129",
+    "protected_contract": "CORPUS__SEARCH_MODULES_PACKS_RANKING__PROVENANCE_WORDING__USER_STATE_SCHEMAS__BACKUP_LOGIC__OFFLINE_CONTENT_ASSETS_AND_BINDING_UNCHANGED",
+    "public_release_authorized": false,
+    "physical_retest_required": true
   }
 }

@@ -2548,11 +2548,11 @@ html[data-text-level="xlarge"]{--reader-measure:823px;--home-offline-title-size:
    VERSION — single source of truth
    Update this string on every release.
 ═══════════════════════════════════════════════════════ */
-const APP_VERSION = 'v2.19.128-R1B-UX-ACCESS-R2'; // v128 blind-challenge repair: backup preview moved outside #main-content inert boundary; protected corpus/Search/provenance/user-state semantics preserved
-const PUBLIC_VERSION = '127'; // UX/accessibility successor; final hosted/PWA/physical qualification required
+const APP_VERSION = 'v2.19.129-R1B-UX-CLOSURE-R1'; // v129 bounded UX truthfulness closure: public identity coherence + non-sticky unavailable semantic mode; protected Search engine/corpus/user-state semantics preserved
+const PUBLIC_VERSION = '129'; // bounded UX truthfulness successor; final hosted/PWA/physical qualification required
 const APP_VERSION_LABEL = `Version ${PUBLIC_VERSION}`;
 const APP_BUILD = '2026-09-27';
-const SW_CACHE_VERSION = 'ldc-v2.19.128-R1B-ux-access-r2';
+const SW_CACHE_VERSION = 'ldc-v2.19.129-R1B-ux-closure-r1';
 const LDC_PROVENANCE_PUBLIC_COPY = Object.freeze({
   methodologyCta:'Voir les sources, les contrôles et leurs limites →',
   neutralSource:'Source détaillée dans la notice documentaire',
@@ -7865,9 +7865,17 @@ let currentSupplementFocusId = null;
 let supplementRegistry = null, supplementSpeakerData = null, supplementManifest = null;
 let supplementRegistryLoading = null, supplementSpeakerLoading = null;
 let supplementEntryIds = new Set();
-setTimeout(()=>{loadSearchIntentMode();renderSearchIntentMode();},0);
-function loadSearchIntentMode(){
-  try{const v=localStorage.getItem(SEARCH_INTENT_MODE_KEY);if(v==='meaning'||v==='words')searchIntentMode=v;}catch(_){ }
+setTimeout(async()=>{await loadSearchIntentMode();renderSearchIntentMode();},0);
+async function loadSearchIntentMode(){
+  try{
+    const v=localStorage.getItem(SEARCH_INTENT_MODE_KEY);
+    if(v==='words')searchIntentMode='words';
+    else if(v==='meaning'){
+      const status=await semanticPackV3Status();
+      if(status&&status.available===true)searchIntentMode='meaning';
+      else{searchIntentMode='words';localStorage.setItem(SEARCH_INTENT_MODE_KEY,'words');}
+    }
+  }catch(_){searchIntentMode='words';}
   return searchIntentMode;
 }
 function renderSearchIntentMode(){
@@ -7880,8 +7888,18 @@ function renderSearchIntentMode(){
   if(order)order.style.display=searchIntentMode==='words'?'flex':'none';
   if(lane&&searchIntentMode==='meaning')lane.style.display='none';
 }
-function setSearchIntentMode(mode,{rerun=true,persist=true}={}){
+async function setSearchIntentMode(mode,{rerun=true,persist=true}={}){
   if(mode!=='meaning'&&mode!=='words')return;
+  if(mode==='meaning'){
+    const status=await semanticPackV3Status();
+    if(!status||status.available!==true){
+      searchIntentMode='words';
+      if(persist){try{localStorage.setItem(SEARCH_INTENT_MODE_KEY,'words');}catch(_){ }}
+      renderSearchIntentMode();
+      showToast('Recherche par le sens en cours de qualification. « Par les mots » reste actif.');
+      return;
+    }
+  }
   if(searchIntentMode===mode){renderSearchIntentMode();return;}
   cancelActiveSearch('search-intent-mode-changed');searchIntentMode=mode;resetSearchPaging({resetOrder:true,resetLane:true});searchLastPayload=null;
   if(persist){try{localStorage.setItem(SEARCH_INTENT_MODE_KEY,mode);}catch(_){ }}
