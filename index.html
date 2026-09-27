@@ -1691,7 +1691,7 @@ html[data-text-level="xlarge"]{--reader-measure:823px;--home-offline-title-size:
       <div class="nqp-label">Passage sélectionné</div>
       <div class="nqp-text" id="nqp-text"></div>
     </div>
-    <textarea class="note-textarea" id="note-input" placeholder="Votre réflexion personnelle…" rows="4"></textarea>
+    <textarea class="note-textarea" id="note-input" placeholder="Votre réflexion personnelle…" aria-label="Note personnelle" rows="4"></textarea>
     <div class="sheet-actions">
       <button class="btn-secondary" onclick="closeNoteSheet()">Annuler</button>
       <button class="btn-primary" onclick="saveNote()">Enregistrer</button>
@@ -1705,8 +1705,7 @@ html[data-text-level="xlarge"]{--reader-measure:823px;--home-offline-title-size:
     <div class="sheet-handle"></div>
     <div class="sheet-title">Ajouter à une collection</div>
     <div id="col-list"></div>
-    <input class="col-new-input" id="col-new-input" placeholder="Nouvelle collection…" 
-      onkeydown="if(event.key==='Enter')createAndAddCollection()">
+    <input class="col-new-input" id="col-new-input" placeholder="Nouvelle collection…" aria-label="Nom de la nouvelle collection" onkeydown="if(event.key==='Enter')createAndAddCollection()">
     <div class="sheet-actions">
       <button class="btn-secondary" onclick="closeColSheet()">Annuler</button>
       <button class="btn-primary" onclick="createAndAddCollection()">Créer et ajouter</button>
@@ -1756,7 +1755,7 @@ html[data-text-level="xlarge"]{--reader-measure:823px;--home-offline-title-size:
     <div class="sheet-handle"></div>
     <div class="sheet-title" id="report-issue-title">Signaler un problème de texte</div>
     <label class="support-check"><input type="checkbox" id="report-include-selection" onchange="refreshReportIssuePreview()"> Inclure explicitement le passage sélectionné</label>
-    <textarea class="note-textarea" id="report-issue-comment" rows="3" maxlength="1000" placeholder="Décrivez le problème (facultatif)…" oninput="refreshReportIssuePreview()"></textarea>
+    <textarea class="note-textarea" id="report-issue-comment" rows="3" maxlength="1000" aria-label="Description du problème de texte (facultatif)" placeholder="Décrivez le problème (facultatif)…" oninput="refreshReportIssuePreview()"></textarea>
     <pre class="support-preview" id="report-issue-preview"></pre>
     <div class="sheet-actions">
       <button class="btn-secondary" type="button" onclick="closeReportIssue()">Annuler</button>
@@ -1972,7 +1971,7 @@ html[data-text-level="xlarge"]{--reader-measure:823px;--home-offline-title-size:
       <i class="ti ti-arrow-left"></i> Accueil
     </button>
     <h1 class="top-bar-title">Parcours guidés</h1>
-    <span style="width:32px;"></span>
+    <button class="btn-icon" type="button" onclick="showSizeSheet()" title="Taille du texte" aria-label="Taille du texte"><i class="ti ti-letter-a" aria-hidden="true"></i></button>
   </div>
   <div class="scroll parcours-list" id="parcours-list"></div>
 </div>
@@ -1981,7 +1980,7 @@ html[data-text-level="xlarge"]{--reader-measure:823px;--home-offline-title-size:
 <div class="screen" id="screen-tomes">
   <div class="top-bar">
     <h1 class="top-bar-title">Bibliothèque</h1>
-    <span class="top-bar-sub" id="tomes-count"></span>
+    <div style="display:flex;align-items:center;gap:4px;"><span class="top-bar-sub" id="tomes-count"></span><button class="btn-icon" type="button" onclick="showSizeSheet()" title="Taille du texte" aria-label="Taille du texte"><i class="ti ti-letter-a" aria-hidden="true"></i></button></div>
   </div>
   <div class="source-mode-bar"><div class="source-mode-segment" role="group" aria-label="Source affichée">
     <button class="source-mode-btn" type="button" data-source-mode="aflp" onclick="setSupplementMode('aflp')">PRINCIPAL</button>
@@ -2000,7 +1999,7 @@ html[data-text-level="xlarge"]{--reader-measure:823px;--home-offline-title-size:
       <i class="ti ti-arrow-left"></i> Tomes
     </button>
     <h1 class="top-bar-title" id="entries-title">Tome I</h1>
-    <span style="width:44px" aria-hidden="true"></span>
+    <button class="btn-icon" type="button" onclick="showSizeSheet()" title="Taille du texte" aria-label="Taille du texte"><i class="ti ti-letter-a" aria-hidden="true"></i></button>
   </div>
   <div class="source-mode-bar"><div class="source-mode-segment" role="group" aria-label="Source affichée">
     <button class="source-mode-btn" type="button" data-source-mode="aflp" onclick="setSupplementMode('aflp')">PRINCIPAL</button>
@@ -2071,7 +2070,7 @@ html[data-text-level="xlarge"]{--reader-measure:823px;--home-offline-title-size:
 <div class="screen" id="screen-search">
   <div class="top-bar">
     <h1 class="top-bar-title">Recherche</h1>
-    <button class="btn-icon" type="button" onclick="copySearchLink()" aria-label="Copier le lien de cette recherche" title="Copier le lien"><i class="ti ti-link"></i></button>
+    <div style="display:flex;align-items:center;gap:2px;"><button class="btn-icon" type="button" onclick="copySearchLink()" aria-label="Copier le lien de cette recherche" title="Copier le lien"><i class="ti ti-link"></i></button><button class="btn-icon" type="button" onclick="showSizeSheet()" title="Taille du texte" aria-label="Taille du texte"><i class="ti ti-letter-a" aria-hidden="true"></i></button></div>
   </div>
   <div class="search-intent-wrap">
     <div class="search-intent-segment" role="group" aria-label="Type de recherche">
@@ -2129,46 +2128,35 @@ html[data-text-level="xlarge"]{--reader-measure:823px;--home-offline-title-size:
       <button class="btn-icon" onclick="exportJournalTxt()" aria-label="Exporter le journal lisible" title="Journal lisible"><i class="ti ti-file-text"></i></button>
       <button class="btn-icon" onclick="exportBackupJson()" aria-label="Sauvegarder les données" title="Sauvegarde des données"><i class="ti ti-download"></i></button>
       <button class="btn-icon" onclick="triggerImportEspace()" aria-label="Restaurer une sauvegarde" title="Restaurer"><i class="ti ti-upload"></i></button>
+      <button class="btn-icon" type="button" onclick="showSizeSheet()" title="Taille du texte" aria-label="Taille du texte"><i class="ti ti-letter-a" aria-hidden="true"></i></button>
       <input id="espace-import-file" type="file" accept="application/x-ndjson,.ldcbackup,application/json,.json" hidden onchange="handleImportFile(this)">
     </div>
   </div>
-  <div class="espace-tabs">
-    <button class="es-tab active" onclick="showEspaceTab('notes')" id="es-tab-notes">Notes</button>
-    <button class="es-tab" onclick="showEspaceTab('highlights')" id="es-tab-highlights">Surlignages</button>
-    <button class="es-tab" onclick="showEspaceTab('favorites')" id="es-tab-favorites">Favoris</button>
-    <button class="es-tab" onclick="showEspaceTab('collections')" id="es-tab-collections">Collections</button>
-    <button class="es-tab" onclick="showEspaceTab('stale')" id="es-tab-stale">À vérifier</button>
-    <button class="es-tab" onclick="showEspaceTab('stats')" id="es-tab-stats" aria-label="Statistiques"><i class="ti ti-chart-bar" style="font-size:14px;"></i></button>
+  <div class="espace-tabs" role="tablist" aria-label="Sections de Mon Espace" onkeydown="handleEspaceTabsKey(event)">
+    <button class="es-tab active" role="tab" aria-selected="true" aria-controls="ep-notes" tabindex="0" onclick="showEspaceTab('notes')" id="es-tab-notes">Notes</button>
+    <button class="es-tab" role="tab" aria-selected="false" aria-controls="ep-highlights" tabindex="-1" onclick="showEspaceTab('highlights')" id="es-tab-highlights">Surlignages</button>
+    <button class="es-tab" role="tab" aria-selected="false" aria-controls="ep-favorites" tabindex="-1" onclick="showEspaceTab('favorites')" id="es-tab-favorites">Favoris</button>
+    <button class="es-tab" role="tab" aria-selected="false" aria-controls="ep-collections" tabindex="-1" onclick="showEspaceTab('collections')" id="es-tab-collections">Collections</button>
+    <button class="es-tab" role="tab" aria-selected="false" aria-controls="ep-stale" tabindex="-1" onclick="showEspaceTab('stale')" id="es-tab-stale">À vérifier</button>
+    <button class="es-tab" role="tab" aria-selected="false" aria-controls="ep-stats" tabindex="-1" onclick="showEspaceTab('stats')" id="es-tab-stats" aria-label="Statistiques"><i class="ti ti-chart-bar" style="font-size:14px;" aria-hidden="true"></i></button>
   </div>
   <div class="espace-filter">
     <input id="espace-filter-input" type="search" placeholder="Filtrer Mon Espace…" aria-label="Filtrer Mon Espace" oninput="applyEspaceFilter()">
     <button class="espace-filter-clear" onclick="clearEspaceFilter()">Effacer</button>
   </div>
-  <div class="espace-panel active scroll" id="ep-notes"></div>
-  <div class="espace-panel scroll" id="ep-highlights"></div>
-  <div class="espace-panel scroll" id="ep-favorites"></div>
-  <div class="espace-panel scroll" id="ep-collections"></div>
-  <div class="espace-panel scroll" id="ep-stale"></div>
-  <div class="espace-panel scroll" id="ep-stats"></div>
-</div>
-
-<div class="overlay" id="backup-preview-overlay" onclick="if(event.target===this)closeImportPreview()">
-  <div class="sheet" role="dialog" aria-modal="true" aria-label="Vérifier la sauvegarde" style="max-width:520px;">
-    <div class="sheet-handle"></div>
-    <div class="sheet-title">Vérifier la sauvegarde</div>
-    <div id="backup-preview-body" class="sem-strong-13" style="line-height:1.55;"></div>
-    <div class="sheet-actions">
-      <button class="btn-secondary" onclick="closeImportPreview()">Annuler</button>
-      <button class="btn-primary" id="backup-import-confirm" onclick="confirmImportBackup()">Restaurer</button>
-    </div>
-  </div>
+  <div class="espace-panel active scroll" id="ep-notes" role="tabpanel" aria-labelledby="es-tab-notes"></div>
+  <div class="espace-panel scroll" id="ep-highlights" role="tabpanel" aria-labelledby="es-tab-highlights"></div>
+  <div class="espace-panel scroll" id="ep-favorites" role="tabpanel" aria-labelledby="es-tab-favorites"></div>
+  <div class="espace-panel scroll" id="ep-collections" role="tabpanel" aria-labelledby="es-tab-collections"></div>
+  <div class="espace-panel scroll" id="ep-stale" role="tabpanel" aria-labelledby="es-tab-stale"></div>
+  <div class="espace-panel scroll" id="ep-stats" role="tabpanel" aria-labelledby="es-tab-stats"></div>
 </div>
 
 <!-- HELP -->
 <div class="screen" id="screen-help">
   <div class="top-bar">
     <button class="btn-back" onclick="closeHelp()"><i class="ti ti-arrow-left"></i> Retour</button>
-    <h1 class="top-bar-title">Aide</h1><span style="width:44px;" aria-hidden="true"></span>
+    <h1 class="top-bar-title">Aide</h1><button class="btn-icon" type="button" onclick="showSizeSheet()" title="Taille du texte" aria-label="Taille du texte"><i class="ti ti-letter-a" aria-hidden="true"></i></button>
   </div>
   <div class="scroll" id="help-scroll">
     <div class="help-section">
@@ -2212,7 +2200,7 @@ html[data-text-level="xlarge"]{--reader-measure:823px;--home-offline-title-size:
         <div class="help-row"><span class="help-chip light">◂ ▸</span><span class="help-text">Passe à l’entrée précédente ou suivante sans revenir à la liste.</span></div>
         <div class="help-row"><span class="help-chip light">← Tome</span><span class="help-text">Dans le lecteur, le bouton de retour reste visible sur la même ligne que <b>PRINCIPAL · COMPLÉMENT · ENRICHI</b>. Il revient à la liste du Tome et restaure autant que possible le passage sélectionné au même endroit dans la liste, afin de poursuivre votre exploration sans repartir du début.</span></div>
         <div class="help-row"><span class="help-chip light">⋯</span><span class="help-text">Ouvre les outils du lecteur : Favori, Autour de ce passage, Partager la référence, Copier le lien, Signaler un problème de texte, Copier le diagnostic, Infos et source, Version du texte, l’action de lecture suivie lorsqu’elle est pertinente, Taille du texte et Thème.</span></div>
-        <div class="help-row"><span class="help-chip light">Taille</span><span class="help-text">Choisissez <b>Petit · Normal · Grand · Très grand</b>. La taille adapte le texte de lecture ainsi que les textes utiles de l’interface. Certains éléments très compacts, notamment de navigation, augmentent de façon plus limitée afin de rester utilisables sur les petits écrans. Depuis l’Accueil, utilisez le bouton <b>Taille du texte</b> ; dans le lecteur, ouvrez <b>⋯ → Taille du texte</b>. La préférence est mémorisée.</span></div>
+        <div class="help-row"><span class="help-chip light">Taille</span><span class="help-text">Choisissez <b>Petit · Normal · Grand · Très grand</b>. Il s’agit d’<b>un seul réglage mémorisé pour toute l’application</b> : le même choix adapte la lecture, l’Aide et les autres textes utiles, avec des proportions adaptées à chaque type de contenu. Le bouton <b>Taille du texte</b> est disponible directement sur les principaux écrans ; dans le lecteur, ouvrez <b>⋯ → Taille du texte</b>. Vous pouvez donc, par exemple, choisir <b>Très grand</b> pendant la lecture de l’Aide puis revenir à <b>Grand</b> dans le lecteur. Le dernier choix reste actif jusqu’à ce que vous le changiez.</span></div>
         <div class="help-row"><span class="help-chip light">Thème</span><span class="help-text">Choisissez <b>Automatique · Clair · Sombre</b>. <b>Automatique</b> suit le réglage clair ou sombre de votre appareil. La préférence est mémorisée.</span></div>
       </div>
       <div class="help-tip">L’application mémorise la position de lecture à partir du paragraphe et d’une position interne afin de retrouver au mieux votre place après un retour ou un redémarrage.</div>
@@ -2349,7 +2337,7 @@ html[data-text-level="xlarge"]{--reader-measure:823px;--home-offline-title-size:
       <i class="ti ti-arrow-left"></i> Retour
     </button>
     <h1 class="top-bar-title" id="provenance-screen-title">Sources et vérification des textes</h1>
-    <span style="width:44px" aria-hidden="true"></span>
+    <button class="btn-icon" type="button" onclick="showSizeSheet()" title="Taille du texte" aria-label="Taille du texte"><i class="ti ti-letter-a" aria-hidden="true"></i></button>
   </div>
   <div class="scroll provenance-scroll" id="provenance-scroll">
     <div class="provenance-wrap">
@@ -2487,7 +2475,7 @@ html[data-text-level="xlarge"]{--reader-measure:823px;--home-offline-title-size:
       <i class="ti ti-arrow-left"></i> Retour
     </button>
     <h1 class="top-bar-title">Explications éditoriales</h1>
-    <span style="width:44px" aria-hidden="true"></span>
+    <button class="btn-icon" type="button" onclick="showSizeSheet()" title="Taille du texte" aria-label="Taille du texte"><i class="ti ti-letter-a" aria-hidden="true"></i></button>
   </div>
   <div class="scroll" id="tome1-editorial-scroll">
     <div class="editorial-wrap" id="tome1-editorial-body"></div>
@@ -2501,6 +2489,7 @@ html[data-text-level="xlarge"]{--reader-measure:823px;--home-offline-title-size:
       <i class="ti ti-arrow-left"></i>
     </button>
     <h1 class="top-bar-title">Navigateur de dates</h1>
+    <button class="btn-icon" type="button" onclick="showSizeSheet()" title="Taille du texte" aria-label="Taille du texte"><i class="ti ti-letter-a" aria-hidden="true"></i></button>
   </div>
   <div class="scroll dn-wrap">
     <div>
@@ -2519,6 +2508,21 @@ html[data-text-level="xlarge"]{--reader-measure:823px;--home-offline-title-size:
   </div>
 </div>
 </main>
+
+<!-- Backup restore preview is global: keep it outside #main-content so modal shell inert does not inert the dialog itself. -->
+<div class="overlay" id="backup-preview-overlay" onclick="if(event.target===this)closeImportPreview()">
+  <div class="sheet" role="dialog" aria-modal="true" aria-label="Vérifier la sauvegarde" style="max-width:520px;">
+    <div class="sheet-handle"></div>
+    <div class="sheet-title">Vérifier la sauvegarde</div>
+    <div id="backup-preview-body" class="sem-strong-13" style="line-height:1.55;"></div>
+    <div class="sheet-actions">
+      <button class="btn-secondary" onclick="closeImportPreview()">Annuler</button>
+      <button class="btn-primary" id="backup-import-confirm" onclick="confirmImportBackup()">Restaurer</button>
+    </div>
+  </div>
+</div>
+
+
 
 <!-- BOTTOM NAV -->
 <nav id="nav">
@@ -2544,11 +2548,11 @@ html[data-text-level="xlarge"]{--reader-measure:823px;--home-offline-title-size:
    VERSION — single source of truth
    Update this string on every release.
 ═══════════════════════════════════════════════════════ */
-const APP_VERSION = 'v2.19.126-R1B-PROVENANCE-UX-R2'; // R2 release-metadata-integrity repair of bounded provenance/source-verification successor; UX/corpus/Search/persistence/navigation semantics preserved
-const PUBLIC_VERSION = '126';       // provenance UX successor; final hosted/PWA/physical qualification still required
+const APP_VERSION = 'v2.19.128-R1B-UX-ACCESS-R2'; // v128 blind-challenge repair: backup preview moved outside #main-content inert boundary; protected corpus/Search/provenance/user-state semantics preserved
+const PUBLIC_VERSION = '127'; // UX/accessibility successor; final hosted/PWA/physical qualification required
 const APP_VERSION_LABEL = `Version ${PUBLIC_VERSION}`;
-const APP_BUILD = '2026-09-26';
-const SW_CACHE_VERSION = 'ldc-v2.19.126-R1B-provenance-ux-r2';
+const APP_BUILD = '2026-09-27';
+const SW_CACHE_VERSION = 'ldc-v2.19.128-R1B-ux-access-r2';
 const LDC_PROVENANCE_PUBLIC_COPY = Object.freeze({
   methodologyCta:'Voir les sources, les contrôles et leurs limites →',
   neutralSource:'Source détaillée dans la notice documentaire',
@@ -7378,8 +7382,8 @@ function syncModalShellLock(){
     document.body.classList.remove('app-state-modal');
   }
 }
-function openModalOverlay(id,closeFn){const ov=document.getElementById(id);if(!ov)return;ov.dataset.modalClose=closeFn;ov.classList.add('show');syncModalShellLock();trapModalFocus(ov);}
-function closeModalOverlay(id){const ov=document.getElementById(id);if(!ov)return;releaseModalFocus(ov);ov.classList.remove('show');syncModalShellLock();}
+function openModalOverlay(id,closeFn){const ov=document.getElementById(id);if(!ov)return;ov.dataset.modalClose=closeFn;ov.classList.add('show');trapModalFocus(ov);syncModalShellLock();}
+function closeModalOverlay(id){const ov=document.getElementById(id);if(!ov)return;ov.classList.remove('show');syncModalShellLock();releaseModalFocus(ov);}
 
 /* ═══ NOTE ═══ */
 function openNoteSheet() {
@@ -8509,11 +8513,31 @@ let activeEspaceTab = 'notes';
 function showEspaceTab(tab) {
   const tabs = ['notes','highlights','favorites','collections','stale','stats'];
   activeEspaceTab = tabs.includes(tab) ? tab : 'notes';
-  document.querySelectorAll('.es-tab').forEach((t,i) => t.classList.toggle('active', tabs[i]===activeEspaceTab));
+  document.querySelectorAll('.es-tab').forEach((t,i) => {
+    const selected=tabs[i]===activeEspaceTab;
+    t.classList.toggle('active',selected);
+    t.setAttribute('aria-selected',selected?'true':'false');
+    t.tabIndex=selected?0:-1;
+  });
   document.querySelectorAll('.espace-panel').forEach(p => p.classList.remove('active'));
   const panel=document.getElementById('ep-'+activeEspaceTab); if(panel)panel.classList.add('active');
   if(activeEspaceTab==='stats') renderStats().catch(()=>{});
   applyEspaceFilter();
+}
+
+function handleEspaceTabsKey(event) {
+  if(!event||!['ArrowLeft','ArrowRight','Home','End'].includes(event.key))return;
+  const tabs=['notes','highlights','favorites','collections','stale','stats'];
+  const current=tabs.indexOf(activeEspaceTab);
+  let next=current<0?0:current;
+  if(event.key==='ArrowRight')next=(next+1)%tabs.length;
+  if(event.key==='ArrowLeft')next=(next-1+tabs.length)%tabs.length;
+  if(event.key==='Home')next=0;
+  if(event.key==='End')next=tabs.length-1;
+  event.preventDefault();
+  showEspaceTab(tabs[next]);
+  const target=document.getElementById('es-tab-'+tabs[next]);
+  if(target)target.focus();
 }
 
 function applyEspaceFilter() {
@@ -8592,7 +8616,7 @@ async function renderCollections(){
   });applyEspaceFilter();
 }
 
-function buildColItem(item,idx,total){const d=document.createElement('div');d.className='col-item';d.dataset.itemId=item.id;d.innerHTML=`<i class="ti ti-grip-vertical ci-drag" aria-label="Déplacer"></i><div class="ci-main"><div class="ci-ref">${escapeHtml(item.stable_ref)} · Tome ${item.volume}</div><div class="ci-text">${escapeHtml(item.text)}</div>${supplementBadgeForUserRecord(item)}${staleBadge(item)}<div class="ci-note-display ${item.note?'show':''}" id="ci-note-d-${item.id}">${item.note?escapeHtml(item.note):''}</div><textarea class="ci-note-edit" id="ci-note-e-${item.id}" rows="2" placeholder="Ajouter une note à ce passage…" onblur="saveItemNote(${item.id})">${escapeHtml(item.note||'')}</textarea><div class="ci-actions"><button class="ci-act" onclick="openCollectionItem(${item.id})">Ouvrir</button><button class="ci-act" onclick="copyCollectionItemLink(${item.id})">Lien</button><button class="ci-act" onclick="toggleItemNote(${item.id})">${item.note?'Modifier note':'+ Note'}</button><button class="ci-act danger" onclick="deleteColItem(${item.id})">Retirer</button></div></div><div class="ci-reorder"><button class="ci-mv ci-mv-up" ${idx===0?'disabled':''} onclick="moveColItem(${item.id},-1)" title="Monter">▲</button><button class="ci-mv ci-mv-down" ${idx===total-1?'disabled':''} onclick="moveColItem(${item.id},1)" title="Descendre">▼</button></div>`;return d;}
+function buildColItem(item,idx,total){const d=document.createElement('div');d.className='col-item';d.dataset.itemId=item.id;d.innerHTML=`<i class="ti ti-grip-vertical ci-drag" aria-label="Déplacer"></i><div class="ci-main"><div class="ci-ref">${escapeHtml(item.stable_ref)} · Tome ${item.volume}</div><div class="ci-text">${escapeHtml(item.text)}</div>${supplementBadgeForUserRecord(item)}${staleBadge(item)}<div class="ci-note-display ${item.note?'show':''}" id="ci-note-d-${item.id}">${item.note?escapeHtml(item.note):''}</div><textarea class="ci-note-edit" id="ci-note-e-${item.id}" rows="2" placeholder="Ajouter une note à ce passage…" aria-label="Note pour ce passage de la collection" onblur="saveItemNote(${item.id})">${escapeHtml(item.note||'')}</textarea><div class="ci-actions"><button class="ci-act" onclick="openCollectionItem(${item.id})">Ouvrir</button><button class="ci-act" onclick="copyCollectionItemLink(${item.id})">Lien</button><button class="ci-act" onclick="toggleItemNote(${item.id})">${item.note?'Modifier note':'+ Note'}</button><button class="ci-act danger" onclick="deleteColItem(${item.id})">Retirer</button></div></div><div class="ci-reorder"><button class="ci-mv ci-mv-up" ${idx===0?'disabled':''} onclick="moveColItem(${item.id},-1)" title="Monter">▲</button><button class="ci-mv ci-mv-down" ${idx===total-1?'disabled':''} onclick="moveColItem(${item.id},1)" title="Descendre">▼</button></div>`;return d;}
 async function toggleItemNote(itemId){const edit=document.getElementById('ci-note-e-'+itemId),display=document.getElementById('ci-note-d-'+itemId);if(!edit)return;const open=edit.classList.contains('show');if(!open){let current;try{current=await dbGet('col_items',itemId);}catch(e){showToast('Note indisponible — stockage local indisponible');return;}if(!current){showToast('Passage supprimé ailleurs');await renderCollections();return;}edit.value=current.note||'';edit.dataset.baseNote=current.note||'';edit.classList.add('show');edit.focus();if(display)display.classList.remove('show');}else{edit.classList.remove('show');if(display&&display.textContent.trim())display.classList.add('show');}}
 async function saveItemNote(itemId){const edit=document.getElementById('ci-note-e-'+itemId);if(!edit)return;const text=edit.value.trim(),base=edit.dataset.baseNote??'';let result;try{result=await dbSaveCollectionItemNoteAtomic(itemId,base,text);}catch(e){showToast('Note non enregistrée — stockage local indisponible');return;}if(result.status==='MISSING'){showToast('Passage supprimé ailleurs — note non enregistrée');await renderCollections();return;}if(result.status==='CONFLICT'){edit.value=result.record.note||'';edit.dataset.baseNote=result.record.note||'';showToast('Note modifiée ailleurs — version la plus récente conservée');return;}const durable=result.record||{};edit.dataset.baseNote=durable.note||'';edit.classList.remove('show');const display=document.getElementById('ci-note-d-'+itemId);if(display){display.textContent=durable.note||'';display.classList.toggle('show',!!String(durable.note||'').trim());}if(text)showToast('Note enregistrée');}
 async function moveColItem(itemId,dir){const item=await dbGet('col_items',itemId);if(!item){showToast('Passage supprimé ailleurs');await renderCollections();return;}let result;try{result=await dbReorderCollectionAtomic(item.col_id,{kind:'move',itemId,dir});}catch(e){showToast('Ordre non modifié — stockage local indisponible');return;}if(result.status!=='UPDATED'&&result.status!=='NOOP'){showToast('Collection modifiée ailleurs — ordre à refaire');}await renderCollections();showEspaceTab('collections');}
@@ -9105,35 +9129,102 @@ function closeHelp() {
 }
 
 let provenanceReturnContext=null;
+let provenanceScrollTransitionEpoch=0;
+let provenanceActiveScrollTransitionCancel=null;
+function provenanceCancelActiveScrollTransition(){const cancel=provenanceActiveScrollTransitionCancel;provenanceActiveScrollTransitionCancel=null;++provenanceScrollTransitionEpoch;if(typeof cancel==='function')cancel();}
+function provenanceFocusWithoutScroll(el){if(!el||typeof el.focus!=='function')return;try{el.focus({preventScroll:true});}catch(_){el.focus();}}
+function provenanceRelativeTop(scroller,el){if(!scroller||!el)return null;const sr=scroller.getBoundingClientRect(),er=el.getBoundingClientRect(),v=er.top-sr.top;return Number.isFinite(v)?v:null;}
+function provenanceCaptureScrollContext(scroller,anchor){return{scrollTop:scroller?scroller.scrollTop:0,anchorOffset:provenanceRelativeTop(scroller,anchor),clientHeight:scroller?scroller.clientHeight:0,scrollHeight:scroller?scroller.scrollHeight:0};}
+function provenanceRestoreScrollTransaction({scroller,targetTop=0,focusEl=null,anchorEl=null,anchorOffset=null,forceTop=false}){
+  provenanceCancelActiveScrollTransition();
+  if(!scroller)return;
+  const epoch=++provenanceScrollTransitionEpoch;
+  const desired=Number.isFinite(Number(targetTop))?Math.max(0,Number(targetTop)):0;
+  const desiredAnchor=Number.isFinite(Number(anchorOffset))?Number(anchorOffset):null;
+  let cancelled=false,done=false;
+  const originalOverflowAnchor=scroller.style.overflowAnchor;
+  const cancel=()=>{cancelled=true;cleanup();};
+  const onKey=e=>{if(e&&e.isTrusted!==false)cancel();};
+  const cleanup=()=>{if(done)return;done=true;scroller.removeEventListener('pointerdown',cancel,true);scroller.removeEventListener('touchstart',cancel,true);scroller.removeEventListener('wheel',cancel,true);document.removeEventListener('keydown',onKey,true);scroller.style.overflowAnchor=originalOverflowAnchor;if(provenanceActiveScrollTransitionCancel===cancel)provenanceActiveScrollTransitionCancel=null;};
+  provenanceActiveScrollTransitionCancel=cancel;
+  scroller.addEventListener('pointerdown',cancel,true);scroller.addEventListener('touchstart',cancel,true);scroller.addEventListener('wheel',cancel,true);document.addEventListener('keydown',onKey,true);
+  scroller.style.overflowAnchor='none';
+  const alive=()=>!cancelled&&!done&&epoch===provenanceScrollTransitionEpoch;
+  const applyImmediate=()=>{
+    if(!alive())return;
+    // Best-effort pre-paint positioning: avoid briefly exposing a stale hidden-scroll offset.
+    // This is deliberately NOT trusted as the final restoration; the verified transaction below still re-applies after focus/layout settles.
+    scroller.scrollTop=forceTop?0:desired;
+    if(forceTop&&Math.abs(scroller.scrollTop)>1)scroller.scrollTop=0;
+  };
+  const apply=()=>{
+    if(!alive())return;
+    scroller.scrollTop=forceTop?0:desired;
+    if(!forceTop&&anchorEl&&desiredAnchor!==null){
+      const current=provenanceRelativeTop(scroller,anchorEl);
+      if(current!==null&&Math.abs(current-desiredAnchor)>2)scroller.scrollTop=Math.max(0,scroller.scrollTop+(current-desiredAnchor));
+    }
+    if(forceTop&&Math.abs(scroller.scrollTop)>1)scroller.scrollTop=0;
+  };
+  applyImmediate();
+  requestAnimationFrame(()=>{
+    if(!alive())return;
+    provenanceFocusWithoutScroll(focusEl);
+    requestAnimationFrame(()=>{
+      if(!alive())return;
+      apply();
+      requestAnimationFrame(()=>{
+        if(!alive())return;
+        apply();
+        setTimeout(()=>{if(!alive())return;apply();cleanup();},80);
+      });
+    });
+  });
+}
+function provenanceNextFrame(){return new Promise(resolve=>requestAnimationFrame(resolve));}
 async function openProvenanceDetails(origin='help'){
   const safeOrigin=origin==='reader-info'?'reader-info':'help';
   if(safeOrigin==='reader-info'){
-    const reader=document.getElementById('reader-scroll'),overlay=document.getElementById('reader-info-overlay'),sheet=overlay&&overlay.querySelector('.sheet'),sp=activeReaderSupplement();
-    provenanceReturnContext={origin:'reader-info',readerScrollTop:reader?reader.scrollTop:0,sheetScrollTop:sheet?sheet.scrollTop:0,volume:Number(currentVolume)||null,entryId:currentEntry&&currentEntry.id||null,supplementId:sp&&sp.supplement_id||null,sourceMode:supplementMode};
-    closeReaderInfo();
+    const reader=document.getElementById('reader-scroll'),overlay=document.getElementById('reader-info-overlay'),sheet=overlay&&overlay.querySelector('.sheet'),cta=document.getElementById('reader-info-provenance-cta'),sp=activeReaderSupplement(),sheetCtx=provenanceCaptureScrollContext(sheet,cta);
+    provenanceReturnContext={origin:'reader-info',readerScrollTop:reader?reader.scrollTop:0,sheetScrollTop:sheetCtx.scrollTop,sheetCtaOffset:sheetCtx.anchorOffset,volume:Number(currentVolume)||null,entryId:currentEntry&&currentEntry.id||null,supplementId:sp&&sp.supplement_id||null,sourceMode:supplementMode};
+    // Persist the temporary Reader position while the info sheet still visually covers the Reader.
+    // Closing the sheet before this await could expose an intermediate Reader frame before provenance appears.
     if(activeReaderSession&&readerSessionOwnsVisibleReader(activeReaderSession)){try{await flushActiveReaderSession({invalidate:false});}catch(e){console.warn('LDC: temporary provenance suspension position not persisted',e);}}
+    closeReaderInfo();
   }else{
-    const help=document.getElementById('help-scroll');
-    provenanceReturnContext={origin:'help',helpScrollTop:help?help.scrollTop:0};
+    const help=document.getElementById('help-scroll'),cta=document.getElementById('help-provenance-cta'),helpCtx=provenanceCaptureScrollContext(help,cta);
+    provenanceReturnContext={origin:'help',helpScrollTop:helpCtx.scrollTop,helpCtaOffset:helpCtx.anchorOffset};
   }
   showScreen('provenance');
-  const sc=document.getElementById('provenance-scroll');if(sc)sc.scrollTop=0;
-  requestAnimationFrame(()=>{const back=document.getElementById('provenance-back-btn');if(back){try{back.focus({preventScroll:true});}catch(_){back.focus();}}});
+  provenanceRestoreScrollTransaction({scroller:document.getElementById('provenance-scroll'),targetTop:0,focusEl:document.getElementById('provenance-back-btn'),forceTop:true});
 }
 function provenanceReaderContextStillValid(ctx){const sp=activeReaderSupplement();return !!ctx&&Number(ctx.volume)===Number(currentVolume)&&String(ctx.entryId||'')===String(currentEntry&&currentEntry.id||'')&&String(ctx.supplementId||'')===String(sp&&sp.supplement_id||'')&&String(ctx.sourceMode||'')===String(supplementMode||'');}
-function closeProvenanceDetails(){
+async function provenanceRestoreReaderInfoContext(ctx){
+  const contextValid=provenanceReaderContextStillValid(ctx);
+  showScreen('reader');
+  if(!contextValid)return;
+  const reader=document.getElementById('reader-scroll'),readerTop=Number.isFinite(Number(ctx.readerScrollTop))?Math.max(0,Number(ctx.readerScrollTop)):0;
+  // Pre-paint best effort: restore Reader position in the same activation task only when the captured Reader identity is still valid.
+  if(reader)reader.scrollTop=readerTop;
+  // Reopen the info sheet in the same task so the Reader is not exposed for an intermediate paint.
+  openReaderInfo();
+  const overlay=document.getElementById('reader-info-overlay'),sheet=overlay&&overlay.querySelector('.sheet'),cta=document.getElementById('reader-info-provenance-cta');
+  provenanceRestoreScrollTransaction({scroller:sheet,targetTop:ctx.sheetScrollTop,focusEl:cta,anchorEl:cta,anchorOffset:ctx.sheetCtaOffset});
+  await provenanceNextFrame();
+  if(reader)reader.scrollTop=readerTop;
+  await provenanceNextFrame();
+  if(reader)reader.scrollTop=readerTop;
+}
+async function closeProvenanceDetails(){
   const ctx=provenanceReturnContext;provenanceReturnContext=null;
+  provenanceCancelActiveScrollTransition();
   if(ctx&&ctx.origin==='reader-info'){
-    showScreen('reader');
-    requestAnimationFrame(()=>{const reader=document.getElementById('reader-scroll');if(reader&&Number.isFinite(Number(ctx.readerScrollTop)))reader.scrollTop=Number(ctx.readerScrollTop)||0;
-      if(provenanceReaderContextStillValid(ctx)){
-        openReaderInfo();requestAnimationFrame(()=>{const overlay=document.getElementById('reader-info-overlay'),sheet=overlay&&overlay.querySelector('.sheet');if(sheet&&Number.isFinite(Number(ctx.sheetScrollTop)))sheet.scrollTop=Number(ctx.sheetScrollTop)||0;const cta=document.getElementById('reader-info-provenance-cta');if(cta){try{cta.focus({preventScroll:true});}catch(_){cta.focus();}}});
-      }
-    });
+    await provenanceRestoreReaderInfoContext(ctx);
     return;
   }
   showScreen('help');
-  requestAnimationFrame(()=>{const help=document.getElementById('help-scroll');if(help&&ctx&&Number.isFinite(Number(ctx.helpScrollTop)))help.scrollTop=Number(ctx.helpScrollTop)||0;const cta=document.getElementById('help-provenance-cta');if(cta){try{cta.focus({preventScroll:true});}catch(_){cta.focus();}}});
+  const help=document.getElementById('help-scroll'),cta=document.getElementById('help-provenance-cta');
+  provenanceRestoreScrollTransaction({scroller:help,targetTop:ctx&&ctx.helpScrollTop,focusEl:cta,anchorEl:cta,anchorOffset:ctx&&ctx.helpCtaOffset});
 }
 
 
@@ -9216,6 +9307,47 @@ async function ensureTextLevelSetting() {
 function captureReaderSizeAnchor() { return semanticPositionForPersistence(); }
 function restoreReaderSizeAnchor(anchor) { if(anchor) restoreSemanticReadingPosition(anchor); }
 
+function textSizeScrollProfile(screen) {
+  if (!screen) return null;
+  switch (screen.id) {
+    case 'screen-home': {
+      const candidates=[document.getElementById('home-first'),document.getElementById('home-return')].filter(Boolean);
+      const scroller=candidates.find(el=>getComputedStyle(el).display!=='none')||candidates[0]||null;
+      return scroller?{scroller,selector:':scope > *'}:null;
+    }
+    case 'screen-parcours': return {scroller:document.getElementById('parcours-list'),selector:':scope > *'};
+    case 'screen-tomes': return {scroller:document.getElementById('tomes-list'),selector:':scope > *'};
+    case 'screen-entries': return {scroller:document.getElementById('entries-list'),selector:':scope > *'};
+    case 'screen-search': return {scroller:document.getElementById('search-results'),selector:':scope > *'};
+    case 'screen-espace': return {scroller:screen.querySelector('.espace-panel.active'),selector:':scope > *'};
+    case 'screen-help': return {scroller:document.getElementById('help-scroll'),selector:'.help-section'};
+    case 'screen-provenance': return {scroller:document.getElementById('provenance-scroll'),selector:'.provenance-wrap > *'};
+    case 'screen-editorial': return {scroller:document.getElementById('tome1-editorial-scroll'),selector:'#tome1-editorial-body > *'};
+    case 'screen-date-nav': return {scroller:screen.querySelector('.scroll'),selector:':scope > *'};
+    default: return null;
+  }
+}
+
+function captureTextSizeContext() {
+  const screen=document.querySelector('.screen.active');
+  if(!screen)return null;
+  if(screen.id==='screen-reader')return {kind:'reader',screenId:screen.id,anchor:captureReaderSizeAnchor()};
+  const profile=textSizeScrollProfile(screen);
+  if(!profile||!profile.scroller)return {kind:'screen',screenId:screen.id};
+  return {kind:'scroll',screenId:screen.id,scroller:profile.scroller,selector:profile.selector,keyAttr:profile.keyAttr||null,
+    context:captureScrollContext(profile.scroller,profile.selector,profile.keyAttr||null)};
+}
+
+function restoreTextSizeContext(state) {
+  if(!state)return;
+  const screen=document.getElementById(state.screenId);
+  if(!screen||!screen.classList.contains('active'))return;
+  if(state.kind==='reader'){restoreReaderSizeAnchor(state.anchor);return;}
+  if(state.kind==='scroll'&&state.scroller&&state.scroller.isConnected){
+    restoreScrollContext(state.scroller,state.context,state.selector,state.keyAttr||null);
+  }
+}
+
 async function showSizeSheet() {
   let level = 'normal';
   try { level = await ensureTextLevelSetting(); } catch(e) { console.warn('LDC: text-level setting unavailable', e); }
@@ -9229,13 +9361,12 @@ function closeSizeSheet() {
 
 async function setTextLevel(level) {
   if (!Object.prototype.hasOwnProperty.call(TEXT_LEVELS, level)) return;
-  const anchor = captureReaderSizeAnchor();
+  const context = captureTextSizeContext();
   applyTextLevel(level);
   await new Promise(requestAnimationFrame);
-  restoreReaderSizeAnchor(anchor);
-  // Font-size changes rewrap the selected passage and the reader header without
-  // necessarily emitting resize. ResizeObserver covers the general case; this
-  // explicit post-change refresh makes the user-triggered path deterministic.
+  restoreTextSizeContext(context);
+  // Font-size changes rewrap the active reading/documentation surface without
+  // necessarily emitting resize. Preserve the same semantic/visual place.
   if(contextOcclusionState.active)requestAnimationFrame(()=>refreshContextOcclusionCompensation());
   try {
     await dbPut('settings', { key:'textLevel', val:level });

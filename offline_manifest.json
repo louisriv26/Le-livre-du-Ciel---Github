@@ -1,5 +1,5 @@
 {
-  "app_version": "v2.19.126-R1B-PROVENANCE-UX-R2",
+  "app_version": "v2.19.128-R1B-UX-ACCESS-R2",
   "asset_count": 204,
   "assets": [
     {
@@ -1077,7 +1077,7 @@
   },
   "legacy_cache_family_prefix": "ldc-le-livre-du-ciel-offline-v",
   "m7rc_fixed_point": true,
-  "page_worker_revision": "ldc-v2.19.126-R1B-provenance-ux-r2",
+  "page_worker_revision": "ldc-v2.19.128-R1B-ux-access-r2",
   "post_r6_date_id_a2_fixed_point": {
     "a2_sha256": "dd034a4d4bb329254818c3e62fd629c9b64c90f9d4bd533de9f6ed99247cb1d8",
     "date_id_sha256": "ed5bf462c47b8fb5a41f7c81591257d6e99f94bae08628aa27e5f7d667020c2a",
@@ -1138,7 +1138,7 @@
     "user_state_schema_changed": false,
     "ux_logic_changed": false
   },
-  "rebuild_status": "V126_PROVENANCE_UX_R2__R1_RELEASE_METADATA_BINDING_REPAIR__UX_CORPUS_SEARCH_USER_STATE_READER_NAVIGATION_ALGORITHMS_UNCHANGED__HOSTED_PWA_IPHONE_IPAD_GATES_OPEN__PUBLIC_RELEASE_NOT_YET_AUTHORIZED",
+  "rebuild_status": "V127_R1_UX_ACCESS__R4_PAGE_WORKER_EXPECTATION_MISMATCH_REPAIRED__D03_D06_D09_CLOSED__ONE_GLOBAL_TEXT_SIZE_SETTING__CORPUS_SEARCH_PROVENANCE_WORDING_USER_STATE_OFFLINE_BINDING_UNCHANGED__HOSTED_PWA_IPHONE_IPAD_RETEST_REQUIRED__PUBLIC_RELEASE_NOT_YET_AUTHORIZED",
   "retention_contract": {
     "clear_policy": "CURRENT_SCOPE_ONLY_FOR_SHARED_LEGACY_CACHES",
     "copy_migration_required": false,
@@ -1149,7 +1149,7 @@
     "shell_runtime_caches": "APP_VERSIONED"
   },
   "schema": "ldc-offline-manifest-v3",
-  "scope": "v126 R2 release-metadata-integrity repair of provenance/source-verification UX successor: R1 UX bytes preserved except release identities; textual corpus/Search/user-state/navigation algorithms preserved.",
+  "scope": "v127 R1 bounded UX/accessibility and release-identity successor of exact v126 R4: one global text-size setting made directly accessible on substantive screens; Mon Espace tabs expose selected semantics; authored accessible names added to note/collection inputs; page/service-worker expected-version mismatch repaired; corpus/Search/provenance wording/user-state/offline content preserved.",
   "scope_isolation_contract": "ONLY_CURRENT_SERVICE_WORKER_SCOPE_URLS_MAY_SATISFY_REUSE_OR_BE_CLEARED_FROM_SHARED_LEGACY_CACHES",
   "semantic_vector_search_included": false,
   "semantic_vector_search_note": "R18D Search-V3 engineering evidence is preserved externally and v113 Search-V3 runtime modules remain byte-identical. No neural model, vectors or qualified semantic pack are bundled. Par le sens remains fail-closed.",
@@ -1175,5 +1175,54 @@
     "predecessor_candidate_sha256": "d5341cd079a6c50bee148c497108a40f924a70f50f840702884a457fb88abe4b",
     "volume_summary_sha256": "8d422e692c8d4c7d230bd270ec8f9d455e1949043ebe5bed75f5746b3d40b60a"
   },
-  "total_bytes": 114480819
+  "total_bytes": 114480819,
+  "provenance_ux_v126_r3_navigation_repair": {
+    "classification": "BOUNDED_PROVENANCE_NAVIGATION_STATE_RESTORATION_REPAIR",
+    "date": "2026-09-27",
+    "predecessor_app_version": "v2.19.126-R1B-PROVENANCE-UX-R2",
+    "predecessor_zip_sha256": "30623681dd70e804e342db1f7b2659a03d904a5bdb2b412dead2cf55008fab7d",
+    "physical_defect": "HELP_TO_PROVENANCE_COULD_OPEN_MID_SCROLL__PROVENANCE_RETURN_COULD_RESET_HELP_TO_TOP",
+    "repair_contract": "CAPTURE_RAW_AND_VISUAL_ANCHOR__ACTIVATE__FOCUS__RESTORE__MULTIFRAME_VERIFY__ONE_BOUNDED_LATE_CORRECTION__CANCEL_ON_USER_INTERACTION",
+    "reader_info_parallel_path_hardened": true,
+    "corpus_assets_changed": false,
+    "search_assets_changed": false,
+    "provenance_wording_changed": false,
+    "user_state_schema_changed": false,
+    "public_release_authorized": false,
+    "physical_pwa_iphone_ipad_retest_required": true
+  },
+  "provenance_ux_v126_r4_prepaint_repair": {
+    "classification": "BOUNDED_PROVENANCE_NAVIGATION_PREPAINT_REPAIR",
+    "date": "2026-09-27",
+    "predecessor_app_version": "v2.19.126-R1B-PROVENANCE-UX-R3",
+    "predecessor_zip_sha256": "f4163f589ba64c72aeb2026877250e1aefefecd95b4a5d21b9e8d13f42e11f44",
+    "trigger": "INDEPENDENT_POST_BUILD_REAUDIT__ACTUAL_R3_DOM_SHOWED_STALE_PROVENANCE_SCROLL_FOR_TWO_ANIMATION_FRAMES_BEFORE_VERIFIED_ZERO",
+    "root_cause": "R3_VERIFIED_TRANSACTION_DELAYED_FIRST_POSITION_ASSIGNMENT_UNTIL_AFTER_FOCUS_AND_LAYOUT_FRAMES__ALLOWING_PREPAINT_STALE_OFFSET_VISIBILITY",
+    "repair_contract": "IMMEDIATE_BEST_EFFORT_POSITIONING_IN_SAME_ACTIVATION_TASK__THEN_FOCUS_LAYOUT_MULTIFRAME_VERIFICATION__80MS_BOUNDED_LATE_CORRECTION__USER_INTERACTION_CANCELLATION_PRESERVED__READER_AND_INFO_SHEET_REOPENED_PREPAINT_AT_CAPTURED_POSITIONS",
+    "corpus_assets_changed": false,
+    "search_assets_changed": false,
+    "provenance_wording_changed": false,
+    "user_state_semantics_changed": false,
+    "public_release_authorized": false,
+    "reader_info_route": "FLUSH_WHILE_INFO_SHEET_STILL_COVERS_READER__CLOSE_SHEET_AND_SHOW_PROVENANCE_SAME_CONTINUATION__RETURN_REACTIVATES_READER_AND_REOPENS_INFO_SHEET_IN_SAME_TASK__RAW_AND_VISUAL_SHEET_POSITION_VERIFIED"
+  },
+  "ux_access_v127_r1": {
+    "classification": "BOUNDED_UX_ACCESSIBILITY_AND_RELEASE_IDENTITY_SUCCESSOR",
+    "predecessor_app_version": "v2.19.126-R1B-PROVENANCE-UX-R4",
+    "predecessor_zip_sha256": "2d4e86203354b70f9b3e57a077ca6231435b1882592b67514d2be0468a904659",
+    "release_integrity_trigger": "R4 index.html expected ldc-v2.19.126-R1B-provenance-ux-r2 while bundled sw.js reported ldc-v2.19.126-R1B-provenance-ux-r4; v127 binds page and worker to one new revision.",
+    "closed_findings": [
+      "NEW-LDC-RELEASE-ID-01",
+      "D-03",
+      "D-06",
+      "D-09",
+      "NEW-LDC-MODAL-FOCUS-01"
+    ],
+    "text_size_contract": "ONE_PERSISTENT_GLOBAL_PETIT_NORMAL_GRAND_TRES_GRAND_SETTING__DIRECT_ACCESS_ON_SUBSTANTIVE_NON_READER_SCREENS__READER_RETAINS_MORE_MENU_ACCESS__NO_PER_SCREEN_PREFERENCE__NO_AUTOMATIC_SWITCHING",
+    "position_contract": "TEXT_SIZE_REFLOW_RESTORES_ACTIVE_SCREEN_SEMANTIC_OR_VISUAL_SCROLL_CONTEXT__READER_RETAINS_SEMANTIC_ANCHOR_RESTORE",
+    "protected_contract": "205_CORPUS_FILES__SEARCH_ASSETS_MODULES__PROVENANCE_PUBLIC_WORDING__USER_DATA_SCHEMAS__204_OFFLINE_CONTENT_ASSETS_AND_BINDING_UNCHANGED",
+    "public_release_authorized": false,
+    "physical_retest_required": true,
+    "modal_focus_contract": "SHARED_MODAL_INVOKER_CAPTURE_OCCURS_BEFORE_SHELL_INERT__SHELL_INERT_REMOVED_BEFORE_INVOKER_FOCUS_RESTORE__SIZE_AND_OTHER_SHARED_DIALOGS_RETURN_FOCUS_TO_ORIGINATING_CONTROL"
+  }
 }
