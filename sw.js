@@ -1,4 +1,4 @@
-const VERSION = 'ldc-v2.19.128-R1B-ux-access-r2';
+const VERSION = 'ldc-v129-b1';
 const CACHE_PREFIX = 'ldc-le-livre-du-ciel-';
 const OFFLINE_STORAGE_SCHEMA = 'ldc-offline-storage-v3';
 const OFFLINE_CONTENT_BINDING_SCHEMA = 'ldc-offline-content-binding-v2';
@@ -10,8 +10,8 @@ function scopeFingerprint(scope) {
 }
 const OFFLINE_SCOPE_FINGERPRINT = scopeFingerprint(self.registration.scope);
 const SCOPE_CACHE_PREFIX = `${CACHE_PREFIX}${OFFLINE_SCOPE_FINGERPRINT}-`;
-const SHELL_CACHE = `${SCOPE_CACHE_PREFIX}shell-v2.19.128-R1B-ux-access-r2`;
-const RUNTIME_CACHE = `${SCOPE_CACHE_PREFIX}runtime-v2.19.128-R1B-ux-access-r2`;
+const SHELL_CACHE = `${SCOPE_CACHE_PREFIX}shell-v129-b1`;
+const RUNTIME_CACHE = `${SCOPE_CACHE_PREFIX}runtime-v129-b1`;
 const LEGACY_V76_WORKER_VERSION = 'ldc-v2.19.76-R1B-report-r2';
 const UPDATE_COMPAT_META_PATH = '__ldc_update_compat__.json';
 const INSTALL_FETCH_NONCE = `${Date.now().toString(36)}-${Math.random().toString(36).slice(2)}`;
