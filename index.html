@@ -2077,7 +2077,7 @@ html[data-text-level="xlarge"]{--reader-measure:823px;--home-offline-title-size:
       <button id="search-intent-meaning" class="search-intent-btn" type="button" aria-pressed="false" onclick="setSearchIntentMode('meaning')">Par le sens</button>
       <button id="search-intent-words" class="search-intent-btn active" type="button" aria-pressed="true" onclick="setSearchIntentMode('words')">Par les mots</button>
     </div>
-    <div id="search-intent-help" class="search-intent-help"><span class="search-intent-lab">LAB interne.</span> Recherchez un mot, une expression, une citation, une date ou une référence.</div>
+    <div id="search-intent-help" class="search-intent-help">Recherchez un mot, une expression, une citation, une date ou une référence.</div>
   </div>
   <div class="search-bar-wrap">
     <div class="search-bar">
@@ -2252,7 +2252,7 @@ html[data-text-level="xlarge"]{--reader-measure:823px;--home-offline-title-size:
         <div class="help-row"><span class="help-chip outline">Formulation proche</span><span class="help-text">Pour une phrase de <b>3 à 14 mots</b> dont vous vous souvenez imparfaitement, l’application peut proposer une formulation présentant une ou quelques petites différences textuelles, par exemple un mot ajouté, omis ou remplacé, ou deux mots voisins inversés. Plus la phrase est courte, plus la tolérance est stricte. Elle affiche toujours les mots réellement présents dans la source et ne présente jamais ce résultat comme une <b>Phrase exacte</b>. Lorsque trop de formulations restent également plausibles, elle vous invite à préciser votre souvenir. Un badge <b>CRITICAL_DIFFERENCE</b> signale certaines différences potentiellement importantes qui ne doivent pas être assimilées silencieusement.</span></div>
         <div class="help-row"><span class="help-chip outline">Métadonnées</span><span class="help-text">Les résultats peuvent aussi correspondre au titre, à la date, à la référence ou à une autre métadonnée de l’entrée.</span></div>
         <div class="help-row"><span class="help-chip outline">Correspondance approchée</span><span class="help-text"><b>Élargir la recherche</b> permet, seulement si vous le choisissez, d’afficher <b>Certains termes</b> : une partie seulement des mots saisis a été retrouvée. Ces résultats ne sont jamais affichés comme résultat principal par défaut. Cela ne signifie pas qu’un lien thématique, doctrinal ou « par le sens » a été établi. Vérifiez toujours le passage avant de le citer.</span></div>
-        <div class="help-row"><span class="help-chip outline">Par le sens / Par les mots</span><span class="help-text"><b>Par les mots</b> conserve la recherche textuelle qualifiée. <b>Par le sens</b> est le laboratoire de recherche d’un souvenir exprimé avec vos propres mots. Il ne remplace jamais le sens par une union de mots partiels et reste fermé tant que le modèle, le pack sémantique, l’abstention et les tests appareil/hors ligne ne sont pas qualifiés.</span></div>
+        <div class="help-row"><span class="help-chip outline">Par le sens / Par les mots</span><span class="help-text"><b>Par les mots</b> conserve la recherche textuelle qualifiée. <b>Par le sens</b> est une fonction de recherche en développement pour retrouver un souvenir exprimé avec vos propres mots. Il ne remplace jamais le sens par une union de mots partiels et reste fermé tant que le modèle, le pack sémantique, l’abstention et les tests appareil/hors ligne ne sont pas qualifiés.</span></div>
         <div class="help-divider"></div>
         <div class="help-row"><span class="help-chip">Autour de ce passage</span><span class="help-text">Dans le lecteur, ouvrez <b>⋯ → Autour de ce passage</b> pour explorer des entrées du même Tome, des thèmes proches ou des familles d’images spirituelles.</span></div>
         <div class="help-row"><span class="help-chip outline">Badges de contexte</span><span class="help-text"><b>Éditorial</b> signale une explication éditoriale du Tome 1 ; <b>COMPLÉMENT</b> signale un contenu substantiel absent du corpus PRINCIPAL et conservé comme COMPLÉMENT retenu ; sa provenance détaillée est disponible dans les informations du passage ; le badge du filtre Jésus apparaît lorsque ce filtre est actif.</span></div>
@@ -2548,11 +2548,11 @@ html[data-text-level="xlarge"]{--reader-measure:823px;--home-offline-title-size:
    VERSION — single source of truth
    Update this string on every release.
 ═══════════════════════════════════════════════════════ */
-const APP_VERSION = 'v2.19.128-R1B-UX-ACCESS-R2'; // v128 blind-challenge repair: backup preview moved outside #main-content inert boundary; protected corpus/Search/provenance/user-state semantics preserved
-const PUBLIC_VERSION = '127'; // UX/accessibility successor; final hosted/PWA/physical qualification required
-const APP_VERSION_LABEL = `Version ${PUBLIC_VERSION}`;
-const APP_BUILD = '2026-09-27';
-const SW_CACHE_VERSION = 'ldc-v2.19.128-R1B-ux-access-r2';
+const APP_VERSION = '129'; // APP-GOV public/support authority for this bounded pre-physical successor
+const PUBLIC_VERSION = APP_VERSION;
+const APP_VERSION_LABEL = `Version ${APP_VERSION}`;
+const APP_BUILD = '2026-09-30';
+const SW_CACHE_VERSION = 'ldc-v129-b1-prephysical';
 const LDC_PROVENANCE_PUBLIC_COPY = Object.freeze({
   methodologyCta:'Voir les sources, les contrôles et leurs limites →',
   neutralSource:'Source détaillée dans la notice documentaire',
@@ -3698,6 +3698,8 @@ function shouldAutofocusSearchInput(){
 async function goSearch() {
   await finishReaderForPermanentNavigation('search');
   resetRootHorizontalViewport('enter-search');
+  const intentReset = searchIntentMode !== 'words';
+  if(intentReset) setSearchIntentMode('words',{rerun:false,persist:false});
   showScreen('search');
   renderSearchIntentMode();
   renderSearchSourceModeRow();
@@ -3706,7 +3708,8 @@ async function goSearch() {
   renderVolFilterRow();
   const input=document.getElementById('search-input');
   if(input&&shouldAutofocusSearchInput())input.focus({preventScroll:true});
-  if (!input.value) refreshSearchSuggestions().catch(()=>{});
+  if (input.value && intentReset) runSearch();
+  else if (!input.value) refreshSearchSuggestions().catch(()=>{});
   // Stage 10: SEARCH-V2 is the sole active retrieval engine and loads lazily in its worker.
 }
 
@@ -7867,7 +7870,8 @@ let supplementRegistryLoading = null, supplementSpeakerLoading = null;
 let supplementEntryIds = new Set();
 setTimeout(()=>{loadSearchIntentMode();renderSearchIntentMode();},0);
 function loadSearchIntentMode(){
-  try{const v=localStorage.getItem(SEARCH_INTENT_MODE_KEY);if(v==='meaning'||v==='words')searchIntentMode=v;}catch(_){ }
+  searchIntentMode='words';
+  try{localStorage.removeItem(SEARCH_INTENT_MODE_KEY);}catch(_){ }
   return searchIntentMode;
 }
 function renderSearchIntentMode(){
@@ -7875,7 +7879,7 @@ function renderSearchIntentMode(){
   if(meaning){const a=searchIntentMode==='meaning';meaning.classList.toggle('active',a);meaning.setAttribute('aria-pressed',a?'true':'false');}
   if(words){const a=searchIntentMode==='words';words.classList.toggle('active',a);words.setAttribute('aria-pressed',a?'true':'false');}
   if(input){input.placeholder=searchIntentMode==='meaning'?'Décrivez ce dont vous vous souvenez avec vos propres mots…':'Mot, expression, citation, date ou référence…';input.setAttribute('aria-label',searchIntentMode==='meaning'?'Rechercher par le sens dans le Livre du Ciel':'Rechercher par les mots dans le Livre du Ciel');}
-  if(help)help.innerHTML=searchIntentMode==='meaning'?'<span class="search-intent-lab">LAB interne.</span> Décrivez librement l’idée ou le passage dont vous vous souvenez. Les mots exacts ne sont pas nécessaires.':'<span class="search-intent-lab">LAB interne.</span> Recherchez un mot, une expression, une citation, une date ou une référence.';
+  if(help)help.innerHTML=searchIntentMode==='meaning'?'Fonction en développement. Décrivez librement l’idée ou le passage dont vous vous souvenez. Les mots exacts ne sont pas nécessaires.':'Recherchez un mot, une expression, une citation, une date ou une référence.';
   const order=document.getElementById('search-order-row'),lane=document.getElementById('search-lane-row');
   if(order)order.style.display=searchIntentMode==='words'?'flex':'none';
   if(lane&&searchIntentMode==='meaning')lane.style.display='none';
@@ -7884,7 +7888,7 @@ function setSearchIntentMode(mode,{rerun=true,persist=true}={}){
   if(mode!=='meaning'&&mode!=='words')return;
   if(searchIntentMode===mode){renderSearchIntentMode();return;}
   cancelActiveSearch('search-intent-mode-changed');searchIntentMode=mode;resetSearchPaging({resetOrder:true,resetLane:true});searchLastPayload=null;
-  if(persist){try{localStorage.setItem(SEARCH_INTENT_MODE_KEY,mode);}catch(_){ }}
+  if(persist){try{localStorage.removeItem(SEARCH_INTENT_MODE_KEY);}catch(_){ }}
   renderSearchIntentMode();document.getElementById('trust-notice').style.display='none';
   const q=(document.getElementById('search-input')?.value||'').trim();
   if(q&&rerun)runSearch();else if(!q)refreshSearchSuggestions().catch(()=>{});
@@ -7915,7 +7919,7 @@ function renderSemanticPackUnavailable(raw,structural,status){
   const meta=document.getElementById('search-meta');meta.style.display='block';meta.innerHTML=`Recherche par le sens <span class="search-mode-badge">SEARCH-V3 · qualification en cours</span>`;
   document.getElementById('trust-notice').style.display='none';const container=document.getElementById('search-results');container.innerHTML='';
   const reason=status&&status.reason?`<div class="semantic-lab-note">État du pack : ${escapeHtml(String(status.reason))}</div>`:'';
-  const panel=document.createElement('div');panel.className='semantic-pack-panel';panel.innerHTML='<b>Recherche par le sens : moteur non encore qualifié dans ce laboratoire.</b><br>La requête n’est pas transformée en une recherche OR sur chacun de ses mots. Aucun résultat lexical trompeur n’est affiché à la place.<div class="semantic-lab-note">Activation seulement après benchmark LDC, choix du modèle, requêtes humaines, négatifs difficiles, calibrage de l’abstention et tests appareil/hors ligne.</div>'+reason;container.appendChild(panel);
+  const panel=document.createElement('div');panel.className='semantic-pack-panel';panel.innerHTML='<b>Recherche par le sens : moteur non encore qualifié.</b><br>La requête n’est pas transformée en une recherche OR sur chacun de ses mots. Aucun résultat lexical trompeur n’est affiché à la place.<div class="semantic-lab-note">Activation seulement après benchmark LDC, choix du modèle, requêtes humaines, négatifs difficiles, calibrage de l’abstention et tests appareil/hors ligne.</div>'+reason;container.appendChild(panel);
   if(structural&&structural.hasStructural&&structural.residual){const n=document.createElement('div');n.className='search-suggestion-box';n.textContent='Les contraintes Tome/date/référence ont été reconnues et seront appliquées au moteur sémantique qualifié.';container.appendChild(n);}
 }
 function semanticResultToSearchTargetR4(r){
