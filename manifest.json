@@ -26,5 +26,7 @@
       "type": "image/png",
       "purpose": "maskable"
     }
-  ]
+  ],
+  "version": "129",
+  "release_id": "ldc-129-b1-prephysical"
 }
