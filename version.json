@@ -1,10 +1,10 @@
 {
-  "app_version": "v2.19.128-R1B-UX-ACCESS-R2",
+  "app_version": "131",
   "backbone_corpus_version": "G036-AFLP-R8-UWR2-FAST1-STAGE2-221",
   "backup_help_current_format_contract": "HELP_NORMAL_BACKUP_DESCRIBES_STREAMING_LDCBACKUP__SUPPORTED_HISTORICAL_GENERATIONS_MIGRATE_PRUDENTLY_BEFORE_VALIDATION__UNRESOLVED_ANCHORS_REMAIN_FOR_REVIEW__LEGACY_JSON_COMPATIBILITY_RETAINED",
   "baseline_candidate_sha256": "4a45966c24b9d6444c77b4229ba3df16634ec949cfb703dce91c5da1ec2d8fad",
   "baseline_candidate_version": "v2.19.91-R1B Stage14 Search V2.2 A9 Near R1 controlled-test freeze",
-  "build_date": "2026-09-27",
+  "build_date": "2026-09-30",
   "collection_link_contract": "LOCAL_COLLECTION_ID_LINK_DOES_NOT_TRANSFER_USER_DATA",
   "collections_visibility": "VISIBLE_MON_ESPACE_WORKSPACE_AND_EXPLICIT_ENTRYPOINT",
   "context_action_contract": "SELECTION_OR_PARAGRAPH_SINGLE_CONTEXT_SURFACE",
@@ -32,14 +32,14 @@
     "semantic_predecessor_aligne": "G036-AFLP-R7-UWR2",
     "stage2_221_predecessor_generation": "G036-AFLP-R7-SUP-T5-FAST1"
   },
-  "current_release_authority": "V128_R2_UX_ACCESS__INDEPENDENT_BLIND_CHALLENGE_BACKUP_PREVIEW_INERT_REPAIR__BOUNDED_SUCCESSOR_OF_EXACT_V127_R1__CORPUS_SEARCH_PROVENANCE_WORDING_USER_STATE_AND_OFFLINE_CONTENT_UNCHANGED__HOSTED_PWA_IPHONE_IPAD_REQUALIFICATION_REQUIRED",
+  "current_release_authority": "V131_B1_FINAL_PREPHYSICAL__V130_WAVE1_D10_PRESERVED__RESIDUAL_D13_AND_SIZE_COPY_CLEANUP__PROTECTED_PAYLOADS_UNCHANGED__PHYSICAL_REQUALIFICATION_REQUIRED",
   "current_runtime_browser_validation": "V127_R1_INTERNAL_PASS__INLINE_JS_SW_SYNTAX__240_OF_240_LAYOUT_CASES__HELP_AND_PROVENANCE_REFLOW_POSITION_PASS__ESPACE_TAB_SELECTED_STATE_PASS__SIZE_THEME_NOTE_MODAL_FOCUS_RETURN_PASS__204_OFFLINE_ASSETS_AND_BINDING_PASS__IN_MEMORY_OPAQUE_ORIGIN_INDEXEDDB_UNAVAILABLE__FRESH_HOSTED_PWA_IPHONE_IPAD_RETEST_REQUIRED",
   "deep_link_schema": "ldc-deep-link-v1",
   "degraded_boot_stage6": "DEFER__NOT_JUSTIFIED_FOR_RUNTIME_MUTATION_NOW",
   "diagnostic_default_copy_contract": "ALLOWLIST_PUBLIC_TECHNICAL_METADATA__NO_RAW_QUERY__NO_RAW_ERROR_MESSAGE__NO_USER_AUTHORED_TEXT",
   "entry_start_contract": "V107__V106_ENTRY_START_SEMANTIC_FIXED_POINT_AND_USER_INTENT_LOCK_PRESERVED__DIRECT_TOME_LIST_OPEN_ADDS_SOURCE_SCROLL_HANDOFF_TRANSACTION__CAPTURE_BACK_CONTEXT_BEFORE_BLUR__BLUR_FOCUSED_LIST_BUTTON_BEFORE_FIRST_AWAIT__FREEZE_SOURCE_MOMENTUM__RENEW_READER_SCROLL_DOM_SURFACE__PIN_TOP_BEFORE_EXPOSURE_AND_FOR_TWO_SETTLING_FRAMES__PREVIOUS_NEXT_SEARCH_RESUME_NOTE_HIGHLIGHT_DEEP_LINK_TARGET_SEMANTICS_UNCHANGED",
   "external_decision_authority": "FINAL_DECISION_LOCK_EXTERNAL_TO_DEPLOY_ZIP__WRITTEN_LAST_AFTER_PRIMARY_AND_INDEPENDENT_REOPEN_AUDITS",
-  "external_validation_status": "V128_R2__BLIND_CHALLENGE_CORRECTION_AFTER_V127_BACKUP_PREVIEW_MODAL_INERT_DEFECT__FRESH_HOSTED_PWA_IPHONE_IPAD_CONTROLLED_TEST_REQUIRED__PUBLIC_RELEASE_NOT_YET_AUTHORIZED",
+  "external_validation_status": "V131_B1__LOCAL_STATIC_AND_DESKTOP_MACHINE_QUALIFICATION_REQUIRED__HOSTED_PWA_IPHONE_IPAD_STORAGE_PRESSURE_FINAL_GATES_OPEN__PUBLIC_RELEASE_NOT_AUTHORIZED",
   "f1_poisoned_http_cache_regression_gate": "REQUIRED_AND_EXTERNAL_EVIDENCE",
   "f7_release_metadata_generation": "CURRENT_RELEASE_COUNTS_AND_BINDINGS_GENERATED_AFTER_CORPUS_PAYLOAD_FREEZE__V32_VALUES_RETAINED_ONLY_UNDER_HISTORICAL_KEYS",
   "f8_android_nonfragment_highlight_targeting": {
@@ -444,7 +444,7 @@
   "offline_corpus_manifest_sha256": "d1e761c7e6cb046afe092abde992fffa18369f6192b7cae47b0194fbd583c3fb",
   "offline_integrity_contract": "PERSISTENT_OFFLINE_REUSE_REQUIRES_CURRENT_SCOPE_URL_PLUS_EXACT_ASSET_SHA256_AND_BYTE_LENGTH_MARKERS__GLOBAL_PREDECESSOR_BINDING_NOT_REQUIRED__CHANGED_OR_INVALID_ASSETS_FAIL_CLOSED",
   "offline_manifest_schema": "ldc-offline-manifest-v3",
-  "offline_manifest_sha256": "233f4d6843fc6da946b9e16a4c071524f528e0724a5d24f74b93c38f4e7d8188",
+  "offline_manifest_sha256": "6441eae625e8845a9802c0913ce5067dddf6ed4b5f3c2b39eef84d83b8f6724a",
   "offline_scope": "36 tomes PRINCIPAL Final R2 textual state + SUP-T1..SUP-T5; v126 R3 bounded provenance-navigation restoration repair over R2; corpus/Search/provenance wording/user-state semantics unchanged; Semantic Search V3 fail-closed; public deployment not yet authorized.",
   "offline_state_schema": "ldc-offline-state-v3",
   "offline_status_typography_v98_contract": "IMPORTANT_STATUS_TITLE_DETAIL_SCALE_12_13_16_19_AND_11_12_15_18_SMALL_NORMAL_LARGE_XLARGE",
@@ -463,10 +463,10 @@
   "owner_override_note": "A continuation of the full blind adversarial audit of frozen R18 R7 found a genuine active-metadata contradiction: offline_manifest.json had the correct R18 R7 page_worker_revision and rebuild_status but its active scope field still described v87 R18 R6 as the current bounded successor. R18 R8 is a metadata-coherence successor. It corrects that active scope description and advances page/worker/cache identity to R18 R8 so the corrected bytes have a unique update namespace. The R18 R7 user-select:none native-selection repair and all R18 R6/R18 R5 runtime repairs are preserved. No corpus, search, speaker, flow, display, interaction-anchor, DB-schema or offline-content-binding mutation is authorised.",
   "owner_stage_start_authorisation": "USER_EXPLICITLY_AUTHORIZED_FULL_BLIND_ADVERSARIAL_VERIFICATION_AND_ALL_NECESSARY_CORRECTIONS__2026_09_12",
   "owner_user_acceptance": "USER_EXPLICITLY_REQUESTED_CONTINUED_DEVELOPMENT_WITHOUT_IMMEDIATE_DEVICE_CHECKING__NO_PUBLIC_DEPLOYMENT_AUTHORITY__2026_09_14",
-  "package_predecessor_app_version": "v2.19.127-R1B-UX-ACCESS-R1",
-  "package_predecessor_zip_sha256": "b0f5d60631ab4de787c30ea441495a9108f2d7febd0af1c4a80edce4864148ae",
+  "package_predecessor_app_version": "v2.19.128-R1B-UX-ACCESS-R2",
+  "package_predecessor_zip_sha256": "cb42fd9ba3b44e42dcd70bfdc390ddff957b8dbec3b5c92cae471fa3fc617053",
   "package_state_at_freeze": "V107_CONTROLLED_TEST_CANDIDATE__EXACT_V106_PREDECESSOR__V106_PHYSICAL_FAIL_LOCALIZED_BY_OWNER_A_B_TEST_TO_SCROLLED_ENTRIES_LIST_TO_READER_TRANSITION__BOUNDED_HANDOFF_REPAIR_ONLY__CORPUS_SEARCH_USER_DATA_SCHEMA_PERSISTENT_OFFLINE_CONTENT_UNCHANGED__PUBLIC_DEPLOYMENT_NOT_AUTHORIZED",
-  "page_worker_revision": "ldc-v2.19.128-R1B-ux-access-r2",
+  "page_worker_revision": "ldc-v131-b1-final-prephysical",
   "physical_ipad_gate": "OPEN__V126_R2_PHYSICAL_PROVENANCE_NAVIGATION_FAIL_REPAIRED_IN_R3__CONTROLLED_RETEST_REQUIRED",
   "physical_iphone_gate": "OPEN__V126_R2_PHYSICAL_PROVENANCE_NAVIGATION_FAIL_REPAIRED_IN_R3__CONTROLLED_RETEST_REQUIRED",
   "physical_samsung_android_gate": "V106_RETEST_REQUIRED_AFTER_READER_MUTATION__DIRECT_TOME_ENTRY_START__PREV_NEXT__FOUR_TEXT_PRESETS__MAX_SYSTEM_FONT__OFFLINE_COLD_REOPEN__TALKBACK_REPRESENTATIVE_CHECK",
@@ -630,7 +630,7 @@
   },
   "public_deployment_authorized": false,
   "public_release": "NOT_AUTHORIZED",
-  "public_version": "128",
+  "public_version": "131",
   "quote_display_contract": "CANONICAL_GUILLEMETS_PRESERVED_IN_CORPUS__ADJACENT_OUTER_DELIMITERS_HIDDEN__TWO_SOURCE_SPAN_GAP_OPENERS_WITH_EXPLICIT_JESUS_ATTRIBUTION_HIDDEN__SIX_PUNCTUATION_GAP_CLOSERS_HIDDEN__NESTED_AND_REPORTED_QUOTES_PRESERVED",
   "r16_authority_fencing_reaudit": {
     "corpus_changed": false,
@@ -3679,7 +3679,7 @@
   "vector_search_subsystem": "RETIRED_IN_RA3_V2_19_8__PRESERVED_IN_V2_19_9",
   "volume_lru_max": 4,
   "whole_collection_undo_contract": "TEN_SECOND_ATOMIC_PARENT_PLUS_ALL_CAPTURED_CHILDREN__FAIL_CLOSED_ON_PARENT_CHILD_OR_UNEXPECTED_ORPHAN_CONFLICT",
-  "wide_public_release": "NOT_AUTHORIZED__V112_PHYSICAL_REGRESSION_GATE_INHERITED_OPEN__SEARCH_MEANING_NEURAL_HUMAN_CALIBRATION_AND_DEVICE_GATES_OPEN",
+  "wide_public_release": "NOT_AUTHORIZED__FINAL_PREPHYSICAL_SUCCESSOR__PHYSICAL_AND_OFFLINE_GATES_OPEN",
   "wide_public_release_gate": "NOT_AUTHORIZED__PHYSICAL_DEVICE_INSTALLED_PWA_TRUE_OFFLINE_VOICEOVER_TALKBACK_TEXTUAL_FIDELITY_RIGHTS_AND_DEPLOY_BINDING_GATES_OPEN",
   "provenance_ux_v126_r3_navigation_repair": {
     "classification": "BOUNDED_PROVENANCE_NAVIGATION_STATE_RESTORATION_REPAIR",
@@ -3725,7 +3725,7 @@
     "public_deployment_authorized": false,
     "reader_info_route": "PERSIST_READER_POSITION_WHILE_INFO_SHEET_REMAINS_VISIBLE__NO_INTERMEDIATE_READER_FLASH_ON_OPEN__READER_AND_INFO_SHEET_REACTIVATED_AND_POSITIONED_IN_SAME_TASK_ON_RETURN"
   },
-  "rebuild_status": "V128_R2_BLIND_CHALLENGE_BACKUP_PREVIEW_MODAL_INERT_REPAIR__PUBLIC_RELEASE_NOT_YET_AUTHORIZED",
+  "rebuild_status": "V131_B1_FINAL_PREPHYSICAL__COPY_CLEANUP_SUCCESSOR__PUBLIC_RELEASE_NOT_AUTHORIZED",
   "ux_access_v127_r1": {
     "predecessor_app_version": "v2.19.126-R1B-PROVENANCE-UX-R4",
     "predecessor_zip_sha256": "2d4e86203354b70f9b3e57a077ca6231435b1882592b67514d2be0468a904659",
@@ -3767,5 +3767,51 @@
     "offline_content_assets_changed": false,
     "physical_qualification_required": true,
     "final_public_release_authorized": false
+  },
+  "v129_b1_prephysical": {
+    "classification": "BOUNDED_PREPHYSICAL_UX_RELEASE_IDENTITY_SUCCESSOR",
+    "closed_findings": [
+      "D-07",
+      "D-08",
+      "D-13"
+    ],
+    "d07_contract": "SEARCH_ENTRY_ALWAYS_DEFAULTS_TO_WORDS__STALE_LOCALSTORAGE_INTENT_PURGED__MEANING_MODE_NOT_PERSISTED__EXISTING_QUERY_RERUN_LEXICALLY_AFTER_RETURN",
+    "d08_contract": "APP_VERSION_129_IS_SOLE_PUBLIC_SUPPORT_AUTHORITY__PUBLIC_VERSION_ALIASES_APP_VERSION__WORKER_REVISION_IS_MECHANICAL_CACHE_ID_ONLY",
+    "d13_contract": "NO_LAB_INTERNE_OR_LABORATOIRE_WORDING_IN_ORDINARY_PUBLIC_SEARCH_COPY__FAIL_CLOSED_SEMANTIC_STATUS_REMAINS_EXPLICIT",
+    "protected_contract": "ALL_205_CORPUS_FILES__LEXICAL_SEARCH_MODULES_AND_PAYLOADS__PROVENANCE_CONTENT__USER_DATA_SCHEMA__OFFLINE_CONTENT_ASSET_LIST_AND_BINDING_UNCHANGED",
+    "physical_retest_required": true,
+    "public_release_authorized": false
+  },
+  "v130_b1_final_prephysical": {
+    "predecessor": "129/B1",
+    "authorized_scope": [
+      "D10 navigator.storage.estimate capacity preflight",
+      "D10 navigator.storage.persist persistence request/status",
+      "offline explanatory size corrected to exact current manifest magnitude",
+      "mechanical release/cache/offline-manifest identity rebinding"
+    ],
+    "offline_expected_bytes": 114480819,
+    "headroom_bytes": 25165824,
+    "corpus_mutation": "NONE",
+    "lexical_search_mutation": "NONE",
+    "offline_asset_mutation": "NONE",
+    "personal_state_schema_mutation": "NONE",
+    "physical_storage_pressure_gate": "OPEN",
+    "public_release_authorized": false
+  },
+  "v131_b1_final_prephysical": {
+    "predecessor": "130/B1",
+    "authorized_scope": [
+      "remove residual internal-development Search/help wording",
+      "correct remaining 102 Mo user copy to approximately 115 Mo",
+      "mechanical release/cache/offline-manifest identity rebinding"
+    ],
+    "logic_mutation": "NONE beyond inherited v130 D10 storage preflight",
+    "offline_asset_mutation": "NONE",
+    "corpus_mutation": "NONE",
+    "lexical_search_behavior_mutation": "NONE",
+    "personal_state_schema_mutation": "NONE",
+    "physical_storage_pressure_gate": "OPEN",
+    "public_release_authorized": false
   }
 }
