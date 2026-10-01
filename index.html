@@ -1870,7 +1870,7 @@ html[data-text-level="xlarge"]{--reader-measure:823px;--home-offline-title-size:
 </div>
 
 <!-- MAIN APPLICATION CONTENT -->
-<main id="main-content">
+<main id="main-content" aria-label="Contenu principal">
 <!-- HOME -->
 <div class="screen active" id="screen-home">
   <div class="top-bar">
@@ -2077,7 +2077,7 @@ html[data-text-level="xlarge"]{--reader-measure:823px;--home-offline-title-size:
       <button id="search-intent-meaning" class="search-intent-btn" type="button" aria-pressed="false" onclick="setSearchIntentMode('meaning')">Par le sens</button>
       <button id="search-intent-words" class="search-intent-btn active" type="button" aria-pressed="true" onclick="setSearchIntentMode('words')">Par les mots</button>
     </div>
-    <div id="search-intent-help" class="search-intent-help"><span class="search-intent-lab">LAB interne.</span> Recherchez un mot, une expression, une citation, une date ou une référence.</div>
+    <div id="search-intent-help" class="search-intent-help">Recherchez un mot, une expression, une citation, une date ou une référence.</div>
   </div>
   <div class="search-bar-wrap">
     <div class="search-bar">
@@ -2252,7 +2252,7 @@ html[data-text-level="xlarge"]{--reader-measure:823px;--home-offline-title-size:
         <div class="help-row"><span class="help-chip outline">Formulation proche</span><span class="help-text">Pour une phrase de <b>3 à 14 mots</b> dont vous vous souvenez imparfaitement, l’application peut proposer une formulation présentant une ou quelques petites différences textuelles, par exemple un mot ajouté, omis ou remplacé, ou deux mots voisins inversés. Plus la phrase est courte, plus la tolérance est stricte. Elle affiche toujours les mots réellement présents dans la source et ne présente jamais ce résultat comme une <b>Phrase exacte</b>. Lorsque trop de formulations restent également plausibles, elle vous invite à préciser votre souvenir. Un badge <b>CRITICAL_DIFFERENCE</b> signale certaines différences potentiellement importantes qui ne doivent pas être assimilées silencieusement.</span></div>
         <div class="help-row"><span class="help-chip outline">Métadonnées</span><span class="help-text">Les résultats peuvent aussi correspondre au titre, à la date, à la référence ou à une autre métadonnée de l’entrée.</span></div>
         <div class="help-row"><span class="help-chip outline">Correspondance approchée</span><span class="help-text"><b>Élargir la recherche</b> permet, seulement si vous le choisissez, d’afficher <b>Certains termes</b> : une partie seulement des mots saisis a été retrouvée. Ces résultats ne sont jamais affichés comme résultat principal par défaut. Cela ne signifie pas qu’un lien thématique, doctrinal ou « par le sens » a été établi. Vérifiez toujours le passage avant de le citer.</span></div>
-        <div class="help-row"><span class="help-chip outline">Par le sens / Par les mots</span><span class="help-text"><b>Par les mots</b> conserve la recherche textuelle qualifiée. <b>Par le sens</b> est le laboratoire de recherche d’un souvenir exprimé avec vos propres mots. Il ne remplace jamais le sens par une union de mots partiels et reste fermé tant que le modèle, le pack sémantique, l’abstention et les tests appareil/hors ligne ne sont pas qualifiés.</span></div>
+        <div class="help-row"><span class="help-chip outline">Par le sens / Par les mots</span><span class="help-text"><b>Par les mots</b> effectue la recherche textuelle. <b>Par le sens</b> permet de rechercher à partir d’une formulation libre lorsqu’elle est disponible. Si elle n’est pas disponible dans cette version, revenez à <b>Par les mots</b>.</span></div>
         <div class="help-divider"></div>
         <div class="help-row"><span class="help-chip">Autour de ce passage</span><span class="help-text">Dans le lecteur, ouvrez <b>⋯ → Autour de ce passage</b> pour explorer des entrées du même Tome, des thèmes proches ou des familles d’images spirituelles.</span></div>
         <div class="help-row"><span class="help-chip outline">Badges de contexte</span><span class="help-text"><b>Éditorial</b> signale une explication éditoriale du Tome 1 ; <b>COMPLÉMENT</b> signale un contenu substantiel absent du corpus PRINCIPAL et conservé comme COMPLÉMENT retenu ; sa provenance détaillée est disponible dans les informations du passage ; le badge du filtre Jésus apparaît lorsque ce filtre est actif.</span></div>
@@ -2525,7 +2525,7 @@ html[data-text-level="xlarge"]{--reader-measure:823px;--home-offline-title-size:
 
 
 <!-- BOTTOM NAV -->
-<nav id="nav">
+<nav id="nav" aria-label="Navigation principale">
   <button class="nav-item active" onclick="goHome()" id="nav-home" aria-label="Accueil">
     <i class="ti ti-home" aria-hidden="true"></i><span>Accueil</span>
   </button>
@@ -7875,7 +7875,7 @@ function renderSearchIntentMode(){
   if(meaning){const a=searchIntentMode==='meaning';meaning.classList.toggle('active',a);meaning.setAttribute('aria-pressed',a?'true':'false');}
   if(words){const a=searchIntentMode==='words';words.classList.toggle('active',a);words.setAttribute('aria-pressed',a?'true':'false');}
   if(input){input.placeholder=searchIntentMode==='meaning'?'Décrivez ce dont vous vous souvenez avec vos propres mots…':'Mot, expression, citation, date ou référence…';input.setAttribute('aria-label',searchIntentMode==='meaning'?'Rechercher par le sens dans le Livre du Ciel':'Rechercher par les mots dans le Livre du Ciel');}
-  if(help)help.innerHTML=searchIntentMode==='meaning'?'<span class="search-intent-lab">LAB interne.</span> Décrivez librement l’idée ou le passage dont vous vous souvenez. Les mots exacts ne sont pas nécessaires.':'<span class="search-intent-lab">LAB interne.</span> Recherchez un mot, une expression, une citation, une date ou une référence.';
+  if(help)help.textContent=searchIntentMode==='meaning'?'Décrivez librement l’idée ou le passage dont vous vous souvenez. Cette fonction peut être indisponible dans cette version.':'Recherchez un mot, une expression, une citation, une date ou une référence.';
   const order=document.getElementById('search-order-row'),lane=document.getElementById('search-lane-row');
   if(order)order.style.display=searchIntentMode==='words'?'flex':'none';
   if(lane&&searchIntentMode==='meaning')lane.style.display='none';
@@ -7912,11 +7912,13 @@ async function semanticPackV3Status(){
 }
 function renderSemanticPackUnavailable(raw,structural,status){
   searchLastPayload=null;renderSearchIntentMode();renderSearchSourceModeRow();renderSpeakerFilterRow();renderVolFilterRow();
-  const meta=document.getElementById('search-meta');meta.style.display='block';meta.innerHTML=`Recherche par le sens <span class="search-mode-badge">SEARCH-V3 · qualification en cours</span>`;
+  const meta=document.getElementById('search-meta');meta.style.display='block';meta.textContent='Recherche par le sens';
   document.getElementById('trust-notice').style.display='none';const container=document.getElementById('search-results');container.innerHTML='';
-  const reason=status&&status.reason?`<div class="semantic-lab-note">État du pack : ${escapeHtml(String(status.reason))}</div>`:'';
-  const panel=document.createElement('div');panel.className='semantic-pack-panel';panel.innerHTML='<b>Recherche par le sens : moteur non encore qualifié dans ce laboratoire.</b><br>La requête n’est pas transformée en une recherche OR sur chacun de ses mots. Aucun résultat lexical trompeur n’est affiché à la place.<div class="semantic-lab-note">Activation seulement après benchmark LDC, choix du modèle, requêtes humaines, négatifs difficiles, calibrage de l’abstention et tests appareil/hors ligne.</div>'+reason;container.appendChild(panel);
-  if(structural&&structural.hasStructural&&structural.residual){const n=document.createElement('div');n.className='search-suggestion-box';n.textContent='Les contraintes Tome/date/référence ont été reconnues et seront appliquées au moteur sémantique qualifié.';container.appendChild(n);}
+  const panel=document.createElement('div');panel.className='semantic-pack-panel';
+  panel.innerHTML='<b>Recherche par le sens indisponible dans cette version.</b><br>Utilisez la recherche par les mots pour continuer.';
+  const back=document.createElement('button');back.type='button';back.className='btn-secondary';back.style.marginTop='12px';back.textContent='Revenir à la recherche par les mots';back.onclick=()=>setSearchIntentMode('words');
+  panel.appendChild(document.createElement('br'));panel.appendChild(back);container.appendChild(panel);
+  if(structural&&structural.hasStructural&&structural.residual){const n=document.createElement('div');n.className='search-suggestion-box';n.textContent='Les contraintes Tome/date/référence ont été reconnues. Revenez à la recherche par les mots pour continuer.';container.appendChild(n);}
 }
 function semanticResultToSearchTargetR4(r){
   const parts=(r.source_spans||[]).filter(x=>x&&x.para_id).map(x=>({para_id:x.para_id,id:x.para_id,canonical_start:Number(x.canonical_start)||0,canonical_end:Number(x.canonical_end)||0}));
@@ -10037,7 +10039,7 @@ const OFFLINE_CONTENT_BINDING_SCHEMA = 'ldc-offline-content-binding-v2';
 const OFFLINE_CONTENT_BINDING = '50f9e009bc4b4abe73f0cc114d04e3e7443c1d176db81fa4e33b8b24dffd0ee7';
 const OFFLINE_CORPUS_MANIFEST_SHA256 = 'd1e761c7e6cb046afe092abde992fffa18369f6192b7cae47b0194fbd583c3fb';
 const OFFLINE_STATES = Object.freeze(['NOT_PREPARED','CHECKING','DOWNLOADING','READY','PARTIAL','ERROR','CANCELLED']);
-let offlineUiState = {state:'NOT_PREPARED',completed:0,total:0,failed:[],total_bytes:0,job_id:null,message:'',content_binding_sha256:OFFLINE_CONTENT_BINDING,corpus_manifest_sha256:OFFLINE_CORPUS_MANIFEST_SHA256};
+let offlineUiState = {state:'NOT_PREPARED',completed:0,total:0,failed:[],total_bytes:0,cached_bytes:0,job_id:null,message:'',content_binding_sha256:OFFLINE_CONTENT_BINDING,corpus_manifest_sha256:OFFLINE_CORPUS_MANIFEST_SHA256};
 let runtimeCacheUiState = {entries:0,bytes:0,max_entries:48,max_bytes:50331648};
 const offlineStatusWaiters = new Map();
 let offlineLastMessageAt = 0;
@@ -10062,8 +10064,9 @@ function renderHomeOfflineNotice(){
   action.hidden=false;action.disabled=false;
   if(state==='CHECKING'||state==='DOWNLOADING'){
     const total=Number(st.total||0),completed=Number(st.completed||0),pct=total?Math.round(completed/total*100):0;
-    title.textContent='Préparation hors ligne en cours';
-    detail.textContent=total?`${completed}/${total} fichiers · ${pct}%`:'Vérification des fichiers déjà présents…';
+    const finalising=state==='DOWNLOADING'&&total>0&&completed>=total;
+    title.textContent=finalising?'Vérification finale hors ligne':'Préparation hors ligne en cours';
+    detail.textContent=finalising?'100 % téléchargé · vérification finale en cours…':(total?`${completed}/${total} fichiers · ${pct}%`:'Vérification des fichiers déjà présents…');
     action.hidden=true;return;
   }
   if(!online){
@@ -10111,7 +10114,7 @@ function renderOfflineUi(){
   const st=offlineUiState, total=Number(st.total||0), completed=Number(st.completed||0), failed=Array.isArray(st.failed)?st.failed:[];
   const pct=total?Math.max(0,Math.min(100,Math.round(completed/total*100))):0;
   label.textContent=`${offlineStateLabel(st.state)}${st.message?' — '+st.message:''}`;
-  detail.textContent=total?`${completed}/${total} fichiers · ${pct}% · ${offlineMb(st.total_bytes)}${failed.length?' · '+failed.length+' échec(s)':''}`:`Périmètre : 36 tomes + 75 compléments SUP-T1/SUP-T2/SUP-T3/SUP-T4/SUP-T5 + recherche textuelle/BM25.`;
+  detail.textContent=total?(pct===100&&st.state==='DOWNLOADING'?`${completed}/${total} fichiers · 100% · vérification finale… · ${offlineMb(st.total_bytes)}`:`${completed}/${total} fichiers · ${pct}% · ${offlineMb(st.total_bytes)}${failed.length?' · '+failed.length+' échec(s)':''}`):`Périmètre : 36 tomes + 75 compléments SUP-T1/SUP-T2/SUP-T3/SUP-T4/SUP-T5 + recherche textuelle/BM25.`;
   const rt=runtimeCacheUiState||{}, rtEntries=Number(rt.entries||0), rtBytes=Number(rt.bytes||0), rtMaxEntries=Number(rt.max_entries||48), rtMaxBytes=Number(rt.max_bytes||50331648);
   runtimeEl.textContent=`Cache temporaire lecture/recherche : ${rtEntries} fichier${rtEntries===1?'':'s'} · ${offlineMb(rtBytes)} · limite ${rtMaxEntries} fichiers / ${offlineMb(rtMaxBytes)}.`;
   if(failed.length){failedEl.style.display='block';failedEl.textContent='Fichiers en échec :\n'+failed.map(f=>`• ${f.path||'fichier inconnu'}${f.error?' — '+f.error:''}`).join('\n');}else{failedEl.style.display='none';failedEl.textContent='';}
@@ -10164,8 +10167,30 @@ async function requestOfflineStatus(timeoutMs=15000){
     catch(e){clearTimeout(timer);offlineStatusWaiters.delete(requestId);reject(e);}
   });
 }
+async function preflightOfflineStorage(){
+  const total=Math.max(Number(offlineUiState.total_bytes||0),102*1000*1000);
+  const cached=Math.max(0,Number(offlineUiState.cached_bytes||0));
+  const remaining=Math.max(0,total-cached);
+  const safety=20*1024*1024;
+  if(navigator.storage&&typeof navigator.storage.estimate==='function'){
+    try{
+      const estimate=await navigator.storage.estimate();
+      const quota=Number(estimate&&estimate.quota||0),usage=Number(estimate&&estimate.usage||0);
+      const available=Math.max(0,quota-usage);
+      if(quota>0&&available<remaining+safety){
+        showToast('Espace de stockage insuffisant pour préparer les 36 Tomes hors ligne.');
+        return false;
+      }
+    }catch(_){}
+  }
+  if(navigator.storage&&typeof navigator.storage.persist==='function'){
+    try{await navigator.storage.persist();}catch(_){}
+  }
+  return true;
+}
 async function startOfflinePreparation(){
   if(navigator.onLine===false){showToast('Connexion requise pour reprendre la préparation');return;}
+  if(!(await preflightOfflineStorage()))return;
   const jobId=`ldc-offline-${Date.now()}-${Math.random().toString(16).slice(2,8)}`;
   offlineUiState={...offlineUiState,state:'CHECKING',job_id:jobId,message:'Analyse des fichiers déjà présents…',failed:[]};
   offlineLastMessageAt=Date.now();renderOfflineUi();scheduleOfflinePersist();armOfflineWatchdog();
@@ -10190,7 +10215,7 @@ function handleOfflineSwMessage(event){
   if(!bindingOk&&state!=='ERROR'){state='ERROR';message='Réponse hors ligne incompatible avec cette version.';}
   const previous=offlineUiState.state;
   if(d.runtime&&typeof d.runtime==='object')runtimeCacheUiState={entries:Number(d.runtime.entries||0),bytes:Number(d.runtime.bytes||0),max_entries:Number(d.runtime.max_entries||48),max_bytes:Number(d.runtime.max_bytes||50331648)};
-  offlineUiState={state,completed:Number(d.completed||0),total:Number(d.total||0),failed:Array.isArray(d.failed)?d.failed:[],total_bytes:Number(d.total_bytes||0),job_id:d.job_id||offlineUiState.job_id||null,message,storage_schema:d.storage_schema||null,content_binding_schema:d.content_binding_schema||null,content_binding_sha256:d.content_binding_sha256||null,corpus_manifest_sha256:d.corpus_manifest_sha256||null};
+  offlineUiState={state,completed:Number(d.completed||0),total:Number(d.total||0),failed:Array.isArray(d.failed)?d.failed:[],total_bytes:Number(d.total_bytes||0),cached_bytes:Number(d.cached_bytes||0),job_id:d.job_id||offlineUiState.job_id||null,message,storage_schema:d.storage_schema||null,content_binding_schema:d.content_binding_schema||null,content_binding_sha256:d.content_binding_sha256||null,corpus_manifest_sha256:d.corpus_manifest_sha256||null};
   renderOfflineUi();scheduleOfflinePersist();armOfflineWatchdog();
   if(waiter){if(bindingOk||state==='ERROR')waiter.resolve(offlineUiState);else waiter.reject(new Error(message||'Réponse hors ligne incompatible'));}
   if(state==='READY'&&previous!=='READY')showToast('Livre du Ciel prêt hors ligne');
@@ -10201,7 +10226,7 @@ async function initOfflineState(){
   const saved=await dbGet('settings','offline_completion').catch(()=>null);
   const rec=saved&&(saved.val||saved.value);
   const recMatches=!!(rec&&rec.storage_schema===OFFLINE_STORAGE_SCHEMA&&rec.content_binding_schema===OFFLINE_CONTENT_BINDING_SCHEMA&&rec.corpus_generation===CORPUS_GENERATION&&rec.manifest_schema===OFFLINE_MANIFEST_SCHEMA&&rec.content_binding_sha256===OFFLINE_CONTENT_BINDING&&rec.corpus_manifest_sha256===OFFLINE_CORPUS_MANIFEST_SHA256);
-  offlineUiState={state:'CHECKING',completed:recMatches?Number(rec.completed||0):0,total:recMatches?Number(rec.total||0):0,failed:recMatches&&Array.isArray(rec.failed)?rec.failed:[],total_bytes:recMatches?Number(rec.total_bytes||0):0,job_id:null,message:recMatches?'Vérification de la préparation enregistrée…':(rec?'Préparation existante : vérification après mise à jour.':'Vérification du cache hors ligne…'),storage_schema:OFFLINE_STORAGE_SCHEMA,content_binding_schema:OFFLINE_CONTENT_BINDING_SCHEMA,content_binding_sha256:OFFLINE_CONTENT_BINDING,corpus_manifest_sha256:OFFLINE_CORPUS_MANIFEST_SHA256};
+  offlineUiState={state:'CHECKING',completed:recMatches?Number(rec.completed||0):0,total:recMatches?Number(rec.total||0):0,failed:recMatches&&Array.isArray(rec.failed)?rec.failed:[],total_bytes:recMatches?Number(rec.total_bytes||0):0,cached_bytes:recMatches?Number(rec.cached_bytes||0):0,job_id:null,message:recMatches?'Vérification de la préparation enregistrée…':(rec?'Préparation existante : vérification après mise à jour.':'Vérification du cache hors ligne…'),storage_schema:OFFLINE_STORAGE_SCHEMA,content_binding_schema:OFFLINE_CONTENT_BINDING_SCHEMA,content_binding_sha256:OFFLINE_CONTENT_BINDING,corpus_manifest_sha256:OFFLINE_CORPUS_MANIFEST_SHA256};
   renderOfflineUi();
   if(!('serviceWorker' in navigator)){offlineUiState={...offlineUiState,state:'ERROR',message:'Hors ligne non pris en charge par ce navigateur.'};renderOfflineUi();scheduleOfflinePersist();return;}
   try{await requestOfflineStatus();}
