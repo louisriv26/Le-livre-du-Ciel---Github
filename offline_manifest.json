@@ -1,5 +1,5 @@
 {
-  "app_version": "v2.19.139-R1B-UX-ACCESS-R12",
+  "app_version": "v2.19.142-R1B-UX-ACCESS-R15",
   "asset_count": 204,
   "assets": [
     {
@@ -1077,7 +1077,7 @@
   },
   "legacy_cache_family_prefix": "ldc-le-livre-du-ciel-offline-v",
   "m7rc_fixed_point": true,
-  "page_worker_revision": "ldc-v2.19.139-R1B-ux-access-r12",
+  "page_worker_revision": "ldc-v2.19.142-R1B-ux-access-r15",
   "post_r6_date_id_a2_fixed_point": {
     "a2_sha256": "dd034a4d4bb329254818c3e62fd629c9b64c90f9d4bd533de9f6ed99247cb1d8",
     "date_id_sha256": "ed5bf462c47b8fb5a41f7c81591257d6e99f94bae08628aa27e5f7d667020c2a",
@@ -1138,7 +1138,7 @@
     "user_state_schema_changed": false,
     "ux_logic_changed": false
   },
-  "rebuild_status": "V139_R12_STAGE2_221_SEARCH_V21A_RECERTIFICATION__V138_DARK_CONTRAST_AND_AUTHORITY_REPAIR_INHERITED__DEVOTIONAL_CORPUS_SEARCH_PAYLOADS_AND_ALGORITHMS_UNCHANGED__SEMANTIC_V3_FAIL_CLOSED__PUBLIC_RELEASE_NOT_AUTHORIZED",
+  "rebuild_status": "V142_R15_EXPLICIT_SEARCH_SUBMISSION__V141_ADAPTIVE_SINGLE_SCROLL_REVEAL_PRESERVED__PERSISTENT_CONTENT_BINDING_UNCHANGED__SEARCH_V21A_PAYLOADS_ALGORITHMS_UNCHANGED__SEMANTIC_V3_FAIL_CLOSED__PHYSICAL_GATES_OPEN__PRODUCTION_NOT_AUTHORIZED",
   "retention_contract": {
     "clear_policy": "CURRENT_SCOPE_ONLY_FOR_SHARED_LEGACY_CACHES",
     "copy_migration_required": false,
@@ -1149,7 +1149,7 @@
     "shell_runtime_caches": "APP_VERSIONED"
   },
   "schema": "ldc-offline-manifest-v3",
-  "scope": "v139 bounded full-QA successor of exact v138; re-certifies current Stage-2 SEARCH-V2.1A all-nonempty visible-token reference counts/digests and dependent integrity bindings. Devotional text, Search-V2 BM25 payloads, exact/foundation/near algorithms, provenance wording, user-state semantics and Semantic V3 qualification state are unchanged; Semantic V3 remains fail-closed.",
+  "scope": "v142 explicit Search-submission successor of exact frozen v141. Preserves the v141 one-vertical-scroll-owner Search body and adaptive complete-first-result reveal. Adds a stable always-visible Rechercher action, a narrowly scoped native Search form, explicit pending/committed query state, guarded filter reruns and revised Search Help. The 204 persistent content assets and content binding are unchanged; corpus/Search-V2.1A payloads and algorithms, provenance corpus wording, user-state schema and Semantic V3 fail-closed qualification state are unchanged.",
   "scope_isolation_contract": "ONLY_CURRENT_SERVICE_WORKER_SCOPE_URLS_MAY_SATISFY_REUSE_OR_BE_CLEARED_FROM_SHARED_LEGACY_CACHES",
   "semantic_vector_search_included": false,
   "semantic_vector_search_note": "R18D Search-V3 engineering evidence is preserved externally and v113 Search-V3 runtime modules remain byte-identical. No neural model, vectors or qualified semantic pack are bundled. Par le sens remains fail-closed.",
@@ -1243,5 +1243,76 @@
     "public_release_authorized": false,
     "physical_retest_required": true,
     "modal_focus_contract": "SHARED_MODAL_INVOKER_CAPTURE_OCCURS_BEFORE_SHELL_INERT__SHELL_INERT_REMOVED_BEFORE_INVOKER_FOCUS_RESTORE__SIZE_AND_OTHER_SHARED_DIALOGS_RETURN_FOCUS_TO_ORIGINATING_CONTROL"
+  },
+  "search_scroll_v140_r13": {
+    "classification": "P0_BOUNDED_SEARCH_PRESENTATION_NAVIGATION_REPAIR",
+    "date": "2026-10-05",
+    "predecessor_app_version": "v2.19.139-R1B-UX-ACCESS-R12",
+    "predecessor_package_sha256": "3000b8e7692805a7116ac025a8a056b06db2dc6bc6fc12c7acba475bc4e29653",
+    "predecessor_production_tree": "b9aaaa762034d9a21398bc8c242c802f59062492",
+    "predecessor_production_commit": "e82ef8d5d64a7e89b65436924b04883c96c7dadb",
+    "physical_trigger": "OWNER_IPHONE_AND_IPAD_PHYSICAL_TEST__SEARCH_RESULTS_SQUEEZED_TO_BOTTOM_AND_NOT_PRACTICALLY_SCROLLABLE",
+    "root_cause": "SEARCH_CONTROLS_ARE_NONSHRINKING_FLEX_SIBLINGS_WHILE_ONLY_SEARCH_RESULTS_OWNS_VERTICAL_SCROLL_AND_MIN_HEIGHT_ZERO__RESULT_VIEWPORT_CAN_COLLAPSE_TOWARD_ZERO; PROGRAMMATIC_SEARCHFOR_PATH_ALSO_FAILED_TO_HIDE_DATE_NAVIGATION",
+    "repair_contract": [
+      "ONE_VERTICAL_SEARCH_BODY_SCROLL_OWNER_BELOW_EXISTING_TOP_BAR",
+      "SEARCH_RESULTS_BECOMES_NORMAL_CONTENT_NOT_NESTED_VERTICAL_SCROLLER",
+      "NONEMPTY_QUERY_CENTRALLY_HIDES_DATE_NAVIGATION_FOR_TYPED_SUGGESTED_RECENT_DEEPLINK_AND_RESTORED_SEARCHES",
+      "FRESH_SEARCH_FILTER_AND_PAGINATION_RUNS_REVEAL_OUTPUT_STATUS_AND_FIRST_RESULTS_WITHOUT_FOCUS_THEFT",
+      "READER_RETURN_SUPPRESSES_AUTO_REVEAL_AND_RESTORES_STABLE_DATA_RESULT_KEY_ANCHOR",
+      "TEXT_SIZE_REFLOW_USES_SAME_STABLE_RESULT_ANCHOR"
+    ],
+    "protected_surfaces": [
+      "ALL_205_CORPUS_FILES_UNCHANGED",
+      "SEARCH_V2_BM25_AND_V21A_PAYLOADS_UNCHANGED",
+      "SEARCH_MATCHING_RANKING_EXACT_FOUNDATION_NEAR_ALGORITHMS_UNCHANGED",
+      "PROVENANCE_PUBLIC_WORDING_UNCHANGED",
+      "USER_STATE_SCHEMA_UNCHANGED",
+      "204_PERSISTENT_OFFLINE_ASSETS_AND_CONTENT_BINDING_UNCHANGED",
+      "SEMANTIC_V3_REMAINS_UNRELEASED_NOT_QUALIFIED_FAIL_CLOSED"
+    ],
+    "machine_gate": "SEE_EXTERNAL_GOVERNANCE_STATE__PACKAGE_DOES_NOT_SELF_ATTEST_CURRENT_MACHINE_GATE_RESULT",
+    "physical_iphone_gate": "OPEN",
+    "physical_ipad_gate": "OPEN",
+    "production_deployment_authority": "NONE",
+    "candidate_status": "FROZEN_SUPERSEDED_BEFORE_PHYSICAL_TEST",
+    "exact_candidate_tree": "fa5d57065f328351ae4d7c9fa75c50cd27fadb70",
+    "exact_candidate_package_sha256": "a158c24b889fedf7ea71193668b99adadbf3752004bbc5e579772dfb1ab2eb6c",
+    "superseded_by": "v2.19.141-R1B-UX-ACCESS-R14",
+    "superseded_reason": "POST_FREEZE_BLIND_LAYOUT_CHALLENGE_FIRST_COMPLETE_RESULT_VISIBILITY_FAILED_IN_3_OF_36_EXTREME_SHORT_VIEWPORT_LARGE_XLARGE_CASES"
+  },
+  "search_scroll_v141_r14": {
+    "classification": "BOUNDED_POST_BLIND_SEARCH_OUTPUT_REVEAL_HARDENING",
+    "date": "2026-10-05",
+    "direct_predecessor_app_version": "v2.19.140-R1B-UX-ACCESS-R13",
+    "direct_predecessor_tree": "fa5d57065f328351ae4d7c9fa75c50cd27fadb70",
+    "direct_predecessor_package_sha256": "a158c24b889fedf7ea71193668b99adadbf3752004bbc5e579772dfb1ab2eb6c",
+    "repair_contract": [
+      "V140_SINGLE_VERTICAL_SEARCH_SCROLL_OWNER_UNCHANGED",
+      "PREFERRED_METADATA_REVEAL_RETAINED_WHEN_FIRST_COMPLETE_RESULT_ALREADY_FITS",
+      "ADAPT_SCROLL_ONLY_BY_FIRST_RESULT_BOTTOM_OVERFLOW_WHEN_NEEDED",
+      "NO_FOCUS_MOVEMENT",
+      "READER_RETURN_PRESERVE_CONTEXT_REMAINS_AUTHORITATIVE"
+    ],
+    "protected_contract": "205_CORPUS_FILES__SEARCH_V2_V21A_PAYLOADS_AND_ALGORITHMS__PROVENANCE__USER_STATE_SCHEMA__204_OFFLINE_CONTENT_ASSETS_AND_BINDING__SEMANTIC_V3_FAIL_CLOSED_UNCHANGED",
+    "machine_gate": "SEE_EXTERNAL_GOVERNANCE_STATE__PACKAGE_DOES_NOT_SELF_ATTEST_CURRENT_MACHINE_GATE_RESULT",
+    "physical_iphone_gate": "OPEN",
+    "physical_ipad_gate": "OPEN",
+    "production_deployment_authority": "NONE"
+  },
+  "search_submit_v142_r15": {
+    "direct_predecessor_app_version": "v2.19.141-R1B-UX-ACCESS-R14",
+    "direct_predecessor_tree": "73cebf29a52e8051bb49b59eb8ec2d7ef5a10386",
+    "direct_predecessor_package_sha256": "c8951a8e3de087a72ebbd131bf42c54dfdbd5ceae91c5518ece798e8d2803836",
+    "mutation_universe": [
+      "index.html",
+      "offline_manifest.json",
+      "sw.js",
+      "version.json"
+    ],
+    "persistent_assets_changed": false,
+    "content_binding_changed": false,
+    "search_payloads_or_algorithms_changed": false,
+    "semantic_v3_qualification_changed": false,
+    "production_deployment_authority": "NONE"
   }
 }

@@ -673,11 +673,17 @@ mark.hl-pink{background:#fce7f3;color:inherit;}
   font-family:var(--body);color:var(--ink);outline:none;}
 .search-bar input::placeholder{color:var(--muted);}
 .search-bar i{color:var(--muted);font-size:17px;flex-shrink:0;}
+.search-submit-form{margin:0;padding:0;min-width:0;width:100%;max-width:100%;}
+.search-submit-row{display:flex;min-width:0;width:100%;padding-top:8px;}
+.search-submit-btn{width:100%;min-width:0;min-height:44px;}
+.search-submit-btn:disabled{opacity:.45;cursor:default;}
 
 /* v112 iPhone Search viewport containment. Flex inputs must be allowed to shrink;
    iOS touch browsers also require a >=16px form-control floor to avoid focus zoom. */
-#screen-search,#search-results,.search-suggestions,.search-meta,.trust-notice,.result-card{min-width:0;max-width:100%;}
-#screen-search{width:100%;overflow-x:hidden;}
+#screen-search,#search-scroll,#search-results,.search-suggestions,.search-meta,.trust-notice,.result-card{min-width:0;max-width:100%;}
+#screen-search{width:100%;overflow:hidden;}
+#search-scroll{width:100%;max-width:100%;overflow-x:hidden;overscroll-behavior-y:contain;-webkit-overflow-scrolling:touch;}
+#search-results{flex:none;width:100%;overflow:visible;}
 .search-suggestions,.search-meta,.trust-notice,.result-card{overflow-wrap:anywhere;word-break:normal;}
 @media (hover:none) and (pointer:coarse){.search-bar input{font-size:max(16px,var(--sem-strong-16));}}
 
@@ -2073,6 +2079,7 @@ html[data-text-level="xlarge"]{--reader-measure:823px;--home-offline-title-size:
     <h1 class="top-bar-title">Recherche</h1>
     <div style="display:flex;align-items:center;gap:2px;"><button class="btn-icon" type="button" onclick="copySearchLink()" aria-label="Copier le lien de cette recherche" title="Copier le lien"><i class="ti ti-link"></i></button><button class="btn-icon" type="button" onclick="showSizeSheet()" title="Taille du texte" aria-label="Taille du texte"><i class="ti ti-letter-a" aria-hidden="true"></i></button></div>
   </div>
+  <div class="scroll" id="search-scroll">
   <div class="search-intent-wrap">
     <div class="search-intent-segment" role="group" aria-label="Type de recherche">
       <button id="search-intent-meaning" class="search-intent-btn" type="button" aria-pressed="false" onclick="setSearchIntentMode('meaning')">Par le sens</button>
@@ -2081,14 +2088,19 @@ html[data-text-level="xlarge"]{--reader-measure:823px;--home-offline-title-size:
     <div id="search-intent-help" class="search-intent-help">Recherchez un mot, une expression, une citation, une date ou une référence.</div>
   </div>
   <div class="search-bar-wrap">
-    <div class="search-bar">
-      <i class="ti ti-search"></i>
-      <input type="search" id="search-input" placeholder="Mot, expression, citation…" aria-label="Rechercher dans le Livre du Ciel"
-        oninput="onSearchInput()" onkeydown="if(event.key==='Enter')runSearch()">
-      <button class="btn-icon" onclick="clearSearch()" id="search-clear" style="display:none;" aria-label="Effacer la recherche">
-        <i class="ti ti-x" style="font-size:14px;"></i>
-      </button>
-    </div>
+    <form class="search-submit-form" role="search" aria-label="Recherche dans le Livre du Ciel" onsubmit="submitSearch(event)">
+      <div class="search-bar">
+        <i class="ti ti-search"></i>
+        <input type="search" id="search-input" placeholder="Mot, expression, citation…" aria-label="Rechercher dans le Livre du Ciel"
+          enterkeyhint="search" oninput="onSearchInput()">
+        <button class="btn-icon" type="button" onclick="clearSearch()" id="search-clear" style="display:none;" aria-label="Effacer la recherche">
+          <i class="ti ti-x" style="font-size:14px;"></i>
+        </button>
+      </div>
+      <div class="search-submit-row">
+        <button class="btn-primary search-submit-btn" type="submit" id="search-submit" disabled>Rechercher</button>
+      </div>
+    </form>
   </div>
   <div class="filter-row" id="search-source-mode-row" data-label="Source"></div>
   <div class="filter-row search-foundation-row" id="search-order-row" data-label="Ordre"></div>
@@ -2104,7 +2116,7 @@ html[data-text-level="xlarge"]{--reader-measure:823px;--home-offline-title-size:
   <div id="trust-notice" class="trust-notice" style="display:none;">
     « Certains termes » signifie qu’une partie seulement des mots saisis est présente. Ce n’est pas une recherche par le sens. Vérifiez toujours le passage avant de le citer.
   </div>
-  <div class="scroll" id="search-results">
+  <div id="search-results">
     <div class="search-suggestions" id="search-suggestions">
       <div class="sugg-label">Thèmes fréquents</div>
       <div class="sugg-chips">
@@ -2118,6 +2130,7 @@ html[data-text-level="xlarge"]{--reader-measure:823px;--home-offline-title-size:
         <button class="sugg-chip" onclick="searchFor('prière')">Prière</button>
       </div>
     </div>
+  </div>
   </div>
 </div>
 
@@ -2247,7 +2260,7 @@ html[data-text-level="xlarge"]{--reader-measure:823px;--home-offline-title-size:
         <div class="help-row"><span class="help-chip light">Passages contenant des paroles de Jésus</span><span class="help-text">Ce filtre affiche les paragraphes dans lesquels le corpus identifie au moins un passage comme paroles de Jésus. La recherche porte ensuite sur le paragraphe entier : un résultat peut donc contenir aussi du texte de Luisa ou d’une autre voix.</span></div>
         <div class="help-row"><span class="help-chip light">Tomes</span><span class="help-text">Limitez la recherche avec les groupes <b>T1–6 · T7–12 · T13–18 · T19–24 · T25–30 · T31–36</b>, ou laissez <b>Tous</b>.</span></div>
         <div class="help-row"><span class="help-chip light">Date</span><span class="help-text">Quand la zone de recherche est vide, <b>Parcourir par date</b> ouvre la navigation chronologique. Choisissez l’année, puis le mois et le jour ; l’application indique les dates disponibles, gère les jours comportant plusieurs entrées et propose aussi les entrées sans date lorsqu’il y en a.</span></div>
-        <div class="help-row"><span class="help-chip light">Aides de recherche</span><span class="help-text">Les <b>Recherches récentes</b> permettent de relancer rapidement une recherche et peuvent être effacées. <b>Vouliez-vous dire…</b> peut proposer une correction. Si vous modifiez une recherche déjà lancée, appuyez sur <b>Entrée</b> pour exécuter la nouvelle recherche.</span></div>
+        <div class="help-row"><span class="help-chip light">Aides de recherche</span><span class="help-text">Les <b>Recherches récentes</b> permettent de relancer rapidement une recherche et peuvent être effacées. <b>Vouliez-vous dire…</b> peut proposer une correction. Pour lancer une recherche saisie ou modifiée, appuyez sur <b>Rechercher</b>. Avec un clavier, la touche <b>Rechercher</b> ou <b>Entrée</b> constitue un raccourci équivalent.</span></div>
         <div class="help-divider"></div>
         <div class="help-row"><span class="help-chip outline">Correspondance exacte</span><span class="help-text"><b>Phrase exacte</b> signifie que les mots sont contigus dans le texte réellement visible pour la source choisie. <b>Tous les termes</b> signifie que tous les mots utiles sont présents sans nécessairement former la même phrase.</span></div>
         <div class="help-row"><span class="help-chip outline">Formulation proche</span><span class="help-text">Pour une phrase de <b>3 à 14 mots</b> dont vous vous souvenez imparfaitement, l’application peut proposer une formulation présentant une ou quelques petites différences textuelles, par exemple un mot ajouté, omis ou remplacé, ou deux mots voisins inversés. Plus la phrase est courte, plus la tolérance est stricte. Elle affiche toujours les mots réellement présents dans la source et ne présente jamais ce résultat comme une <b>Phrase exacte</b>. Lorsque trop de formulations restent également plausibles, elle vous invite à préciser votre souvenir. Un badge <b>CRITICAL_DIFFERENCE</b> signale certaines différences potentiellement importantes qui ne doivent pas être assimilées silencieusement.</span></div>
@@ -2549,11 +2562,11 @@ html[data-text-level="xlarge"]{--reader-measure:823px;--home-offline-title-size:
    VERSION — single source of truth
    Update this string on every release.
 ═══════════════════════════════════════════════════════ */
-const APP_VERSION = 'v2.19.139-R1B-UX-ACCESS-R12'; // v139 bounded full-QA successor of exact v138; current Stage-2 SEARCH-V2.1A reference metadata re-certified; devotional corpus/Search payloads and algorithms preserved; Semantic V3 remains fail-closed
-const PUBLIC_VERSION = (APP_VERSION.match(/v2\.19\.(\d+)/)||[])[1] || '139'; // single authoritative public identity derived from APP_VERSION
+const APP_VERSION = 'v2.19.142-R1B-UX-ACCESS-R15'; // v142 explicit Search submission successor of frozen v141; adaptive single-scroll reveal preserved; corpus/Search payloads and algorithms preserved; Semantic V3 remains fail-closed
+const PUBLIC_VERSION = (APP_VERSION.match(/v2\.19\.(\d+)/)||[])[1] || '142'; // single authoritative public identity derived from APP_VERSION
 const APP_VERSION_LABEL = `Version ${PUBLIC_VERSION}`;
-const APP_BUILD = '2026-10-04';
-const SW_CACHE_VERSION = 'ldc-v2.19.139-R1B-ux-access-r12';
+const APP_BUILD = '2026-10-05';
+const SW_CACHE_VERSION = 'ldc-v2.19.142-R1B-ux-access-r15';
 const LDC_PROVENANCE_PUBLIC_COPY = Object.freeze({
   methodologyCta:'Voir les sources, les contrôles et leurs limites →',
   neutralSource:'Source détaillée dans la notice documentaire',
@@ -3537,7 +3550,7 @@ async function setSupplementMode(mode, opts={}) {
     }
   } else if(active==='screen-entries'&&currentVolume) await openTome(currentVolume,{intent:NAV_INTENT.PRESERVE_RERENDER,preserveContext:entriesRerenderContext});
   else if(active==='screen-tomes') await renderTomes();
-  else if(active==='screen-search'){renderSearchSourceModeRow();if(document.getElementById('search-input')?.value) await runSearch();}
+  else if(active==='screen-search'){renderSearchSourceModeRow();if(canRerunCommittedSearch()) await runSearch({commitSource:'source-filter-rerun'});}
   if(!opts.silent)showToast(next==='aflp'?'Lecture PRINCIPAL activée':(next==='additions'?'Lecture COMPLÉMENT activée':'Lecture ENRICHI activée'));
 }
 async function toggleSupplementMode(){const order=['aflp','additions','enriched'];return setSupplementMode(order[(order.indexOf(supplementMode)+1)%order.length]);}
@@ -4408,7 +4421,7 @@ async function openFreshTomeFromTomes(vol,button){const token=beginNavigationTra
 function captureNavigationContext(kind){
   const screen=kind||currentScreenName();
   if(screen==='entries')return captureEntriesNavigationContext();
-  if(screen==='search')return {screen:'search',query:document.getElementById('search-input').value,intentMode:searchIntentMode,volMin:searchVolFilter,volMax:searchVolFilterMax,speaker:searchSpeakerFilter,source_mode:supplementMode,order:effectiveSearchOrder(),orderExplicit:!!searchOrderMode,lane:searchLastPayload&&searchLastPayload.foundation&&searchLastPayload.foundation.lane||searchResultLane,partialExpanded:searchPartialExpanded,page:searchPage,metadataPage:searchMetadataPage,scroll:captureScrollContext(document.getElementById('search-results'),'.result-card','data-result-key'),focusKey:document.activeElement&&document.activeElement.dataset?document.activeElement.dataset.resultKey:null};
+  if(screen==='search')return {screen:'search',query:document.getElementById('search-input').value,intentMode:searchIntentMode,volMin:searchVolFilter,volMax:searchVolFilterMax,speaker:searchSpeakerFilter,source_mode:supplementMode,order:effectiveSearchOrder(),orderExplicit:!!searchOrderMode,lane:searchLastPayload&&searchLastPayload.foundation&&searchLastPayload.foundation.lane||searchResultLane,partialExpanded:searchPartialExpanded,page:searchPage,metadataPage:searchMetadataPage,scroll:captureScrollContext(searchScrollElement(),'.result-card','data-result-key'),focusKey:document.activeElement&&document.activeElement.dataset?document.activeElement.dataset.resultKey:null};
   if(screen==='espace'){const panel=document.getElementById('ep-'+activeEspaceTab);return {screen:'espace',tab:activeEspaceTab,filter:document.getElementById('espace-filter-input').value,scroll:captureScrollContext(panel,'[data-filter-text]',null)};}
   if(screen==='date-nav')return {screen:'date-nav',year:dnYear,month:dnMonth,day:dnDay,scroll:captureScrollContext(document.querySelector('#screen-date-nav .scroll'),':scope > *',null)};
   if(screen==='tomes')return captureTomesNavigationContext();
@@ -4432,9 +4445,9 @@ async function restoreNavigationContext(ctx){
   if(ctx.screen==='search'){
     const sourceChanged=ctx.source_mode&&ctx.source_mode!==supplementMode;
     searchIntentMode=ctx.intentMode==='meaning'?'meaning':'words';searchVolFilter=Number(ctx.volMin)||0;searchVolFilterMax=Number(ctx.volMax)||0;searchSpeakerFilter=!!ctx.speaker;searchOrderMode=ctx.orderExplicit&&['book','relevance'].includes(ctx.order)?ctx.order:null;searchResultLane=['exact','words','partial'].includes(ctx.lane)?ctx.lane:null;searchPartialExpanded=!!ctx.partialExpanded||searchResultLane==='partial';searchPage=Math.max(1,Number(ctx.page)||1);searchMetadataPage=Math.max(1,Number(ctx.metadataPage)||1);
-    document.getElementById('search-input').value=ctx.query||'';showScreen('search');renderSearchIntentMode();renderSearchSourceModeRow();renderSearchOrderRow();renderSpeakerFilterRow();renderVolFilterRow();document.getElementById('search-clear').style.display=ctx.query?'':'none';document.querySelector('.date-nav-entry').style.display=ctx.query?'none':'';
-    if(ctx.query)await runSearch();else await refreshSearchSuggestions();
-    const el=document.getElementById('search-results');restoreScrollContext(el,ctx.scroll,'.result-card','data-result-key');requestAnimationFrame(()=>{if(ctx.focusKey){const c=[...el.querySelectorAll('.result-card')].find(x=>x.dataset.resultKey===ctx.focusKey);if(c){try{c.focus({preventScroll:true});}catch(_){c.focus();}}}});
+    document.getElementById('search-input').value=ctx.query||'';showScreen('search');renderSearchIntentMode();renderSearchSourceModeRow();renderSearchOrderRow();renderSpeakerFilterRow();renderVolFilterRow();syncSearchQueryUI(ctx.query||'');
+    if(ctx.query)await runSearch({navigation:'preserve-context'});else {await refreshSearchSuggestions();resetSearchScrollToTop();}
+    const sc=searchScrollElement(),results=document.getElementById('search-results');restoreScrollContext(sc,ctx.scroll,'.result-card','data-result-key');requestAnimationFrame(()=>{if(ctx.focusKey&&results){const c=[...results.querySelectorAll('.result-card')].find(x=>x.dataset.resultKey===ctx.focusKey);if(c){try{c.focus({preventScroll:true});}catch(_){c.focus();}}}});
     if(sourceChanged)showToast(`Recherche actualisée en ${searchSourceModeLabel(supplementMode)}.`);return;
   }
   if(ctx.screen==='espace'){
@@ -7848,6 +7861,8 @@ let searchIntentMode = 'words'; // Search-V3 internal lab; explicit user intent
 const SEARCH_INTENT_MODE_KEY = 'ldc_search_intent_mode_v3';
 let searchPage = 1, searchMetadataPage = 1;
 let searchLastPayload = null;
+let searchQueryPending = false; // manual input mutation awaits an explicit submit path
+let searchCommittedQuery = ''; // trimmed query most recently submitted; filters rerun only this committed query
 let pendingSearchReaderTarget = null;
 let searchRunSeq = 0, activeSearchAbort = null;
 let searchV2Worker = null;
@@ -7889,7 +7904,7 @@ function setSearchIntentMode(mode,{rerun=true,persist=true}={}){
   if(persist){try{localStorage.setItem(SEARCH_INTENT_MODE_KEY,mode==='meaning'?'words':mode);}catch(_){ }}
   renderSearchIntentMode();document.getElementById('trust-notice').style.display='none';
   const q=(document.getElementById('search-input')?.value||'').trim();
-  if(q&&rerun)runSearch();else if(!q)refreshSearchSuggestions().catch(()=>{});
+  if(q&&rerun)rerunCommittedSearchIfReady();else if(!q)refreshSearchSuggestions().catch(()=>{});
 }
 function searchSemanticV3ParseStructural(raw){
   const text=String(raw||''),out={volume:null,date:null,year:null,ref:null,residual:text};
@@ -7971,18 +7986,18 @@ function renderSearchOrderRow(payload=searchLastPayload){
   // Before the first completed query, automatic ordering is still unresolved.
   // Do not falsely present Pertinence as active merely because it is the legacy fallback.
   const active=payload&&payload.foundation?payload.foundation.order:(searchOrderMode||null);
-  for(const x of [{id:'book',label:'Ordre du Livre'},{id:'relevance',label:'Pertinence'}]){const b=document.createElement('button');b.type='button';b.className='chip'+(active===x.id?' active':'');b.textContent=x.label;b.setAttribute('aria-pressed',active===x.id?'true':'false');b.onclick=()=>{searchOrderMode=x.id;searchPage=1;runSearch();};row.appendChild(b);}
+  for(const x of [{id:'book',label:'Ordre du Livre'},{id:'relevance',label:'Pertinence'}]){const b=document.createElement('button');b.type='button';b.className='chip'+(active===x.id?' active':'');b.textContent=x.label;b.setAttribute('aria-pressed',active===x.id?'true':'false');b.onclick=()=>{searchOrderMode=x.id;searchPage=1;rerunCommittedSearchIfReady();};row.appendChild(b);}
 }
 function renderSearchLaneRow(payload){
   const row=document.getElementById('search-lane-row');if(!row)return;if(searchIntentMode==='meaning'){row.innerHTML='';row.style.display='none';return;}const c=payload&&payload.matchCounts||{exact:0,words:0,partial:0},active=payload&&payload.foundation&&payload.foundation.lane;row.innerHTML='';row.style.display=(c.exact||c.words||c.partial)?'flex':'none';
-  for(const x of [{id:'exact',label:'Phrase exacte'},{id:'words',label:'Tous les termes'}]){const n=Number(c[x.id]||0);if(!n)continue;const b=document.createElement('button');b.type='button';b.className='chip'+(active===x.id?' active':'');b.textContent=`${x.label} · ${n}`;b.setAttribute('aria-pressed',active===x.id?'true':'false');b.onclick=()=>{searchResultLane=x.id;searchPartialExpanded=false;searchPage=1;runSearch();};row.appendChild(b);}
-  const partial=Number(c.partial||0);if(partial){const b=document.createElement('button');b.type='button';b.className='chip'+(searchPartialExpanded&&active==='partial'?' active':'');b.textContent=searchPartialExpanded?`Certains termes · ${partial}`:'Élargir la recherche';b.setAttribute('aria-pressed',searchPartialExpanded&&active==='partial'?'true':'false');b.onclick=()=>{searchPartialExpanded=true;searchResultLane='partial';searchPage=1;runSearch();};row.appendChild(b);}
+  for(const x of [{id:'exact',label:'Phrase exacte'},{id:'words',label:'Tous les termes'}]){const n=Number(c[x.id]||0);if(!n)continue;const b=document.createElement('button');b.type='button';b.className='chip'+(active===x.id?' active':'');b.textContent=`${x.label} · ${n}`;b.setAttribute('aria-pressed',active===x.id?'true':'false');b.onclick=()=>{searchResultLane=x.id;searchPartialExpanded=false;searchPage=1;rerunCommittedSearchIfReady();};row.appendChild(b);}
+  const partial=Number(c.partial||0);if(partial){const b=document.createElement('button');b.type='button';b.className='chip'+(searchPartialExpanded&&active==='partial'?' active':'');b.textContent=searchPartialExpanded?`Certains termes · ${partial}`:'Élargir la recherche';b.setAttribute('aria-pressed',searchPartialExpanded&&active==='partial'?'true':'false');b.onclick=()=>{searchPartialExpanded=true;searchResultLane='partial';searchPage=1;rerunCommittedSearchIfReady();};row.appendChild(b);}
 }
 function appendSearchPager(container,kind,page,pageCount){
   if(pageCount<=1)return;const wrap=document.createElement('div');wrap.className='search-pager';wrap.setAttribute('aria-label',kind==='body'?'Pagination des passages':'Pagination des entrées');
-  const prev=document.createElement('button');prev.type='button';prev.textContent='Précédent';prev.disabled=page<=1;prev.onclick=()=>{if(kind==='body')searchPage=Math.max(1,page-1);else searchMetadataPage=Math.max(1,page-1);runSearch();};
+  const prev=document.createElement('button');prev.type='button';prev.textContent='Précédent';prev.disabled=page<=1;prev.onclick=()=>{if(kind==='body')searchPage=Math.max(1,page-1);else searchMetadataPage=Math.max(1,page-1);rerunCommittedSearchIfReady();};
   const lab=document.createElement('span');lab.textContent=`Page ${page} sur ${pageCount}`;
-  const next=document.createElement('button');next.type='button';next.textContent='Suivant';next.disabled=page>=pageCount;next.onclick=()=>{if(kind==='body')searchPage=Math.min(pageCount,page+1);else searchMetadataPage=Math.min(pageCount,page+1);runSearch();};
+  const next=document.createElement('button');next.type='button';next.textContent='Suivant';next.disabled=page>=pageCount;next.onclick=()=>{if(kind==='body')searchPage=Math.min(pageCount,page+1);else searchMetadataPage=Math.min(pageCount,page+1);rerunCommittedSearchIfReady();};
   wrap.append(prev,lab,next);container.appendChild(wrap);
 }
 function renderStructuralChips(payload){const chips=payload&&payload.structuralChips||[];if(!chips.length)return'';return `<span class="search-structural-chips">${chips.map(c=>`<span class="search-structural-chip">${escapeHtml(c.label)}</span>`).join('')}</span>`;}
@@ -7992,14 +8007,16 @@ function renderSpeakerFilterRow() {
   if (!row) return;
   row.innerHTML = '';
   const allBtn = document.createElement('button');
+  allBtn.type = 'button';
   allBtn.className = 'speech-filter-chip' + (!searchSpeakerFilter ? ' active' : '');
   allBtn.innerHTML = 'Tous les textes';
-  allBtn.onclick = () => { searchSpeakerFilter = false; resetSearchPaging({resetLane:true}); renderSpeakerFilterRow(); if (document.getElementById('search-input').value) runSearch(); };
+  allBtn.onclick = () => { searchSpeakerFilter = false; resetSearchPaging({resetLane:true}); renderSpeakerFilterRow(); rerunCommittedSearchIfReady(); };
   row.appendChild(allBtn);
   const jesusBtn = document.createElement('button');
+  jesusBtn.type = 'button';
   jesusBtn.className = 'speech-filter-chip' + (searchSpeakerFilter ? ' active' : '');
   jesusBtn.innerHTML = '<i class="ti ti-message-circle"></i> Passages contenant des paroles de Jésus';
-  jesusBtn.onclick = () => { searchSpeakerFilter = true; resetSearchPaging({resetLane:true}); renderSpeakerFilterRow(); if (document.getElementById('search-input').value) runSearch(); };
+  jesusBtn.onclick = () => { searchSpeakerFilter = true; resetSearchPaging({resetLane:true}); renderSpeakerFilterRow(); rerunCommittedSearchIfReady(); };
   row.appendChild(jesusBtn);
 }
 
@@ -8019,6 +8036,7 @@ function renderVolFilterRow() {
     const c = document.createElement('button');
     const active = g.min === 0 ? searchVolFilter === 0
       : (searchVolFilter >= g.min && searchVolFilter <= g.max);
+    c.type = 'button';
     c.className = 'chip' + (active ? ' active' : '');
     c.textContent = g.label;
     c.onclick = () => {
@@ -8026,29 +8044,74 @@ function renderVolFilterRow() {
       searchVolFilterMax = g.min === 0 ? 36 : g.max;
       resetSearchPaging({resetLane:true});
       renderVolFilterRow();
-      if (document.getElementById('search-input').value) runSearch();
+      rerunCommittedSearchIfReady();
     };
     row.appendChild(c);
   });
 }
 
+function searchScrollElement(){return document.getElementById('search-scroll');}
+function syncSearchQueryUI(rawQuery){
+  const q=String(rawQuery==null?(document.getElementById('search-input')?.value||''):rawQuery).trim();
+  const clear=document.getElementById('search-clear'),date=document.querySelector('.date-nav-entry'),submit=document.getElementById('search-submit');
+  if(clear)clear.style.display=q?'':'none';
+  if(date)date.style.display=q?'none':'';
+  if(submit)submit.disabled=!q;
+  return q;
+}
+function canRerunCommittedSearch(){
+  const input=(document.getElementById('search-input')?.value||'').trim();
+  return !searchQueryPending&&!!searchCommittedQuery&&input===searchCommittedQuery;
+}
+function rerunCommittedSearchIfReady(){
+  if(!canRerunCommittedSearch())return false;
+  runSearch({commitSource:'rerun'});
+  return true;
+}
+function submitSearch(event){
+  if(event&&typeof event.preventDefault==='function')event.preventDefault();
+  runSearch({commitSource:'explicit-submit'});
+  return false;
+}
+function revealSearchOutput(){
+  const sc=searchScrollElement();if(!sc)return;
+  const meta=document.getElementById('search-meta'),results=document.getElementById('search-results');
+  const target=meta&&getComputedStyle(meta).display!=='none'?meta:results;if(!target)return;
+  const apply=()=>{
+    if(!sc.isConnected||!target.isConnected)return;
+    const sr=sc.getBoundingClientRect(),tr=target.getBoundingClientRect();
+    sc.scrollTop=Math.max(0,sc.scrollTop+(tr.top-sr.top)-8);
+    const first=results&&results.querySelector('.result-card');
+    if(first){
+      const sr2=sc.getBoundingClientRect(),fr=first.getBoundingClientRect();
+      const overflow=fr.bottom-(sr2.bottom-8);
+      if(overflow>0){
+        const max=Math.max(0,sc.scrollHeight-sc.clientHeight);
+        sc.scrollTop=Math.min(max,sc.scrollTop+overflow);
+      }
+    }
+  };
+  requestAnimationFrame(()=>{apply();requestAnimationFrame(apply);});
+}
+function resetSearchScrollToTop(){const sc=searchScrollElement();if(sc)sc.scrollTop=0;}
+
 function onSearchInput() {
   cancelActiveSearch('input-mutated');
   const val = document.getElementById('search-input').value;
-  document.getElementById('search-clear').style.display = val ? '' : 'none';
-  document.querySelector('.date-nav-entry').style.display = val ? 'none' : '';
+  const q=syncSearchQueryUI(val);
   resetSearchPaging({resetOrder:true,resetLane:true});searchLastPayload=null;renderSearchIntentMode();renderSearchOrderRow();renderSearchLaneRow(null);
-  if (!val) { clearSearch(); return; }
-  const meta=document.getElementById('search-meta');meta.style.display='block';meta.textContent='Recherche modifiée — appuyez sur Entrée pour lancer la recherche.';
+  if (!q) { clearSearch(); return; }
+  searchQueryPending=true;
+  const meta=document.getElementById('search-meta');meta.style.display='none';meta.textContent='';
   document.getElementById('trust-notice').style.display='none';document.getElementById('search-results').innerHTML='';
 }
 
 async function clearSearch() {
   cancelActiveSearch('cleared');
+  searchQueryPending=false;searchCommittedQuery='';
   resetSearchPaging({resetOrder:true,resetLane:true});searchLastPayload=null;renderSearchIntentMode();renderSearchOrderRow();renderSearchLaneRow(null);
   document.getElementById('search-input').value = '';
-  document.getElementById('search-clear').style.display = 'none';
-  document.querySelector('.date-nav-entry').style.display = '';
+  syncSearchQueryUI('');
   document.getElementById('search-meta').style.display = 'none';
   document.getElementById('trust-notice').style.display = 'none';
   const container = document.getElementById('search-results');
@@ -8058,6 +8121,7 @@ async function clearSearch() {
   el.id = 'search-suggestions';
   container.appendChild(el);
   await refreshSearchSuggestions();
+  resetSearchScrollToTop();
 }
 
 async function refreshSearchSuggestions() {
@@ -8122,8 +8186,8 @@ async function buildSuggestionsHTML() {
 function searchFor(term) {
   resetSearchPaging({resetOrder:true,resetLane:true});searchLastPayload=null;
   document.getElementById('search-input').value = term;
-  document.getElementById('search-clear').style.display = '';
-  runSearch();
+  syncSearchQueryUI(term);
+  runSearch({commitSource:'suggestion'});
 }
 
 /* ═══ THEMATIC SYNONYM MAP (L3) ═══
@@ -8398,22 +8462,25 @@ function renderSearchV2Results(payload, raw) {
   if(!results.length&&!metadata.length&&!(near&&near.eligible&&near.results&&near.results.length)&&!payload.suggestions?.length){const hasPartial=Number(counts.partial||0)>0&&!searchPartialExpanded;container.innerHTML=hasPartial?'<div class="empty-state"><i class="ti ti-search"></i>Aucun passage avec tous les termes. Utilisez « Élargir la recherche » pour voir les passages qui n’en contiennent qu’une partie.</div>':'<div class="empty-state"><i class="ti ti-search-off"></i>Aucun résultat. Essayez d’autres mots ou vérifiez les filtres.</div>';}
 }
 
-async function runSearch() {
-  const raw=document.getElementById('search-input').value.trim();
+async function runSearch({navigation='reveal-output',commitSource='programmatic'}={}) {
+  const raw=syncSearchQueryUI(document.getElementById('search-input').value);
   if(!raw){cancelActiveSearch('empty');return;}
   const normCheck=normalise(raw).replace(/\s+/g,'');
-  if(!normCheck){cancelActiveSearch('empty-normalised');const meta=document.getElementById('search-meta');meta.style.display='block';meta.textContent='Saisissez un mot ou une référence.';document.getElementById('search-results').innerHTML='';return;}
+  if(!normCheck){cancelActiveSearch('empty-normalised');const meta=document.getElementById('search-meta');meta.style.display='block';meta.textContent='Saisissez un mot ou une référence.';document.getElementById('search-results').innerHTML='';if(navigation==='reveal-output')revealSearchOutput();return;}
+  searchQueryPending=false;searchCommittedQuery=raw;
   saveRecentSearch(raw).catch(()=>{});
   cancelActiveSearch('new-search');const generation=searchRunSeq;
   const metaEl=document.getElementById('search-meta');metaEl.style.display='block';metaEl.textContent='Recherche…';
   try{
-    if(searchIntentMode==='meaning'){await runSemanticSearchV3(raw);return;}
+    if(searchIntentMode==='meaning'){await runSemanticSearchV3(raw);if(navigation==='reveal-output')revealSearchOutput();return;}
     const payload=await searchV2Request(raw,generation);
     if(!isSearchActive(generation)||document.getElementById('search-input').value.trim()!==raw)return;
     renderSearchV2Results(payload,raw);
+    if(navigation==='reveal-output')revealSearchOutput();
   }catch(e){
     if(!isSearchActive(generation))return;
     console.error('LDC SEARCH-V2 failed',e);metaEl.textContent='Recherche indisponible pour le moment.';document.getElementById('trust-notice').style.display='none';document.getElementById('search-results').innerHTML='<div class="empty-state"><i class="ti ti-alert-triangle"></i>Le moteur de recherche n’a pas pu être vérifié. Aucun résultat partiel n’est affiché.</div>';
+    if(navigation==='reveal-output')revealSearchOutput();
   }
 }
 
@@ -8872,7 +8939,7 @@ async function applyInitialDeepLink(){
     if(r.view==='search'){
       await goSearch();if(r.source_mode&&r.source_mode!==supplementMode)await setSupplementMode(r.source_mode,{rerender:false,silent:true});
       searchIntentMode=r.intent_mode==='meaning'?'meaning':'words';searchVolFilter=r.volMin||0;searchVolFilterMax=r.volMax||(r.volMin||0);searchSpeakerFilter=!!r.jesus;searchOrderMode=r.order||null;searchResultLane=r.lane||null;searchPartialExpanded=!!r.partialExpanded||searchResultLane==='partial';searchPage=r.page||1;searchMetadataPage=r.metadataPage||1;
-      document.getElementById('search-input').value=r.q;document.getElementById('search-clear').style.display='';document.querySelector('.date-nav-entry').style.display='none';renderSearchIntentMode();renderSearchSourceModeRow();renderSearchOrderRow();renderSpeakerFilterRow();renderVolFilterRow();await runSearch();return true;
+      document.getElementById('search-input').value=r.q;syncSearchQueryUI(r.q);renderSearchIntentMode();renderSearchSourceModeRow();renderSearchOrderRow();renderSpeakerFilterRow();renderVolFilterRow();await runSearch();return true;
     }
     if(r.view==='date'){await openDateNav();const [y,m,d]=r.date.split('-').map(Number);dnYear=y;dnMonth=m;dnDay=d;renderDnYearStrip();renderDnMonthGrid();renderDnDayGrid();renderDnResultCard();const k=`${y}-${m}-${d}`;if(!DN_BY_YMD[k]||!DN_BY_YMD[k].length)return routeFail('date sans entrée','search');return true;}
     if(r.view==='collection'){await goCollections();const col=await dbGet('collections',r.collection).catch(()=>null);if(!col){showToast('Collection absente sur cet appareil');return true;}requestAnimationFrame(()=>{const el=document.querySelector(`.col-section[data-col-id="${r.collection}"]`);if(el)el.scrollIntoView({block:'start'});});return true;}
@@ -9320,7 +9387,7 @@ function textSizeScrollProfile(screen) {
     case 'screen-parcours': return {scroller:document.getElementById('parcours-list'),selector:':scope > *'};
     case 'screen-tomes': return {scroller:document.getElementById('tomes-list'),selector:':scope > *'};
     case 'screen-entries': return {scroller:document.getElementById('entries-list'),selector:':scope > *'};
-    case 'screen-search': return {scroller:document.getElementById('search-results'),selector:':scope > *'};
+    case 'screen-search': return {scroller:searchScrollElement(),selector:'.result-card',keyAttr:'data-result-key'};
     case 'screen-espace': return {scroller:screen.querySelector('.espace-panel.active'),selector:':scope > *'};
     case 'screen-help': return {scroller:document.getElementById('help-scroll'),selector:'.help-section'};
     case 'screen-provenance': return {scroller:document.getElementById('provenance-scroll'),selector:'.provenance-wrap > *'};
