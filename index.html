@@ -118,7 +118,7 @@ html[data-theme="dark"]{
   /* Secondary button */
   :root:not([data-theme="light"]) .btn-secondary,
   html[data-theme="dark"] .btn-secondary
-  { background:#2A2418 !important; color:#8A7E72 !important;
+  { background:#2A2418 !important; color:#A89B8E !important;
     border-color:#3A3020 !important; }
 
 
@@ -148,7 +148,8 @@ html[data-theme="dark"]{
 /* Repeat key rules for explicit data-theme=dark (manual toggle) */
 html[data-theme="dark"] .resume-card { background:#242018 !important; }
 html[data-theme="dark"] .btn-primary  { background:#C9A84C !important; color:#1A1612 !important; }
-html[data-theme="dark"] .btn-secondary{ background:#2A2418 !important; color:#8A7E72 !important; border-color:#3A3020 !important; }
+html[data-theme="dark"] .rc-btn       { background:#C9A84C !important; color:#1A1612 !important; } /* v133 D-04 manual-dark contrast repair */
+html[data-theme="dark"] .btn-secondary{ background:#2A2418 !important; color:#A89B8E !important; border-color:#3A3020 !important; }
 html[data-theme="dark"] .sheet       { background:#201C18 !important; }
 html[data-theme="dark"] #autour-sheet{ background:#201C18 !important; }
 html[data-theme="dark"] .col-new-input{ background:#2A2418 !important; color:#D4C8BC !important; border-color:#3A3020 !important; }
@@ -682,7 +683,7 @@ mark.hl-pink{background:#fce7f3;color:inherit;}
 
 .search-meta{padding:4px 16px 8px;font-size:12px;color:var(--muted);flex-shrink:0;}
 .search-mode-badge{display:inline-flex;align-items:center;gap:4px;
-  background:var(--gold-pale);color:#7A5A20;border-radius:10px;
+  background:var(--gold-pale);color:var(--gold-text);border-radius:10px;
   padding:2px 8px;font-size:11px;margin-left:6px;}
 
 .result-card{padding:14px 16px;border-bottom:0.5px solid var(--border);width:100%;text-align:left;background:none;
@@ -695,9 +696,9 @@ mark.hl-pink{background:#fce7f3;color:inherit;}
   display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;}
 .rc-tags{display:flex;gap:5px;flex-wrap:wrap;}
 .rc-tag{font-size:10px;padding:2px 7px;border-radius:8px;
-  background:var(--gold-pale);color:#7A5A20;}
+  background:var(--gold-pale);color:var(--gold-text);}
 .rc-tag.exact{background:#E1F5EE;color:#085041;}
-.rc-tag.approximate{background:var(--gold-pale);color:#7A5A20;}
+.rc-tag.approximate{background:var(--gold-pale);color:var(--gold-text);}
 .rc-tag.thematic{background:#EEEDFE;color:#3C3489;}
 .trust-notice{padding:8px 16px;font-size:12px;color:var(--muted);
   font-style:italic;border-bottom:0.5px solid var(--border);flex-shrink:0;}
@@ -1046,7 +1047,7 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; }
 .hsi-teal {background:#E1F5EE;color:#0F6E56;}
 .hsi-purple{background:#EEEDFE;color:#3C3489;}
 .hsi-coral{background:#FAECE7;color:#993C1D;}
-.hsi-gold {background:var(--gold-pale);color:#7A5A20;}
+.hsi-gold {background:var(--gold-pale);color:var(--gold-text);}
 .help-section-title{font-family:var(--serif);font-size:var(--help-title-size);color:var(--night);margin:0;font-weight:600;line-height:1.3;}
 .help-card{background:var(--white);border:0.5px solid var(--border);
   border-radius:10px;padding:12px 14px;margin-bottom:8px;}
@@ -1055,13 +1056,13 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; }
 .help-chip{display:inline-flex;align-items:center;gap:4px;background:var(--accent-fill);
   color:var(--accent-fill-ink);border-radius:6px;padding:3px 9px;font-size:11px;
   font-family:var(--body);flex-shrink:0;margin-top:1px;white-space:nowrap;}
-.help-chip.light{background:var(--gold-pale);color:#7A5A20;}
+.help-chip.light{background:var(--gold-pale);color:var(--gold-text);}
 .help-chip.outline{background:none;color:var(--muted);border:0.5px solid var(--border);}
 .help-text{font-size:var(--help-body-size);color:var(--ink);line-height:1.65;}
 .help-text b{color:var(--night);font-weight:600;}
 .help-divider{height:0.5px;background:var(--border);margin:4px 0 12px;}
 .help-tip{background:var(--gold-pale);border-radius:8px;padding:8px 12px;
-  font-size:var(--help-tip-size);color:#7A5A20;line-height:1.6;margin-bottom:8px;font-style:italic;}
+  font-size:var(--help-tip-size);color:var(--gold-text);line-height:1.6;margin-bottom:8px;font-style:italic;}
 .help-version{text-align:center;font-size:11px;color:var(--muted);
   padding:16px;font-family:var(--body);}
 
@@ -1089,7 +1090,7 @@ html[data-theme="dark"] #update-banner { background: #0F1A2E; }
 .autour-card-text{font-size:13px;color:var(--ink);line-height:1.65;font-style:italic;
   display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
 .autour-card-tag{display:inline-block;font-size:10px;padding:1px 7px;border-radius:8px;
-  margin-top:5px;background:var(--gold-pale);color:#7A5A20;}
+  margin-top:5px;background:var(--gold-pale);color:var(--gold-text);}
 .autour-card-tag.same-entry{background:#E1F5EE;color:#085041;}
 .autour-card-tag.same-vol{background:#E6F1FB;color:#185FA5;}
 .autour-card-tag.thematic{background:#EEEDFE;color:#3C3489;}
@@ -2077,7 +2078,7 @@ html[data-text-level="xlarge"]{--reader-measure:823px;--home-offline-title-size:
       <button id="search-intent-meaning" class="search-intent-btn" type="button" aria-pressed="false" onclick="setSearchIntentMode('meaning')">Par le sens</button>
       <button id="search-intent-words" class="search-intent-btn active" type="button" aria-pressed="true" onclick="setSearchIntentMode('words')">Par les mots</button>
     </div>
-    <div id="search-intent-help" class="search-intent-help"><span class="search-intent-lab">LAB interne.</span> Recherchez un mot, une expression, une citation, une date ou une référence.</div>
+    <div id="search-intent-help" class="search-intent-help">Recherchez un mot, une expression, une citation, une date ou une référence.</div>
   </div>
   <div class="search-bar-wrap">
     <div class="search-bar">
@@ -2192,9 +2193,9 @@ html[data-text-level="xlarge"]{--reader-measure:823px;--home-offline-title-size:
       <div class="help-section-head"><div class="help-section-icon hsi-amber"><i class="ti ti-book-2"></i></div><h2 class="help-section-title">Lire et se repérer</h2></div>
       <div class="help-card">
         <div class="help-row"><span class="help-chip">Repères</span><span class="help-text">Aide à distinguer la voix principale du passage et, lorsque c’est utile, la voix citée. Désactiver Repères masque seulement ces indications : le texte, les couleurs et les guillemets ne changent pas.</span></div>
-        <div class="help-row"><span class="help-chip" style="background:rgba(201,168,76,.15);color:#7A5A20;">JÉSUS</span><span class="help-text">Exemple : lorsque Jésus est la voix principale du passage, Repères affiche <b>JÉSUS</b>.</span></div>
+        <div class="help-row"><span class="help-chip" style="background:rgba(201,168,76,.15);color:var(--gold-text);">JÉSUS</span><span class="help-text">Exemple : lorsque Jésus est la voix principale du passage, Repères affiche <b>JÉSUS</b>.</span></div>
         <div class="help-row"><span class="help-chip light">voix citée : Luisa</span><span class="help-text">Si Jésus cite Luisa à l’intérieur de son propre tour de parole, Repères peut ajouter cette seconde ligne sans changer la présentation principale du passage.</span></div>
-        <div class="help-row"><span class="help-chip" style="background:rgba(201,168,76,.15);color:#7A5A20;">Paroles de Jésus</span><span class="help-text">La couleur du lecteur suit la voix principale du passage. Une citation imbriquée conserve cette présentation : Jésus citant quelqu’un reste en style Jésus ; Luisa citant Jésus reste en style Luisa.</span></div>
+        <div class="help-row"><span class="help-chip" style="background:rgba(201,168,76,.15);color:var(--gold-text);">Paroles de Jésus</span><span class="help-text">La couleur du lecteur suit la voix principale du passage. Une citation imbriquée conserve cette présentation : Jésus citant quelqu’un reste en style Jésus ; Luisa citant Jésus reste en style Luisa.</span></div>
         <div class="help-row"><span class="help-chip light">♥</span><span class="help-text">Ajoute ou retire l’entrée des Favoris. Le cœur est rempli lorsqu’elle est enregistrée ; elle apparaît aussi dans <b>Mon Espace → Favoris</b> et dans la liste du Tome.</span></div>
         <div class="help-row"><span class="help-chip light">Lu / ✓ Lu</span><span class="help-text">Marque explicitement l’entrée comme lue. Appuyez de nouveau sur <b>✓ Lu</b> pour retirer ce marquage. L’ouverture seule d’une entrée ne la marque pas comme lue.</span></div>
         <div class="help-row"><span class="help-chip light">◂ ▸</span><span class="help-text">Passe à l’entrée précédente ou suivante sans revenir à la liste.</span></div>
@@ -2252,7 +2253,7 @@ html[data-text-level="xlarge"]{--reader-measure:823px;--home-offline-title-size:
         <div class="help-row"><span class="help-chip outline">Formulation proche</span><span class="help-text">Pour une phrase de <b>3 à 14 mots</b> dont vous vous souvenez imparfaitement, l’application peut proposer une formulation présentant une ou quelques petites différences textuelles, par exemple un mot ajouté, omis ou remplacé, ou deux mots voisins inversés. Plus la phrase est courte, plus la tolérance est stricte. Elle affiche toujours les mots réellement présents dans la source et ne présente jamais ce résultat comme une <b>Phrase exacte</b>. Lorsque trop de formulations restent également plausibles, elle vous invite à préciser votre souvenir. Un badge <b>CRITICAL_DIFFERENCE</b> signale certaines différences potentiellement importantes qui ne doivent pas être assimilées silencieusement.</span></div>
         <div class="help-row"><span class="help-chip outline">Métadonnées</span><span class="help-text">Les résultats peuvent aussi correspondre au titre, à la date, à la référence ou à une autre métadonnée de l’entrée.</span></div>
         <div class="help-row"><span class="help-chip outline">Correspondance approchée</span><span class="help-text"><b>Élargir la recherche</b> permet, seulement si vous le choisissez, d’afficher <b>Certains termes</b> : une partie seulement des mots saisis a été retrouvée. Ces résultats ne sont jamais affichés comme résultat principal par défaut. Cela ne signifie pas qu’un lien thématique, doctrinal ou « par le sens » a été établi. Vérifiez toujours le passage avant de le citer.</span></div>
-        <div class="help-row"><span class="help-chip outline">Par le sens / Par les mots</span><span class="help-text"><b>Par les mots</b> conserve la recherche textuelle qualifiée. <b>Par le sens</b> est le laboratoire de recherche d’un souvenir exprimé avec vos propres mots. Il ne remplace jamais le sens par une union de mots partiels et reste fermé tant que le modèle, le pack sémantique, l’abstention et les tests appareil/hors ligne ne sont pas qualifiés.</span></div>
+        <div class="help-row"><span class="help-chip outline">Par le sens / Par les mots</span><span class="help-text"><b>Par les mots</b> conserve la recherche textuelle qualifiée. <b>Par le sens</b> est une recherche expérimentale d’un souvenir exprimé avec vos propres mots. Il ne remplace jamais le sens par une union de mots partiels et reste fermé tant que le modèle, le pack sémantique, l’abstention et les tests appareil/hors ligne ne sont pas qualifiés.</span></div>
         <div class="help-divider"></div>
         <div class="help-row"><span class="help-chip">Autour de ce passage</span><span class="help-text">Dans le lecteur, ouvrez <b>⋯ → Autour de ce passage</b> pour explorer des entrées du même Tome, des thèmes proches ou des familles d’images spirituelles.</span></div>
         <div class="help-row"><span class="help-chip outline">Badges de contexte</span><span class="help-text"><b>Éditorial</b> signale une explication éditoriale du Tome 1 ; <b>COMPLÉMENT</b> signale un contenu substantiel absent du corpus PRINCIPAL et conservé comme COMPLÉMENT retenu ; sa provenance détaillée est disponible dans les informations du passage ; le badge du filtre Jésus apparaît lorsque ce filtre est actif.</span></div>
@@ -2548,11 +2549,11 @@ html[data-text-level="xlarge"]{--reader-measure:823px;--home-offline-title-size:
    VERSION — single source of truth
    Update this string on every release.
 ═══════════════════════════════════════════════════════ */
-const APP_VERSION = 'v2.19.128-R1B-UX-ACCESS-R2'; // v128 blind-challenge repair: backup preview moved outside #main-content inert boundary; protected corpus/Search/provenance/user-state semantics preserved
-const PUBLIC_VERSION = '127'; // UX/accessibility successor; final hosted/PWA/physical qualification required
+const APP_VERSION = 'v2.19.139-R1B-UX-ACCESS-R12'; // v139 bounded full-QA successor of exact v138; current Stage-2 SEARCH-V2.1A reference metadata re-certified; devotional corpus/Search payloads and algorithms preserved; Semantic V3 remains fail-closed
+const PUBLIC_VERSION = (APP_VERSION.match(/v2\.19\.(\d+)/)||[])[1] || '139'; // single authoritative public identity derived from APP_VERSION
 const APP_VERSION_LABEL = `Version ${PUBLIC_VERSION}`;
-const APP_BUILD = '2026-09-27';
-const SW_CACHE_VERSION = 'ldc-v2.19.128-R1B-ux-access-r2';
+const APP_BUILD = '2026-10-04';
+const SW_CACHE_VERSION = 'ldc-v2.19.139-R1B-ux-access-r12';
 const LDC_PROVENANCE_PUBLIC_COPY = Object.freeze({
   methodologyCta:'Voir les sources, les contrôles et leurs limites →',
   neutralSource:'Source détaillée dans la notice documentaire',
@@ -2565,7 +2566,7 @@ const LDC_PROVENANCE_PUBLIC_COPY = Object.freeze({
   }),
   datePrecision:Object.freeze({month:'mois seulement',undated:'date non précisée'})
 });
-const CORPUS_MANIFEST_SHA256 = 'd1e761c7e6cb046afe092abde992fffa18369f6192b7cae47b0194fbd583c3fb';
+const CORPUS_MANIFEST_SHA256 = '92426c8aaac6fc7c6b8a02b0a7e00cd5870e80b805b411ae64c55e59bec1ad8b';
 const DEEP_LINK_SCHEMA = 'ldc-deep-link-v1';
 const READING_POSITION_SCHEMA = 'ldc-reading-position-v3';
 
@@ -3255,7 +3256,7 @@ function isStaleRecord(r) {
 /* ═══════════════════════════════════════════════════════
    CORPUS LOADING
 ═══════════════════════════════════════════════════════ */
-const CORPUS_CV = 'cv=cm-d1e761c7e6cb046a'; // derived from corpus/manifest.json SHA-256
+const CORPUS_CV = 'cv=cm-92426c8aaac6fc7c'; // derived from corpus/manifest.json SHA-256
 
 function sourceModeShowsBackbone() { return supplementMode !== 'additions'; }
 function sourceModeShowsSupplements() { return supplementMode !== 'aflp'; }
@@ -7867,7 +7868,8 @@ let supplementRegistryLoading = null, supplementSpeakerLoading = null;
 let supplementEntryIds = new Set();
 setTimeout(()=>{loadSearchIntentMode();renderSearchIntentMode();},0);
 function loadSearchIntentMode(){
-  try{const v=localStorage.getItem(SEARCH_INTENT_MODE_KEY);if(v==='meaning'||v==='words')searchIntentMode=v;}catch(_){ }
+  searchIntentMode='words';
+  try{const v=localStorage.getItem(SEARCH_INTENT_MODE_KEY);if(v==='words')searchIntentMode='words'; else if(v==='meaning')localStorage.setItem(SEARCH_INTENT_MODE_KEY,'words');}catch(_){ }
   return searchIntentMode;
 }
 function renderSearchIntentMode(){
@@ -7875,7 +7877,7 @@ function renderSearchIntentMode(){
   if(meaning){const a=searchIntentMode==='meaning';meaning.classList.toggle('active',a);meaning.setAttribute('aria-pressed',a?'true':'false');}
   if(words){const a=searchIntentMode==='words';words.classList.toggle('active',a);words.setAttribute('aria-pressed',a?'true':'false');}
   if(input){input.placeholder=searchIntentMode==='meaning'?'Décrivez ce dont vous vous souvenez avec vos propres mots…':'Mot, expression, citation, date ou référence…';input.setAttribute('aria-label',searchIntentMode==='meaning'?'Rechercher par le sens dans le Livre du Ciel':'Rechercher par les mots dans le Livre du Ciel');}
-  if(help)help.innerHTML=searchIntentMode==='meaning'?'<span class="search-intent-lab">LAB interne.</span> Décrivez librement l’idée ou le passage dont vous vous souvenez. Les mots exacts ne sont pas nécessaires.':'<span class="search-intent-lab">LAB interne.</span> Recherchez un mot, une expression, une citation, une date ou une référence.';
+  if(help)help.textContent=searchIntentMode==='meaning'?'Décrivez librement l’idée ou le passage dont vous vous souvenez. Les mots exacts ne sont pas nécessaires.':'Recherchez un mot, une expression, une citation, une date ou une référence.';
   const order=document.getElementById('search-order-row'),lane=document.getElementById('search-lane-row');
   if(order)order.style.display=searchIntentMode==='words'?'flex':'none';
   if(lane&&searchIntentMode==='meaning')lane.style.display='none';
@@ -7884,7 +7886,7 @@ function setSearchIntentMode(mode,{rerun=true,persist=true}={}){
   if(mode!=='meaning'&&mode!=='words')return;
   if(searchIntentMode===mode){renderSearchIntentMode();return;}
   cancelActiveSearch('search-intent-mode-changed');searchIntentMode=mode;resetSearchPaging({resetOrder:true,resetLane:true});searchLastPayload=null;
-  if(persist){try{localStorage.setItem(SEARCH_INTENT_MODE_KEY,mode);}catch(_){ }}
+  if(persist){try{localStorage.setItem(SEARCH_INTENT_MODE_KEY,mode==='meaning'?'words':mode);}catch(_){ }}
   renderSearchIntentMode();document.getElementById('trust-notice').style.display='none';
   const q=(document.getElementById('search-input')?.value||'').trim();
   if(q&&rerun)runSearch();else if(!q)refreshSearchSuggestions().catch(()=>{});
@@ -7915,7 +7917,7 @@ function renderSemanticPackUnavailable(raw,structural,status){
   const meta=document.getElementById('search-meta');meta.style.display='block';meta.innerHTML=`Recherche par le sens <span class="search-mode-badge">SEARCH-V3 · qualification en cours</span>`;
   document.getElementById('trust-notice').style.display='none';const container=document.getElementById('search-results');container.innerHTML='';
   const reason=status&&status.reason?`<div class="semantic-lab-note">État du pack : ${escapeHtml(String(status.reason))}</div>`:'';
-  const panel=document.createElement('div');panel.className='semantic-pack-panel';panel.innerHTML='<b>Recherche par le sens : moteur non encore qualifié dans ce laboratoire.</b><br>La requête n’est pas transformée en une recherche OR sur chacun de ses mots. Aucun résultat lexical trompeur n’est affiché à la place.<div class="semantic-lab-note">Activation seulement après benchmark LDC, choix du modèle, requêtes humaines, négatifs difficiles, calibrage de l’abstention et tests appareil/hors ligne.</div>'+reason;container.appendChild(panel);
+  const panel=document.createElement('div');panel.className='semantic-pack-panel';panel.innerHTML='<b>Recherche par le sens : moteur non encore qualifié.</b><br>La requête n’est pas transformée en une recherche OR sur chacun de ses mots. Aucun résultat lexical trompeur n’est affiché à la place.<div class="semantic-lab-note">Activation seulement après qualification complète du moteur, de l’abstention et des tests appareil/hors ligne.</div>'+reason;container.appendChild(panel);
   if(structural&&structural.hasStructural&&structural.residual){const n=document.createElement('div');n.className='search-suggestion-box';n.textContent='Les contraintes Tome/date/référence ont été reconnues et seront appliquées au moteur sémantique qualifié.';container.appendChild(n);}
 }
 function semanticResultToSearchTargetR4(r){
@@ -10034,8 +10036,8 @@ function renderDnResultCard() {
 const OFFLINE_STORAGE_SCHEMA = 'ldc-offline-storage-v3';
 const OFFLINE_MANIFEST_SCHEMA = 'ldc-offline-manifest-v3';
 const OFFLINE_CONTENT_BINDING_SCHEMA = 'ldc-offline-content-binding-v2';
-const OFFLINE_CONTENT_BINDING = '50f9e009bc4b4abe73f0cc114d04e3e7443c1d176db81fa4e33b8b24dffd0ee7';
-const OFFLINE_CORPUS_MANIFEST_SHA256 = 'd1e761c7e6cb046afe092abde992fffa18369f6192b7cae47b0194fbd583c3fb';
+const OFFLINE_CONTENT_BINDING = '1fb8d6d8a532806ad6a25b32250091deed174ddb54130f1b05d3da2233a05384';
+const OFFLINE_CORPUS_MANIFEST_SHA256 = '92426c8aaac6fc7c6b8a02b0a7e00cd5870e80b805b411ae64c55e59bec1ad8b';
 const OFFLINE_STATES = Object.freeze(['NOT_PREPARED','CHECKING','DOWNLOADING','READY','PARTIAL','ERROR','CANCELLED']);
 let offlineUiState = {state:'NOT_PREPARED',completed:0,total:0,failed:[],total_bytes:0,job_id:null,message:'',content_binding_sha256:OFFLINE_CONTENT_BINDING,corpus_manifest_sha256:OFFLINE_CORPUS_MANIFEST_SHA256};
 let runtimeCacheUiState = {entries:0,bytes:0,max_entries:48,max_bytes:50331648};
@@ -10164,8 +10166,23 @@ async function requestOfflineStatus(timeoutMs=15000){
     catch(e){clearTimeout(timer);offlineStatusWaiters.delete(requestId);reject(e);}
   });
 }
+async function ensureOfflineStorageCapacity(){
+  const requiredBytes=114480819;
+  try{
+    if(navigator.storage&&typeof navigator.storage.persist==='function') await navigator.storage.persist();
+    if(navigator.storage&&typeof navigator.storage.estimate==='function'){
+      const est=await navigator.storage.estimate(), quota=Number(est.quota||0), usage=Number(est.usage||0), available=Math.max(0,quota-usage);
+      if(quota>0 && available < requiredBytes*1.10){
+        offlineUiState={...offlineUiState,state:'ERROR',message:`Espace de stockage insuffisant : environ ${offlineMb(requiredBytes)} requis, ${offlineMb(available)} disponibles.`};
+        renderOfflineUi(); scheduleOfflinePersist(); return false;
+      }
+    }
+  }catch(_){ /* estimate/persist are advisory; SW verification remains authoritative */ }
+  return true;
+}
 async function startOfflinePreparation(){
   if(navigator.onLine===false){showToast('Connexion requise pour reprendre la préparation');return;}
+  if(!(await ensureOfflineStorageCapacity())) return;
   const jobId=`ldc-offline-${Date.now()}-${Math.random().toString(16).slice(2,8)}`;
   offlineUiState={...offlineUiState,state:'CHECKING',job_id:jobId,message:'Analyse des fichiers déjà présents…',failed:[]};
   offlineLastMessageAt=Date.now();renderOfflineUi();scheduleOfflinePersist();armOfflineWatchdog();

@@ -1,5 +1,5 @@
 {
-  "app_version": "v2.19.128-R1B-UX-ACCESS-R2",
+  "app_version": "v2.19.139-R1B-UX-ACCESS-R12",
   "asset_count": 204,
   "assets": [
     {
@@ -373,9 +373,9 @@
       "sha256": "86bba85833289220cb6d475a86f5efd455c0e4eb5b58b904b0f1cbea6666fead"
     },
     {
-      "bytes": 82371,
+      "bytes": 84428,
       "path": "corpus/manifest.json",
-      "sha256": "d1e761c7e6cb046afe092abde992fffa18369f6192b7cae47b0194fbd583c3fb"
+      "sha256": "92426c8aaac6fc7c6b8a02b0a7e00cd5870e80b805b411ae64c55e59bec1ad8b"
     },
     {
       "bytes": 908179,
@@ -558,14 +558,14 @@
       "sha256": "e4f72408be0d8d2766fca21ec8dcb6120690eab1dd53ab77f3098202fa0f90f4"
     },
     {
-      "bytes": 4872,
+      "bytes": 4958,
       "path": "corpus/search_v21_manifest.json",
-      "sha256": "09e0dd47cab26c0409d598b27b95857c9e1eedaf72467e558403dcb7f30a61a8"
+      "sha256": "86baf5f7a74c2840b9c1a48c504c402d050d59fa85526b87081f068d403ee996"
     },
     {
-      "bytes": 1480810,
+      "bytes": 1480896,
       "path": "corpus/search_v21_topology.json",
-      "sha256": "fc4684110a83493128839e0a139982457be2e139f3ecae3fbd5ac0d63c1b25f1"
+      "sha256": "9d939051a8eca6929c208dcefeb1b2f41cb794fb175762dbfe18b645a9ed497f"
     },
     {
       "bytes": 13417678,
@@ -1025,9 +1025,9 @@
   ],
   "authorized_runtime_ledger_sha256": "f77fb79ab016c933d6b7cfcb830b2db52fd4f42e03d032988c5ac50c2a38cd35",
   "content_binding_schema": "ldc-offline-content-binding-v2",
-  "content_binding_sha256": "50f9e009bc4b4abe73f0cc114d04e3e7443c1d176db81fa4e33b8b24dffd0ee7",
+  "content_binding_sha256": "1fb8d6d8a532806ad6a25b32250091deed174ddb54130f1b05d3da2233a05384",
   "corpus_generation": "G036-AFLP-R8-SUP-T5-FAST1-STAGE2-221",
-  "corpus_manifest_sha256": "d1e761c7e6cb046afe092abde992fffa18369f6192b7cae47b0194fbd583c3fb",
+  "corpus_manifest_sha256": "92426c8aaac6fc7c6b8a02b0a7e00cd5870e80b805b411ae64c55e59bec1ad8b",
   "families": {
     "date_id_reconciliation": 1,
     "display": 37,
@@ -1077,7 +1077,7 @@
   },
   "legacy_cache_family_prefix": "ldc-le-livre-du-ciel-offline-v",
   "m7rc_fixed_point": true,
-  "page_worker_revision": "ldc-v2.19.128-R1B-ux-access-r2",
+  "page_worker_revision": "ldc-v2.19.139-R1B-ux-access-r12",
   "post_r6_date_id_a2_fixed_point": {
     "a2_sha256": "dd034a4d4bb329254818c3e62fd629c9b64c90f9d4bd533de9f6ed99247cb1d8",
     "date_id_sha256": "ed5bf462c47b8fb5a41f7c81591257d6e99f94bae08628aa27e5f7d667020c2a",
@@ -1138,7 +1138,7 @@
     "user_state_schema_changed": false,
     "ux_logic_changed": false
   },
-  "rebuild_status": "V127_R1_UX_ACCESS__R4_PAGE_WORKER_EXPECTATION_MISMATCH_REPAIRED__D03_D06_D09_CLOSED__ONE_GLOBAL_TEXT_SIZE_SETTING__CORPUS_SEARCH_PROVENANCE_WORDING_USER_STATE_OFFLINE_BINDING_UNCHANGED__HOSTED_PWA_IPHONE_IPAD_RETEST_REQUIRED__PUBLIC_RELEASE_NOT_YET_AUTHORIZED",
+  "rebuild_status": "V139_R12_STAGE2_221_SEARCH_V21A_RECERTIFICATION__V138_DARK_CONTRAST_AND_AUTHORITY_REPAIR_INHERITED__DEVOTIONAL_CORPUS_SEARCH_PAYLOADS_AND_ALGORITHMS_UNCHANGED__SEMANTIC_V3_FAIL_CLOSED__PUBLIC_RELEASE_NOT_AUTHORIZED",
   "retention_contract": {
     "clear_policy": "CURRENT_SCOPE_ONLY_FOR_SHARED_LEGACY_CACHES",
     "copy_migration_required": false,
@@ -1149,7 +1149,7 @@
     "shell_runtime_caches": "APP_VERSIONED"
   },
   "schema": "ldc-offline-manifest-v3",
-  "scope": "v127 R1 bounded UX/accessibility and release-identity successor of exact v126 R4: one global text-size setting made directly accessible on substantive screens; Mon Espace tabs expose selected semantics; authored accessible names added to note/collection inputs; page/service-worker expected-version mismatch repaired; corpus/Search/provenance wording/user-state/offline content preserved.",
+  "scope": "v139 bounded full-QA successor of exact v138; re-certifies current Stage-2 SEARCH-V2.1A all-nonempty visible-token reference counts/digests and dependent integrity bindings. Devotional text, Search-V2 BM25 payloads, exact/foundation/near algorithms, provenance wording, user-state semantics and Semantic V3 qualification state are unchanged; Semantic V3 remains fail-closed.",
   "scope_isolation_contract": "ONLY_CURRENT_SERVICE_WORKER_SCOPE_URLS_MAY_SATISFY_REUSE_OR_BE_CLEARED_FROM_SHARED_LEGACY_CACHES",
   "semantic_vector_search_included": false,
   "semantic_vector_search_note": "R18D Search-V3 engineering evidence is preserved externally and v113 Search-V3 runtime modules remain byte-identical. No neural model, vectors or qualified semantic pack are bundled. Par le sens remains fail-closed.",
@@ -1157,7 +1157,26 @@
     "implementation_authority_sha256": "f77fb79ab016c933d6b7cfcb830b2db52fd4f42e03d032988c5ac50c2a38cd35",
     "migration_fixed_point_sha256": "24addfee378ad8fe08c5491e886baa1ae0df79089776b4fe7baeb67695e3ee65",
     "semantic_v3_pack": "NOT_RECERTIFIED__FAIL_CLOSED",
-    "status": "R2_OFFLINE_MANIFEST_REBOUND__RUNTIME_REPAIR_ONLY"
+    "status": "V139_SEARCH_V21A_CURRENT_STAGE2_221_REFERENCE_RECERTIFIED__RUNTIME_EXACT_SEARCH_GATE_REOPENED",
+    "search_v21_topology_sha256": "9d939051a8eca6929c208dcefeb1b2f41cb794fb175762dbfe18b645a9ed497f",
+    "search_v21_manifest_sha256": "86baf5f7a74c2840b9c1a48c504c402d050d59fa85526b87081f068d403ee996",
+    "reference": {
+      "aflp": {
+        "tokens": 1466870,
+        "units": 2312,
+        "digest": "6bc37d012a23154af2d669cddb3f84078de606fadb43da3ab1dba516639a6c0f"
+      },
+      "additions": {
+        "tokens": 14333,
+        "units": 75,
+        "digest": "029c8f53c9a20cae460ff2ef8e76c82cbc50bba4aa518b357eabe1019f4c2c16"
+      },
+      "enriched": {
+        "tokens": 1480956,
+        "units": 2325,
+        "digest": "49bc61ea97e2218da594a713748da0f21beefabef4762516cdb14b4af42b1544"
+      }
+    }
   },
   "storage_cache_name_contract": "ldc-le-livre-du-ciel-offline-persistent-v3-<fnv1a32(service-worker-scope)>",
   "storage_schema": "ldc-offline-storage-v3",
@@ -1175,7 +1194,7 @@
     "predecessor_candidate_sha256": "d5341cd079a6c50bee148c497108a40f924a70f50f840702884a457fb88abe4b",
     "volume_summary_sha256": "8d422e692c8d4c7d230bd270ec8f9d455e1949043ebe5bed75f5746b3d40b60a"
   },
-  "total_bytes": 114480819,
+  "total_bytes": 114483048,
   "provenance_ux_v126_r3_navigation_repair": {
     "classification": "BOUNDED_PROVENANCE_NAVIGATION_STATE_RESTORATION_REPAIR",
     "date": "2026-09-27",
